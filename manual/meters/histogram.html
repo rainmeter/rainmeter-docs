@@ -92,37 +92,52 @@ title: 'Histogram meter'
 </dl>
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/MeterHistogramExample_1.0.rmskin" class="download"></a>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterHistogram_1.0.rmskin" class="download"></a>
 {% highlight ini %}
 [Rainmeter]
-Update=500
 DynamicWindowSize=1
+Update=500
 
 [MeasureCPU]
 Measure=CPU
 Processor=0
+MinValue=0
+MaxValue=100
 
 [MeterCPUBackgroundImage]
 Meter=Image
-SolidColor=171,54,3,150
+SolidColor=24,102,10
 X=0
 Y=0
-W=130
-H=60
+W=220
+H=70
 
 [MeterCPUHistogram]
 Meter=Histogram
 MeasureName=MeasureCPU
 X=5
 Y=5
-W=120
-H=50
+W=210
+H=60
 PrimaryColor=255,255,255,255
 SolidColor=0,0,0,100
 AntiAlias=1
+
+[MeterText]
+Meter=String
+MeasureName=MeasureCPU
+X=110
+Y=10R
+FontFace=Segoe UI
+FontSize=13
+FontColor=255,255,255,255
+StringStyle=Bold
+StringAlign=Center
+AntiAlias=1
+Text=CPU Usage: %1%
 {% endhighlight %}
 
 <div class="exampleprev">
-	<p><img src="../../img/MeterHistogramExample.jpg"/></p>
+	<p><img src="../../img/ExampleMeterHistogram.jpg"/></p>
 	<p>An example skin demontrating a Histogram meter.</p>
 </div>
