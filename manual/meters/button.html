@@ -33,7 +33,7 @@ title: 'Button meter'
 </dl>
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/MeterButtonExample_1.0.rmskin" class="download"></a>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterButton_1.0.rmskin" class="download"></a>
 {% highlight ini %}
 [Rainmeter]
 Update=500
@@ -41,11 +41,25 @@ DynamicWindowSize=1
 
 [MeterPacman]
 Meter=Button
-ButtonImage=PacButton.png
-ButtonCommand=["Notepad.exe"]
+ButtonImage=#@#Images\PacButton.png
+ButtonCommand=["Notepad"]
+MouseOverAction=[!SetOption MeterText Text "Mouse OVER state..."][!UpdateMeter MeterText][!Redraw]
+MouseLeaveAction=[!SetOption MeterText Text "Mouse OFF state..."][!UpdateMeter MeterText][!Redraw]
+LeftMouseDownAction=[!SetOption MeterText Text "Mouse DOWN state..."][!UpdateMeter MeterText][!Redraw]
+
+[MeterText]
+Meter=String
+FontFace=Segoe UI
+FontSize=12
+FontColor=255,255,255,255
+StringStyle=Bold
+AntiAlias=1
+X=30
+Y=90
+Text=Move mouse over button...
 {% endhighlight %}
 
 <div class="exampleprev">
-	<p><img src="../../img/MeterButtonExample.gif"/></p>
+	<p><img src="../../img/ExampleMeterButton.gif"/></p>
 	<p>An example skin demontrating a Button meter.</p>
 </div>
