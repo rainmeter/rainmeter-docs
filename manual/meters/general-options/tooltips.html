@@ -1,0 +1,61 @@
+---
+layout: manual
+title: 'Tooltips'
+---
+<!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Creates a ToolTip which appears when the mouse is hovered over the meter.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="ToolTipText"><code>ToolTipText</code><span>Required</span></dt>
+	<dd>
+		The text to display.
+		<br><br>Values from <code>MeasureName</code> from the meter can be used with <code>%1</code>, <code>%2</code> etc. as appropriate for various meter types:
+		<ul>
+			<li>Line, String: %1, %2, %3, ...</li>
+			<li>Histogram: %1, %2</li>
+			<li>Others: %1</li>
+		</ul>
+		<br><b>Note:</b> To wrap the text on multiple lines, use the <a href="/manual/variables/built-in-variables#CRLF">Built-In Variable</a> <code>#CRLF#</code> to provide line breaks.
+	</dd>
+	
+	<dt id="ToolTipTitle"><code>ToolTipTitle</code></dt>
+	<dd>
+		Sets a bold title for the tooltip. Only one line of text can be used.
+	</dd>
+	
+	<dt id="ToolTipIcon"><code>ToolTipIcon</code></dt>
+	<dd>
+		Specifies an Icon to be placed in the tooltip. This can be the <a href="/manual/options#path">path</a> to a .ico file or one of these preset icons:
+		<ul>
+			<li>INFO</li>
+			<li>WARNING</li>
+			<li>ERROR</li>
+			<li>QUESTION</li>
+			<li>SHIELD (Windows Vista and newer)</li>
+		</ul>
+		<br><b>Note:</b> ToolTipTile is required to use ToolTipIcon.
+	</dd>
+	
+	<dt id="ToolTipType"><code>ToolTipType</code><span>Default: <code>0</code></span></dt>
+	<dd>
+		Defines the style of the tooltip. Valid values are:
+		<ul>
+			<li><code>0</code> Normal tooltip
+			<li><code>1</code> Ballon tooltip
+		</ul>	
+		<br><b>Note:</b> <code>ToolTipType=1</code> is not supported on Windows XP.
+	</dd>
+
+	<dt id="ToolTipWidth"><code>ToolTipWidth</code><span>Default: <code>1000</code></span></dt>
+	<dd>
+		Maximum width for the tooltip. When the width is reached, the text will automatically wrap.
+		<br><br><b>Note:</b> As a ToolTipTitle cannot be wrapped, do not set this width less than the length of the title, or there could be unexpected results.
+	</dd>
+
+	<dt id="ToolTipHidden"><code>ToolTipHidden</code><span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to 1, the ToolTip is not displayed.
+		<br><br><b>Note:</b>  ToolTipHidden can also be used in the <code>[Rainmeter]</code> section to hide all tooltips in the skin.
+	</dd>	

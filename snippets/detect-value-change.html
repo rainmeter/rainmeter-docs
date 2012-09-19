@@ -1,0 +1,29 @@
+---
+layout: snippets
+title: 'Detect Value Change'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>This is a simple method for "watching" a data value in the skin (variable, measure or option) and taking action when the value changes.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function Initialize()
+    Old = nil
+    -- If the "Old" value starts as nil, the change action will always fire on the first update.
+end
+
+function Update()
+    local New = SKIN:GetVariable('SomeVariable')
+    -- or
+    local New = SKIN:GetMeasure('SomeMeasure'):GetValue()
+    -- or
+    local New = SELF:GetOption('SomeOption')
+
+    if Old ~= New then
+        -- do stuff
+        Old = New
+    end
+end
+{% endhighlight %}
+</div>	

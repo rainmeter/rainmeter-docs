@@ -1,0 +1,64 @@
+---
+layout: manual
+title: 'Quote plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=QuotePlugin</code> retrieves a part of a text file or, alternatively, the path of a random file in a folder.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="PathName"><code>PathName</code></dt>
+	<dd>
+		<a href="/manual/options#path">Path</a> of a folder or a file.
+		<ul>
+		<li>If the specified path is a file, the measure value is a random part of a text file and the <code>Separator</code> option is valid for use.</li>
+		<li>If the specified path is a folder, the measure value is a the path to a random file in the folder and the <code>Subfolders</code> and <code>FileFilter</code> options are valid for use.</li>
+		</ul>
+	</dd>
+
+	<dt id="Separator"><code>Separator</code> <span>Default: <code>#CRLF#</code></span></dt>
+	<dd>
+		Delimiter used to separate text. By default, the delimiter is a newline.
+	</dd>
+
+	<dt id="Subfolders"><code>Subfolders</code> <span>Default: <code>1</code></span></dt>
+	<dd>
+		If set to <code>1</code>, subfolders are taken into account.
+	</dd>
+
+	<dt id="FileFilter"><code>FileFilter</code></dt>
+	<dd>
+		If specified, only file names matching the filters are taken into account. The standard wildcard characters <code>*</code> and <code>.</code> can be used.
+
+		<br><br><b>Example:</b> <code>*.jpg;*.gif</code>
+	</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureQuote]
+Measure=Plugin
+Plugin=QuotePlugin
+PathName=%HOMEDRIVE%%HOMEPATH%\My Documents\My Pictures\
+Subfolders=1
+FileFilter=*.jpg;*.gif
+
+[MeterQuote]
+Meter=Image
+MeasureName=MeasureQuote
+X=0
+Y=0
+W=200
+H=200
+{% endhighlight %}	

@@ -1,0 +1,35 @@
+---
+layout: snippets
+title: 'Convert Colors'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>These functions can be used to convert Rainmeter <a href="http://rainmeter.net/cms/Meters-ColorCodes_beta">color code</a> formats from RGB to hexadecimal, and vice versa.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function ConvertToHex(color) -- Converts RGB colors to HEX
+	local hex = {}
+	
+	for rgb in string.gmatch(color, '%d+') do
+		table.insert(hex, string.format('%02X',tonumber(rgb)))
+	end
+	
+	return table.concat(hex)
+end -- ConvertToHex
+{% endhighlight %}
+</div>
+
+<div class="noscroll">
+{% highlight lua %}
+function ConvertToRGB(color) -- Converts HEX colors to RGB
+	local rgb = {}
+	
+	for hex in string.gmatch(color, '..') do
+		table.insert(rgb, tonumber(hex, 16))
+	end
+	
+	return table.concat(rgb,',')
+end -- ConvertToRGB
+{% endhighlight %}
+</div>	

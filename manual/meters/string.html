@@ -1,0 +1,223 @@
+---
+layout: manual
+title: 'String meter'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Meter=String</code> displays text.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General meter options</dt>
+	<dd>
+		All <a href="/manual/meters/general-options">general meter options</a> are valid.
+	</dd>
+
+	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<i>N</i></code></dt>
+	<dd>
+		Name(s) of the measure(s) to use in <code>Text</code> with the <code>%<i>N</i></code> syntax. This option does not need to be specified if not needed.
+	</dd>
+
+	<dt id="Text"><code>Text</code> <span>Default: <code>%1</code></span></dt>
+	<dd>
+		Text to display. If <code>MeasureName</code> is specified, <code>Text</code> will default to the measure value. Otherwise no text will be displayed by default.
+
+		<br><br>The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<i>N</i></code> syntax as follows:
+{% highlight ini %}
+MeasureName=SomeMeasure
+MeasureName2=SomeMeasure2
+Text=This is text containing %1 and %2.
+; %1 and %2 will be replaced by the string values of SomeMeasure and
+; SomeMeasure2, respectively.
+{% endhighlight %}
+	</dd>
+
+	<dt id="Prefix"><code>Prefix</code></dt>
+	<dd>
+		Text displayed before <code>Text</code>.
+
+		<br><br><b>Note:</b> It is preferable to put the entire string in <code>Text</code> instead of using this option.
+	</dd>
+
+	<dt id="Postfix"><code>Postfix</code></dt>
+	<dd>
+		Text displayed after <code>Text</code>.
+
+		<br><br><b>Note:</b> It is preferable to put the entire string in <code>Text</code> instead of using this option.
+	</dd>
+
+	<dt id="FontFace"><code>FontFace</code> <span>Default: <code>Arial</code></span></dt>
+	<dd>
+		Family name of the font to use for the text. The font must either be installed in Windows directly or must be <a href="/manual/skins/resources-folder#Fonts">loaded at runtime</a>.
+
+		<br><br><b>See also:</b> <a href="http://rainmeter.net/cms/Meters-ANoteOnFonts_beta">A Note on Fonts</a>.
+	</dd>
+
+	<dt id="FontSize"><code>FontSize</code> <span>Default: <code>10</code></span></dt>
+	<dd>
+		Size of the font.
+	</dd>
+	
+	<dt id="FontColor"><code>FontColor</code> <span>Default: <code>0,0,0,255</code></span></dt>
+	<dd>
+		<a href="/manual/options#color">Color</a> of the font.
+	</dd>	
+
+	<dt id="StringAlign"><code>StringAlign</code> <span>Default: <code>Left</code></span></dt>
+	<dd>
+		Horizontal and vertical alignment of the string. Valid values are:
+		<ul>
+		<li><code>Left</code>, <code>Right</code>, <code>Center</code> (or <code>LeftTop</code>, <code>RightTop</code>, <code>CenterTop</code>)</li>
+		<li><code>LeftBottom</code>, <code>RightBottom</code>, <code>CenterBottom</code></li>
+		<li><code>LeftCenter</code>, <code>RightCenter</code>, <code>CenterCenter</code></li>
+		</ul>
+		The string will be aligned using the values of the <code>X</code> and or <code>Y</code> settings as the anchor point. So to CenterCenter align a string within a meter with a width and height of 100, you would set <code>X=50</code>, <code>Y=50</code> and <code>StringAlign=CenterCenter</code>.		
+	</dd>
+
+	<dt id="StringStyle"><code>StringStyle</code> <span>Default: <code>Normal</code></span></dt>
+	<dd>
+		Style of the string. Valid values are <code>Normal</code>, <code>Bold</code>, <code>Italic</code>, and <code>BoldItalic</code>.
+	</dd>
+
+	<dt id="StringCase"><code>StringCase</code> <span>Default: <code>None</code></span></dt>
+	<dd>
+		Converts the string to a case. Valid values are <code>None</code>, <code>Upper</code>, <code>Lower</code>, and <code>Proper</code>.
+	</dd>
+	
+	<dt id="StringEffect"><code>StringEffect</code> <span>Default: <code>None</code></span></dt>
+	<dd>
+		Effect applied to a string. Valid values are <code>None</code>, <code>Shadow</code>, and <code>Border</code>.
+	</dd>
+
+	<dt id="FontEffectColor"><code>FontEffectColor</code> <span>Default: <code>0,0,0,255</code></span></dt>
+	<dd>
+		<a href="/manual/options#color">Color</a> of the StringEffect.
+	</dd>
+
+	<dt id="ClipString"><code>ClipString</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, the text is clipped with an ellipsis (...) when it exceeds the specified <code>W</code> and <code>H</code>. If <code>H</code> is large enough to allow multiple lines, the text is wrapped into two or more lines.
+	</dd>
+
+	<dt id="Angle"><code>Angle</code> <span>Default: <code>0.0</code></span></dt>
+	<dd>
+		Defines the angle of the text in radians.
+		<br><br><b>Note:</b> The size and position of the text are always calculated as if the text is horizontal.
+	</dd>
+
+	<dt id="Percentual"><code>Percentual</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, percentual measure values are used for the <code>%<i>N</i></code> syntax. The measure(s) must be able to return <a href="/manual/measures#Percentage">percentual values</a>.
+	</dd>
+
+	<dt id="NumOfDecimals"><code>NumOfDecimals</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		Number of decimals to display with numerical measure values for the <code>%<i>N</i></code> syntax.
+	</dd>	
+	
+	<dt id="Scale"><code>Scale</code> <span>Default: <code>1</code></span></dt>
+	<dd>
+		Scaling factor used for the measure value(s) for the <code>%<i>N</i></code> syntax in <code>Text</code>. The measure value is divided by the specified value. If the specified value has a decimal point (e.g. <code>1000.0</code>), the result will also display decimals.
+		<br><br><b>Note:</b> If <code>AutoScale</code> is enabled, this option is ignored.
+	</dd>
+
+	<dt id="AutoScale"><code>AutoScale</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		Automatically scales the measure value(s) for the <code>%<i>N</i></code> syntax in <code>Text</code>. The scaled result is appended with k, M, G, etc. as appropriate. Valid values are:
+		<ul>
+		<li><code>0</code>: Disabled.</li>
+		<li><code>1</code>: Scales by 1024.</li>
+		<li><code>1k</code>: Scales by 1024 with kilo as the lowest unit.</li>
+		<li><code>2</code>: Scales by 1000.</li>
+		<li><code>2k</code>: Scales by 1000 with kilo as the lowest unit.</li>
+		</ul>
+	</dd>	
+</dl>
+
+<h2>Example</h2>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/MeterStringExample_1.0.rmskin" class="download"></a>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[MeasureDate]
+Measure=Time
+Format=%A, %B %#d, %Y
+
+[MeterBackground]
+Meter=Image
+W=300
+H=155
+SolidColor=156,156,156,255
+
+[MeterDate]
+Meter=String
+MeasureName=MeasureDate
+X=0
+Y=0
+FontColor=255,255,255,255
+FontFace=Trebuchet MS
+FontSize=14
+StringEffect=Shadow
+FontEffectColor=0,0,0,255
+AntiAlias=1
+Text=Date: %1
+
+[MeterText1]
+Meter=String
+X=0
+Y=0R
+FontColor=0,0,0,255
+FontFace=Trebuchet MS
+FontSize=12
+AntiAlias=1
+Text=Relative to bottom of previous meter
+
+[MeterText2]
+Meter=String
+X=300
+Y=10R
+W=300
+H=20
+StringAlign=Right
+FontColor=255,255,255,255
+FontFace=Trebuchet MS
+StringStyle=Italic
+FontSize=14
+AntiAlias=1
+Text=Right justified italic text
+
+[MeterText3]
+Meter=String
+X=150
+Y=0R
+W=300
+H=20
+StringAlign=Center
+FontColor=255,255,255,255
+FontFace=Trebuchet MS
+StringStyle=Bold
+FontSize=14
+AntiAlias=1
+Text=Centered bold text
+
+[MeterText4]
+Meter=String
+X=0
+Y=10R
+W=200
+H=44
+ClipString=1
+FontColor=255,255,255,255
+FontFace=Trebuchet MS
+StringStyle=Bold
+FontSize=14
+AntiAlias=1
+Text=This text will wrap due to ClipString=1
+{% endhighlight %}
+
+<div class="exampleprev">
+	<p><img src="../../img/MeterStringExample.jpg"/></p>
+	<p>An example skin showing various string options.</p>
+</div>	

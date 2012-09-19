@@ -1,0 +1,17 @@
+---
+layout: snippets
+title: 'Root Config Name'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Function: RootConfigName(Config)</p>
+
+<p>A function that takes a Rainmeter skin's <a href="http://rainmeter.net/cms/Settings-ConfigName">config name</a> and returns the root config name for that skin.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function RootConfigName(Config)
+    return Config:match('(.-)\\') or Config
+end
+{% endhighlight %}
+</div>	

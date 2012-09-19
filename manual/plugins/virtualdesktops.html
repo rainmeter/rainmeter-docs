@@ -1,0 +1,147 @@
+---
+layout: manual
+title: 'Virtual Desktops plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=VirtualDesktops</code> gives access to information from different Virtual Desktop Managers (VDMs) for Windows and can be used to trigger desktop switches.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+
+
+	<dt id="VDManager"><code>VDManager</code></dt>
+	<dd>
+		Must be set to the name of a supported VDM. Only <a href="http://dexpot.de/">Dexpot</a> and <a href="http://virtuawin.sourceforge.net/">VirtuaWin</a> are currently supported.
+	</dd>
+
+	<dt id="VDMeasureType"><code>VDMeasureType</code></dt>
+	<dd>
+		Specifies what information to return. These options are supported by all VDMs:
+		<ul>
+			<li><code>VDMActive</code>: Returns 1 if the VDM is running, 0 otherwise.</li>
+			<li><code>CurrentDesktop</code>: The number of the active desktop.</li>
+			<li><code>SwitchDesktop</code>: Used with the <code>!CommandMeasure</code> bang to switch the active desktop.</li>
+			<li><code>DesktopCount</code>: The total number of virtual desktops.</li>
+		</ul>
+	</dd>
+
+	<dt id="VDDesktopCount"><code>VDDesktopCount</code></dt>
+	<dd>
+		When <code>VDMeasureType</code> is set to <code>DesktopCount</code>, this setting can be used to X or Y to return the number of columns or rows, respectively, in a desktop grid layout.
+	</dd>
+
+<h2>Example</h2>
+{% highlight ini %}
+[CurrentDesktop]
+Measure=Plugin
+Plugin=VirtualDesktops
+VDManager=VirtuaWin
+VDMeasureType=CurrentDesktop
+
+[DesktopCountX]
+Measure=Plugin
+Plugin=VirtualDesktops
+VDManager=VirtuaWin
+VDMeasureType=DesktopCount>
+VDDesktopCount=X
+
+[SwitchDesktop]
+Measure=Plugin
+Plugin=VirtualDesktops
+VDManager=Dexpot
+VDMeasureType=SwitchDesktop
+{% endhighlight %}
+
+	<h2>Bangs</h2>
+	<code>!CommandMeasure "SwitchDesktop" "2"</code>
+	<p><br><b>Note:</b> "SwitchDesktop" should match the name of an existing measure with the <code>VDMeasureType=SwitchDesktop</code> option set.</p>
+</dl>	
+
+<h2>Options (Dexpot Only)</h2>
+<dl>
+
+	<dt id="VDOnActivate"><code>VDOnActivate</code></dt>
+	<dd>
+		A command or bang that is executed when Dexpot starts. Used with <code>VDMeasureType=VDMActive</code>.
+	</dd>
+
+	<dt id="VDOnDeactivate"><code>VDOnDeactivate</code></dt>
+	<dd>
+		A command or bang that is executed when Dexpot closes. Used with <code>VDMeasureType=VDMActive</code>.
+	</dd>
+
+	<dt id="VDOnChange"><code>VDOnChange</code></dt>
+	<dd>
+		A command or bang that is executed when the current desktop, when used with <code>VDMeasureType=CurrentDesktop</code>, or number of desktops, when used with <code>VDMeasureType=DesktopCount</code>, changes.
+	</dd>
+
+	<dt id="VDMeasureType"><code>VDMeasureType</code></dt>
+	<dd>
+		Additional measure types are supported by Dexpot. These are:
+		<ul>
+			<li><code>DesktopName</code>: The name of the active desktop. (Can be forced to a specific desktop by using <a href="#VDDesktop">VDDesktop</a>).</li>
+			<li><code>DesktopWallpaper</code>: The file path of the active desktop. (Can be forced to a specific desktop by using <code>VDDesktop</code>).</li>
+			<li><code>Command</code>: Can be used to send commands to Dexpot through bands. Possible commands are the Dexpot command line options, listed <a href="http://dexpot.de/forum/viewtopic.php?f=21&t=1914">here</a>.</li>
+			<li><code>Screenshot</code>: Writes a .bmp screenshot of the current desktop to the file specified by <code>VDOutputFile</code> after each desktop switch.</li>
+		</ul>
+	</dd>
+
+	<dt id="VDDesktop"><code>VDDesktop</code></dt>
+	<dd>
+		Set to the number of the desktop which should be used in place of the active one for the <code>DesktopName</code>, <code>DesktopWallpaper</code> and <code>Screenshot</code> MeasureTypes.
+	</dd>
+
+	<p><br>Options specific to <code>VDMeasureType=Screenshot</code>:</p>
+
+	<dt id="VDOutputFile"><code>VDOutputFile</code></dt>
+	<dd>
+		The file to save the screenshot to.
+	</dd>
+
+	<dt id="VDWidth"><code>VDWidth</code></dt>
+	<dd>
+		Defines the width of the screenshot in pixels. Will autoscale if only height is given.
+	</dd>
+
+	<dt id="VDHeight"><code>VDHeight</code></dt>
+	<dd>
+		Defines the width of the screenshot in pixels. Will autoscale if only width is given.
+	</dd>
+
+	<dt id="VDRefreshOnUpdate"><code>VDRefreshOnUpdate</code></dt>
+	<dd>
+		If set to 1 and VDDesktop denotes the currently active desktop, creates a new screenshot every time the measure is updated.
+	</dd>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Screenshot]
+Measure=Plugin
+Plugin=VirtualDesktops
+VDManager=Dexpot
+VDMeasureType=Screenshot
+VDDesktop=1
+VDOutputFile=#CURRENTPATH#Desktop1.bmp
+VDWidth=320
+
+[DexpotCommand]
+Measure=Plugin
+Plugin=VirtualDesktops
+VDManager=Dexpot
+VDMeasureType=Command
+{% endhighlight %}
+
+	<h2>Bangs</h2>
+	<ul class="spaced">
+	<li><code>!CommandMeasure "DexpotCommand" "-next"</code>: Switches to the next desktop</li>
+	<li><code>!CommandMeasure "DexpotCommand" "-prev"</code>: Switches to the previous desktop.</li>
+	<li><code>!CommandMeasure "DexpotCommand" "-V"</code>: Open full-screen preview.</li>
+	<li><code>!CommandMeasure "DexpotCommand" "-d"</code>: Open window catalog.</li>
+	</ul>
+
+</dl>

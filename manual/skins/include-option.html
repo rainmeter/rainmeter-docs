@@ -1,0 +1,42 @@
+---
+layout: manual
+title: '@Include option'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>The <code>@Include</code> option loads the content of an external .ini at the position it is defined. The loaded file is treated as if the contents were included in the actual skin .ini file. A frequent use case is to have an include file with a [Variables] section in order to share variables between multiple skins.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="Include"><code>@Include</code>, <code>@Include2</code>, <code>@Include<i>N</i></code></dt>
+	<dd>
+		<a href="/manual/options#path">Path</a> to the INI formatted file to include. Is is recommended that include files use the .inc extension (rather than .ini) and are placed in the <a href="/manual/skin/resources-folder">@Resources folder</a>.
+	</dd>
+</dl>
+
+<h2>Remarks</h2>
+<p>The statement may be placed in any section. When the skin is loaded, all new sections from the included file are inserted immediately after the section where the statement is placed. Rainmeter treats these sections - whether they're measures, meters, styles, etc. - exactly as if they had been written in the skin .ini itself, and appropriately determines things like layering, relative positions and referenced measure values.</p>
+
+<p>You may also include files within files. Once again, the ordering is determined by placement: when any file includes another file, the new contents are added within its own sections, immediately after the section where the statement is made.</p>
+
+<p>If there is a conflict - that is, if the same section exists in more than one file - Rainmeter will treat whichever one comes first in the ordering as the "real" section. Any options on the later instances will be added to the first one, and otherwise the later instances are simply ignored. If there are different values given for the same key, the last value is taken. Unlike new sections, options on pre-existing sections are added in their original order, so the calling section may overwrite values from the included file if they are placed below the @include statement.</p>
+
+<p><b>See also:</b> <a href="http://rainmeter.net/cms/Tips-Include">The power of @Include</a></p>
+
+<h2>Example</h2>
+<p>IncludeFile.inc:</p>
+{% highlight ini %}
+[Variables]
+Color=255,255,255,255
+{% endhighlight %}
+
+<p>Skin.ini:</p>
+{% highlight ini %}
+[Variables]
+Font=Arial
+@Include=IncludeFile.inc
+
+[SomeMeter]
+FontFace=#Font#
+FontColor=#Color#
+{% endhighlight %}	

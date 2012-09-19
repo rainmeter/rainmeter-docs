@@ -1,0 +1,23 @@
+---
+layout: snippets
+title: 'Average'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Functions: Average(...)</p>
+
+<p>Averages a variable list of numeric parameter.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function Average(...)
+	local value = 0
+	
+	for i, number in ipairs(arg) do		
+		value = value + number
+	end
+	
+	return value/#arg
+end
+{% endhighlight %}
+</div>	

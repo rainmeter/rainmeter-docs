@@ -1,0 +1,69 @@
+---
+layout: manual
+title: 'General Image Options'
+---
+<!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Options available for use with all images.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="ImageCrop"><code>ImageCrop</code></dt>
+	<dd>
+		Crops the image. The value should be in the form: <code>X, Y, W, H<i>, Origin</i></code>. Origin is optional and can be set to one of the following:
+		<ul>
+		<li><code>1</code>: Top left.</li>
+		<li><code>2</code>: Top right.</li>
+		<li><code>3</code>: Bottom right.</li>
+		<li><code>4</code>: Bottom left.</li>
+		<li><code>5</code>: Center (both W and H).</li>
+		</ul>
+	</dd>
+	
+	<dt id="Greyscale"><code>Greyscale</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, the image is greyscaled.
+	</dd>
+
+	<dt id="ImageTint"><code>ImageTint</code> <span>Default: <code>255,255,255,255</code></span></dt>
+	<dd>
+		<a href="/manual/options#color">Color</a> to tint the image with. If the alpha value is specified, the image can be made semi-transparent (0 means invisible, 255 mean fully opaque). The default value (<code>255,255,255,255</code> for opaque white) and leaves the image unaltered.
+
+		<br><br><b>Note:</b> Combining <code>Greyscale</code> and <code>ImageTint</code> recolors the image to the specified color. Without <code>Greyscale</code>, the specified color is added to the image (i.e. the image is tinted).
+	</dd>
+
+	<dt id="ImageAlpha"><code>ImageAlpha</code> <span>Default: <code>255</code></span></dt>
+	<dd>
+		Opacity of the image ranging from <code>0</code> (invisible) to <code>255</code> (opaque). If set, overrides the alpha component specified in <code>ImageTint</code>.
+	</dd>
+	
+	<dt id="ImageFlip"><code>ImageFlip</code> <span>Default: <code>None</code></span></dt>
+	<dd>
+		Flips the image. Valid values are <code>None</code>, <code>Horizontal</code>, <code>Vertical</code> or <code>Both</code>.
+	</dd>
+	
+	<dt id="ImageRotate"><code>ImageRotate</code> <span>Default: <code>0.0</code></span></dt>
+	<dd>
+		Rotates the image by the specified angle in degrees. Negative angles can be used for counter-clockwise rotation.
+	</dd>
+
+	<dt id="Tile"><code>Tile</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, the image is tiled (repeated) within the bounds defined by <code>W</code> and <code>H</code>.
+	</dd>
+
+	<dt id="ColorMatrix"><code>ColorMatrix<i>N</i></code></dt>
+	<dd>
+		Defines a 5x5 matrix used to manipulate the color values of the image. It is divided into five separate options, one for each row, each numbered. The default matrix is as follows:
+{% highlight ini %}
+ColorMatrix1=1; 0; 0; 0; 0
+ColorMatrix2=0; 1; 0; 0; 0
+ColorMatrix3=0; 0; 1; 0; 0
+ColorMatrix4=0; 0; 0; 1; 0
+ColorMatrix5=0; 0; 0; 0; 1
+{% endhighlight %}
+		The values on the main diagonal are, from top-left to bottom-right: Red, Green, Blue, Alpha and a placeholder. The values represent the percentage of the particular value present in the image, where 0.0 is none and 1.0 is normal. The remaining entries in the matrix allow a color to have its value modified in terms of another color (e.g. the value of Red might have half of the Blue value added), with the entries in the final row (ColorMatrix5) determining offset values that are added directly to the color (e.g. <code>ColorMatrix5=0.5; 0; 0; 0; 1</code> adds 50% to the red value).
+
+		<br><br><b>See also:</b> <a href="http://rainmeter.net/cms/Tips-ColorMatrixUnleased">ColorMatrix Unleashed</a>.
+	</dd>
+</dl>

@@ -1,0 +1,103 @@
+---
+layout: manual
+title: 'Skins'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Rainmeter's basic purpose is to run skins. A <strong>skin</strong> is a movable, dynamic, sometimes-interactive window that appears over the Windows desktop, and usually gathers and displays information of some kind.</p>
+
+<p>Skins come with many different sizes, styles, user interfaces, and levels of complexity. Rainmeter includes utilities for <a href="/manual/user-interface/skin-packager">packaging</a> and <a href="/manual/user-interface/skin-packager">installing</a> third-party skins. Each skin is generally stored and loaded as an independent, self-contained module.</p>
+
+<h2 id="FilesFolders">Files and Folders</h2>
+
+<p>All skins are stored in Rainmeter's "Skins" folder. If Rainmeter has been installed normally, the default location of the Skins folder is:</p>
+
+<ul>
+	<li><code>C:\Documents and Settings\YourName\My Documents\Rainmeter\Skins</code>* (for Windows XP).</li>
+	<li><code>C:\Users\YourName\Documents\Rainmeter\Skins</code>* (for Windows Vista, 7 and 8).</li>
+</ul>
+
+<p>If Rainmeter is installed as a <a href="/manual/installation">portable application</a>, the Skins folder is found in the installation folder. The Skins folder can also be changed in Rainmeter's <a href="/manual/settings/rainmeter-section#SkinPath">settings</a>.</p>
+
+<p>A skin is stored as a file called "SkinName.ini" in its own folder within Skins, as in: <code>Rainmeter\Skins\SkinName\SkinName.ini</code>.* (The file and folder names do not need to match.)</p>
+
+<p class="footnote">"YourName" and "SkinName" are examples.</p>
+
+<h3 id="Variants">Variants</h3>
+
+<p>If one folder contains multiple <code>SkinName.ini</code> files, they are each considered <strong>variants</strong> of the same skin. This means that only one variant can be active at a time, and all variants use the same <a href="/manual/settings/skin-sections">settings</a>. Separate skins must be stored in separate folders.</p>
+
+<h3 id="Resources">Resources</h3>
+
+<p>Any supporting files used by the skin, such as images or <a href="/manual/lua-scripting">Lua scripts</a>, should also be stored in the skin folder. Complex skins are recommended to store supporting files in a folder called <a href="/manual/skins/resources-folder">@Resources</a> inside the skin folder. The @Resources folder is ignored by Rainmeter, except to load custom fonts and cursors.</p>
+
+<h3 id="Suites">Suites</h3>
+
+<p>Skins may also be stored in subfolders within the same "root" skin folder. A <strong>suite</strong> is an informal term for skins that are organized together in this manner. Suites are often used by skin authors to make a set of skins that share a common "style" or complement each other in some way.</p>
+
+<p>Skins in the same suite share the same @Resources folder, and suites must be packaged and installed together. Otherwise, Rainmeter treats each subfolder as a separate skin.</p>
+
+<h3 id="Config">Config</h3>
+
+<p>Each skin is identified with a certain <strong>config name</strong>. The config name is based on the path from the main Skins folder to the skin file. For example, if a skin is located at...</p>
+
+	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<strong>Foo\Bar</strong>\SkinName.ini</code>*</p></blockquote>
+
+<p>...then the config name would be:</p>
+
+	<blockquote><p><code>Foo\Bar</code>*</p></blockquote>
+
+<p>Because skins may have any number of variants, many Rainmeter features&mdash;especially <a href="/manual/bangs">bangs</a>&mdash;refer to a specific skin by its config name, rather than the skin's filename.</p>
+
+<p class="footnote">"Foo" and "Bar" are examples.</p>
+
+<h2 id="Format">Format</h2>
+
+<p>The <code>SkinName.ini</code> file is written as a standard <a href="http://en.wikipedia.org/wiki/INI_file">INI file</a>, which uses the following* format:</p>
+
+{% highlight ini %}
+[Section]
+Key=Value
+{% endhighlight %}
+
+<p>Each property of the skin is defined by a section. Each key is an <a href="/manual/options">option</a> that modifies that property. The following sections may be used in skins:</p>
+
+<ul>
+	<li><p><a href="/manual/skins/rainmeter-section">[Rainmeter]</a><br>
+		Defines options that affect the entire skin.</p></li>
+	<li><p><a href="/manual/variables">[Variables]</a><br>
+		Defines text strings that can be used throughout the skin.</p></li>
+	<li><p><a href="/manual/measures">Measures</a><br>
+		Objects that retrieve (or "measure") information of some kind.</p></li>
+	<li><p><a href="/manual/meters">Meters</a><br>
+		Objects that display information and other visual elements.</p></li>
+	<li><p><a href="/manual/meters/general-options/#MeterStyle">Styles</a><br>
+		Define options that may be used by several meters.</p></li>
+	<li><p><a href="/manual/skins/metadata-section">[Metadata]</a><br>
+		Defines the name, version, license, and other non-functional information about the skin.</p></li>
+</ul>
+
+<p>A skin must have at least one meter. All other properties are optional, and may not even be present, depending on what is needed for the skin. (For skins that are publicly distributed, the [Metadata] section and <code>Author</code> option in [Rainmeter] are also strongly recommended.)</p>
+
+<p>There are only a few rules about using the INI format:</p>
+<ul>
+	<li>All section names in a skin must be unique.</li>
+	<li>All option names within a section must be unique.</li>
+	<li>Section and option names should include alphanumeric characters only (no spaces or punctuation).</li>
+	<li>Option values may be contained by quotes (<code>"</code>). If so, Rainmeter will ignore the containing quotes.</li>
+	<li>Option values must be kept on a single line.</li>
+</ul>
+
+<p class="footnote">"Section," "Key" and "Value" are examples.</p>
+
+<h2 id="Update">Update</h2>
+
+<p>When a skin is loaded, it <strong>updates</strong> on a regular cycle. The length of time between updates is defined by the <a href="/manual/skins/rainmeter-section#Update">Update</a> option in the [Rainmeter] section, and defaults to 1 second (or 1000 milliseconds). The update determines when the skin reacts to changes in the values of variables, measures and options.</p>
+
+<p>Individual meters and measures can be made to update more slowly by "skipping" cycles, using the <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> option. In addition, the <a href="/manual/bangs#Update">!Update</a> bang forces the skin to update immediately, resetting the timed cycle.</p>
+
+<h2 id="Refresh">Refresh</h2>
+
+<p>When a skin <strong>refreshes</strong>, all values are reset, and the skin starts over as if it had just been loaded for the first time. Refreshing also applies any changes that have been made to the code in <code>SkinName.ini</code>.</p>
+
+<p>A skin can be refreshed from the <a href="/manual/user-interface/context-menus">context menus</a>, or using the <a href="/manual/bangs#Refresh">!Refresh</a> bang.</p>

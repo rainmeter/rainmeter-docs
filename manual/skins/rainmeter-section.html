@@ -1,0 +1,142 @@
+---
+layout: manual
+title: '[Rainmeter] section'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>The [Rainmeter] section of a skin defines options for the entire skin.</p>
+
+<h2 id="General">General Options</h2>
+<dl>
+	<dt id="Update"><code>Update</code> <span>Default: <code>1000</code></span></dt>
+	<dd>
+		Defines the update interval of the skin in milliseconds. On each update, meters and measures are updated.<br><br>
+		Using <code>-1</code> will update the skin only once on load (or on refresh). The skin can then be manually updated using the <a href="/manual/bangs#Update">!Update bang</a>.
+	</dd>
+
+	<dt id="DynamicWindowSize"><code>DynamicWindowSize</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, the window size is adjusted on each update to fit the meters. 
+	</dd>
+
+	<dt id="DragMargins"><code>DragMargins</code> <span>Default: <code>0,0,0,0</code></span></dt>
+	<dd>
+		Uses 4 values separated by commas to define the area from where the window can be dragged. The values define a margin of non-draggable area. It's also possible to use negative numbers in which case the margin is calculated from the opposite side. E.g. <code>DragMargins=0,-100,0,0</code>.
+	</dd>
+
+	<dt id="OnRefreshAction"><code>OnRefreshAction</code></dt>
+	<dd>
+		<a href="/manual/options#action">Action</a> to execute when the skin is loaded or refreshed.
+	</dd>
+
+	<dt id="OnCloseAction"><code>OnCloseAction</code></dt>
+	<dd>
+		<a href="/manual/options#action">Action</a> to execute when the skin is unloaded or when Rainmeter is closed.
+	</dd>
+
+	<dt id="TransitionUpdate"><code>TransitionUpdate</code> <span>Default: <code>100</code></span></dt>
+	<dd>
+		Defines the update time in milliseconds for meter transitions. While a transition is active the meter will update at this rate. Currently, only the <a href="/manual/meters/bitmap#BitmapTransitionFrames">Bitmap</a> meter supports meter transitions.
+	</dd>
+
+	<dt id="Author"><code>Author</code></dt>
+	<dd>
+		Defines the author of the skin for the <a href="/manual/user-interface/manage">Manage</a> dialog.
+	</dd>
+</dl>
+
+<h2 id="Background">Background options</h2>
+<dl>
+	<dt>General image options</dt>
+	<dd>
+		All <a href="/manual/meters/general-options/image-options">general image options</a> are valid for <code>Background</code> <b>except</b> <code>Tile</code>, which is handled with <code>BackgroundMode</code>.
+	</dd>
+
+	<dt id="Background"><code>Background</code></dt>
+	<dd>
+		<a href="/manual/options#path">Path</a> of a background image file.
+	</dd>
+
+	<dt id="BackgroundMode"><code>BackgroundMode</code> <span>Default: <code>1</code></span></dt>
+	<dd>
+		Defines the background mode for the skin. Valid values are: 
+		<ul>
+		<li><code>0</code> : Image as defined by <code>Background</code></li>
+		<li><code>1</code> : Transparent background</li>
+		<li><code>2</code> : Fill with a solid color</li>
+		<li><code>3</code> : Fill by scaling image as defined by <code>Background</code></li>
+		<li><code>4</code> : Fill by tiling image as defined by <code>Background</code></li>
+		</ul>
+		<br><code>BackgroundMode=2</code> : The <a href="/manual/options#color">color</a> is set by adding a <a href="/manual/meters/general-options#SolidColor">SolidColor</a> option.<br>
+	</dd>
+
+	<dt id="BackgroundMargins"><code>BackgroundMargins</code> <span>Default: <code>0,0,0,0</code></span></dt>
+	<dd>
+		If <code>BackgroundMode=3</code>, defines margins of the <code>Background</code> image that are not scaled. The parameters are <code>left,top,right,bottom</code>. 
+		<br><br><b>Example:</b> <code>BackgroundMargins=0,10,0,20</code>.
+		<br>10 pixels from the top and 20 pixels from the bottom of the image are not scaled.
+	</dd>
+</dl>	
+
+<h2 id="AeroBlur">Aero Blur options</h2>
+<dl>
+	
+	<dt id="Blur"><code>Blur</code> <span>Default: <code>0</code></span></dt>	
+	<dd>
+		Set to 1 to enable Aero Blur on Windows Vista or later operating systems. If no BlurRegions are specified, the entire skin background is blurred.
+	</dd>
+
+	<dt id="BlurRegion"><code>BlurRegion, BlurRegion2, ..., BlurRegion<i>N</i></code></dt>	
+	<dd>
+		Defines areas and shapes of the one or more regions of the skin to be blurred. The format of the option is: <code>BlurRegion=Type, TopX, TopY, BottomX, BottomY <i>,Radius</i></code>.
+		<br><br>Valid values for <code>Type</code> are:
+		<ul>
+		<li><code>0</code> : Region is disabled</li>
+		<li><code>1</code> : Rectangular region</li>
+		<li><code>2</code> : Rectangular region with rounded corners (requires <code>Radius</code>)</li>
+		<li><code>3</code> : Elliptical region</li>
+		</ul>
+		The parameters following <code>Type</code> define the size and shape of the region. They are, in order:
+		<ul>
+		<li><code>TopX</code> : Top left horizontal point in the skin</li>
+		<li><code>TopY</code> : Top left vertical point in the skin</li>
+		<li><code>BottomX</code> : Bottom right horizontal point in the skin</li>
+		<li><code>BottomY</code> : Bottom right vertical point in the skin</li>
+		<li><code>Radius</code> : Radius of the corners of rounded rectangles (required for <code>Type=2</code>)</li>
+		</ul>
+	</dd>
+	<br><b>Note:</b> Aero Blur options can be dynamically controlled with several <a href="/manual/bangs#ShowHideToggleBlur">bangs</a>.
+	<h3>Example</h3>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+Blur=1
+BlurRegion=1,10,10,190,50
+; BlurRegion creates a rectangle starting at 10 pixels from the left, 10 pixels down from the top, and ending at 190 pixels to the right, 50 pixels from the top.
+
+BlurRegion2=3,10,70,80,110
+BlurRegion3=2,10,130,190,170,15
+
+[Background]
+Meter=Image
+W=200
+H=180
+SolidColor=0,0,0,50
+LeftMouseUpAction=[!AddBlur "1,0,0,200,80"]
+{% endhighlight %}
+</dl>	
+
+<h2 id="Deprecated">Deprecated options</h2>
+<dl>
+	<dt id="AppVersion"><code>AppVersion</code></dt>
+	<dd>
+		Defines the minimum version of Rainmeter required to use the skin. The formula to calculate the value is: <code>major * 1000000 + minor1 * 1000 + minor2</code>.
+		<br><br><b>Note:</b> This option is deprecated. Use the version capabilities in <a href="http://docs.rainmeter.net/manual/user-interface/skin-packager">Skin Packager</a>.
+	</dd>
+
+	<dt id="LocalFont"><code>LocalFont</code>, <code>LocalFont2</code>, ...</dt>
+	<dd>
+		Loads the specified TTF font files for use with <a href="/manual/meters/string#FontFace">FontFace</a> in String meters.
+		<br><br><b>Note:</b> This option is deprecated. Use the <a href="/manual/skins/resources-folder#Fonts">@Resources\Fonts</a> folder instead.
+	</dd>
+</dl>	

@@ -1,0 +1,46 @@
+---
+layout: manual
+title: 'Plugin measure'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Measure=Plugin</code> allows interactation with various DLL <a href="/manual/plugins">plugins</a> specifically written to work with Rainmeter.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt>Plugin specific options</dt>
+	<dd>
+		 Plugins have their own specific options that must be placed in the measure section. For more information, refer to the <a href="/manual/plugins">Plugins</a> entry for each.
+	</dd>
+
+	<dt id="Plugin"><code>Plugin</code></span></dt>
+	<dd>Name of the plugin.</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureUserName]
+Measure=Plugin
+Plugin=SysInfo
+SysInfoType=USER_NAME
+
+[MeterText]
+Meter=String
+MeasureName=MeasureUserName
+X=5
+Y=5
+W=100
+H=25
+FontColor=255,255,255,255
+Text="User: %1"
+{% endhighlight %}	

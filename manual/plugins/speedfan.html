@@ -1,0 +1,45 @@
+---
+layout: manual
+title: 'SpeedFan plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=SpeedFanPlugin</code> retrieves information from the <a href="http://www.almico.com/speedfan.php">SpeedFan</a> application.</p>
+
+<p><b>Note:</b> The SpeedFan application must be running in the background.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="SpeedFanType"><code>SpeedFanType</code> <span>Default: <code>Temperature</code></span></dt>
+	<dd>
+		Type of information to measure. Valid values are:
+		<ul>
+		<li><code>Temperature</code>: Temperature in the unit defined by <code>SpeedFanScale</code>.</li>
+		<li><code>Fan</code>: Fan speed.</li>
+		<li><code>Voltage</code></li>
+		</ul>
+	</dd>
+
+	<dt id="SpeedFanNumber"><code>SpeedFanNumber</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		The index retrieved from the Speedfan application.
+
+		<br><br><b>Example:</b> To obtain the second temperature value with <code>SpeedFanType=Temperature</code>, specify <code>SpeedFanNumber=1</code>.
+	</dd>
+
+	<dt id="SpeedFanScale"><code>SpeedFanScale</code> <span>Default: <code>C</code></span></dt>
+	<dd>
+		Temperature unit for <code>SpeedFanType=Temperature</code>. Valid values are:
+		<ul>
+		<li><code>C</code>: Celsius.</li>
+		<li><code>F</code>: Fahrenheit.</li>
+		<li><code>K</code>: Kelvin.</li>
+		</ul>
+		<b>Note:</b> The unit in the SpeedFan application itself must be set to celsius to obtain the correct value.
+	</dd>
+</dl>	

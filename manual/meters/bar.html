@@ -1,0 +1,98 @@
+---
+layout: manual
+title: 'Bar meter'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Meter=Bar</code> displays a horizontal or vertical bar that fills according to the percentual value of a measure.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General meter options</dt>
+	<dd>
+		All <a href="/manual/meters/general-options">general meter options</a> are valid.
+	</dd>
+
+	<dt>General image options</dt>
+	<dd>
+		All <a href="/manual/meters/general-options/image-options">general image options</a> are valid for <code>BarImage</code>, <b>except</b> <code>Tile</code>.
+	</dd>
+
+	<dt id="MeasureName"><code>MeasureName</code></dt>
+	<dd>
+		Name of the measure to use. The measure used must be able to return <a href="/manual/measures#Percentage">percentual values</a>.
+	</dd>
+
+	<dt id="BarColor"><code>BarColor</code></dt>
+	<dd>
+		<a href="/manual/options#color">Color</a> of the bar.
+	</dd>
+
+	<dt id="BarImage"><code>BarImage</code></dt>
+	<dd>
+		<a href="/manual/options#path">Path</a> to an image to use for the bar instead of <code>BarColor</code>.
+	</dd>
+
+	<dt id="BarBorder"><code>BarBorder</code></dt>
+	<dd>
+		If <code>BarImage</code> is specified, defines the number of pixels on either side of the image that are always drawn (i.e. top and bottom margins for vertical bars, left and right margins for horizontal bars).
+	</dd>
+
+	<dt id="BarOrientation"><code>BarOrientation</code> <span>Default: <code>Horizontal</code></span></dt>
+	<dd>
+		Orientation of the bar. Valid values are <code>Horizontal</code> and <code>Vertical</code>.
+	</dd>
+
+	<dt id="Flip"><code>Flip</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, the direction of the bar is flipped.
+	</dd>
+</dl>
+
+<h2>Example</h2>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/MeterBarExample_1.0.rmskin" class="download"></a>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[MeasureMemory]
+Measure=PhysicalMemory
+
+[BarBackground]
+Meter=Image
+X=0
+Y=20
+W=110
+H=30
+SolidColor=171,54,3,150
+
+[MeterMemoryText]
+Meter=String
+MeasureName=MeasureMemory
+AutoScale=1
+X=0
+Y=0
+FontFace=Trebuchet MS
+FontSize=10
+FontColor=255,255,255,255
+StringStyle=Bold
+AntiAlias=1
+Text=Free RAM: %1
+
+[MeterMemoryBar]
+MeasureName=MeasureMemory
+Meter=BAR
+X=5
+Y=25
+W=100
+H=20
+BarColor=255,255,255,255
+SolidColor=105,37,6,150
+BarOrientation=HORIZONTAL
+{% endhighlight %}
+
+<div class="exampleprev">
+	<p><img src="../../img/MeterBarExample.jpg"/></p>
+	<p>An example skin demontrating a Bar meter.</p>
+</div>	

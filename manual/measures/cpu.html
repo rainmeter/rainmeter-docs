@@ -1,0 +1,50 @@
+---
+layout: manual
+title: 'CPU measure'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Measure=CPU</code> measures CPU usage.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="Processor"><code>Processor</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>0</code>, measures the average of all CPU cores. If set to a number (<code>1</code>, <code>2</code>, etc.), measures a specific CPU core.
+	</dd>
+</dl>
+
+<h2>Value</h2>
+<p>The value of a CPU measure ranges from 0 to 100.</p>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureAverageCPU]
+Measure=CPU
+
+[MeasureCPU1]
+Measure=CPU
+Processor=1
+
+[MeterText]
+Meter=String
+MeasureName=MeasureAverageCPU
+MeasureName2=MeasureCPU1
+X=5
+Y=5
+W=100
+H=35
+FontColor=255,255,255,255
+NumOfDecimals=1
+Text="Average: %1%#CRLF#Core 1: %2%"
+{% endhighlight %}	

@@ -1,0 +1,67 @@
+---
+layout: manual
+title: 'Measures'
+subtitle: 'Measures gather information.'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>A <strong>measure</strong> is an object that retrieves information to be used by the skin. Measures are one of the two major kinds of objects in a skin, along with <a href="/manual/meters">meters</a>.</p>
+
+<h2 id="Usage">Usage</h2>
+
+<p>Unlike meters, measures do not display anything by themselves. You cannot "see" a measure in a skin. The measure simply provides the information as a <a href="#Values">value</a>, which can be used in several ways:</p>
+
+<ul>
+	<li><p>A meter can be <a href="/manual/meters/general-options#MeasureName">bound to a measure</a>. In this way, the meter will automatically display the value in a way that is appropriate for the type of meter. This also takes the measure's range and scale into account (if applicable).</p></li>
+	<li><p>The measure value can be referenced as a <a href="/manual/variables/section-variables">section variable</a>. In this way, the value can be used in almost any meter or measure option. As a Section Variable, the value is used "literally," which means it does not automatically account for the range or scale.</p></li>
+	<li><p>A measure can <a href="/manual/measures/general-options/ifactions">trigger an action</a> when the value passes into a certain range.</p></li>
+</ul>
+
+<p>Some measure types may have their own special rules. These are detailed in their individual articles.</p>
+
+<h2 id="Format">Format</h2>
+
+<p>A measure is written as a <a href="/manual/skins#Format">section</a> in the skin. All measures use the <code>Measure</code> option to define the section as a specific type of measure. Most other measure options depend on the type, but there are some <a href="/manual/measures/general-options">general options</a> that are valid in many or all measures.</p>
+
+<p>Below is an example of a complete working measure:</p>
+
+{% highlight ini %}
+[MeasureFour]
+Measure=Calc
+Formula=2+2
+UpdateDivider=-1
+{% endhighlight %}
+
+<h2 id="Values">Values</h2>
+
+<p>A measure actually provides two values: a <strong>string</strong>, or "raw text," and a <strong>number</strong>, which can be used in calculation formulas. Depending on the type of measure, these values may be the same, which means you can use them interchangeably; or, they may be completely different. The article for each measure type explains what is provideed for both the number and string values.</p>
+
+<ul>
+	<li><p>When a meter is <a href="/manual/meters/general-options#MeasureName">bound to a measure</a>, it automatically uses the correct value for its type.</p></li>
+	<li><p>When using <a href="/manual/variables/section-variables">Section Variables</a>, different syntax is used to refer to a measure's string or number value.</p></li>
+	<li><p>The <a href="/manual/measures/general-options/substitute">Substitute</a> option affects only the string value of the current measure.</p></li>
+	<li><p><a href="/manual/measures/general-options/ifactions">IfAction options</a> use only the number value of the current measure.</p></li>
+	<li><p>The <code>Formula</code> option in a <a href="/manual/measures/calc">Calc measure</a> uses only the number values of other measures, unless section variables are used instead.</p></li>
+</ul>
+
+<p>Although a string value is not a "true" number, it can be used like a number in formulas and options, as long as it contains only numeric characters and <a href="/manual/measures/calc#Operators">valid operators</a>. (Otherwise, it is treated as zero.) Likewise, a number value can be displayed or stored to a variable as a string of text, although this may cause the value to lose precision.</p>
+
+<p id="Percentage">Some meters require that a measure provides a value that can be used as a <b>percentage</b>.  This means that either the measure provides a value in the range of 0.0 to 1.0, or that <code>MinValue</code> and <code>MaxValue</code> be set on the measure, providing values that define a low and high range.</p>
+
+<h2 id="Order">Order</h2>
+
+<p>Each time the skin updates, all measures in the skin are evaluated in order. This means that if a measure references the value of another measure that has not been evaluated yet, it will receive the value from the previous update.</p>
+
+<p>For example:</p>
+
+{% highlight ini %}
+[MeasureCounterPlusOne]
+Measure=Calc
+Formula=MeasureCounter + 1
+
+[MeasureCounter]
+Measure=Calc
+Formula=Counter
+{% endhighlight %}
+
+<p>The intent is for [MeasureCounterPlusOne] to add one to the value of [MeasureCounter], so that it is always greater than [MeasureCounter]. If the measures were in the opposite order, this would work. However, because [MeasureCounterPlusOne] is evaluated before [MeasureCounter], it will only add to the old, "outdated" value, and the two measures will remain equal.</p>	

@@ -1,0 +1,165 @@
+---
+layout: manual
+title: 'InputText plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=InputText</code> executes bangs with user input.</p>
+
+<p>InputText works by defining a series of commands, which can be triggered by any "action" string (this includes mouse actions, conditional actions in a Calc measure, and other commands in an InputText measure, including the same measure). When triggered, a free-floating text input box is created to gather user input at the specified points in the command series. When all input has been submitted, the commands are carried out.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="Command"><code>Command1</code>, <code>Command2</code>, ..., <code>Command<i>N</i></code></dt>
+	<dd>
+		<a href="/manual/options#action">Actions</a> to execute when the plugin is triggered. The string <code>$UserInput$</code> will be replaced by whatever the user types into it. This string can be repeated, in which case, multiple input boxes will be created in sequence. In addition, a command can override the values of other keys in this measure when an input box is called on that command. 
+		
+		<b>Note:</b> The value must be placed in quotation marks if it contains spaces.
+	</dd>
+
+	<dt id="DefaultValue"><code>DefaultValue</code></dt>
+	<dd>
+		Default text that will appear in the input box.
+	</dd>
+
+	<dt id="Password"><code>Password</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, input will be displayed as asterisks.
+	</dd>
+
+	<dt id="XY"><code>X</code>, <code>Y</code></dt>
+	<dd>
+		Position of the input box.
+
+		<br><br><b>Note:</b> Relative positioning is not supported.
+	</dd>
+
+	<dt id="WH"><code>W</code>, <code>H</code></dt>
+	<dd>
+		Size of the input box.
+
+		<br><br><b>Note:</b> <code>H</code> should be large enough to accomodate the font.
+	</dd>
+
+	<dt id="SolidColor"><code>SolidColor</code></dt>
+	<dd>
+		<a href="/manual/options#color">Color</a> of the background.
+
+		<br><br><b>Note:</b> The alpha channel changes the opacity of the entire input box, not just its background.
+	</dd>
+
+	<dt id="FontColor"><code>FontColor</code></dt>
+	<dd>
+		<a href="/manual/options#color">Color</a> of the input text.
+	</dd>
+
+	<dt id="FontFace"><code>FontFace</code></dt>
+	<dd>
+		Family name of the input text font.
+
+		<br><br><b>Note:</b> Only fonts installed directly in Windows can be used.
+	</dd>
+
+	<dt id="FontSize"><code>FontSize</code></dt>
+	<dd>
+		Size of the input text font.
+	</dd>
+
+	<dt id="StringStyle"><code>StringStyle</code></dt>
+	<dd>
+		Style of the input text. Valid values are <code>Normal</code>, <code>Bold</code>, <code>Italic</code>, and <code>BoldItalic</code>.
+	</dd>
+
+	<dt id="StringAlign"><code>StringAlign</code> <span>Default: <code>Left</code></span></dt>
+	<dd>
+		Alignment of the input text. Valid values are <code>Left</code>, <code>Right</code>, <code>Center</code>.
+
+		<br><br><b>Note:</b> With right-aligned text, the cursor will move from left to right as text is typed. This is advised for skins using languages such as Arabic, which read right-to-left.
+	</dd>
+
+	<dt id="FocusDismiss"><code>FocusDismiss</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, clicking anywhere other than on the input field will close the input without taking action. Otherwise, the mouse is disabled until Enter or Esc is pressed. 
+	</dd>
+</dl>
+
+<h2 id="Bangs">Bangs</h2>
+{% highlight ini %}
+LeftMouseUpAction=!CommandMeasure "MeasureInputTextPlugin" "ExecuteBatch ALL X=100"
+IfAboveAction=!CommandMeasure "MeasureInputTextPlugin" "ExecuteBatch 3"
+Command4=!CommandMeasure "MeasureInputTextPlugin" "ExecuteBatch 2-4 Password=1"
+{% endhighlight %}
+
+<h3>Notes</h3>
+<ul>
+<li>Press Enter to submit user input. Press Escape to dismiss the input box without executing the script.</li>
+<li>Although the bang <code>!Refresh</code> would normally only refresh the current skin, InputText bangs are passed through Rainmeter itself, which means that the bang will perform a global refresh instead. To only refresh the skin, use <code>!Refresh #CURRENTCONFIG#</code>.</li>
+</ul>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[Variables]
+FirstVar=!WriteKeyValue
+SecondVar=!SetVariable
+FontSize=14
+
+[MeterBackground]
+Meter=Image
+SolidColor=1E3A69FF
+W=250
+H=105
+
+[MeasureInput]
+Measure=Plugin
+Plugin=InputText
+SolidColor=76A0E8FF
+FontColor=255,255,255,255
+FontFace=Seqoe UI
+StringStyle=Italic
+FontSize=#FontSize#
+X=5
+Y=5
+H=25
+W=240
+DefaultValue="Change Me!"
+Command1=!WriteKeyValue Variables FirstVar "$UserInput$" "#CURRENTPATH#InputText.inc"
+Command2=!Refresh #CURRENTCONFIG#
+Command3=!SetVariable SecondVar "$UserInput$" Y=40 DefaultValue="Change Me Too!"
+Command4=["$UserInput$"] Y=75 DefaultValue="Text file path and name"
+
+[MeterWriteKeyValue]
+Meter=String
+X=5
+Y=5
+FontSize=15
+FontColor=255,255,255,255
+AntiAlias=1
+Text=#FirstVar#
+LeftMouseUpAction=!CommandMeasure "MeasureInput" "ExecuteBatch 1-2"
+
+[MeterSetVariable]
+Meter=String
+X=5
+Y=10R
+FontSize=15
+FontColor=255,255,255,255
+AntiAlias=1
+DynamicVariables=1
+Text=#SecondVar#
+LeftMouseUpAction=!CommandMeasure "MeasureInput" "ExecuteBatch 3"
+
+[MeterOpenEditor]
+Meter=String
+X=5
+Y=10R
+FontSize=15
+FontColor=255,255,255,255
+AntiAlias=1
+DynamicVariables=1
+Text=Open Text File
+LeftMouseUpAction=!CommandMeasure "MeasureInput" "ExecuteBatch 4"
+{% endhighlight %}	

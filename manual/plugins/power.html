@@ -1,0 +1,58 @@
+---
+layout: manual
+title: 'Power plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=PowerPlugin</code> measures power related information.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="PowerState"><code>PowerState</code></dt>
+	<dd>
+		Type of information to measure. Valid values are:
+		<ul>
+		<li><code>ACLine</code>: 0 for battery or 1 when plugged in.</li>
+		<li><code>Status</code>: 0 for no battery, 1 for charging, 2 for critical, 3 for low, or 4 for high.</li>
+		<li><code>Status2</code>: Equal to BatterFlag in <a href="http://msdn.microsoft.com/en-us/library/aa373232(VS.85).aspx">SYSTEM_POWER_STATUS</a>.</li>
+		<li><code>Lifetime</code>: Battery lifetime.</li>
+		<li><code>Percent</code>: Battery lifetime as a percentage.</li>
+		<li><code>Hz</code>: Current CPU frequency in Hz.</li>
+		<li><code>MHz</code>: Current CPU frequency in MHz.</li>
+		</ul>
+		<b>Note:</b> Battery information may not be available with some laptops.
+	</dd>
+
+	<dt id="Format"><code>Format</code> <span>Default: <code>%H:%M</code></span></dt>
+	<dd>
+		Format of the time with <code>PowerState=Lifetime</code>. The syntax is the same as with <a href="/manual/measures/time">Time measures</a>.
+	</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureBatteryPercent]
+Measure=Plugin
+Plugin=PowerPlugin
+PowerState=Percent
+
+[MeterBatteryPercent]
+Meter=String
+MeasureName=MeasureBatteryPercent
+X=5
+Y=5
+W=200
+H=20
+FontColor=255,255,255,255
+Text=Battery left: %1
+{% endhighlight %}	

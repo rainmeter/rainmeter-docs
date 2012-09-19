@@ -1,0 +1,26 @@
+---
+layout: snippets
+title: 'Add Commas'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Returns an input number as an output string formatted with commas.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function AddCommas(num)
+	assert(tonumber(num), 'AddCommas expects a number.')
+	local outNum = num
+	local replaceCount = 0
+	
+	while true do
+		outNum, replaceCount = string.gsub(outNum, "^(-?%d+)(%d%d%d)", '%1,%2')
+		if (replaceCount == 0) then
+			break
+		end
+	end
+
+	return outNum
+end
+{% endhighlight %}
+</div>	

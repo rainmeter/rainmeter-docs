@@ -1,0 +1,75 @@
+---
+layout: manual
+title: 'WindowMessage plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=WindowMessagePlugin</code> can be used to send and receive information from other applications. It can send window messages to other applications and show the result. For example, the plugin can be used to control WinAmp or some similar media players.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+	
+	<dt id="WindowName"><code>WindowName</code></dt>
+	<dd>
+		 The name of the window. This is used to identify the window. It's not necessary to set this if the <code>WindowClass</code> is set.
+	</dd>
+	
+	<dt id="WindowClass"><code>WindowClass</code></dt>
+	<dd>
+		 The class of the window. This is used to identify the window. It's not necessary to set this if the <code>WindowName</code> is set.
+	</dd>
+	
+	<dt id="WindowMessage"><code>WindowMessage</code></dt>
+	<dd>
+		 This is the message to be send to the window. You need to define 3 parameters to where the first one is the <code>message</code> and the next ones are <code>wParam</code> and <code>lParam</code>. <b>Both wParam and lParam are unsigned decimal integers.</b> The measure returns the value returned by the SendMessage API function. If the <code>WindowMessage</code> is not given, the measure returns the window's current title.
+	</dd>
+</dl>
+
+<h2>Bangs</h2>
+<p>Messages can also be sent on demand with the <a href="/manual/bangs#CommandMeasure">!CommandMeasure</a> bang. The arguments are similar that of the <code>WindowMessage</code> option. <code>!CommandMeasure "MeasureName" "SendMessage Msg wParam lParam"</code></p>
+
+<h2>Examples</h2>
+
+<p>The following example returns the name of the song that is playing in WinAmp.</p>
+
+{% highlight ini %}
+[MeasureWinamp]
+Measure=Plugin
+Plugin=WindowMessagePlugin
+WindowClass=Winamp v1.x
+Substitute="[Paused]":""," - Winamp":""
+{% endhighlight %}
+
+<p>Check if Winamp is playing, or not. The following example returns <code>0</code> if it's not playing, <code>1</code> if it is playing, and <code>3</code> if it's paused.</p>
+
+{% highlight ini %}
+[MeasureWinampPlaying]
+Measure=Plugin
+Plugin=WindowMessagePlugin
+WindowClass=Winamp v1.x
+WindowMessage=1024 0 104
+{% endhighlight %}
+
+<p>Show song progress. In the following example, the <code>[MeasureWinampDuration]</code> will return the current song position as a value between <code>0</code> and <code>1</code>. Then you can use the <a href="/manual/meters/bar">Bar</a> meter to display the value.</p>
+
+{% highlight ini %}
+[MeasureWinampFull]
+Measure=Plugin
+Plugin=WindowMessagePlugin
+WindowClass=Winamp v1.x
+WindowMessage=1024 1 105
+
+[MeasureWinampCurr]
+Measure=Plugin
+Plugin=WindowMessagePlugin
+WindowClass=Winamp v1.x
+WindowMessage=1024 0 105
+
+[MeasureWinampDuration]
+Measure=Calc
+Formula=(MeasureWinampCurr<=0)?0:(MeasureWinampCurr/(MeasureWinampFull*1000+1))
+{% endhighlight %}

@@ -1,0 +1,45 @@
+---
+layout: snippets
+title: 'Parse File Path'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>A function that breaks down a file or folder path and returns the components as a table.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function ParseFilePath(s)
+   assert(type(s) == 'string', 'ParseFilePath: string expected, got ' .. type(s) .. '.')
+   local t = {}
+
+   for Piece in s:gmatch('[^\\]+') do
+      table.insert(t, Piece)
+   end
+
+   -- VOLUME
+   if #t > 0 then
+      local UNCprefix = s:match('^(\\\\)') or ''
+      t.Vol = UNCprefix .. t[1] .. '\\'
+   end
+
+   -- NAME
+   if #t > 1 then
+      -- DETECT FOLDER OR SEPARATE EXTENSION
+      if s:match('\\$') then
+         t.Name = t[#t] .. '\\'
+      elseif t[#t]:match('.+%..+') then
+         t.Name, t.Ext = t[#t]:match('(.-)%.([^%.]-)$')
+      else
+         t.Name = t[#t]
+      end
+   end
+
+   -- FOLDER
+   if #t > 2 then
+      t.Dir = table.concat(t, '\\', 2, #t-1) .. '\\'
+   end
+
+   return t
+end
+{% endhighlight %}
+</div>	

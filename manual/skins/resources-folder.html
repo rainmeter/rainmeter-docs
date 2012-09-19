@@ -1,0 +1,24 @@
+---
+layout: manual
+title: '@Resources folder'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>The @Resources folder in the root folder of a skin is the reccomended location to store and access images, fonts, sounds, include files, addons or other additional files used by the skin. The @Resources folder is ignored when scanning for skins, so using it to store images and other resources will improve the initial load time of Rainmeter.</p>
+
+<p>The @Resources folder must be created at the root level of the skin (e.g. <code>Skins\illustro\@Resources</code>) and the <code>#@#</code> variable can be used to specify it.</p>
+
+<h2 id="Fonts">Fonts</h2>
+<p>TrueType (.ttf) fonts in the <code>@Resources\Fonts</code> folder are automatically loaded and can be used with <a href="/manual/meters/string.html">String meter</a> using <code>FontFace=SomeFontFamily</code>.</p>
+
+<p>For example, to include the font SomeFont.ttf, it should be placed in: <code>Skins\SomeSkin\@Resources\Fonts\SomeFont.ttf</code></p>
+
+<h2 id="Cursors">Cursors</h2>
+<p>Custom cursors (.ani or .cur) in the <code>@Resources\Cursors</code> folder are automatically loaded and can be used with <a href="/manual/mouse-actions#MouseActionCursorName">MouseActionCursorName</a>.</p>
+
+<h2 id="Example">Example</h2>
+{% highlight ini %}
+ImageName=#@#Images\MyImage.png
+LeftMouseUpAction=["#@#Addons\MyAddon.exe" "Parameter"]
+@Include=#@#Variables.inc
+{% endhighlight %}	

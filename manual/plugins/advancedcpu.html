@@ -1,0 +1,54 @@
+---
+layout: manual
+title: 'AdvancedCPU measure'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=AdvancedCPU</code> measures CPU usage by processes.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="CPUInclude"><code>CPUInclude</code></dt>
+	<dd>List of process names separted by <code>;</code> (semicolon) to use in measurements	. If specified, <code>CPUExclude</code> is ignored.</dd>
+
+	<dt id="CPUExclude"><code>CPUExclude</code></dt>
+	<dd>List of processes separted by <code>;</code> (semicolon) to ignore in measurements.</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,220
+
+[MeasureTopProcessUsage]
+Measure=Plugin
+Plugin=AdvancedCPU
+TopProcess=1
+CPUExclude=Idle
+
+[MeasureTopProcessName]
+Measure=Plugin
+Plugin=AdvancedCPU
+TopProcess=2
+CPUExclude=Idle
+
+[MeterTopProcess]
+Meter=STRING
+MeasureName=MeasureTopProcessUsage
+MeasureName2=MeasureTopProcessName
+X=5
+Y=5
+W=200
+H=20
+FontColor=255,255,255,255
+Text="%1% (%2)"
+NumOfDecimals=1
+Scale=100000
+{% endhighlight %}	

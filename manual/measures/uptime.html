@@ -1,0 +1,60 @@
+---
+layout: manual
+title: 'Uptime measure'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Measure=Uptime</code> measures the time since the last restart of the computer.</p>
+
+<p>The <a href="/manual/measures#Values">string value</a> of the measure is defined by the <a href="#Format">Format</a> option. The <a href="/manual/measures#Values">number value</a> will be the amount of time since the last restart in seconds.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="Format"><code>Format</code> <span>Default: <code>%4!i!d %3!i!:%2!02i!</code></span></dt>
+	<dd>
+		Format of the measure value. This can be a combination of text and the following codes:
+		<ul>
+		<li><code>%4</code>: Days.
+		<li><code>%3</code>: Hours.
+		<li><code>%2</code>: Minutes.
+		<li><code>%1</code>: Seconds.
+		</ul>
+		The following modify the codes:
+		<ul>
+		<li><code>!i!</code>: Putting this after the format code shows the numbers with no leading zeros.
+		<li><code>!02i!</code>: Putting this after the format code shows the numbers with leading zeros.
+		</ul>
+	</dd>
+
+	<dt id="AddDaysToHours"><code>AddDaysToHours</code> <span>Default: <code>1</code></span></dt>
+	<dd>
+		If set to <code>1</code> and if <code>%4</code> (days) is not used in the <code>Format</code> option, <code>%3</code> (hours) is incremented by days * 24. Set to <code>0</code> to disable this behaviour.
+	</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureUptime]
+Measure=Uptime
+Format="%4!i! days, %3!i! hours, %2!i! minutes %1!i! seconds"
+
+[MeterText]
+Meter=String
+MeasureName=MeasureUptime
+X=5
+Y=5
+W=200
+H=25
+FontColor=255,255,255,255
+Text="Uptime: %1"
+{% endhighlight %}	

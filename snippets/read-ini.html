@@ -1,0 +1,37 @@
+---
+layout: snippets
+title: 'Read INI'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Functions: ReadIni(inputfile)</p>
+
+<p>ReadINI parses ini formatted text files into a table.</p>
+<p>The returned table is in the format <code>Table[Section][Parameter] = Value</code></p>
+
+<div class="noscroll">
+{% highlight lua %}
+function ReadIni(inputfile)
+	local file = assert(io.open(inputfile, 'r'), 'Unable to open '..inputfile)
+	local tbl,section = {}
+	local num = 0
+	for line in file:lines() do
+		num = num+1
+		if not string.match(line, '^%s-;') then
+			local key,command = string.match(line, '^([^=]+)=(.+)')
+			if string.match(line, '^%s-%[.+') then
+				section = string.lower(string.match(line, '^%s-%[([^%]]+)'))
+				if not tbl[section] then tbl[section] = {} end
+			elseif key and command and section then
+				tbl[section][string.match(string.lower(key), '^s*(%S*)%s*$')] = string.match(command, '^s*(.-)%s*$')
+			elseif #line > 0 and section and not key or command then
+				print(num..': Invalid property or value.')
+			end
+		end
+	end
+	if not section then print('No sections found in '..inputfile) end
+	file:close()
+	return tbl
+end
+{% endhighlight %}
+</div>	

@@ -1,0 +1,102 @@
+---
+layout: manual
+title: 'FreeDiskSpace measure'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Measure=FreeDiskSpace</code> measures disk usage.  By default the value will be the amount of free space.  To obtain the used space, add <a href="/manual/measures/general-options/#InvertMeasure">InvertMeasure=1</a>.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="Drive"><code>Drive</code> <span>Default: <code>C:</code></span></dt>
+	<dd>
+		Defines the drive to measure.
+	</dd>
+
+	<dt id="Total"><code>Total</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, provides the total drive space.
+	</dd>
+
+	<dt id="Label"><code>Label</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, the <a href="/manual/measures/#Values">string value</a> is the drive label. The <a href="/manual/measures/#Values">number value</a> is not altered.
+	</dd>
+
+	<dt id="Type"><code>Type</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		<p>If set to <code>1</code>, provides the drive type as a <a href="/manual/measures/#Values">string</a> and a <a href="/manual/measures/#Values">number</a>.</p>
+		<table class="table-striped">
+		<tr><td><b>String</b></td><td>&nbsp;</td><td><b>Number</b></td></tr>
+		<tr><td>Error</td><td>&nbsp;</td><td>0</td></tr>
+		<tr><td>Removed</td><td>&nbsp;</td><td>1</td></tr>
+		<tr><td>Removable</td><td>&nbsp;</td><td>3</td></tr>
+		<tr><td>Fixed</td><td>&nbsp;</td><td>4</td></tr>
+		<tr><td>Network</td><td>&nbsp;</td><td>5</td></tr>
+		<tr><td>CDRom</td><td>&nbsp;</td><td>6</td></tr>
+		<tr><td>Ram</td><td>&nbsp;</td><td>7</td></tr>
+		</table>
+		<br><b>Note:</b> FreeDiskSpace does not support CD or DVD drives other than with <code>Type</code> and <code>Label</code>.		
+	</dd>
+
+	<dt id="IgnoreRemovable"><code>IgnoreRemovable</code> <span>Default: <code>1</code></span></dt>
+	<dd>
+		If set to 1, removable drives are ignored. If set to 0, removable drives are measured. Be sure to set IgnoreRemovable=0 to measure a USB drive.
+	</dd>
+
+	<dt id="DiskQuota"><code>DiskQuota</code> <span>Default: <code>1</code></span></dt>
+	<dd>
+		If set to 1, user specific disk quotas in Windows are obeyed. If set to 0, user account specific disk quotas are ignored when obtaining free or used space on the disk.
+	</dd>
+
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[MeasureDiskLabel]
+Measure=FreeDiskSpace
+Drive=C:
+Label=1
+UpdateDivider=5
+
+[MeasureTotalDiskSpace]
+Measure=FreeDiskSpace
+Drive=C:
+Total=1
+UpdateDivider=5
+
+[MeasureFreeDiskSpace]
+Measure=FreeDiskSpace
+Drive=C:
+UpdateDivider=5
+
+[MeasureUsedDiskSpace]
+Measure=FreeDiskSpace
+Drive=C:
+InvertMeasure=1
+UpdateDivider=5
+
+[MeterDriveInfo]
+Meter=String
+MeasureName=MeasureDiskLabel
+MeasureName2=MeasureTotalDiskSpace
+MeasureName3=MeasureFreeDiskSpace
+MeasureName4=MeasureUsedDiskSpace
+X=0
+Y=0
+FontSize=10
+FontColor=255,255,255,255
+SolidColor=0,0,0,255
+AntiAlias=1
+AutoScale=1
+Text="C:\ (%1): [Total: %2B] [Free: %3B] [Used: %4B]"
+{% endhighlight %}

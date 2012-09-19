@@ -1,0 +1,35 @@
+---
+layout: manual
+title: '[TrayMeasure] section'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>The [TrayMeasure] section defines a measure for the <a href="http://en.wikipedia.org/wiki/Taskbar#Taskbar_elements">notification area icon</a>. To use the default Rainmeter icon, remove the [TrayMeasure] section completely.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="Measure"><code>Measure</code></dt>
+	<dd>
+		Type of the measure to be shown as the tray icon. The measure must return values between some limits.
+	</dd>
+
+	<dt id="TrayMeter"><code>TrayMeter</code></dt>
+	<dd>
+		The manner in which the measure is depicted. This can be either <code>Histogram</code> or <code>Bitmap</code>.
+	</dd>
+
+	<dt id="TrayColor1"><code>TrayColor1</code><span>Default: <code>255,0,100</code></span></dt>
+	<dd>
+		Background <a href="/manual/options#color">color</a> for <code>TrayMeter=Histogram</code>.
+	</dd>
+
+	<dt id="TrayColor2"><code>TrayColor2</code><span>Default: <code>255,0,255</code></span></dt>
+	<dd>
+		Foreground <a href="/manual/options#color">color</a> for <code>TrayMeter=Histogram</code>.
+	</dd>
+
+	<dt id="TrayBitmap"><code>TrayBitmap</code></dt>
+	<dd>
+		Path to the tray icon bitmap file for <code>TrayMeter=Bitmap</code>. Defines the name of the bitmap used when Bitmap is chosen for TrayMeter. The bitmap can have any number of 16x16 frames. The path is relative to the Skins folder. It is possible to also use icon files as the tray bitmap. <code>%i</code> can be used in the filename to define an increasing number from 1. E.g. <code>TrayBitmap=tray-%i.ico</code> would read the icons files tray-1.ico, tray-2.ico, tray-3.ico and so on as long as it can find them. The <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vclib/html/_crt_format_specification_fields_.2d_.printf_and_wprintf_functions.asp">format specification</a> is like printf (e.g. <code>TrayBitmap=tray-%02i.ico</code> will load tray-01.ico, tray-02.ico, ...).
+	</dd>
+</dl>

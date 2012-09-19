@@ -1,0 +1,68 @@
+---
+layout: manual
+title: 'iTunes plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=iTunesPlugin</code> retrieves the currently playing track infromation from the iTunes application.</p>
+
+<p><b>Note:</b> The iTunes plugin is deprecated. Use the <a href="/manual/plugins/nowplaying">NowPlaying</a> plugin instead.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="Command"><code>Command</code></dt>
+	<dd>
+		Defines the information to measure. Valid values are:
+		<ul>
+		<li><code>GetSoundVolume</code>: Player volume between 0 - 100.</li>
+		<li><code>GetPlayerPosition</code>: Player position in seconds.</li>
+		<li><code>GetPlayerPositionPercent</code>: Player position as a percentage.</li>
+		<li><code>GetCurrentTrackAlbum</code>: Album.</li>
+		<li><code>GetCurrentTrackArtist</code>: Artist.</li>
+		<li><code>GetCurrentTrackBitrate</code> Bitrate.</li>
+		<li><code>GetCurrentTrackBPM</code>: Beats per minute.</li>
+		<li><code>GetCurrentTrackComment</code>: Track comment.</li>
+		<li><code>GetCurrentTrackComposer</code>: Track composer.</li>
+		<li><code>GetCurrentTrackEQ</code>: EQ preset name.</li>
+		<li><code>GetCurrentTrackGenre</code>: Genre (category).</li>
+		<li><code>GetCurrentTrackKindAsString</code>: File description.</li>
+		<li><code>GetCurrentTrackName</code>: Track name.</li>
+		<li><code>GetCurrentTrackRating</code>: Rating from 0 - 100.</li>
+		<li><code>GetCurrentTrackSampleRate</code>: Sample rate.</li>
+		<li><code>GetCurrentTrackSize</code>: File size.</li>
+		<li><code>GetCurrentTrackTime</code>: Length of the track.</li>
+		<li><code>GetCurrentTrackTrackCount</code>: Number of tracks on the album.</li>
+		<li><code>GetCurrentTrackTrackNumber</code>: Track number or index.</li>
+		<li><code>GetCurrentTrackYear</code>: Track year.</li>
+		<li><code>GetCurrentTrackArtwork</code>: Artwork file path. Use in combination with <code>DefaultArtwork</code>.</li>
+		</ul>
+	</dd>
+
+	<dt id="DefaultArtwork"><code>DefaultArtwork</code></dt>
+	<dd><a href="/manual/options#path">Path</a> of the artwork folder relative to the skin folder. Used with <code>Command=GetCurrentTrackArtwork</code>.</dd>
+</dl>
+
+<h2>Bangs</h2>
+<p>iTunes measures can be controlled with the <a href="/manual/bangs#CommandMeasure">!CommandMeasure bang</a> with the argument parameter being:</p>
+<ul>
+<li><code>Backtrack</code>: Reposition to the beginning of the current track, or go to the previous track if already at start of current track.</li>
+<li><code>FastForward</code>: Skip forward in a playing track.</li>
+<li><code>NextTrack</code>: Advance to the next track in the current playlist.</li>
+<li><code>Pause</code>: Pause playback.</li>
+<li><code>Play</code>: Play the currently targeted track.</li>
+<li><code>PlayPause</code>: Toggle the playing/paused state of the current track.</li>
+<li><code>PreviousTrack</code>: Return to the previous track in the current playlist.</li>
+<li><code>Resume</code>: Disable fast forward/rewind and resume playback if playing.</li>
+<li><code>Rewind</code>: Skip backwards in a playing track.</li>
+<li><code>Stop</code>: Stop playback.</li>
+<li><code>Power</code>: Open/close iTunes application.</li>
+<li><code>Quit</code>: Exit the iTunes application.</li>
+<li><code>SoundVolumeUp</code>: Turn the volume up 5%.</li>
+<li><code>SoundVolumeDown</code>: Turn the volume down 5%.</li>
+<li><code>ToggleiTunes</code>: Show/hide iTunes window.</li>
+</ul>	

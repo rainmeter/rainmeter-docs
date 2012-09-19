@@ -1,0 +1,81 @@
+---
+layout: manual
+title: 'Substitute'
+---
+<!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Substitute</code> replaces some or all of a string value returned by a measure with another string.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="Subsitute"><code>Substitute</code></dt>
+	<dd>
+		A list of comma delimited <code>"pattern":"replacement"</code> pairs. All occurences of <code>pattern</code> in the <a href="/manual/measures/#Values">measure string value</a> are replaced with <code>replacement</code> (e.g. <code>"This":"That"</code> substitutes all occurences of <i>This</i> with <i>That</i>).
+
+		<br><br>If multiple <code>"pattern":"replacement"</code> pairs are specified, each substitution is attempted in the specified order (e.g. <code>"This":"That","Here":"There"</code> first replaces all occurences of <i>This</i> with <i>That</i> and then replaces all occurences of <i>Here</i> with <i>There</i>.
+
+		<br><br>Note that the order in which the pairs are specified can be important. For example, with <code>"1":"One","10":"Ten"</code>, all occurences of <i>1</i> are replaced with <i>One</i>, but occurences of <i>10</i> will not be replaced with <i>Ten</i> (because the first pair already changed all <i>1</i> characters). For correct behaviour, the order should be reversed (i.e. <code>"10":"Ten","1":"One"</code>).
+
+		<br><br>Instead of <code>"pattern":"replacement"</code>, single quotes can be used either around the pattern or the replacement (i.e. <code>'pattern':"replacement"</code> or <code>"pattern":'replacement'</code>, but not <code>'pattern':'replacement'</code>). This can be useful when either the pattern or the replacement contains double quotes (e.g. <code>'"':"double quote"</code> replaces all occurences of <i>"</i> with <i>double quote</i>).
+	</dd>
+
+	<dt id="RegExpSubsitute"><code>RegExpSubsitute</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, <a href="http://www.regular-expressions.info/tutorial.html">regular expressions</a> can be used in the <code>pattern</code> part of <code>Substitute</code> pairs.
+
+		<br><br>If captures are used in the pattern (e.g. <code>(.*)</code>), they can be referenced in the <code>replacement</code> part using <code>\1</code> (first capture), <code>\2</code> (second capture), etc. The entire match can also be referenced with <code>\0</code>.
+	</dd>
+</dl>
+
+<h2>Examples</h2>
+<p>Normal substitution:</p>
+{% highlight ini %}
+[MeasureYear]
+Measure=Time
+Format=%Y
+Substitute="2012":"Twenty Twelve","2013":"Twenty Thirteen"
+; Assuming that the current year is 2012, the string value of [MeasureYear] will
+; be "Twenty Twelve" (without quotes). Since Subsitute only affects the string
+; value, the number value of [MeasureYear] will continue to be 2012.
+
+[MeasureCalc1]
+Measure=Calc
+Formula=MeasureYear
+; Since the number value of MeasureYear is used above, the value of [MeasureCalc1]
+; will also be 2012.
+
+[MeasureCalc2]
+Measure=Calc
+Formula=[MeasureYear]
+DynamicVariables=1
+; Since the string value of MeasureYear is used above, a syntax error will occur
+; (as "Formula=Twenty Twelve" is not a valid formula).
+{% endhighlight %}
+
+<p>Regular expression substitution:</p>
+{% highlight ini %}
+; The Time measure is used below for example purposes.
+
+[MeasureEx1]
+Measure=Time
+Format=I am Rainy
+RegExpSubstitute=1
+Substitute="(\w+) (\w+) (\w+)":"\3, \1 \2","Rainy":"Yoda"
+; Reorders the sentence and then replaces Rainy with Yoda.
+; The result is: Yoda, I am
+
+[MeasureEx2]
+Measure=Time
+Format=Hello, world!
+RegExpSubstitute=1
+Substitute="^(.{0,5}).+$":"\1..."
+; Truncates string by length (in this case 5) and appends "...".
+; The result is: Hello...
+
+[MeasureEx3]
+Measure=Time
+Format=192.168.1.101 
+RegExpSubstitute=1
+Substitute="^(\d{1,3}).(\d{1,3}).(\d{1,3}).\d{1,3}$":"\1.\2.\3.***"
+; Masks an IP address. The result is: 192.168.1.***
+{% endhighlight %}

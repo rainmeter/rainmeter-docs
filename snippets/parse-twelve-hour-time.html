@@ -1,0 +1,22 @@
+---
+layout: snippets
+title: 'Parse 12-Hour Time'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Function: ParseTwelveHourTime(Hour, Meridiem)</p>
+
+<p>A function that takes a number (1-12) and a string ('AM' or 'PM') and returns the equivalent 24-hour figure.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function ParseTwelveHourTime(Hour, Meridiem)
+	if (Meridiem == 'AM') and (Hour == 12) then
+		Hour = 0
+	elseif (Meridiem == 'PM') and (Hour < 12) then
+		Hour = Hour + 12
+	end
+	return Hour
+end
+{% endhighlight %}
+</div>	

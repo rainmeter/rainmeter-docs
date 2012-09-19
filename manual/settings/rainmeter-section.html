@@ -1,0 +1,57 @@
+---
+layout: manual
+title: '[Rainmeter] section'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>The [Rainmeter] section of Rainmeter.ini defines global options.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="SkinPath"><code>SkinPath</code></dt>
+	<dd>
+		Path to the skins folder.
+	</dd>
+
+	<dt id="ConfigEditor"><code>ConfigEditor</code> <span>Default: <code>Notepad</code></span></dt>
+	<dd>
+		Defines the application that is used to edit the Rainmeter's configuration files when "Edit Skin" is chosen from the context menu. Relative paths can be used here, which may be useful for portable installs.
+	</dd>
+
+	<dt id="TrayExecute"><code>TrayExecuteM</code>, <code>TrayExecuteR</code>, <code>TrayExecuteDM</code>, <code>TrayExecuteDR</code></dt>
+	<dd>
+		<a href="/manual/options#action">Action</a> to be executed when the <b>m</b>iddle or <b>r</b>ight clicking (or <b>d</b>ouble-clicking) on the notification area (tray) icon.<br><br><b>Note:</b> <code>TrayExecuteR</code> will override the context menu that normally appears (hold CTRL and right-click to force context menu).
+	</dd>
+
+	<dt id="TrayIcon"><code>TrayIcon</code> <span>Default: <code>1</code></span></dt>
+	<dd>
+		Set to <code>0</code> to remove the notification area (tray) icon.
+	</dd>
+
+	<dt id="DesktopWorkArea"><code>DesktopWorkArea</code></dt>
+	<dd>
+		Defines the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa511450.aspx">area</a> for maximized windows.<br><br>With multiple monitors, use <code>DesktopWorkArea@<i>N</i></code> (where <i>N</i> is the number of the monitor) to set the work area of a specifc monitor. <code>DesktopWorkArea</code> and <code>DesktopWorkArea@0</code> both represent the primary monitor.<br><br><b>Note:</b> Moving the taskbar will reset the workarea to Windows' default, as will changing screen resolution.
+	</dd>
+
+	<dt id="DesktopWorkAreaType"><code>DesktopWorkAreaType</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, <code>DesktopWorkArea</code> will be define margins relative to the edges of the screen.
+
+		<br><br><b>Example:</b> With <code>DesktopWorkAreaType=0</code> and <code>DesktopWorkArea=10,20,600,500</code>, maximized windows will use an area of 600x500 pixels, which is located 10 pixels from the left and 20 pixels from the top of the screen. With <code>DesktopWorkAreaType=1</code> and <code>DesktopWorkArea=10,20,30,40</code>, the area for maximized windows will be 10 pixels from the left, 20 pixels from the top, 30 pixels from the right, and 40 pixels from the bottom of the screen.
+	</dd>
+
+	<dt id="Logging"><code>Logging</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, the <a href="">log</a> will be saved to a file.
+	</dd>
+
+	<dt id="Debug"><code>Debug</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, <a href="#Logging">logging</a> will be more verbose. Use <code>Debug=1</code> with caution as it degrades performance.
+	</dd>
+
+	<dt id="DisableVersionCheck"><code>DisableVersionCheck</code> <span>Default: <code>0</code></span></dt>
+	<dd>
+		If set to <code>1</code>, checking for new updates will be disabled.
+	</dd>
+</dl>	

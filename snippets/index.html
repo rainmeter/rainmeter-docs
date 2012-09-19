@@ -1,0 +1,74 @@
+---
+layout: snippets
+title: 'Rainmeter Snippets'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+{% capture readme %}
+This is a collection of useful "snippets" of Lua script code for users of [Rainmeter](http://rainmeter.net/cms/), a desktop customization tool for Windows. It is maintained by the Rainmeter development team, and hosted on [GitHub](https://github.com/rainmeter/rainmeter-docs/).
+
+Contents
+--------
+
+### General
+
+- **[Deliminate](/snippets/deliminate)**  
+A function that separates a string into parts by a given delimiter.
+
+- **[Detect Value Change](/snippets/detect-value-change)**  
+A simple method for "watching" a data value in the skin (variable, measure or option) and taking action when the value changes.
+
+- **[Switch](/snippets/switch)**  
+A function that emulates a switch statement.
+
+### Conversions
+
+- **[Colors](/snippets/colors)**  
+Functions that convert [color codes](http://rainmeter.net/cms/Meters-ColorCodes) from RGB to HEX, and vice versa.
+
+- **[Convert Temperatures](/snippets/convert-temperatures)**  
+Converts temperatures between Celsius and Fahrenheit.
+
+### File Input & Output
+
+- **[Read INI](/snippets/read-ini)**  
+A function that parses an [INI](http://en.wikipedia.org/wiki/INI_file) formatted text file into a table, with the structure `Table[Section][Parameter] = Value`.
+
+### Math
+
+- **[Add Commas](/snippets/add-commas)**  
+Returns an input number as a string formatted with commas.
+
+- **[Add Suffix](/snippets/add-suffix)**  
+Returns the ordinal suffix for an input number.
+
+- **[AutoScale](/snippets/autoscale)**  
+A function that scales a number of bytes, with an optional number of decimal places. Returns a second string value with the scale suffix.
+
+- **[Average](/snippets/average)**  
+A function that averages a list of numbers.
+
+- **[Round](/snippets/round)**  
+Rounds a number (num) to any optional number of decimal places (idp)
+
+### Rainmeter
+
+- **[Set Meter &amp; Measure Options](/snippets/set-meter-measure-options)**  
+A simple method for setting multiple options on the same meter or measure.
+
+- **[Root Config Name](/snippets/root-config-name)**  
+A function that takes a Rainmeter skin's [config name](http://rainmeter.net/cms/Settings-ConfigName) and returns the root config name for that skin.
+
+### Strings
+
+- **[Parse File Path](/snippets/parse-file-path)**  
+A function that breaks down a file or folder path and returns the components as a table.
+
+### Time
+
+- **[Convert Time](/snippets/convert-time)**  
+A function that converts [Unix epoch](http://en.wikipedia.org/wiki/Unix_time) timestamps into Windows [FILETIME](http://en.wikipedia.org/wiki/System_time#Operating_systems) timestamps (in seconds) and vice versa.
+
+- **[Parse 12-Hour Time](/snippets/parse-twelve-hour-time)**  
+A function that takes a number (1-12) and a string ('AM' or 'PM') and returns the equivalent 24-hour figure.
+{% endcapture %} {{ readme | markdownify }}	

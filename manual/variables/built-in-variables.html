@@ -1,0 +1,114 @@
+---
+layout: manual
+title: 'Built-In Variables'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Rainmeter automatically creates a number of helpful <a href="/manual/variables">variables</a> for each skin. These variables do not need to be defined in the [Variables] section. Some built-in variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.</p>
+
+<h3>Path variables</h3>
+<dl>
+	<dt id="PROGRAMDRIVE"><code>#PROGRAMDRIVE#</code> <span>Example: <code>C:</code> or <code>\\server\Users\</code></span></dt>
+	<dd>
+		Drive or server Rainmeter is located on.
+	</dd>
+
+	<dt id="PROGRAMPATH"><code>#PROGRAMPATH#</code> <span>Example: <code>C:\Program Files\Rainmeter\</code></span></dt>
+	<dd>
+		Path to the folder containing Rainmeter.exe.
+	</dd>
+
+	<dt id="SETTINGSPATH"><code>#SETTINGSPATH#</code> <span>Example: <code>%APPDATA%\Rainmeter\</code></span></dt>
+	<dd>
+		Path to the folder containing Rainmeter.ini.
+	</dd>
+
+	<dt id="ADDONSPATH"><code>#ADDONSPATH#</code> <span>Example: <code>%APPDATA%\Rainmeter\Addons\</code></span></dt>
+	<dd>
+		Path to the addons folder.
+
+		<br><br><strong>Note:</strong> <code>#ADDONSPATH#</code> should be avoided when possible. Addons should be kept in the <a href="/manual/skins/resources-folder">@Resources folder</a> instead.
+	</dd>
+</dl>
+
+<h3>Skin variables</h3>
+<dl>
+	<dt id="@"><code>#@#</code> <span>Example: <code>C:\Documents\Skins\illustro\@Resources\</code></span></dt>
+	<dd>
+		Path to the <a href="/manual/skins/resources-folder">@Resources folder</a> for the current skin.
+	</dd>
+
+	<dt id="CURRENTPATH"><code>#CURRENTPATH#</code> <span>Example: <code>C:\Documents\Skins\illustro\Clock\</code></span></dt>
+	<dd>
+		Path to the folder containing the current skin file.
+	</dd>
+
+	<dt id="CURRENTFILE"><code>#CURRENTFILE#</code> <span>Example: <code>Clock.ini</code></span></dt>
+	<dd>
+		File name of the current skin.
+	</dd>
+
+	<dt id="ROOTCONFIGPATH"><code>#ROOTCONFIGPATH#</code> <span>Example: <code>C:\Documents\Rainmeter\Skins\illustro\</code></span></dt>
+	<dd>
+		Path to highest-level folder under the skins folder for the current skin.
+	</dd>
+
+	<dt id="CURRENTCONFIG"><code>#CURRENTCONFIG#</code> <span>Example: <code>illustro\Clock</code></span></dt>
+	<dd>
+		Config name of current skin.
+	</dd>
+
+	<dt id="CURRENTCONFIGXYWH"><code>#CURRENTCONFIGX#</code>, <code>#CURRENTCONFIGY#</code>, <code>#CURRENTCONFIGWIDTH#</code>, <code>#CURRENTCONFIGHEIGHT#</code></dt>
+	<dd>
+		Position and size of the current skin.<br><br><strong>Note:</strong> These variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.
+	</dd>
+</dl>
+
+<h3>Miscellaneous variables</h3>
+<dl>
+	<dt id="CRLF"><code>#CRLF#</code></dt>
+	<dd>
+		New line.
+	</dd>
+</dl>
+
+<h3>Monitor variables</h3>
+
+<p><strong>Note:</strong> These variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.</p>
+
+<dl>
+	<dt id="WORKAREAXYWH"><code>#WORKAREAX#</code>, <code>#WORKAREAY#</code>, <code>#WORKAREAWIDTH#</code>, <code>#WORKAREAHEIGHT#</code></dt>
+	<dd>
+		Work area position and size of the current monitor.
+	</dd>
+
+	<dt id="PWORKAREAXYWH"><code>#PWORKAREAX#</code>, <code>#PWORKAREAY#</code>, <code>#PWORKAREAWIDTH#</code>, <code>#PWORKAREAHEIGHT#</code></dt>
+	<dd>
+		Work area position and size of the primary monitor.
+	</dd>
+
+	<dt id="WORKAREAXYWH"><code>#WORKAREAX@<i>N</i>#</code>, <code>#WORKAREAY@<i>N</i>#</code>, <code>#WORKAREAWIDTH@<i>N</i>#</code>, <code>#WORKAREAHEIGHT@<i>N</i>#</code></dt>
+	<dd>
+		Work area position and size of the <i>N</i>th monitor.
+	</dd>
+
+	<dt id="SCREENAREAWH"><code>#SCREENAREAWIDTH#</code>, <code>#SCREENAREAHEIGHT#</code></dt>
+	<dd>
+		Screen resolution size of the current monitor.
+	</dd>
+
+	<dt id="PSCREENAREAWH"><code>#PSCREENAREAWIDTH#</code>, <code>#PSCREENAREAHEIGHT#</code></dt>
+	<dd>
+		Screen resolution size of the primary monitor.
+	</dd>
+
+	<dt id="SCREENAREAWH@"><code>#SCREENAREAWIDTH@<i>N</i>#</code>, <code>#SCREENAREAHEIGHT@<i>N</i>#</code></dt>
+	<dd>
+		Screen resolution size of the <i>N</i>th monitor.
+	</dd>
+
+	<dt id="VSCREENAREAXYWH"><code>#VSCREENAREAX#</code>, <code>#VSCREENAREAY#</code>, <code>#VSCREENAREAWIDTH#</code>, <code>#VSCREENAREAHEIGHT#</code></dt>
+	<dd>
+		Position and size of the virtual screen.
+	</dd>
+</dl>	
