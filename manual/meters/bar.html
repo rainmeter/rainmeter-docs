@@ -54,42 +54,57 @@ title: 'Bar meter'
 {% highlight ini %}
 [Rainmeter]
 Update=1000
-DynamicWindowSize=1
+Author=RainmeterTeam
 
-[MeasureMemory]
+[MeasureUsedMemory]
 Measure=PhysicalMemory
 
-[BarBackground]
-Meter=Image
-X=0
-Y=20
-W=110
-H=30
-SolidColor=171,54,3,150
+[MeasureUsedDrive]
+Measure=FreeDiskSpace
+Drive=C:
 
 [MeterMemoryText]
 Meter=String
-MeasureName=MeasureMemory
-AutoScale=1
-X=0
-Y=0
-FontFace=Trebuchet MS
+MeasureName=MeasureUsedMemory
+FontFace=Segoe UI
 FontSize=10
 FontColor=255,255,255,255
 StringStyle=Bold
+AutoScale=1
 AntiAlias=1
-Text=Free RAM: %1
+Text=Used RAM: %1
 
-[MeterMemoryBar]
-MeasureName=MeasureMemory
+[MeterUsedMemoryBar]
+MeasureName=MeasureUsedMemory
 Meter=BAR
-X=5
-Y=25
-W=100
-H=20
-BarColor=255,255,255,255
-SolidColor=105,37,6,150
-BarOrientation=HORIZONTAL
+Y=3R
+W=250
+H=30
+BarColor=185,250,160,255
+SolidColor=150,150,150,255
+BarOrientation=Horizontal
+
+[MeterDriveText]
+Meter=String
+MeasureName=MeasureUsedDrive
+Y=10R
+FontFace=Segoe UI
+FontSize=10
+FontColor=255,255,255,255
+StringStyle=Bold
+AutoScale=1
+AntiAlias=1
+Text=Free Drive C: %1
+
+[MeterUsedDriveBar]
+MeasureName=MeasureUsedDrive
+Meter=Bar
+Y=3R
+W=250
+H=30
+BarColor=185,250,160,255
+SolidColor=150,150,150,255
+BarOrientation=Horizontal
 {% endhighlight %}
 
 <div class="exampleprev">
