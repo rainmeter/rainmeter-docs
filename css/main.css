@@ -1,6 +1,7 @@
 /* Based on Twitter Bootstrap 2.0.4. Licensed under Apache 2.0. */
 html {
 	overflow-y:scroll;
+	height: 100%;
 }
 
 footer,
@@ -309,6 +310,7 @@ table {
 }
 
 body {
+	height: 100%;
 	margin:0;
 	font-family:"Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size:13px;
