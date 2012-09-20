@@ -82,7 +82,7 @@ title: 'Calc measure'
 to a specified number of decimal places. <i>precision</i> is optional.</li>
 </ul>
 
-<h3 id="constants">Constants</h3>
+<h3 id="Constants">Constants</h3>
 <ul>
 <li><code>pi</code>: Mathematical constant Pi (~3.14159265...).</li>
 <li><code>e</code>: Mathematical constant e (~2.71828182...).</li>
@@ -90,7 +90,7 @@ to a specified number of decimal places. <i>precision</i> is optional.</li>
 <li><code>counter</code>: The number of update cycles from the time the skin is loaded. This number only resets when the skin is unloaded and then loaded again - not when the skin is refreshed.</li>
 </ul>	
 
-<h3>Conditional Operations</h3>
+<h3 id="Conditional">Conditional Operations</h3>
 
 <p><code>&lt;condition&gt; ? &lt;expr. if true.&gt; : &lt;expr. if false.&gt;</code></p>
 <p>This will evaluate condition as being either true or false. If it is true, the expression to the left of the colon (:) is evaluated. If it is false, the expression to the right is evaluated. This is equivalent to the following if-then-else statement:</p>
@@ -125,7 +125,7 @@ Formula=(MeasureOne < 1) ? 99 : ((MeasureOne < 2) ? 98 : ((MeasureOne < 3) ? 97 
 {% endhighlight %}
 <p>This measure would return 97. Since the first statement of <code>MeasureOne &lt; 1</code> is false, the formula begins testing the nested formulas in order until the condition becomes true . If none of the conditions are met, the final false value of 96 would be set.</p>
 
-<h3>Other Bases</h3>
+<h3 id="Bases">Other Bases</h3>
 
 <p>The Calc measure allows numbers to be represented numbering systems other than decimal. To use another base, prefix the number with a zero then the letter representing the system you wish to use. The following are accepted prefixes, which are case (lower) sensitive: </p>
 <ul>
