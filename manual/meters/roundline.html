@@ -76,51 +76,79 @@ title: 'Roundline meter'
 <p>If the width and height are not defined, the center point is at the X and Y position of the meter and any part of the meter that intersects with the edges of the skin window will be cut off. If width and height are specified, the center point will be in the middle of the bounding box and the skin window will include the meter.</p>
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/MeterRoundlineExample_1.0.rmskin" class="download"></a>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterRoundline_1.0.rmskin" class="download"></a>
 {% highlight ini %}
 [Rainmeter]
 Update=1000
-DynamicWindowSize=1
 
-[MeasureDisk]
+[MeasureFreeDisk]
 Measure=FreeDiskSpace
 Drive=C:
 InvertMeasure=1
 
-[MeasureBackground]
-Measure=Calc
-Formula=1
+[MeasureTotalDisk]
+Measure=FreeDiskSpace
+Drive=C:
+Total=1
 
-[MeterBackground]
+[MeterTotalDisk]
 Meter=Roundline
-MeasureName=MeasureBackground
+MeasureName=MeasureTotalDisk
 X=0
 Y=0
-W=50
-H=50
+W=120
+H=120
 StartAngle=4.712
 RotationAngle=6.283
-LineLength=25
-LineColor=226,153,3,255
+LineLength=60
+LineColor=62,140,132,255
 Solid=1
 AntiAlias=1
 
-[MeterDisk]
+[MeterFreeDisk]
 Meter=Roundline
-MeasureName=MeasureDisk
+MeasureName=MeasureFreeDisk
 X=0
 Y=0
-W=50
-H=50
+W=120
+H=120
 StartAngle=4.712
 RotationAngle=6.283
-LineLength=25
-LineColor=255,255,255,255
+LineLength=56
+LineColor=216,242,240,255
 Solid=1
 AntiAlias=1
+
+[MeterTotalText]
+Meter=String
+MeasureName=MeasureTotalDisk
+X=60
+Y=130
+FontFace=Segoe UI
+FontSize=12
+FontColor=62,140,132,255
+StringStyle=Bold
+StringAlign=Center
+AntiAlias=1
+AutoScale=1
+Text=Total: %1
+
+[MeterFreeText]
+Meter=String
+MeasureName=MeasureFreeDisk
+X=60
+Y=R
+FontFace=Segoe UI
+FontSize=12
+FontColor=216,242,240,255
+StringStyle=Bold
+StringAlign=Center
+AntiAlias=1
+AutoScale=1
+Text=Free: %1
 {% endhighlight %}
 
 <div class="exampleprev">
-	<p><img src="../../img/MeterRoundlineExample.jpg"/></p>
+	<p><img src="../../img/ExampleMeterRoundline.jpg"/></p>
 	<p>An example skin demontrating a Roundline meter.</p>
 </div>
