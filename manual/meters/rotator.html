@@ -52,7 +52,7 @@ title: 'Rotator meter'
 <p>Here is an example of how to <a href="http://rainmeter.net/cms/Tips-RotateImage">Rotate an Image Around its Center</a>.</p>
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/MeterRotatorExample_1.0.rmskin" class="download"></a>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterRotator_1.0.rmskin" class="download"></a>
 {% highlight ini %}
 [Rainmeter]
 Update=1000
@@ -60,20 +60,20 @@ Update=1000
 [MeasureTime]
 Measure=Time
 
-[MeterBackground]
+[MeterClockFace]
 Meter=Image
-ImageName=ClockFace.png
+ImageName=#@#Images\ClockFace.png
 W=110
 H=116
 
 [MeterHoursHand]
-Meter=Rotator
+Meter=ROTATOR
 MeasureName=MeasureTime
 X=0
 Y=0
 W=110
 H=116
-ImageName=Hours.png
+ImageName=#@#Images\Hours.png
 OffsetX=3
 OffsetY=3
 StartAngle=4.7124
@@ -81,13 +81,13 @@ RotationAngle=6.2832
 ValueRemainder=43200
 
 [MeterMinutesHand]
-Meter=Rotator
+Meter=ROTATOR
 MeasureName=MeasureTime
 X=0
 Y=0
 W=110
 H=116
-ImageName=Minutes.png
+ImageName=#@#Images\Minutes.png
 OffsetX=3
 OffsetY=3
 StartAngle=4.7124
@@ -95,7 +95,7 @@ RotationAngle=6.2832
 ValueRemainder=3600
 
 [MeterSecondsHand]
-Meter=Roundline
+Meter=ROUNDLINE
 MeasureName=MeasureTime
 X=0
 Y=0
@@ -111,6 +111,6 @@ ValueRemainder=60
 {% endhighlight %}
 
 <div class="exampleprev">
-	<p><img src="../../img/MeterRotatorExample.jpg"/></p>
+	<p><img src="../../img/ExampleMeterRotator.jpg"/></p>
 	<p>An example skin demontrating a Rotator meter.</p>
 </div>
