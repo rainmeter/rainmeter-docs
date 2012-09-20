@@ -135,21 +135,14 @@ Text=This is text containing %1 and %2.
 </dl>
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/MeterStringExample_1.0.rmskin" class="download"></a>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterString_1.0.rmskin" class="download"></a>
 {% highlight ini %}
 [Rainmeter]
 Update=1000
-DynamicWindowSize=1
 
 [MeasureDate]
 Measure=Time
-Format=%A, %B %#d, %Y
-
-[MeterBackground]
-Meter=Image
-W=300
-H=155
-SolidColor=156,156,156,255
+Format=%A, %b %#d, %Y
 
 [MeterDate]
 Meter=String
@@ -157,19 +150,19 @@ MeasureName=MeasureDate
 X=0
 Y=0
 FontColor=255,255,255,255
-FontFace=Trebuchet MS
+FontFace=Segoe UI
 FontSize=14
 StringEffect=Shadow
 FontEffectColor=0,0,0,255
 AntiAlias=1
-Text=Date: %1
+Text=Today is: %1
 
 [MeterText1]
 Meter=String
 X=0
 Y=0R
-FontColor=0,0,0,255
-FontFace=Trebuchet MS
+FontColor=197,239,252,255
+FontFace=Segoe UI
 FontSize=12
 AntiAlias=1
 Text=Relative to bottom of previous meter
@@ -182,7 +175,7 @@ W=300
 H=20
 StringAlign=Right
 FontColor=255,255,255,255
-FontFace=Trebuchet MS
+FontFace=Segoe UI
 StringStyle=Italic
 FontSize=14
 AntiAlias=1
@@ -191,12 +184,12 @@ Text=Right justified italic text
 [MeterText3]
 Meter=String
 X=150
-Y=0R
+Y=5R
 W=300
 H=20
 StringAlign=Center
-FontColor=255,255,255,255
-FontFace=Trebuchet MS
+FontColor=252,245,197,255
+FontFace=Segoe UI
 StringStyle=Bold
 FontSize=14
 AntiAlias=1
@@ -207,10 +200,10 @@ Meter=String
 X=0
 Y=10R
 W=200
-H=44
+H=50
 ClipString=1
-FontColor=255,255,255,255
-FontFace=Trebuchet MS
+FontColor=197,252,223,255
+FontFace=Segoe UI
 StringStyle=Bold
 FontSize=14
 AntiAlias=1
@@ -218,6 +211,6 @@ Text=This text will wrap due to ClipString=1
 {% endhighlight %}
 
 <div class="exampleprev">
-	<p><img src="../../img/MeterStringExample.jpg"/></p>
+	<p><img src="../../img/ExampleMeterString.jpg"/></p>
 	<p>An example skin showing various string options.</p>
 </div>	
