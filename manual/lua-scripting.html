@@ -6,7 +6,7 @@ title: 'Lua Scripting'
 
 <p>Rainmeter has the ability to load and execute scripts in <strong>Lua</strong>, a <a href="http://en.wikipedia.org/wiki/Lua_(programming_language)">functional programming language</a>. Rainmeter includes the <a href="http://www.lua.org/manual/5.1/manual.html#5">Lua 5.1 standard libraries</a>, which encompass a variety of powerful features.</p>
 
-<p>A <strong>script</strong> refers to a set of Lua functions that is associated with a <a href="/manual/measure/script">script measure</a>. These functions may be executed when the skin <a href="#Initialize">loads</a>, when it <a href="#Update">updates</a>, or <a href="#CommandMeasure">on command</a>.</p>
+<p>A <strong>script</strong> refers to a set of Lua functions that is associated with a <a href="/manual/measures/script">script measure</a>. These functions may be executed when the skin <a href="#Initialize">loads</a>, when it <a href="#Update">updates</a>, or <a href="#CommandMeasure">on command</a>.</p>
 
 <p>This page details the Rainmeter-specific modifications and new functions that have been added to Rainmeter's built-in Lua environment. More documentation for Lua itself is available at:</p>
 
@@ -22,9 +22,9 @@ title: 'Lua Scripting'
 
 <h2 id="ScriptMeasure">Script Measure</h2>
 
-<p>The <a href="/manual/measure/script">script measure</a> is used to load a Lua script from a file and interface with the script. The <a href="/manual/measure/script#ScriptFile">script file</a> must be a text file, and typically has the extension <code>.lua</code>.</p>
+<p>The <a href="/manual/measures/script">script measure</a> is used to load a Lua script from a file and interface with the script. The <a href="/manual/measures/script#ScriptFile">script file</a> must be a text file, and typically has the extension <code>.lua</code>.</p>
 
-<p>Much like <a href="/manual/measure/plugin">plugin measures</a>, each script measure creates a separate <strong>instance</strong> of its script. This means that a skin can have any number of scripts loaded simultaneously&mdash;even from the same script file. (The order in which scripts are executed is determined by the <a href="/manual/measures/#Order">measure order</a>.) "Global" variables are not shared between instances.</p>
+<p>Much like <a href="/manual/measures/plugin">plugin measures</a>, each script measure creates a separate <strong>instance</strong> of its script. This means that a skin can have any number of scripts loaded simultaneously&mdash;even from the same script file. (The order in which scripts are executed is determined by the <a href="/manual/measures/#Order">measure order</a>.) "Global" variables are not shared between instances.</p>
 
 {% highlight ini %}
 [MeasureName]
