@@ -6,7 +6,7 @@ title: 'AdvancedCPU measure'
 
 <p><code>Plugin=AdvancedCPU</code> measures CPU usage by processes.</p>
 
-<p><b>Note:</b> The value is the amount of CPU time, multiplied by a current maximum CPU value to average the usage over multiple CPU cores. In order to use the value as a <a href="/manual/measures#Percentage">percentage</a> in meters, it must have the <a href="/manual/measures/general-options/#MaxValue">MaxValue</a> of the measure dynamically set to the current value of an AdvancedCPU measure which has no <code>CPUInclude</code> or <code>CPUExclude</code> options. See the <a href="#Example">Example</a> below.</p>
+<p><b>Note:</b> The value is the amount of CPU time, scaled to average the usage over multiple CPU cores. In order to use the value as a <a href="/manual/measures#Percentage">percentage</a> in meters, it must have the <a href="/manual/measures/general-options/#MaxValue">MaxValue</a> of the measure dynamically set to the current value of an AdvancedCPU measure which has no <code>CPUInclude</code> or <code>CPUExclude</code> options. See the <a href="#Example">Example</a> below.</p>
 
 <h2>Options</h2>
 <dl>
