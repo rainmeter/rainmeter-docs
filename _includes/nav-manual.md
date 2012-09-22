@@ -16,7 +16,6 @@ Reference
 	* [[Rainmeter] section](/manual/settings/rainmeter-section)
 	* [[TrayMeasure] section](/manual/settings/traymeasure-section)
 	* [[Skin] sections](/manual/settings/skin-sections)
-	* [Layouts](/manual/settings/layouts)
 * [Skins](/manual/skins/)
 	* [[Rainmeter] section](/manual/skins/rainmeter-section)
 	* [[Metadata] section](/manual/skins/metadata-section)
