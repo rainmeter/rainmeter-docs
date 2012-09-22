@@ -27,7 +27,7 @@ title: 'SpeedFan plugin'
 
 	<dt id="SpeedFanNumber"><code>SpeedFanNumber</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		The index retrieved from the Speedfan application.
+		The index retrieved from the Speedfan application starting with <code>0</code>.  It is easiest to obtain these numbers from the "Configure" panel of the Speedfan application.
 
 		<br><br><b>Example:</b> To obtain the second temperature value with <code>SpeedFanType=Temperature</code>, specify <code>SpeedFanNumber=1</code>.
 	</dd>
@@ -42,4 +42,36 @@ title: 'SpeedFan plugin'
 		</ul>
 		<b>Note:</b> The unit in the SpeedFan application itself must be set to celsius to obtain the correct value.
 	</dd>
-</dl>	
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureGPUTemp]
+Measure=Plugin
+Plugin=SpeedFanPlugin
+SpeedFanType=Temperature
+SpeedFanNumber=0
+SpeedFanScale=C
+
+[MeasureFanSpeed]
+Measure=Plugin
+Plugin=SpeedFanPlugin
+SpeedFanType=Fan
+SpeedFanNumber=3
+
+[MeterSpeedFan]
+Meter=String
+MeasureName=MeasureGPUTemp
+MeasureName2=MeasureFanSpeed
+FontSize=12
+FontColor=255,255,255,255
+StringStyle=Bold
+AntiAlias=1
+Text=GPU Temp: %1#CRLF#Fan Speed: %2
+{% endhighlight %}
