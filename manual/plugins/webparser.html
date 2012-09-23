@@ -6,58 +6,78 @@ title: 'WebParser plugin'
 
 <p><code>Plugin=WebParser</code> reads information from webpages.</p>
 
-<p>The plugin uses <a href="http://www.regular-expressions.info/tutorial.html">Regular Expressions</a> to extract information from any web page or <a href="#Local">local file</a>. The plugin can be used to get current TV shows, weather conditions, stock exchange values, news and basically anything that is on the internet (provided session-based <a href="#Authentication">authenication</a> is <b>not</b> required).</p>
+<p>The plugin uses <a href="http://www.regular-expressions.info/tutorial.html">Regular Expressions</a> to extract information from any web page or <a href="#Local">local file</a>.</p>
 
-<p>More information and examples for WebParser can be found at <a href="http://rainmeter.net/cms/Tips-WebParserPrimer">WebParser Primer</a> and <a href="http://rainmeter.net/cms/Rainmeter101-Tutorial4">RSS Skin Tutorial</a>.</p>
+<h2>Usage</h2>
+<p>WebParser measures take the form:</p>
+{% highlight ini %}
+[MeasureParent]
+Measure=Plugin
+Plugin=WebParser
+URL=http://SomeSite.com
+RegExp="(?siU)&lt;Item&gt;(.*)&lt;/Item&gt;.*&lt;Item&gt;(.*)&lt;/Item&gt;"
+{% endhighlight %}	
+<p id="ParentChild">This example creates two <a href="#StringIndex">StringIndex</a> values in what is referred to as the "parent" WebParser measure.  The information is generally used in subsequent "child" WebParser measures:</p>
+{% highlight ini %}
+[MeasureChild1]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureParent]
+StringIndex=1
+
+[MeasureChild2]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureParent]
+StringIndex=2
+{% endhighlight %}
+<p>The values of the two <a href="#ParentChild">child</a> measures are now the information parsed into StringIndexes 1 and 2 by the <a href="#ParentChild">parent</a> measure.  These can then be used with <a href="/manual/meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="/manual/meters">meters</a>.
+
+<p><b>Note:</b> More information and examples for WebParser can be found at <a href="http://rainmeter.net/cms/Tips-WebParserPrimer">WebParser Primer</a> and <a href="http://rainmeter.net/cms/Rainmeter101-Tutorial4">RSS Skin Tutorial</a>.</p>
 
 <h2>Options</h2>
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+		<p>All <a href="/manual/measures/general-options">general measure options</a> are valid.</p>
 	</dd>
-
 
 	<dt id="URL"><code>URL</code></dt>
 	<dd>
-		<p><a href="http://en.wikipedia.org/wiki/Uniform_resource_locator">URL</a> to the file to be downloaded and parsed. The <code>URL</code> can also be another WebParser measure, in which case the already downloaded and parsed information can be reused (e.g. when displaying different <code>StringIndex</code> on the same page). For example: <code>URL=[ParentMeasure]</code></p>
+		<p><a href="http://en.wikipedia.org/wiki/Uniform_resource_locator">URL</a> to the site or file to be downloaded and parsed. If the name of another WebParser measure is used, e.g. <code>URL=[SomeMeasure]</code>, then the value of the <a href="#ParentChild">parent</a> measure is used, generally by referring to a specific <a href="#StringIndex">StringIndex</a> number.</p>
 
-		<p id="Authentication">WebParser <b>cannot</b> use cookies or other session-based authentication, so it <b>cannot</b> be used to retrieve information from web sites where you must be logged in. However, Webparser <b>can</b> be used on sites which support HTTP authentication. For example: <code>http://myname:mypassword@somesite.com</code>.</p>
+		<p id="Authentication">WebParser <b>cannot</b> use cookies or other session-based authentication, so it <b>cannot</b> be used to retrieve information from web sites requiring a login. However, Webparser <b>can</b> be used on sites which support <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP authentication</a>. E.g. <code>http://myname:mypassword@somesite.com</code>.</p>
 
-		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="http://en.wikipedia.org/wiki/File_URI_scheme">scheme</a>. For example: <code>URL=file://C:\path\file.ext</code>.</p>
+		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="http://en.wikipedia.org/wiki/File_URI_scheme">URI scheme</a>. E.g. <code>URL=file://<a href="/manual/variables/built-in-variables#CURRENTPATH">#CURRENTPATH#</a>SomeFile.txt</code>.</p>
 	</dd>
 
 	<dt id="RegExp"><code>RegExp</code></dt>
 	<dd>
 		<p>The regular expression used in parsing. The plugin uses <a href="http://www.pcre.org/">Perl Compatible Regular Expressions</a>, so check the <a href="http://www.perl.com/doc/manual/html/pod/perlre.html">Perl docs</a> for syntax and more info.</p>
-		
-		<p><b>Note:</b> <code>RegExp</code> can be used on "child" WebParser measures.</p>
 	</dd>
 
 	<dt id="FinishAction"><code>FinishAction</code></dt>
 	<dd>
-		A <a href="/manual/bangs">bang</a> or <a href="/manual/options#action">action</a> that is executed when the page has been downloaded and the parsing is done. This setting is only valid on WebParser measures that connect to a <code>URL</code>, and actions will not be fired on "child" WebParser measures that use another measure as the <code>URL</code> (i.e. <code>URL=[SomeMeasure]</code>).
+		<p>A <a href="/manual/bangs">bang</a> or <a href="/manual/options#action">action</a> that is executed when the page has been downloaded and the parsing is done. This option is only valid on measures that connect to a site or file with <code>URL</code>, and not on <a href="#ParentChild">child</a> measures.</p>
 	</dd>
 	
 	<dt id="StringIndex"><code>StringIndex</code></dt>
 	<dd>
-		Defines which string from the <code>RegExp</code> this measure returns. You can get the correct index values by setting <code>Debug=1</code>, which will add all matched strings to the <a>log</a>.
+		<p>Defines which captured string from the <code>RegExp</code> this measure returns.  This option is generally used in a <a href="#ParentChild">child</a> measure to determine which of the caputured values in a <a href="#ParentChild">parent</a> measure to use.</p>
 	</dd>
 	
 	<dt id="StringIndex2"><code>StringIndex2</code></dt>
 	<dd>
-		<p>The second string index is used when using a <code>RegExp</code> in a measure that uses data from another WebParser measure (i.e. the <code>URL</code> points to a measure and not to a real <code>URL</code>). In this case the <code>StringIndex</code> defines the index of the result of the other <code>RegExp</code> and the <code>StringIndex2</code> defines the index of this measure's <code>RegExp</code> (i.e. it defines the string that the measure returns).</p>
+		<p>The second string index is used when using a <code>RegExp</code> in a measure that uses data from another WebParser measure (i.e. the <code>URL</code> points to a <a href="#ParentChild">parent</a> measure. In this case the <code>StringIndex</code> defines the index of the result of the parent measure's <code>RegExp</code> and the <code>StringIndex2</code> defines the index of this measure's <code>RegExp</code> (i.e. it defines the string that the measure returns).</p>
 
 		<p><b>Note:</b> If the <code>RegExp</code> is not defined in this measure, the <code>StringIndex2</code> has no effect.</p>
 	</dd>
 	
 	<dt id="UpdateRate"><code>UpdateRate</code> <span>Default: <code>600</code></span></dt>
 	<dd>
-		<p>The rate how often the webpage is downloaded. This is relative to the config's main <code>Update</code> rate <b>and</b> any <code>UpdateDivider</code> on the measure. So the formula would be <code>Update</code> X <code>UpdateDivider</code> X <code>UpdateRate</code> = "how often the measure connects to the site". The default for <code>UpdateDivider</code> is 1, and the default for <code>UpdateRate</code> is 600. So if you set an <code>Update</code> of 1000, the default for WebParser is to connect every 10 minutes. (1000 X 1 X 600 milliseconds)</p>
+		<p>The rate in milliseconds determining how often the webpage is downloaded. This is relative to the config's main <a href="/manual/skins#Update">Update</a> rate <b>and</b> any <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> on the measure. So the formula would be <code>Update</code> X <code>UpdateDivider</code> X <code>UpdateRate</code> = "how often the measure connects to the site".</p>
 
-		<p>It is advisable to limit the rate so that the server does not get flooded with constant requests. Web server admins will not like it and you may well get banned from a server altogether if you try to poll the server too often. This is why a default of 600 is set for <code>UpdateRate</code>. You can override this and make it shorter, but it is advisable (and polite) to only hit websites as often as really needed.</p>
-
-		<p>You can use a combination of <code>UpdateDivider</code> and <code>UpdateRate</code> to both limit both how often you hit the website and how often Rainmeter updates the values returned by the measure and used by meters. However, In general practice it is often best to just set an <code>UpdateRate</code> and leave <code>UpdateDivider</code> off, so there is no lag between the measure obtaining information from the website and its display in your skin.</p>
+		<p><b>Note:</b> Some caution should be used in determining how often to connect to a site with WebParser.  Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
 	</dd>
 	
 	<dt id="DecodeCharacterReference"><code>DecodeCharacterReference</code> <span>Default: <code>0</code></span></dt>
@@ -79,61 +99,44 @@ title: 'WebParser plugin'
 			<li><code>1</code>: Logs DEBUG message to the log. Rainmeter must also be in <a href="/manual/settings/rainmeter-section#Debug">Debug</a> mode.</li>
 			<li><code>2</code>: Saves the downloaded webpage to <code>C:\WebParserDump.txt</code>. This can be useful since some web servers send different information depending which client requests it. Remember to remove this from your config once you have it working correctly.</li>
 		</ul>
+		 <p><b>Hint:</b> Determining <a href="#StringIndex">StringIndex</a> values to use in a <a id="ParentChild">child</a> measure can be done by setting <code>Debug=1</code> on a measure having the <code>RegExp</code> option, which will display matched strings and StringIndex numbers in the Rainmeter <a>log</a></p>
 	</dd>
 	
 	<dt id="Debug2File"><code>Debug2File</code></dt>
 	<dd>
-		<p>If <code>Debug=2</code>, then the parameter will allow you to set the path <b>and</b> filename of the file to use for the downloaded webpage (instead of <code>C:\WebParserDump.txt</code>). This will allow you to use WebParser to parse the local version for testing, or for use in another measure or skin.</p>
-			
-		<p><b>Notes:</b> The directory must already exist.</p>
+		<p>If the <code>Debug</code> option is set to <code>2</code>, this option can be set to the path and name of the file to use for the downloaded webpage instead of <code>C:\WebParserDump.txt</code>.</p>
 		
-		<p><b>Usage:</b></p>
-{% highlight ini %}
-[WebParserMeasure]
-Measure=Plugin
-Plugin=WebParser
-....
-Debug2File="C:\filename.txt"
-Debug=2
-
-[WebParserMeasure2]
-Measure=Plugin
-Plugin=WebParser
-....
-; Saves to current skin folder
-Debug2File="Debug2File.txt"
-Debug=2
-{% endhighlight %}
+		<p><b>Note:</b> The folder for the file must already exist.</p>
 	</dd>
 	
 	<dt id="Download"><code>Download</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		If <code>Download=1</code>, the <code>URL</code> is downloaded to a temporary folder and the name to the file is returned as string value. The measure can be bound to a <a href="/manual/meters/image">Image</a> meter to download images from web and show them. If the <code>RegExp</code> is defined, the parsed string is interpreted as a link to the downloaded image.
+		<p>If <code>Download=1</code>, the <code>URL</code> is downloaded to Windows <code>TEMP</code> folder and the name to the file is returned as string value. The measure can then be used with <a href="/manual/meters/general-options/#MeasureName">MeasureName</a> on an <a href="/manual/meters/image">Image</a> meter to download images from a site and display them.</p>
 	</dd>
 	
 	<dt id="DownloadFile"><code>DownloadFile</code></dt>
 	<dd>
-		<p>When <code>Download=1</code>, the file is downloaded to a <code>DownloadFile</code> folder in the skin folder as a filename set to this value.</p>
+		<p>If the <code>Download</code> option is set to <code>1</code>, this option defines a relative path and file name where the downloaded file will be saved instead of in Windows <code>TEMP</code>.
 		
-		<p>For example, if you define <code>DownloadFile=image.jpg</code>, a <code>DownloadFile</code> folder will be created in the current skin folder then the downloaded file is saved as <code>image.jpg</code>. However, if you define as <code>DownloadFile=photo\image.jpg</code>, the subfolder <code>photo</code> is created then the file is saved in this folder.</p>
-		
-		<p><b>Note:</b> This file is <b>not</b> a temporary file so it is <b>not</b> deleted even after closing a skin. Also, it is not possible to specify an absolute path.</p>
+		<p>A folder <code>DownloadFile</code> will be created in the <a href="/manual/variables/built-in-variables#CURRENTPATH">current folder</a>, and the defined relative path and file name will be created under that.  It is not possible to specify an absolute path.</p>
+
+		<p><b>Note:</b> This file is <b>not</b> a temporary file so it is <b>not</b> deleted after unloading a skin or exiting Rainmeter.</p>
 
 	</dd>
 	
 	<dt id="ErrorString"><code>ErrorString</code></dt>
 	<dd>
-		 String that is returned in case there is a parse error.
+		 <p>The value of the measure will be set to the string defined in this option if the <code>RegExp</code> results in a regular expression parsing error.</p>
 	</dd>
 	
 	<dt id="ForceReload"><code>ForceReload</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		 WebParser reads the resource only if it has been modified. This can be overridden with <code>ForceReload=1</code>.
+		 <p>WebParser reads the resource only if it has been modified since last read. This can be overridden with <code>ForceReload=1</code>.</p>
 	</dd>
 	
 	<dt id="ProxyServer"><code>ProxyServer</code></dt>
 	<dd>
-		<p>Name of the proxy server. The plugin doesn't support any authentication, so <b>only</b> use servers that does not require it or you need a some different way to authenticate yourself to the proxy server.</p>
+		<p>Name of the proxy server used by Windows Internet Explorer on the system. The plugin doesn't support any authentication, so <b>only</b> use proxy settings that do not require it.</p>
 
 		<p><b>Examples:</b> <code>ProxyServer=ServerIP:Port</code>, <code>ProxyServer=ServerName:Port</code></p>
 	</dd>
@@ -142,50 +145,110 @@ Debug=2
 	<dd>
 		 <p>Defines the codepage of the downloaded web page. For example: <code>CodePage=28605</code> interprets the page as <code>Latin 9 (ISO-8859-15)</code>. <code>CodePage=65001</code> means <code>UTF-8</code>. <code>CodePage=0</code> means no conversion is done.</p>
 		 
-		 <p><a href="http://www.microsoft.com/globaldev/reference/wincp.mspx">Here</a> is a list of other Windows code pages.</p>
+		 <p>Codepage definitions and more information can be found at <a href="http://www.microsoft.com/globaldev/reference/wincp.mspx">Windows code pages</a>.</p>
 	</dd>
 </dl>
 
 <h2>Examples</h2>
 
-<p>Retrieve the title and first item from Slashdot's RSS feed.</p>
+<p>Retrieve the site title, first item and link from Slashdot's RSS feed.</p>
 
 {% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureRSSParent]
+Measure=Plugin
+Plugin=WebParser
+URL=http://slashdot.org/slashdot.rdf
+RegExp="(?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;"
+
 [MeasureRSSTitle]
 Measure=Plugin
 Plugin=WebParser
-UpdateRate=3600
-URL=http://slashdot.org/slashdot.rdf
-RegExp="(?siU)<title>(.+)</title>(.+)<item(.+)<title>(.+)</title>"
+URL=[MeasureRSSParent]
 StringIndex=1
-FinishAction=!Redraw
 
-[MeasureRSS]
+[MeasureRSSItemTitle]
 Measure=Plugin
 Plugin=WebParser
-URL=[MeasureRSSTitle]
-StringIndex=4
-Substitute="&amp;":"&"
+URL=[MeasureRSSParent]
+StringIndex=2
+
+[MeasureRSSItemLink]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureRSSParent]
+StringIndex=3
+
+[MeterRSSTitle]
+Meter=String
+MeasureName=MeasureRSSTitle
+FontSize=14
+FontColor=222,255,227,255
+StringStyle=Bold
+AntiAlias=1
+
+[MeterRSSItemTitle]
+Meter=String
+MeasureName=MeasureRSSItemTitle
+Y=2R
+FontSize=11
+FontColor=255,255,255,255
+StringStyle=Bold
+AntiAlias=1
+LeftMouseUpAction=["[MeasureRSSItemLink]"]
+DynamicVariables=1
 {% endhighlight %}
 
-<p>Download the current weather map from Finnish Meteorological Institute.</p>
+<p>Retrieve the title, download and display an image for the first item in the Customize.org RSS feed.</p>
 
 {% highlight ini %}
-[MeasureDL]
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[MeasureCustoParent]
 Measure=Plugin
-Plugin=WebParser
-UpdateRate=1800
-URL=http://www.fmi.fi/saa/sadejapi_5.html?selected=7
-RegExp="(?siU)ennuste" SRC=\"(.*)\"></TD>"
-FinishAction=!Redraw
+Plugin=WebParser.dll
+URL=http://customize.org/feeds/submissions
+RegExp="(?siU).*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;description&gt;.*src="(.*)".*&lt;/description&gt;.*&lt;link&gt;(.*)&lt;/link&gt;"
+
+[MeasureTitle]
+Measure=Plugin
+Plugin=WebParser.dll
+URL=[MeasureCustoParent]
 StringIndex=1
+
+[MeasureImage]
+Measure=Plugin
+Plugin=WebParser.dll
+URL=[MeasureCustoParent]
+StringIndex=2
 Download=1
 
+[MeasureLink]
+Measure=Plugin
+Plugin=WebParser.dll
+URL=[MeasureCustoParent]
+StringIndex=3
+
+[MeterTitle]
+Meter=String
+MeasureName=MeasureTitle
+FontSize=12
+FontColor=255,255,255,255
+SolidColor=0,0,0,255
+AntiAlias=1
+
 [MeterImage]
-Meter=IMAGE
-MeasureName=MeasureDL
-X=0
-Y=0
-W=400
-H=300
+Meter=Image
+MeasureName=MeasureImage
+Y=2R
+W=80
+H=60
+PreserveAspectRatio=2
 {% endhighlight %}
