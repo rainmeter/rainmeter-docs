@@ -10,30 +10,33 @@ title: 'Time measure'
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+		<p>All <a href="/manual/measures/general-options">general measure options</a> are valid.</p>
 	</dd>
 
 	<dt id="Format"><code>Format</code> <span>Default: <code>%H:%M:%S</code></span></dt>
 	<dd>
-		Format for the measure value. This can be a combination of text and <a href="#FormatCodes">Format codes</a>.<br><br>
+		<p>Format for the measure value. This can be a combination of text and <a href="#FormatCodes">Format codes</a>.</p>
 		
-		<b>Note:</b> If a <code>Format</code> is not given, the <a href="/manual/measures#Values">string value</a> returned is in the format <code>%H:%M:%S</code>, however the <a href="/manual/measures#Values">number value</a> will be a <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>.  If a <code>Format</code> is given, the number value will be the value defined by the format, or zero if the format does not define a numerical value.
+		<p><b>Note:</b> If a <code>Format</code> is not given, the <a href="/manual/measures#Values">string value</a> returned is in the format <code>%H:%M:%S</code>, however the <a href="/manual/measures#Values">number value</a> will be a <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>.  If a <code>Format</code> is given, the number value will be the value defined by the format, or zero if the format does not define a numerical value.</p>
 	</dd>
 	
 	<dt id="TimeStamp"><code>TimeStamp</code></dt>
 	<dd>
-		<a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a> or <a href="/manual/measures/calc">formula</a> defining a timestamp. If defined, the measure will use this date/time instead of the current system values.
+		<p><a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a> or <a href="/manual/measures/calc">formula</a> defining a timestamp. If defined, the measure will use this date/time instead of the current system values.</p>
 	</dd>
 
 	<dt id="TimeZone"><code>TimeZone</code></dt>
 	<dd>
-		If specified, the GMT time is used with the specified offset (e.g. <code>+2.0</code>. <code>+0.0</code> or <code>-1.0</code>). Otherwise, local time is used.
+		<p>If specified, the GMT time is used with the specified positive or negative offset number. E.g. <code>TimeZone=-5</code>. If not specified, or set to <code>local</code>, local time for the computer is used.</p>
+		
+		<p><b>Note:</b> Formulas are not allowed in this option.</p>
 	</dd>
 
 	<dt id="DaylightSavingTime"><code>DaylightSavingTime</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		If set to <code>1</code> and if <code>TimeZone</code> is specified, the current local value for daylight saving time is applied to the time.<br>
-		<br><b>Note:</b> This setting can be temporarily incorrect if the timezone you are setting changes between Daylight Savings and Standard time at different times of year than your location. Name of the value. If not specified, the default value is retrieved.
+		<p>If set to <code>1</code> and if <code>TimeZone</code> is specified, the current local value for daylight saving time is applied to the time.</p>
+		
+		<p><b>Note:</b> This setting can be temporarily incorrect if the timezone you are setting changes between Daylight Savings and Standard time at different times of year than your location. Name of the value. If not specified, the default value is retrieved.</p>
 	</dd>
 </dl>
 
