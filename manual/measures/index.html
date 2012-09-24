@@ -46,7 +46,11 @@ UpdateDivider=-1
 
 <p>Although a string value is not a "true" number, it can be used like a number in formulas and options, as long as it contains only numeric characters and <a href="/manual/measures/calc#Operators">valid operators</a>. (Otherwise, it is treated as zero.) Likewise, a number value can be displayed or stored to a variable as a string of text, although this may cause the value to lose precision.</p>
 
-<p id="Percentage">Some meters require that a measure provides a value that can be used as a <b>percentage</b>.  This means that either the measure provides a value in the range of 0.0 to 1.0, or that <code>MinValue</code> and <code>MaxValue</code> be set on the measure, providing values that define a low and high range.</p>
+<h2 id="Percentage">Percentage</h2>
+
+<p>Some meters require that a measure provide a value that can be used as a <b>percentage</b>. Measures that provide a actual maximum range value based on the resource being measured or with the range of 0.0 to 1.0 are interpreted as a percentage by these meters.  Measure which do not wil require that the <a href="/manual/measures/general-options/#MaxValue">MinValue</a> and <a href="/manual/measures/general-options/#MaxValue">MaxValue</a> options be set on the measure to define a low to high range. Setting these options does not effect the actual value of the measure, but only defines the high and low range used by meters.</p>
+
+<p><b>Note:</b> The range for a measure can be viewed in the <a>Skins tab</a> of the <a href="/manual/user-interface/about">About dialog</a>.</p>
 
 <h2 id="Order">Order</h2>
 
