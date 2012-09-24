@@ -6,7 +6,6 @@ Getting Started
 	* [Manage](/manual/user-interface/manage)
 	* [About](/manual/user-interface/about)
 	* [Skin Installer](/manual/user-interface/skin-installer)
-	* [Skin Packager](/manual/user-interface/skin-packager)
 	* [Context Menus](/manual/user-interface/context-menus)
 * [Installation](/manual/installation)
 
@@ -80,6 +79,7 @@ Reference
 
 More
 ===============
+* [Distributing Skins](/manual/distributing-skins)
 * [Tips & Tricks](/tips)
 * [Snippets](/snippets)
 * [Version History](/history)
