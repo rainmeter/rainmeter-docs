@@ -79,7 +79,7 @@ Reference
 
 More
 ===============
-* [Distributing Skins](/manual/distributing-skins)
+* [Distributing Skins](/distributing-skins)
 * [Tips & Tricks](/tips)
 * [Snippets](/snippets)
 * [Version History](/history)
