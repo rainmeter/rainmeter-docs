@@ -38,7 +38,7 @@ title: 'WebParser Guide'
 <p>So what we are going to do today is parse a website <a href="http://www.geobytes.com/IpLocator.htm?GetLocation" target="blank">http://www.geobytes.com/IpLocator.htm?GetLocation</a> to get our IP and location information to use in a skin. Click that link now if you want to open the page in a new tab/window.</p>
 <p>Here is what the web page we are going to parse looks like:</p>
 <div class="exampleprev">
-<img src="../../img/tips/webparser-guide/WebParserGuideImage01.jpg" width="400"/>
+<img src="../../img/tips/webparser-guide/WebParserGuideImage01.jpg" width="550"/>
 </div>
 <br/>
 <p>Here is the information we are going to extract from it (highlighted):</p>
@@ -48,7 +48,7 @@ title: 'WebParser Guide'
 <br/>
 <p>Here is the final skin we will create: (I have kept the skin simple as the purpose is to learn WebParser, not skinning in general)</p>
 <div class="exampleprev">
-<img src="../../img/tips/webparser-guide/WebParserGuideImage02.jpg" width="400"/>
+<img src="../../img/tips/webparser-guide/WebParserGuideImage02.jpg" width="300"/>
 </div>
 <h3>Let's Build It</h3>
 <p>The first thing you want to do is to go to the web page in your browser, right-click, choose "View Page Source", copy everything, paste it into a text editor and save the output/source of the web page to a text file. (Save it as a .txt file and not .html, so you can easily use the text editor to work with it in a bit.) I saved it as "Webpage.txt" which is included in the webparser_tutorial.zip file for this tutorial</p>
@@ -113,7 +113,7 @@ Prefix="IP Address: "
 </pre>
 <p>So this will display "IP Address: 72.205.26.142" on your skin as below:</p>
 <div class="exampleprev">
-<img src="../../img/tips/webparser-guide/WebParserGuideImage02.jpg" width="400"/>
+<img src="../../img/tips/webparser-guide/WebParserGuideImage02.jpg" width="300"/>
 </div>
 <br/>
 <p>Now let's get the next bit of information we want from the website (remember, the RegExp reads the website in order from top to bottom, so you need to use the correct order in the "RegExp=" statement. You can display the information in any order you want on your skin however)</p>
