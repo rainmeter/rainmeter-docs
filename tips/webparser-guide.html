@@ -4,4 +4,174 @@ title: 'WebParser Guide'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>PlaceHolder</p>
+<p>This little tutorial is meant to shed some light on using the WebParser.dll plugin in Rainmeter to retrieve information from a website for use in your skins. A lot of us have used WebParser to get RSS feeds or other data from websites, but often by using/tweaking other folk's code and without really understanding how it works or how to create one of those ridiculous "RegExp=" statements which are the core of how you parse a web page to extract information.</p>
+<p>This is not meant to be exhaustive, nor do I go into the formats of XML files or how they are used in RSS feeds. Suffice it to say though, that once you know how to parse a web page in general, looking for the XML/RSS tags will be a lot easier.</p>
+<h3>Getting Started</h3>
+<p>First, let's get a .rmskin file with everything you will need for this tutorial. Simply download and run this file to get started.</p>
+<p><a href="https://github.com/downloads/rainmeter/rainmeter-docs/WebParserGuide_1.0.rmskin">Download HERE</a></p>
+<p>You may also want to click here: <a href="http://rainmeter.net/cms/Plugins-WebParser" target="_blank">Manual - WebParser</a> so we have the full manual for WebParser as a reference as we go along.  It will open in a new tab/window.</p>
+<h3>RegExp</h3>
+<p>Now let's spend a minute talking about the key part of the code, the "RegExp=" parameter. WebParser uses this "Regular Expression" to search for the information you want to retrieve, and return the information in a two dimensional "array". The first dimension is the "Index" number, (which item number in the array, starting with 1 and going to however many things you search for) and the second is the actual data retrieved based on the results of the RegExp.</p>
+<p>So how do we build one of these mysterious "RegExp=" statements in Rainmeter? Let me use a template showing the format in simple terms:<p>
+<code>RegExp="(?siU)Search1(.*)Search2.*"</code>
+<p>So enclosed in quotes, you have</p>
+<ul>
+<li><b>(?siU)</b> - which is an "options" command for RegExp, telling it how you want it to behave</li>
+<li><b>Search1</b> - Which will be some text you will search on to get you right up to the data you want.</li>
+<li><b>(.*)</b> - The data you want returned in the array to use in your skin. The parentheses tell it to "capture" everything ".*" between Search1 and Search2.</li>
+<li><b>Search2</b> - Use this to tell RegExp what to look for to know it's time to "stop" collecting information in (Return1)</li>
+<li><b> .*</b> - This will contain data from the website which is between this set of search/return parameters and the next one. It will not be returned as you did not enclose the .* in parentheses, and will not use a StringIndex number.</li>
+</ul>
+<p><b>What is this ?siU stuff?</b></p>
+<p>The "?s" tells RegExp to ignore "line breaks" when doing a search. That way if you search for "Every good boy deserves favor" and it is split on two lines in the output, it will still match.</p>
+<p>The "i" tells the search to be "case insensitive". Matches will work on both upper and lower case.</p>
+<p>The "U" tells RegExp to be "ungreedy", meaning that it will return only the first instance of the match on the search string.</p>
+<p><b>I obviously don't know what "stuff to return" is, what do I put there?</b></p>
+<p>You have two options. You can put in more Regular Expression codes to grab just the data you want and exclude stuff you don't want, or you can tell RegExp to just get everything until you tell it to stop with Search2 by using "(.*)" without the quotes. the .* just means "everything". <i>It literally means "Any character - The Period, zero or more times - The asterisk.</i></p>
+<p>An important point is that "(.*)" "returns" data in a StringIndex and ".*" "skips" data you don't need / want to return.</p>
+<p><b>A quick example:</b></p>
+<p>You have a web page you want to get the "TITLE" tag from. Here is the RegExp you would use:</p>
+<p><code>RegExp="(?siU)&lt;TITLE&gt;(.*)&lt;/TITLE&gt;"</code></p>
+<p>So we have told RegExp to search for the text "&lt;TITLE&gt;" then return everything after it in "StringIndex 1" of the array until it sees "&lt;/TITLE&gt;", where it will stop.</p>
+<p>This guide is meant to be simple and very "WebParser" focused.  It is NOT a full-blown guide to "Regular Expressions".  I would encourage you however to either now or later on open up a browser tab/window here: <a href="http://perlcity.com/perl-regular-expressions.html" target="_blank">Perl Regular Expressions</a> and take a look at the full range of possibilities for regular expressions.  It is a VERY powerful tool.</p>
+<h3>Our Example Skin</h3>
+<p>So what we are going to do today is parse a website <a href="http://www.geobytes.com/IpLocator.htm?GetLocation" target="blank">http://www.geobytes.com/IpLocator.htm?GetLocation</a> to get our IP and location information to use in a skin. Click that link now if you want to open the page in a new tab/window.</p>
+<p>Here is what the web page we are going to parse looks like:</p>
+<div class="exampleprev">
+<img src="../../img/tips/webparser-guide/WebParserGuideImage01.jpg"/>
+</div>
+<br/>
+<p>Here is the information we are going to extract from it (highlighted):</p>
+<div class="exampleprev">
+<img src="../../img/tips/webparser-guide/WebParserGuideImage03.jpg"/>
+</div>
+<br/>
+<p>Here is the final skin we will create: (I have kept the skin simple as the purpose is to learn WebParser, not skinning in general)</p>
+<div class="exampleprev">
+<img src="../../img/tips/webparser-guide/WebParserGuideImage02.jpg"/>
+</div>
+<h3>Let's Build It</h3>
+<p>The first thing you want to do is to go to the web page in your browser, right-click, choose "View Page Source", copy everything, paste it into a text editor and save the output/source of the web page to a text file. (Save it as a .txt file and not .html, so you can easily use the text editor to work with it in a bit.) I saved it as "Webpage.txt" which is included in the webparser_tutorial.zip file for this tutorial</p>
+<p>Let's start by looking at the first bit of information we want to retrieve.</p>
+<div class="exampleprev">
+<img src="../../img/tips/webparser-guide/WebParserGuideImage03.jpg"/>
+</div>
+<br/>
+<p>We want to start by getting our IP address. On the web page, it is near the top of the area with all the information we want, with a label "IP Address to locate:"</p>
+<p>Open up Webpage.txt (the saved output from the website) and search for that label. You will find a section of the html which looks like this:</p>
+<pre>&lt;td&gt;
+&lt;div align="left"&gt;
+&lt;form method="POST" action="IpLocator.htm?GetLocation"&gt;
+ &lt;input type="hidden" name="cid" value="0"&gt;
+ &lt;input type="hidden" name="c" value="0"&gt;
+ &lt;input type="hidden" name="Template" value="iplocator.htm"&gt;
+ &lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddress" size="15"
+     value="72.205.26.142"&gt; &lt;input type="submit" value="Submit"&gt;
+ &lt;/h2&gt;
+</pre>
+<p><i>I hope I don't have to say that the actual IP address will be different for you than what is in this guide. If that comes as a surprise to you, please exit your browser now and uninstall Rainmeter.  Then restart your browser and go here: <a href="http://icanhascheezburger.com/" target="_blank">LOLCATS</a></i>
+</p>
+<p>So let's start building our "MEASURE" and a sample "METER" showing the output</p>
+<pre>[MeasureIPAddress]
+Measure=Plugin
+Plugin=WebParser
+UpdateRate=1800
+Url="http://www.geobytes.com/IpLocator.htm?GetLocation"
+RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value="(.*)"&gt;.*"
+StringIndex=1
+</pre>
+<p>What we are telling WebParser is:</p>
+<p><b>UpdateRate=1800</b> - We want to check the website at a rate 1800 times the value in the "Update=" parameter in the "Rainmeter" section. As this defaults to "1000" or once every 1000 milliseconds (1 second) we will be running WebParser every 1800 seconds or 30 minutes. This is plenty often, you could even check every hour or more as your IP information doesn't change much and you don't want to "spam" the website with requests. You may well find yourself blocked...</p>
+<p><b>Url="http://www.geobytes.com/IpLocator.htm?GetLocation"</b> - The URL to the website. It can be set as a variable in the "VARIABLES" section to make it easier to find and change if you want.>/p>
+<p><b>RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value="(.*)"&gt;"</b> - Ah, the meat and potatoes...</p>
+<p>You are telling RegExp to:</p>
+<p>Use the (?siU) command parameters, (described earlier) search for IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value=" and return everything until it sees "&gt; where it will stop.</p>
+<p>So if we look again at our output in Webpage.txt </p>
+<pre>&lt;td&gt;
+&lt;div align="left"&gt;
+&lt;form method="POST" action="IpLocator.htm?GetLocation"&gt;
+ &lt;input type="hidden" name="cid" value="0"&gt;
+ &lt;input type="hidden" name="c" value="0"&gt;
+ &lt;input type="hidden" name="Template" value="iplocator.htm"&gt;
+ &lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddress" size="15"
+     value="72.205.26.142"&gt; &lt;input type="submit" value="Submit"&gt;
+ &lt;/h2&gt;
+</pre>
+<p>You can see that we will return 72.205.26.142 in index 1</p>
+<p>Now let's display the output in a "METER"</p>
+<pre>[MeterIPAddress]
+MeasureName=MeasureIPAddress
+Meter=STRING
+X=2
+Y=2
+FontColor=0,0,0,255
+FontSize=12
+StringAlign=LEFT
+FontFace=Tahoma
+Antialias=1
+Prefix="IP Address: "
+</pre>
+<p>So this will display "IP Address: 72.205.26.142" on your skin as below:</p>
+<div class="exampleprev">
+<img src="../../img/tips/webparser-guide/WebParserGuideImage02.jpg"/>
+</div>
+<br/>
+<p>Now let's get the next bit of information we want from the website (remember, the RegExp reads the website in order from top to bottom, so you need to use the correct order in the "RegExp=" statement. You can display the information in any order you want on your skin however)</p>
+<p>The next bit in the Webpage.txt file is the "Country Code".</p>
+<pre>&lt;tr&gt;
+&lt;td align="right"&gt;Country Code&lt;/td&gt;
+&lt;td align="right"&gt;&lt;input name="ro-no_bots_pls12" value="US" size="20" readonly&gt;&lt;/td&gt;
+</pre>
+<p>So we want to add to our "RegExp=" statement, search for the Country Code and return the result in the next index of the array.</p>
+<pre>RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value="(.*)"&gt;.*ro-no_bots_pls12" value="(.*)" size="20".*</pre>
+<p>So after the first pair of start/stop searches, we are adding:</p>
+<pre>.*ro-no_bots_pls12" value="(.*)" size="20".*</pre>
+<p>This will tell RegExp to skip everything until it finds ro-no_bots_pls12" value=" and then return everything until it sees " size="20" and put it in StringIndex 2. The result in my example will be "US".</p>
+<p>We will need another "MEASURE" to retrieve the data to display in our next "METER".</p>
+<pre>[MeasureCountryCode]
+Measure=Plugin
+Plugin=WebParser
+Url=[MeasureIPAddress]
+StringIndex=2
+</pre>
+<p>NOTE: The "Url" parameter is now calling the original "MeasureIPAddress" measure which has the "RegExp=" statement in it instead of the URL for the website. You do this so you are not hitting the website with a new RegExp statement every time you want to get a bit of information. You get everything in the first measure with the "RegExp=" statement in it, all the results are indexed by this first measure, then you can use the index numbers and data in later Measure/Meter combinations without going back to the website. Not only is this orders of magnitude faster, but you are being a good internet citizen. (Remember the "you will be blocked" admonition earlier?)</p>
+<p>And another "METER" to display the information:</p>
+<pre>[MeterCountryCode]
+MeasureName=MeasureCountryCode
+Meter=STRING
+X=2
+Y=17r
+FontColor=0,0,0,255
+FontSize=12
+StringAlign=LEFT
+FontFace=Tahoma
+Antialias=1
+Prefix="Country Code: "
+</pre>
+<p>Ok, so you just carry on like that until you have retrieved all the data you want from the website. I won't lay it all out here, but you can go through the sample IPLookup.ini file included in the .zip</p>
+<h3>Using "DEBUG" to make things easier</h3>
+<p>Using The "<b>Debug=1</b>" statement in WebParser will cause your skin to output the index numbers and associated information into "Rainmeter.log" in your main ..\Rainmeter folder. Turn this on by putting "Debug=1" on your Measure:</p>
+<pre>[MeasureWebsite]
+Measure=Plugin
+Plugin=Plugins\WebParser.dll
+UpdateRate=1800
+Url=#URL#
+RegExp="(?siU)Search1(Return1)Search2(Return2)"
+Debug=1
+</pre>
+<p>Then restart Rainmeter, right click the skin, and say "Show Log File". It will have output like this:</p>
+<pre>DEBUG: (00:53:29.391) Refreshing (Name: "IPLookup" Ini: "IP.ini")
+DEBUG: (00:53:29.469) WebParser: Fetching URL: http://www.geobytes.com/IpLocator.htm?GetLocation
+DEBUG: (00:53:29.859) WebParser: Finished URL: http://www.geobytes.com/IpLocator.htm?GetLocation
+DEBUG: (00:53:29.859) WebParser: (Index  1) 72.205.26.142
+</pre>
+<p>Which tells you that the data "72.205.26.142" is in Index 1 and will carry on showing every index / data combination retrieved by your RegExp statement. Very useful for figuring out why your "RegExp=" statement isn't working right.</p>
+<p>To turn Debug off, remove the "Debug=1" statement from the Measure, exit Rainmeter, delete the "Rainmeter.log" file and restart Rainmeter.</p>
+<br/>
+<p><b>I hope this guide will help you get started with WebParser.  It is one of the most powerful features of Rainmeter.</p>
+<p>I do recommend that you:</b></p>
+<ul>
+<li>Read the Rainmeter Manual entry for WebParser <a href="/manual/plugins/webparser" target="_blank">HERE</a></li>
+<li>Do the excellent RSS Reader Skin Tutorial by Alex2539 <a href="http://rainmeter.net/cms/Rainmeter101-Tutorial4" target="_blank">HERE</a></li>
+<li>Learn more about Regular Expressions <a href="http://perlcity.com/perl-regular-expressions.html" target="_blank">HERE</a></li>
+</ul>
