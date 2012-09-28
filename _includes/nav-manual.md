@@ -5,8 +5,8 @@ Getting Started
 * [User Interface](/manual/user-interface/)
 	* [Manage](/manual/user-interface/manage)
 	* [About](/manual/user-interface/about)
-	* [Skin Installer](/manual/user-interface/skin-installer)
 	* [Context Menus](/manual/user-interface/context-menus)
+	* [Skin Installer](/manual/user-interface/skin-installer)	
 * [Installation](/manual/installation)
 
 Reference
