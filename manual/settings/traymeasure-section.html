@@ -4,7 +4,7 @@ title: '[TrayMeasure] section'
 ---
 <!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>The [TrayMeasure] section defines a measure for the <a href="http://en.wikipedia.org/wiki/Taskbar#Taskbar_elements">notification area icon</a>. To use the default Rainmeter icon, remove the [TrayMeasure] section completely.</p>
+<p>The [TrayMeasure] section defines a <a href="/manual/measures/">measure</a> for the <a href="http://en.wikipedia.org/wiki/Taskbar#Taskbar_elements">notification area icon</a>. To use the default Rainmeter icon, remove the [TrayMeasure] section completely.</p>
 
 <h2>Options</h2>
 <dl>
@@ -37,6 +37,24 @@ title: '[TrayMeasure] section'
 		<p>A simple <code>Measure</code> that returns a single value, combined with a <code>TrayBitmap</code> path and name of a single 16x16 .ico file can be used to replace the default tray icon with a custom one.</p>
 		
 		<p><b>Note:</b> The path to a bitmap image or .ico files is a <a href="/manual/options">relative path</a> from the main Skins\ folder (i.e. <code>TrayBitmap=Icons\MyIcon.ico</code>.)</p>
-		
 	</dd>
 </dl>
+
+<h2>Examples</h2>
+<p>Show total network activity as a histogram.</p>
+{% highlight ini %}
+[TrayMeasure]
+Measure=NetTotal
+Interface=0
+TrayMeter=Histogram
+{% endhighlight %}
+
+<p>Replace the default tray icon with a custom one.</p>
+{% highlight ini %}
+[TrayMeasure]
+Measure=Calc
+Formula=1
+TrayMeter=Bitmap
+TrayBitmap=Icons\MyIcon.ico
+{% endhighlight %}
+
