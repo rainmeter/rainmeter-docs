@@ -23,6 +23,7 @@ Reference
 * [Meters](/manual/meters/)
 	* [General Options](/manual/meters/general-options/)
 		* [Image Options](/manual/meters/general-options/image-options)
+		* [Styles](/manual/meters/general-options/styles)
 		* [Tooltips](/manual/meters/general-options/tooltips)
 	* [Bar](/manual/meters/bar)
 	* [Bitmap](/manual/meters/bitmap)
