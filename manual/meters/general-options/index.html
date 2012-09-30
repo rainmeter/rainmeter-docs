@@ -15,36 +15,7 @@ title: 'General Meter Options'
 
 	<dt id="MeterStyle"><code>MeterStyle</code></dt>
 	<dd>
-		<p>Specifies one or more sections delimited with <code>|</code> to inherit option values from.</p>
-
-		<p>This allows you to centralize common options for meters into a single section. The meter will inherit all applicable options from the section(s) defined.</p>
-
-{% highlight ini %}
-[StringStyle]
-FontColor=#Color#
-FontFace=Trebuchet MS
-FontSize=11
-StringEffect=SHADOW
-StringStyle=BOLD
-StringAlign=LEFT
-AntiAlias=1
-
-[MeterOne]
-Meter=STRING
-MeasureName=MeasureOne
-MeterStyle=StringStyle
-X=5R
-Y=5R
-
-[MeterTwo]
-Meter=STRING
-MeasureName=MeasureTwo
-MeterStyle=MyStringStyle
-X=5R
-Y=5R
-{% endhighlight %}
-
-	<b>Note:</b> You may not "daisy chain" MeterStyles. In other words although a meter may be used as a MeterStyle for another meter, that second one may not be used as a MeterStyle for a third.
+		<p>Specifies one or more sections as <a href="/manual/meters/general-options/styles">styles</a> from which option values are inherited. Multiple styles are delimited with pipes (<code>|</code>).</p>
 	</dd>
 
 	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, <code>MeasureName3</code>... </dt>
