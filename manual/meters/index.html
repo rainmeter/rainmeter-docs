@@ -65,7 +65,7 @@ Text=Hello, world!
 
 <p>Inherited options are used just as if they were explicitly written in the child meter. For example, if the <a href="/manual/variables/built-in-variables#CURRENTSECTION">#CURRENTSECTION#</a> variable is used in an inherited option, it resolves as the name of the child meter, not the parent. Similarly, if a <a href="/manual/meters/general-options/#XY">relative position</a> is used, such as <code>X=5R</code>, the meter immediately previous to the child meter is used, not the parent's.</p>
 
-<p>Meters may inherit options from sections that are not meters. A skin section of any name<sup>1</sup> that does not have the <code>Meter</code> or <code>Measure</code> options is informally called a <strong>style</strong>. A style section is completely ignored by Rainmeter unless it is referenced in the <code>MeterStyle</code> option of a meter.</p>
+<p>Meters may inherit options from sections that are not meters. A skin section of any name<sup>1</sup> that does not have the <code>Meter</code> or <code>Measure</code> options is informally called a <strong>style</strong>. A style section is completely ignored by Rainmeter unless it is referenced in the <code>MeterStyle</code> option of a meter. Options that are not valid for the child meter are also simply ignored, which means that the parent and child can be different types.</p>
 
 <p class="footnote">1. Aside from [Rainmeter] and [Variables], which are <a href="/manual/skins/#Format">reserved for special purposes</a>.</p>
 
