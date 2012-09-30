@@ -54,42 +54,6 @@ Text=Hello, world!
 
 <h2 id="Styles">Styles</h2>
 
-<p>Meters can use options from other meters. Using <a href="/manual/meters/general-options/#MeterStyle">MeterStyle</a>, one meter may <strong>inherit</strong> all options from one or more "parent" meters. The only options that cannot be inherited are:</p>
+<p>Meters can use option values from other meters. Using the <a href="/manual/meters/general-options/#MeterStyle">MeterStyle</a> option, one meter may <strong>inherit</strong> all options from one or more "parent" sections, called <strong>styles</strong>.</p>
 
-<ul>
-	<li><p><a href="/manual/meters/general-options/#Meter">Meter</a>. The meter type must be explicitly set in order to identify a section as a meter.</p></li>
-	<li><p><a href="/manual/meters/general-options/#MeterStyle">MeterStyle</a> itself. This means that meter styles cannot be inherited through more than one generation. In other words, they cannot have "grandparents."</p></li>
-</ul>
-
-<p>If an option is given on both the parent meter and the child meter, the child's setting overrides the parent. If multiple parents are given, separated by pipes (<code>|</code>), options on later parents override those on earlier parents.</p>
-
-<p>Inherited options are used just as if they were explicitly written in the child meter. For example, if the <a href="/manual/variables/built-in-variables#CURRENTSECTION">#CURRENTSECTION#</a> variable is used in an inherited option, it resolves as the name of the child meter, not the parent. Similarly, if a <a href="/manual/meters/general-options/#XY">relative position</a> is used, such as <code>X=5R</code>, the meter immediately previous to the child meter is used, not the parent's.</p>
-
-<p>Meters may inherit options from sections that are not meters. A skin section of any name<sup>1</sup> that does not have the <code>Meter</code> or <code>Measure</code> options is informally called a <strong>style</strong>. A style section is completely ignored by Rainmeter unless it is referenced in the <code>MeterStyle</code> option of a meter. Options that are not valid for the child meter are also simply ignored, which means that the parent and child can be different types.</p>
-
-<p class="footnote">1. Aside from [Rainmeter] and [Variables], which are <a href="/manual/skins/#Format">reserved for special purposes</a>.</p>
-
-<h3>Example</h3>
-
-{% highlight ini %}
-[MyFirstParent]
-Meter=String
-Text=I'm a parent!
-X=10
-FontColor=255,0,0
-FontFace=Segoe UI
-FontSize=15
-AntiAlias=1
-StringStyle=Bold
-
-[MySecondParent]
-StringStyle=Italic
-FontColor=0,255,0
-
-[MyChild]
-Meter=String
-MeterStyle=MyFirstParentMeter | MySecondParentMeter
-FontColor=0,0,255
-{% endhighlight %}
-
-<p><em>MyChild</em> inherits all options from the <em>MyFirstParent</em> meter and the <em>MySecondParent</em> style. This means it is displayed with all of the same font, color, size and other options given for those sections. The second parent's <code>StringStyle</code> option overrides the first parent's, which means the child meter displays italic text. Likewise, the child meter's <code>FontColor</code> option overrides both parents', so the text displays with a color of <code>0,0,255</code> (blue).</p>
+<p>For more, see <a href="/manual/meters/general-options/styles">Styles</a>.</p>
