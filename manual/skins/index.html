@@ -13,7 +13,7 @@ title: 'Skins'
 <p>All skins are stored in Rainmeter's "Skins" folder. If Rainmeter has been installed normally, the default location of the Skins folder is:</p>
 
 <ul>
-	<li><code>C:\Documents and Settings\YourName\My Documents\Rainmeter\Skins</code>* (for Windows XP).</li>
+	<li><code>C:\Documents and Settings\YourName\My Documents\Rainmeter\Skins</code><sup>1</sup> (for Windows XP).</li>
 	<li><code>C:\Users\YourName\Documents\Rainmeter\Skins</code>* (for Windows Vista, 7 and 8).</li>
 </ul>
 
@@ -21,7 +21,7 @@ title: 'Skins'
 
 <p>A skin is stored as a file called "SkinName.ini" in its own folder within Skins, as in: <code>Rainmeter\Skins\SkinName\SkinName.ini</code>.* (The file and folder names do not need to match.)</p>
 
-<p class="footnote">"YourName" and "SkinName" are examples.</p>
+<p class="footnote">1. "YourName" and "SkinName" are examples.</p>
 
 <h3 id="Variants">Variants</h3>
 
@@ -41,19 +41,17 @@ title: 'Skins'
 
 <p>Each skin is identified with a certain <strong>config name</strong>. The config name is based on the path from the main Skins folder to the skin file. For example, if a skin is located at...</p>
 
-	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<strong>Foo\Bar</strong>\SkinName.ini</code>*</p></blockquote>
+	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<strong>Foo\Bar</strong>\SkinName.ini</code></p></blockquote>
 
 <p>...then the config name would be:</p>
 
-	<blockquote><p><code>Foo\Bar</code>*</p></blockquote>
+	<blockquote><p><code>Foo\Bar</code></p></blockquote>
 
 <p>Because skins may have any number of variants, many Rainmeter features&mdash;especially <a href="/manual/bangs">bangs</a>&mdash;refer to a specific skin by its config name, rather than the skin's filename.</p>
 
-<p class="footnote">"Foo" and "Bar" are examples.</p>
-
 <h2 id="Format">Format</h2>
 
-<p>The <code>SkinName.ini</code> file is written as a standard <a href="http://en.wikipedia.org/wiki/INI_file">INI file</a>, which uses the following* format:</p>
+<p>The <code>SkinName.ini</code> file is written as a standard <a href="http://en.wikipedia.org/wiki/INI_file">INI file</a>, which uses the following<sup>1</sup> format:</p>
 
 {% highlight ini %}
 [Section]
@@ -88,7 +86,7 @@ Key=Value
 	<li>Option values must be kept on a single line.</li>
 </ul>
 
-<p class="footnote">"Section," "Key" and "Value" are examples.</p>
+<p class="footnote">1. "Section," "Key" and "Value" are examples.</p>
 
 <h2 id="Update">Update</h2>
 

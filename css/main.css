@@ -553,13 +553,13 @@ header h1:last-child {
 	margin-bottom:20px;
 }
 
-p.footnote {
+sup {
 	color:#777;
-	font-size: 0.8em;
 }
 
-p.footnote:before {
-	content:"*";
+p.footnote {
+	color:#777;
+	font-size: 0.85em;
 }
 
 .exampleprev {
