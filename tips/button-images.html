@@ -1,0 +1,36 @@
+---
+layout: tips
+title: 'Button Images'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>This is about how to create the images you use in Rainmeter with a <a href="/manual/meters/button">Button</a> meter:</p>
+{% highlight ini %}
+[MeterSample]
+Meter=Button
+X=1
+Y=1
+ButtonImage=MyButton.png
+ButtonCommand=["SomeCommand"]
+{% endhighlight %}
+
+<p>Buttons are a special kind of meter in Rainmeter, and require a special kind of image. Rainmeter, like Windows, wants a button to have three "states". "UP", "DOWN" and "OVER", or "When your mouse isn't on the button", "When you are clicking on the button" and "When you are hovering over the button".</p>
+
+<p>Create the images in Photoshop, Gimp, Paint.NET, whatever you like. It's VERY helpful if the tool has the capability to create "layers" however.</p>
+
+<p>Create a new image with a transparent background which has the "HEIGHT" of the image you want for the button, and a "WIDTH" which is three times the width of the image. This is because Rainmeter will want to find three horizontal versions of the image in the file; one for "UP", one for "DOWN" and one for "OVER" - in that order.</p>
+<div class="exampleprev">
+<img src="../../img/tips/button-images/ButtonPhotoshop.jpg" width="600"/>
+</div>
+
+<p>Each of the layers can have a different visual appearance (and positioning if you want the button to "move" when clicked) so that when you use the button it is clear what state the button is in.</p>
+
+<p>Save the image as a .png (for a transparent background) or .jpg (solid background)</p>
+<div class="exampleprev">
+<img src="../../img/tips/button-images/ButtonBitmap.png"/>
+</div>
+
+<p>When you use the button in your code, Rainmeter chooses the 1/3 of the overall image to display depending on the state of the button.</p>
+<div class="exampleprev">
+<img src="../../img/tips/button-images/ButtonExample.gif"/>
+</div>
