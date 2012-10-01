@@ -1,0 +1,133 @@
+---
+layout: tips
+title: '!SetOption Guide'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>The <a href="/manual/bangs#SetOption">!SetOption</a> bang allows you to set many options/settings for meters and measures.  This does not require that the meter or measure have "DynamicVariables" set on it, and will remain in effect until the skin is refreshed or the option is changed by some other action.  The option does not already have to exist on the meter or measure, as !SetOption will replace any existing option or add it if needed.</p>
+
+<h3>Changing or adding an option</h3>
+
+<p>Change the color of the string meter from red to green and the style to bold when you hover over the meter.</p>
+{% highlight ini %}
+[MeterOne]
+Meter=String
+FontColor=255,0,0,255
+Text="Hello World"
+MouseOverAction=[!SetOption MeterOne FontColor 0,255,0,255][!SetOption MeterOne StringStyle Bold]
+{% endhighlight %}
+
+<h3>Removing or restoring an option</h3>
+
+<p>You can remove a change you made using !SetOption by using the bang again, with "" (an empty string) as the value you set the option to. It should be noted that this <b>removes</b> the entire option from the meter or measure.</p>
+{% highlight ini %}
+[MeterOne]
+Meter=String
+FontColor=255,0,0,255
+Text="Hello World"
+MouseOverAction=[!SetOption MeterOne FontColor 0,255,0,255][!SetOption MeterOne StringStyle Bold]
+MouseLeaveAction=[!SetOption MeterOne FontColor ""][!SetOption MeterOne StringStyle ""]
+{% endhighlight %}
+
+<p>This will remove the options FontColor and StringStyle from the meter.  For the FontColor option, this is going to cause a problem.  Now the meter has no FontColor settting at all, and will default to 0,0,0,255 (black) instead of changing back to 255,0,0,255 (red) as you might want.</p>
+
+<p>This can be solved in two ways:</p>
+
+<p>Specifically set the option back to what it originally was.</p>
+{% highlight ini %}
+[MeterOne]
+Meter=String
+FontColor=255,0,0,255
+Text="Hello World"
+MouseOverAction=[!SetOption MeterOne FontColor 0,255,0,255][!SetOption MeterOne StringStyle Bold]
+MouseLeaveAction=[!SetOption MeterOne FontColor 255,0,0,255][!SetOption MeterOne StringStyle ""]
+{% endhighlight %}
+
+<p>Use a MeterStyle.  This will work as the first !SetOption adds a specific FontColor, and the second one removes it, thus allowing the MeterStyle setting on the meter to again control this option.</p>
+{% highlight ini %}
+[TextStyle]
+FontColor=255,0,0,255
+
+[MeterOne]
+Meter=String
+MeterStyle=TextStyle
+Text="Hello World"
+MouseOverAction=[!SetOption MeterOne FontColor 0,255,0,255][!SetOption MeterOne StringStyle Bold]
+MouseLeaveAction=[!SetOption MeterOne FontColor ""][!SetOption MeterOne StringStyle ""] 
+{% endhighlight %}
+
+<h3>Variables and !SetOption</h3>
+
+<p>!SetOption, like any other bang, will resolve any #Variables# before setting the option.</p>
+{% highlight ini %}
+[Variables]
+MyColor=255,255,255,255
+
+[MeterOne]
+Meter=String
+Text="Hello World"
+MouseOverAction=!SetOption MeterOne FontColor #MyColor#
+DynamicVariables=1
+{% endhighlight %}
+
+<p>This sets the meter with FontColor=255,255,255,255, not FontColor=#MyColor#. You can however set the option with the literal "#MyColor#" if you wish.  You will need to "escape" the variable, with the "*" character.</p>
+{% highlight ini %}
+[MeterOne]
+Meter=String
+Text="Hello World"
+MouseOverAction=!SetOption MeterOne FontColor #*MyColor*#
+DynamicVariables=1
+{% endhighlight %}
+
+<p>Now the meter will be set to FontColor=#MyColor# and will obey any changes made to that variable elsewhere in the skin, due to DynamicVariables=1 being set.</p>
+
+<h3>[Measures] and !SetOption</h3>
+
+<p>!SetOption will use the current value of a  [Measure] if it is used in the option.</p>
+{% highlight ini %}
+[MeasureTime1]
+Measure=Time
+Format=%S
+
+[MeasureTime2]
+Measure=Time
+Format=%M
+
+[MeterOne]
+Meter=String
+Text=[MeasureTime1]
+DynamicVariables=1
+LeftMouseUpAction=!SetOption MeterOne Text [MeasureTime2]
+{% endhighlight %}
+
+<p>This sets the meter with the Text= as the current number of minutes, not Text=[MeasureTime2]. You can however set the option with the literal "[MeasureTime2]" if you wish.  You will need to "escape" the measure, with the "*" character.</p>
+{% highlight ini %}
+[MeasureTime1]
+Measure=Time
+Format=%S
+
+[MeasureTime2]
+Measure=Time
+Format=%M
+
+[MeterOne]
+Meter=String
+Text=[MeasureTime1]
+DynamicVariables=1
+LeftMouseUpAction=!SetOption MeterOne Text [*MeasureTime2*]
+{% endhighlight %}
+
+<p>Now the meter will be set to Text=[MeasureTime2] and will stay current with the value of that measure, due to DynamicVariables=1 being set.</p>
+
+<h3>What !SetOption can change and what it can't</h3>
+
+<p>In general, !SetOption can be used to change the value of just about any option/setting on any meter or measure. Almost any setting on a meter or measure that is specific to that type, like FontColor or ImageName or Formula is allowed. Also other settings common to all meters or measures, like Group or MeterStyle or UpdateDivider are allowed. You can also set Mouse and IF actions.  However there are some broad categories and specific things that !SetOption can and can't be used for.</p>
+
+<ul>
+	<li>You may only use !SetOption on Meters and Measures.  This means that you may not change any settings in [Rainmeter] or [Variables], and may not change a setting in a section used as a MeterStyle, unless that section is ALSO a valid meter or measure type itself.</li>
+
+	<li>You may not use !SetOption to change the [SectionName] of a meter or measure, nor the "type" of meter or measure that it is. (ie: Meter=String)</li>
+
+	<li>You may not use !SetOption to change any setting on a plugin measure that is specific to that kind of plugin if the plugin does not currently support <code>DynamicVariables=1</code>.  (ie: Url= on WebParser)</li>
+</ul>
+
