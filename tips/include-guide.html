@@ -37,6 +37,9 @@ Theme=SomeTheme
 Meter=Image
 H=30
 W=40
+
+[String]
+Text=This Won't Work
 {% endhighlight %}</p>
 
 <p>YourSkin.inc<br/>
@@ -48,9 +51,13 @@ Meter=Image
 H=20
 W=30
 X=5r
+
+[String]
+Meter=String
+Text=This line will remain.
 {% endhighlight %}</p>
 
-<p>This would place the Background section before the Foreground section.</p>
+<p>This would place the Background section before the Foreground section. Since the String section already exists in the main file, then any existing options won't be changed. In this case, the Text line will still read "This line will remain."</p>
 
 <h3>Practical Use: Skin Settings</h3>
 <p>The most common use of @include is to allow users to change the settings used by a skin in a separate file.</p>
