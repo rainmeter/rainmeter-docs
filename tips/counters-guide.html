@@ -1,0 +1,146 @@
+---
+layout: tips
+title: 'Counters Guide'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><i>Tip by smurfier</i></p>
+
+<p>This method of creating individual counters has been around for a bit but I decided that they should be written up as there are a few tricks that I've figured out. The advantages of using independent counters are numerous and include the ability to increase their amount by any number you want and being able to pause or reset their values.</p>
+
+<p><b>Note:</b> This tips 'n trick thread heavily uses the <a href="http://en.wikipedia.org/wiki/Modulo_operation">Modulo</a> operator (the <b>%</b> character in Rainmeter), otherwise known as <a href="http://en.wikipedia.org/wiki/Remainder">Remainder Division</a>. It's important to understand how this operator works before continuing.</p>
+
+<p>First we're going to create some variables that we are going to use later on.</p>
+{% highlight ini %}
+[Variables]
+MaxNumber=30
+Pause=1
+Reset=1
+{% endhighlight %}
+
+<p>Now we need to  create the counter.</p>
+{% highlight ini %}
+[cCounter]
+Measure=Calc
+Formula=cCounter+1
+{% endhighlight %}
+
+<p>The reason this works is that when calling a measure the value from the last update cycle is used. With this in mind, by calling the measure inside itself we can easily change it's value.</p>
+
+<p><b>Note:</b> When naming your counter always remember that there is a built in Variable/Function named Counter so yours should be named something else.</p>
+
+<h3>Making the counter reset at a given value</h3>
+
+<p>Having it reset after a given value is easy and is accomplished the same way as if you were using the Counter variable.</p>
+{% highlight ini %}[cCounter]
+Measure=Calc
+Formula=(cCounter+1)%(#MaxNumber#+1)
+{% endhighlight %}
+
+<p>This will have the counter reset to zero after it hits 30, which is what we have MaxNumber set to. We have the measure add 1 to MaxNumber so that it will reset after the value else it will reset at that value.</p>
+
+<p>If you want your counter to reset to one instead of zero we just need to move things around a bit.</p>
+{% highlight ini %}
+[cCounter]
+Measure=Calc
+Formula=cCounter%#MaxNumber#+1
+{% endhighlight %}
+
+<p>With this method we also don't need to worry about adding one to the reset value.</p>
+
+<h3>Resetting a counter via Mouse Actions</h3>
+
+<p>How about having it reset to zero when we click on the skin.</p>
+{% highlight ini %}
+[Rainmeter]
+LeftMouseUpAction=!SetVariable Reset 0
+
+[cCounter]
+Measure=Calc
+Formula=(cCounter+1)*#Reset#
+IfBelowValue=1
+IfBelowAction=!SetVariable Reset 1
+DynamicVariables=1
+{% endhighlight %}
+
+<p>Multiplying the counter by zero will easily reset it. Just make sure to set an action to set the Reset variable back to one when you're done.</p>
+
+<p>Or an alternative for resetting the counter with just a MouseOver:</p>
+{% highlight ini %}
+[Rainmeter]
+MouseOverAction=!DisableMeasure cCounter
+MouseLeaveAction=!EnableMeasure cCounter
+
+[cCounter]
+Measure=Calc
+Formula=cCounter+1
+{% endhighlight %}
+<p><b>Note:</b> This method only works if the counter is disabled for at least one update cycle.</p>
+
+<p>Now we can combine a couple methods of resetting to have the counter count up, reset, and wait for us to tell it restart again.</p>
+{% highlight ini %}
+[cCounter]
+Measure=Calc
+Formula=cCounter+1
+IfEqualValue=#MaxNumber#
+IfEqualAction=!DisableMeasure cCounter
+{% endhighlight %}
+
+<p>When we want the counter to start counting again we just need to use <code>!EnableMeasure cCounter</code>.</p>
+
+<h3>Pausing a counter</h3>
+
+<p>Lets pause the counter when you mouse-over the skin.</p>
+{% highlight ini %}
+[Rainmeter]
+MouseOverAction=!SetVariable Pause 0
+MouseLeaveAction=!SetVariable Pause 1
+
+[cCounter]
+Measure=Calc
+Formula=cCounter+#Pause#
+DynamicVariables=1
+{% endhighlight %}
+
+<p>When the MouseOver action is triggered you stop adding 1 to the counter yet it retains it's value. When the mouse leaves the skin you start adding 1 to it again.</p>
+
+<p>We can also have the counter stop counting at a certain value and stay there.</p>
+{% highlight ini %}
+[cCounter]
+Measure=Calc
+Formula=cCounter+(cCounter<#MaxNumber#)
+{% endhighlight %}
+
+<p>What we did was added a conditional statement. Conditional statements without an "if ? then : else" format resolve to either 1 for true or 0 for false. Using this fact we can easily use conditional statements in mathematical formulas.</p>
+
+<h3>Triggering Actions with a Counter</h3>
+{% highlight ini %}
+[cCounter]
+Measure=Calc
+Formula=cCounter+1
+IfAboveValue=#MaxNumber#
+IfAboveAction=[!Disable cCounter]["Some Action"]
+{% endhighlight %}
+
+<p>This will count up to the MaxNumber, disable itself so it doesn't continue to count, and execute some action such as opening an addon. This method can be used to execute some action a certain number of updates after skin is loaded.</p>
+
+<p>We can use the built in Counter function/variable to accomplish the same thing. Please note that Counter returns the number of updates since the skin was initially loaded and only returns to zero when Rainmeter is loaded or a !RefreshApp bang is used.</p>
+{% highlight ini %}
+[cCounter]
+Measure=Calc
+Formula=Counter
+IfAboveValue=#MaxNumber#
+IfAboveAction=[!Disable cCounter]["Some Action"]
+{% endhighlight %}
+
+<p><b>Note:</b> To execute a set of commands when the skin is loaded or refreshed, without using a counter, use <code>OnRefreshAction=!SomeAction</code> in the <code>[Rainmeter]</code> section of the skin.</p>
+
+<h3>Bonus Lesson: Making a counter that counts down, not up</h3>
+
+{% highlight ini %}
+[cCounter]
+Measure=Calc
+Formula=(cCounter-1+(#MaxNumber#+1))%(#MaxNumber#+1)
+{% endhighlight %}
+
+<p>This one is a bit harder to explain. What we are doing is taking the value of the counter and subtracting 1. Then we have to add the value of our MaxNumber else we'll just end up with a negative value. Now we have to take the remainder of that value using Modulo to get our final value.</p>
