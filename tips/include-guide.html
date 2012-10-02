@@ -7,7 +7,6 @@ title: '@Include Guide'
 <p><i>Tip by Brian and Smurfier</i></p>
 
 <p>While <a href="/manual/skins/include-option">@include</a> is a simple tool it is powerful as well. It can be used to make skin code shorter by stripping out longer code into shorter files. Repetitive code used in multiple skins can be managed with one file. It can even be used to load different code when you open a skin.</p>
-<p><b>Note:</b> We will be using the terms Parent and Child in this thread. When we speak of the Parent we are referring to the skin which called the @included while the term Child will mean the actual file we are calling.</p>
 <h3>Using @include</h3>
 <p>There are several rules to using @include. The first is the @include call.<br/>
 <pre>@include=SomeFile.inc</pre></p>
@@ -15,10 +14,10 @@ title: '@Include Guide'
 <pre>[Variables]
 SomeVariable=AValue</pre></p>
 <p>The file being used with @include must be formatted in the INI format, meaning that it has all the appropriate [sections] followed by Key=Value pairs. This includes using the [Variables] section.</p>
-<p>If you want to include more than one file, they need to be listed with unique numeric identifiers.</p>
+<p>If you want to include more than one file, they need to be listed with unique identifiers.</p>
 <pre>@include=SomeFile.inc
 @include2=SomeOtherFile.inc
-@include3=YetAnotherFile.inc
+@includeAnotherInclude=YetAnotherFile.inc
 ...</pre>
 
 <p>While it is not required to use the .inc extension it is highly recommended. This prevents the file from appearing in Rainmeters list as a skin.</p>
@@ -30,7 +29,7 @@ Theme=SomeTheme
 {% endhighlight %}
 
 <h3>Understanding @include</h3>
-<p>What Rainmeter does when it reaches an @include line is that it reads the Child file then places it's contents at the bottom of the Parent skin.</p>
+<p>When Rainmeter reaches an @include line, it reads the given file, placing all unique options into any existing sections, then places the remainder of the included file after the section in which it was called.</p>
 
 <p>SomeFile.inc<br/>
 {% highlight ini %}
@@ -51,26 +50,7 @@ W=30
 X=5r
 {% endhighlight %}</p>
 
-<p>This would not work as intended as the [Background] meter would be placed after the [Foreground] meter. We can fix this by using one of @includes rules.</p>
-
-<p><b>From the</b> <a href="/manual/skins/include-option">Manual</a><br/>
-<i>The @Include option loads the content of an external .ini at the position it is defined. The loaded file is treated as if the contents were included in the actual skin .ini file.</i></p>
-
-<p>What this means is that if we place just the section name (in our case [Background]) of the meter or measure where we want it to be in the Parent skin, that is where that meter or measure will be.</p>
-{% highlight ini %}
-@include=SomeFile.inc
-
-[Background]
-
-[Foreground]
-Meter=Image
-H=20
-W=30
-X=5r
-Y=5r
-{% endhighlight %}
-
-<p>This fixes our issue as the contents of the [Background] section in the Child file are now placed under the same section in the skin.</p>
+<p>This would place the Background section before the Foreground section.</p>
 
 <h3>Practical Use: Skin Settings</h3>
 <p>The most common use of @include is to allow users to change the settings used by a skin in a separate file.</p>
