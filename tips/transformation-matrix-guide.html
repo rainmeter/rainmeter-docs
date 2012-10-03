@@ -140,11 +140,11 @@ There you have it. That will rotate your object by whatever you specify "angle" 
 <h3>What the heck is Rainmeter doing?!</h3>
 
 <p>Glad you asked. You see, when you tell Rainmeter what you want it to do, you have to realize that it sees things differently than you do. For example, if you want to scale something, you see it as wanting to do this:</p>
-<div class="exampleprev" style="text-align:center">
+<div class="exampleprev">
 <img src="../../img/tips/transformation-matrix-guide/TransformationMatrix01.png"/>
 </div>
 <p>Rainmeter will try to do this:</p>
-<div class="exampleprev" style="text-align:center">
+<div class="exampleprev">
 <img src="../../img/tips/transformation-matrix-guide/TransformationMatrix02.png"/>
 </div>
 <p>Every transformation you do will always be relative to the origin. That's the point with coordinates (0,0). Normally, that would be the top-left corner of your object. However, according to Rainmeter, the origin will <i>always</i> be the top-left corner of the entire skin. That's why when you rotated the square, it shot up to the top. It rotated alright, but it did it around the top left corner of the whole skin, not around its own corner. For this reason, whenever you scale, skew or rotate something, you have to take into account that the whole thing is going to move. Adjusting for this is pretty simple. All you have to do is pick a point that you <i>don't</i> want to move and translate the whole thing so that that one point is back where it's supposed to be.</p>
