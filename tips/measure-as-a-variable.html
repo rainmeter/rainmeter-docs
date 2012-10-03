@@ -1,0 +1,153 @@
+---
+layout: tips
+title: 'Using a Measure as a Variable'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<h1>Using Measure Values in Calc Formulas</h1>
+
+<p>In Rainmeter, <a href="/manual/variables/">dynamic variables</a> (DVs) let you use measure values almost anywhere you want. When you use a measure value in a <a href="/manual/measures/calc">Calc</a> formula, there are special rules to consider. A Calc formula is the only place where you do not need DVs to use another measure's value. For example:</p>
+
+{% highlight ini %}
+[MeasureA]
+Measure=...
+
+[MeasureB]
+Measure=Calc
+Formula=MeasureA+3
+{% endhighlight %}
+
+<p>Sometimes, however, you may still want to use DVs to get a measure value into a Calc formula. Why? Because in fact, every measure has two values: a <b>number value</b> and a <b>string value</b>. Normally, Calc formulas use the number value. But using DVs (with brackets around the measure name) forces Rainmeter to use the string value. Which means that this...</p>
+
+{% highlight ini %}
+[MeasureB]
+Measure=Calc
+Formula=MeasureA+3
+{% endhighlight %}
+
+<p>...does not always mean the same thing as this:</p>
+
+{% highlight ini %}
+[MeasureB]
+Measure=Calc
+Formula=[MeasureA]+3
+DynamicVariables=1
+{% endhighlight %}
+
+<h3>When should I use brackets?</h3>
+
+<p><b>In general, you should use measures in Calc formulas as numbers (without brackets).</b> This is the "safe" approach, because:</p>
+
+<ul>
+
+	<li><p>If a measure's string and number values are the <em>same</em>, then dynamic variables are unnecessary. Calc measures without DVs are a tiny bit faster, and your formula will behave consistently whether or not DVs are enabled.</p></li>
+	
+	<li><p>If the string and number values are <em>different</em>, then the string value may be inappropriate for mathematical calculations.</p></li>
+	
+</ul>
+
+<p>The common exception to this rule is when a <b>substitute</b> has been applied. (See below.)</p>
+
+<h3>When are the string and number values different?</h3>
+
+<ol>
+
+	<li>
+	<p><b>No math.</b> If the original measure value contains any non-numeric characters, aside from valid <a href="/manual/measures/calc">operators</a>, the number value is zero. This includes letters, punctuation and special characters.</p>
+	<p>You'll probably never use a measure like this in a Calc formula to begin with.</p>
+	</li>
+	
+	<li>
+	<p><b>Rounding.</b> Even when a measure gives you an actual number, Rainmeter may round the string value to a certain decimal place. The number value preserves the "true" value, which is always better for calculation.</p>
+	<p>Even if you want a rounded number, the <a href="/manual/measures/calc">ROUND(x[,precision])</a> calculator function will give you much finer control over the result.</p>
+	</li>
+
+	<li>
+	<p><b>Formatting.</b> Some measures return a formatted string value that is meant for display, but not for calculations. For example, the <a href="http://rainmeter.net/cms/Measures-Time">Time measure</a> gives a string value with hours, minutes and seconds ("HH:MM:SS"), which is how a real person would want to see the time, but which makes no sense in a math equation. The number value gives the raw <a href="http://en.wikipedia.org/wiki/Unix_time">Unix time</a>, which <em>can</em> be used by a Calc measure, e.g. to calculate the difference between two dates.</p>
+	
+	<p>There may be cases in which you would want to use a formatted string value in a Calc formula, but these would likely be rare and unorthodox.</p>
+	</li>
+
+	<li>
+	<p><b>Substitution.</b> Measure <a href="/manual/measures/general-options/substitute">substitution</a> is applied only to the string value, not the number value. For example:</p>
+
+{% highlight ini %}
+[MeasureA]
+Measure=Calc
+Formula=1
+Substitute="1":"2"
+
+[MeasureB]
+Measure=Calc
+Formula=MeasureA+3
+
+[MeasureC]
+Measure=Calc
+Formula=[MeasureA]+3
+DynamicVariables=1
+{% endhighlight %}
+
+	<p>MeasureB uses the number value of MeasureA. It ignores the Substitute string on Measure A. Therefore, MeasureB returns a value of <em>4</em>. In MeasureC, we use DVs to get the string value of MeasureA. This value has substituted the original value, "1", with "2". So MeasureC returns a value of <em>5</em>.</p>
+
+	<p>This means that if you need the substituted value of a measure, you will need to use DVs and brackets. This can be useful when the original value of a measure is not a number at all (as in case #1), but a Substitute is used to change it into one:</p>
+	
+{% highlight ini %}
+[MeasureGetStatus]
+Measure=Plugin
+Plugin=Plugins\WebParser.dll
+URL=http://www.somesite.com/logs/status.xml
+RegExp="(?siU)<status>(.*)</status>"
+StringIndex=1
+Substitute="Running":"1","Offline":"0"
+
+[MeasureCheckStatus]
+Measure=Calc
+Formula=[MeasureGetStatus]
+IfEqualValue=1
+IfEqualAction=[!SetOption Light MeterStyle "Green"]
+IfBelowValue=1
+IfBelowAction=[!SetOption Light MeterStyle "Red"]
+DynamicVariables=1
+{% endhighlight %}
+
+	<p>In this case, we have a web feed that returns either "Running" or "Offline". But we can't do math on a word&mdash;since neither of those values is a number or mathematical formula, the number value for both would be zero. Instead, we use a Substitute to transform the string value into "1" or "0", respectively. That way, our Calc measure can compare it to our IfEqualValue and IfBelowValue, and take the right action. If 1 ("Running"), then the light turns green; if 0 ("Offline"), the light turns red.</p>
+	
+	<p>Substitution is virtually the only case in which you would <em>want</em> to use a string value in a Calc formula.</p>
+	</li>
+	
+</ol>
+
+<h3>Other Notes</h3>
+
+<p>You can use measures as number values if you are using DVs elsewhere in the Calc measure. You can even mix types of measure values within the same formula:</p>
+
+{% highlight ini %}
+[MeasureD]
+Measure=Calc
+Formula=MeasureA+[MeasureA]+MeasureB+3
+IfAboveValue=[MeasureC]
+IfAboveAction=!HideMeter MeterE
+DynamicVariables=1
+{% endhighlight %}
+
+<h3>A quick reference to using measure values</h3>
+
+<ul>
+<li>All measures that return numbers create them as both a "number" and a "string".</li>
+
+<li>Most measures return a number and a string that are the same. Some measures (Win7Audio, Time, NowPlaying for instance) can return a "number" and a "string" that are different.</li>
+
+<li>Substitute acts only on the string value of a measure.</li>
+
+<li>The About dialog in the Rainmeter context menu displays the string value of measures.</li>
+
+<li>When you use the name of a measure in MeasureName= on a meter, the type of meter determines which is used. For instance, Bar meters use the number value, and String meters use the string value. Again, in most cases this is not important, as they are for practical purposes the same thing.</li>
+
+<li>When you use the name of a measure in a Calc measure in a formula (without square brackets), such as Formula=(200 * MeasureName), the number value is used.</li>
+
+<li>When you use the name of a measure in a Calc measure or other formula (with square brackets and DynamicVariables=1), then the string value is used.</li>
+
+<li>The <a href="/manual/variables/section-variables">Section Variables</a> <code>[MeasureName:]</code> functionality offers some additional control. Used with DynamicVariables=1, it uses the number value of the measure. This is particularly useful where you want to use the value of a measure dynamically in a formula on a meter or measure, while not getting the string or Substituted value.</li>
+</ul>
+
+
