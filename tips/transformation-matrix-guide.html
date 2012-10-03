@@ -1,0 +1,305 @@
+---
+layout: tips
+title: 'Transformation Matrix Guide'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><i>Tip by Alex2539</i></p>
+<p>One of the coolest, but undoubtedly most confusing additions to Rainmeter is the TransformationMatrix setting. In theory, using this setting on a meter will allow you to scale it, to rotate it, to flip it, to skew it in any way you choose. In practise, it makes your head hurt with all of the mumbo jumbo associated. Here, I hope to provide a decent explanation on how to use these transformations so that you can make bigger, better skins for the world.</p>
+
+<h3>Understanding Matrices</h3>
+
+<p>Depending on what math courses you've taken, you may already know what a matrix is. If not, it's somewhat important to understand them. In this section I'll explain what they are to those of you who don't know. Once you understand what a matrix is and how to work with it, a transformation matrix will be no sweat for you later on.</p> 
+<p><a href="http://en.wikipedia.org/wiki/Transformation_matrix" target="_blank">More on Transformation Matrices</a></p>
+
+<p>A matrix (the plural is matrices) is really just a bunch of numbers all organized in a rectangular grid. The grid can have as many rows and columns as you like, depending on what you're going to be using the matrix for. In the world of mathematics, matrices have applications in almost every field. They are most commonly used in linear algebra, where you try to solve multiple equations with multiple unknowns. They can, however also be used in geometry. That's where we come in. By representing any point using a matrix, we can use a second matrix to modify that point in any way. This is called a <i>transformation</i>. When you have a lot of points that make up shape or an image, you can apply that <i>transformation</i> to every individual point, and the result will usually be something familiar, like a rotation, a stretch, a movement or even combinations of them. That's right, you can make something bigger and tilted <i>at the same time</i>.</p>
+
+<p>When you write out a matrix by hand, all of the numbers line up according to their rows and columns and the whole thing is surrounded by two giant square brackets. Unfortunately, there's no easy way to do that here, so when I write out a matrix, I'll just use a bunch of bars on each side to represent it. Don't get too caught up on it, it's just to make it clear where the matrix starts and ends. You'll notice that the Rainmeter help file does the same thing.</p>
+
+<p>Just to get you used to what a matrix is, here are some examples:</p>
+<pre>| 1 2 3| This is a 2x3 matrix
+|4 5 6|
+
+|1| This is a 3x1 matrix. Normally, we call a matrix with
+|2| only one column a VECTOR.
+|3|
+
+|15 20.2  4| A 3x3 matrix
+| 6  0.1  1|
+| 4  5   12|
+</pre>
+<p>When writing the size of a matrix, we say it mxn where "m" is the number of rows and "n" is the number of columns. So, as you can see, a matrix can be any shape and have any kind of number, decimals included. You can even put variables in there and, with sufficient information, actually solve the matrix to find the values of the variables. It's like solving for X in an equation, but bigger and better. We're not going to go into that though since it's not really necessary for what we want to do.</p>
+
+<h3>Transformation Matrices</h3>
+
+<p>As I said at the start, one of the applications of matrices is in geometry where we can represent points as matrices and use other matrices to transform them. This is exactly what Rainmeter is going to do for you. At least, it will once you know how to tell it to do that. </p>
+
+<p>Typically, our 2D transformation matrix will look something like this:</p>
+<pre>|a c tx|
+|b d ty|
+|0 0  1| </pre>
+<p>In this matrix, a, b, c, and d are different values which will affect the shape of what we want to transform. The variables tx and ty are the values by which the x and y (horizontal and vertical respectively) coordinates will be moved. The last row that shows "0 0 1" <i>can</i> be used, but not by Rainmeter, so we'll leave those three values alone. Just know that they're there and that they are 0, 0, and 1.</p>
+
+<p>Next we have to have a matrix that represents the position of the point we want to transform. It will look like this:</p>
+<pre>|x|
+|y|
+|1|</pre>
+<p>Again, the x and y values are the coordinates of the point and that last 1 won't really be used, just keep it there. By the end, every point in the object you want to transform will be covered by this. Luckily, Rainmeter does all of that math for you. So just sit back and watch it go!</p>
+
+<p>The transformation matrix used by Rainmeter is exactly like this. The only difference is that since that last row never changes, you don't have to deal with it when you're typing in the TransformationMatrix setting. After all, it would get a little tedious writing in 0;0;1 at the end every single time. Oh, but don't write it in thinking you're "clever and doing it the right way". That will just cause an error and there will be no transformation for you. Rainmeter leaves it out, so you leave it out.</p>
+
+<b>Applying a Transformation Matrix</b>
+<p>Now that we have the model for a transformation matrix as well as a vector for our point, how do we put the two together? How do we say "Hey, Mr. Point, do what that other matrix tells you!". The answer is through multiplication. One of the handy things you can do with matrices is multiply them together. The only caveat is that if you have matrices A and B, AxB does not equal BxA. The order of multiplication is important. I repeat: THE ORDER OF MULTIPLICATION IS IMPORTANT. The matrix on the left must have the same number of columns as the number of rows in the matrix on the right. Here are some examples:</p>
+<pre>
+|1 2 3|   |5 1| This multiplication will work
+|4 5 6| x |6 2|
+|7 8 9|   |9 4|
+
+|4 7 1.1|   |4| This multiplication will work
+|0 2 0.5| x |7|
+            |1|
+
+|5 3|   |7 4| This multiplication is downright impossible
+|7 8| x |3 1|
+        |0 2|
+</pre>
+<p>So, in order to multiplying the transformation matrix by the coordinates will have to look like this:</p>
+<pre>
+|a c tx|   |x|
+|b d ty| x |y|
+|0 0  1|   |1|
+</pre>
+<p>The result of a matrix multiplication is another matrix. The new matrix's size will come from the other two. It will have the same number of rows as the first matrix and the same number of columns as the second matrix. So, multiplying a 3x3 matrix by a 3x1 matrix will result in a 3x1 matrix. Multiplying a 3x2 matrix by a 2x3 matrix will result in a 3x3 matrix. Multiplying a 3x3 matrix by a 3x2 matrix will result in a 3x2 matrix, etc... The trick to remember is that if you write the dimensions of the two matrices next to each other in the same order you would multiply them (ex: 3x3 3x1) then the two <i>inner</i> numbers should match and the two <i>outer</i> numbers will be the size of the new matrix.</p>
+
+<p>That's all there is to it. By doing that, you've successfully transformed that one point. Well... <i>Rainmeter</i> actually does the work, but now you know what it does. But how does it work? I haven't told you how to actually multiply the matrices yet, I just told you how to set it up. Multiplying matrices is a little more involved that just multiplying two numbers together. You have to break it down and go row by row, column by column. It should be noted that we already know what the result will look like. Since we are multiplying a 3x3 and a 3x1, the result will be another 3x1. It's no coincidence that it's the same shape as our coordinate vector since the result is just the new set of coordinates. It could be written like this:</p>
+<pre>
+|a c tx|   |x|   |x'|
+|b d ty| x |y| = |y'|
+|0 0  1|   |1|   |1|
+</pre>
+<p>Now we'll go through how to get some actual values for the result. First, take the first row of the first matrix and the first column of the second matrix. In this case, that's a, c and tx from the transformation matrix and x, y and 1 from the coordinate vector. Next, we multiply the corresponding values in each set of numbers (first times first, second times second, third times third) and add them all together. If you were to write it as a formula, it would look like this: x' = ax + cy + tx. In this case, the result will be x' (read: x-prime) which is the new location for the x coordinate. </p>
+
+<p>Next, we move on to the second row of the transformation matrix. Again, we take the corresponding values and multiply them: y' = bx + dy + ty. Here, the result is y' (read: y-prime) which is the now location for the y coordinate.</p>
+
+<p>Finally, we move on to the last row of the transformation matrix and do the same thing. Notice that the first two values here are zero. That means that x and y are multiplied by zero, so they have no effect of the result. Then the 1 is just multiplied by 1. That means that the final value is 0+0+1=1. This is why Rainmeter pulls out the last row. As you can see, it will always come out the same. But, we're going to keep it in for now since it will actually be <i>necessary</i> for the more complicated transformations.</p>
+
+<p>If the second matrix had more columns, we would move on the the next one and multiply down all of the rows again. This would give us the next column of the result. But, since we only have a vector our job is done. </p>
+
+<h3>Transformations</h3>
+
+<p>Alright... now we know what a matrix is, we know what the matrices we want to use look like and we know how to apply our transformations. But just what <i>are</i> the transformations? How do we use this to scale and skew? Well, I'll tell you. The simplest way to think of it is like this: each value in the transformation matrix has a different job. I've already told you that tx and ty are for translations (the fancy word for just plain moving it around). The rest also have specific purposes:
+<ul>
+	<li>a is used to scale the x value
+	<li>d is used to scale the y value
+	<li>c is used to skew the x value
+	<li>b is used to skew the y value
+</ul></p>
+
+<p>That's right, it was hiding under your nose the whole time. It's as simple as that. If you make a=2, then the x value will double in size. If you make a=0.5 and d=0.5, the whole thing will shrink to half the size. One neat trick is to make the values negative. Doing that will flip the image as well. For example, if a=-1, then the image will be flipped along the vertical axis. The one that may not be entirely intuitive is the skewing. The simple way to understand it is to go back to our multiplication. Remember that the new x value is represented by this: x' = ax + cy + tx. You already know that this means x will be scaled by whatever a is, it will be moved by whatever tx is and... what's that "y" doing there? That's the skew. A skew will alter one dimension according to the other. So the farther down the shape is, the more x is shifted. It's still the same height, only each progressive point gets a little further away. In the end it looks like the shape is slanted. Or, in pictograms: </p>
+<pre>[ ] --> / /</pre>
+<p>At this point you can make a simple testing skin in Rainmeter to try things out. It doesn't have to be complicated. I suggest just something like this:</p>
+{% highlight ini %}
+[MeterBG]
+Meter=IMAGE
+w=200
+h=200
+SolidColor=255,255,255,128
+
+[MeterSquare]
+Meter=IMAGE
+w=50
+h=50
+x=75
+y=75
+SolidColor=0,0,0
+TransformationMatrix=1;0;0;1;0;0
+{% endhighlight %}
+<p>That will give you nothing more than a black square on a semi-transparent white background. The background is only there because when <i>you</i> see a transformed square, Rainmeter still sees the original square. Anything outside the skin's borders gets clipped, so if the square where alone, any transformation would get clipped off by the tiny border. By adding a background, you basically just increased the size of your playground. If you read Rainmeter's help section on Transformation matrices, it will tell you this:</p>
+<pre>
+TransformationMatrix
+This defines a 3x2 matrix which can be used to transform the meter. There must be exactly 6 values separated by ';'-character (e.g. "1;0;0;1;0;0") which define the matrix in order of "m11;m12;m21;m22;m31;m32". 
+
+            |m11 m21 m31|
+            |m12 m22 m32|
+</pre>
+<p>As I already explained, that matrix is that same transformation matrix I've shown you, only with the bottom clipped row off since you don't need to work with it. The important part is the placement of the values in the string. If you use the letters I do, the string will look like this: TransformationMatrix=a;b;c;d;tx;ty. I'll bet you were wondering why I picked the letters I did. Well, that's why. Now that you know what each letter does, using them is as simple as putting them in the right order. </p>
+
+<p>So that's it. If you want to stretch it and skew it, then those are the variables to change. but what about rotation? Rotation seems like it would be more straightforward than skewing. After all, I turn things all the time, but how often does a person <i>skew</i>? In the case of transformation matrices, there's no single value you can change that will result in a rotation. The only way to do it is to combine stretching and skewing. Think of it this way: if you skew along the x-axis, all of the vertical lines become slanted. Now, if you skew along the the y-axis, all of the horizontal lines will be slanted. But, what if you skewed it just enough that the angles stayed at 90 degrees? I'm going to save you some time and tell you right now that it works. It's simple too. Just skew it negatively the same amount you skewed it the other way. So, if you skew x by 1, skew y by -1. If you do that, you actually wind up with a 45 degree counterclockwise rotation around the top-left corner. If you want to go clockwise, you switch the positive and negative. So there you go. You have a 45 degree rotation. </p>
+
+<p>Did you try it out? Did you make that sample skin rotate that square with TransformationMatrix=1;-1;1;1;0;0 ? If you did, you'll notice two things. First, the whole thing just moved up to the top. That's got to do with how Rainmeter sees things and we'll get to that later.  The second thing you should see is that yes, the square is now a diamond, but it also got bigger. It's actually been multiplied by about 1.414, in case you were wondering. Remember what skewing is? When you skew along the x-axis, the height stays the same. So yes, you do get some nifty diagonal lines, but they're also longer than they used to be. When you skew along the y-axis, you get more diagonals that are <i>also</i> longer than they used to be. Remember when I said that skewing is a combination of skewing and scaling? Well here's how to do it properly. You can't just change a and d to get a smaller square. Try it. It'll get smaller, but it will also rotate more. You have to change what it's skewing by. How do you know what that is? Well, to be honest, it's pretty long winded and I don't want to get into it, so I'll just give you the formula: 
+<ul>
+	<li>a = cos(angle)
+	<li>b = -sin(angle)
+	<li>c = sin(angle)
+	<li>d = cos(angle)
+</ul>
+There you have it. That will rotate your object by whatever you specify "angle" to be. You'll notice it looks a lot like what you wanted it to, doesn't it? You skew it by the same amount along each axis, with one of them flipped to negative, then you scale it to make sure it's the same size again. If you want to rotate the other way, just make b negative and c positive instead. </p>
+
+<p>There you have it. You now know how to scale, skew and rotate. Using these you can get some pretty interesting effects. But first, there's a question on your mind. If you've been experimenting in Rainmeter, then you must surely be asking yourself...</p>
+
+<h3>What the heck is Rainmeter doing?!</h3>
+
+<p>Glad you asked. You see, when you tell Rainmeter what you want it to do, you have to realize that it sees things differently than you do. For example, if you want to scale something, you see it as wanting to do this:</p>
+<div class="exampleprev" style="text-align:center">
+<img src="../../img/tips/transformation-matrix-guide/TransformationMatrix01.png"/>
+</div>
+<p>Rainmeter will try to do this:</p>
+<div class="exampleprev" style="text-align:center">
+<img src="../../img/tips/transformation-matrix-guide/TransformationMatrix02.png"/>
+</div>
+<p>Every transformation you do will always be relative to the origin. That's the point with coordinates (0,0). Normally, that would be the top-left corner of your object. However, according to Rainmeter, the origin will <i>always</i> be the top-left corner of the entire skin. That's why when you rotated the square, it shot up to the top. It rotated alright, but it did it around the top left corner of the whole skin, not around its own corner. For this reason, whenever you scale, skew or rotate something, you have to take into account that the whole thing is going to move. Adjusting for this is pretty simple. All you have to do is pick a point that you <i>don't</i> want to move and translate the whole thing so that that one point is back where it's supposed to be.</p>
+
+<p>Let's say you want to scale it by 1.5 in both directions and have the top-left corner stay in the same place. First, you have to find to coordinates of that point. In this case, it's pretty simple: it's just the x and positions of your square. If you're using the test skin I suggested (and why wouldn't you be?) that would mean that your square is at (75,75). Next, you have to find out where it's ended up and work from there. To do this, just look at our handy-dandy matrix multiplication. If all we're doing is scaling it by 1.5 and our x and y are 75, then the multiplication should look something like this:</p>
+<pre>
+|1.5 0   tx|   |75|   |x'|
+|0   1.5 ty| x |75| = |y'|
+|0   0    1|   | 1|   |1 |
+
+Or in our case: TransformationMatrix=1.5;0;0;1.5;0;0
+</pre>
+<p>So we have:<br/>
+x' = 75*1.5 + 75*0 + 1*tx<br/>
+y' = 75*0 + 75*1.5 + 1*ty<br/>
+<br/>
+If we use our variables we get:<br/>
+x '= x*a + y*b + 1*tx<br/>
+y' = x*b + y*d + 1*ty<br/>
+<br/>
+We already know what x' and y' are. We want them both to come out to 75. So, if you plug 75 into both equations and solve for tx and ty, you'll wind up with this:<br/>
+tx = 75 - 75*1.5 = -37.5<br/>
+ty = 75 - 75*1.5 = -37.5<br/>
+<br/>
+Once again with our variables:<br/>
+tx = x' - x*a - y*b<br/>
+ty = y' - x*b - y*d<br/>
+<br/>
+And that's all you need to do to find how much we need to move our square back by. So, our new transformation matrix comes out to:</p>
+<pre>
+|1.5 0   -37.5|   |75|   |x'|
+|0   1.5 -37.5| x |75| = |y'|
+|0   0     1  |   | 1|   |1 |
+
+Or in our case: TransformationMatrix=1.5;0;0;1.5;-37.5;-37.5
+</pre>
+<p>If we do the math again, we get:<br/>
+<br/>
+x' = 75*1.5 + 75*0 + 1*-37.5 = 75<br/>
+y' = 75*0 + 75*1.5 + 1*-37.5 = 75<br/>
+<br/>
+Of course, by "we do the math" I mean "Rainmeter does the math". Remember that this part will be taken care of by Rainmeter, but it's good to know exactly what's going on so that you aren't shooting in the dark when something goes wrong and you need to fix it. By the way, in case you hadn't noticed, our square's back where it should be. Happy day!</p>
+
+<p>That technique will work for any transformation you use. Of particular interest is when you use it with rotation. When you rotate something, the center of rotation is the only point that won't move. Every other will go around it by however much you specify. If you want an image to just rotate about itself, you can use the center of the image as the center of rotation and use the technique you just learned to shift that point back to where it started off. In fact, let's try it with our square. Let's say we want the square to rotate by 30 degrees counterclockwise about its own center. First, where's the center? Well, in our case, it's right smack dab in the middle of the skin: (100,100). Next, we'll need to figure out the transformation matrix for a 30 degree rotation. If you remember, that's a scale and a skew in every direction using the sin and cosine of the angle. This is what it'll look like:</p>
+<pre>
+| cos(30) sin(30) tx|   |100|
+|-sin(30) cos(30) ty| x |100|
+|       0       0  1|   |  1|
+</pre>
+<p>I'll cut right down to solving for tx and ty since you should now know how to get there. You'll need to find a calculator for the sine and cosine though:<br/>
+<br/>
+tx = 100 - 100*cos(30) - 100*sin(30) = -36.6025<br/>
+ty = 100 - 100*-sin(30) - 100*cos(30) = 63.3975<br/>
+<br/>
+Some of you might be complaining that there are a lot more than four decimals in the answers, but Rainmeter doesn't actually need them all. It does well enough with just a few. So now let's see what our full transformation matrix will look like:</p>
+<pre>
+| cos(30) sin(30) -36.6025|   |100|
+|-sin(30) cos(30)  63.3975| x |100|
+|       0       0   1     |   |  1|
+</pre>
+<p>Unfortunately when you go to implement this, Rainmeter won't let you use cos(30) and sin(30) as values. You'll have to get actual values. In the end, you should have something like this: <br/>
+<br/>
+TransformationMatrix=0.86602;-0.5;0.5;0.86602;-36.6025;63.3975<br/>
+<br/>
+And that will get you a square that is rotated counterclockwise by 30 degrees around its center. What's that? You wanted it to go clockwise? Well just switch around values b and c and recalculate tx and ty. It should come out to:<br/>
+<br/>
+TransformationMatrix=0.86602;0.5;-0.5;0.86602;63.3975;-36.6025<br/>
+<br/>
+Those are the basics. You can now stretch, slant and spin a meter in any way you like. But, keep reading because it gets better!</p>
+<h3>Multiple Transformations in One!</h3>
+<p>You might be thinking to yourself "Hey, I like rotating and stretching, but what if I want to do both?". Well the answer to that is not so obvious. Let's say you wanted to rotate it and double the size. You might be thinking that you know how to rotate it and you know that the a and d values are for scaling, so why not do a rotation and double those values? Well, remember what happened when you first tried to simply scale that first skew-rotation? It changed the angle and the new size wasn't easy to predict. So what do you do? The answer is matrix multiplication.</p>
+
+<p>If you wanted to scale and rotate something, the first thing you have to decide is what order you'll do it in. Remember that since we're dealing with matrix multiplication, the order is going to matter. In fact, it's almost intuitive. Let's say that you want to rotate your square 15 degrees around the top-left corner, then scale it so that that top-<i>right</i> corner stays in the same place. Now imagine doing it the other way around. Scale it first, then rotate it. You're going to get different results. Sure, you'll have a square that's twice as big that's tilted, but the two methods get different results. So, before you start, make sure you know exactly how you want to do this. </p>
+
+<p>To figure out how you're going to get Rainmeter to do this, start by thinking how you would do it by hand. If you decided you want to rotate it first, you would apply the appropriate transformation matrix and get its results. Don't worry, I did the math for you:</p>
+<pre>
+| 0.9659 0.2588 -16.8559|   |x|   |x'|
+|-0.2588 0.9659  21.9670| x |y| = |y'|
+| 0      0        1     |   |1|   |1 |
+</pre>
+<p>That will rotate every x and y position to x' and y' and shift it upward. You now want to take what you just did, and scale the whole thing by 2, keeping the top-right corner where it is. The transformation matrix for that is pretty simple:</p>
+<pre>
+|2 0 -123.2916|   |x'|   |x''|
+|0 2  -62.0595| x |y'| = |y''|
+|0 0    0     |   |1 |   |1  |
+</pre>
+<p>And that's it. You just apply two transformation matrices, on on top of the other. But look at it more closely. What have you really done? If you replace the vector in that second transformation with what it actually is, which is the first transformation, you get this:</p>
+<pre>
+|2 0 -123.2916|   | 0.9659 0.2588 -16.8559|   |x|   |x'|
+|0 2  -62.0595| x |-0.2588 0.9659  21.9670| x |y| = |y'|
+|0 0    1     |   | 0      0        1     |   |1|   |1 |
+</pre>
+<p>While the order your multiply matrices in does matter, if you have three or more being multiplied at once, it doesn't matter which pair you start with as long as they are adjacent. For example, if you have three matrices A, B and C and you want to multiply them together to get a new matrix D, you would use AxBxC=D. From there you can either do AxB=M and then MxC=D, or you can do BxC=N and then AxN=D. Either way will get you the same answer as long as overall, the order of the matrices is preserved. If we apply that rule to our current situation, we can multiply our two transformation matrices together first. If you remember the trick, you already know that a 3x3 times a 3x3 will give you another 3x3 matrix. So, how do you multiply these? It's exactly the same as I mentioned before. Take the first row of the first matrix and the first column of the second matrix, multiply the corresponding values, and add it all up to get the first value. Do that for every row and column. If you're not sure where these values are going to be put in the new matrix, just remember which row and column you're working on. Thing of it like a crosshair. Your target is going to be where the two lines intersect. For the first row and column, they intersect on the top-left value. That means whatever value you get will go in that position in the new matrix. </p>
+
+<p>In the end, you'll have a new 3x3 matrix. The only problem is that the process of getting this new matrix is long, tedious and error-prone. But, there's a better way. Make someone else do the work for you! There are many different resources that will multiply matrices automatically. A graphing calculator will do it, but if you don't have one on hand, you can always go to <a href="http://wims.unice.fr/wims/en_tool~linear~matmult.html">a website like this one</a>. Just type in your matrices and make sure that in the "C=" field that they're multiplying in the correct order (your second transformation goes first). By plugging in our original two matrices, I got the following new matrix:</p>
+<pre>
+| 1.9318 0.5176 -157.0034|
+|-0.5176 1.9318  -18.1255|
+| 0      0         1     |
+</pre>
+<p>You'll notice that the telltale bottom row makes this new matrix look suspiciously like a transformation matrix. Well, that's because it is. It turns out that multiplying two transformation matrices together just makes a new one! And, if you followed the derivation, this new, single matrix is the exact same as doing one transformation, then the other. If you plug in the values in Rainmeter, you'll get something like this:<br/>
+<br/>
+TransformationMatrix=1.9318;-0.5176;0.5176; 1.9318;-157.0034;-18.1255<br/>
+<br/>
+Try it out. Your square will do exactly what it was meant to. First it will rotate itself, with the top-left corner as the center of rotation, then the square doubles in size, keeping the top-right corner where it is. <br/>
+<br/>
+This technique will work with any two transformations. In fact, if you wanted to transform it a third time, you just need to multiply a third matrix. It all works as long as the order is preserved. <br/>
+<br/>
+That's it. That's all you need to know. With this information, you can now transform any meter in any way you choose. Using this you can get some pretty interesting shapes. Just remember that left and right sides will always be parallel and the same length, as will top and bottom. That means no trapezoids, no strange quadrilaterals, only parallelograms. But that's your only restriction.</p>
+
+<h3>Help! It's not working!</h3>
+<p>Sit down and take a deep breath. If it's not working, just go over what you did. After all, it's all math and you're only human which means there are going to be mistakes. Look over what you did step-by-step. Redo it if you have to. Make sure that everything is being multiplied in the correct order, make sure that when you write it out it looks like this: TransformationMatrix=a;b;c;d;tx;ty. If you did multiple transformations, make sure that they were done correctly. After all, different orders can give incredibly different results. Finally, make sure that what you want to achieve is possible. Remember what transformations you're restricted to: scale, skew and rotate. That means that while you can get some interesting effects, there is no way whatsoever that you can get a trapezoid. That is, whatever the left and right sides originally were will always be parallel to one another and will always have the same length. The same goes for top and bottom.</p>
+
+<h3>Bonus! Some helpful tips:</h3>
+
+<p>The following are just a few tricks that I find useful. In the future, answers to questions may show up here as well.</p>
+
+<p><b>Specific Skews:</b> So you know how to skew, but how to you skew at the angle you want? Well, the answer is a bit more math. As you may or may not know, the equation of a straight line on a graph is y=mx+b, where x and y are your coordinates, m is the slope of the line and b is a value by which you can shift this up and down. Basically, every time you move the x-value by 1, the y moves by whatever m is, plus whatever b is. This is also exactly what a skew is.  If you want to skew along the x-axis, this really means that you're altering the y-values by using x. We can replace the equation of the line with this: y'=bx+dy+ty. That's the equation you already saw for finding where the y coordinate will end up. Now, let's say that you're not scaling, just skewing. We can take out "dy" to make things simple. y'=bx+ty. Again, this means that the y-coordinate depends on the x-coordinate, plus a little bit from ty. How do we use this to find the angle for the skew? Imagine each point as a right-angled triangle. The horizontal side would be what x changes by and the vertical side is what y changes by. If you're just skewing along the y-axis by 1, the triangle would look like this:</p>
+<pre>    /|
+   / | 1
+  /__|
+    1
+y'=1*y</pre>
+<p>The bottom will always be 1, unless you decide to scale x. The right side will be the value of y' when y=1, which is 1 in our case. The translation values (tx and ty) don't figure into this. Now, typically when referring to the angle, we mean the one on the bottom left. Using trigonometry, we know that the tangent of that angle is equal to the length opposite side of the triangle divided by the the length of the side adjacent to the angle we're looking at. For us, tan(angle) = 1/1. Pretty simple. However, what we're going to want to do is start with an angle and then find our "b" value from that (the value which is used to skew along the y-axis). If, in general, the equation looks like this: tan(angle)=by/ax (you put the "a" in because scaling x changes the bottom value), then, if we take into account that x and y themselves are going to be 1, we can manipulte the equation to look like this: tan(angle)=b/a, and then we can do this: a*tan(angle)=b. There you have it! Just pull out a calculator and find the tan of the angle you want, multiply that by what you're scaling x by, and that will be your value for "b" in the matrix! Skewing along the x-axis is exactly the same, only you switch "b" for "c" and "a" for "d": d*tan(angle)=c.</p>
+
+<p><b>Make something Spin:</b> While rotating something at an agle is nice, maybe you want to do it more than once. Maybe so often that the object you're transforming <i>spins</i> there is a simple way to accomplish this using Dynamic Variables. Rainmeter will let you use the the values from a measure as a variable in other measures and meters. To make use of this functionality, we only need to add the line "DynamicVariables=1" to whichever meter or measure we want it to occur in. By using this, we can have the values of a transformation matrix change according to a measure. In this case, we'll be needing more than one measure. First, remember that the values of a Transformation Matrix when rotating correspond to this pattern:
+<ul>
+	<li>a = cos(angle)
+	<li>b = -sin(angle)
+	<li>c = sin(angle)
+	<li>d = cos(angle)
+</ul>
+<p>If you look at this, you can see that all we need is the sine of an angle, the cosine of that angle and one more measure that flips the sign of the sine of that angle. That's three simple Calc measures. You'll also need two more: one for calculating tx and one for ty. We can't use static numbers since all of the other are going to be changing. Let's say we want to rotate a square meter that is 100x100 pixels, positioned at (60,60) and rotate it around its center. It could be an image, a block of text, a bar, whatever. For the purpose of this example, all it really needs to be is 100x100 and positioned at (60,60). First we would set up our five Calc measures like so:</p>
+{% highlight ini %}
+[MeasureSinAngle]
+Measure=Calc
+Formula=SIN((Counter%360)/360*2*PI)
+
+[MeasureNegSinAngle]
+Measure=Calc
+Formula=-(MeasureSinAngle)
+
+[MeasureCosAngle]
+Measure=Calc
+Formula=COS((Counter%360)/360*2*PI)
+
+[MeasureTX]
+Measure=Calc
+Formula=110-MeasureCosAngle*110-MeasureSinAngle*110
+
+[MeasureTY]
+Measure=Calc
+Formula=110-MeasureNegSinAngle*110-MeasureCosAngle*110
+{% endhighlight %}
+<p>Remember that you can get TX and TY by following that formula we discussed above. All we did here is use the values of measures instead of hrad values to do that calculating. One you have these in place, all you need to is add the following to your meter:</p>
+<pre>DynamicVariables=1
+TransformationMatrix=[MeasureCosAngle]; [MeasureNegSinAngle]; [MeasureSinAngle]; [MeasureCosAngle]; [MeasureTX]; [MeasureTY]</pre>
+<p>And there you have it. Your meter will now rotate around the point (110,110), which is (60,60) plus the center of your meter, which is (50,50) within the meter itself. By changing the instances of 110 in TX and TY you can easily change the point the meter rotates around. Any other meter you add this to will also rotate around that point in the skin.</p>
