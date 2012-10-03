@@ -1,0 +1,124 @@
+---
+layout: tips
+title: 'Screen Position Variables'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><i>Tip by Kaelri</i></p>
+<p>The following built-in variables in Rainmeter can help you position things on the screen even on different screen resolutions.</p>
+<p><b>#SCREENAREAHEIGHT#</b><br/>
+<b>#SCREENAREAWIDTH#</b><br/>
+The total dimensions of the user's screen resolution.</p>
+<p><b>#WORKAREAWIDTH#</b><br/>
+<b>#WORKAREAHEIGHT#</b><br/>
+The dimensions of the "work area" - the desktop as constrained by the taskbar and any "docking" or "ranging" software.</p>
+<p><b>#WORKAREAX#</b><br/>
+<b>#WORKAREAY#</b><br/>
+The absolute X and Y position of the work area's top-left corner.</p>
+<p>In the past, if your users wanted to change the width of something, they had to open a window full of scary code and find the appropriate line. We shall hereafter refer to these as the Dark Ages of Rainmeter. Now my Taskbar skin, for example, is nothing more than this:</p>
+{% highlight ini %}
+[Taskbar]
+Meter=IMAGE
+ImageName=Taskbar.jpg
+W=#WORKAREAWIDTH#
+H=33
+{% endhighlight %}
+<p>These variables support mathematical transformations, too. If I wanted a bar that filled up a third of the screen, for instance, I'd write:</p>
+<code>W=(#WORKAREAWIDTH# / 3)</code>
+<p>Even more powerful, however, is that you can use these variables to set the initial positions of whole skins in a .thm file for RainThemes.</p>
+<p>Placing a skin relative to the top or left sides of the desktop area is effortless - (#WORKAREAX# + X) or (#WORKAREAY# + Y). The right or bottom sides are a bit tricker, but just as effective. For example, if I want the Taskbar to be 33 pixels from the bottom - since it's 33 pixels high - I'd type:</p>
+<code>WindowY=(#WORKAREAY# + (#WORKAREAHEIGHT# - 33))</code>
+<p>In other words, you're telling Rainmeter to start at the top of the work area, go all the way down, then back up by 33.</p>
+<p>Centering a skin is just as easy. It's a tad more complicated in that you can't just make X and Y the center of the screen - the skin has its own height and width, remember. With Enigma, I've kept a consistent format for all of my "Taskbar" skins, in which the text is center-aligned at X=60. So if I wanted to center the whole skin as part of a theme, I'd use this format:</p>
+<code>WindowX=((#SCREENAREAWIDTH# / 2) - 60)</code>
+<p>It depends on the number of skins you've got, but in general, it's pretty easy to construct an entire theme that automatically adjusts to the user's resolution when it loads. As an example, I've copied the whole of Enigma's new default state below. It's easy for me to imagine most skins being packaged with themes like this, now that you can guarantee a proper and instantaneous presentation on any screen, large or small.</p>
+{% highlight ini %}
+[Enigma\_Home]
+Active=1
+WindowX=(#WORKAREAX# + (#WORKAREAWIDTH# - 900) / 2)
+WindowY=(#WORKAREAY# + (#WORKAREAHEIGHT# - 600) / 2)
+
+[Enigma\Taskbar\_Taskbar]
+WindowX=(#WORKAREAX#)
+WindowY=(#WORKAREAY# + (#WORKAREAHEIGHT# - 33))
+AlphaValue=127
+FadeDuration=250
+ClickThrough=0
+Draggable=1
+HideOnMouseOver=0
+SavePosition=1
+SnapEdges=0
+KeepOnScreen=1
+AlwaysOnTop=-1
+Active=3
+
+[Enigma\Sidebar\_Sidebar]
+Active=2
+WindowX=(#WORKAREAX# + (#WORKAREAWIDTH# - 214))
+WindowY=(#WORKAREAY#)
+AlphaValue=76
+FadeDuration=250
+ClickThrough=0
+Draggable=1
+HideOnMouseOver=0
+SavePosition=1
+SnapEdges=0
+KeepOnScreen=1
+AlwaysOnTop=-1
+
+[Enigma\Sidebar\Clock]
+Active=4
+WindowX=(#WORKAREAX# + (#WORKAREAWIDTH# - 283))
+WindowY=(#WORKAREAY#)
+AlphaValue=255
+FadeDuration=250
+ClickThrough=0
+Draggable=1
+HideOnMouseOver=0
+SavePosition=1
+SnapEdges=0
+KeepOnScreen=1
+AlwaysOnTop=0
+
+[Enigma\Sidebar\Music]
+WindowX=(#WORKAREAX# + (#WORKAREAWIDTH# - 195))
+WindowY=(#WORKAREAY# + (#WORKAREAHEIGHT# - 115))
+AlphaValue=255
+FadeDuration=250
+ClickThrough=0
+Draggable=1
+HideOnMouseOver=0
+SavePosition=1
+SnapEdges=1
+KeepOnScreen=1
+AlwaysOnTop=0
+Active=2
+
+[Enigma\Sidebar\Notes]
+Active=2
+WindowX=(#WORKAREAX# + (#WORKAREAWIDTH# - 188))
+WindowY=(#WORKAREAY# + 110)
+AlphaValue=255
+FadeDuration=250
+ClickThrough=0
+Draggable=1
+HideOnMouseOver=0
+SavePosition=1
+SnapEdges=0
+KeepOnScreen=0
+AlwaysOnTop=0
+
+[Enigma\Taskbar\Combos\Tray Systems]
+Active=1
+WindowX=(#WORKAREAX# + (#WORKAREAWIDTH# - 253))
+WindowY=(#WORKAREAY# + (#WORKAREAHEIGHT# - 28))
+AlphaValue=255
+FadeDuration=250
+ClickThrough=0
+Draggable=1
+HideOnMouseOver=0
+SavePosition=1
+SnapEdges=0
+KeepOnScreen=1
+AlwaysOnTop=0
+{% endhighlight %}
