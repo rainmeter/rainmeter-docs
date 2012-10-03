@@ -636,6 +636,9 @@ p.footnote {
 	color:#fff;
 }
 
+/*
+** Pygments
+*/
 pre .c { color:#008000; font-style:italic } /* Comment */
 pre .err { color:#a61717; background-color:#e3d2d2 } /* Error */
 pre .k { font-weight:bold } /* Keyword */
@@ -698,3 +701,32 @@ pre .vi { color:#008080 } /* Name.Variable.Instance */
 pre .il { color:#009999 } /* Literal.Number.Integer.Long */
 pre .ini .na { color:#000066 }
 pre .ini .s { color:#445588 }
+
+/*
+** Slimbox
+*/
+#lbOverlay {
+	position:fixed;
+	z-index:9999;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background-color:#000;
+	cursor:pointer;
+}
+
+#lbCenter {
+	position:absolute;
+	z-index:9999;
+	overflow:hidden;
+	background-color:#fff;
+}
+
+#lbImage {
+	position:absolute;
+	left:0;
+	top:0;
+	border:10px solid #fff;
+	background-repeat:no-repeat;
+}
