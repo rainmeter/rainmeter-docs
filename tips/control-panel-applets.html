@@ -1,0 +1,39 @@
+---
+layout: tips
+title: 'Animated .GIF Files'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><i>Tip by santa_ryan</i></p>
+
+<p>Control Panel functions are accessed by running the .cpl files associated with them. They are located in <b>C:\Windows\System32\</b> assuming C: is your system drive.</p>
+<p>They are run from Rainmeter by using the application <b>C:\Windows\System32\control.exe</b> which will take as a parameter the name of any of the Control Panel applets.</p>
+<p>The list of available applets and their functions:</p>
+
+<pre>
+Accessibility Options			access.cpl
+Add or Remove Programs			appwiz.cpl
+Display Properties				desk.cpl
+Windows Firewall				firewall.cpl
+Add Hardware					hdwwiz.cpl
+Internet Options				inetcpl.cpl
+Regional & Language Options		intl.cpl
+Java Control Panel				javacpl.cpl
+Game Controllers				joy.cpl
+Mouse Properties				main.cpl
+Sound & Audio Device Settings	mmsys.cpl
+Network Connections				ncpa.cpl
+Wireless Network Setup Wizard	netsetup.cpl
+User Accounts					nusrmgr.cpl
+ODBC Data Source Administrator	odbccp32.cpl
+Power Options					powercfg.cpl
+System Properties				sysdm.cpl
+Phone and Modem Options			telephon.cpl
+Time and Date Options			timedate.cpl
+Windows Security Center			wscui.cpl
+Automatic Updates				wuaucpl.cpl
+Active Directory Manager		admgmt.msc
+</pre>
+
+<p>So to execute one of these applets from Rainmeter use an <b>!Execute</b> function with any of the <b>Action</b> features of Rainmeter:</p>
+<p><code>LeftMouseUpAction=["C:\Windows\System32\control.exe" "ncpa.cpl"]</code></p>
