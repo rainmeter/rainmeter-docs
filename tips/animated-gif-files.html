@@ -28,7 +28,7 @@ Use this utility to convert your .gif file to individual images.  The images can
 {% highlight ini %}
 ;=================================================
 ; Rainmeter configuration file
-; Updated March 8, 2010
+; Updated October 4, 2012
 ;
 ; Note - You will need to get GifFrames.exe from:
 ; http://www.evanolds.com/#GFE
@@ -36,31 +36,24 @@ Use this utility to convert your .gif file to individual images.  The images can
 ;
 ;=================================================
 
-;[BEGIN CONFIG FILE]==============================
-
 [Rainmeter]
-Author=Jeffrey Morley
 Update=100
 
 [Metadata]
 Name=GIFFrames
-Description=Displays a deconstructed .gif file (individual frames) as if it was a .gif file
-Instructions=See .ini file for how to get and use GifFrames.exe
+Author=Jeffrey Morley
+Information=Displays a deconstructed .gif file (individual frames) as if it was a .gif file || Instructions: See .ini file for how to get and use GifFrames.exe
 Version=March 8, 2010
 License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
 
 [ImageNumberCalc]
 Measure=Calc
-Formula=ImageNumberCalc % 12
+Formula=Counter % 12
 
 [ImageMeter]
 Meter=Image
-ImageName=ImagesFrames\Frame[ImageNumberCalc].png
+ImageName=#@#ImagesFrames\Frame[ImageNumberCalc].png
 DynamicVariables=1
-
-; Use Counter % 12 instead of 11 since it counts from 0-11 and you have 12 frames starting with "0".
-
-;[END CONFIG FILE]================================
 {% endhighlight %}
 
 <h3>Method Two: Converting a .GIF to a Multiple Frame "Bitmap" Image</h3>
@@ -81,7 +74,7 @@ You should probably get the latest "Portable" "Static" version on the list at th
 {% highlight ini %}
 ;=================================================
 ; Rainmeter configuration file
-; Updated March 8, 2010
+; Updated October 4, 2012
 ;
 ; Note - You will need to get ImageMagick from:
 ; http://www.imagemagick.org/script/binary-releases.php?ImageMagick=ricm49nmhtgaut61n97h3fmt92#windows
@@ -91,31 +84,24 @@ You should probably get the latest "Portable" "Static" version on the list at th
 ; 
 ;=================================================
 
-;[BEGIN CONFIG FILE]==============================
-
 [Rainmeter]
-Author=kenz0
 Update=100
 
 [Metadata]
 Name=GIFBitmap
-Description=Displays a "Bitmap" made from a .gif file using ImageMagick to convert a .gif to a multi-frame bitmap image.
-Instructions=See .ini file for how to get and use ImageMagick
+Author=kenz0
+Information=Displays a "Bitmap" made from a .gif file using ImageMagick to convert a .gif to a multi-frame bitmap image. || Instructions: See .ini file for how to get and use ImageMagick
 Version=March 8, 2010
 License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
 
 [MeasureAnimation]
 Measure=CALC
-Formula=MeasureAnimation % 12
-
-; Use Counter % 12 instead of 11 since it counts from 0-11 and you have 12 frames starting with "1".
+Formula=Counter % 12
 
 [MeterAnimation]
 Meter=BITMAP
 MeasureName=MeasureAnimation
-BitmapImage=ImagesBitmap\shark_bitmap.png
+BitmapImage=#@#ImagesBitmap\shark_bitmap.png
 BitmapFrames=12
 BitmapExtend=1
-
-;[END CONFIG FILE]================================
 {% endhighlight %}
