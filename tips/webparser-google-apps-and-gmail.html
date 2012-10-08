@@ -1,0 +1,17 @@
+---
+layout: tips
+title: 'Google Apps and GMail'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><i>tip by jackfrost.</i></p>
+
+<p>If you have a Google Apps account associated with your GMail, and you want to use it in a GMail skin, use the following URL in the WebParser measure:<br/>
+<pre>
+URL=https://GMailID%40Domain.com:GMailPassword@mail.google.com/a/Domain.com/feed/atom/
+</pre>
+</p>
+
+<p>Make sure that the items GMailID, Domain.com, and GMailPassword are replaced with your own credentials.</p>
+
+<p>The "%40" string is the encoded form of "@" to avoid a problem where WebParser improperly formats the URL.</p>
