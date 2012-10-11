@@ -9,9 +9,23 @@
 		'<header><h1>' + title + '</h1></header>' +
 		'<article>');
 
-	window.onload = function() {
+	// Fix highlight blocks.
+	window.addEventListener('load', function() {
 		body.innerHTML = body.innerHTML.
-			replace(/{% highlight .*? %}/gm, '<div class="highlight"><pre>').
-			replace(/{% endhighlight %}/gm, '</pre></div>');
-	};
+			replace(/({% highlight .*? %}[\s\S]*{% endhighlight %})/gm, function(m) {
+				return m.
+					replace(/</g, '&lt;').
+					replace(/>/g, '&gt;').
+					replace(/^.*/, '<div class="highlight"><pre>').
+					replace(/.*$/, '</pre></div>');
+			});
+	});
+
+	// Fix <img> tags.
+	window.addEventListener('load', function() {
+		var imgs = document.getElementsByTagName('img');
+		for (var i = 0; img = imgs[i]; ++i) {
+			img.src = img.src.replace(/^.*?\/img\//, 'img/');
+		}
+	});
 })();
