@@ -9,16 +9,16 @@ title: 'WebParser: Lookahead Assertions in RegExp'
 <p>The best way to explain this is probably to give an example with an explanation of what it is doing.</p>
 <p>Let's start with an HTML file.  We will use the "file://" functionality of WebParser for this test, so we can parse a local file on our hard drive.<br/>
 {% highlight html %}
-<HTML>
-	<BODY>
-		<Item>
-			<Name>Larry</Name>
-		</Item>
-		<Item>
-			<Name>Curly</Name>
-		</Item>
-	</BODY>
-</HTML>
+&lt;HTML&gt;
+	&lt;BODY&gt;
+		&lt;Item&gt;
+			&lt;Name&gt;Larry&lt;/Name&gt;
+		&lt;/Item&gt;
+		&lt;Item&gt;
+			&lt;Name&gt;Curly&lt;/Name&gt;
+		&lt;/Item&gt;
+	&lt;/BODY&gt;
+&lt;/HTML&gt;
 {% endhighlight %}</p>
 <p>Normally, we might use something like this in a WebParser measure to search for and return three results:<br/>
 {% highlight ini %}
