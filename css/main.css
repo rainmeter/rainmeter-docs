@@ -570,6 +570,7 @@ p.footnote {
 	border:1px solid #ddd;
 	font-size: 0.8em;
 	font-weight: bold;
+	line-height: 14px;
 }
 
 .exampleprev * {
