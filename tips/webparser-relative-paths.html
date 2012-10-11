@@ -1,0 +1,44 @@
+---
+layout: tips
+title: 'WebParser: Relative Paths'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>There is an issue with retrieving and displaying images from web sites when the source HTML has them referred to as a "relative path" to the image.</p>
+<p>WebParser can download and display images by doing a WebParser Measure which gets the full URL and name of the image, and setting "Download=1" on the Measure. Then a Meter using Meter=Image with a MeasureName=xxxx referring to the Measure which downloaded the image will display the downloaded image.</p>
+
+<p><b>Problem</b></p>
+<p>The problem came in when the image was referred to in the web site HTML using a relative path to the image. An example is the logo at the top of the Rainmeter forums:</p>
+
+<pre>&lt;a href="./index.php" title="Board index" id="logo"&gt;&lt;img src="./styles/saphic/imageset/site_logo.png"/&gt;&lt;/a&gt;
+</pre>
+
+<p>As you can see, the full URL is not included in anything that WebParser can search for, so Download=1 fails... </p>
+<p><b>Solution</b></p>
+<p>A WebParser Measure can append the RESULTS of another WebParser Measure in the "URL" line by referencing the Measure in square brackets. This means you can use the first measure to return the name and location of the image you want, and use this information in a second Measure where you hard code the URL and then pass the result of the search for the image to the second Measure.</p>
+
+{% highlight ini %}
+[MeasureImageLocation]
+Measure=Plugin
+Plugin=WebParser
+UpdateRate=1800
+Url=http://www.rainmeter.net/forum/
+RegExp="(?siU)<img src="(.*)"/>"
+
+[MeasureImageDownload]
+Measure=Plugin
+Plugin=WebParser
+UpdateRate=1800
+Url=http://www.rainmeter.net/forum/[MeasureImageLocation]
+StringIndex=1
+Download=1
+
+[MeterDisplayImage]
+Meter=IMAGE
+MeasureName=MeasureImageDownload
+H=60
+W=70
+{% endhighlight %}
+
+<p>Here we are using the first Measure [MeasureImageLocation] to get the relative path and filename of the image.</p>
+<p>Then we use the second Measure [MeasureImageDownload] to combine the known URL and the information from [MeasureImageLocation] to create a fully loaded Measure which will succeed in downloading the image... Then we just display it.</p>
