@@ -1,0 +1,59 @@
+---
+layout: tips
+title: 'WebParser: Google Reader as RSS Feed'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><i>Tip by poiru</i></p>
+<p>With this method, one single WebParser measure (or a single RegExp, to be specific) can handle virtually all feeds. The idea is to use Google Reader to read feeds (be it Atom, RSS, FeedBurner, or something else) and output them with a single, constant format. We can then parse the various information using a single regular expression.</p>
+<p>The address:<br/>
+<code>http://www.google.co.uk/reader/view/feed/#URL#?n=8</code></p>
+<p>where <b>#URL#</b> can be any feed (e.g. http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml). Note that if the URL contains special characters like ? or &, it must be encoded using <a href="http://meyerweb.com/eric/tools/dencoder/" target="_blank">a URL encoder</a> that converts those characters into URL entities.<br/><br/>
+<b>?n=8</b> tells Google Reader to retrieve 8 items.</p>
+<p>The code below will return the following:<br/>
+<ul>
+<li>The title of the feed (e.g. BBC News)</li>
+<li>The link to 8 items (if they exist -- the RegExp won't fail if less than 8 items are available)</li>
+<li>The title to 8 items (if they exist)</li>
+<li>The date of 8 items (if they exist)</li>
+</ul>
+{% highlight ini %}
+[Variables]
+URL=http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml
+GET=.*(?(?=.*&lt;div class="item"&gt;).*&lt;div class="item"&gt;.*&lt;a href="(.*)"&gt;(.*)&lt;/a&gt;.*&lt;div class="item-info"&gt;.* on (.*)&lt;/div&gt;)
+
+[MeasureFeed]
+Measure=Plugin
+Plugin=WebParser
+Url=http://www.google.co.uk/reader/view/feed/#URL#?n=8
+RegExp="(?siU)&lt;h1&gt;(.*)&lt;/h1&gt;#GET##GET##GET##GET##GET##GET##GET##GET#"
+UpdateRate=1500
+
+[MeasureItem1]
+Measure=Plugin
+Plugin=WebParser
+Url=[MeasureFeed]
+StringIndex=2
+
+[MeasureLink1]
+Measure=Plugin
+Plugin=WebParser
+Url=[MeasureFeed]
+StringIndex=3
+
+[MeasureItem2]
+Measure=Plugin
+Plugin=WebParser
+Url=[MeasureFeed]
+StringIndex=4
+
+[MeasureLink2]
+Measure=Plugin
+Plugin=WebParser
+Url=[MeasureFeed]
+StringIndex=5
+
+... and so forth until [MeasureLink8]
+{% endhighlight %}
+
+<p><i>Note: Use google.co.uk to get the date in DD/MM/YY and google.com for MM/DD/YY)</i></p>
