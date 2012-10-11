@@ -8,7 +8,7 @@ title: 'WebParser: Lookahead Assertions in RegExp'
 <p>This can be solved by using what is known in regular expressions as a "Lookahead Assertion".  What this does is evaluate an expression you define that says in effect "do this search if some pattern is found, otherwise continue the regular expression without failing".</p>
 <p>The best way to explain this is probably to give an example with an explanation of what it is doing.</p>
 <p>Let's start with an HTML file.  We will use the "file://" functionality of WebParser for this test, so we can parse a local file on our hard drive.<br/>
-{% highlight ini %}
+<pre>
 <HTML>
 	<BODY>
 		<Item>
@@ -19,7 +19,7 @@ title: 'WebParser: Lookahead Assertions in RegExp'
 		</Item>
 	</BODY>
 </HTML>
-{% endhighlight %}</p>
+</pre></p>
 <p>Normally, we might use something like this in a WebParser measure to search for and return three results:<br/>
 {% highlight ini %}
 [MeasureParent]
