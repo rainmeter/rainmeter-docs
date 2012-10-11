@@ -12,7 +12,7 @@
 	// Fix highlight blocks.
 	window.addEventListener('load', function() {
 		body.innerHTML = body.innerHTML.
-			replace(/({% highlight .*? %}[\s\S]*{% endhighlight %})/gm, function(m) {
+			replace(/({% highlight .*? %}[\s\S]*?{% endhighlight %})/gm, function(m) {
 				return m.
 					replace(/</g, '&lt;').
 					replace(/>/g, '&gt;').
