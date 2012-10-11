@@ -564,6 +564,7 @@ p.footnote {
 
 .exampleprev {
 	display: inline-block;
+	margin:0 0 10px;
 	padding: 8px;
 	background-color:#f7f7f9;
 	border:1px solid #ddd;
