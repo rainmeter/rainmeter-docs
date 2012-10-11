@@ -26,12 +26,12 @@ title: 'WebParser: Lookahead Assertions in RegExp'
 Measure=Plugin
 Plugin=WebParser
 URL=file://#CURRENTPATH#MyFile.html
-RegExp="(?siU)<Item>.*<Name>(.*)</Name>.*<Item>.*<Name>(.*)</Name>.*<Item>.*<Name>(.*)</Name>.*"
+RegExp="(?siU)&lt;Item&gt;.*&lt;Name&gt;(.*)&lt;/Name&gt;.*&lt;Item&gt;.*&lt;Name&gt;(.*)&lt;/Name&gt;.*&lt;Item&gt;.*&lt;Name&gt;(.*)&lt;/Name&gt;.*"
 {% endhighlight %}</p>
 <p>The problem is, there are only two instances of "<Item>" in this file at this time, and the regular expression will fail and no results will be returned to the WebParser measure.  A feed or web site might have none or twenty "<Item>" occurrences, and you can't always know ahead of time.</p>
 <p>Using a "lookahead assertion" will allow you to solve this.  You can use a RegExp of:<br/>
 {% highlight ini %}
-RegExp="(?siU)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name>)"
+RegExp="(?siU)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)"
 {% endhighlight %}
 Now the WebParser measure will return the two StringIndexes for "Larry" and "Curly", and will just return a null value for the third search item without failing.</p>
 <p>What <code>(?(?=.*<Item>).*<Name>(.*)</Name>)</code> is saying is "Look ahead and see if there is a pattern of <code>.*<Item></code> coming up, and if so, execute the expression <code>.*<Name>(.*)</Name></code>", or in shorthand: "(? [Do] (?= [If this is found] ) [stuff to Do] )".  If not, just shrug and continue...</p>
@@ -41,7 +41,7 @@ Now the WebParser measure will return the two StringIndexes for "Larry" and "Cur
 DynamicWindowSize=1
 
 [Variables]
-Get=(?(?=.*<Item>).*<Name>(.*)</Name>)
+Get=(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)
 
 [MeasureParent]
 Measure=Plugin

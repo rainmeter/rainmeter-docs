@@ -108,7 +108,7 @@ DynamicVariables=1
 {% highlight ini %}
 [cCounter]
 Measure=Calc
-Formula=cCounter+(cCounter<#MaxNumber#)
+Formula=cCounter+(cCounter&lt;#MaxNumber#)
 {% endhighlight %}
 
 <p>What we did was added a conditional statement. Conditional statements without an "if ? then : else" format resolve to either 1 for true or 0 for false. Using this fact we can easily use conditional statements in mathematical formulas.</p>

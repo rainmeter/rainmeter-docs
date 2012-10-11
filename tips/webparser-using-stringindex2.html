@@ -18,14 +18,14 @@ Update=1000
 DynamicWindowSize=1
 
 [Variables]
-Item=.*<item>(.*)</item>
-Sub="<![CDATA[":"","]]>":""
+Item=.*&lt;item&gt;(.*)&lt;/item&gt;
+Sub="&lt;![CDATA[":"","]]&gt;":""
 
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
 Url=http://feeds.gawker.com/lifehacker/full
-RegExp="(?siU)<channel>.*<image>.*<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
+RegExp="(?siU)&lt;channel&gt;.*&lt;image&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;#Item##Item##Item#"
 
 [MeasureMainTitle]
 Measure=Plugin
@@ -44,7 +44,7 @@ StringIndex=2
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<title>(.*)</title>"
+RegExp="(?siU)&lt;title&gt;(.*)&lt;/title&gt;"
 StringIndex=3
 StringIndex2=1
 Substitute=#Sub#
@@ -53,7 +53,7 @@ Substitute=#Sub#
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<link>(.*)</link>"
+RegExp="(?siU)&lt;link&gt;(.*)&lt;/link&gt;"
 StringIndex=3
 StringIndex2=1
 
@@ -61,7 +61,7 @@ StringIndex2=1
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<title>(.*)</title>"
+RegExp="(?siU)&lt;title&gt;(.*)&lt;/title&gt;"
 StringIndex=4
 StringIndex2=1
 Substitute=#Sub#
@@ -70,7 +70,7 @@ Substitute=#Sub#
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<link>(.*)</link>"
+RegExp="(?siU)&lt;link&gt;(.*)&lt;/link&gt;"
 StringIndex=4
 StringIndex2=1
 
@@ -78,7 +78,7 @@ StringIndex2=1
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<title>(.*)</title>"
+RegExp="(?siU)&lt;title&gt;(.*)&lt;/title&gt;"
 StringIndex=5
 StringIndex2=1
 Substitute=#Sub#
@@ -87,7 +87,7 @@ Substitute=#Sub#
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<link>(.*)</link>"
+RegExp="(?siU)&lt;link&gt;(.*)&lt;/link&gt;"
 StringIndex=5
 StringIndex2=1
 
@@ -155,7 +155,7 @@ LeftMouseUpAction=["[MeasureItem3Link]"]
 <p>First, we set a variable that simply gets everything in between &lt;item&gt; and &lt;/item&gt; from the site.<br/>
 {% highlight ini %}
 [Variables]
-Item=.*<item>(.*)</item>
+Item=.*&lt;item&gt;(.*)&lt;/item&gt;
 {% endhighlight %}</p>
 
 <p>Then we use WebParser to go get the information from the site.<br/>
@@ -164,7 +164,7 @@ Item=.*<item>(.*)</item>
 Measure=Plugin
 Plugin=WebParser
 Url=http://feeds.gawker.com/lifehacker/full
-RegExp="(?siU)<channel>.*<image>.*<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
+RegExp="(?siU)&lt;channel&gt;.*&lt;image&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;#Item##Item##Item#"
 {% endhighlight %}</p>
 <p>Notice we are doing something a bit different here.  Instead of fully parsing the site into many, many StringIndexes on the main measure, we are just getting the main title and link for the site into StringIndexes 1 and 2, then getting the <i>entire</i> contents of each &lt;item&gt; into StringIndexes 3, 4 and 5.</p>
 
@@ -174,7 +174,7 @@ RegExp="(?siU)<channel>.*<image>.*<title>(.*)</title>.*<link>(.*)</link>#Item##I
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<title>(.*)</title>"
+RegExp="(?siU)&lt;title&gt;(.*)&lt;/title&gt;"
 StringIndex=3
 StringIndex2=1
 Substitute=#Sub#
@@ -191,7 +191,7 @@ Substitute=#Sub#
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<link>(.*)</link>"
+RegExp="(?siU)&lt;link&gt;(.*)&lt;/link&gt;"
 StringIndex=3
 StringIndex2=1
 {% endhighlight %}</p>
@@ -204,7 +204,7 @@ StringIndex2=1
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<title>(.*)</title>"
+RegExp="(?siU)&lt;title&gt;(.*)&lt;/title&gt;"
 StringIndex=4
 StringIndex2=1
 Substitute=#Sub#

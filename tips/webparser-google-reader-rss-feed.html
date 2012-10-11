@@ -20,13 +20,13 @@ title: 'WebParser: Google Reader as RSS Feed'
 {% highlight ini %}
 [Variables]
 URL=http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml
-GET=.*(?(?=.*<div class="item">).*<div class="item">.*<a href="(.*)">(.*)</a>.*<div class="item-info">.* on (.*)</div>)
+GET=.*(?(?=.*&lt;div class="item"&gt;).*&lt;div class="item"&gt;.*&lt;a href="(.*)"&gt;(.*)&lt;/a&gt;.*&lt;div class="item-info"&gt;.* on (.*)&lt;/div&gt;)
 
 [MeasureFeed]
 Measure=Plugin
 Plugin=WebParser
 Url=http://www.google.co.uk/reader/view/feed/#URL#?n=8
-RegExp="(?siU)<h1>(.*)</h1>#GET##GET##GET##GET##GET##GET##GET##GET#"
+RegExp="(?siU)&lt;h1&gt;(.*)&lt;/h1&gt;#GET##GET##GET##GET##GET##GET##GET##GET#"
 UpdateRate=1500
 
 [MeasureItem1]
