@@ -46,25 +46,30 @@ title: 'WebParser Tutorial'
 <div class="exampleprev">
 <a rel="lightbox" href="../../img/tips/webparser-guide/WebParserGuideImage01.jpg"><img src="../../img/tips/webparser-guide/WebParserGuideImage01.jpg" width="600"/></a>
 </div>
-<br/><br/>
-<p>Here is the information we are going to extract from it (highlighted):</p>
-<div class="exampleprev">
+<br/>
+
+<div class="exampleprev floatright">
 <img src="../../img/tips/webparser-guide/WebParserGuideImage03.jpg" width="400"/>
 </div>
-<br/><br/>
-<p>Here is the final skin we will create: (I have kept the skin simple as the purpose is to learn WebParser, not skinning in general)</p>
-<div class="exampleprev">
+<p>Here is the information we are going to extract from it (highlighted):</p>
+
+<div style="clear: both;"></div><br/>
+<div class="exampleprev floatleft">
 <img src="../../img/tips/webparser-guide/WebParserGuideImage02.jpg" width="300"/>
 </div>
+<p>Here is the final skin we will create: (I have kept the skin simple as the purpose is to learn WebParser, not skinning in general)</p>
+<div style="clear: both;"></div>
 
 <h3>Let's Build It</h3>
 <p>The first thing you want to do is to go to the web page in your browser, right-click, choose "View Page Source", copy everything, paste it into a text editor and save the output/source of the web page to a text file. (Save it as something like Webpage<b>.txt</b> and not .html, so you can easily use a text editor to work with it in a bit.)</p>
 
-<p>Let's start by looking at the first bit of information we want to retrieve.</p>
-<div class="exampleprev">
+<br/>
+<div class="exampleprev floatright">
 <img src="../../img/tips/webparser-guide/WebParserGuideImage03.jpg" width="400"/>
 </div>
-<br/><br/>
+<p>Let's start by looking at the first bit of information we want to retrieve.</p>
+<div style="clear: both;"></div>
+<br/>
 <p>We want to start by getting our IP address. On the web page, it is near the top of the area with all the information we want, with a label "IP Address to locate:"</p>
 <p>Open up Webpage.txt (the saved output from the website) and search for that label. You will find a section of the html which looks like this:</p>
 <pre>
@@ -131,10 +136,14 @@ MeterStyle=TextStyle
 Y=2
 Text=IP Address: %1
 {% endhighlight %}
-<p>So this will display "IP Address: 72.205.26.142" on your skin as below:</p>
-<div class="exampleprev">
+<br/>
+<div class="exampleprev floatleft">
 <img src="../../img/tips/webparser-guide/WebParserGuideImage02.jpg" width="300"/>
-</div><br/><br/>
+</div>
+<p>So this will display "IP Address: 72.205.26.142" on your skin.</p>
+<div style="clear: both;"></div>
+<br/>
+
 <p>Note that I kept the meters simple in the skin by using a MeterStyle section:</p>
 {% highlight ini %}
 [TextStyle]
