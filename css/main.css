@@ -564,13 +564,21 @@ p.footnote {
 
 .exampleprev {
 	display: inline-block;
-	margin:0 0 10px;
+	margin-bottom: 10px;
 	padding: 8px;
 	background-color:#f7f7f9;
 	border:1px solid #ddd;
 	font-size: 0.8em;
 	font-weight: bold;
 	line-height: 14px;
+}
+
+.exampleprev.floatleft {
+	float: left;
+}
+
+.exampleprev.floatright {
+	float: right;
 }
 
 .exampleprev * {
