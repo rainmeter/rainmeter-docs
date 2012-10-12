@@ -574,12 +574,12 @@ p.footnote {
 }
 
 .exampleprev.floatleft {
-	margin-right: 10px;
+	margin-right: 20px;
 	float: left;
 }
 
 .exampleprev.floatright {
-	margin-left: 10px;
+	margin-left: 20px;
 	float: right;
 }
 
