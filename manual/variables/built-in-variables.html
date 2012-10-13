@@ -2,32 +2,34 @@
 layout: manual
 title: 'Built-In Variables'
 ---
-<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Rainmeter automatically creates a number of helpful <a href="/manual/variables">variables</a> for each skin. These variables do not need to be defined in the [Variables] section. Some built-in variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.</p>
+<p>Rainmeter automatically creates a number of helpful <a href="/manual/variables">variables</a> for each skin. These variables do not need to be defined in the [Variables] section and cannot be changed by actions in a skin. Some built-in variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.</p>
+
+<p><b>Note:</b> All path variables already contain a trailing slash "\".</p>  
 
 <h3>Path variables</h3>
 <dl>
 	<dt id="PROGRAMDRIVE"><code>#PROGRAMDRIVE#</code> <span>Example: <code>C:</code> or <code>\\server\Users\</code></span></dt>
 	<dd>
-		Drive or server Rainmeter is located on.
+		<p>Drive or server Rainmeter is located on.</p>
 	</dd>
 
 	<dt id="PROGRAMPATH"><code>#PROGRAMPATH#</code> <span>Example: <code>C:\Program Files\Rainmeter\</code></span></dt>
 	<dd>
-		Path to the folder containing Rainmeter.exe.
+		<p>Path to the program folder containing Rainmeter.exe.</p>
 	</dd>
 
 	<dt id="SETTINGSPATH"><code>#SETTINGSPATH#</code> <span>Example: <code>%APPDATA%\Rainmeter\</code></span></dt>
 	<dd>
-		Path to the folder containing Rainmeter.ini.
+		<p>Path to the folder containing Rainmeter.ini and other settings files and folders.</p>
 	</dd>
 
 	<dt id="ADDONSPATH"><code>#ADDONSPATH#</code> <span>Example: <code>%APPDATA%\Rainmeter\Addons\</code></span></dt>
 	<dd>
-		Path to the addons folder.
+		<p>Path to the addons folder.</p>
 
-		<br><br><strong>Note:</strong> <code>#ADDONSPATH#</code> should be avoided when possible. Addons should be kept in the <a href="/manual/skins/resources-folder">@Resources folder</a> instead.
+		<p><b>Note:</b> <code>#ADDONSPATH#</code> should be avoided when possible. Addons should be kept in the <a href="/manual/skins/resources-folder">@Resources folder</a> instead.</p>
 	</dd>
 </dl>
 
@@ -35,32 +37,32 @@ title: 'Built-In Variables'
 <dl>
 	<dt id="@"><code>#@#</code> <span>Example: <code>C:\Documents\Skins\illustro\@Resources\</code></span></dt>
 	<dd>
-		Path to the <a href="/manual/skins/resources-folder">@Resources folder</a> for the current skin.
+		<p>Path to the <a href="/manual/skins/resources-folder">@Resources folder</a> for the current skin.</p>
 	</dd>
 
 	<dt id="CURRENTPATH"><code>#CURRENTPATH#</code> <span>Example: <code>C:\Documents\Skins\illustro\Clock\</code></span></dt>
 	<dd>
-		Path to the folder containing the current skin file.
+		<p>Path to the folder containing the current skin file.</p>
 	</dd>
 
 	<dt id="CURRENTFILE"><code>#CURRENTFILE#</code> <span>Example: <code>Clock.ini</code></span></dt>
 	<dd>
-		File name of the current skin.
+		<p>File name of the current skin.</p>
 	</dd>
 
 	<dt id="ROOTCONFIGPATH"><code>#ROOTCONFIGPATH#</code> <span>Example: <code>C:\Documents\Rainmeter\Skins\illustro\</code></span></dt>
 	<dd>
-		Path to highest-level folder under the skins folder for the current skin.
+		<p>Path to highest-level folder under the skins folder for the current skin.</p>
 	</dd>
 
 	<dt id="CURRENTCONFIG"><code>#CURRENTCONFIG#</code> <span>Example: <code>illustro\Clock</code></span></dt>
 	<dd>
-		Config name of current skin.
+		<p><a href="/manual/skins#Config">Config</a> name of current skin.</p>
 	</dd>
 
 	<dt id="CURRENTCONFIGXYWH"><code>#CURRENTCONFIGX#</code>, <code>#CURRENTCONFIGY#</code>, <code>#CURRENTCONFIGWIDTH#</code>, <code>#CURRENTCONFIGHEIGHT#</code></dt>
 	<dd>
-		Position and size of the current skin.<br><br><strong>Note:</strong> These variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.
+		<p>Position and size of the current skin.<br><br><b>Note:</b> These variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.</p>
 	</dd>
 </dl>
 
@@ -68,51 +70,51 @@ title: 'Built-In Variables'
 <dl>
 	<dt id="CRLF"><code>#CRLF#</code></dt>
 	<dd>
-		New line.
+		<p>Creates a new line (carriage return / linefeed) where used.</p>
 	</dd>
 	<dt id="CURRENTSECTION"><code>#CURRENTSECTION#</code></dt>
 	<dd>
-		The name of the section in which the variable is used. Provides a blank string if used in another context, such as <a href="/manual/lua-scripting#GetVariable">GetVariable</a> in a Lua script.
+		<p>The name of the section in which the variable is used. Provides a blank string if used in another context, such as <a href="/manual/lua-scripting#GetVariable">GetVariable</a> in a Lua script.</p>
 	</dd>
 </dl>
 
 <h3>Monitor variables</h3>
 
-<p><strong>Note:</strong> These variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.</p>
+<p><b>Note:</b> These variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.</p>
 
 <dl>
 	<dt id="WORKAREAXYWH"><code>#WORKAREAX#</code>, <code>#WORKAREAY#</code>, <code>#WORKAREAWIDTH#</code>, <code>#WORKAREAHEIGHT#</code></dt>
 	<dd>
-		Work area position and size of the current monitor.
+		<p>Work area position and size of the current monitor.</p>
 	</dd>
 
 	<dt id="PWORKAREAXYWH"><code>#PWORKAREAX#</code>, <code>#PWORKAREAY#</code>, <code>#PWORKAREAWIDTH#</code>, <code>#PWORKAREAHEIGHT#</code></dt>
 	<dd>
-		Work area position and size of the primary monitor.
+		<p>Work area position and size of the primary monitor.</p>
 	</dd>
 
 	<dt id="WORKAREAXYWH"><code>#WORKAREAX@<i>N</i>#</code>, <code>#WORKAREAY@<i>N</i>#</code>, <code>#WORKAREAWIDTH@<i>N</i>#</code>, <code>#WORKAREAHEIGHT@<i>N</i>#</code></dt>
 	<dd>
-		Work area position and size of the <i>N</i>th monitor.
+		<p>Work area position and size of the <i>N</i>th monitor.</p>
 	</dd>
 
 	<dt id="SCREENAREAWH"><code>#SCREENAREAWIDTH#</code>, <code>#SCREENAREAHEIGHT#</code></dt>
 	<dd>
-		Screen resolution size of the current monitor.
+		<p>Screen resolution size of the current monitor.</p>
 	</dd>
 
 	<dt id="PSCREENAREAWH"><code>#PSCREENAREAWIDTH#</code>, <code>#PSCREENAREAHEIGHT#</code></dt>
 	<dd>
-		Screen resolution size of the primary monitor.
+		<p>Screen resolution size of the primary monitor.</p>
 	</dd>
 
 	<dt id="SCREENAREAWH@"><code>#SCREENAREAWIDTH@<i>N</i>#</code>, <code>#SCREENAREAHEIGHT@<i>N</i>#</code></dt>
 	<dd>
-		Screen resolution size of the <i>N</i>th monitor.
+		<p>Screen resolution size of the <i>N</i>th monitor.</p>
 	</dd>
 
 	<dt id="VSCREENAREAXYWH"><code>#VSCREENAREAX#</code>, <code>#VSCREENAREAY#</code>, <code>#VSCREENAREAWIDTH#</code>, <code>#VSCREENAREAHEIGHT#</code></dt>
 	<dd>
-		Position and size of the virtual screen.
+		<p>Position and size of the virtual screen.</p>
 	</dd>
 </dl>	
