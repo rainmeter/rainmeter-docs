@@ -108,3 +108,75 @@ title: 'Manage'
 <li><b>Open log</b> : View the <a href="/manual/user-interface/about">Log</a> tab of the Rainmeter <a href="/manual/user-interface/about">About</a> interface.</li>
 </ul>
 
+<h2 id="LayoutsPanel">The Layouts panel</h2>
+
+<p>Layouts in Rainmeter are a way to save and load the current state of the Rainmeter <a href="/manual/settings/">settings</a>.  This saves the postions of currently active and inactive skins, as well as all other settings stored in the current Rainmeter.ini file. The layout can then be loaded to restore any saved state.</p>
+
+<p><b>Note:</b> The skin folders and files themselves are not saved with a layout.</p>
+
+<p><div class="exampleprev">
+<a rel="lightbox" href="../../img/user-interface/Layouts01.jpg"><img src="../../img/user-interface/Layouts01.jpg" width="600"/></a>
+</div></p>
+
+<p><b>There are two main areas in this panel.</b></p>
+
+<p><div class="exampleprev floatleft">
+<a rel="lightbox" href="../../img/user-interface/Layouts02.jpg"><img src="../../img/user-interface/Layouts02.jpg" width="300"/></a>
+</div></p>
+<p id="SaveNewLayout"><b>Save new layout</b></p>
+<div class="next-to-float">
+<p>Enter the desired <b>Name:</b> and click <b>Save</b>.</p>
+<ul>
+<li><b>Save as empty layout</b><br/>Removes all [ConfigName] sections before saving.</li>
+<li><b>Exclude unused skins</b><br/>Removes all <b>inactive</b> [ConfigName] sections before saving.</li>
+<li><b>Include current wallpaper</b><br/>Saves the current Windows desktop wallpaper with the layout.</li>
+</ul>
+</div>
+
+<div style="clear: both;"></div>
+
+<p><b>Note:</b> If an existing layout is selected from the <b>Saved layouts</b> list or typed in, saving will replace the existing saved layout with the current state.</p>
+<br/>
+
+<p><div class="exampleprev floatleft">
+<a rel="lightbox" href="../../img/user-interface/Layouts03.jpg"><img src="../../img/user-interface/Layouts03.jpg" width="300"/></a>
+</div></p>
+<p id="SavedLayouts"><b>Saved layouts</b></p>
+<div class="next-to-float">
+<p>Click on any layout name in the list.</p>
+<ul>
+<li><b>Load</b><br/>Loads the selected layout.  If a Windows desktop wallpaper was saved with the layout, it will be applied to the desktop.</li>
+<li><b>Delete</b><br/>Permanently deletes the saved layout.</li>
+<li><b>Edit</b><br/>Edits the saved layout (Rainmeter.ini) file with the text editor associated with .ini files.</li>
+</ul>
+</div>
+
+<div style="clear: both;"></div>
+
+<p><b>Note:</b> When loading a layout, the current Rainmeter state will automatically be saved as a layout named <b>@Backup</b>.</p>
+
+<h2 id="SettingsPanel">The Settings panel</h2>
+
+<p>This panel has some high level settings for the Rainmeter application, as well as controls for Rainmeter's logging capability.</p>
+
+<p><div class="exampleprev">
+<a rel="lightbox" href="../../img/user-interface/Settings01.jpg"><img src="../../img/user-interface/Settings01.jpg" width="600"/></a>
+</div></p>
+
+<p id="General"><b>General</b></p>
+<ul>
+<li><b>Language:</b><br/>Use the pull-down menu to select the desired language for all Rainmeter user interfaces.  This does not have any effect on languages used in skins.</li>
+<li><b>Check for updates</b><br/>If selected, Rainmeter will check online to see if the running version is the most recent release version, and will prompt the user to upgrade if not.  This has no effect on beta versions of Rainmeter.</li>
+<li><b>Disable dragging</b><br/>If selected, automatically sets the <b>draggable</b> state of all active skins to prevent dragging skins with the mouse.</li>
+<li><b>Reset statistics</b><br/>When clicked, clears all saved <b>network</b> and other statistics from the Rainmeter.stat file.</li>
+</ul>
+<br/>
+
+<p id="Logging"><b>Logging</b></p>
+<p>In addition to the real-time logging of errors, warnings and notices in the <a href="/manual/user-interface/about">Log</a> tab of the Rainmeter <a href="/manual/user-interface/about">About</a> interface, Rainmeter can log activity to a Rainmeter.log text file, which will be created in the <a href="/manual/variables/built-in-variables#SETTINGSPATH">settings</a> folder.</p>
+<ul>
+<li><b>Debug mode</b><br/>If selected, a more detailed logging mode will be used when <b>Log to file</b> is active.  This should only be used when debugging a problem, as leaving on this level of detailed logging can impact Rainmeter performance.</li>
+<li><b>Log to file</b><br/>If selected, Rainmeter will append log entries to the Rainmeter.log file while running. Unchecking this item will turn off logging, but the Rainmeter.log file will be retained.</li>
+<li><b>Show log file</b><br/>If clicked, the Rainmeter.log file will be loaded in the text editor associated with .log files.</li>
+<li><b>Delete log file</b><br/>If clicked, the Rainmeter.log file will be deleted. If <b>Log to file</b> is currently active, it will automatically be turned off.</li>
+</ul>
