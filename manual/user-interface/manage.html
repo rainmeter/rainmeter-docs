@@ -4,4 +4,107 @@ title: 'Manage'
 ---
 <!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Placeholder</p>
+<p>The Manage interface in Rainmeter is the primary means of controlling the application and skins.  It consists of three main tab panels:</p>
+
+<ul>
+<li><b>Skins</b>: Displays the list of installed and loaded skins.  This panel is used to view information about skins, manage skin positions and other settings, and load, unload and refesh skins.</li>
+<li><b>Layouts</b>: Used to save and load the current state of Rainmeter. Active and inactive skins, skin postions, and other Rainmeter settings.</li>
+<li><b>Settings</b>: Controls high-level Rainmeter settings such as the interface language and logging.</li>
+</ul>
+
+<p>Manage is accessed in several ways:</p>
+
+<ul>
+<li><b>Left-Click the Rainmeter icon in the Windows Notification Area on the taskbar.</b></li>
+<li>Right-Click the Rainmeter icon in the Windows Notification Area on the taskbar and select "Manage".</li>
+<li>Using the <a href="/manual/bangs#Manage">!Manage bang</a> as an <a href="/manual/options#action">action</a> in a skin or from the command line as a parameter to Rainmeter.exe.</li>
+<li>Right-Click any running skin on the desktop and select "Manage skin".</li>
+</ul>
+
+<h2 id="SkinsPanel">The Skins panel</h2>
+
+<p><div class="exampleprev">
+<a rel="lightbox" href="../../img/user-interface/Skins01.jpg"><img src="../../img/user-interface/Skins01.jpg" width="600"/></a>
+</div></p>
+
+<p><b>There are four main areas in this panel.</b></p>
+
+<p><div class="exampleprev floatleft">
+<a rel="lightbox" href="../../img/user-interface/Skins02.jpg"><img src="../../img/user-interface/Skins02.jpg" width="200"/></a>
+</div></p>
+<br/>
+<p id="SkinsList"><b>The skins list</b></p>
+<p>List of currently installed skins.  This contains all <a href="/manual/skins#FilesFolders">Skins</a> found when Rainmeter is started or refreshed.</p>
+<p>The list consists of the <a href="/manual/skins#Config">config</a> folder for each skin, and the skin .ini files for each config.</p>
+
+<div class="next-to-float">
+<ul>
+<li>Clicking on a skin .ini file will make that skin active in the Manage panel.</li>
+<li>Double-clicking a skin .ini file will unload the skin if it is running, or load it if not.</li>
+<li>Right clicking on a config folder will allow opening the folder in Windows Explorer.</li>
+<li>Right clicking on a skin .ini file will allow loading, unloading or editing the skin.</li>
+</ul>
+</div>
+<p>The list is updated when Rainmeter is refreshed.</p>
+
+<div style="clear: both;"></div>
+
+<p><div class="exampleprev floatleft">
+<a rel="lightbox" href="../../img/user-interface/Skins03.jpg"><img src="../../img/user-interface/Skins03.jpg" width="250"/></a>
+</div></p>
+<br/>
+<p id="ActiveSkins"><b>Active skins</b></p>
+<p>This pull-down will contain a list of all skins currently loaded and active in Rainmeter.<p>
+<p>Clicking on a skin will make that skin active in the Manage panel.</p>
+
+<div style="clear: both;"></div>
+
+<p><div class="exampleprev floatleft">
+<a rel="lightbox" href="../../img/user-interface/Skins04.jpg"><img src="../../img/user-interface/Skins04.jpg" width="350"/></a>
+</div></p>
+<br/>
+<p id="Metadata"><b>Metadata</b></p>
+<p>Displays the information in the <a href="/manual/skins/metadata-section">[Metadata]</a> section of the skin.</p>
+<p>This includes <b>Name</b>, <b>Config</b>, <b>Author</b>, <b>Version</b>, <b>License</b> and <b>Information</b> fields.</p>
+<p>If a skin does not contain a [Metadata] section, the <b>Add metadata</b> link in this area will add an empty section with all fields.</p>
+
+<div style="clear: both;"></div>
+
+<p><div class="exampleprev floatleft">
+<a rel="lightbox" href="../../img/user-interface/Skins05.jpg"><img src="../../img/user-interface/Skins05.jpg" width="350"/></a>
+</div></p>
+<br/>
+<p id="SkinSettings"><b>Skin Settings</b></p>
+<p>For an active skin, shows the current values of various <a href="/manual/settings/skin-sections">settings</a>.  These can be changed, and the change will immediately effect the skin on the desktop.</p>
+
+<div style="clear: both;"></div>
+
+<ul>
+<li><b>Coordinates</b> : The <a href="/manual/settings/skin-sections#WindowXY">window X and Y</a> location of the skin on the screen in pixels.</li>
+<li><b>Position</b> : The <a href="/manual/settings/skin-sections#AlwaysOnTop">z-position</a> of the skin on the desktop relative to other windows.</li>
+<li><b>Load order</b> : The <a href="/manual/settings/skin-sections#LoadOrder">loading order</a> of the skin on the desktop relative to other skins.</li>
+<li><b>Transparency</b> : The <a href="/manual/settings/skin-sections#AlphaValue">transparency</a> of the skin.</li>
+<li><b>On hover</b> : The <a href="/manual/settings/skin-sections#HideOnMouseOver">hide on mouse over</a>  behavior of the skin.</li>
+<li><b>Display monitor</b> : Settings for the <a href="">monitor</a> on which the skin is displayed.</li>
+<li><b>Draggable</b> : The <a href="/manual/settings/skin-sections#Draggable">draggable</a> setting for the skin.</li>
+<li><b>Click through</b> : The <a href="/manual/settings/skin-sections#ClickThrough">click through</a> setting for the skin.</li>
+<li><b>Keep on screen</b> : The <a href="/manual/settings/skin-sections#KeepOnScreen">keep on screen</a> setting for the skin.</li>
+<li><b>Save position</b> : The <a href="/manual/settings/skin-sections#SavePosition">save position</a> setting for the skin.</li>
+<li><b>Snap to edges</b> : The <a href="/manual/settings/skin-sections#SnapEdges">snap to edges</a> setting for the skin.</li>
+</ul>
+<br/>
+
+<p><b>Buttons used to control skins:</b></p>
+<ul>
+<li><b>UnLoad / Load</b> : Unload (make inactive) the selected skin if it is currently active, or load it if not.</li>
+<li><b>Refresh</b> : Refresh the selected active skin.</li>
+<li><b>Edit</b> : Edit the selected skin with the text editor associated with .ini files.</li>
+</ul>
+
+<p><b>Buttons used to control Rainmeter:</b></p>
+<ul>
+<li><b>Refresh all</b> : Refresh all skins currently active in Rainmeter.</li>
+<li><b>Edit settings</b> : Manually edit the settings in Rainmeter.ini with the text editor associated with .ini files.</li>
+<li><b>Open log</b> : View the <a href="">Log</a> tab of the Rainmeter <a href="">About</a> interface.</li>
+</ul>
+
