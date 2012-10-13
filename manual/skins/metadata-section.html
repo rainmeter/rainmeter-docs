@@ -10,21 +10,37 @@ title: '[Metadata] section'
 <dl>
 	<dt id="Name"><code>Name</code></dt>
 	<dd>
-		 The name of the skin.
+		 <p>The name of the skin.</p>
 	</dd>
+	
+	<dt id="Author"><code>Author</code></dt>
+	<dd>
+		 <p>The author of the skin.</p>
+	</dd>	
 
 	<dt id="Information"><code>Information</code></dt>
 	<dd>
-		A description of the skin, setup and usage instructions, credits, or other documentation elements. Use <code>|</code> for line breaks.
+		<p>A description of the skin, setup and usage instructions, credits, or other documentation elements. Use <code>|</code> for line breaks.</p>
 	</dd>
 
 	<dt id="Version"><code>Version</code></dt>
 	<dd>
-		The version of the skin.
+		<p>The version of the skin.</p>
 	</dd>
 
 	<dt id="License"><code>License</code></dt>
 	<dd>
-		The name of a standard license or explicit permissions and conditions for ports, mods and derivative works.
+		<p>The name of a standard license or explicit permissions and conditions for ports, mods and derivative works.</p>
 	</dd>
 </dl>	
+
+<h2>Example</h2>
+
+{% highlight ini %}
+[Metadata]
+Name=MassToEnergy
+Author=Albert Einstein
+Information=Skin to calculate the energy potential of a given mass. | Edit the mass of the object in metric tons in the [Variable] MassOfObject | Do NOT change the SpeedOfLight variable.
+Version=1.1905
+License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
+{% endhighlight %}
