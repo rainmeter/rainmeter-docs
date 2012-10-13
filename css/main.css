@@ -588,6 +588,11 @@ p.footnote {
 	padding: 0;
 }
 
+.next-to-float {
+	display: table;
+	margin: 0 0 10px;
+}
+
 .home-panels {
 	border-collapse: separate;
 	border-spacing: 15px;
