@@ -9,6 +9,11 @@ title: 'Skin sections'
 
 <h2>Options</h2>
 <dl>
+	<dt id="Active"><code>Active</code></dt>
+	<dd>
+		The current active state of the <a href="/manual/skins#Config">config</a>. If Active is<code>0</code>, the config is inactive.  If a number other than 0, the skin .ini or <a href="/manual/skins#Variants">variant</a> file in alphabetical order in the config folder is active.
+	</dd>
+	
 	<dt id="WindowXY"><code>WindowX</code>, <code>WindowY</code></dt>
 	<dd>
 		The X and Y position of the skin. A trailing <code>%</code> sign indicates that the value is a percentage of the screen width. A trailing <code>R</code> will make the position relative to the right edge of the screen instead of the left.<br><br>By default the position is relative to the primary screen. You can override this with @n where n is 0 to 32 and denotes which screen to position the meter on (1-32) or the virtual desktop (0). The screen selection will apply to both WindowX and WindowY if the value is set on only one of them.
