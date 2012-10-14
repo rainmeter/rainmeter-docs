@@ -56,6 +56,9 @@
 })();
 
 
+
+var backgroundClick = new Boolean(true);
+
 // Make ctrl+click on <dt> and <hN> tags anchor the page its id.
 (function() {
 	var anchorTags = new Array('dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6');
@@ -64,6 +67,7 @@
 		for (var j = 0; elem = elems[j]; ++j) {
 			if (elem.id) {
 				elem.onclick = function(e) {
+					backgroundClick = false;
 					if (e.ctrlKey) {
 						window.location.hash = this.id;
 					}
@@ -78,10 +82,16 @@
 	var body = document.getElementsByTagName("body")[0]
 	body.onclick = function(e) {
 		if (e.ctrlKey) {
+			if (backgroundClick == false) {
+				backgroundClick = true;
+				return;
+			}
 			window.location.hash = '';
 		}
 	};
 })();
+
+
 
 // Add Select all to <pre> blocks.
 (function() {
