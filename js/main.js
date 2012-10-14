@@ -153,13 +153,13 @@
 	// Open Slimbox with the specified parameters
 	$.slimbox = function(_images, startImage, _options) {
 		options = $.extend({
-			overlayOpacity: 0.8,
-			overlayFadeDuration: 400,
-			resizeDuration: 400,
+			overlayOpacity: 0.6,
+			overlayFadeDuration: 200,
+			resizeDuration: 200,
 			resizeEasing: "swing",
 			initialWidth: 250,
 			initialHeight: 250,
-			imageFadeDuration: 400,	
+			imageFadeDuration: 200,	
 			closeKeys: [27 /* ESC */, 88 /* x */, 67 /* c */],
 		}, _options);
 
