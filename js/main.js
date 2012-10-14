@@ -87,6 +87,7 @@ var backgroundClick = new Boolean(true);
 				return;
 			}
 			window.location.hash = '';
+			history.pushState('', document.title, window.location.pathname);
 		}
 	};
 })();
