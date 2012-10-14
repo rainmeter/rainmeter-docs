@@ -55,16 +55,19 @@
 	}
 })();
 
-// Make ctrl+click on <dt> tags anchor the page its id.
+// Make ctrl+click on <dt> and <hN> tags anchor the page its id.
 (function() {
-	var elems = document.getElementsByTagName('dt');
-	for (var i = 0; elem = elems[i]; ++i) {
-		if (elem.id) {
-			elem.onclick = function(e) {
-				if (e.ctrlKey) {
-					window.location.hash = this.id;
-				}
-			};
+	var anchorTags = new Array('dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6');
+	for (var i = 0; anchorTag = anchorTags[i]; ++i) {
+		var elems = document.getElementsByTagName(anchorTag);
+		for (var j = 0; elem = elems[j]; ++j) {
+			if (elem.id) {
+				elem.onclick = function(e) {
+					if (e.ctrlKey) {
+						window.location.hash = this.id;
+					}
+				};
+			}
 		}
 	}
 })();
