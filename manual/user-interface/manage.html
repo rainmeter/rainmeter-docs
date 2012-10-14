@@ -20,6 +20,15 @@ title: 'Manage'
 <li>Using the <a href="/manual/bangs#Manage">!Manage bang</a> as an <a href="/manual/options#action">action</a> in a skin or from the command line as a parameter to Rainmeter.exe.</li>
 <li>Right-Click any running skin on the desktop and select "Manage skin".</li>
 </ul>
+<br/>
+
+<p><b>Buttons used to control Rainmeter:</b></p>
+<ul>
+<li><b>Refresh all</b> : Refresh the entire Rainmeter application, including all currently active skins.</li>
+<li><b>Edit settings</b> : Manually edit the settings in Rainmeter.ini with the text editor associated with .ini files.</li>
+<li><b>Open log</b> : View the <a href="/manual/user-interface/about">Log</a> tab of the Rainmeter <a href="/manual/user-interface/about">About</a> interface.<br/>&nbsp;</li>
+<li><b>Create .rmskin package</b> : Package skins(s) for <a href="/distributing-skins">distribution</a> in the .rmskin format.</li>
+</ul>
 
 <h2 id="SkinsPanel">The Skins panel</h2>
 
@@ -75,7 +84,7 @@ title: 'Manage'
 </div></p>
 <br/>
 <p id="SkinSettings"><b>Skin Settings</b></p>
-<p>For a selected active skin, shows the current values of various <a href="/manual/settings/skin-sections">settings</a>.  These can be changed, and the change will immediately effect the skin on the desktop.</p>
+<p>For a selected active skin, shows the current values of various <a href="/manual/settings/skin-sections">settings</a>.  Changes will immediately effect the skin on the desktop.</p>
 
 <div style="clear: both;"></div>
 
@@ -101,16 +110,9 @@ title: 'Manage'
 <li><b>Edit</b> : Edit the selected skin with the text editor associated with .ini files.</li>
 </ul>
 
-<p><b>Buttons used to control Rainmeter:</b></p>
-<ul>
-<li><b>Refresh all</b> : Refresh the entire Rainmeter application, including all currently active skins.</li>
-<li><b>Edit settings</b> : Manually edit the settings in Rainmeter.ini with the text editor associated with .ini files.</li>
-<li><b>Open log</b> : View the <a href="/manual/user-interface/about">Log</a> tab of the Rainmeter <a href="/manual/user-interface/about">About</a> interface.</li>
-</ul>
-
 <h2 id="LayoutsPanel">The Layouts panel</h2>
 
-<p>Layouts in Rainmeter are a way to save and load the current state of the Rainmeter <a href="/manual/settings/">settings</a>.  This saves the positions of currently active and inactive skins, as well as all other settings stored in the current Rainmeter.ini file. The layout can then be loaded to restore any saved state.</p>
+<p>Layouts in Rainmeter are a way to save and load the current state of the Rainmeter <a href="/manual/settings/">settings</a>.  This saves the positions of currently active and inactive skins, as well as all other settings stored in the current Rainmeter.ini file. The layout can then be loaded to restore any saved state. Layouts are saved in the Rainmeter <a href="/manual/variables/built-in-variables#SETTINGSPATH">settings folder</a>.</p>
 
 <p><b>Note:</b> The skin folders and files themselves are not saved with a layout.</p>
 
@@ -128,7 +130,7 @@ title: 'Manage'
 <p>Enter the desired <b>Name:</b> and click <b>Save</b>.</p>
 <ul>
 <li><b>Save as empty layout</b><br/>Removes all [ConfigName] sections before saving.</li>
-<li><b>Exclude unused skins</b><br/>Removes all <b>inactive</b> [ConfigName] sections before saving.</li>
+<li><b>Exclude unloaded skins</b><br/>Removes all <b>inactive</b> [ConfigName] sections before saving.</li>
 <li><b>Include current wallpaper</b><br/>Saves the current Windows desktop wallpaper with the layout.</li>
 </ul>
 </div>
@@ -168,12 +170,12 @@ title: 'Manage'
 <li><b>Language:</b><br/>Use the pull-down menu to select the desired language for all Rainmeter user interfaces.  This does not have any effect on languages used in skins.</li>
 <li><b>Check for updates</b><br/>If selected, Rainmeter will check online when started to see if the running version is the most recent release version, and will prompt the user to upgrade if not.  This has no effect on beta versions of Rainmeter.</li>
 <li><b>Disable dragging</b><br/>If selected, automatically sets the <b>draggable</b> state of all active skins to prevent dragging skins with the mouse.</li>
-<li><b>Reset statistics</b><br/>When clicked, clears all saved <b>network</b> and other statistics from the Rainmeter.stat file in the <a href="/manual/variables/built-in-variables#SETTINGSPATH">settings</a> folder.</li>
+<li><b>Reset statistics</b><br/>When clicked, clears all saved <b>network</b> and other statistics from the Rainmeter.stat file in the <a href="/manual/variables/built-in-variables#SETTINGSPATH">settings folder</a>.</li>
 </ul>
 <br/>
 
 <p id="Logging"><b>Logging</b></p>
-<p>In addition to the real-time logging of errors, warnings and notices in the <a href="/manual/user-interface/about">Log</a> tab of the Rainmeter <a href="/manual/user-interface/about">About</a> interface, Rainmeter can log activity to a <b>Rainmeter.log</b> text file, which will be created in the <a href="/manual/variables/built-in-variables#SETTINGSPATH">settings</a> folder.</p>
+<p>In addition to the real-time logging of errors, warnings and notices in the <a href="/manual/user-interface/about">Log</a> tab of the Rainmeter <a href="/manual/user-interface/about">About</a> interface, Rainmeter can log activity to a <b>Rainmeter.log</b> text file, which will be created in the <a href="/manual/variables/built-in-variables#SETTINGSPATH">settings folder</a>.</p>
 <ul>
 <li><b>Debug mode</b><br/>If selected, a more detailed logging mode will be used when <b>Log to file</b> is active.  This should only be used when debugging a problem, as leaving this level of detailed logging on can impact Rainmeter performance.</li>
 <li><b>Log to file</b><br/>If selected, Rainmeter will append log entries to the Rainmeter.log file while running. Unchecking this item will turn off logging, but the Rainmeter.log file will be retained.</li>
