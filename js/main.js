@@ -55,6 +55,7 @@
 	}
 })();
 
+
 // Make ctrl+click on <dt> and <hN> tags anchor the page its id.
 (function() {
 	var anchorTags = new Array('dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6');
@@ -70,6 +71,16 @@
 			}
 		}
 	}
+})();
+
+// Make ctrl+click on <body> reset the page anchor.
+(function() {
+	var body = document.getElementsByTagName("body")[0]
+	body.onclick = function(e) {
+		if (e.ctrlKey) {
+			window.location.hash = '';
+		}
+	};
 })();
 
 // Add Select all to <pre> blocks.
