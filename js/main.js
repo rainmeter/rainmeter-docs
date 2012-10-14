@@ -57,7 +57,7 @@
 
 
 
-var backgroundClick = new Boolean(true);
+var anchorWasClicked = new Boolean(false);
 
 // Make ctrl+click on <dt> and <hN> tags anchor the page its id.
 (function() {
@@ -67,7 +67,7 @@ var backgroundClick = new Boolean(true);
 		for (var j = 0; elem = elems[j]; ++j) {
 			if (elem.id) {
 				elem.onclick = function(e) {
-					backgroundClick = false;
+					anchorWasClicked = true;
 					if (e.ctrlKey) {
 						window.location.hash = this.id;
 					}
@@ -82,8 +82,8 @@ var backgroundClick = new Boolean(true);
 	var body = document.getElementsByTagName("body")[0]
 	body.onclick = function(e) {
 		if (e.ctrlKey) {
-			if (backgroundClick == false) {
-				backgroundClick = true;
+			if (anchorWasClicked == true) {
+				anchorWasClicked = false;
 				return;
 			}
 			window.location.hash = '';
