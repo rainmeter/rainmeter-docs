@@ -1,13 +1,14 @@
-Getting Started
-===============
+2.4 Release Manual
+==================
 
 * [Rainmeter 101](/)
+* [Installation](/manual/installation)
 * [User Interface](/manual/user-interface/)
 	* [Manage](/manual/user-interface/manage)
 	* [About](/manual/user-interface/about)
 	* [Context Menus](/manual/user-interface/context-menus)
 	* [Skin Installer](/manual/user-interface/skin-installer)	
-* [Installation](/manual/installation)
+* [Publishing Skins](/manual/publishing-skins)
 
 Reference
 ===============
@@ -80,7 +81,7 @@ Reference
 
 More
 ===============
-* [Distributing Skins](/distributing-skins)
+* [2.5 Beta Manual](/manual-beta)
 * [Tips & Tricks](/tips)
 * [Snippets](/snippets)
 * [Version History](/history)
