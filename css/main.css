@@ -562,6 +562,25 @@ p.footnote {
 	font-size: 0.85em;
 }
 
+table.contents {
+	margin: 10px 0 10px;
+}
+
+table.contents td {
+	padding: 2px 10px 2px 0;
+}
+
+table.contents tr td:first-child{
+	width: 90px;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+table.contents tr td:nth-child(2){
+	color: #999;
+	font-size: 0.9em;
+}
+
 .exampleprev {
 	display: inline-block;
 	margin-bottom: 10px;
