@@ -11,82 +11,83 @@ title: 'Skin sections'
 <dl>
 	<dt id="Active"><code>Active</code></dt>
 	<dd>
-		The current active state of the <a href="/manual/skins#Config">config</a>. If Active is <code>0</code>, the config is inactive.  If a number other than 0, the skin .ini or <a href="/manual/skins#Variants">variant</a> file in alphabetical order in the config folder is active.
+		<p>The current active state of the <a href="/manual/skins#Config">config</a>. If Active is <code>0</code>, the config is inactive.  If a number other than 0, the skin .ini or <a href="/manual/skins#Variants">variant</a> file in alphabetical order in the config folder is active.</p>
 	</dd>
 	
 	<dt id="WindowXY"><code>WindowX</code>, <code>WindowY</code></dt>
 	<dd>
-		The X and Y position of the skin. A trailing <code>%</code> sign indicates that the value is a percentage of the screen width. A trailing <code>R</code> will make the position relative to the right edge of the screen instead of the left.<br><br>By default the position is relative to the primary screen. You can override this with @n where n is 0 to 32 and denotes which screen to position the meter on (1-32) or the virtual desktop (0). The screen selection will apply to both WindowX and WindowY if the value is set on only one of them.
+		<p>The X and Y position of the skin. A trailing <code>%</code> sign indicates that the value is a percentage of the screen width. A trailing <code>R</code> will make the position relative to the right edge of the screen instead of the left. a trailing <code>B</code> will make the position relative to the bottom edge of the screen instead of the top.</p>
+		<p>The <code>%</code> and <code>R</code> / <code>B</code> modifiers can be used together.</p>
+		<p>By default the position is relative to the primary screen. You can override this with @n where n is 0 to 32 and denotes which screen to position the meter on (1-32) or the virtual desktop (0). The screen selection will apply to both WindowX and WindowY if the value is set on only one of them.</p>
 	</dd>
 
 	<dt id="AnchorXY"><code>AnchorX</code>, <code>AnchorY</code></dt>
 	<dd>
-		By default WindowX and WindowY control the position of the upper left corner of the config window. AnchorX and AnchorY allow that anchor position to be changed. The Anchor can be defined in pixels from the upper left corner of the window or as a percentage of the config if % is used. If a letter R or B is added to AnchorX or AnchorY, then the position is relative to the right or bottom edge of the window.<br><br>As an example, by setting WindowX, WindowY, AnchorX and AnchorY all to 50% the config will be truly centered in the primary monitor regardless of screen resolution or aspect ratio.
+		<p>By default WindowX and WindowY control the position of the upper left corner of the config window. AnchorX and AnchorY allow that anchor position to be changed. The Anchor can be defined in pixels from the upper left corner of the window or as a percentage of the config if % is used. If a letter R or B is added to AnchorX or AnchorY, then the position is relative to the right or bottom edge of the window.</p>
+		<p>As an example, by setting WindowX, WindowY, AnchorX and AnchorY all to 50% the config will be truly centered in the primary monitor regardless of screen resolution or aspect ratio.>/p>
 	</dd>
 
 	<dt id="SavePosition"><code>SavePosition</code> <span>Default: <code>1</code></span></dt>
 	<dd>
-		If set to <code>1</code>, changes to the window position will be saved to Rainmeter.ini.
+		<p>If set to <code>1</code>, changes to the window position will be saved to Rainmeter.ini.</p>
 	</dd>
 
 	<dt id="AlwaysOnTop"><code>AlwaysOnTop</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		Defines the Z-position of the skin. Valid values are:
+		<p>Defines the Z-position of the skin. Valid values are:
 		<ul>
 		<li><code>2</code>: Always on top. The skin will be on top of all (including topmost) windows.</li>
 		<li><code>1</code>: On top. The skin will be on top of normal windows.</li>
 		<li><code>0</code>: Normal. The skin will stay visible when showing the desktop and will be brought to the foreground on click.</li>
 		<li><code>-1</code>: Bottom. The skin will stay behind other windows.</li>
 		<li><code>-2</code>: On desktop. Similar to <code>0</code> except that the skin will stick to the desktop and cannot be brought to the foreground.</li>
-		</ul>
+		</ul></p>
 	</dd>
 
 	<dt id="Draggable"><code>Draggable</code> <span>Default: <code>1</code></span></dt>
 	<dd>
-		If set to <code>1</code>, the skin can be dragged around with the mouse.
+		<p>If set to <code>1</code>, the skin can be dragged around with the mouse.</p>
 	</dd>
 
 	<dt id="SnapEdges"><code>SnapEdges</code> <span>Default: <code>1</code></span></dt>
 	<dd>
-		If set to <code>1</code>, the skin will snap onto screen edges and other skins when moved. To disable snapping temporarily, hold the CTRL key down while moving the skin.
+		<p>If set to <code>1</code>, the skin will snap onto screen edges and other skins when moved. To disable snapping temporarily, hold the CTRL key down while moving the skin.</p>
 	</dd>
 
 	<dt id="HideOnMouseOver"><code>HideOnMouseOver</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		If set to <code>1</code>, the skin will disappear when the cursor is over it and reappear when the cursor is moved away. To temporarily disable this behaviour, hold the CTRL down when moving the cursor.
+		<p>If set to <code>1</code>, the skin will disappear when the cursor is over it and reappear when the cursor is moved away. To temporarily disable this behaviour, hold the CTRL down when moving the cursor.</p>
 	</dd>
 
 	<dt id="StartHidden"><code>StartHidden</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		If set to <code>1</code>, the skin will start hidden. The <a href="/manual/bangs#ShowHideToggle">!Show bang</a> must be used to show the skin.
+		<p>If set to <code>1</code>, the skin will start hidden. The <a href="/manual/bangs#ShowHideToggle">!Show bang</a> must be used to show the skin.</p>
 	</dd>
 
 	<dt id="AlphaValue"><code>AlphaValue</code> <span>Default: <code>255</code></span></dt>
 	<dd>
-		Sets the transparency of the skin. Valid values range from <code>0</code> (fully transparent) to <code>255</code> (solid).
+		<p>Sets the transparency of the skin. Valid values range from <code>0</code> (fully transparent) to <code>255</code> (solid).</p>
 	</dd>
 
 	<dt id="FadeDuration"><code>FadeDuration</code> <span>Default: <code>250</code></span></dt>
 	<dd>
-		Defines the length of the fade duration in milliseconds when activating/deactivating the skin or when the <a href="/manual/bangs#ShowHideToggleFade">fade bangs</a> are used.
+		<p>Defines the length of the fade duration in milliseconds when activating/deactivating the skin or when the <a href="/manual/bangs#ShowHideToggleFade">fade bangs</a> are used.</p>
 	</dd>
 
 	<dt id="ClickThrough"><code>ClickThrough</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		If set to <code>1</code>, mouse clicks will pass through the skin. To temporary disable this, hold the CTRL key when clicking.
+		<p>If set to <code>1</code>, mouse clicks will pass through the skin. To temporary disable this, hold the CTRL key when clicking.</p>
 	</dd>
 
 	<dt id="KeepOnScreen"><code>KeepOnScreen</code> <span>Default: <code>1</code></span></dt>
 	<dd>
-		If set to <code>1</code>, the skin will be kept within the bounds of the screen.
+		<p>If set to <code>1</code>, the skin will be kept within the bounds of the screen.</p>
 	</dd>
 
 	<dt id="LoadOrder"><code>LoadOrder</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		Determines the order in which the skins are loaded. The value can be any number (even negative). Skins with the lowest load order are loaded first.
-
-		<br><br><b>Example:</b> Three skins having <code>LoadOrder=-1</code>, <code>LoadOrder=2</code> and <code>LoadOrder=5</code> would load the configs in that order, with the config with <code>LoadOrder=-1</code> appearing beneath the one with LoadOrder=2 which is in turn beneath the config containing <code>LoadOrder=5</code>. If two configs have the same value for LoadOrder, they are then loaded in alphabetical order.
-
-		<br><br><b>Note:</b> The value of LoadOrder has no bearing on the <a href="#AlwaysOnTop">Z-position</a> of the skin. LoadOrder only affects how skins in the same Z-position interact with each other. That is to say, configs set to "Topmost" will always appear above configs set to "Normal", but two configs in "Topmost" will layer themselves according to their LoadOrder value.
+		<p>Determines the order in which the skins are loaded. The value can be any number (even negative). Skins with the lowest load order are loaded first.</p>
+		<p><b>Example:</b> Three skins having <code>LoadOrder=-1</code>, <code>LoadOrder=2</code> and <code>LoadOrder=5</code> would load the configs in that order, with the config with <code>LoadOrder=-1</code> appearing beneath the one with LoadOrder=2 which is in turn beneath the config containing <code>LoadOrder=5</code>. If two configs have the same value for LoadOrder, they are then loaded in alphabetical order.</p>
+		<p><b>Note:</b> The value of LoadOrder has no bearing on the <a href="#AlwaysOnTop">Z-position</a> of the skin. LoadOrder only affects how skins in the same Z-position interact with each other. That is to say, configs set to "Topmost" will always appear above configs set to "Normal", but two configs in "Topmost" will layer themselves according to their LoadOrder value.</p>
 	</dd>
 </dl>	
