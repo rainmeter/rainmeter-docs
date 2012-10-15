@@ -578,6 +578,7 @@ table.contents tr td:first-child{
 
 table.contents tr td:nth-child(2){
 	color: #999;
+	font-weight: normal;
 	font-size: 0.9em;
 }
 
