@@ -78,6 +78,24 @@ title: '[Rainmeter] section'
 	</dd>
 </dl>	
 
+<h2 id="Context">Context options</h2>
+
+<dl>
+	<dt id="ContextTitle"><code>ContextTitle</code>, <code>ContextTitle2</code>, <code>ContextTitle3</code>... </dt>
+	<dd>
+		<p>If not blank, adds an item to the skin's <a href="/manual/user-interface/context-menus">context menu</a> under "Custom skin actions". Up to 15 <em>ContextTitleN</em> options are allowed, with up to 30 characters per option. Additional characters are truncated with an ellipsis (<code>...</code>). If more than 3 <em>ContextTitleN</em> options are given, "Custom skin actions" becomes a submenu. If a <em>ContextTitleN</em> option is not valid, all subsequent <em>ContextTitleN</em> options are ignored. In addition, if more than 3 options are given, and the value of <em>ContextTitleN</em> includes only dashes (<code>-</code>), the item is displayed as a separator.</p>
+
+		<p><strong>Note:</strong> variables in <code>ContextTitleN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened.</p>
+	</dd>
+
+	<dt id="ContextAction"><code>ContextAction</code>, <code>ContextAction2</code>, <code>ContextAction3</code>... </dt>
+	<dd>
+		<p><a href="/manual/options#action">Action</a> triggered by clicking the corresponding <a href="#ContextTitle">ContextTitleN</a> item. <em>ContextActionN</em> is required for <em>ContextTitleN</em> to be valid, unless the item is a separator.</p>
+
+		<p><strong>Note:</strong> variables in <code>ContextActionN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu item is clicked.</p>
+	</dd>
+</dl>
+
 <h2 id="AeroBlur">Aero Blur options</h2>
 <dl>
 	
