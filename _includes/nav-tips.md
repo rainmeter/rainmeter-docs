@@ -1,0 +1,49 @@
+Tips &amp; Tricks
+=================
+
+* [Rainmeter 101](/)
+* [Installing Rainmeter](/manual/installing-rainmeter)
+* [User Interface](/manual/user-interface/)
+	* [Manage](/manual/user-interface/manage)
+	* [About](/manual/user-interface/about)
+	* [Context Menus](/manual/user-interface/context-menus)
+* [Installing Skins](/manual/installing-skins)	
+* [Publishing Skins](/manual/publishing-skins)
+
+* Beyond the Basics
+	* [!SetOption Guide](/tips/setoption-guide)
+	* [Fonts Guide](/tips/fonts-guide)
+	* [Update Guide](/tips/update-guide)
+	* [WebParser Tutorial](/tips/webparser-tutorial)
+* Good To Know
+	* [Button Images](/tips/button-images)
+	* [Clean Rainmeter Uninstall](/tips/clean-rainmeter-uninstall)
+	* [ColorMatrix Guide](/tips/colormatrix-guide)
+	* [Counters Guide](/tips/counters-guide)
+	* [@include Guide](/tips/include-guide)
+	* [Screen Position Variables](/tips/screen-position-variables)
+	* [Transformation Matrix Guide](/tips/transformation-matrix-guide)
+	* [Using a Measure as a Variable](/tips/measure-as-a-variable)
+	* [Wrapping Text](/tips/wrapping-text)
+* Getting Things Done
+	* [Animated .GIF Files](/tips/animated-gif-files)
+	* [Control Panel Applets](/tips/control-panel-applets)
+	* [Launching Windows Special Folders](/tips/launching-windows-special-folders)
+	* [NetIn/NetOut Alternative](/tips/netin-netout-alternative)
+	* [Rotate an Image Around its Center](/tips/rotate-an-image-around-its-center)
+	* [Substituted Values in a Calc](/tips/substituted-values-in-a-calc)
+	* [WebParser: Google Apps and GMail](/tips/webparser-google-apps-and-gmail)
+	* [WebParser: Google Reader as RSS Feed](/tips/webparser-google-reader-rss-feed)
+	* [WebParser: Lookahead Assertions in RegExp](/tips/webparser-lookahead-assertions-in-regexp)
+	* [WebParser: Using StringIndex2](/tips/webparser-using-stringindex2)
+	* [WebParser: Weather Location Code](/tips/webparser-weather-location-code)
+	* [WebParser: Weather Skin Translations](/tips/webparser-weather-skin-translations)
+	* [WebParser: Local Files](/tips/webparser-local-files)
+	* [WebParser: Relative Paths](/tips/webparser-relative-paths)
+
+More
+===============
+* [2.4 Release Manual](/manual)
+* [2.5 Beta Manual](/manual-beta)
+* [Snippets](/snippets)
+* [Version History](/history)

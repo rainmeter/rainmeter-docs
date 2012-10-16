@@ -25,6 +25,10 @@
 
 		<div class="container">
 			<div class="row">
+				<nav id="sidenav">
+					{% capture sidenav %}{% include nav-tips.md %}{% endcapture %} {{ sidenav | markdownify }}
+				</nav>
+
 				<div class="content">
 					<header>
 						<h1>{{ page.title }}</h1>
