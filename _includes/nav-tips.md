@@ -1,12 +1,12 @@
 Tips &amp; Tricks
 =================
 
-* [Beyond the Basics](#)
+* [Beyond the Basics](/tips/#)
 	* [!SetOption Guide](/tips/setoption-guide)
 	* [Fonts Guide](/tips/fonts-guide)
 	* [Update Guide](/tips/update-guide)
 	* [WebParser Tutorial](/tips/webparser-tutorial)
-* [Good To Know](#)
+* [Good To Know](/tips/#)
 	* [Button Images](/tips/button-images)
 	* [Clean Rainmeter Uninstall](/tips/clean-rainmeter-uninstall)
 	* [ColorMatrix Guide](/tips/colormatrix-guide)
@@ -16,7 +16,7 @@ Tips &amp; Tricks
 	* [Transformation Matrix Guide](/tips/transformation-matrix-guide)
 	* [Using a Measure as a Variable](/tips/measure-as-a-variable)
 	* [Wrapping Text](/tips/wrapping-text)
-* [Getting Things Done](#)
+* [Getting Things Done](/tips/#)
 	* [Animated .GIF Files](/tips/animated-gif-files)
 	* [Control Panel Applets](/tips/control-panel-applets)
 	* [Launching Windows Special Folders](/tips/launching-windows-special-folders)
