@@ -4,71 +4,71 @@ title: 'Rainmeter Snippets'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-{% capture readme %}
-This is a collection of useful "snippets" of Lua script code for users of [Rainmeter](http://rainmeter.net/cms/), a desktop customization tool for Windows. It is maintained by the Rainmeter development team, and hosted on [GitHub](https://github.com/rainmeter/rainmeter-docs/).
+<p>This is a collection of useful "snippets" of Lua script code for users of [Rainmeter](http://rainmeter.net/cms/), a desktop customization tool for Windows. It is maintained by the Rainmeter development team, and hosted on [GitHub](https://github.com/rainmeter/rainmeter-docs/).</p>
 
-Contents
---------
+<h2 id="General">General</h2>
 
-### General
+<ul>
+	<li><p><strong><a href="/snippets/deliminate">Deliminate</a></strong><br />
+	A function that separates a string into parts by a given delimiter.</p></li>
+	<li><p><strong><a href="/snippets/detect-value-change">Detect Value Change</a></strong><br />
+	A simple method for &quot;watching&quot; a data value in the skin (variable, measure or option) and taking action when the value changes.</p></li>
+	<li><p><strong><a href="/snippets/switch">Switch</a></strong><br />
+	A function that emulates a switch statement.</p></li>
+</ul>
 
-- **[Deliminate](/snippets/deliminate)**  
-A function that separates a string into parts by a given delimiter.
+<h2 id="Conversions">Conversions</h2>
 
-- **[Detect Value Change](/snippets/detect-value-change)**  
-A simple method for "watching" a data value in the skin (variable, measure or option) and taking action when the value changes.
+<ul>
+	<li><p><strong><a href="/snippets/colors">Colors</a></strong><br />
+	Functions that convert <a href="http://rainmeter.net/cms/Meters-ColorCodes">color codes</a> from RGB to HEX, and vice versa.</p></li>
+	<li><p><strong><a href="/snippets/convert-temperatures">Convert Temperatures</a></strong><br />
+	Converts temperatures between Celsius and Fahrenheit.</p></li>
+</ul>
 
-- **[Switch](/snippets/switch)**  
-A function that emulates a switch statement.
+<h2 id="FileInputOutput">File Input &amp; Output</h2>
 
-### Conversions
+<ul>
+	<li><strong><a href="/snippets/read-ini">Read INI</a></strong><br />
+	A function that parses an <a href="http://en.wikipedia.org/wiki/INI_file">INI</a> formatted text file into a table, with the structure <code>Table[Section][Parameter] = Value</code>.</li>
+</ul>
 
-- **[Colors](/snippets/colors)**  
-Functions that convert [color codes](http://rainmeter.net/cms/Meters-ColorCodes) from RGB to HEX, and vice versa.
+<h2 id="Math">Math</h2>
 
-- **[Convert Temperatures](/snippets/convert-temperatures)**  
-Converts temperatures between Celsius and Fahrenheit.
+<ul>
+	<li><p><strong><a href="/snippets/add-commas">Add Commas</a></strong><br />
+	Returns an input number as a string formatted with commas.</p></li>
+	<li><p><strong><a href="/snippets/add-suffix">Add Suffix</a></strong><br />
+	Returns the ordinal suffix for an input number.</p></li>
+	<li><p><strong><a href="/snippets/autoscale">AutoScale</a></strong><br />
+	A function that scales a number of bytes, with an optional number of decimal places. Returns a second string value with the scale suffix.</p></li>
+	<li><p><strong><a href="/snippets/average">Average</a></strong><br />
+	A function that averages a list of numbers.</p></li>
+	<li><p><strong><a href="/snippets/round">Round</a></strong><br />
+	Rounds a number (num) to any optional number of decimal places (idp)</p></li>
+</ul>
 
-### File Input & Output
+<h2 id="Rainmeter">Rainmeter</h2>
 
-- **[Read INI](/snippets/read-ini)**  
-A function that parses an [INI](http://en.wikipedia.org/wiki/INI_file) formatted text file into a table, with the structure `Table[Section][Parameter] = Value`.
+<ul>
+	<li><p><strong><a href="/snippets/set-meter-measure-options">Set Meter &amp; Measure Options</a></strong><br />
+	A simple method for setting multiple options on the same meter or measure.</p></li>
+	<li><p><strong><a href="/snippets/root-config-name">Root Config Name</a></strong><br />
+	A function that takes a Rainmeter skin's <a href="http://rainmeter.net/cms/Settings-ConfigName">config name</a> and returns the root config name for that skin.</p></li>
+</ul>
 
-### Math
+<h2 id="Strings">Strings</h2>
 
-- **[Add Commas](/snippets/add-commas)**  
-Returns an input number as a string formatted with commas.
+<ul>
+	<li><strong><a href="/snippets/parse-file-path">Parse File Path</a></strong><br />
+	A function that breaks down a file or folder path and returns the components as a table.</li>
+</ul>
 
-- **[Add Suffix](/snippets/add-suffix)**  
-Returns the ordinal suffix for an input number.
+<h2 id="Time">Time</h2>
 
-- **[AutoScale](/snippets/autoscale)**  
-A function that scales a number of bytes, with an optional number of decimal places. Returns a second string value with the scale suffix.
-
-- **[Average](/snippets/average)**  
-A function that averages a list of numbers.
-
-- **[Round](/snippets/round)**  
-Rounds a number (num) to any optional number of decimal places (idp)
-
-### Rainmeter
-
-- **[Set Meter &amp; Measure Options](/snippets/set-meter-measure-options)**  
-A simple method for setting multiple options on the same meter or measure.
-
-- **[Root Config Name](/snippets/root-config-name)**  
-A function that takes a Rainmeter skin's [config name](http://rainmeter.net/cms/Settings-ConfigName) and returns the root config name for that skin.
-
-### Strings
-
-- **[Parse File Path](/snippets/parse-file-path)**  
-A function that breaks down a file or folder path and returns the components as a table.
-
-### Time
-
-- **[Convert Time](/snippets/convert-time)**  
-A function that converts [Unix epoch](http://en.wikipedia.org/wiki/Unix_time) timestamps into Windows [FILETIME](http://en.wikipedia.org/wiki/System_time#Operating_systems) timestamps (in seconds) and vice versa.
-
-- **[Parse 12-Hour Time](/snippets/parse-twelve-hour-time)**  
-A function that takes a number (1-12) and a string ('AM' or 'PM') and returns the equivalent 24-hour figure.
-{% endcapture %} {{ readme | markdownify }}	
+<ul>
+	<li><p><strong><a href="/snippets/convert-time">Convert Time</a></strong><br />
+	A function that converts <a href="http://en.wikipedia.org/wiki/Unix_time">Unix epoch</a> timestamps into Windows <a href="http://en.wikipedia.org/wiki/System_time#Operating_systems">FILETIME</a> timestamps (in seconds) and vice versa.</p></li>
+	<li><p><strong><a href="/snippets/parse-twelve-hour-time">Parse 12-Hour Time</a></strong><br />
+	A function that takes a number (1-12) and a string ('AM' or 'PM') and returns the equivalent 24-hour figure.</p></li>
+</ul>
