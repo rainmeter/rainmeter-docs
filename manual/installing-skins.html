@@ -2,6 +2,53 @@
 layout: manual
 title: 'Skin Installer'
 ---
-<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Placeholder</p>
+<p>There are two ways of installing Rainmeter skins downloaded from the internet: automatically, or manually.</p>
+
+<h2 id="InstallAutomatically">Installing Automatically</h2>
+
+<p>Most Rainmeter skins can be installed automatically. They are a file in the <b>Rainmeter Skin Packager (.rmskin)</b> format, and they look like this:</p>
+
+<p><div class="exampleprev">
+<a rel="lightbox" href="/manual/img/installing-skins/InstallSkins01.png"><img src="/manual/img/installing-skins/InstallSkins01.png"/></a>
+</div></p>
+
+<p><b>Double-click</b> the file to start the skin installer.</p>
+
+<p><div class="exampleprev">
+<a rel="lightbox" href="/manual/img/installing-skins/InstallSkins02.png"><img src="/manual/img/installing-skins/InstallSkins02.png"/></a>
+</div>
+
+<p>This dialog lists each component that will be installed. These may include:</p>
+<ul>
+<li><b>Skins</b> : At least one skin will always be included and installed in the Rainmeter\Skins folder. The author of the package may indicate that one or more skins will automatically be loaded when the installation is complete.</li>
+<li><b>Layouts</b> : If the author has added a <a href="/manual/user-interface/manage#LayoutsPanel">layout</a> to the package it will be installed in the Rainmeter\Layouts folder.  If <b>Apply included layout</b> is selected, the layout will be applied to Rainmeter following installation.</li>
+<li><b>Plugins</b> : If the author has added custom <a href="/manual/plugins/">plugins</a> to the package the appropriate 32bit/64bit architecture version of the plugin .dll files will be installed to the Rainmeter\Plugins folder.</li>
+</ul>
+<p><b>Note:</b> Legacy .rmskin format components.  No longer supported in new Rainmeter 2.4 .rmskin files:</p>
+<ul>
+<li><b>Fonts</b> : If an author has included font files with the package, they will be installed in the Windows\Fonts folder.</li>
+<li><b>Addons</b> : If an author has included addon executable files with the package, they will be installed in the Rainmeter\Addons folder.</li>
+</ul>
+
+<p>If any of the skins to be installed already exist, they will be moved to a <b>Backup</b> folder before installation.  This may be disabled by unchecking <b>Backup skins</b> in the <b>Advanced</b> pull-down menu.</p>
+
+<p>Click <b>Install</b> to complete the installation of the package.</p>
+
+<p>______________<br/>
+<b>Note:</b> If Rainmeter is being run as a <a href="/manual/installing-rainmeter">portable</a> installation, start <b>SkinInstaller.exe</b> from the Rainmeter program folder, and browse to the .rmskin file to install it.</p>
+
+<h2 id="InstallManually">Installing Manually</h3>
+
+<p>Before Rainmeter 1.3, most skins had to be unzipped and moved to the Skins folder by hand. All versions of Rainmeter are 100% backwards-compatible, so these older skins will still work just fine. Here is how to install them:</p>
+
+<p>First of all, if a skin comes in an archive, such as a <b>ZIP</b>, <b>RAR</b> or <b>7Z</b> file, software is needed to "extract" them. <a href="http://www.7-zip.org/">7-Zip</a> is one of the popular choices, since it can handle almost any archive type. After installing the software, right-click the archive in Explorer to extract it.</p>
+
+<p>The archive may include a <b>readme.txt</b> file with further instructions. If not, look for a folder with the same name as the skin - it might be inside another folder that is actually <i>called</i> "Skins". Move the folder to the Rainmeter "Skins" folder:</p>
+
+<p><b>Windows 8/7/Vista:</b> <i>C:\Users\YourName\Documents\Rainmeter\Skins</i><br/>
+<b>Windows XP:</b> <i>C:\Documents and Settings\YourName\My Documents\Rainmeter\Skins</i></p>
+<p class="footnote">1. "YourName" is an example.</p>
+
+<p>Finally, right-click the Rainmeter Windows Notification area icon and select <b>Refresh all</b>. The new skins will now be available to load from the Manager or context menu.</p>
