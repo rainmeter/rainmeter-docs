@@ -49,13 +49,13 @@ MyOption=Hello, world!
 
 <h3 id="DynamicVariables">Dynamic Variables</h3>
 
-<p><a href="/manual/variables#DynamicVariables">Dynamic variables</a> are generally not needed with script measures. This is because functions are provided to get the current values of <a href="#GetVariable">variables</a>, <a href="#GetValue">measures</a> and <a href="#GetOption">options</a> within Lua. If these functions are used in the <a href="#Update">Update</a> function, for example, they will return values that are current at the time the function is called.</p>
+<p><a href="/manual/variables#DynamicVariables">Dynamic variables</a> are generally not needed with script measures. This is because functions are provided to get the current values of <a href="#GetVariable">variables</a>, <a href="#GetValue">measures</a> and <a href="#GetOption">options</a> within Lua. If these functions are used in the <a href="#Update">Update</a> function, they will return the current values at the time the function is called.</p>
 
 
 
 <h2 id="Initialize">Initialize</h2>
 
-<p>If the <strong>Initialize</strong> function is defined in any script, the function is called one time (without parameters) when the skin is activated or <a href="/manual/skins/#Refresh">refreshed</a>. This happens even if the script measure is <a href="/measures/general-options/#Disabled">disabled</a>. If the script file is changed by a <a href="/manual/bangs#SetOption">!SetOption</a> bang, the new script's Initialize function is called as well.</p>
+<p>If the <strong>Initialize</strong> function is defined in any script, the function is called one time (without parameters) when the skin is activated or <a href="/manual/skins/#Refresh">refreshed</a>. This happens even if the script measure is <a href="/manual/measures/general-options/#Disabled">disabled</a>. If the script file is changed by a <a href="/manual/bangs#SetOption">!SetOption</a> bang, the new script's Initialize function is called as well.</p>
 
 {% highlight lua %}
 function Initialize()
@@ -69,7 +69,7 @@ end
 
 <h2 id="Update">Update</h2>
 
-<p>If the <strong>Update</strong> function is defined in any script, the function is called (without parameters) whenever the script measure <a href="/manual/skins/#Update">updates</a>. The script measure responds normally to the <a href="/measures/general-options/#Disabled">Disabled</a> option, the <a href="/measures/general-options/#UpdateDivider">UpdateDivider</a> option, and all <a href="/manual/bangs#Measure">measure bangs</a>.</p>
+<p>If the <strong>Update</strong> function is defined in any script, the function is called (without parameters) whenever the script measure <a href="/manual/skins/#Update">updates</a>. The script measure responds normally to the <a href="/manual/measures/general-options/#Disabled">Disabled</a> option, the <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> option, and all <a href="/manual/bangs#Measure">measure bangs</a>.</p>
 
 {% highlight lua %}
 function Update()
@@ -87,7 +87,7 @@ end
 	<li><p><code>return 'Ninety-Nine'</code><br>Provides <em>0</em> as the number value (because the string cannot be converted to a number), and <em>'Ninety-Nine'</em> as the string value.</p></li>
 </ul>
 
-<p>The values provided by the script measure can be <a href="/manual/measures/#Usage">used in the same way as other measure values</a>. (Note: the values only update when the measure itself updates. Calling <code>Update()</code> within Lua does not update the measure values.)</p>
+<p>The values provided by the script measure can be <a href="/manual/measures/#Usage">used in the same way as other measure values</a>. (<b>Note:</b> the values only update when the measure itself updates. Calling <code>Update()</code> within Lua does not update the measure values.)</p>
 
 
 
