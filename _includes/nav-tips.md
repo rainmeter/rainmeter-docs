@@ -1,15 +1,6 @@
 Tips &amp; Tricks
 =================
 
-* [Rainmeter 101](/)
-* [Installing Rainmeter](/manual/installing-rainmeter)
-* [User Interface](/manual/user-interface/)
-	* [Manage](/manual/user-interface/manage)
-	* [About](/manual/user-interface/about)
-	* [Context Menus](/manual/user-interface/context-menus)
-* [Installing Skins](/manual/installing-skins)	
-* [Publishing Skins](/manual/publishing-skins)
-
 * [Beyond the Basics](#)
 	* [!SetOption Guide](/tips/setoption-guide)
 	* [Fonts Guide](/tips/fonts-guide)
@@ -25,7 +16,7 @@ Tips &amp; Tricks
 	* [Transformation Matrix Guide](/tips/transformation-matrix-guide)
 	* [Using a Measure as a Variable](/tips/measure-as-a-variable)
 	* [Wrapping Text](/tips/wrapping-text)
-* *[Getting Things Done](#)
+* [Getting Things Done](#)
 	* [Animated .GIF Files](/tips/animated-gif-files)
 	* [Control Panel Applets](/tips/control-panel-applets)
 	* [Launching Windows Special Folders](/tips/launching-windows-special-folders)
