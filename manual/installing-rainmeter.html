@@ -1,87 +1,90 @@
 ---
 layout: manual
-title: 'Installation'
+title: 'Installing Rainmeter'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>To install Rainmeter, download the latest release or beta version from <a href="http://rainmeter.net/cms">rainmeter.net</a>.</p>
+<p>To install Rainmeter, download the latest final or beta version from <a href="http://rainmeter.net/cms">rainmeter.net</a>.</p>
 
-<h2>Standard Installation</h2>
+<h2 id="StandardInstallation">Standard Installation</h2>
 
 <p>The standard installation is recommended for most users. Simply run the installer and follow the instructions.</p>
 
 <div class="exampleprev">
-	<p><img src="/manual/img/user-interface/Install01.jpg"/></p>
+	<p><img src="/manual/img/installing-rainmeter/Install01.png"/></p>
 </div>
 
 <div class="exampleprev">
-	<p><img src="/manual/img/user-interface/Install02.jpg"/></p>
+	<p><img src="/manual/img/installing-rainmeter/Install02.png"/></p>
 </div>
 
 <div class="exampleprev">
-	<p><img src="/manual/img/user-interface/Install03.jpg"/></p>
+	<p><img src="/manual/img/installing-rainmeter/Install03.png"/></p>
 </div>
 
+<p>The installation will do the following:</p>
 
+<ul>
+<li>Install the program to the default or selected <b>Destination folder</b>.</li>
+<li>Install required C++ and .NET runtime libraries if needed.</li>
+<li>Create a Windows file association for the .rmskin file extension and the <a href="/manual/installing-skins">Rainmeter Skin Installer</a>.</li>
+<li>Create Windows Start menu item for Rainmeter.</li>
+<li>Create Windows Start menu item for Startup/Rainmeter, so Rainmeter starts with Windows.  This may be disabled by unchecking <b>Launch Rainmeter on startup</b>.</li>
+<li>Launch Rainmeter at the end of the installation.</li>
+</ul>
 
-<h2>Portable Installation</h2>
+<p>Skins and settings folders will be created in the <a href="#DefaultFileLocations">default file locations</a> when Rainmeter is first run.</p>
 
-<p>To run Rainmeter from a single folder, so it can be copied to another computer or run directly from a removable drive, select 'Portable install' during the install process.  No changes to the Windows Registry or Start menu will be made.</p>
+<p><b>Note:</b> Rainmeter can be uninstalled using the <b>Add or remove programs</b> function in Windows.</p>
+
+<h2 id="PortableInstallation">Portable Installation</h2>
+
+<p>To run Rainmeter from a single folder, so it can be copied to another computer or run directly from a removable drive, select <b>Portable installation</b> during the install process and browse to the desired installation folder.  No changes to the Windows Registry or Start menu will be made.  All program, skins and settings folders and files will remain in the selected program folder.</p>
 
 <p><strong>Note:</strong> The required <a href="http://rainmeter.net/redist/">C++ and .NET runtime libraries</a> may need to be manually installed.</p>
 
-
-
-<h2>Silent Installation (Advanced)</h2>
-
-<p>To install Rainmeter without user interaction, use the installer <a href="javascript:;" onmousedown="showDiv('SilentInstall');">command line switches</a>.</p>
-
-<div id="SilentInstall" style="display:none">
-	<ul>
-		<li><strong>/S</strong> - Must be specified.</li>
-		<li><strong>/D=</strong> - Install directory (use quotes if the path contains spaces). This parameter is <strong>required</strong> for portable installs, but it's optional for standard installations. If not given, the install directory will be the previous (if found from registry) or default (%PROGRAMFILES%\Rainmeter or %PROGRAMFILES64%\Rainmeter) location.</li>
-		<li><strong>/VERSION=</strong> - Set to 64 for a 64bit install (optional).</li>
-		<li><strong>/PORTABLE=</strong> - Set to 1 for a portable install (optional).</li>
-		<li><strong>/DESKTOPSHORTCUT=</strong> - Set to 1 to create desktop shortcut (optional).</li>
-		<li><strong>/STARTUP=</strong> - Set to 1 to launch automatically with Windows (optional).</li>
-		<li><strong>/ALLUSERS=</strong> - Set to 1 to create shortcuts for all users (optional).</li>
-	</ul>
-
-	<p>For example:</p>
-
-	<blockquote><p><code>"Rainmeter-2.4-r1700-beta.exe" /S /DESKTOPSHORTCUT=1 /ALLUSERS=1</code></p></blockquote>
-
-	<p>The return value (error-code) will be:</p>
-
-	<ul>
-		<li><strong>0</strong> - Success!</li>
-		<li><strong>1</strong> - Unknown error.</li>
-		<li><strong>2</strong> - Unknown error.</li>
-		<li><strong>3</strong> - Version of Windows version not supported.</li>
-		<li><strong>4</strong> - Administrative rights not required.</li>
-		<li><strong>5</strong> - Failed to write to install directory.</li>
-		<li><strong>6</strong> - VC++ Redistributable 2010 is not installed.</li>
-		<li><strong>7</strong> - Unable to close Rainmeter/RainBrowser.</li>
-	</ul>
-</div>
-
-
-
-<h2>Default File Locations</h2>
+<h2 id="DefaultFileLocations">Default File Locations</h2>
 
 <p><strong>Program folder:</strong></br>
-<code>C:\Program Files\Rainmeter</code></p>
+<code>C:\Program Files\Rainmeter</code> <sup>1</sup></p>
 
 <p><strong>Skins folder:</strong></br>
-<code>C:\Documents and Settings\YourName\My Documents\Rainmeter\Skins</code> (Windows XP)<br/>
-<code>C:\Users\YourName\Documents\Rainmeter\Skins</code> (Windows Vista, 7 and 8)</p>
+Windows XP <code>C:\Documents and Settings\YourName\My Documents\Rainmeter\Skins</code> <sup>1</sup><br/>
+Windows 8/7/Vista <code>C:\Users\YourName\Documents\Rainmeter\Skins</code> <sup>1</sup></p>
 
 <p><strong>Settings and Layouts folder:</strong><br/>
-<code>C:\Documents and Settings\YourName\Application Data\Rainmeter</code> (Windows XP)<br/>
-<code>C:\Users\YourName\Appdata\Roaming\Rainmeter</code> (Windows Vista, 7 and 8)</p>
+Windows XP <code>C:\Documents and Settings\YourName\Application Data\Rainmeter</code> <sup>1</sup><br/>
+Windows 8/7/Vista <code>C:\Users\YourName\Appdata\Roaming\Rainmeter</code> <sup>1</sup></p>
 
-<script language="javascript">
-  function showDiv(divid){
-      document.getElementById(divid).style.display = 'block';
-  }
-</script>
+<p class="footnote">1. "YourName" is an example.</p>
+
+<h2 id="SilentInstallation">Silent Installation (Advanced)</h2>
+
+<p>To install Rainmeter without user interaction, use the installer command line switches.</p>
+
+<ul>
+<li><strong>/S</strong> - Must be specified.</li>
+<li><strong>/D=</strong> - Install directory (use quotes if the path contains spaces). This parameter is <strong>required</strong> for portable installs, but it's optional for standard installations. If not given, the install directory will be the previous (if found from registry) or default (%PROGRAMFILES%\Rainmeter or %PROGRAMFILES64%\Rainmeter) location.</li>
+<li><strong>/VERSION=</strong> - Set to 64 for a 64bit install (optional).</li>
+<li><strong>/PORTABLE=</strong> - Set to 1 for a portable install (optional).</li>
+<li><strong>/DESKTOPSHORTCUT=</strong> - Set to 1 to create desktop shortcut (optional).</li>
+<li><strong>/STARTUP=</strong> - Set to 1 to launch automatically with Windows (optional).</li>
+<li><strong>/ALLUSERS=</strong> - Set to 1 to create shortcuts for all users (optional).</li>
+</ul>
+
+<p>For example:</p>
+
+<p><code>"Rainmeter-2.4-r1700-beta.exe" /S /DESKTOPSHORTCUT=1 /ALLUSERS=1</code></p>
+
+<p>The return value (error-code) will be:</p>
+
+<ul>
+<li><strong>0</strong> - Success!</li>
+<li><strong>1</strong> - Unknown error.</li>
+<li><strong>2</strong> - Unknown error.</li>
+<li><strong>3</strong> - Version of Windows version not supported.</li>
+<li><strong>4</strong> - Administrative rights not required.</li>
+<li><strong>5</strong> - Failed to write to install directory.</li>
+<li><strong>6</strong> - VC++ Redistributable 2010 is not installed.</li>
+<li><strong>7</strong> - Unable to close Rainmeter/RainBrowser.</li>
+</ul>
