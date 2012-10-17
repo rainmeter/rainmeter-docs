@@ -20,17 +20,17 @@ title: 'Calc measure'
 
 	<dt id="UpdateRandom"><code>UpdateRandom</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		If set to <code>1</code>, the <a href="#constants">random</a> constant is regenerated on each update cycle.
+		If set to <code>1</code>, the <a href="#Constants">random</a> constant is regenerated on each update cycle.
 	</dd>
 
 	<dt id="LowBound"><code>LowBound</code> <span>Default: <code>0.0</code></span></dt>
 	<dd>
-		Lower bound of the <a href="#constants">random</a> constant.
+		Lower bound of the <a href="#Constants">random</a> constant.
 	</dd>
 
 	<dt id="HighBound"><code>HighBound</code> <span>Default: <code>100.0</code></span></dt>
 	<dd>
-		Upper bound of the <a href="#constants">random</a> constant.
+		Upper bound of the <a href="#Constants">random</a> constant.
 	</dd>
 </dl>
 
@@ -50,7 +50,7 @@ title: 'Calc measure'
 <li><code>~</code>: bitwise not</li>
 </ul>
 
-<h3>Logical Operators</h3>
+<h3 id="Logical">Logical Operators</h3>
 <ul>
 <li><code>&lt;&gt;</code>: not equal</li>
 <li><code>=</code>: equal to</li>
@@ -64,7 +64,7 @@ title: 'Calc measure'
 
 <p><b>Note:</b> Conditional statements evaluate to 1 or 0 (true / false).</p>
 
-<h3>Functions</h3>
+<h3 id="Functions">Functions</h3>
 <ul>
 <li><code>atan(<i>x</i>)</code>, <code>asin(<i>x</i>)</code>, <code>acos(<i>x</i>)</code>, <code>cos(<i>x</i>)</code>, <code>sin(<i>x</i>)</code>, <code>tan(<i>x</i>)</code>: Standard trigonometric functions. <i>x</i> is in radians.</li>
 <li><code>rad(<i>x</i>)</code> - Converts <i>x</i> degrees to radians.</li>
@@ -110,7 +110,7 @@ Formula=5
 
 [MeasureTwo]
 Measure=Calc
-Formula=(MeasureOne &lt; 6)  ?  1  :  -1
+Formula=(MeasureOne &lt; 6) ? 1 : -1
 {% endhighlight %}
 <p>This measure would return the number 1 since the condition <code>MeasureOne &lt; 6</code> evaluates to true.</p>
 <p>Conditional operators can be nested. It should be noted that there is a maximum of 30 nested operators.</p>
