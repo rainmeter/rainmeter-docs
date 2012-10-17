@@ -1,0 +1,32 @@
+---
+layout: manual
+title: 'MediaKey plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=MediaKey</code> sends various keystrokes found on multimedia keyboards. It works with Spotify, Zune, foobar, and Windows Media Player. The plugin is controlled by the <a href="/manual/bangs#CommandMeasure">!CommandMeasure bang</a>.</p>
+
+<h2>Arguments</h2>
+<ul class="spaced">
+<li><code>NextTrack</code></li>
+<li><code>PrevTrack</code></li>
+<li><code>Stop</code></li>
+<li><code>PlayPause</code></li>
+<li><code>VolumeMute</code></li>
+<li><code>VolumeDown</code></li>
+<li><code>VolumeUp</code></li>
+</ul>
+
+<h2>Example</h2>
+{% highlight ini %}
+[MeasureMediaKey]
+Measure=Plugin
+Plugin=MediaKey
+
+[MeterMute]
+Meter=String
+SolidColor=0,0,0,255
+FontColor=255,255,255,255
+Text=Mute
+LeftMouseUpAction=!CommandMeasure "MeasureMediaKey" "VolumeMute"
+{% endhighlight %}
