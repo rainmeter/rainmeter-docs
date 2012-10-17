@@ -55,6 +55,7 @@ Reference
 	* [FolderInfo](/manual/plugins/folderinfo)
 	* [InputText](/manual/plugins/inputtext)
 	* [iTunes](/manual/plugins/itunes)
+	* [MediaKey](/manual/plugins/mediakey)
 	* [NowPlaying](/manual/plugins/nowplaying)
 	* [PerfMon](/manual/plugins/perfmon)
 	* [Ping](/manual/plugins/ping)
