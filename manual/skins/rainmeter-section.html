@@ -85,14 +85,14 @@ title: '[Rainmeter] section'
 	<dd>
 		<p>If not blank, adds an item to the skin's <a href="/manual/user-interface/context-menus">context menu</a> under "Custom skin actions". Up to 15 <em>ContextTitleN</em> options are allowed, with up to 30 characters per option. Additional characters are truncated with an ellipsis (<code>...</code>). If more than 3 <em>ContextTitleN</em> options are given, "Custom skin actions" becomes a submenu. If a <em>ContextTitleN</em> option is not valid, all subsequent <em>ContextTitleN</em> options are ignored. In addition, if more than 3 options are given, and the value of <em>ContextTitleN</em> includes only dashes (<code>-</code>), the item is displayed as a separator.</p>
 
-		<p><strong>Note:</strong> variables in <code>ContextTitleN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened.</p>
+		<p><strong>Note:</strong> Variables in <code>ContextTitleN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened.</p>
 	</dd>
 
 	<dt id="ContextAction"><code>ContextAction</code>, <code>ContextAction2</code>, <code>ContextAction3</code>... </dt>
 	<dd>
 		<p><a href="/manual/options#action">Action</a> triggered by clicking the corresponding <a href="#ContextTitle">ContextTitleN</a> item. <em>ContextActionN</em> is required for <em>ContextTitleN</em> to be valid, unless the item is a separator.</p>
 
-		<p><strong>Note:</strong> variables in <code>ContextActionN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu item is clicked.</p>
+		<p><strong>Note:</strong> Variables in <code>ContextActionN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu item is clicked.</p>
 	</dd>
 </dl>
 
@@ -149,7 +149,7 @@ LeftMouseUpAction=[!AddBlur "1,0,0,200,80"]
 	<dt id="AppVersion"><code>AppVersion</code></dt>
 	<dd>
 		Defines the minimum version of Rainmeter required to use the skin. The formula to calculate the value is: <code>major * 1000000 + minor1 * 1000 + minor2</code>.
-		<br><br><b>Note:</b> This option is deprecated. Use the version capabilities in <a href="http://docs.rainmeter.net/manual/user-interface/skin-packager">Skin Packager</a>.
+		<br><br><b>Note:</b> This option is deprecated. Use the version capabilities in <a href="/manual/publishing-skins">Skin Packager</a>.
 	</dd>
 
 	<dt id="LocalFont"><code>LocalFont</code>, <code>LocalFont2</code>, ...</dt>
