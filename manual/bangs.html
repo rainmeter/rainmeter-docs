@@ -221,7 +221,7 @@ title: 'Bangs'
 	</ul></dd>
 
 	<dt id="SetTransparency"><code>!SetTransparency</code> <span>Parameters: <code><b>Alpha</b><i>, Config</i></code></span></dt>
-	<dd>Sets the transparency of a skin.
+	<dd>Sets the <a href="/manual/settings/skin-sections#AlphaValue">transparency</a> of a skin.
 	<ul>
 	<li><code>Alpha</code> (required): From 0 (invisible) to 255 (opaque).</li>
 	<li><code>Config</code> (optional)</li>
@@ -229,7 +229,7 @@ title: 'Bangs'
 	<br><b>Example:</b> <code>!SetTransparency  "128" "illustro\Clock"</code></dd>
 
 	<dt id="ZPos"><code>!ZPos</code> <span>Parameters: <code><b>Position</b><i>, Config</i></code></span></dt>
-	<dd>Sets the Z-position of a skin.
+	<dd>Sets the <a href="/manual/settings/skin-sections#AlwaysOnTop">Z-position</a> of a skin.
 	<ul>
 	<li><code>Position</code> (required): <code>-2</code> for On desktop, <code>-1</code> for Bottom, <code>0</code> for Normal, <code>1</code> for On top, or <code>2</code> for Always on top.</li>
 	<li><code>Config</code> (optional)</li>
@@ -237,28 +237,28 @@ title: 'Bangs'
 	<br><b>Example:</b> <code>!ZPos  "2" "illustro\Clock"</code></dd>
 
 	<dt id="Draggable"><code>!Draggable</code> <span>Parameters: <code><b>Setting</b><i>, Config</i></code></span></dt>
-	<dd>Sets the Draggable option of a skin.
+	<dd>Sets the <a href="/manual/settings/skin-sections#Draggable">Draggable</a> option of a skin.
 	<ul>
 	<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 	<li><code>Config</code> (optional)</li>
 	</ul></dd>
 
 	<dt id="KeepOnScreen"><code>!KeepOnScreen</code> <span>Parameters: <code><b>Setting</b><i>, Config</i></code></span></dt>
-	<dd>Sets the KeepOnScreen option of a skin.
+	<dd>Sets the <a href="/manual/settings/skin-sections#KeepOnScreen">KeepOnScreen</a> option of a skin.
 	<ul>
 	<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 	<li><code>Config</code> (optional)</li>
 	</ul></dd>
 
 	<dt id="ClickThrough"><code>!ClickThrough</code> <span>Parameters: <code><b>Setting</b><i>, Config</i></code></span></dt>
-	<dd>Sets the ClickThrough option of a skin.
+	<dd>Sets the <a href="/manual/settings/skin-sections#ClickThrough">ClickThrough</a> option of a skin.
 	<ul>
 	<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 	<li><code>Config</code> (optional)</li>
 	</ul></dd>
 
 	<dt id="SnapEdges"><code>!SnapEdges</code> <span>Parameters: <code><b>Setting</b><i>, Config</i></code></span></dt>
-	<dd>Sets the SnapEdges option of a skin.
+	<dd>Sets the <a href="/manual/settings/skin-sections#SnapEdges">SnapEdges</a> option of a skin.
 	<ul>
 	<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 	<li><code>Config</code> (optional)</li>
@@ -299,7 +299,7 @@ title: 'Bangs'
 	</ul></dd>
 	
 	<dt id="SetTransparencyGroup"><code>!SetTransparencyGroup</code> <span>Parameters: <code><b>Alpha, Group</b></code></span></dt>
-	<dd>Sets the transparency of the configs in the specified <a href="/manual/groups">group</a>.
+	<dd>Sets the <a href="/manual/settings/skin-sections#AlphaValue">transparency</a> of the configs in the specified <a href="/manual/groups">group</a>.
 	<ul>
 	<li><code>Alpha</code> (required): From 0 (invisible) to 255 (opaque).</li>
 	<li><code>Group</code> (required): Name of the the group.</li>
@@ -307,28 +307,28 @@ title: 'Bangs'
 	<br><b>Example:</b> <code>!SetTransparencyGroup  "128" "SuiteName"</code></dd>
 	
 	<dt id="DraggableGroup"><code>!DraggableGroup</code> <span>Parameters: <code><b>Setting, Group</b></code></span></dt>
-	<dd>Sets the Draggable option for each config in the specified <a href="/manual/groups">group</a>.
+	<dd>Sets the <a href="/manual/settings/skin-sections#Draggable">Draggable</a> option for each config in the specified <a href="/manual/groups">group</a>.
 	<ul>
 	<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 	<li><code>Group</code> (required): Name of the group.</li>
 	</ul></dd>
 	
-	<dt id="ZPosGroup"><code>!ZPos</code> <span>Parameters: <code><b>Position, Group</b></code></span></dt>
-	<dd>Sets the Z-position of the configs in the specified <a href="/manual/groups">group</a>.
+	<dt id="ZPosGroup"><code>!ZPosGroup</code> <span>Parameters: <code><b>Position, Group</b></code></span></dt>
+	<dd>Sets the <a href="/manual/settings/skin-sections#AlwaysOnTop">Z-position</a> of the configs in the specified <a href="/manual/groups">group</a>.
 	<ul>
 	<li><code>Position</code> (required): <code>-2</code> for On desktop, <code>-1</code> for Bottom, <code>0</code> for Normal, <code>1</code> for On top, or <code>2</code> for Always on top.</li>
 	<li><code>Group</code> (required): Name of the group.</li>
 	</ul></dd>
 	
 	<dt id="KeepOnScreenGroup"><code>!KeepOnScreenGroup</code> <span>Parameters: <code><b>Setting, Group</b></code></span></dt>
-	<dd>Sets the KeepOnScreen setting for the specified <a href="/manual/groups">group</a>.
+	<dd>Sets the <a href="/manual/settings/skin-sections#KeepOnScreen">KeepOnScreen</a> setting for the specified <a href="/manual/groups">group</a>.
 	<ul>
 	<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 	<li><code>Group</code> (required): Name of the group.</li>
 	</ul></dd>
 	
 	<dt id="SnapEdgesGroup"><code>!SnapEdgesGroup</code> <span>Parameters: <code><b>Setting, Group</b></code></span></dt>
-	<dd>Sets the SnapEdges setting for the specified <a href="/manual/groups">group</a>.
+	<dd>Sets the <a href="/manual/settings/skin-sections#SnapEdges">SnapEdges</a> setting for the specified <a href="/manual/groups">group</a>.
 	<ul>
 	<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 	<li><code>Group</code> (required): Name of the group.</li>
@@ -353,7 +353,7 @@ title: 'Bangs'
 	</ul>
 	<br><b>Example:</b> <code>!UpdateMeter "MyMeter"</code></dd>
 	
-	<dt id="MoveMeter"><code>!UpdateMeter</code> <span>Parameters: <code><b>X, Y, Meter</b><i>, Config</i></code></span></dt>
+	<dt id="MoveMeter"><code>!MoveMeter</code> <span>Parameters: <code><b>X, Y, Meter</b><i>, Config</i></code></span></dt>
 	<dd>Moves the given <a href="/manual/meters">meter</a> (not the window) to the specified position. The new position is relative to the top left corner of the skin.
 	<ul>
 	<li><code>X</code> (required): New X position.</li>
@@ -376,7 +376,7 @@ title: 'Bangs'
 	<dt id="UpdateMeterGroup"><code>!UpdateMeterGroup</code> <span>Parameters: <code><b>Group</b><i>, Config</i></code></span></dt>
 	<dd>Immediately updates all of the given <a href="/manual/meters">meters</a> in the specified <a href="/manual/groups">group</a> regardless of <a href="/manual/meters/general-options#UpdateDivider">UpdateDivider</a>.
 	<ul>
-	<li><code>Group</code> (required): Name of the meter to update.</li>
+	<li><code>Group</code> (required): Name of the meter group to update.</li>
 	<li><code>Config</code> (optional)</li>
 	</ul></dd>
 </dl>

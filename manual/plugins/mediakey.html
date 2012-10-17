@@ -6,16 +6,52 @@ title: 'MediaKey plugin'
 
 <p><code>Plugin=MediaKey</code> sends various keystrokes found on multimedia keyboards. It works with Spotify, Zune, foobar, and Windows Media Player. The plugin is controlled by the <a href="/manual/bangs#CommandMeasure">!CommandMeasure bang</a>.</p>
 
-<h2>Arguments</h2>
-<ul class="spaced">
-<li><code>NextTrack</code></li>
-<li><code>PrevTrack</code></li>
-<li><code>Stop</code></li>
-<li><code>PlayPause</code></li>
-<li><code>VolumeMute</code></li>
-<li><code>VolumeDown</code></li>
-<li><code>VolumeUp</code></li>
-</ul>
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+	</dd>
+</dl>
+
+<h2>Bangs</h2>
+<p>To control keystrokes on multimedia keyboards, use the <a href="/manual/bangs#CommandMeasure">!CommandMeasure</a> bang. In the examples below <code><em>MeasureMediaKey</em></code> is the section name for the MediaKey measure. Your <a href="/manual/skins#Format">section name</a> may differ.</p>
+<dl>
+	<dt id="NextTrack"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "NextTrack"</code></dt>
+	<dd>
+		Moves to the next track in the list.
+	</dd>
+	
+	<dt id="PrevTrack"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "PrevTrack"</code></dt>
+	<dd>
+		Moves to the previous track in the list.
+	</dd>
+	
+	<dt id="Stop"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "Stop"</code></dt>
+	<dd>
+		Stop playback.
+	</dd>
+	
+	<dt id="PlayPause"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "PlayPause"</code></dt>
+	<dd>
+		Plays/Pause playback.
+	</dd>
+	
+	<dt id="VolumeMute"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "VolumeMute"</code></dt>
+	<dd>
+		Mutes the sound.
+	</dd>
+	
+	<dt id="VolumeDown"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "VolumeDown"</code></dt>
+	<dd>
+		Decreases volume.
+	</dd>
+	
+	<dt id="VolumeUp"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "VolumeUp"</code></dt>
+	<dd>
+		Increases volume.
+	</dd>
+</dl>
 
 <h2>Example</h2>
 {% highlight ini %}
