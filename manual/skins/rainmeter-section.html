@@ -39,10 +39,6 @@ title: '[Rainmeter] section'
 		Defines the update time in milliseconds for meter transitions. While a transition is active the meter will update at this rate. Currently, only the <a href="/manual/meters/bitmap#BitmapTransitionFrames">Bitmap</a> meter supports meter transitions.
 	</dd>
 
-	<dt id="Author"><code>Author</code></dt>
-	<dd>
-		Defines the author of the skin for the <a href="/manual/user-interface/manage">Manage</a> dialog.
-	</dd>
 </dl>
 
 <h2 id="BackgroundOptions">Background options</h2>
@@ -146,11 +142,17 @@ LeftMouseUpAction=[!AddBlur "1,0,0,200,80"]
 
 <h2 id="Deprecated">Deprecated options</h2>
 <dl>
+	<dt id="Author"><code>Author</code></dt>
+	<dd>
+		The author of the skin.
+		<br><br><strong>Note:</strong> This option is deprecated. Author should be defined in the <a href="/manual/skins/metadata-section">[Metadata]</a> section of the skin.
+	</dd>
+	
 	<dt id="AppVersion"><code>AppVersion</code></dt>
 	<dd>
 		Defines the minimum version of Rainmeter required to use the skin. The formula to calculate the value is: <code>major * 1000000 + minor1 * 1000 + minor2</code>.
 		<br><br><strong>Note:</strong> This option is deprecated. Use the version capabilities in <a href="/manual/publishing-skins">Skin Packager</a>.
-	</dd>
+	</dd>	
 
 	<dt id="LocalFont"><code>LocalFont</code>, <code>LocalFont2</code>, ...</dt>
 	<dd>
