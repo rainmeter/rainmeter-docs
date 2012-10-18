@@ -31,6 +31,7 @@ RegExp="(?siU)&lt;Item&gt;.*&lt;Name&gt;(.*)&lt;/Name&gt;.*&lt;Item&gt;.*&lt;Nam
 <p>The problem is, there are only two instances of "<Item>" in this file at this time, and the regular expression will fail and no results will be returned to the WebParser measure.  A feed or web site might have none or twenty "<Item>" occurrences, and you can't always know ahead of time.</p>
 <p>Using a "lookahead assertion" will allow you to solve this.  You can use a RegExp of:<br/>
 {% highlight ini %}
+;RegExp with look-ahead assertions
 RegExp="(?siU)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)"
 {% endhighlight %}
 Now the WebParser measure will return the two StringIndexes for "Larry" and "Curly", and will just return a null value for the third search item without failing.</p>
