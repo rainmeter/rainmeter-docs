@@ -12,7 +12,7 @@ function AddSuffix(num)
 	assert(tonumber(num), 'AddSuffix expects a number.')
 	local suffix = ''
 	
-	local n = num %10
+	local n = num % 10
 	if (num - n) == 10 then
 		suffix = 'th'
 	else
