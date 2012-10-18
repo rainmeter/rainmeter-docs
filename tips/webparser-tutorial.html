@@ -10,7 +10,7 @@ title: 'WebParser Tutorial'
 <h3>Getting Started</h3>
 <p>First, let's get a .rmskin file with everything you will need for this tutorial. Simply download and run this file to get started.</p>
 <p><a href="https://github.com/downloads/rainmeter/rainmeter-docs/WebParserGuide_1.0.rmskin">Download HERE</a></p>
-<p>You may also want to click here: <a href="http://rainmeter.net/cms/Plugins-WebParser" target="_blank">Manual - WebParser</a> so we have the full manual for WebParser as a reference as we go along.</p>
+<p>You may also want to click here: <a href="/manual/plugins/webparser" target="_blank">Manual - WebParser</a> so we have the full manual for WebParser as a reference as we go along.</p>
 
 <h3>RegExp</h3>
 
@@ -20,7 +20,7 @@ title: 'WebParser Tutorial'
 <code>RegExp="(?siU)Search1(.*)Search2.*"</code>
 <p>So enclosed in quotes, you have</p>
 <ul>
-	<li><b>(?siU)</b> - which is an "options modifier" for the regular expression, telling it how you want it to behave</li>
+	<li><b>(?siU)</b> - Which is an "options modifier" for the regular expression, telling it how you want it to behave.</li>
 	<li><b>Search1</b> - Which will be some text you will search on to get you right up to the data you want.</li>
 	<li><b>(.*)</b> - The data you want returned in the array to use in your skin. The parentheses tell it to "capture" everything between "Search1" and "Search2".  In our examples we are using the string ".*" in our captures, which simply means "." (any character) and "*" (zero or more of them).</li>
 	<li><b>Search2</b> - Use this to tell RegExp what to look for to know it's time to "stop" capturing information.</li>
@@ -82,7 +82,7 @@ title: 'WebParser Tutorial'
 <p><i>I hope I don't have to say that the actual IP address will be different for you than what is in this guide. If that comes as a surprise to you, please exit your browser now and uninstall Rainmeter.  Then restart your browser and go here: <a href="http://icanhascheezburger.com/" target="_blank">LOLCATS</a></i>
 </p>
 
-<p>So let's start building our measures, and a sample meter showing the output</p>
+<p>So let's start building our measures, and a sample meter showing the output.</p>
 <p><b>First, we build the "parent" measure, containing the StringIndexes:</b><br/>
 {% highlight ini %}
 [MeasureWebSite]
@@ -147,8 +147,8 @@ StringStyle=Bold
 Antialias=1
 {% endhighlight %}
 
-<p><b>Now let's get the next bit of information we want from the website.</b> (remember, the RegExp reads the website in order from top to bottom, so you need to use the correct order in the "RegExp=" statement. You can display the information in any order you want on your skin however)</p>
-<p>The next bit in the Webpage.txt file is the "Country Code"/</p>
+<p><b>Now let's get the next bit of information we want from the website.</b> (Remember, the RegExp reads the website in order from top to bottom, so you need to use the correct order in the "RegExp=" statement. You can display the information in any order you want on your skin however.)</p>
+<p>The next bit in the Webpage.txt file is the "Country Code".</p>
 <pre>
 &lt;tr&gt;
 &lt;td align="right"&gt;Country Code&lt;/td&gt;
@@ -157,7 +157,7 @@ Antialias=1
 
 <p>So we want to add to our "RegExp=" statement, search for the Country Code and return the result in the next StringIndex on the parent measure:</p>
 {% highlight ini %}
-RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value="(.*)"&gt;.*ro-no_bots_pls12" value="(.*)" size="20".*
+RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value="(.*)"&gt;.*ro-no_bots_pls12" value="(.*)" size="20".*"
 {% endhighlight %}
 <p>So after the first pair of start/stop searches, we are adding:</p>
 <code>.*ro-no_bots_pls12" value="(.*)" size="20".*</code>
@@ -181,7 +181,7 @@ Text=Country Code: %1
 {% endhighlight %}
 
 <h3>And so on...</h3>
-<p>Ok, so you just carry on like that until you have retrieved all the data you want from the website. I won't lay it all out here, but you can go through the sample WebParserGuide.ini file installed by the .rmskin</p>
+<p>Ok, so you just carry on like that until you have retrieved all the data you want from the website. I won't lay it all out here, but you can go through the sample WebParserGuide.ini file installed by the .rmskin.</p>
 
 <h3>Using "DEBUG" to make things easier</h3>
 <p>Using The "<b>Debug=1</b>" statement in WebParser will cause your skin to output the index numbers and associated information into Rainmeter's log. Turn this on by putting "Debug=1" on your Measure:</p>
