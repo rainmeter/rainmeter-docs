@@ -82,7 +82,7 @@ Reference
 
 More
 ===============
-* [2.5 Beta Manual](/manual-beta)
+* [2.5 Beta Manual](/)
 * [Tips & Tricks](/tips)
 * [Snippets](/snippets)
 * [Version History](/history)

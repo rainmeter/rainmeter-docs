@@ -8,6 +8,6 @@ Tips &amp; Tricks
 More
 ===============
 * [2.4 Release Manual](/manual)
-* [2.5 Beta Manual](/manual-beta)
+* [2.5 Beta Manual](/)
 * [Snippets](/snippets)
 * [Version History](/history)
