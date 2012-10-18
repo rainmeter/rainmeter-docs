@@ -67,9 +67,15 @@ Key=Value
 
 <h3 id="Layouts">Layouts</h3>
 
-<p>A <strong>layout</strong> (formerly <strong>theme</strong>) is a saved "session" or "state". The user can create a layout using the <a href="/manual/user-interface/manage#LayoutsPanel">Manager</a>, which copies most of the settings in <a href="#RainmeterIni">Rainmeter.ini</a> (excluding some global options) to the layout file. These settings can later be restored using the Manager or the <a href="/manual/bangs#LoadLayout">!LoadLayout bang</a>. Layouts may also be <a href="/manual/installing-skins">installed with third-party skins</a>.</p>
+<p>A <strong>layout</strong> (formerly <strong>theme</strong>) is a saved "session" or "state". The user can create a layout using the <a href="/manual/user-interface/manage#LayoutsPanel">Manager</a>, which copies the settings in <a href="#RainmeterIni">Rainmeter.ini</a> to the layout file. These settings can later be restored using the Manager or the <a href="/manual/bangs#LoadLayout">!LoadLayout bang</a>. Layouts may also be <a href="/manual/installing-skins">installed with third-party skins</a>.</p>
 
-
+<p>Global options under [Rainmeter] are not replaced when a layout is loaded, preserving local settings such as:</p>
+<ul>
+<li>ConfigEditor</li>
+<li>SkinPath</li>
+<li>DisableVersionCheck</li>
+<li>Language</li>
+</ul>
 
 <h3 id="Plugins">Plugins</h3>
 
