@@ -5,7 +5,7 @@ title: 'Transformation Matrix Guide'
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
 <p><i>Tip by Alex2539</i></p>
-<p>One of the coolest, but undoubtedly most confusing additions to Rainmeter is the TransformationMatrix setting. In theory, using this setting on a meter will allow you to scale it, to rotate it, to flip it, to skew it in any way you choose. In practise, it makes your head hurt with all of the mumbo jumbo associated. Here, I hope to provide a decent explanation on how to use these transformations so that you can make bigger, better skins for the world.</p>
+<p>One of the coolest, but undoubtedly most confusing additions to Rainmeter is the TransformationMatrix setting. In theory, using this setting on a meter will allow you to scale it, to rotate it, to flip it, to skew it in any way you choose. In practice, it makes your head hurt with all of the mumbo jumbo associated. Here, I hope to provide a decent explanation on how to use these transformations so that you can make bigger, better skins for the world.</p>
 
 <h3>Understanding Matrices</h3>
 
@@ -17,7 +17,7 @@ title: 'Transformation Matrix Guide'
 <p>When you write out a matrix by hand, all of the numbers line up according to their rows and columns and the whole thing is surrounded by two giant square brackets. Unfortunately, there's no easy way to do that here, so when I write out a matrix, I'll just use a bunch of bars on each side to represent it. Don't get too caught up on it, it's just to make it clear where the matrix starts and ends. You'll notice that the Rainmeter help file does the same thing.</p>
 
 <p>Just to get you used to what a matrix is, here are some examples:</p>
-<pre>| 1 2 3| This is a 2x3 matrix
+<pre>|1 2 3| This is a 2x3 matrix
 |4 5 6|
 
 |1| This is a 3x1 matrix. Normally, we call a matrix with
@@ -28,7 +28,7 @@ title: 'Transformation Matrix Guide'
 | 6  0.1  1|
 | 4  5   12|
 </pre>
-<p>When writing the size of a matrix, we say it mxn where "m" is the number of rows and "n" is the number of columns. So, as you can see, a matrix can be any shape and have any kind of number, decimals included. You can even put variables in there and, with sufficient information, actually solve the matrix to find the values of the variables. It's like solving for X in an equation, but bigger and better. We're not going to go into that though since it's not really necessary for what we want to do.</p>
+<p>When writing the size of a matrix, we say it <code>m <i>x</i> n</code> where "m" is the number of rows and "n" is the number of columns. So, as you can see, a matrix can be any shape and have any kind of number, decimals included. You can even put variables in there and, with sufficient information, actually solve the matrix to find the values of the variables. It's like solving for X in an equation, but bigger and better. We're not going to go into that though since it's not really necessary for what we want to do.</p>
 
 <h3>Transformation Matrices</h3>
 
@@ -49,7 +49,7 @@ title: 'Transformation Matrix Guide'
 <p>The transformation matrix used by Rainmeter is exactly like this. The only difference is that since that last row never changes, you don't have to deal with it when you're typing in the TransformationMatrix setting. After all, it would get a little tedious writing in 0;0;1 at the end every single time. Oh, but don't write it in thinking you're "clever and doing it the right way". That will just cause an error and there will be no transformation for you. Rainmeter leaves it out, so you leave it out.</p>
 
 <b>Applying a Transformation Matrix</b>
-<p>Now that we have the model for a transformation matrix as well as a vector for our point, how do we put the two together? How do we say "Hey, Mr. Point, do what that other matrix tells you!". The answer is through multiplication. One of the handy things you can do with matrices is multiply them together. The only caveat is that if you have matrices A and B, AxB does not equal BxA. The order of multiplication is important. I repeat: THE ORDER OF MULTIPLICATION IS IMPORTANT. The matrix on the left must have the same number of columns as the number of rows in the matrix on the right. Here are some examples:</p>
+<p>Now that we have the model for a transformation matrix as well as a vector for our point, how do we put the two together? How do we say "Hey, Mr. Point, do what that other matrix tells you!". The answer is through multiplication. One of the handy things you can do with matrices is multiply them together. The only caveat is that if you have matrices A and B, <code>A <i>x</i> B</code> does not equal <code>B <i>x</i> A</code>. The order of multiplication is important. I repeat: THE ORDER OF MULTIPLICATION IS IMPORTANT. The matrix on the left must have the same number of columns as the number of rows in the matrix on the right. Here are some examples:</p>
 <pre>
 |1 2 3|   |5 1| This multiplication will work
 |4 5 6| x |6 2|
@@ -151,9 +151,9 @@ There you have it. That will rotate your object by whatever you specify "angle" 
 
 <p>Let's say you want to scale it by 1.5 in both directions and have the top-left corner stay in the same place. First, you have to find to coordinates of that point. In this case, it's pretty simple: it's just the x and positions of your square. If you're using the test skin I suggested (and why wouldn't you be?) that would mean that your square is at (75,75). Next, you have to find out where it's ended up and work from there. To do this, just look at our handy-dandy matrix multiplication. If all we're doing is scaling it by 1.5 and our x and y are 75, then the multiplication should look something like this:</p>
 <pre>
-|1.5 0   tx|   |75|   |x'|
-|0   1.5 ty| x |75| = |y'|
-|0   0    1|   | 1|   |1 |
+|1.5  0   tx|   |75|   |x'|
+| 0  1.5  ty| x |75| = |y'|
+| 0   0    1|   | 1|   |1 |
 
 Or in our case: TransformationMatrix=1.5;0;0;1.5;0;0
 </pre>
@@ -175,9 +175,9 @@ ty = y' - x*b - y*d<br/>
 <br/>
 And that's all you need to do to find how much we need to move our square back by. So, our new transformation matrix comes out to:</p>
 <pre>
-|1.5 0   -37.5|   |75|   |x'|
-|0   1.5 -37.5| x |75| = |y'|
-|0   0     1  |   | 1|   |1 |
+|1.5   0   -37.5|   |75|   |x'|
+| 0   1.5  -37.5| x |75| = |y'|
+| 0    0     1  |   | 1|   |1 |
 
 Or in our case: TransformationMatrix=1.5;0;0;1.5;-37.5;-37.5
 </pre>
@@ -192,7 +192,7 @@ Of course, by "we do the math" I mean "Rainmeter does the math". Remember that t
 <pre>
 | cos(30) sin(30) tx|   |100|
 |-sin(30) cos(30) ty| x |100|
-|       0       0  1|   |  1|
+|    0       0     1|   | 1 |
 </pre>
 <p>I'll cut right down to solving for tx and ty since you should now know how to get there. You'll need to find a calculator for the sine and cosine though:<br/>
 <br/>
@@ -203,7 +203,7 @@ Some of you might be complaining that there are a lot more than four decimals in
 <pre>
 | cos(30) sin(30) -36.6025|   |100|
 |-sin(30) cos(30)  63.3975| x |100|
-|       0       0   1     |   |  1|
+|    0       0        1   |   | 1 |
 </pre>
 <p>Unfortunately when you go to implement this, Rainmeter won't let you use cos(30) and sin(30) as values. You'll have to get actual values. In the end, you should have something like this: <br/>
 <br/>
@@ -223,27 +223,27 @@ Those are the basics. You can now stretch, slant and spin a meter in any way you
 <pre>
 | 0.9659 0.2588 -16.8559|   |x|   |x'|
 |-0.2588 0.9659  21.9670| x |y| = |y'|
-| 0      0        1     |   |1|   |1 |
+|   0      0        1   |   |1|   |1 |
 </pre>
 <p>That will rotate every x and y position to x' and y' and shift it upward. You now want to take what you just did, and scale the whole thing by 2, keeping the top-right corner where it is. The transformation matrix for that is pretty simple:</p>
 <pre>
 |2 0 -123.2916|   |x'|   |x''|
 |0 2  -62.0595| x |y'| = |y''|
-|0 0    0     |   |1 |   |1  |
+|0 0     0    |   |1 |   |1  |
 </pre>
 <p>And that's it. You just apply two transformation matrices, on on top of the other. But look at it more closely. What have you really done? If you replace the vector in that second transformation with what it actually is, which is the first transformation, you get this:</p>
 <pre>
 |2 0 -123.2916|   | 0.9659 0.2588 -16.8559|   |x|   |x'|
 |0 2  -62.0595| x |-0.2588 0.9659  21.9670| x |y| = |y'|
-|0 0    1     |   | 0      0        1     |   |1|   |1 |
+|0 0     1    |   |   0      0        1   |   |1|   |1 |
 </pre>
-<p>While the order your multiply matrices in does matter, if you have three or more being multiplied at once, it doesn't matter which pair you start with as long as they are adjacent. For example, if you have three matrices A, B and C and you want to multiply them together to get a new matrix D, you would use AxBxC=D. From there you can either do AxB=M and then MxC=D, or you can do BxC=N and then AxN=D. Either way will get you the same answer as long as overall, the order of the matrices is preserved. If we apply that rule to our current situation, we can multiply our two transformation matrices together first. If you remember the trick, you already know that a 3x3 times a 3x3 will give you another 3x3 matrix. So, how do you multiply these? It's exactly the same as I mentioned before. Take the first row of the first matrix and the first column of the second matrix, multiply the corresponding values, and add it all up to get the first value. Do that for every row and column. If you're not sure where these values are going to be put in the new matrix, just remember which row and column you're working on. Thing of it like a crosshair. Your target is going to be where the two lines intersect. For the first row and column, they intersect on the top-left value. That means whatever value you get will go in that position in the new matrix. </p>
+<p>While the order your multiply matrices in does matter, if you have three or more being multiplied at once, it doesn't matter which pair you start with as long as they are adjacent. For example, if you have three matrices A, B and C and you want to multiply them together to get a new matrix D, you would use <code>A <i>x</i> B <i>x</i> C = D</code>. From there you can either do <code>A <i>x</i> B = M</code> and then <code>M <i>x</i> C = D</code>, or you can do <code>B <i>x</i> C = N</code> and then <code>A <i>x</i> N = D</code>. Either way will get you the same answer as long as overall, the order of the matrices is preserved. If we apply that rule to our current situation, we can multiply our two transformation matrices together first. If you remember the trick, you already know that a 3x3 times a 3x3 will give you another 3x3 matrix. So, how do you multiply these? It's exactly the same as I mentioned before. Take the first row of the first matrix and the first column of the second matrix, multiply the corresponding values, and add it all up to get the first value. Do that for every row and column. If you're not sure where these values are going to be put in the new matrix, just remember which row and column you're working on. Thing of it like a crosshair. Your target is going to be where the two lines intersect. For the first row and column, they intersect on the top-left value. That means whatever value you get will go in that position in the new matrix. </p>
 
 <p>In the end, you'll have a new 3x3 matrix. The only problem is that the process of getting this new matrix is long, tedious and error-prone. But, there's a better way. Make someone else do the work for you! There are many different resources that will multiply matrices automatically. A graphing calculator will do it, but if you don't have one on hand, you can always go to <a href="http://wims.unice.fr/wims/en_tool~linear~matmult.html">a website like this one</a>. Just type in your matrices and make sure that in the "C=" field that they're multiplying in the correct order (your second transformation goes first). By plugging in our original two matrices, I got the following new matrix:</p>
 <pre>
 | 1.9318 0.5176 -157.0034|
 |-0.5176 1.9318  -18.1255|
-| 0      0         1     |
+|   0      0         1   |
 </pre>
 <p>You'll notice that the telltale bottom row makes this new matrix look suspiciously like a transformation matrix. Well, that's because it is. It turns out that multiplying two transformation matrices together just makes a new one! And, if you followed the derivation, this new, single matrix is the exact same as doing one transformation, then the other. If you plug in the values in Rainmeter, you'll get something like this:<br/>
 <br/>
