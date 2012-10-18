@@ -34,198 +34,198 @@ LeftMouseDownAction=[::{20D04FE0-3AEA-1069-A2D8-08002B30309D}]
 <p>Another way to access certain special Windows folders and functions is by knowing and using some commands Windows supports:</p>
 <p><strong>General Shortcut Commands:</strong></p>
 <ul>
-<li><strong>My Computer with C drive selected</strong><br/>
+<li><strong>My Computer with C drive selected</strong><br>
 explorer.exe /select,c</li> 
-<li><strong>Task Manager</strong><br/>
+<li><strong>Task Manager</strong><br>
 taskmgr.exe</li> 
-<li><strong>Control Panel</strong><br/>
+<li><strong>Control Panel</strong><br>
 control</li> 
-<li><strong>Windows Version Info</strong><br/>
+<li><strong>Windows Version Info</strong><br>
 winver</li> 
-<li><strong>Windows Update</strong><br/>
+<li><strong>Windows Update</strong><br>
 wupdmgr</li> 
-<li><strong>Internet Options</strong><br/>
+<li><strong>Internet Options</strong><br>
 inetcpl.cpl</li> 
-<li><strong>Computer Management</strong><br/>
+<li><strong>Computer Management</strong><br>
 compmgmt.msc</li> 
-<li><strong>System Properties</strong><br/>
+<li><strong>System Properties</strong><br>
 sysdm.cpl</li> 
-<li><strong>Date/Time Properties</strong><br/>
+<li><strong>Date/Time Properties</strong><br>
 timedate.cpl</li> 
-<li><strong>Volume Control</strong><br/>
+<li><strong>Volume Control</strong><br>
 sndvol32.exe</li> 
-<li><strong>Volume Control (tray)</strong><br/>
+<li><strong>Volume Control (tray)</strong><br>
 sndvol32.exe /tray Normal</li> 
-<li><strong>Logoff</strong><br/>
+<li><strong>Logoff</strong><br>
 shutdown.exe -l</li> 
-<li><strong>Switch User / Lock Computer</strong><br/>
+<li><strong>Switch User / Lock Computer</strong><br>
 rundll32.exe user32.dll LockWorkStation</li> 
-<li><strong>Hibernate</strong><br/>
+<li><strong>Hibernate</strong><br>
 rundll32.exe powrprof.dll,SetSuspendState</li> 
-<li><strong>Restart</strong><br/>
+<li><strong>Restart</strong><br>
 shutdown.exe -r</li> 
-<li><strong>Shutdown</strong><br/>
+<li><strong>Shutdown</strong><br>
 shutdown.exe -s</li> 
-<li><strong>Shutdown (abort)</strong><br/>
+<li><strong>Shutdown (abort)</strong><br>
 shutdown.exe -a</li>
-</ul><br/>
+</ul><br>
 <p>Or you can use Shell: commands supported by your version of Windows:</p>
 <p><pre>LeftMouseUpAction=["Shell:My Pictures"]</pre></p>
 
 <ul>
-<li><strong>Specific to Windows 7:</strong><br/><br/>
-shell:Libraries<br/>
-shell:MusicLibrary<br/>
-shell:VideosLibrary<br/>
-shell:OtherUsersFolder<br/>
-shell:Device Metadata Store<br/>
-shell:PublicSuggestedLocations<br/>
-shell:SuggestedLocations<br/>
-shell:RecordedTVLibrary<br/>
-shell:UserProgramFiles<br/>
-shell:DocumentsLibrary<br/>
-shell:User Pinned<br/>
-shell:UsersLibrariesFolder<br/>
-shell:PicturesLibrary<br/>
-shell:ImplicitAppShortcuts<br/>
-shell:UserProgramFilesCommon<br/>
-shell:Ringtones<br/>
-shell:CommonRingtones<br/></li><br/>
-<li><strong>Windows Vista and above:</strong><br/><br/>
-shell:Common Programs<br/>
-shell:GameTasks<br/>
-shell:UserProfiles<br/>
-shell:MyComputerFolder<br/>
-shell:SyncSetupFolder<br/>
-shell:DpapiKeys<br/>
-shell:SamplePlaylists<br/>
-shell:Favorites<br/>
-shell:My Video<br/>
-shell:SearchHomeFolder<br/>
-shell:System<br/>
-shell:CommonVideo<br/>
-shell:SyncResultsFolder<br/>
-shell:LocalizedResourcesDir<br/>
-shell:Cookies<br/>
-shell:Original Images<br/>
-shell:CommonMusic<br/>
-shell:My Pictures<br/>
-shell:Cache<br/>
-shell:Downloads<br/>
-shell:CommonDownloads<br/>
-shell:AppData<br/>
-shell:SyncCenterFolder<br/>
-shell:My Music<br/>
-shell:ConflictFolder<br/>
-shell:SavedGames<br/>
-shell:InternetFolder<br/>
-shell:Quick Launch<br/>
-shell:SystemCertificates<br/>
-shell:Contacts<br/>
-shell:TreePropertiesFolder<br/>
-shell:Profile<br/>
-shell:Start Menu<br/>
-shell:Common AppData<br/>
-shell:PhotoAlbums<br/>
-shell:ConnectionsFolder<br/>
-shell:Administrative Tools<br/>
-shell:PrintersFolder<br/>
-shell:Default Gadgets<br/>
-shell:ProgramFilesX86<br/>
-shell:Searches<br/>
-shell:Common Startup<br/>
-shell:ControlPanelFolder<br/>
-shell:SampleVideos<br/>
-shell:SendTo<br/>
-shell:ResourceDir<br/>
-shell:ProgramFiles<br/>
-shell:CredentialManager<br/>
-shell:PrintHood<br/>
-shell:MAPIFolder<br/>
-shell:CD Burning<br/>
-shell:AppUpdatesFolder<br/>
-shell:Common Start Menu<br/>
-shell:LocalAppDataLow<br/>
-shell:Templates<br/>
-shell:Gadgets<br/>
-shell:Programs<br/>
-shell:Recent<br/>
-shell:SampleMusic<br/>
-shell:Desktop<br/>
-shell:CommonPictures<br/>
-shell:RecycleBinFolder<br/>
-shell:CryptoKeys<br/>
-shell:Common Templates<br/>
-shell:Startup<br/>
-shell:Links<br/>
-shell:OEM Links<br/>
-shell:SamplePictures<br/>
-shell:Common Desktop<br/>
-shell:NetHood<br/>
-shell:Games<br/>
-shell:Common Administrative Tools<br/>
-shell:NetworkPlacesFolder<br/>
-shell:SystemX86<br/>
-shell:History<br/>
-shell:AddNewProgramsFolder<br/>
-shell:Playlists<br/>
-shell:ProgramFilesCommonX86<br/>
-shell:PublicGameTasks<br/>
-shell:ChangeRemoveProgramsFolder<br/>
-shell:Public<br/>
-shell:Common Documents<br/>
-shell:CSCFolder<br/>
-shell:Local AppData<br/>
-shell:Windows<br/>
-shell:UsersFilesFolder<br/>
-shell:ProgramFilesCommon<br/>
-shell:Fonts<br/>
-shell:Personal <em>(Note: This will open your private "My Documents")</em><br/></li><br/>
-<li><strong>Windows XP and Above:</strong><br/><br/>
-shell:Common Programs<br/>
-shell:Favorites<br/>
-shell:My Video<br/>
-shell:System<br/>
-shell:CommonVideo<br/>
-shell:LocalizedResourcesDir<br/>
-shell:Cookies<br/>
-shell:My Pictures<br/>
-shell:Cache<br/>
-shell:AppData<br/>
-shell:My Music<br/>
-shell:InternetFolder<br/>
-shell:Profile<br/>
-shell:Start Menu<br/>
-shell:Common AppData<br/>
-shell:ConnectionsFolder<br/>
-shell:Administrative Tools<br/>
-shell:PrintersFolder<br/>
-shell:ProgramFiles<br/>
-shell:Common Startup<br/>
-shell:ControlPanelFolder<br/>
-shell:SendTo<br/>
-shell:ResourceDir<br/>
-shell:ProgramFiles<br/>
-shell:PrintHood<br/>
-shell:CD Burning<br/>
-shell:Common Start Menu<br/>
-shell:Templates<br/>
-shell:Programs<br/>
-shell:Recent<br/>
-shell:Desktop<br/>
-shell:CommonPictures<br/>
-shell:RecycleBinFolder<br/>
-shell:Common Templates<br/>
-shell:Startup<br/>
-shell:Common Desktop<br/>
-shell:NetHood<br/>
-shell:Common Administrative Tools<br/>
-shell:SystemX86<br/>
-shell:History<br/>
-shell:Common Documents<br/>
-shell:Local AppData<br/>
-shell:Windows<br/>
-shell:Fonts<br/>
+<li><strong>Specific to Windows 7:</strong><br><br>
+shell:Libraries<br>
+shell:MusicLibrary<br>
+shell:VideosLibrary<br>
+shell:OtherUsersFolder<br>
+shell:Device Metadata Store<br>
+shell:PublicSuggestedLocations<br>
+shell:SuggestedLocations<br>
+shell:RecordedTVLibrary<br>
+shell:UserProgramFiles<br>
+shell:DocumentsLibrary<br>
+shell:User Pinned<br>
+shell:UsersLibrariesFolder<br>
+shell:PicturesLibrary<br>
+shell:ImplicitAppShortcuts<br>
+shell:UserProgramFilesCommon<br>
+shell:Ringtones<br>
+shell:CommonRingtones<br></li><br>
+<li><strong>Windows Vista and above:</strong><br><br>
+shell:Common Programs<br>
+shell:GameTasks<br>
+shell:UserProfiles<br>
+shell:MyComputerFolder<br>
+shell:SyncSetupFolder<br>
+shell:DpapiKeys<br>
+shell:SamplePlaylists<br>
+shell:Favorites<br>
+shell:My Video<br>
+shell:SearchHomeFolder<br>
+shell:System<br>
+shell:CommonVideo<br>
+shell:SyncResultsFolder<br>
+shell:LocalizedResourcesDir<br>
+shell:Cookies<br>
+shell:Original Images<br>
+shell:CommonMusic<br>
+shell:My Pictures<br>
+shell:Cache<br>
+shell:Downloads<br>
+shell:CommonDownloads<br>
+shell:AppData<br>
+shell:SyncCenterFolder<br>
+shell:My Music<br>
+shell:ConflictFolder<br>
+shell:SavedGames<br>
+shell:InternetFolder<br>
+shell:Quick Launch<br>
+shell:SystemCertificates<br>
+shell:Contacts<br>
+shell:TreePropertiesFolder<br>
+shell:Profile<br>
+shell:Start Menu<br>
+shell:Common AppData<br>
+shell:PhotoAlbums<br>
+shell:ConnectionsFolder<br>
+shell:Administrative Tools<br>
+shell:PrintersFolder<br>
+shell:Default Gadgets<br>
+shell:ProgramFilesX86<br>
+shell:Searches<br>
+shell:Common Startup<br>
+shell:ControlPanelFolder<br>
+shell:SampleVideos<br>
+shell:SendTo<br>
+shell:ResourceDir<br>
+shell:ProgramFiles<br>
+shell:CredentialManager<br>
+shell:PrintHood<br>
+shell:MAPIFolder<br>
+shell:CD Burning<br>
+shell:AppUpdatesFolder<br>
+shell:Common Start Menu<br>
+shell:LocalAppDataLow<br>
+shell:Templates<br>
+shell:Gadgets<br>
+shell:Programs<br>
+shell:Recent<br>
+shell:SampleMusic<br>
+shell:Desktop<br>
+shell:CommonPictures<br>
+shell:RecycleBinFolder<br>
+shell:CryptoKeys<br>
+shell:Common Templates<br>
+shell:Startup<br>
+shell:Links<br>
+shell:OEM Links<br>
+shell:SamplePictures<br>
+shell:Common Desktop<br>
+shell:NetHood<br>
+shell:Games<br>
+shell:Common Administrative Tools<br>
+shell:NetworkPlacesFolder<br>
+shell:SystemX86<br>
+shell:History<br>
+shell:AddNewProgramsFolder<br>
+shell:Playlists<br>
+shell:ProgramFilesCommonX86<br>
+shell:PublicGameTasks<br>
+shell:ChangeRemoveProgramsFolder<br>
+shell:Public<br>
+shell:Common Documents<br>
+shell:CSCFolder<br>
+shell:Local AppData<br>
+shell:Windows<br>
+shell:UsersFilesFolder<br>
+shell:ProgramFilesCommon<br>
+shell:Fonts<br>
+shell:Personal <em>(Note: This will open your private "My Documents")</em><br></li><br>
+<li><strong>Windows XP and Above:</strong><br><br>
+shell:Common Programs<br>
+shell:Favorites<br>
+shell:My Video<br>
+shell:System<br>
+shell:CommonVideo<br>
+shell:LocalizedResourcesDir<br>
+shell:Cookies<br>
+shell:My Pictures<br>
+shell:Cache<br>
+shell:AppData<br>
+shell:My Music<br>
+shell:InternetFolder<br>
+shell:Profile<br>
+shell:Start Menu<br>
+shell:Common AppData<br>
+shell:ConnectionsFolder<br>
+shell:Administrative Tools<br>
+shell:PrintersFolder<br>
+shell:ProgramFiles<br>
+shell:Common Startup<br>
+shell:ControlPanelFolder<br>
+shell:SendTo<br>
+shell:ResourceDir<br>
+shell:ProgramFiles<br>
+shell:PrintHood<br>
+shell:CD Burning<br>
+shell:Common Start Menu<br>
+shell:Templates<br>
+shell:Programs<br>
+shell:Recent<br>
+shell:Desktop<br>
+shell:CommonPictures<br>
+shell:RecycleBinFolder<br>
+shell:Common Templates<br>
+shell:Startup<br>
+shell:Common Desktop<br>
+shell:NetHood<br>
+shell:Common Administrative Tools<br>
+shell:SystemX86<br>
+shell:History<br>
+shell:Common Documents<br>
+shell:Local AppData<br>
+shell:Windows<br>
+shell:Fonts<br>
 shell:Personal <em>(Note: This will open your private "My Documents")</em></li>
 </ul>
 <p><a href="http://smallvoid.com/article/winnt-shell-keyword.html" target="_blank">Some more Shell Commands</a></p>

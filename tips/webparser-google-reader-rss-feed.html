@@ -6,11 +6,11 @@ title: 'WebParser: Google Reader as RSS Feed'
 
 <p><em>Tip by poiru</em></p>
 <p>With this method, one single WebParser measure (or a single RegExp, to be specific) can handle virtually all feeds. The idea is to use Google Reader to read feeds (be it Atom, RSS, FeedBurner, or something else) and output them with a single, constant format. We can then parse the various information using a single regular expression.</p>
-<p>The address:<br/>
+<p>The address:<br>
 <code>http://www.google.co.uk/reader/view/feed/#URL#?n=8</code></p>
-<p>where <strong>#URL#</strong> can be any feed (e.g. http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml). Note that if the URL contains special characters like ? or &, it must be encoded using <a href="http://meyerweb.com/eric/tools/dencoder/" target="_blank">a URL encoder</a> that converts those characters into URL entities.<br/><br/>
+<p>where <strong>#URL#</strong> can be any feed (e.g. http://newsrss.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml). Note that if the URL contains special characters like ? or &, it must be encoded using <a href="http://meyerweb.com/eric/tools/dencoder/" target="_blank">a URL encoder</a> that converts those characters into URL entities.<br><br>
 <strong>?n=8</strong> tells Google Reader to retrieve 8 items.</p>
-<p>The code below will return the following:<br/>
+<p>The code below will return the following:<br>
 <ul>
 <li>The title of the feed (e.g. BBC News)</li>
 <li>The link to 8 items (if they exist -- the RegExp won't fail if less than 8 items are available)</li>

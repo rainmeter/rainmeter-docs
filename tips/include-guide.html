@@ -8,9 +8,9 @@ title: '@Include Guide'
 
 <p>While <a href="/manual/skins/include-option">@include</a> is a simple tool it is powerful as well. It can be used to make skin code shorter by stripping out longer code into shorter files. Repetitive code used in multiple skins can be managed with one file. It can even be used to load different code when you open a skin.</p>
 <h3>Using @include</h3>
-<p>There are several rules to using @include. The first is the @include call.<br/>
+<p>There are several rules to using @include. The first is the @include call.<br>
 <pre>@include=SomeFile.inc</pre></p>
-<p>The second being the file that you're including.<br/>
+<p>The second being the file that you're including.<br>
 <pre>[Variables]
 SomeVariable=AValue</pre></p>
 <p>The file being used with @include must be formatted in the INI format, meaning that it has all the appropriate [sections] followed by Key=Value pairs. This includes using the [Variables] section.</p>
@@ -31,7 +31,7 @@ Theme=SomeTheme
 <h3>Understanding @include</h3>
 <p>When Rainmeter reaches an @include line, it reads the given file, placing all unique options into any existing sections, then places the remainder of the included file after the section in which it was called.</p>
 
-<p>SomeFile.inc<br/>
+<p>SomeFile.inc<br>
 {% highlight ini %}
 [Background]
 Meter=Image
@@ -42,7 +42,7 @@ W=40
 Text=This Won't Work
 {% endhighlight %}</p>
 
-<p>YourSkin.ini<br/>
+<p>YourSkin.ini<br>
 {% highlight ini %}
 @include=SomeFile.inc
 
@@ -62,14 +62,14 @@ Text=This line will remain.
 <h3>Practical Use: Skin Settings</h3>
 <p>The most common use of @include is to allow users to change the settings used by a skin in a separate file.</p>
 
-<p>Settings.inc<br/>
+<p>Settings.inc<br>
 {% highlight ini %}
 [Variables]
 BackgroundImage=SomeImage.png
 HideBackground=0
 {% endhighlight %}</p>
 
-<p>Skin.ini<br/>
+<p>Skin.ini<br>
 {% highlight ini %}
 @include=Settings.inc
 

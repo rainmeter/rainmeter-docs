@@ -157,22 +157,22 @@ There you have it. That will rotate your object by whatever you specify "angle" 
 
 Or in our case: TransformationMatrix=1.5;0;0;1.5;0;0
 </pre>
-<p>So we have:<br/>
-x' = 75*1.5 + 75*0 + 1*tx<br/>
-y' = 75*0 + 75*1.5 + 1*ty<br/>
-<br/>
-If we use our variables we get:<br/>
-x '= x*a + y*b + 1*tx<br/>
-y' = x*b + y*d + 1*ty<br/>
-<br/>
-We already know what x' and y' are. We want them both to come out to 75. So, if you plug 75 into both equations and solve for tx and ty, you'll wind up with this:<br/>
-tx = 75 - 75*1.5 = -37.5<br/>
-ty = 75 - 75*1.5 = -37.5<br/>
-<br/>
-Once again with our variables:<br/>
-tx = x' - x*a - y*b<br/>
-ty = y' - x*b - y*d<br/>
-<br/>
+<p>So we have:<br>
+x' = 75*1.5 + 75*0 + 1*tx<br>
+y' = 75*0 + 75*1.5 + 1*ty<br>
+<br>
+If we use our variables we get:<br>
+x '= x*a + y*b + 1*tx<br>
+y' = x*b + y*d + 1*ty<br>
+<br>
+We already know what x' and y' are. We want them both to come out to 75. So, if you plug 75 into both equations and solve for tx and ty, you'll wind up with this:<br>
+tx = 75 - 75*1.5 = -37.5<br>
+ty = 75 - 75*1.5 = -37.5<br>
+<br>
+Once again with our variables:<br>
+tx = x' - x*a - y*b<br>
+ty = y' - x*b - y*d<br>
+<br>
 And that's all you need to do to find how much we need to move our square back by. So, our new transformation matrix comes out to:</p>
 <pre>
 |1.5   0   -37.5|   |75|   |x'|
@@ -181,11 +181,11 @@ And that's all you need to do to find how much we need to move our square back b
 
 Or in our case: TransformationMatrix=1.5;0;0;1.5;-37.5;-37.5
 </pre>
-<p>If we do the math again, we get:<br/>
-<br/>
-x' = 75*1.5 + 75*0 + 1*-37.5 = 75<br/>
-y' = 75*0 + 75*1.5 + 1*-37.5 = 75<br/>
-<br/>
+<p>If we do the math again, we get:<br>
+<br>
+x' = 75*1.5 + 75*0 + 1*-37.5 = 75<br>
+y' = 75*0 + 75*1.5 + 1*-37.5 = 75<br>
+<br>
 Of course, by "we do the math" I mean "Rainmeter does the math". Remember that this part will be taken care of by Rainmeter, but it's good to know exactly what's going on so that you aren't shooting in the dark when something goes wrong and you need to fix it. By the way, in case you hadn't noticed, our square's back where it should be. Happy day!</p>
 
 <p>That technique will work for any transformation you use. Of particular interest is when you use it with rotation. When you rotate something, the center of rotation is the only point that won't move. Every other will go around it by however much you specify. If you want an image to just rotate about itself, you can use the center of the image as the center of rotation and use the technique you just learned to shift that point back to where it started off. In fact, let's try it with our square. Let's say we want the square to rotate by 30 degrees counterclockwise about its own center. First, where's the center? Well, in our case, it's right smack dab in the middle of the skin: (100,100). Next, we'll need to figure out the transformation matrix for a 30 degree rotation. If you remember, that's a scale and a skew in every direction using the sin and cosine of the angle. This is what it'll look like:</p>
@@ -194,25 +194,25 @@ Of course, by "we do the math" I mean "Rainmeter does the math". Remember that t
 |-sin(30) cos(30) ty| x |100|
 |    0       0     1|   | 1 |
 </pre>
-<p>I'll cut right down to solving for tx and ty since you should now know how to get there. You'll need to find a calculator for the sine and cosine though:<br/>
-<br/>
-tx = 100 - 100*cos(30) - 100*sin(30) = -36.6025<br/>
-ty = 100 - 100*-sin(30) - 100*cos(30) = 63.3975<br/>
-<br/>
+<p>I'll cut right down to solving for tx and ty since you should now know how to get there. You'll need to find a calculator for the sine and cosine though:<br>
+<br>
+tx = 100 - 100*cos(30) - 100*sin(30) = -36.6025<br>
+ty = 100 - 100*-sin(30) - 100*cos(30) = 63.3975<br>
+<br>
 Some of you might be complaining that there are a lot more than four decimals in the answers, but Rainmeter doesn't actually need them all. It does well enough with just a few. So now let's see what our full transformation matrix will look like:</p>
 <pre>
 | cos(30) sin(30) -36.6025|   |100|
 |-sin(30) cos(30)  63.3975| x |100|
 |    0       0        1   |   | 1 |
 </pre>
-<p>Unfortunately when you go to implement this, Rainmeter won't let you use cos(30) and sin(30) as values. You'll have to get actual values. In the end, you should have something like this: <br/>
-<br/>
-TransformationMatrix=0.86602;-0.5;0.5;0.86602;-36.6025;63.3975<br/>
-<br/>
-And that will get you a square that is rotated counterclockwise by 30 degrees around its center. What's that? You wanted it to go clockwise? Well just switch around values b and c and recalculate tx and ty. It should come out to:<br/>
-<br/>
-TransformationMatrix=0.86602;0.5;-0.5;0.86602;63.3975;-36.6025<br/>
-<br/>
+<p>Unfortunately when you go to implement this, Rainmeter won't let you use cos(30) and sin(30) as values. You'll have to get actual values. In the end, you should have something like this: <br>
+<br>
+TransformationMatrix=0.86602;-0.5;0.5;0.86602;-36.6025;63.3975<br>
+<br>
+And that will get you a square that is rotated counterclockwise by 30 degrees around its center. What's that? You wanted it to go clockwise? Well just switch around values b and c and recalculate tx and ty. It should come out to:<br>
+<br>
+TransformationMatrix=0.86602;0.5;-0.5;0.86602;63.3975;-36.6025<br>
+<br>
 Those are the basics. You can now stretch, slant and spin a meter in any way you like. But, keep reading because it gets better!</p>
 <h3>Multiple Transformations in One!</h3>
 <p>You might be thinking to yourself "Hey, I like rotating and stretching, but what if I want to do both?". Well the answer to that is not so obvious. Let's say you wanted to rotate it and double the size. You might be thinking that you know how to rotate it and you know that the a and d values are for scaling, so why not do a rotation and double those values? Well, remember what happened when you first tried to simply scale that first skew-rotation? It changed the angle and the new size wasn't easy to predict. So what do you do? The answer is matrix multiplication.</p>
@@ -245,14 +245,14 @@ Those are the basics. You can now stretch, slant and spin a meter in any way you
 |-0.5176 1.9318  -18.1255|
 |   0      0         1   |
 </pre>
-<p>You'll notice that the telltale bottom row makes this new matrix look suspiciously like a transformation matrix. Well, that's because it is. It turns out that multiplying two transformation matrices together just makes a new one! And, if you followed the derivation, this new, single matrix is the exact same as doing one transformation, then the other. If you plug in the values in Rainmeter, you'll get something like this:<br/>
-<br/>
-TransformationMatrix=1.9318;-0.5176;0.5176; 1.9318;-157.0034;-18.1255<br/>
-<br/>
-Try it out. Your square will do exactly what it was meant to. First it will rotate itself, with the top-left corner as the center of rotation, then the square doubles in size, keeping the top-right corner where it is. <br/>
-<br/>
-This technique will work with any two transformations. In fact, if you wanted to transform it a third time, you just need to multiply a third matrix. It all works as long as the order is preserved. <br/>
-<br/>
+<p>You'll notice that the telltale bottom row makes this new matrix look suspiciously like a transformation matrix. Well, that's because it is. It turns out that multiplying two transformation matrices together just makes a new one! And, if you followed the derivation, this new, single matrix is the exact same as doing one transformation, then the other. If you plug in the values in Rainmeter, you'll get something like this:<br>
+<br>
+TransformationMatrix=1.9318;-0.5176;0.5176; 1.9318;-157.0034;-18.1255<br>
+<br>
+Try it out. Your square will do exactly what it was meant to. First it will rotate itself, with the top-left corner as the center of rotation, then the square doubles in size, keeping the top-right corner where it is. <br>
+<br>
+This technique will work with any two transformations. In fact, if you wanted to transform it a third time, you just need to multiply a third matrix. It all works as long as the order is preserved. <br>
+<br>
 That's it. That's all you need to know. With this information, you can now transform any meter in any way you choose. Using this you can get some pretty interesting shapes. Just remember that left and right sides will always be parallel and the same length, as will top and bottom. That means no trapezoids, no strange quadrilaterals, only parallelograms. But that's your only restriction.</p>
 
 <h3>Help! It's not working!</h3>

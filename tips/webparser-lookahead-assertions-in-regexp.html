@@ -7,7 +7,7 @@ title: 'WebParser: Lookahead Assertions in RegExp'
 <p>Many times you need to parse an RSS feed or other web site, and can't be sure beforehand how many results for a particular search might be there.  You might search for five occurrences of something when there are only four, and the entire regular expression will fail and no results will be returned to the WebParser measure(s).</p>
 <p>This can be solved by using what is known in regular expressions as a "Lookahead Assertion".  What this does is evaluate an expression you define that says in effect "do this search if some pattern is found, otherwise continue the regular expression without failing".</p>
 <p>The best way to explain this is probably to give an example with an explanation of what it is doing.</p>
-<p>Let's start with an HTML file.  We will use the "file://" functionality of WebParser for this test, so we can parse a local file on our hard drive.<br/>
+<p>Let's start with an HTML file.  We will use the "file://" functionality of WebParser for this test, so we can parse a local file on our hard drive.<br>
 {% highlight html %}
 &lt;HTML&gt;
 	&lt;BODY&gt;
@@ -20,7 +20,7 @@ title: 'WebParser: Lookahead Assertions in RegExp'
 	&lt;/BODY&gt;
 &lt;/HTML&gt;
 {% endhighlight %}</p>
-<p>Normally, we might use something like this in a WebParser measure to search for and return three results:<br/>
+<p>Normally, we might use something like this in a WebParser measure to search for and return three results:<br>
 {% highlight ini %}
 [MeasureParent]
 Measure=Plugin
@@ -29,7 +29,7 @@ URL=file://#CURRENTPATH#MyFile.html
 RegExp="(?siU)&lt;Item&gt;.*&lt;Name&gt;(.*)&lt;/Name&gt;.*&lt;Item&gt;.*&lt;Name&gt;(.*)&lt;/Name&gt;.*&lt;Item&gt;.*&lt;Name&gt;(.*)&lt;/Name&gt;.*"
 {% endhighlight %}</p>
 <p>The problem is, there are only two instances of "<Item>" in this file at this time, and the regular expression will fail and no results will be returned to the WebParser measure.  A feed or web site might have none or twenty "<Item>" occurrences, and you can't always know ahead of time.</p>
-<p>Using a "lookahead assertion" will allow you to solve this.  You can use a RegExp of:<br/>
+<p>Using a "lookahead assertion" will allow you to solve this.  You can use a RegExp of:<br>
 {% highlight ini %}
 ;RegExp with look-ahead assertions
 RegExp="(?siU)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)"
@@ -97,13 +97,13 @@ FontColor=255,255,255,255
 AntiAlias=1
 Text=Item 3: %1
 {% endhighlight %}
-<p>This will display:<br/>
+<p>This will display:<br>
 <pre>
 Item 1: Larry
 Item 2: Curly
 Item 3: No Moe!
 </pre>
-</p><br/>
+</p><br>
 <p>Details on how "Lookaround" functionality works in regular expressions can be found here: <a href="http://www.regular-expressions.info/lookaround.html">RegExp Tutorial</a></p>
 
 
