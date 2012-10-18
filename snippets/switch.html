@@ -7,7 +7,7 @@ subtitle: 'Functions: Switch(tbl)'
 
 <p>Switch is used to emulate a switch statement.</p>
 
-<p>In normal Lua syntax comparing a single value several times is repetaive and long.</p>
+<p>In normal Lua syntax comparing a single value several times is repetitive and long.</p>
 
 {% highlight lua %}
 Variable = 'Match1'
@@ -39,14 +39,14 @@ result = Table:case(string.lower(Variable), 'Example text.')
 {% highlight lua %}
 -- Emulates a switch statement.
 -- The functions in the switch table receive a table as a parameter.
---The first index of the table is the match itself.
+-- The first index of the table is the match itself.
 
 function switch(tbl) -- Used to emulate a switch statement
-	tbl.case=function(...)
-		local t=table.remove(arg,1)
-		local f=t[arg[1]] or t.default
+	tbl.case = function(...)
+		local t = table.remove(arg,1)
+		local f = t[arg[1]] or t.default
 		if f then
-			if type(f)=='function' then
+			if type(f) == 'function' then
 				f(arg)
 			else
 				print('Case: '..tostring(x)..' not a function')
