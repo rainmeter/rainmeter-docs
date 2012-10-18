@@ -7,8 +7,8 @@ title: 'Manage'
 <p>The Manage interface in Rainmeter is the primary means of controlling the application and skins.  It consists of three main tab panels:</p>
 
 <ul>
-<li><b><a href="#SkinsPanel">Skins</a></b>: Displays the list of installed and loaded skins.  This panel is used to view information about skins, manage skin positions and other settings, and load, unload and refresh skins.</li>
-<li><b><a href="#LayoutsPanel">Layouts</a></b>: Used to save and load the current state of Rainmeter. Active and inactive skins, skin positions, and other Rainmeter settings.</li>
+<li><b><a href="#SkinsPanel">Skins</a></b>: Displays a <a href="SkinsList">list</a> of installed and loaded skins. This panel is used to view <a href="#Metadata">information</a> about skins, manage skin <a href="#SkinSettings">settings</a>, and <a href="#SkinButtons">control buttons</a> to load/unload/refresh skins.</li>
+<li><b><a href="#LayoutsPanel">Layouts</a></b>: Used to <a href="#SaveNewLayout">save</a> and <a href="#SavedLayouts">load</a> the current state of Rainmeter. Active and inactive skins, skin positions, and other Rainmeter settings.</li>
 <li><b><a href="#SettingsPanel">Settings</a></b>: Controls high-level Rainmeter settings such as the interface language and logging.</li>
 </ul>
 
@@ -26,7 +26,7 @@ title: 'Manage'
 <ul>
 <li><b>Refresh all</b> : Refresh the entire Rainmeter application, including all currently active skins.</li>
 <li><b>Edit settings</b> : Manually edit the settings in Rainmeter.ini with the text editor associated with .ini files.</li>
-<li><b>Open log</b> : View the <a href="/manual/user-interface/about">Log</a> tab of the Rainmeter <a href="/manual/user-interface/about">About</a> interface.<br/>&nbsp;</li>
+<li><b>Open log</b> : View the <a href="/manual/user-interface/about#LogPanel">Log</a> tab of the Rainmeter <a href="/manual/user-interface/about">About</a> interface.<br/>&nbsp;</li>
 <li><b>Create .rmskin package</b> : Package skins(s) for <a href="/manual/publishing-skins">distribution</a> in the .rmskin format.</li>
 </ul>
 
@@ -63,7 +63,7 @@ title: 'Manage'
 </div></p>
 <br/>
 <p id="ActiveSkins"><b>Active skins</b></p>
-<p>This pull-down will contain a list of all skins currently loaded and active in Rainmeter.<p>
+<p>This pull-down will contain a list of all currently loaded and active skins in Rainmeter.<p>
 <p>Clicking on a skin will make that skin active in the Manage panel.</p>
 
 <div style="clear: both;"></div>
@@ -103,7 +103,7 @@ title: 'Manage'
 </ul>
 <br/>
 
-<p><b>Buttons used to control skins:</b></p>
+<p id="SkinButtons"><b>Buttons used to control skins:</b></p>
 <ul>
 <li><b>Unload / Load</b> : Unload (make inactive) the selected skin if it is currently active, or load it if not.</li>
 <li><b>Refresh</b> : Refresh the selected active skin.</li>
