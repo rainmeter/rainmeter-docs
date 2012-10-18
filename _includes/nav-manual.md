@@ -1,4 +1,4 @@
-2.4 Release Manual
+2.4 Final Manual
 ==================
 
 * [Rainmeter 101](/)

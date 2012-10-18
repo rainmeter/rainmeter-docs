@@ -31,7 +31,7 @@ Pre-Development
 
 More
 ===============
-* [2.4 Release Manual](/manual)
+* [2.4 Final Manual](/manual)
 * [2.5 Beta Manual](/)
 * [Tips &amp; Tricks](/tips)
 * [Snippets](/snippets)

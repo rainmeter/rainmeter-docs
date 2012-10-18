@@ -11,7 +11,7 @@ Snippets
 
 More
 ===============
-* [2.4 Release Manual](/manual)
+* [2.4 Final Manual](/manual)
 * [2.5 Beta Manual](/)
 * [Tips & Tricks](/tips)
 * [Version History](/history)
