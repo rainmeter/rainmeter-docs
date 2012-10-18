@@ -16,7 +16,7 @@ Measure=Plugin
 Plugin=WebParser
 URL=http://SomeSite.com
 RegExp="(?siU)&lt;Item&gt;(.*)&lt;/Item&gt;.*&lt;Item&gt;(.*)&lt;/Item&gt;"
-{% endhighlight %}	
+{% endhighlight %}
 <p id="ParentChild">This example creates two <a href="#StringIndex">StringIndex</a> values in what is referred to as the "parent" WebParser measure.  The information is generally used in subsequent "child" WebParser measures:</p>
 {% highlight ini %}
 [MeasureChild1]
@@ -60,26 +60,26 @@ StringIndex=2
 	<dd>
 		<p>A <a href="/manual/bangs">bang</a> or <a href="/manual/options#Action">action</a> that is executed when the page has been downloaded and the parsing is done. This option is only valid on measures that connect to a site or file with <code>URL</code>, and not on <a href="#ParentChild">child</a> measures.</p>
 	</dd>
-	
+
 	<dt id="StringIndex"><code>StringIndex</code></dt>
 	<dd>
 		<p>Defines which captured string from the <code>RegExp</code> this measure returns.  This option is generally used in a <a href="#ParentChild">child</a> measure to determine which of the caputured values in a <a href="#ParentChild">parent</a> measure to use.</p>
 	</dd>
-	
+
 	<dt id="StringIndex2"><code>StringIndex2</code></dt>
 	<dd>
 		<p>The second string index is used when using a <code>RegExp</code> in a measure that uses data from another WebParser measure (i.e. the <code>URL</code> points to a <a href="#ParentChild">parent</a> measure. In this case the <code>StringIndex</code> defines the index of the result of the parent measure's <code>RegExp</code> and the <code>StringIndex2</code> defines the index of this measure's <code>RegExp</code> (i.e. it defines the string that the measure returns).</p>
 
 		<p><strong>Note:</strong> If the <code>RegExp</code> is not defined in this measure, the <code>StringIndex2</code> has no effect.</p>
 	</dd>
-	
+
 	<dt id="UpdateRate"><code>UpdateRate</code> <span>Default: <code>600</code></span></dt>
 	<dd>
 		<p>The rate in milliseconds determining how often the webpage is downloaded. This is relative to the config's main <a href="/manual/skins#Update">Update</a> rate <strong>and</strong> any <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> on the measure. So the formula would be <code>Update</code> X <code>UpdateDivider</code> X <code>UpdateRate</code> = "how often the measure connects to the site".</p>
 
 		<p><strong>Note:</strong> Some caution should be used in determining how often to connect to a site with WebParser.  Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
 	</dd>
-	
+
 	<dt id="DecodeCharacterReference"><code>DecodeCharacterReference</code> <span>Default: <code>0</code></span></dt>
 	<dd>
 		<p>Automatically decodes <a href="http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references">HTML Character References</a>. This will eliminate the need to use a <a href="/manual/measures/general-options/substitute"><code>Substitute</code></a> statement to translate character references like <code>&amp;quot;</code>, <code>&amp;amp;</code>, <code>&amp;lt;</code>, and <code>&amp;gt;</code> to the actual character. Valid values are:</p>
@@ -90,7 +90,7 @@ StringIndex=2
 			<li><code>3</code>: Decodes only character entity references.</li>
 		</ul>
 	</dd>
-	
+
 	<dt id="Debug"><code>Debug</code> <span>Default: <code>0</code></span></dt>
 	<dd>
 		<p>Logs DEBUG messages to the Rainmeter <a href="/manual/user-interface/about#LogPanel">log</a> or to a file. Valid values are:</p>
@@ -101,50 +101,50 @@ StringIndex=2
 		</ul>
 		 <p><strong>Hint:</strong> Determining <a href="#StringIndex">StringIndex</a> values to use in a <a id="#ParentChild">child</a> measure can be done by setting <code>Debug=1</code> on a measure having the <code>RegExp</code> option, which will display matched strings and StringIndex numbers in the Rainmeter <a href="/manual/user-interface/about#LogPanel">log</a></p>
 	</dd>
-	
+
 	<dt id="Debug2File"><code>Debug2File</code></dt>
 	<dd>
 		<p>If the <code>Debug</code> option is set to <code>2</code>, this option can be set to the path and name of the file to use for the downloaded webpage instead of <code>C:\WebParserDump.txt</code>.</p>
-		
+
 		<p><strong>Note:</strong> The folder for the file must already exist.</p>
 	</dd>
-	
+
 	<dt id="Download"><code>Download</code> <span>Default: <code>0</code></span></dt>
 	<dd>
 		<p>If <code>Download=1</code>, the <code>URL</code> is downloaded to Window's <code>TEMP</code> folder and the name to the file is returned as string value. The measure can then be used with <a href="/manual/meters/general-options/#MeasureName">MeasureName</a> on an <a href="/manual/meters/image">Image</a> meter to download images from a site and display them.</p>
 	</dd>
-	
+
 	<dt id="DownloadFile"><code>DownloadFile</code></dt>
 	<dd>
 		<p>If the <code>Download</code> option is set to <code>1</code>, this option defines a relative path and file name where the downloaded file will be saved instead of in Windows <code>TEMP</code>.
-		
+
 		<p>A folder <code>DownloadFile</code> will be created in the <a href="/manual/variables/built-in-variables#CURRENTPATH">current folder</a>, and the defined relative path and file name will be created under that.  It is not possible to specify an absolute path.</p>
 
 		<p><strong>Note:</strong> This file is <strong>not</strong> a temporary file so it is <strong>not</strong> deleted after unloading a skin or exiting Rainmeter.</p>
 
 	</dd>
-	
+
 	<dt id="ErrorString"><code>ErrorString</code></dt>
 	<dd>
 		 <p>The value of the measure will be set to the string defined in this option if the <code>RegExp</code> results in a regular expression parsing error.</p>
 	</dd>
-	
+
 	<dt id="ForceReload"><code>ForceReload</code> <span>Default: <code>0</code></span></dt>
 	<dd>
 		 <p>WebParser reads the resource only if it has been modified since last read. This can be overridden with <code>ForceReload=1</code>.</p>
 	</dd>
-	
+
 	<dt id="ProxyServer"><code>ProxyServer</code></dt>
 	<dd>
 		<p>Name of the proxy server used by Windows Internet Explorer on the system. The plugin doesn't support any authentication, so <strong>only</strong> use proxy settings that do not require it.</p>
 
 		<p><strong>Examples:</strong> <code>ProxyServer=ServerIP:Port</code>, <code>ProxyServer=ServerName:Port</code></p>
 	</dd>
-	
+
 	<dt id="CodePage"><code>CodePage</code> <span>Default: <code>0</code></span></dt>
 	<dd>
 		 <p>Defines the codepage of the downloaded web page. For example: <code>CodePage=28605</code> interprets the page as <code>Latin 9 (ISO-8859-15)</code>. <code>CodePage=65001</code> means <code>UTF-8</code>. <code>CodePage=0</code> means no conversion is done.</p>
-		 
+
 		 <p>Codepage definitions and more information can be found at <a href="http://www.microsoft.com/globaldev/reference/wincp.mspx">Windows code pages</a>.</p>
 	</dd>
 </dl>

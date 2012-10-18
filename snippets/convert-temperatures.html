@@ -12,20 +12,20 @@ function ConvertTemp(num, toScale)
 	assert(tonumber(num), 'ConvertTemp expects a number.')
 	assert((toScale == 'c') or (toScale == 'f'),
 		'ConvertTemp expects c or f as the scale to convert to.')
-		
+
 	local outTemp = 0
-	
+
 	if toScale ==  'c' then
 		outTemp = Round((5/9)*(num-32))
-	else	
+	else
 		outTemp = Round((9/5)*num+32)
-	end	
-	
+	end
+
 	return outTemp
 end
 
 function Round(num, idp)
-	assert(tonumber(num), 'Round expects a number.')	
+	assert(tonumber(num), 'Round expects a number.')
 	local mult = 10^(idp or 0)
 	if num >= 0 then
 		return math.floor(num * mult + 0.5) / mult

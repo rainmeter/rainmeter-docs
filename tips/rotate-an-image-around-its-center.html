@@ -11,8 +11,8 @@ title: 'Rotate an Image Around its Center'
 <img src="/tips/img/rotate-an-image-around-its-center/RotateImage1.gif"/>
 </div>
 
-<p>Probably the easiest approach is to use a <a href="/manual/meters/rotator">Rotator</a> meter.  What you will need to do is set the <code>OffsetX</code> and <code>OffsetY</code> to the middle 
-of the image based on the width and height of the original.  Then you will need to find the total width and height of the container needed to rotate the image, which will be the length 
+<p>Probably the easiest approach is to use a <a href="/manual/meters/rotator">Rotator</a> meter.  What you will need to do is set the <code>OffsetX</code> and <code>OffsetY</code> to the middle
+of the image based on the width and height of the original.  Then you will need to find the total width and height of the container needed to rotate the image, which will be the length
 of a line from the upper left to the bottom right corners.  These will be used to set the <code>W</code> and <code>H</code> of the Rotator meter.</p>
 <p>Then you can use any measure that returns a value between 0% and 100% (with any number of "steps") as the <code>MeasureName</code> of the meter, and the image will rotate around its own center based on the current value of that measure.</p>
 {% highlight ini %}

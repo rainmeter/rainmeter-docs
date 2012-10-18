@@ -28,12 +28,12 @@ title: 'WiFiStatus plugin'
 			<li><code>List</code>: Returns a list of all visible networks. The list is automatically separated by line-breaks <code>\n</code>, so each network appears on a separate line. It will also display the <code>PHY</code>, <code>Encryption</code>, and <code>AUTH</code> algorithms next the the network <code>SSID</code>.</li>
 		</ul>
 	</dd>
-	
+
 	<dt id="WiFiIntfID"><code>WiFiIntfID</code> <span>Default: <code>0</code></span></dt>
 	<dd>
 		Only use this if you have more than 1 wireless interface adapter (which may include any bluetooth or infrared receivers). If you do not get any response from the measure with this value at <code>0</code>, then try other values starting from <code>1</code>, then <code>2</code> and so on.
 	</dd>
-	
+
 	<dt id="WiFiListStyle"><code>WiFiListStyle</code> <span>Default: <code>0</code></span></dt>
 	<dd>
 		<p>This allows you to control what information appears along with the names of all visible networks when <code>WiFiInfoType=List</code>. Valid values are:</p>
@@ -44,13 +44,13 @@ title: 'WiFiStatus plugin'
 			<li><code>3</code>: SSID @band (Encryption:Authentication).</li>
 		</ul>
 	</dd>
-	
+
 	<dt id="WiFiListLimit"><code>WiFiListLimit</code> <span>Default: <code>5</code></span></dt>
 	<dd>
 		<p>Allows you to control the number of networks that are will be displayed when used with <code>WiFiInfoType=List</code>.</p>
 		<p><strong>Note:</strong> The list is sorted in descending order based on the signal quality of each network (i.e. strongest first, weakest last).</p>
 	</dd>
-</dl>	
+</dl>
 
 <h2>Example</h2>
 
