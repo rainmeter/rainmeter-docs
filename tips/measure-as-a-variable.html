@@ -39,9 +39,9 @@ DynamicVariables=1
 <ul>
 
 	<li><p>If a measure's string and number values are the <em>same</em>, then dynamic variables are unnecessary. Calc measures without DVs are a tiny bit faster, and your formula will behave consistently whether or not DVs are enabled.</p></li>
-	
+
 	<li><p>If the string and number values are <em>different</em>, then the string value may be inappropriate for mathematical calculations.</p></li>
-	
+
 </ul>
 
 <p>The common exception to this rule is when a <strong>substitute</strong> has been applied. (See below.)</p>
@@ -54,7 +54,7 @@ DynamicVariables=1
 	<p><strong>No math.</strong> If the original measure value contains any non-numeric characters, aside from valid <a href="/manual/measures/calc#Formulas">operators</a>, the number value is zero. This includes letters, punctuation and special characters.</p>
 	<p>You'll probably never use a measure like this in a Calc formula to begin with.</p>
 	</li>
-	
+
 	<li>
 	<p><strong>Rounding.</strong> Even when a measure gives you an actual number, Rainmeter may round the string value to a certain decimal place. The number value preserves the "true" value, which is always better for calculation.</p>
 	<p>Even if you want a rounded number, the <a href="/manual/measures/calc#Functions">ROUND(x[,precision])</a> calculator function will give you much finer control over the result.</p>
@@ -62,7 +62,7 @@ DynamicVariables=1
 
 	<li>
 	<p><strong>Formatting.</strong> Some measures return a formatted string value that is meant for display, but not for calculations. For example, the <a href="/manual/measures/time">Time</a> measure gives a string value with hours, minutes and seconds ("HH:MM:SS"), which is how a real person would want to see the time, but which makes no sense in a math equation. The number value gives the raw <a href="http://en.wikipedia.org/wiki/Unix_time">Unix time</a>, which <em>can</em> be used by a Calc measure, e.g. to calculate the difference between two dates.</p>
-	
+
 	<p>There may be cases in which you would want to use a formatted string value in a Calc formula, but these would likely be rare and unorthodox.</p>
 	</li>
 
@@ -88,7 +88,7 @@ DynamicVariables=1
 	<p>MeasureB uses the number value of MeasureA. It ignores the Substitute string on Measure A. Therefore, MeasureB returns a value of <em>4</em>. In MeasureC, we use DVs to get the string value of MeasureA. This value has substituted the original value, "1", with "2". So MeasureC returns a value of <em>5</em>.</p>
 
 	<p>This means that if you need the substituted value of a measure, you will need to use DVs and brackets. This can be useful when the original value of a measure is not a number at all (as in case #1), but a Substitute is used to change it into one:</p>
-	
+
 {% highlight ini %}
 [MeasureGetStatus]
 Measure=Plugin
@@ -109,10 +109,10 @@ DynamicVariables=1
 {% endhighlight %}
 
 	<p>In this case, we have a web feed that returns either "Running" or "Offline". But we can't do math on a word&mdash;since neither of those values is a number or mathematical formula, the number value for both would be zero. Instead, we use a Substitute to transform the string value into "1" or "0", respectively. That way, our Calc measure can compare it to our IfEqualValue and IfBelowValue, and take the right action. If 1 ("Running"), then the light turns green; if 0 ("Offline"), the light turns red.</p>
-	
+
 	<p>Substitution is virtually the only case in which you would <em>want</em> to use a string value in a Calc formula.</p>
 	</li>
-	
+
 </ol>
 
 <h3>Other Notes</h3>

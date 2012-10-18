@@ -16,7 +16,7 @@ title: '[Rainmeter] section'
 
 	<dt id="DynamicWindowSize"><code>DynamicWindowSize</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		If set to <code>1</code>, the window size is adjusted on each update to fit the meters. 
+		If set to <code>1</code>, the window size is adjusted on each update to fit the meters.
 	</dd>
 
 	<dt id="DragMargins"><code>DragMargins</code> <span>Default: <code>0,0,0,0</code></span></dt>
@@ -55,7 +55,7 @@ title: '[Rainmeter] section'
 
 	<dt id="BackgroundMode"><code>BackgroundMode</code> <span>Default: <code>1</code></span></dt>
 	<dd>
-		Defines the background mode for the skin. Valid values are: 
+		Defines the background mode for the skin. Valid values are:
 		<ul>
 		<li><code>0</code> : Image as defined by <code>Background</code></li>
 		<li><code>1</code> : Transparent background</li>
@@ -68,11 +68,11 @@ title: '[Rainmeter] section'
 
 	<dt id="BackgroundMargins"><code>BackgroundMargins</code> <span>Default: <code>0,0,0,0</code></span></dt>
 	<dd>
-		If <code>BackgroundMode=3</code>, defines margins of the <code>Background</code> image that are not scaled. The parameters are <code>left,top,right,bottom</code>. 
+		If <code>BackgroundMode=3</code>, defines margins of the <code>Background</code> image that are not scaled. The parameters are <code>left,top,right,bottom</code>.
 		<br><br><strong>Example:</strong> <code>BackgroundMargins=0,10,0,20</code>.
 		<br>10 pixels from the top and 20 pixels from the bottom of the image are not scaled.
 	</dd>
-</dl>	
+</dl>
 
 <h2 id="Context">Context options</h2>
 
@@ -94,13 +94,13 @@ title: '[Rainmeter] section'
 
 <h2 id="AeroBlur">Aero Blur options</h2>
 <dl>
-	
-	<dt id="Blur"><code>Blur</code> <span>Default: <code>0</code></span></dt>	
+
+	<dt id="Blur"><code>Blur</code> <span>Default: <code>0</code></span></dt>
 	<dd>
 		Set to 1 to enable Aero Blur on Windows Vista or later operating systems. If no BlurRegions are specified, the entire skin background is blurred.
 	</dd>
 
-	<dt id="BlurRegion"><code>BlurRegion, BlurRegion2, ..., BlurRegion<em>N</em></code></dt>	
+	<dt id="BlurRegion"><code>BlurRegion, BlurRegion2, ..., BlurRegion<em>N</em></code></dt>
 	<dd>
 		Defines areas and shapes of the one or more regions of the skin to be blurred. The format of the option is: <code>BlurRegion=Type, TopX, TopY, BottomX, BottomY <em>,Radius</em></code>.
 		<br><br>Valid values for <code>Type</code> are:
@@ -138,7 +138,7 @@ H=180
 SolidColor=0,0,0,50
 LeftMouseUpAction=[!AddBlur "1,0,0,200,80"]
 {% endhighlight %}
-</dl>	
+</dl>
 
 <h2 id="Deprecated">Deprecated options</h2>
 <dl>
@@ -147,12 +147,12 @@ LeftMouseUpAction=[!AddBlur "1,0,0,200,80"]
 		The author of the skin.
 		<br><br><strong>Note:</strong> This option is deprecated. Author should be defined in the <a href="/manual/skins/metadata-section">[Metadata]</a> section of the skin.
 	</dd>
-	
+
 	<dt id="AppVersion"><code>AppVersion</code></dt>
 	<dd>
 		Defines the minimum version of Rainmeter required to use the skin. The formula to calculate the value is: <code>major * 1000000 + minor1 * 1000 + minor2</code>.
 		<br><br><strong>Note:</strong> This option is deprecated. Use the version capabilities in <a href="/manual/publishing-skins">Skin Packager</a>.
-	</dd>	
+	</dd>
 
 	<dt id="LocalFont"><code>LocalFont</code>, <code>LocalFont2</code>, ...</dt>
 	<dd>

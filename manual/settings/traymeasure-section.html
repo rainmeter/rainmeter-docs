@@ -31,11 +31,11 @@ title: '[TrayMeasure] section'
 	<dt id="TrayBitmap"><code>TrayBitmap</code></dt>
 	<dd>
 		<p>Path to the tray icon bitmap file for <code>TrayMeter=Bitmap</code>. Defines the name of the bitmap used when Bitmap is chosen for TrayMeter. The bitmap can have any number of 16x16 frames.</p>
-		
+
 		<p>It is possible to use separate icon files as the tray bitmap. <code>%i</code> can be used in the filename to define an increasing number from 1. E.g. <code>TrayBitmap=tray-%i.ico</code> would read the icons files tray-1.ico, tray-2.ico, tray-3.ico and so on as long as it can find them. The format is like <a href="http://msdn.microsoft.com/en-us/library/wc7014hz%28v=vs.100%29.aspx">printf</a>. (e.g. <code>TrayBitmap=tray-%02i.ico</code> will load tray-01.ico, tray-02.ico, ...)</p>
-		
+
 		<p>A simple <code>Measure</code> that returns a single value, combined with a <code>TrayBitmap</code> path and name of a single 16x16 .ico file can be used to replace the default tray icon with a custom one.</p>
-		
+
 		<p><strong>Note:</strong> The path to a bitmap image or .ico files is a <a href="/manual/options">relative path</a> from the main Skins\ folder (i.e. <code>TrayBitmap=Icons\MyIcon.ico</code>.)</p>
 	</dd>
 </dl>

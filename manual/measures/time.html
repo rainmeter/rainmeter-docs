@@ -16,10 +16,10 @@ title: 'Time measure'
 	<dt id="Format"><code>Format</code> <span>Default: <code>%H:%M:%S</code></span></dt>
 	<dd>
 		<p>Format for the measure value. This can be a combination of text and <a href="#FormatCodes">Format codes</a>.</p>
-		
+
 		<p><strong>Note:</strong> If a <code>Format</code> is not given, the <a href="/manual/measures#Values">string value</a> returned is in the format <code>%H:%M:%S</code>, however the <a href="/manual/measures#Values">number value</a> will be a <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>.  If a <code>Format</code> is given, the number value will be the value defined by the format, or zero if the format does not define a numerical value.</p>
 	</dd>
-	
+
 	<dt id="TimeStamp"><code>TimeStamp</code></dt>
 	<dd>
 		<p><a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a> or <a href="/manual/measures/calc">formula</a> defining a timestamp. If defined, the measure will use this date/time instead of the current system values.</p>
@@ -33,7 +33,7 @@ title: 'Time measure'
 	<dt id="DaylightSavingTime"><code>DaylightSavingTime</code> <span>Default: <code>1</code></span></dt>
 	<dd>
 		<p>If <code>DaylightSavingTime</code> is set to <code>0</code> and <code>TimeZone</code> is supplied, the current local offset for daylight saving time is not applied to the value.</p>
-		
+
 		<p><strong>Note:</strong> All locations do not follow the same daylight saving schedule, if any. If a Time measure is intended to provide the time in a specific location, and that location follows a different schedule from the user's local system, the default value will be wrong on certain dates over the course of the year. In order to provide an accurate time, <code>DaylightSavingTime</code> must be set to <code>0</code>, and <code>TimeZone</code> must be set in a way that accounts for the current daylight savings rules for that location.</p>
 	</dd>
 </dl>

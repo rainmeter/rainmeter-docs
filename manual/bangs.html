@@ -17,7 +17,7 @@ title: 'Bangs'
 	<li><code>String</code> (required): The string to be copied to the clipboard.</li>
 	</ul>
 	<br><strong>Example:</strong> <code>!SetClip "This is copied to the clipboard!"</code></dd>
-	
+
 	<dt id="SetWallpaper"><code>!SetWallpaper</code> <span>Parameters: <code><strong>File</strong><em>, Position</em></code></span></dt>
 	<dd>Sets the Windows desktop background to the specified image file.
 	<ul>
@@ -34,14 +34,14 @@ title: 'Bangs'
 	<ul>
 	<li><code>TabName</code> (optional): Opens the dialog to the defined tab. Valid values are: <code>Log</code> (default), <code>Skins</code>, <code>Plugins</code>, and <code>Version</code>. The value <code>Measures</code> is deprecated and will open the <code>Skins</code> tab.</li>
 	</ul>
-	<br><strong>Example:</strong> <code>!About Skins</code></dd>	
+	<br><strong>Example:</strong> <code>!About Skins</code></dd>
 
 	<dt id="Manage"><code>!Manage</code> <span>Parameter: <code><em>TabName</em></code></span></dt>
 	<dd>Opens the <a href="/manual/user-interface/manage">Manage</a> dialog.
 	<ul>
 	<li><code>TabName</code> (optional): Opens the dialog to the defined tab. Valid values are: <code>Skins</code> (default), <code>Layouts</code>, and <code>Settings</code>.</li>
 	</ul>
-	<br><strong>Example:</strong> <code>!Manage Settings</code></dd>	
+	<br><strong>Example:</strong> <code>!Manage Settings</code></dd>
 
 	<dt id="Log"><code>!Log</code> <span>Parameters: <code><strong>String</strong><em>, ErrorType</em></code></span></dt>
 	<dd>Writes a message to the <a href="/manual/user-interface/about#LogPanel">log</a>.
@@ -50,33 +50,33 @@ title: 'Bangs'
 	<li><code>ErrorType</code> (optional): Specifies the type of error. Valid values are: <code>Notice</code> (default), <code>Error</code>, <code>Warning</code>, and <code>Debug</code>.</li>
 	</ul>
 	<br><strong>Example:</strong> <code>!Log "There was an error!" Error</code></dd>
-	
+
 	<dt id="ResetStats"><code>!ResetStats</code></dt>
 	<dd>Resets the network statistics.</dd>
 
 	<dt id="LoadLayout"><code>!LoadLayout</code> <span>Parameters: <code><strong>LayoutName</strong></code></span></dt>
 	<dd>Loads the named <a href="/manual/user-interface/manage#LayoutsPanel">layout</a>.</dd>
-	
+
 	<dt id="RefreshApp"><code>!RefreshApp</code></dt>
 	<dd>Does a full refresh of all skins and reloads the list of configs and Rainmeter.ini settings. This is the same as "Refresh All" from the system tray context menu. The main difference from <a href="#Refresh"><code>!Refresh *</code></a> is that the skins folder is rescanned.</dd>
-	
+
 	<dt id="Quit"><code>!Quit</code></dt>
 	<dd>Quits Rainmeter.</dd>
-	
+
 	<dt id="Play"><code>Play</code> <span>Parameter: <code><strong>SoundFile</strong></code></span></dt>
 	<dd>Plays the given sound file <strong>once</strong>.
 	<ul>
 	<li><code>SoundFile</code> (required): File to be played. Must be a .wav file.</li>
 	</ul>
 	<br><strong>Example:</strong> <code>Play "SomeFile.wav"</code></dd>
-	
+
 	<dt id="PlayLoop"><code>PlayLoop</code> <span>Parameter: <code><strong>SoundFile</strong></code></span></dt>
 	<dd>Plays the given sound file in a loop.
 	<ul>
 	<li><code>SoundFile</code> (required): File to be played. Must be a .wav file.</li>
 	</ul>
 	<br><strong>Example:</strong> <code>PlayLoop "SomeFile.wav"</code></dd>
-	
+
 	<dt id="PlayStop"><code>PlayStop</code></dt>
 	<dd>Stops the currently playing sound.</dd>
 </dl>
@@ -94,7 +94,7 @@ title: 'Bangs'
 		<p>Details at <a href="/tips/setoption-guide">!SetOption Guide</a>.</p>
 		<br><strong>Example:</strong> <code>!SetOption SomeStringMeter Text "New Text"</code>.
 	</dd>
-	
+
 	<dt id="SetVariable"><code>!SetVariable</code> <span>Parameters: <code><strong>Variable, Value</strong><em>, Config</em></code></span></dt>
 	<dd>Sets a new value for a <a href="/manual/variables">variable</a>. The meter or measure where the variable is used must enable <a href="/manual/variables#DynamicVariables">DynamicVariables</a>. !SetVariable can create a new variable in memory, even if it is not pre-defined in the <a href="/manual/variables#Section">[Variables]</a> section.
 	<ul>
@@ -103,7 +103,7 @@ title: 'Bangs'
 	<li><code>Config</code> (optional)</li>
 	</ul>
 	<br><strong>Example:</strong> <code>!SetOption SomeStringMeter Text "New text!"</code></dd>
-	
+
 	<dt id="WriteKeyValue"><code>!WriteKeyValue</code> <span>Parameters: <code><strong>Section, Key, Value</strong><em>, FilePath</em></code></span></dt>
 	<dd>Permanently writes a <code>Key=Value</code> pair below a section in a INI formatted file (such as .ini or .inc files). A skin must be refreshed for a new value written to the skin's .ini or .inc files to be re-read and used.
 	<ul>
@@ -151,13 +151,13 @@ title: 'Bangs'
 	<ul>
 	<li><code>Config</code> (optional)</li>
 	</ul></code></dd>
-	
+
 	<dt id="ShowHideToggleBlur"><code>!ShowBlur</code>, <code>!HideBlur</code>, <code>!ToggleBlur</code> <span>Parameter: <code><em>Config</em></code></span></dt>
 	<dd>Shows or hides the <a href="/manual/skins/rainmeter-section#AeroBlur">blur</a> behind a skin.
 	<ul>
 	<li><code>Config</code> (optional)</li>
 	</ul></dd>
-	
+
 	<dt id="AddRemoveBlur"><code>!AddBlur</code>, <code>!RemoveBlur</code> <span>Parameter: <code><strong>Region</strong><em>, Config</em></code></span></dt>
 	<dd>Adds or removes a <a href="/manual/skins/rainmeter-section#AeroBlur">blur</a> region to/from existing blur areas.
 	<ul>
@@ -297,7 +297,7 @@ title: 'Bangs'
 	<ul>
 	<li><code>Group</code> (required): Group to refresh.</li>
 	</ul></dd>
-	
+
 	<dt id="SetTransparencyGroup"><code>!SetTransparencyGroup</code> <span>Parameters: <code><strong>Alpha, Group</strong></code></span></dt>
 	<dd>Sets the <a href="/manual/settings/skin-sections#AlphaValue">transparency</a> of the configs in the specified <a href="/manual/groups">group</a>.
 	<ul>
@@ -305,28 +305,28 @@ title: 'Bangs'
 	<li><code>Group</code> (required): Name of the the group.</li>
 	</ul>
 	<br><strong>Example:</strong> <code>!SetTransparencyGroup  "128" "SuiteName"</code></dd>
-	
+
 	<dt id="DraggableGroup"><code>!DraggableGroup</code> <span>Parameters: <code><strong>Setting, Group</strong></code></span></dt>
 	<dd>Sets the <a href="/manual/settings/skin-sections#Draggable">Draggable</a> option for each config in the specified <a href="/manual/groups">group</a>.
 	<ul>
 	<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 	<li><code>Group</code> (required): Name of the group.</li>
 	</ul></dd>
-	
+
 	<dt id="ZPosGroup"><code>!ZPosGroup</code> <span>Parameters: <code><strong>Position, Group</strong></code></span></dt>
 	<dd>Sets the <a href="/manual/settings/skin-sections#AlwaysOnTop">Z-position</a> of the configs in the specified <a href="/manual/groups">group</a>.
 	<ul>
 	<li><code>Position</code> (required): <code>-2</code> for On desktop, <code>-1</code> for Bottom, <code>0</code> for Normal, <code>1</code> for On top, or <code>2</code> for Always on top.</li>
 	<li><code>Group</code> (required): Name of the group.</li>
 	</ul></dd>
-	
+
 	<dt id="KeepOnScreenGroup"><code>!KeepOnScreenGroup</code> <span>Parameters: <code><strong>Setting, Group</strong></code></span></dt>
 	<dd>Sets the <a href="/manual/settings/skin-sections#KeepOnScreen">KeepOnScreen</a> setting for the specified <a href="/manual/groups">group</a>.
 	<ul>
 	<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 	<li><code>Group</code> (required): Name of the group.</li>
 	</ul></dd>
-	
+
 	<dt id="SnapEdgesGroup"><code>!SnapEdgesGroup</code> <span>Parameters: <code><strong>Setting, Group</strong></code></span></dt>
 	<dd>Sets the <a href="/manual/settings/skin-sections#SnapEdges">SnapEdges</a> setting for the specified <a href="/manual/groups">group</a>.
 	<ul>
@@ -344,7 +344,7 @@ title: 'Bangs'
 	<li><code>Config</code> (optional)</li>
 	</ul>
 	<br><strong>Example:</strong> <code>!ToggleMeter "MyMeter"</code></dd>
-	
+
 	<dt id="UpdateMeter"><code>!UpdateMeter</code> <span>Parameters: <code><strong>Meter</strong><em>, Config</em></code></span></dt>
 	<dd>Immediately updates the given <a href="/manual/meters">meter</a> regardless of <a href="/manual/meters/general-options#UpdateDivider">UpdateDivider</a>.
 	<ul>
@@ -352,7 +352,7 @@ title: 'Bangs'
 	<li><code>Config</code> (optional)</li>
 	</ul>
 	<br><strong>Example:</strong> <code>!UpdateMeter "MyMeter"</code></dd>
-	
+
 	<dt id="MoveMeter"><code>!MoveMeter</code> <span>Parameters: <code><strong>X, Y, Meter</strong><em>, Config</em></code></span></dt>
 	<dd>Moves the given <a href="/manual/meters">meter</a> (not the window) to the specified position. The new position is relative to the top left corner of the skin.
 	<ul>
@@ -372,7 +372,7 @@ title: 'Bangs'
 	<li><code>Group</code> (required): Group to show or hide.</li>
 	<li><code>Config</code> (optional).</li>
 	</ul></dd>
-	
+
 	<dt id="UpdateMeterGroup"><code>!UpdateMeterGroup</code> <span>Parameters: <code><strong>Group</strong><em>, Config</em></code></span></dt>
 	<dd>Immediately updates all of the given <a href="/manual/meters">meters</a> in the specified <a href="/manual/groups">group</a> regardless of <a href="/manual/meters/general-options#UpdateDivider">UpdateDivider</a>.
 	<ul>
@@ -390,7 +390,7 @@ title: 'Bangs'
 	<li><code>Config</code> (optional)</li>
 	</ul>
 	<br><strong>Example:</strong> <code>!ToggleMeasure "CPUMeasure"</code></dd>
-	
+
 	<dt id="UpdateMeasure"><code>!UpdateMeasure</code> <span>Parameters: <code><strong>Measure</strong><em>, Config</em></code></span></dt>
 	<dd>Immediately updates the given <a href="/manual/measures">measure</a> regardless of <a href="/manual/measures/general-options#UpdateDivider">UpdateDivider</a>.
 	<ul>
@@ -398,7 +398,7 @@ title: 'Bangs'
 	<li><code>Config</code> (optional)</li>
 	</ul>
 	<br><strong>Example:</strong> <code>!UpdateMeasure "CPUMeasure"</code></dd>
-	
+
 	<dt id="CommandMeasure"><code>!CommandMeasure</code> <span>Parameters: <code><strong>Measure, Arguments</strong><em>, Config</em></code></span></dt>
 	<dd>Sends a command to the given <a href="/manual/measures">measure</a>.
 	<ul>
@@ -417,7 +417,7 @@ title: 'Bangs'
 	<li><code>Group</code> (required): Name of the group.</li>
 	<li><code>Config</code> (optional)</li>
 	</ul></dd>
-	
+
 	<dt id="UpdateMeasureGroup"><code>!UpdateMeasureGroup</code> <span>Parameters: <code><strong>Group</strong><em>, Config</em></code></span></dt>
 	<dd>Immediately updates all of the <a href="/manual/measures">measure</a> in the specified group regardless of <a href="/manual/measures/general-options#UpdateDivider">UpdateDivider</a>.
 	<ul>
@@ -430,10 +430,10 @@ title: 'Bangs'
 <dl>
 	<dt id="Execute"><code>!Execute</code></dt>
 	<dd>The !Execute bang, used both to indicate multiple bangs in one statement and to execute external applications has been made optional. Do not use it in new skins.</dd>
-	
+
 	<dt id="Rainmeter"><code>!Rainmeter<em>...</em></code></dt>
 	<dd>Bangs names can optionally be preceded by the "Rainmeter" keyword. For example, !RainmeterShowMeter and !ShowMeter are both equal. New skins should not use the Rainmeter prefix.</dd>
-	
+
 	<dt id="PluginBang"><code>!PluginBang</code> <span>Parameters: <code><strong>Measure</strong><em>, Arguments, Config</em></code></span></dt>
 	<dd>This bang has been deprecated in favor of <a href="#CommandMeasure">!CommandMeasure</a> and should not be used in any new skins.</dd>
 </dl>

@@ -12,7 +12,7 @@ function AddCommas(num)
 	assert(tonumber(num), 'AddCommas expects a number.')
 	local outNum = num
 	local replaceCount = 0
-	
+
 	while true do
 		outNum, replaceCount = string.gsub(outNum, "^(-?%d+)(%d%d%d)", '%1,%2')
 		if (replaceCount == 0) then

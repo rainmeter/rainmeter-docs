@@ -40,7 +40,7 @@ title: 'Bitmap meter'
 	<dt id="BitmapTransitionFrames"><code>BitmapTransitionFrames</code></dt>
 	<dd>
 		The number of transition frames per each actual frame. The transition frames are frames which are displayed when the measure value changes. The same number of transition frames must be used after each regular frame. The <a href="/manual/skins/rainmeter-section#TransitionUpdate">TransitionUpdate</a> option in the [Rainmeter] section determines the rate at which the transition frames change during the transition. The total duration of the transition is therefore <code>TransitionUpdate</code> multiplied by <code>BitmapTransitionFrames</code>.<br><br>
-		
+
 		<strong>Note:</strong> <code>BitmapFrames</code> always defines the total number of frames in the bitmap, including the transition frames.
 
 		<br><br><strong>Example:</strong> If the bitmap has 10 values and each transition consists of 4 additional frames, then <code>BitmapFrames</code> should be set to <code>50</code> and <code>BitmapTransitionFrames</code> to <code>4</code>.

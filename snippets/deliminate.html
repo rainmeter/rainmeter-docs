@@ -9,14 +9,14 @@ title: 'Deliminate'
 <div class="noscroll">{% highlight lua %}
 function Delim(line, delimiter) -- Separate String by single character delimiter
 	assert(string.len(delimiter) == 1, 'Delim: Delimiter may only be a single character')
-	
+
 	local tbl={}
-	
+
 	for word in string.gmatch(line, '[^%'..delimiter..']+') do
 		table.insert(tbl, word)
 	end
-	
+
 	return tbl
 end -- Delim
 {% endhighlight %}
-</div>	
+</div>

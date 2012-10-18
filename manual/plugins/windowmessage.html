@@ -12,17 +12,17 @@ title: 'WindowMessage plugin'
 	<dd>
 		All <a href="/manual/measures/general-options">general measure options</a> are valid.
 	</dd>
-	
+
 	<dt id="WindowName"><code>WindowName</code></dt>
 	<dd>
 		 The name of the window. This is used to identify the window. It's not necessary to set this if the <code>WindowClass</code> is set.
 	</dd>
-	
+
 	<dt id="WindowClass"><code>WindowClass</code></dt>
 	<dd>
 		 The class of the window. This is used to identify the window. It's not necessary to set this if the <code>WindowName</code> is set.
 	</dd>
-	
+
 	<dt id="WindowMessage"><code>WindowMessage</code></dt>
 	<dd>
 		 This is the message to be send to the window. You need to define 3 parameters to where the first one is the <code>message</code> and the next ones are <code>wParam</code> and <code>lParam</code>. <strong>Both wParam and lParam are unsigned decimal integers.</strong> The measure returns the value returned by the SendMessage API function. If the <code>WindowMessage</code> is not given, the measure returns the window's current title.

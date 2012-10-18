@@ -27,7 +27,7 @@ title: 'General Meter Options'
 	<dd>
 		Specify the x and y position of the meter relative to the top-left edge of the skin. If the value is appended with <code>r</code>, the position is relative to the previous meter x or y position (e.g. <code>5r</code> or <code>(5 * 2)r</code>). If the value is appended with <code>R</code>, the position is relative to the bottom-right edge of the previous meter.
 	</dd>
-	
+
 	<dt id="WH"><code>W</code>, <code>H</code></dt>
 	<dd>
 		The width and height of the meter. String meters and Image meters (with an image) can automatically determine width and height. For all other cases, <code>W</code> and <code>H</code> must be defined.
@@ -59,7 +59,7 @@ title: 'General Meter Options'
 
 	<dt id="BevelType"><code>BevelType</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		If enabled, draws a bevel around the edges of the rectangle specified by <code>H</code> and <code>W</code>. Valid values are: 
+		If enabled, draws a bevel around the edges of the rectangle specified by <code>H</code> and <code>W</code>. Valid values are:
 		<ul>
 		<li><code>0</code>: No bevel</li>
 		<li><code>1</code>: Raised</li>
@@ -78,22 +78,22 @@ title: 'General Meter Options'
 
 		<p><strong>See also:</strong> <a href="/manual/variables#DynamicVariables">Dynamic Variables</a></p>
 	</dd>
-	
+
 	<dt id="TransformationMatrix"><code>TransformationMatrix</code> <span>Default: <code>1;0;0;1;0;0</code></span></dt>
 	<dd>
 		<p>Defines a 3x2 matrix which can be used to transform the meter. Transformations include: scaling, skewing, and translating (ie. moving). There must be <strong>exactly</strong> 6 values separated by semicolons <code>;</code>. Combining these can have drastic effects on the meter it is applied to.</p>
-		
+
 		<p><strong>See also:</strong> <a href="/tips/transformation-matrix-guide">Transformation Matrix</a></p>
-		
+
 		<p><strong>Examples:</strong>
 		<ul>
 			<li><code>TransformationMatrix=-1; 0; 0; 1; 40; 0</code>: This will flip <code>X</code> along the line <code>X=20</code>.</li>
 			<li><code>TransformationMatrix=1; 0; 0; -1; 0; 100</code>: This will flip <code>Y</code> along the line <code>Y=50</code>.</li>
 			<li><code>TransformationMatrix=0.5; 0; 0; 1; 25; 0</code>: This will scale <code>X</code> by <code>0.5</code> at <code>X=50</code>.</li>
 		</ul></p>
-		
+
 		<p><strong>Note:</strong> All transformations are relative to the top left corner of the window and not to the meter itself. So if you want to rotate the meter by its center the translation component in the matrix must be relative to the top left corner of the window.</p>
-		
+
 		<p>Also note that the even if the meter's visual location and orientation is changed by the transformation the place where it would be located without the transformation will still be used to define the window size and register the mouse clicks. This might change in the future though.</p>
 	</dd>
 </dl>
