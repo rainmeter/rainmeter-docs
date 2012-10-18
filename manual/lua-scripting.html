@@ -104,7 +104,7 @@ end
 
 <p>All statements must be passed as a single parameter in the bang. Because single-quotes (<code>'</code>) and double-quotes (<code>"</code>) are both valid string containers in Lua, while only double-quotes are recognized in Rainmeter, single quotes are recommended when passing strings with !CommandMeasure.</p>
 
-<p><a href="/manual/options#number">Formulas</a> are also valid in !CommandMeasure arguments. As in other options, the formula must be enclosed in parentheses (<code>()</code>). For reliability, the formula should also be enclosed in single-quotes and converted to a number using <a href="http://www.lua.org/manual/5.1/manual.html#pdf-tonumber">tonumber</a>.</p>
+<p><a href="/manual/options#Number">Formulas</a> are also valid in !CommandMeasure arguments. As in other options, the formula must be enclosed in parentheses (<code>()</code>). For reliability, the formula should also be enclosed in single-quotes and converted to a number using <a href="http://www.lua.org/manual/5.1/manual.html#pdf-tonumber">tonumber</a>.</p>
 
 	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "a = '(2+2)'; a = tonumber(a)"</code></p></blockquote>
 
@@ -166,7 +166,7 @@ end
 
 	<dt id="MakePathAbsolute"><code>MakePathAbsolute</code> <span>Parameter: <code><strong>File/Folder</strong></code></span></dt>
 	<dd>
-		<p>Converts a relative filepath into an absolute filepath, in the same manner as a <a href="/manual/options#path">path option</a>. </p>
+		<p>Converts a relative filepath into an absolute filepath, in the same manner as a <a href="/manual/options#Path">path option</a>. </p>
 		<p><b>Example:</b> <code>MyPath = SKIN:MakePathAbsolute('MyImage.png')</code></p>
 	</dd>
 
@@ -178,7 +178,7 @@ end
 
 	<dt id="ParseFormula"><code>ParseFormula</code> <span>Parameter: <code><strong>FormulaString</strong></code></span></dt>
 	<dd>
-		<p>If the given string is a valid <a href="/manual/options#number">formula</a>, evaluates the formula and returns the result as the number. Otherwise, returns <code>nil</code>.</p>
+		<p>If the given string is a valid <a href="/manual/options#Number">formula</a>, evaluates the formula and returns the result as the number. Otherwise, returns <code>nil</code>.</p>
 		<p><b>Example:</b> <code>MyNumber = SKIN:ParseFormula('2+2')</code></p>
 	</dd>
 </dl>
@@ -211,7 +211,7 @@ end
 
 	<dt id="GetNumberOption"><code>GetNumberOption</code> <span>Parameters: <code><strong>OptionName</strong><em>, Default</em></code></span></dt>
 	<dd>
-		<p>Returns the current value of the named option as a number. If the option does not exist, or is not a valid number or <a href="/manual/options#number">formula</a>, returns the given default value, or <code>0</code> if no default is given.</p>
+		<p>Returns the current value of the named option as a number. If the option does not exist, or is not a valid number or <a href="/manual/options#Number">formula</a>, returns the given default value, or <code>0</code> if no default is given.</p>
 		<p><b>Example:</b> <code>MyUpdateDivider = MyMeasure:GetNumberOption(UpdateDivider, 1)</code></p>
 	</dd>
 

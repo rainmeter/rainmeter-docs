@@ -6,7 +6,7 @@ title: 'Options'
 
 <p>While Rainmeter has hundreds of options in total for all the measures, meters, and plugins, many of them can be categorized into types. For example, some options represent colors while others are used to specify a path.</p>
 
-<h2 id="color">Color options</h2>
+<h2 id="Color">Color options</h2>
 <p>Color options such as <code>SolidColor</code> and <code>FontColor</code> should use the RGBA (red-green-blue-alpha) notation in either the hexadecimal or decimal form.</p>
 <p><b>Decimal colors</b> are specified as <code>RRR,GGG,BBB<i>,AAA</i></code>, where <code>RRR</code>, <code>GGG</code>, <code>BBB</code>, and <code><i>AAA</i></code> are decimal numbers from 0 to 255. Formulas can also be used in place of the numbers.</p>
 <p><b>Hexadecimal colors</b> are specified as <code>RRGGBB<i>AA</i></code>, where <code>RR</code>, <code>GG</code>, <code>BB</code>, and <code><i>AA</i></code> are hexadecimal numbers from 00 to FF.</p>
@@ -23,7 +23,7 @@ SolidColor=FF0000
 
 <p>One of many ways to obtain a desired color code is <a href="http://rainmeter.net/color/">Rainmeter Online Color Picker</a>.</p>
 
-<h2 id="path">Path options</h2>
+<h2 id="Path">Path options</h2>
 <p>Path options specify the relative or absolute path of either a file or a folder (depending on the option). For example, the path of an image file is expected with <code>ImageName</code>.</p>
 
 {% highlight ini %}
@@ -35,7 +35,7 @@ ImageName=..\lolcat.png
 ImageName=C:\lolcats\lolcat.png
 {% endhighlight %}
 
-<h2 id="number">Number options</h2>
+<h2 id="Number">Number options</h2>
 <p>Number options specify either a number or a <a href="/manual/measures/calc#Formulas">formula</a> enclosed in parentheses.</p>
 
 {% highlight ini %}
@@ -45,7 +45,7 @@ FontSize=(40 + 2)
 FontSize=(2 &gt; 1 ? 42 : 666)
 {% endhighlight %}
 
-<h2 id="action">Action options</h2>
+<h2 id="Action">Action options</h2>
 <p>Options in a skin which cause Rainmeter to take some action.  Actions may be triggered by user input such as <a href="/manual/mouse-actions">mouse actions</a>, or system events and changing values within the skin, such as <a href="/manual/measures/general-options/ifactions">if actions</a>.</p>
 <p>Normally the value of an action option is going to be one or more <a href="/manual/bangs">bangs</a>, or the execution of external commmands in Windows.</p>
 
