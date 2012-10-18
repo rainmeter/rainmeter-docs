@@ -12,7 +12,7 @@ subtitle: 'Function: ParseTwelveHourTime(Hour, Meridiem)'
 function ParseTwelveHourTime(Hour, Meridiem)
 	if (Meridiem == 'AM') and (Hour == 12) then
 		Hour = 0
-	elseif (Meridiem == 'PM') and (Hour &lt; 12) then
+	elseif (Meridiem == 'PM') and (Hour < 12) then
 		Hour = Hour + 12
 	end
 	return Hour
