@@ -10,6 +10,8 @@ title: 'Skins'
 
 <h2 id="FilesFolders">Files and Folders</h2>
 
+<p><b>Note:</b> The paths described below can be referenced in skins with <a href="/manual/variables/built-in-variables">built-in-variables</a>.</p>
+
 <p>All skins are stored in Rainmeter's "Skins" folder. If Rainmeter has been installed normally, the default location of the Skins folder is:</p>
 
 <ul>
@@ -29,9 +31,9 @@ title: 'Skins'
 
 <p class="footnote">1. "YourName" and "SkinName" are examples.</p>
 
-<h3 id="Resources">Resources</h3>
+<h3 id="Resources">@Resources</h3>
 
-<p>Any supporting files used by the skin, such as images or <a href="/manual/lua-scripting">Lua scripts</a>, should also be stored in the skin folder. Complex skins are recommended to store supporting files in a folder called <a href="/manual/skins/resources-folder">@Resources</a> inside the skin folder. The @Resources folder is ignored by Rainmeter, except to load custom fonts and cursors.</p>
+<p>Any supporting files used by the skin, such as images, addon executables, sounds,  or <a href="/manual/lua-scripting">Lua scripts</a>, should also be stored in the skin folder. Complex skins are recommended to store supporting files in a folder called <a href="/manual/skins/resources-folder">@Resources</a> inside the <a href="#RootConfig#">root config</a> folder. The @Resources folder is ignored by Rainmeter, except to load <a href="/tips/fonts-guide">custom fonts</a> and <a href="/manual/mouse-actions#MouseActionCursorName"> custom cursors</a>.</p>
 
 <h3 id="Suites">Suites</h3>
 
@@ -50,6 +52,19 @@ title: 'Skins'
 	<blockquote><p><code>Foo\Bar</code></p></blockquote>
 
 <p>Because skins may have any number of variants, many Rainmeter features&mdash;especially <a href="/manual/bangs">bangs</a>&mdash;refer to a specific skin by its config name, rather than the skin's filename.</p>
+
+<h3 id="RootConfig">Root config</h3>
+
+<p>When skins related skins are created under a common top level folder under the <a href="#FilesFolders">skins folder</a>, as when creating a <a href="#Suites">suite</a>,  the root config for the skins, used by functionality like <a href="#Resources">@Resources</a>, will be the based on the path from the main Skins folder to the top level folder. For example, if two skins are located at...</p>
+
+	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<strong>Foo\Clock</strong>\Clock.ini</code></p></blockquote>
+	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<strong>Foo\Weather</strong>\Weather.ini</code></p></blockquote>
+
+	<p>...then the root config name for both skins would be:</p>	
+	
+	<blockquote><p><code>Foo\</code></p></blockquote>
+
+<p>If a top level skin folder contains only one skin .ini file, then the config and root config are the same.</p>
 
 <h2 id="Format">Format</h2>
 
