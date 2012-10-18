@@ -4,7 +4,7 @@ title: 'ColorMatrix Guide'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p><i>Tip by kenz0</i></p>
+<p><em>Tip by kenz0</em></p>
 <p>The <a href="/manual/meters/general-options/image-options#ColorMatrix">ColorMatrix</a> option represents a 5x5 matrix used to manipulate the color values of an image in an <a href="/manual/meters/image">Image</a> meter. It is divided into five separate parameters, one for each row, each numbered. The default matrix is as follows:</p>
 <p><pre>ColorMatrix1=1; 0; 0; 0; 0
 ColorMatrix2=0; 1; 0; 0; 0
@@ -62,7 +62,7 @@ Brightness Matrix     Contrast Matrix          Saturation Matrix
                            Transformation Matrix
 </pre>
 
-<p><i>If you want to know more about it, you can check out the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms533809%28v=vs.85%29.aspx" target="_blank">MSDN Site</a> for an excellent explanation on this topic in relation to the usage of the ColorMatrix object. [Source from <a href="http://www.codeproject.com/KB/web-image/AsciiArt.aspx" target="_blank">Code Project</a>]</i></p>
+<p><em>If you want to know more about it, you can check out the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms533809%28v=vs.85%29.aspx" target="_blank">MSDN Site</a> for an excellent explanation on this topic in relation to the usage of the ColorMatrix object. [Source from <a href="http://www.codeproject.com/KB/web-image/AsciiArt.aspx" target="_blank">Code Project</a>]</em></p>
 
 <h3>Apply the above method to an actual Rainmeter config</h3>
 
@@ -132,12 +132,12 @@ DynamicVariables=1
 
 <h3>Some examples of matrix values as a color filter</h3>
 
-<p><b>[Original Image]</b></p>
+<p><strong>[Original Image]</strong></p>
 <div class="exampleprev">
 <img src="/tips/img/colormatrix-guide/ColorMatrixOriginal.jpg"/>
 </div>
 <br/><br/>
-<p><b>[Grayscale]</b></p>
+<p><strong>[Grayscale]</strong></p>
 <div class="exampleprev">
 <img src="/tips/img/colormatrix-guide/ColorMatrix02.jpg"/>
 </div>
@@ -147,7 +147,7 @@ ColorMatrix2=0.59;0.59;0.59;0;0
 ColorMatrix3=0.11;0.11;0.11;0;0
 </pre>
 <br/><br/>
-<p><b>[Invert]</b></p>
+<p><strong>[Invert]</strong></p>
 <div class="exampleprev">
 <img src="/tips/img/colormatrix-guide/ColorMatrix03.jpg"/>
 </div>
@@ -158,7 +158,7 @@ ColorMatrix3=0;0;-1;0;0
 ColorMatrix5=1;1;1;0;1
 </pre>
 <br/><br/>
-<p><b>[Swap RGB to BGR]</b></p>
+<p><strong>[Swap RGB to BGR]</strong></p>
 <div class="exampleprev">
 <img src="/tips/img/colormatrix-guide/ColorMatrix04.jpg"/>
 </div>
@@ -168,7 +168,7 @@ ColorMatrix2=0;1;0;0;0
 ColorMatrix3=1;0;0;0;0
 </pre>
 <br/><br/>
-<p><b>[Sepia Color]</b></p>
+<p><strong>[Sepia Color]</strong></p>
 <div class="exampleprev">
 <img src="/tips/img/colormatrix-guide/ColorMatrix05.jpg"/>
 </div>
@@ -178,7 +178,7 @@ ColorMatrix2=0.769;0.686;0.534;0;0
 ColorMatrix3=0.189;0.168;0.131;0;0
 </pre>
 <br/><br/>
-<p><b>[Black & White]</b></p>
+<p><strong>[Black & White]</strong></p>
 <div class="exampleprev">
 <img src="/tips/img/colormatrix-guide/ColorMatrix06.jpg"/>
 </div>
@@ -189,7 +189,7 @@ ColorMatrix3=1.5;1.5;1.5;0;0
 ColorMatrix5=-1;-1;-1;0;1
 </pre>
 <br/><br/>
-<p><b>[Polaroid Color]</b></p>
+<p><strong>[Polaroid Color]</strong></p>
 <div class="exampleprev">
 <img src="/tips/img/colormatrix-guide/ColorMatrix07.jpg"/>
 </div>
@@ -200,7 +200,7 @@ ColorMatrix3=-0.016;-0.016;1.483;0;0
 ColorMatrix5=-0.03;0.05;-0.02;0;1
 </pre>
 <br/><br/>
-<p><b>[White to Alpha]</b></p>
+<p><strong>[White to Alpha]</strong></p>
 <div class="exampleprev">
 <img src="/tips/img/colormatrix-guide/ColorMatrix08.jpg"/>
 </div>
@@ -211,7 +211,7 @@ ColorMatrix3=0;0;1;-1;0
 </pre>
 <br/><br/>
 <h3>Additional Tips</h3>
-<p><b>Create a realistic old photo using ColorMatrix.</b></p>
+<p><strong>Create a realistic old photo using ColorMatrix.</strong></p>
 <p>First, adjust each RGB matrix values and increase contrast slightly like this.</p>
 <div class="exampleprev">
 <img src="/tips/img/colormatrix-guide/ColorMatrix09.jpg"/>

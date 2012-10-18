@@ -33,7 +33,7 @@ StringIndex=2
 {% endhighlight %}
 <p>The values of the two <a href="#ParentChild">child</a> measures are now the information parsed into StringIndexes 1 and 2 by the <a href="#ParentChild">parent</a> measure.  These can then be used with <a href="/manual/meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="/manual/meters">meters</a>.
 
-<p><b>Note:</b> More information and examples for WebParser can be found at <a href="/tips/webparser-tutorial">WebParser Tutorial</a> and <a href="http://rainmeter.net/cms/Rainmeter101-Tutorial4">RSS Skin Tutorial</a>.</p>
+<p><strong>Note:</strong> More information and examples for WebParser can be found at <a href="/tips/webparser-tutorial">WebParser Tutorial</a> and <a href="http://rainmeter.net/cms/Rainmeter101-Tutorial4">RSS Skin Tutorial</a>.</p>
 
 <h2>Options</h2>
 <dl>
@@ -46,7 +46,7 @@ StringIndex=2
 	<dd>
 		<p><a href="http://en.wikipedia.org/wiki/Uniform_resource_locator">URL</a> to the site or file to be downloaded and parsed. If the name of another WebParser measure is used, e.g. <code>URL=[SomeMeasure]</code>, then the value of the <a href="#ParentChild">parent</a> measure is used, generally by referring to a specific <a href="#StringIndex">StringIndex</a> number.</p>
 
-		<p id="Authentication">WebParser <b>cannot</b> use cookies or other session-based authentication, so it <b>cannot</b> be used to retrieve information from web sites requiring a login. However, Webparser <b>can</b> be used on sites which support <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP authentication</a>. E.g. <code>http://myname:mypassword@somesite.com</code>.</p>
+		<p id="Authentication">WebParser <strong>cannot</strong> use cookies or other session-based authentication, so it <strong>cannot</strong> be used to retrieve information from web sites requiring a login. However, Webparser <strong>can</strong> be used on sites which support <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP authentication</a>. E.g. <code>http://myname:mypassword@somesite.com</code>.</p>
 
 		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="http://en.wikipedia.org/wiki/File_URI_scheme">URI scheme</a>. E.g. <code>URL=file://<a href="/manual/variables/built-in-variables#CURRENTPATH">#CURRENTPATH#</a>SomeFile.txt</code>.</p>
 	</dd>
@@ -70,14 +70,14 @@ StringIndex=2
 	<dd>
 		<p>The second string index is used when using a <code>RegExp</code> in a measure that uses data from another WebParser measure (i.e. the <code>URL</code> points to a <a href="#ParentChild">parent</a> measure. In this case the <code>StringIndex</code> defines the index of the result of the parent measure's <code>RegExp</code> and the <code>StringIndex2</code> defines the index of this measure's <code>RegExp</code> (i.e. it defines the string that the measure returns).</p>
 
-		<p><b>Note:</b> If the <code>RegExp</code> is not defined in this measure, the <code>StringIndex2</code> has no effect.</p>
+		<p><strong>Note:</strong> If the <code>RegExp</code> is not defined in this measure, the <code>StringIndex2</code> has no effect.</p>
 	</dd>
 	
 	<dt id="UpdateRate"><code>UpdateRate</code> <span>Default: <code>600</code></span></dt>
 	<dd>
-		<p>The rate in milliseconds determining how often the webpage is downloaded. This is relative to the config's main <a href="/manual/skins#Update">Update</a> rate <b>and</b> any <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> on the measure. So the formula would be <code>Update</code> X <code>UpdateDivider</code> X <code>UpdateRate</code> = "how often the measure connects to the site".</p>
+		<p>The rate in milliseconds determining how often the webpage is downloaded. This is relative to the config's main <a href="/manual/skins#Update">Update</a> rate <strong>and</strong> any <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> on the measure. So the formula would be <code>Update</code> X <code>UpdateDivider</code> X <code>UpdateRate</code> = "how often the measure connects to the site".</p>
 
-		<p><b>Note:</b> Some caution should be used in determining how often to connect to a site with WebParser.  Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
+		<p><strong>Note:</strong> Some caution should be used in determining how often to connect to a site with WebParser.  Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
 	</dd>
 	
 	<dt id="DecodeCharacterReference"><code>DecodeCharacterReference</code> <span>Default: <code>0</code></span></dt>
@@ -99,14 +99,14 @@ StringIndex=2
 			<li><code>1</code>: Logs DEBUG message to the log. Rainmeter must also be in <a href="/manual/settings/rainmeter-section#Debug">Debug</a> mode.</li>
 			<li><code>2</code>: Saves the downloaded webpage to <code>C:\WebParserDump.txt</code>. This can be useful since some web servers send different information depending which client requests it. Remember to remove this from your config once you have it working correctly.</li>
 		</ul>
-		 <p><b>Hint:</b> Determining <a href="#StringIndex">StringIndex</a> values to use in a <a id="#ParentChild">child</a> measure can be done by setting <code>Debug=1</code> on a measure having the <code>RegExp</code> option, which will display matched strings and StringIndex numbers in the Rainmeter <a href="/manual/user-interface/about#LogPanel">log</a></p>
+		 <p><strong>Hint:</strong> Determining <a href="#StringIndex">StringIndex</a> values to use in a <a id="#ParentChild">child</a> measure can be done by setting <code>Debug=1</code> on a measure having the <code>RegExp</code> option, which will display matched strings and StringIndex numbers in the Rainmeter <a href="/manual/user-interface/about#LogPanel">log</a></p>
 	</dd>
 	
 	<dt id="Debug2File"><code>Debug2File</code></dt>
 	<dd>
 		<p>If the <code>Debug</code> option is set to <code>2</code>, this option can be set to the path and name of the file to use for the downloaded webpage instead of <code>C:\WebParserDump.txt</code>.</p>
 		
-		<p><b>Note:</b> The folder for the file must already exist.</p>
+		<p><strong>Note:</strong> The folder for the file must already exist.</p>
 	</dd>
 	
 	<dt id="Download"><code>Download</code> <span>Default: <code>0</code></span></dt>
@@ -120,7 +120,7 @@ StringIndex=2
 		
 		<p>A folder <code>DownloadFile</code> will be created in the <a href="/manual/variables/built-in-variables#CURRENTPATH">current folder</a>, and the defined relative path and file name will be created under that.  It is not possible to specify an absolute path.</p>
 
-		<p><b>Note:</b> This file is <b>not</b> a temporary file so it is <b>not</b> deleted after unloading a skin or exiting Rainmeter.</p>
+		<p><strong>Note:</strong> This file is <strong>not</strong> a temporary file so it is <strong>not</strong> deleted after unloading a skin or exiting Rainmeter.</p>
 
 	</dd>
 	
@@ -136,9 +136,9 @@ StringIndex=2
 	
 	<dt id="ProxyServer"><code>ProxyServer</code></dt>
 	<dd>
-		<p>Name of the proxy server used by Windows Internet Explorer on the system. The plugin doesn't support any authentication, so <b>only</b> use proxy settings that do not require it.</p>
+		<p>Name of the proxy server used by Windows Internet Explorer on the system. The plugin doesn't support any authentication, so <strong>only</strong> use proxy settings that do not require it.</p>
 
-		<p><b>Examples:</b> <code>ProxyServer=ServerIP:Port</code>, <code>ProxyServer=ServerName:Port</code></p>
+		<p><strong>Examples:</strong> <code>ProxyServer=ServerIP:Port</code>, <code>ProxyServer=ServerName:Port</code></p>
 	</dd>
 	
 	<dt id="CodePage"><code>CodePage</code> <span>Default: <code>0</code></span></dt>

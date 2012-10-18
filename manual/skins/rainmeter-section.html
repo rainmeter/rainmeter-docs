@@ -49,7 +49,7 @@ title: '[Rainmeter] section'
 <dl>
 	<dt>General image options</dt>
 	<dd>
-		All <a href="/manual/meters/general-options/image-options">general image options</a> are valid for <code>Background</code> <b>except</b> <code>Tile</code>, which is handled with <code>BackgroundMode</code>.
+		All <a href="/manual/meters/general-options/image-options">general image options</a> are valid for <code>Background</code> <strong>except</strong> <code>Tile</code>, which is handled with <code>BackgroundMode</code>.
 	</dd>
 
 	<dt id="Background"><code>Background</code></dt>
@@ -73,7 +73,7 @@ title: '[Rainmeter] section'
 	<dt id="BackgroundMargins"><code>BackgroundMargins</code> <span>Default: <code>0,0,0,0</code></span></dt>
 	<dd>
 		If <code>BackgroundMode=3</code>, defines margins of the <code>Background</code> image that are not scaled. The parameters are <code>left,top,right,bottom</code>. 
-		<br><br><b>Example:</b> <code>BackgroundMargins=0,10,0,20</code>.
+		<br><br><strong>Example:</strong> <code>BackgroundMargins=0,10,0,20</code>.
 		<br>10 pixels from the top and 20 pixels from the bottom of the image are not scaled.
 	</dd>
 </dl>	
@@ -104,9 +104,9 @@ title: '[Rainmeter] section'
 		Set to 1 to enable Aero Blur on Windows Vista or later operating systems. If no BlurRegions are specified, the entire skin background is blurred.
 	</dd>
 
-	<dt id="BlurRegion"><code>BlurRegion, BlurRegion2, ..., BlurRegion<i>N</i></code></dt>	
+	<dt id="BlurRegion"><code>BlurRegion, BlurRegion2, ..., BlurRegion<em>N</em></code></dt>	
 	<dd>
-		Defines areas and shapes of the one or more regions of the skin to be blurred. The format of the option is: <code>BlurRegion=Type, TopX, TopY, BottomX, BottomY <i>,Radius</i></code>.
+		Defines areas and shapes of the one or more regions of the skin to be blurred. The format of the option is: <code>BlurRegion=Type, TopX, TopY, BottomX, BottomY <em>,Radius</em></code>.
 		<br><br>Valid values for <code>Type</code> are:
 		<ul>
 		<li><code>0</code> : Region is disabled</li>
@@ -123,7 +123,7 @@ title: '[Rainmeter] section'
 		<li><code>Radius</code> : Radius of the corners of rounded rectangles (required for <code>Type=2</code>)</li>
 		</ul>
 	</dd>
-	<br><b>Note:</b> Aero Blur options can be dynamically controlled with several <a href="/manual/bangs#ShowHideToggleBlur">bangs</a>.
+	<br><strong>Note:</strong> Aero Blur options can be dynamically controlled with several <a href="/manual/bangs#ShowHideToggleBlur">bangs</a>.
 	<h3>Example</h3>
 {% highlight ini %}
 [Rainmeter]
@@ -149,12 +149,12 @@ LeftMouseUpAction=[!AddBlur "1,0,0,200,80"]
 	<dt id="AppVersion"><code>AppVersion</code></dt>
 	<dd>
 		Defines the minimum version of Rainmeter required to use the skin. The formula to calculate the value is: <code>major * 1000000 + minor1 * 1000 + minor2</code>.
-		<br><br><b>Note:</b> This option is deprecated. Use the version capabilities in <a href="/manual/publishing-skins">Skin Packager</a>.
+		<br><br><strong>Note:</strong> This option is deprecated. Use the version capabilities in <a href="/manual/publishing-skins">Skin Packager</a>.
 	</dd>
 
 	<dt id="LocalFont"><code>LocalFont</code>, <code>LocalFont2</code>, ...</dt>
 	<dd>
 		Loads the specified TTF font files for use with <a href="/manual/meters/string#FontFace">FontFace</a> in String meters.
-		<br><br><b>Note:</b> This option is deprecated. Use the <a href="/manual/skins/resources-folder#Fonts">@Resources\Fonts</a> folder instead.
+		<br><br><strong>Note:</strong> This option is deprecated. Use the <a href="/manual/skins/resources-folder#Fonts">@Resources\Fonts</a> folder instead.
 	</dd>
 </dl>	

@@ -18,14 +18,14 @@ title: 'Image Meter'
 		All <a href="/manual/meters/general-options/image-options">general image options</a> are valid for <code>ImageName</code>.
 	</dd>
 
-	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<i>N</i></code></dt>
+	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<em>N</em></code></dt>
 	<dd>
-		Name(s) of the measure(s) to use in <code>ImageName</code> with the <code>%<i>N</i></code> syntax. This option does not need to be specified if not needed.
+		Name(s) of the measure(s) to use in <code>ImageName</code> with the <code>%<em>N</em></code> syntax. This option does not need to be specified if not needed.
 	</dd>
 
 	<dt id="ImageName"><code>ImageName</code> <span>Default: <code>%1.png</code></span></dt>
 	<dd>
-		<a href="/manual/options#Path">Path</a> of the image file. The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<i>N</i></code> syntax as follows:
+		<a href="/manual/options#Path">Path</a> of the image file. The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:
 		{% highlight ini %}
 MeasureName=SomeMeasure
 MeasureName2=SomeMeasure2
@@ -33,7 +33,7 @@ ImageName=%1-%2.png
 ; %1 and %2 will be replaced by the string values of SomeMeasure and
 ; SomeMeasure2, respectively.
 {% endhighlight %}
-		<b>Note:</b> If an extension is not provided for the image file, .png is assumed.
+		<strong>Note:</strong> If an extension is not provided for the image file, .png is assumed.
 	</dd>
 
 	<dt id="Path"><code>Path</code></dt>
@@ -59,7 +59,7 @@ ImageName=%1-%2.png
 	<dt id="ScaleMargins"><code>ScaleMargins</code> <span>Format: <code>Left, Top, Right, Bottom</code></span></dt>
 	<dd>
 		<p>Margins of the image to exclude from scaling when <code>Tile=0</code> and <code>PreserveAspectRatio=0</code>.</p>
-		<p><b>Example:</b> <code>ScaleMargins=10, 50, 10, 50</code></p>
+		<p><strong>Example:</strong> <code>ScaleMargins=10, 50, 10, 50</code></p>
 	</dd>
 </dl>
 

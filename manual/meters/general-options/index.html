@@ -42,14 +42,14 @@ title: 'General Meter Options'
 	<dd>
 		<p>Sets the update frequency of the meter.</p>
 
-		<p><b>Example:</b> If set to <code>1</code>, the meter is updated on every <a href="/manual/skins/rainmeter-section#Update">update</a> cycle. If set to <code>5</code>, the meter is updated on every fifth update cycle and so forth.</p>
+		<p><strong>Example:</strong> If set to <code>1</code>, the meter is updated on every <a href="/manual/skins/rainmeter-section#Update">update</a> cycle. If set to <code>5</code>, the meter is updated on every fifth update cycle and so forth.</p>
 	</dd>
 
 	<dt id="SolidColor"><code>SolidColor</code> (and <code>SolidColor2</code>) <span>Default: <code>0,0,0,0</code></span></dt>
 	<dd>
 		<p><a href="/manual/options#Color">Color</a> of the meter background. If <code>SolidColor2</code> is also specified, the background is a gradient composed of <code>SolidColor</code> and <code>SolidColor2</code>.</p>
 
-		<p><b>Hint:</b> <code>0,0,0,1</code> can be used to make transparent areas of the meter clickable.</p>
+		<p><strong>Hint:</strong> <code>0,0,0,1</code> can be used to make transparent areas of the meter clickable.</p>
 	</dd>
 
 	<dt id="GradientAngle"><code>GradientAngle</code></dt>
@@ -76,23 +76,23 @@ title: 'General Meter Options'
 	<dd>
 		<p>If set to <code>1</code>, the meter is dynamic.</p>
 
-		<p><b>See also:</b> <a href="/manual/variables#DynamicVariables">Dynamic Variables</a></p>
+		<p><strong>See also:</strong> <a href="/manual/variables#DynamicVariables">Dynamic Variables</a></p>
 	</dd>
 	
 	<dt id="TransformationMatrix"><code>TransformationMatrix</code> <span>Default: <code>1;0;0;1;0;0</code></span></dt>
 	<dd>
-		<p>Defines a 3x2 matrix which can be used to transform the meter. Transformations include: scaling, skewing, and translating (ie. moving). There must be <b>exactly</b> 6 values separated by semicolons <code>;</code>. Combining these can have drastic effects on the meter it is applied to.</p>
+		<p>Defines a 3x2 matrix which can be used to transform the meter. Transformations include: scaling, skewing, and translating (ie. moving). There must be <strong>exactly</strong> 6 values separated by semicolons <code>;</code>. Combining these can have drastic effects on the meter it is applied to.</p>
 		
-		<p><b>See also:</b> <a href="/tips/transformation-matrix-guide">Transformation Matrix</a></p>
+		<p><strong>See also:</strong> <a href="/tips/transformation-matrix-guide">Transformation Matrix</a></p>
 		
-		<p><b>Examples:</b>
+		<p><strong>Examples:</strong>
 		<ul>
 			<li><code>TransformationMatrix=-1; 0; 0; 1; 40; 0</code>: This will flip <code>X</code> along the line <code>X=20</code>.</li>
 			<li><code>TransformationMatrix=1; 0; 0; -1; 0; 100</code>: This will flip <code>Y</code> along the line <code>Y=50</code>.</li>
 			<li><code>TransformationMatrix=0.5; 0; 0; 1; 25; 0</code>: This will scale <code>X</code> by <code>0.5</code> at <code>X=50</code>.</li>
 		</ul></p>
 		
-		<p><b>Note:</b> All transformations are relative to the top left corner of the window and not to the meter itself. So if you want to rotate the meter by its center the translation component in the matrix must be relative to the top left corner of the window.</p>
+		<p><strong>Note:</strong> All transformations are relative to the top left corner of the window and not to the meter itself. So if you want to rotate the meter by its center the translation component in the matrix must be relative to the top left corner of the window.</p>
 		
 		<p>Also note that the even if the meter's visual location and orientation is changed by the transformation the place where it would be located without the transformation will still be used to define the window size and register the mouse clicks. This might change in the future though.</p>
 	</dd>

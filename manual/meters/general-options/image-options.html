@@ -10,7 +10,7 @@ title: 'General Image Options'
 <dl>
 	<dt id="ImageCrop"><code>ImageCrop</code></dt>
 	<dd>
-		Crops the image. The value should be in the form: <code>X, Y, W, H<i>, Origin</i></code>. Origin is optional and can be set to one of the following:
+		Crops the image. The value should be in the form: <code>X, Y, W, H<em>, Origin</em></code>. Origin is optional and can be set to one of the following:
 		<ul>
 		<li><code>1</code>: Top left.</li>
 		<li><code>2</code>: Top right.</li>
@@ -29,7 +29,7 @@ title: 'General Image Options'
 	<dd>
 		<a href="/manual/options#Color">Color</a> to tint the image with. If the alpha value is specified, the image can be made semi-transparent (0 means invisible, 255 mean fully opaque). The default value (<code>255,255,255,255</code> for opaque white) and leaves the image unaltered.
 
-		<br><br><b>Note:</b> Combining <code>Greyscale</code> and <code>ImageTint</code> recolors the image to the specified color. Without <code>Greyscale</code>, the specified color is added to the image (i.e. the image is tinted).
+		<br><br><strong>Note:</strong> Combining <code>Greyscale</code> and <code>ImageTint</code> recolors the image to the specified color. Without <code>Greyscale</code>, the specified color is added to the image (i.e. the image is tinted).
 	</dd>
 
 	<dt id="ImageAlpha"><code>ImageAlpha</code> <span>Default: <code>255</code></span></dt>
@@ -52,7 +52,7 @@ title: 'General Image Options'
 		If set to <code>1</code>, the image is tiled (repeated) within the bounds defined by <code>W</code> and <code>H</code>.
 	</dd>
 
-	<dt id="ColorMatrix"><code>ColorMatrix<i>N</i></code></dt>
+	<dt id="ColorMatrix"><code>ColorMatrix<em>N</em></code></dt>
 	<dd>
 		Defines a 5x5 matrix used to manipulate the color values of the image. It is divided into five separate options, one for each row, each numbered. The default matrix is as follows:
 {% highlight ini %}
@@ -64,6 +64,6 @@ ColorMatrix5=0; 0; 0; 0; 1
 {% endhighlight %}
 		The values on the main diagonal are, from top-left to bottom-right: Red, Green, Blue, Alpha and a placeholder. The values represent the percentage of the particular value present in the image, where 0.0 is none and 1.0 is normal. The remaining entries in the matrix allow a color to have its value modified in terms of another color (e.g. the value of Red might have half of the Blue value added), with the entries in the final row (ColorMatrix5) determining offset values that are added directly to the color (e.g. <code>ColorMatrix5=0.5; 0; 0; 0; 1</code> adds 50% to the red value).
 
-		<br><br><b>See also:</b> <a href="/tips/colormatrix-guide">ColorMatrix Guide</a>.
+		<br><br><strong>See also:</strong> <a href="/tips/colormatrix-guide">ColorMatrix Guide</a>.
 	</dd>
 </dl>

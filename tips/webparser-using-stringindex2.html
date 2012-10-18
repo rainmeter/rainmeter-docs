@@ -8,7 +8,7 @@ title: 'WebParser: Using StringIndex2'
 
 <p>From the <a href="/manual/plugins/webparser#StringIndex2">Manual</a>:</p>
 
-<p><b>StringIndex2</b><br/>
+<p><strong>StringIndex2</strong><br/>
 The second string index is used when using a <code>RegExp</code> in a measure that uses data from another WebParser measure (i.e. the <code>URL</code> points to a parent measure. In this case the <code>StringIndex</code> defines the index of the result of the parent measure's <code>RegExp</code> and the <code>StringIndex2</code> defines the index of this measure's <code>RegExp</code> (i.e. it defines the string that the measure returns).</p>
 
 <p>First, here is the entire code of a little skin to demonstrate how to use this feature. Go ahead and create this and run it to see it in action:</p>
@@ -166,7 +166,7 @@ Plugin=WebParser
 Url=http://feeds.gawker.com/lifehacker/full
 RegExp="(?siU)&lt;channel&gt;.*&lt;image&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;#Item##Item##Item#"
 {% endhighlight %}</p>
-<p>Notice we are doing something a bit different here.  Instead of fully parsing the site into many, many StringIndexes on the main measure, we are just getting the main title and link for the site into StringIndexes 1 and 2, then getting the <i>entire</i> contents of each &lt;item&gt; into StringIndexes 3, 4 and 5.</p>
+<p>Notice we are doing something a bit different here.  Instead of fully parsing the site into many, many StringIndexes on the main measure, we are just getting the main title and link for the site into StringIndexes 1 and 2, then getting the <em>entire</em> contents of each &lt;item&gt; into StringIndexes 3, 4 and 5.</p>
 
 <p>Now let's skip the measures for the main title and link, they are done the normal way.  Let's move down to this measure:<br/>
 {% highlight ini %}
@@ -183,7 +183,7 @@ Substitute=#Sub#
 
 <p>Remember, the way StringIndex2 works is that IF a WebParser measure is using an earlier WebParser measure as the Url= AND the measure has a RegExp= on it, then the RegExp= is applied to the data in StringIndex, and the result is returned in StringIndex2.</p>
 
-<p><i>The "value" of the measure, when used for instance in a MeasureName= option in a meter, is what is returned in StringIndex2.</i></p>
+<p><em>The "value" of the measure, when used for instance in a MeasureName= option in a meter, is what is returned in StringIndex2.</em></p>
 
 <p>We can repeat this process to get the link of the first item:<br/>
 {% highlight ini %}
@@ -213,4 +213,4 @@ Substitute=#Sub#
 
 <p>Play with this a bit, and you might find that it can save a lot of extra parsing and creating huge RegExp= options to parse absolutely everything out of a site all at once up front.  Get the main site in big chunks, then deal with the chunks as if they were sites in and of themselves.</p>
 
-<p><i>Hint:  This can be a nice way to get around the limit of 99 StringIndex numbers on any single WebParser measure...</i></p>
+<p><em>Hint:  This can be a nice way to get around the limit of 99 StringIndex numbers on any single WebParser measure...</em></p>

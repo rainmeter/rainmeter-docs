@@ -15,7 +15,7 @@ Measure=Calc
 Formula=MeasureA+3
 {% endhighlight %}
 
-<p>Sometimes, however, you may still want to use DVs to get a measure value into a Calc formula. Why? Because in fact, every measure has two values: a <b>number value</b> and a <b>string value</b>. Normally, Calc formulas use the number value. But using DVs (with brackets around the measure name) forces Rainmeter to use the string value. Which means that this...</p>
+<p>Sometimes, however, you may still want to use DVs to get a measure value into a Calc formula. Why? Because in fact, every measure has two values: a <strong>number value</strong> and a <strong>string value</strong>. Normally, Calc formulas use the number value. But using DVs (with brackets around the measure name) forces Rainmeter to use the string value. Which means that this...</p>
 
 {% highlight ini %}
 [MeasureB]
@@ -34,7 +34,7 @@ DynamicVariables=1
 
 <h3>When should I use brackets?</h3>
 
-<p><b>In general, you should use measures in Calc formulas as numbers (without brackets).</b> This is the "safe" approach, because:</p>
+<p><strong>In general, you should use measures in Calc formulas as numbers (without brackets).</strong> This is the "safe" approach, because:</p>
 
 <ul>
 
@@ -44,30 +44,30 @@ DynamicVariables=1
 	
 </ul>
 
-<p>The common exception to this rule is when a <b>substitute</b> has been applied. (See below.)</p>
+<p>The common exception to this rule is when a <strong>substitute</strong> has been applied. (See below.)</p>
 
 <h3>When are the string and number values different?</h3>
 
 <ol>
 
 	<li>
-	<p><b>No math.</b> If the original measure value contains any non-numeric characters, aside from valid <a href="/manual/measures/calc#Formulas">operators</a>, the number value is zero. This includes letters, punctuation and special characters.</p>
+	<p><strong>No math.</strong> If the original measure value contains any non-numeric characters, aside from valid <a href="/manual/measures/calc#Formulas">operators</a>, the number value is zero. This includes letters, punctuation and special characters.</p>
 	<p>You'll probably never use a measure like this in a Calc formula to begin with.</p>
 	</li>
 	
 	<li>
-	<p><b>Rounding.</b> Even when a measure gives you an actual number, Rainmeter may round the string value to a certain decimal place. The number value preserves the "true" value, which is always better for calculation.</p>
+	<p><strong>Rounding.</strong> Even when a measure gives you an actual number, Rainmeter may round the string value to a certain decimal place. The number value preserves the "true" value, which is always better for calculation.</p>
 	<p>Even if you want a rounded number, the <a href="/manual/measures/calc#Functions">ROUND(x[,precision])</a> calculator function will give you much finer control over the result.</p>
 	</li>
 
 	<li>
-	<p><b>Formatting.</b> Some measures return a formatted string value that is meant for display, but not for calculations. For example, the <a href="/manual/measures/time">Time</a> measure gives a string value with hours, minutes and seconds ("HH:MM:SS"), which is how a real person would want to see the time, but which makes no sense in a math equation. The number value gives the raw <a href="http://en.wikipedia.org/wiki/Unix_time">Unix time</a>, which <em>can</em> be used by a Calc measure, e.g. to calculate the difference between two dates.</p>
+	<p><strong>Formatting.</strong> Some measures return a formatted string value that is meant for display, but not for calculations. For example, the <a href="/manual/measures/time">Time</a> measure gives a string value with hours, minutes and seconds ("HH:MM:SS"), which is how a real person would want to see the time, but which makes no sense in a math equation. The number value gives the raw <a href="http://en.wikipedia.org/wiki/Unix_time">Unix time</a>, which <em>can</em> be used by a Calc measure, e.g. to calculate the difference between two dates.</p>
 	
 	<p>There may be cases in which you would want to use a formatted string value in a Calc formula, but these would likely be rare and unorthodox.</p>
 	</li>
 
 	<li>
-	<p><b>Substitution.</b> Measure <a href="/manual/measures/general-options/substitute">substitution</a> is applied only to the string value, not the number value. For example:</p>
+	<p><strong>Substitution.</strong> Measure <a href="/manual/measures/general-options/substitute">substitution</a> is applied only to the string value, not the number value. For example:</p>
 
 {% highlight ini %}
 [MeasureA]

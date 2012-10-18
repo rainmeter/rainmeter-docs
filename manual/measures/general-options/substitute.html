@@ -10,13 +10,13 @@ title: 'Substitute'
 <dl>
 	<dt id="Subsitute"><code>Substitute</code></dt>
 	<dd>
-		A list of comma delimited <code>"pattern":"replacement"</code> pairs. All occurences of <code>pattern</code> in the <a href="/manual/measures/#Values">measure string value</a> are replaced with <code>replacement</code> (e.g. <code>"This":"That"</code> substitutes all occurences of <i>This</i> with <i>That</i>).
+		A list of comma delimited <code>"pattern":"replacement"</code> pairs. All occurences of <code>pattern</code> in the <a href="/manual/measures/#Values">measure string value</a> are replaced with <code>replacement</code> (e.g. <code>"This":"That"</code> substitutes all occurences of <em>This</em> with <em>That</em>).
 
-		<br><br>If multiple <code>"pattern":"replacement"</code> pairs are specified, each substitution is attempted in the specified order (e.g. <code>"This":"That","Here":"There"</code> first replaces all occurences of <i>This</i> with <i>That</i> and then replaces all occurences of <i>Here</i> with <i>There</i>.
+		<br><br>If multiple <code>"pattern":"replacement"</code> pairs are specified, each substitution is attempted in the specified order (e.g. <code>"This":"That","Here":"There"</code> first replaces all occurences of <em>This</em> with <em>That</em> and then replaces all occurences of <em>Here</em> with <em>There</em>.
 
-		<br><br>Note that the order in which the pairs are specified can be important. For example, with <code>"1":"One","10":"Ten"</code>, all occurences of <i>1</i> are replaced with <i>One</i>, but occurences of <i>10</i> will not be replaced with <i>Ten</i> (because the first pair already changed all <i>1</i> characters). For correct behaviour, the order should be reversed (i.e. <code>"10":"Ten","1":"One"</code>).
+		<br><br>Note that the order in which the pairs are specified can be important. For example, with <code>"1":"One","10":"Ten"</code>, all occurences of <em>1</em> are replaced with <em>One</em>, but occurences of <em>10</em> will not be replaced with <em>Ten</em> (because the first pair already changed all <em>1</em> characters). For correct behaviour, the order should be reversed (i.e. <code>"10":"Ten","1":"One"</code>).
 
-		<br><br>Instead of <code>"pattern":"replacement"</code>, single quotes can be used either around the pattern or the replacement (i.e. <code>'pattern':"replacement"</code> or <code>"pattern":'replacement'</code>, but not <code>'pattern':'replacement'</code>). This can be useful when either the pattern or the replacement contains double quotes (e.g. <code>'"':"double quote"</code> replaces all occurences of <i>"</i> with <i>double quote</i>).
+		<br><br>Instead of <code>"pattern":"replacement"</code>, single quotes can be used either around the pattern or the replacement (i.e. <code>'pattern':"replacement"</code> or <code>"pattern":'replacement'</code>, but not <code>'pattern':'replacement'</code>). This can be useful when either the pattern or the replacement contains double quotes (e.g. <code>'"':"double quote"</code> replaces all occurences of <em>"</em> with <em>double quote</em>).
 	</dd>
 
 	<dt id="RegExpSubsitute"><code>RegExpSubsitute</code> <span>Default: <code>0</code></span></dt>

@@ -13,16 +13,16 @@ title: 'String meter'
 		All <a href="/manual/meters/general-options">general meter options</a> are valid.
 	</dd>
 
-	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<i>N</i></code></dt>
+	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<em>N</em></code></dt>
 	<dd>
-		Name(s) of the measure(s) to use in <code>Text</code> with the <code>%<i>N</i></code> syntax. This option does not need to be specified if not needed.
+		Name(s) of the measure(s) to use in <code>Text</code> with the <code>%<em>N</em></code> syntax. This option does not need to be specified if not needed.
 	</dd>
 
 	<dt id="Text"><code>Text</code> <span>Default: <code>%1</code></span></dt>
 	<dd>
 		Text to display. If <code>MeasureName</code> is specified, <code>Text</code> will default to the measure value. Otherwise no text will be displayed by default.
 
-		<br><br>The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<i>N</i></code> syntax as follows:
+		<br><br>The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:
 {% highlight ini %}
 MeasureName=SomeMeasure
 MeasureName2=SomeMeasure2
@@ -36,21 +36,21 @@ Text=This is text containing %1 and %2.
 	<dd>
 		Text displayed before <code>Text</code>.
 
-		<br><br><b>Note:</b> It is preferable to put the entire string in <code>Text</code> instead of using this option.
+		<br><br><strong>Note:</strong> It is preferable to put the entire string in <code>Text</code> instead of using this option.
 	</dd>
 
 	<dt id="Postfix"><code>Postfix</code></dt>
 	<dd>
 		Text displayed after <code>Text</code>.
 
-		<br><br><b>Note:</b> It is preferable to put the entire string in <code>Text</code> instead of using this option.
+		<br><br><strong>Note:</strong> It is preferable to put the entire string in <code>Text</code> instead of using this option.
 	</dd>
 
 	<dt id="FontFace"><code>FontFace</code> <span>Default: <code>Arial</code></span></dt>
 	<dd>
 		Family name of the font to use for the text. The font must either be installed in Windows directly or must be <a href="/manual/skins/resources-folder#Fonts">loaded at runtime</a>.
 
-		<br><br><b>See also:</b> <a href="/tips/fonts-guide">Fonts Guide</a>.
+		<br><br><strong>See also:</strong> <a href="/tips/fonts-guide">Fonts Guide</a>.
 	</dd>
 
 	<dt id="FontSize"><code>FontSize</code> <span>Default: <code>10</code></span></dt>
@@ -102,28 +102,28 @@ Text=This is text containing %1 and %2.
 	<dt id="Angle"><code>Angle</code> <span>Default: <code>0.0</code></span></dt>
 	<dd>
 		Defines the angle of the text in radians.
-		<br><br><b>Note:</b> The size and position of the text are always calculated as if the text is horizontal.
+		<br><br><strong>Note:</strong> The size and position of the text are always calculated as if the text is horizontal.
 	</dd>
 
 	<dt id="Percentual"><code>Percentual</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		If set to <code>1</code>, percentual measure values are used for the <code>%<i>N</i></code> syntax. The measure(s) must be able to return <a href="/manual/measures#Percentage">percentual values</a>.
+		If set to <code>1</code>, percentual measure values are used for the <code>%<em>N</em></code> syntax. The measure(s) must be able to return <a href="/manual/measures#Percentage">percentual values</a>.
 	</dd>
 
 	<dt id="NumOfDecimals"><code>NumOfDecimals</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		Number of decimals to display with numerical measure values for the <code>%<i>N</i></code> syntax.
+		Number of decimals to display with numerical measure values for the <code>%<em>N</em></code> syntax.
 	</dd>	
 	
 	<dt id="Scale"><code>Scale</code> <span>Default: <code>1</code></span></dt>
 	<dd>
-		Scaling factor used for the measure value(s) for the <code>%<i>N</i></code> syntax in <code>Text</code>. The measure value is divided by the specified value. If the specified value has a decimal point (e.g. <code>1000.0</code>), the result will also display decimals.
-		<br><br><b>Note:</b> If <code>AutoScale</code> is enabled, this option is ignored.
+		Scaling factor used for the measure value(s) for the <code>%<em>N</em></code> syntax in <code>Text</code>. The measure value is divided by the specified value. If the specified value has a decimal point (e.g. <code>1000.0</code>), the result will also display decimals.
+		<br><br><strong>Note:</strong> If <code>AutoScale</code> is enabled, this option is ignored.
 	</dd>
 
 	<dt id="AutoScale"><code>AutoScale</code> <span>Default: <code>0</code></span></dt>
 	<dd>
-		Automatically scales the measure value(s) for the <code>%<i>N</i></code> syntax in <code>Text</code>. The scaled result is appended with k, M, G, etc. as appropriate. Valid values are:
+		Automatically scales the measure value(s) for the <code>%<em>N</em></code> syntax in <code>Text</code>. The scaled result is appended with k, M, G, etc. as appropriate. Valid values are:
 		<ul>
 		<li><code>0</code>: Disabled.</li>
 		<li><code>1</code>: Scales by 1024.</li>

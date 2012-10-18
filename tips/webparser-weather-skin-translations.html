@@ -14,7 +14,7 @@ Url=[MeasureYahooWeather]
 StringIndex=34
 {% endhighlight %}
 
-<p><i>Note that a weather skin normally works by having a first, primary measure that retrieves all the information from the weather RSS feed in one shot.  Then there will be subsequent measures which will extract the individual bits of information from the large array of values returned by this first measure.  So you will often see something like:</i></p>
+<p><em>Note that a weather skin normally works by having a first, primary measure that retrieves all the information from the weather RSS feed in one shot.  Then there will be subsequent measures which will extract the individual bits of information from the large array of values returned by this first measure.  So you will often see something like:</em></p>
 
 {% highlight ini %}
 [MeasureYahooWeather]
@@ -25,7 +25,7 @@ URL=http://weather.yahooapis.com/forecastrss?p=#Location#&u=#Unit#
 RegExp="(?siU)&lt;title&gt;.*- (.*)&lt;/title&gt;.*&lt;link&gt;(.*)/\*(.*)&lt;/link&gt;.*&lt;description&gt;(.*)&lt;/description&gt;.*&lt;language&gt;(.*)&lt;/language&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;.*&lt;yweather:location city="(.*)".*region="(.*)".*country="(.*)".*&lt;yweather:units temperature="(.*)".*distance="(.*)".* pressure="(.*)".*speed="(.*)".*&lt;yweather:wind chill="(.*)".*direction="(.*)".*speed="(.*)".*&lt;yweather:atmosphere humidity="(.*)".* visibility="(.*)".*pressure="(.*)".* rising="(.*)".*&lt;yweather:astronomy sunrise="(.*)".*sunset="(.*)".*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;width&gt;(.*)&lt;/width&gt;.*&lt;height&gt;(.*)&lt;/height&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;url&gt;(.*)&lt;/url&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;geo:lat&gt;(.*)&lt;/geo:lat&gt;.*&lt;geo:long&gt;(.*)&lt;/geo:long&gt;.*&lt;link&gt;(.*)/\*(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubDate&gt;.*&lt;yweather:condition  text="(.*)".*code="(.*)".*temp="(.*)".*date="(.*)".*&lt;img src="(.*)".*Current Conditions:&lt;/b&gt;&lt;br /&gt;(.*)&lt;BR /&gt;.*Forecast:&lt;/b&gt;&lt;BR /&gt;(.*)&lt;br /&gt;.*(.*)&lt;br /&gt;.*&lt;a href="(.*)/\*(.*)"&gt;.*provided by &lt;a href="(.*)" &gt;(.*)&lt;/a&gt;.*&lt;yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*&lt;yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*"
 {% endhighlight %}
 
-<p><i>Followed by something like this later on in the skin:</i></p>
+<p><em>Followed by something like this later on in the skin:</em></p>
 {% highlight ini %}
 [MeasureCurrentWeatherConditions]
 Measure=Plugin
@@ -34,15 +34,15 @@ Url=[MeasureYahooWeather]
 StringIndex=34
 {% endhighlight %}
 
-<p><i>As you can see, the measure [MeasureCurrentWeatherConditions] is using as its "Url=" the result of [MeasureYahooWeather] (our first main RSS measure) and specifically asking for StringIndex 34, the index in the array of returned values which holds the first of the "Weather Condition" values, in this case the "Current Conditions".</i></p>
+<p><em>As you can see, the measure [MeasureCurrentWeatherConditions] is using as its "Url=" the result of [MeasureYahooWeather] (our first main RSS measure) and specifically asking for StringIndex 34, the index in the array of returned values which holds the first of the "Weather Condition" values, in this case the "Current Conditions".</em></p>
 <p>Since Weather.com / Yahoo Weather return these values in English, you may want to translate them to your native language.  To do so, add a line at the end of each of the measures that specifically return "Weather Conditions" text.  In our current example, after the line "StringIndex=34".</p>
-<p><b>Substitute="Cloudy":"Bewölkt","Partly Cloudy":"Teilweise Bewölkt"</b></p>
+<p><strong>Substitute="Cloudy":"Bewölkt","Partly Cloudy":"Teilweise Bewölkt"</strong></p>
 <p>And so on... Continuing with the pattern:</p>
-<p><b>Substitute="Thing to replace":"Thing to replace with","Thing to replace":"Thing to replace with"</b></p>
+<p><strong>Substitute="Thing to replace":"Thing to replace with","Thing to replace":"Thing to replace with"</strong></p>
 <p>The punctuation is important.  "Thing to replace" and "Thing to replace with" are enclosed in quotes.  There is a colon between them.  Pairs are separated with commas.</p>
 <p>That is all there is to it.  In our example above, "Cloudy" will be replaced with "Bewölkt" when the text is later displayed in a meter.</p>
 <br/>
-<p><i>What "Weather Conditions" text codes are returned by Weather.com / Yahoo Weather so I know what to translate?"</i></p>
+<p><em>What "Weather Conditions" text codes are returned by Weather.com / Yahoo Weather so I know what to translate?"</em></p>
 <p>Here is a list with the number of the icon and the text returned:</p>
 <pre> 0 - Thunderstorms
  1 - Windy Rain 

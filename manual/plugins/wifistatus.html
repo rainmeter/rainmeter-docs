@@ -18,13 +18,13 @@ title: 'WiFiStatus plugin'
 
 	<dt id="WiFiInfoType"><code>WiFiInfoType</code></dt>
 	<dd>
-		<p>This defines what is measured. This option is <b>required</b>. Valid values are:</p>
+		<p>This defines what is measured. This option is <strong>required</strong>. Valid values are:</p>
 		<ul>
 			<li><code>SSID</code>: The broadcast name for your current connection. When trying to conenct, you may see a 'connecting...' or 'authorizing...' next to the name, but only if your update speed is around 2 seconds.</li>
 			<li><code>Quality</code>: Percentage value of the maximum dBm signal strength for your current connection.</li>
 			<li><code>Encryption</code>: The cipher algorithm being used for your current connection. Possible values are: <code>NONE</code>, <code>WEP40</code>, <code>TKIP</code>, <code>AES</code>, <code>WEP104</code>, <code>WPA_GROUP</code>, and <code>WEP</code>. An unknown algorithm will return <code>???</code>.</li>
 			<li><code>AUTH</code>: The authentication algorithm being used for your current connection. Possible values are: <code>Open</code>, <code>Shared</code>, <code>WPA_NONE</code>, <code>WPA_Enterprise</code>, <code>WPA_Personal</code>, <code>WPA2_Enterprise</code>, and <code>WPA2_Personal</code>. An unknown algorithm will return <code>???</code>.</li>
-			<li><code>PHY</code>: The supported bands for your connection (<b>not</b> your adapter). Possible values are <code>802.11a</code>, <code>802.11b</code>, <code>802.11g</code>, <code>802.11n</code>, <code>DSSS</code>, <code>FHSSS</code>, and <code>IR-Band</code>. An unknown band will return <code>???</code>. <b>Note:</b> The <code>PHY</code> option is only supported in Windows Vista and higher.</li>
+			<li><code>PHY</code>: The supported bands for your connection (<strong>not</strong> your adapter). Possible values are <code>802.11a</code>, <code>802.11b</code>, <code>802.11g</code>, <code>802.11n</code>, <code>DSSS</code>, <code>FHSSS</code>, and <code>IR-Band</code>. An unknown band will return <code>???</code>. <strong>Note:</strong> The <code>PHY</code> option is only supported in Windows Vista and higher.</li>
 			<li><code>List</code>: Returns a list of all visible networks. The list is automatically separated by line-breaks <code>\n</code>, so each network appears on a separate line. It will also display the <code>PHY</code>, <code>Encryption</code>, and <code>AUTH</code> algorithms next the the network <code>SSID</code>.</li>
 		</ul>
 	</dd>
@@ -48,7 +48,7 @@ title: 'WiFiStatus plugin'
 	<dt id="WiFiListLimit"><code>WiFiListLimit</code> <span>Default: <code>5</code></span></dt>
 	<dd>
 		<p>Allows you to control the number of networks that are will be displayed when used with <code>WiFiInfoType=List</code>.</p>
-		<p><b>Note:</b> The list is sorted in descending order based on the signal quality of each network (i.e. strongest first, weakest last).</p>
+		<p><strong>Note:</strong> The list is sorted in descending order based on the signal quality of each network (i.e. strongest first, weakest last).</p>
 	</dd>
 </dl>	
 

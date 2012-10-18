@@ -4,20 +4,20 @@ title: 'Launching Windows Special Folders'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p><i>Tip by kenz0 and JSMorley</i></p>
+<p><em>Tip by kenz0 and JSMorley</em></p>
 <p>Windows has many "special folders" like "My Computer" and "Recycle Bin" that are not part of the normal folder system you can specify with a "path" on an !Execute statement in Rainmeter, or launch differently then they appear in Explorer. </p>
 <p>These folders can be accessed by using CLSID identifier codes that Windows assigns to these folders in the Windows Registry.  If you know the codes, you can launch these with ease.</p>
 <ul>
-<li><b>Administrative Tools</b> "::{D20EA4E1-3957-11d2-A40B-0C5020524153}"</li>
-<li><b>Control Panel</b> "::{21EC2020-3AEA-1069-A2DD-08002b30309d}"</li>
-<li><b>Fonts</b> "::{D20EA4E1-3957-11d2-A40B-0C5020524152}"</li>
-<li><b>My Computer</b> "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}"</li>
-<li><b>My Documents</b> "::{450D8FBA-AD25-11D0-98A8-0800361B1103}"</li>
-<li><b>Printers and Faxes</b> "::{2227A280-3AEA-1069-A2DE-08002B30309D}"</li>
-<li><b>Programs Folder</b> "::{7be9d83c-a729-4d97-b5a7-1b7313c39e0a}"</li>
-<li><b>Recycle Bin</b> "::{645FF040-5081-101B-9F08-00AA002F954E}"</li>
-<li><b>Scheduled Tasks</b> "::{D6277990-4C6A-11CF-8D87-00AA0060F5BF}"</li>
-<li><b>Start Menu</b> "::{48e7caab-b918-4e58-a94d-505519c795dc}"</li>
+<li><strong>Administrative Tools</strong> "::{D20EA4E1-3957-11d2-A40B-0C5020524153}"</li>
+<li><strong>Control Panel</strong> "::{21EC2020-3AEA-1069-A2DD-08002b30309d}"</li>
+<li><strong>Fonts</strong> "::{D20EA4E1-3957-11d2-A40B-0C5020524152}"</li>
+<li><strong>My Computer</strong> "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}"</li>
+<li><strong>My Documents</strong> "::{450D8FBA-AD25-11D0-98A8-0800361B1103}"</li>
+<li><strong>Printers and Faxes</strong> "::{2227A280-3AEA-1069-A2DE-08002B30309D}"</li>
+<li><strong>Programs Folder</strong> "::{7be9d83c-a729-4d97-b5a7-1b7313c39e0a}"</li>
+<li><strong>Recycle Bin</strong> "::{645FF040-5081-101B-9F08-00AA002F954E}"</li>
+<li><strong>Scheduled Tasks</strong> "::{D6277990-4C6A-11CF-8D87-00AA0060F5BF}"</li>
+<li><strong>Start Menu</strong> "::{48e7caab-b918-4e58-a94d-505519c795dc}"</li>
 </ul>
 
 {% highlight ini %}
@@ -32,48 +32,48 @@ LeftMouseDownAction=[::{20D04FE0-3AEA-1069-A2D8-08002B30309D}]
 {% endhighlight %}
 
 <p>Another way to access certain special Windows folders and functions is by knowing and using some commands Windows supports:</p>
-<p><b>General Shortcut Commands:</b></p>
+<p><strong>General Shortcut Commands:</strong></p>
 <ul>
-<li><b>My Computer with C drive selected</b><br/>
+<li><strong>My Computer with C drive selected</strong><br/>
 explorer.exe /select,c</li> 
-<li><b>Task Manager</b><br/>
+<li><strong>Task Manager</strong><br/>
 taskmgr.exe</li> 
-<li><b>Control Panel</b><br/>
+<li><strong>Control Panel</strong><br/>
 control</li> 
-<li><b>Windows Version Info</b><br/>
+<li><strong>Windows Version Info</strong><br/>
 winver</li> 
-<li><b>Windows Update</b><br/>
+<li><strong>Windows Update</strong><br/>
 wupdmgr</li> 
-<li><b>Internet Options</b><br/>
+<li><strong>Internet Options</strong><br/>
 inetcpl.cpl</li> 
-<li><b>Computer Management</b><br/>
+<li><strong>Computer Management</strong><br/>
 compmgmt.msc</li> 
-<li><b>System Properties</b><br/>
+<li><strong>System Properties</strong><br/>
 sysdm.cpl</li> 
-<li><b>Date/Time Properties</b><br/>
+<li><strong>Date/Time Properties</strong><br/>
 timedate.cpl</li> 
-<li><b>Volume Control</b><br/>
+<li><strong>Volume Control</strong><br/>
 sndvol32.exe</li> 
-<li><b>Volume Control (tray)</b><br/>
+<li><strong>Volume Control (tray)</strong><br/>
 sndvol32.exe /tray Normal</li> 
-<li><b>Logoff</b><br/>
+<li><strong>Logoff</strong><br/>
 shutdown.exe -l</li> 
-<li><b>Switch User / Lock Computer</b><br/>
+<li><strong>Switch User / Lock Computer</strong><br/>
 rundll32.exe user32.dll LockWorkStation</li> 
-<li><b>Hibernate</b><br/>
+<li><strong>Hibernate</strong><br/>
 rundll32.exe powrprof.dll,SetSuspendState</li> 
-<li><b>Restart</b><br/>
+<li><strong>Restart</strong><br/>
 shutdown.exe -r</li> 
-<li><b>Shutdown</b><br/>
+<li><strong>Shutdown</strong><br/>
 shutdown.exe -s</li> 
-<li><b>Shutdown (abort)</b><br/>
+<li><strong>Shutdown (abort)</strong><br/>
 shutdown.exe -a</li>
 </ul><br/>
 <p>Or you can use Shell: commands supported by your version of Windows:</p>
 <p><pre>LeftMouseUpAction=["Shell:My Pictures"]</pre></p>
 
 <ul>
-<li><b>Specific to Windows 7:</b><br/><br/>
+<li><strong>Specific to Windows 7:</strong><br/><br/>
 shell:Libraries<br/>
 shell:MusicLibrary<br/>
 shell:VideosLibrary<br/>
@@ -91,7 +91,7 @@ shell:ImplicitAppShortcuts<br/>
 shell:UserProgramFilesCommon<br/>
 shell:Ringtones<br/>
 shell:CommonRingtones<br/></li><br/>
-<li><b>Windows Vista and above:</b><br/><br/>
+<li><strong>Windows Vista and above:</strong><br/><br/>
 shell:Common Programs<br/>
 shell:GameTasks<br/>
 shell:UserProfiles<br/>
@@ -180,8 +180,8 @@ shell:Windows<br/>
 shell:UsersFilesFolder<br/>
 shell:ProgramFilesCommon<br/>
 shell:Fonts<br/>
-shell:Personal <i>(Note: This will open your private "My Documents")</i><br/></li><br/>
-<li><b>Windows XP and Above:</b><br/><br/>
+shell:Personal <em>(Note: This will open your private "My Documents")</em><br/></li><br/>
+<li><strong>Windows XP and Above:</strong><br/><br/>
 shell:Common Programs<br/>
 shell:Favorites<br/>
 shell:My Video<br/>
@@ -226,13 +226,13 @@ shell:Common Documents<br/>
 shell:Local AppData<br/>
 shell:Windows<br/>
 shell:Fonts<br/>
-shell:Personal <i>(Note: This will open your private "My Documents")</i></li>
+shell:Personal <em>(Note: This will open your private "My Documents")</em></li>
 </ul>
 <p><a href="http://smallvoid.com/article/winnt-shell-keyword.html" target="_blank">Some more Shell Commands</a></p>
-<p><b>Basic usage examples:</b></p>
+<p><strong>Basic usage examples:</strong></p>
 <pre>LeftMouseUpAction=[sndvol32.exe /tray Normal]</pre>
 <pre>LeftMouseUpAction=[shell:Desktop]</pre>
-<p><i>If a space is included, you need to enclose with double quotes. e.g. ["shell:Start Menu"]</i></p>
-<p><i>You can send multiple commands simultaneously by surrounding each command in brackets.</i></p>
+<p><em>If a space is included, you need to enclose with double quotes. e.g. ["shell:Start Menu"]</em></p>
+<p><em>You can send multiple commands simultaneously by surrounding each command in brackets.</em></p>
 <pre>LeftMouseUpAction=[shell:Desktop][shell:SendTo]["shell:Start Menu"]</pre>
 

@@ -21,7 +21,7 @@ title: 'NowPlaying plugin'
 		<li>Or the name of another measure (e.g. <code>PlayerName=[MainMeasure]</code>)</li>
 		</ul>
 
-		<b>Important:</b> If multiple measures use the same player, specify the player interface name on the first NowPlaying measure and specify the name of the first measure in subsequent measures. See example below for proper usage.
+		<strong>Important:</strong> If multiple measures use the same player, specify the player interface name on the first NowPlaying measure and specify the name of the first measure in subsequent measures. See example below for proper usage.
 	</dd>
 
 	<dt id="PlayerType"><code>PlayerType</code></dt>
@@ -46,7 +46,7 @@ title: 'NowPlaying plugin'
 		<li><code>Volume</code>: From 0 to 100.</li>
 		</ul>
 	
-		<b>Note:</b> With measures of type <code>Duration</code> or <code>Position</code>, the string value is in the form <code>MM:SS</code> and the number value is the actual number of seconds.
+		<strong>Note:</strong> With measures of type <code>Duration</code> or <code>Position</code>, the string value is in the form <code>MM:SS</code> and the number value is the actual number of seconds.
 	</dd>
 
 	<dt id="PlayerPath"><code>PlayerPath</code></dt>
@@ -77,42 +77,42 @@ title: 'NowPlaying plugin'
 <li><code>OpenPlayer</code>: Opens the player. If already open, the player will be brought to the top.</li>
 <li><code>ClosePlayer</code>: Closes the player.</li>
 <li><code>TogglePlayer</code>: Opens/closes the player depending on current state.</li>
-<li><code>SetPosition <i>n</i></code>: Where <i>n</i> is either an absolute value (<code>SetPosition 50</code> to jump to 50% of the track) or a relative value (<code>SetPosition +5</code> to jump 5% forward or <code>SetPosition -10</code> to jump 10% backward).</li>
-<li><code>SetRating <i>n</i></code>: Where <i>n</i> is a value between <code>0</code> (no rating) and <code>5</code> (maximum rating).</li>
-<li><code>SetShuffle <i>n</i></code>: Where <i>n</i> is <code>1</code> (shuffle on), <code>0</code> (shuffle off), or <code>-1</code> (toggle shuffle).</li>
-<li><code>SetRepeat <i>n</i></code>: Where <i>n</i> is <code>1</code> (repeat on), <code>0</code> (repeat off), or <code>-1</code> (toggle repeat).</li>
-<li><code>SetVolume <i>n</i></code>: Where <i>n</i> is either an absolute value (<code>SetVolume 50</code> to set volume to 50%) or a relative value (<code>SetVolume +20</code> to increase volume by 20% or<code>SetVolume -40</code> to decrease volume by 40%).</li>
+<li><code>SetPosition <em>n</em></code>: Where <em>n</em> is either an absolute value (<code>SetPosition 50</code> to jump to 50% of the track) or a relative value (<code>SetPosition +5</code> to jump 5% forward or <code>SetPosition -10</code> to jump 10% backward).</li>
+<li><code>SetRating <em>n</em></code>: Where <em>n</em> is a value between <code>0</code> (no rating) and <code>5</code> (maximum rating).</li>
+<li><code>SetShuffle <em>n</em></code>: Where <em>n</em> is <code>1</code> (shuffle on), <code>0</code> (shuffle off), or <code>-1</code> (toggle shuffle).</li>
+<li><code>SetRepeat <em>n</em></code>: Where <em>n</em> is <code>1</code> (repeat on), <code>0</code> (repeat off), or <code>-1</code> (toggle repeat).</li>
+<li><code>SetVolume <em>n</em></code>: Where <em>n</em> is either an absolute value (<code>SetVolume 50</code> to set volume to 50%) or a relative value (<code>SetVolume +20</code> to increase volume by 20% or<code>SetVolume -40</code> to decrease volume by 40%).</li>
 </ul>
 
 <h2 id="playerlist">Fully supported players</h2>
 <p>The following players are fully supported. All features should work unless stated otherwise.</p>
 
 <ul class="spaced">
-	<li><b>AIMP</b>: <code>PlayerName=AIMP</code><br>
+	<li><strong>AIMP</strong>: <code>PlayerName=AIMP</code><br>
 	Fully supported. Tested with AIMP 2.61.</li>
 
-	<li><b>foobar2000</b>: <code>PlayerName=CAD</code><br>
+	<li><strong>foobar2000</strong>: <code>PlayerName=CAD</code><br>
 	Fully supported. The <a href="http://poiru.github.com/foo-cad/">foo_cad plugin (download)</a> needs to be installed.</li>
 
-	<li><b>iTunes</b>: <code>PlayerName=iTunes</code><br>
+	<li><strong>iTunes</strong>: <code>PlayerName=iTunes</code><br>
 	Fully supported. Tested with iTunes 10.2.</li>
 
-	<li><b>J. River Media Center</b> and <b>Media Jukebox</b>: <code>PlayerName=CAD</code><br>
+	<li><strong>J. River Media Center</strong> and <strong>Media Jukebox</strong>: <code>PlayerName=CAD</code><br>
 	Fully supported through the CAD interface. The <a href="http://code.google.com/p/jr-intcad/">intcad plugin</a> needs to be installed.</li>
 
-	<li><b>MediaMonkey</b>: <code>PlayerName=MediaMonkey</code><br>
+	<li><strong>MediaMonkey</strong>: <code>PlayerName=MediaMonkey</code><br>
 	Fully supported. Tested with MediaMonkey 3.2.5.</li>
 
-	<li><b>MusicBee</b>: <code>PlayerName=CAD</code><br>
+	<li><strong>MusicBee</strong>: <code>PlayerName=CAD</code><br>
 	Fully supported. <a href="http://getmusicbee.com/download.html">MusicBee 1.2</a> (or higher) is required.</li>
 
-	<li><b>Winamp</b>: <code>PlayerName=Winamp</code><br>
+	<li><strong>Winamp</strong>: <code>PlayerName=Winamp</code><br>
 	Fully supported.</li>
 
-	<li><b>VLC</b>: <code>PlayerName=CAD</code><br>
+	<li><strong>VLC</strong>: <code>PlayerName=CAD</code><br>
 	Fully supported. The <a href="http://code.google.com/p/vlc-libcad">libcad plugin</a> for VLC must be installed.</li>
 
-	<li><b>WMP</b>: <code>PlayerName=WMP</code><br>
+	<li><strong>WMP</strong>: <code>PlayerName=WMP</code><br>
 	Fully supported, except for the <code>Repeat</code> / <code>Shuffle</code> types.</li>
 </ul>
 
@@ -120,12 +120,12 @@ title: 'NowPlaying plugin'
 <p>The following players are partially supported. Only some features will work.</p>
 
 <ul class="spaced">
-	<li><b>Spotify</b>: <code>PlayerName=Spotify</code><br>
+	<li><strong>Spotify</strong>: <code>PlayerName=Spotify</code><br>
 	Partially supported. Only the types <code>Artist</code>, <code>Track</code> and the bangs <code>Play</code>, <code>PlayPause</code>, <code>Stop</code>, <code>Next</code>, and <code>Previous</code> are available.</li>
 
-	<li><b>Last.fm Client</b>, <b>Media Player Classic</b>, <b>TTPlayer</b>, <b>OpenPandora</b>, <b>Zune</b>: <code>PlayerName=WLM</code><br>
+	<li><strong>Last.fm Client</strong>, <strong>Media Player Classic</strong>, <strong>TTPlayer</strong>, <strong>OpenPandora</strong>, <strong>Zune</strong>: <code>PlayerName=WLM</code><br>
 	Partially supported. Even in the best case, only the types <code>Title</code>, <code>Artist</code>, <code>Album</code> and the bangs <code>Play</code>, <code>Pause</code>, <code>PlayPause</code>, <code>Next</code>, <code>Previous</code>, <code>Stop</code> are supported.
-	<br><br><b>Note:</b> In <b>Media Player Classic</b>, '<i>Send Now Playing information to MSN Messenger</i>' option must be enabled in the player's settings (View -> Options -> Tweaks).</li>
+	<br><br><strong>Note:</strong> In <strong>Media Player Classic</strong>, '<em>Send Now Playing information to MSN Messenger</em>' option must be enabled in the player's settings (View -> Options -> Tweaks).</li>
 </ul>
 
 <h2>Example</h2>
