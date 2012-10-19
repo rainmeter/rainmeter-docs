@@ -36,7 +36,7 @@ ScriptFile=MyScript.lua
 
 <h3 id="Options">Options</h3>
 
-<p>In addition to <a href="/manual/measures/general-options/">general measure options</a> and <a href="/manual/measures/script#ScriptFile">ScriptFile</a>, scripts also allow <a href="/manual/measures/script#UserDefined">user-defined options</a>. These options may have any name and value, and may be changed with <a href="/manual/bangs#SetOption">!SetOption</a>. The script can read and use its own option values using the <a href="#SelfObject">SELF object functions</a>. This allows the same script file to be used with different parameters depending on the context.</p>
+<p>In addition to <a href="/manual/measures/general-options">general measure options</a> and <a href="/manual/measures/script#ScriptFile">ScriptFile</a>, scripts also allow <a href="/manual/measures/script#UserDefined">user-defined options</a>. These options may have any name and value, and may be changed with <a href="/manual/bangs#SetOption">!SetOption</a>. The script can read and use its own option values using the <a href="#SelfObject">SELF object functions</a>. This allows the same script file to be used with different parameters depending on the context.</p>
 
 {% highlight ini %}
 [MeasureName]
@@ -172,7 +172,7 @@ end
 
 	<dt id="ReplaceVariables"><code>ReplaceVariables</code> <span>Parameter: <code><strong>String</strong></code></span></dt>
 	<dd>
-		<p>Returns the given string, with all valid <a href="/manual/variables/">variable values</a> properly replaced. <a href="/manual/variables/section-variables">Section variables</a> are valid.</p>
+		<p>Returns the given string, with all valid <a href="/manual/variables">variable values</a> properly replaced. <a href="/manual/variables/section-variables">Section variables</a> are valid.</p>
 		<p><strong>Example:</strong> <code>MyString = SKIN:ReplaceVariables('The value of MyVariable is #MyVariable#.')</code></p>
 	</dd>
 
