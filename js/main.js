@@ -2,7 +2,7 @@
 (function() {
 	var $nav = $('#sidenav');
 	if ($nav) {
-		var url = 'file:///manual/meters/general-options/';
+		var href = location.protocol + '//' + location.hostname + location.pathname;
 		$('li', $nav).each(function() {
 			var $li = $(this);
 			$li.children('ul').after(function() {
@@ -15,10 +15,10 @@
 
 			$li.children('a').each(function() {
 				var $a = $(this);
-				if (url == this.href) {
+				if (href == this.href) {
 					$a.addClass('selected');
 					return false;
-				} else if (url.indexOf(this.href) == -1) {
+				} else if (href.indexOf(this.href) == -1) {
 					$a.next().addClass('hide');
 				}
 			});
