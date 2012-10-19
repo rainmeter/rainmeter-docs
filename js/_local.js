@@ -12,22 +12,15 @@
 	// Fix highlight blocks.
 	window.addEventListener('load', function() {
 		body.innerHTML = body.innerHTML.
-			replace(/({% highlight .*? %}[\s\S]*?{% endhighlight %})/gm, function(m) {
-				return m.
-					replace(/</g, '&lt;').
-					replace(/>/g, '&gt;').
-					replace(/^.*/, '<div class="highlight"><pre>').
-					replace(/.*$/, '</pre></div>');
-			});
+			replace(/{% highlight .*? %}/gm, '<div class="highlight"><pre>').
+			replace(/{% endhighlight %}/gm, '</pre></div>');
 	});
 
 	// Fix <img> tags.
 	window.addEventListener('load', function() {
 		var imgs = document.getElementsByTagName('img');
 		for (var i = 0; img = imgs[i]; ++i) {
-			img.src = img.src.replace(/^.*?\/manual\//, 'manual/');
-			img.src = img.src.replace(/^.*?\/tips\//, 'tips/');
-			img.src = img.src.replace(/^.*?\/snippets\//, 'snippets/');
+			img.src = img.src.replace(/^.*?\/(manual|tips|snippets)\//, '$1/');
 		}
 	});
 })();
