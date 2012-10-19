@@ -28,8 +28,9 @@
 
 // Make ctrl+click on <dt> and <hN> tags anchor the page with id.
 (function() {
-	$(['dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']).each(function () {
-		$(this).each(function() {
+	var tags = ['dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+	for (i = 0; tag = tags[i]; ++i) {
+		$(tag).each(function() {
 			if (this.id) {
 				$(this).click(function(e) {
 					if (e.ctrlKey) {
@@ -38,7 +39,7 @@
 				});
 			}
 		});
-	});
+	}
 })();
 
 // Add Select all to <pre> blocks.
