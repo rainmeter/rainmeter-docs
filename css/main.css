@@ -228,6 +228,26 @@ label {
 	margin-bottom:5px;
 }
 
+.pull-right {
+	float:right;
+}
+
+.pull-left {
+	float:left;
+}
+
+.hide {
+	display:none;
+}
+
+.show {
+	display:block;
+}
+
+.invisible {
+	visibility:hidden;
+}
+
 dt {
 	padding:3px 4px;
 	margin-top:12px;
