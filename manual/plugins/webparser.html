@@ -73,14 +73,14 @@ StringIndex=2
 		<p><strong>Note:</strong> If the <code>RegExp</code> is not defined in this measure, the <code>StringIndex2</code> has no effect.</p>
 	</dd>
 
-	<dt id="UpdateRate"><code>UpdateRate</code> <span>Default: <code>600</code></span></dt>
+	<dt id="UpdateRate"><code>UpdateRate</code> <small>Default: <code>600</code></small></dt>
 	<dd>
 		<p>The rate in milliseconds determining how often the webpage is downloaded. This is relative to the config's main <a href="/manual/skins#Update">Update</a> rate <strong>and</strong> any <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> on the measure. So the formula would be <code>Update</code> X <code>UpdateDivider</code> X <code>UpdateRate</code> = "how often the measure connects to the site".</p>
 
 		<p><strong>Note:</strong> Some caution should be used in determining how often to connect to a site with WebParser.  Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
 	</dd>
 
-	<dt id="DecodeCharacterReference"><code>DecodeCharacterReference</code> <span>Default: <code>0</code></span></dt>
+	<dt id="DecodeCharacterReference"><code>DecodeCharacterReference</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Automatically decodes <a href="http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references">HTML Character References</a>. This will eliminate the need to use a <a href="/manual/measures/general-options/substitute"><code>Substitute</code></a> statement to translate character references like <code>&amp;quot;</code>, <code>&amp;amp;</code>, <code>&amp;lt;</code>, and <code>&amp;gt;</code> to the actual character. Valid values are:</p>
 		<ul>
@@ -91,7 +91,7 @@ StringIndex=2
 		</ul>
 	</dd>
 
-	<dt id="Debug"><code>Debug</code> <span>Default: <code>0</code></span></dt>
+	<dt id="Debug"><code>Debug</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Logs DEBUG messages to the Rainmeter <a href="/manual/user-interface/about#LogPanel">log</a> or to a file. Valid values are:</p>
 		<ul>
@@ -109,7 +109,7 @@ StringIndex=2
 		<p><strong>Note:</strong> The folder for the file must already exist.</p>
 	</dd>
 
-	<dt id="Download"><code>Download</code> <span>Default: <code>0</code></span></dt>
+	<dt id="Download"><code>Download</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If <code>Download=1</code>, the <code>URL</code> is downloaded to Window's <code>TEMP</code> folder and the name to the file is returned as string value. The measure can then be used with <a href="/manual/meters/general-options/#MeasureName">MeasureName</a> on an <a href="/manual/meters/image">Image</a> meter to download images from a site and display them.</p>
 	</dd>
@@ -129,7 +129,7 @@ StringIndex=2
 		 <p>The value of the measure will be set to the string defined in this option if the <code>RegExp</code> results in a regular expression parsing error.</p>
 	</dd>
 
-	<dt id="ForceReload"><code>ForceReload</code> <span>Default: <code>0</code></span></dt>
+	<dt id="ForceReload"><code>ForceReload</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		 <p>WebParser reads the resource only if it has been modified since last read. This can be overridden with <code>ForceReload=1</code>.</p>
 	</dd>
@@ -141,7 +141,7 @@ StringIndex=2
 		<p><strong>Examples:</strong> <code>ProxyServer=ServerIP:Port</code>, <code>ProxyServer=ServerName:Port</code></p>
 	</dd>
 
-	<dt id="CodePage"><code>CodePage</code> <span>Default: <code>0</code></span></dt>
+	<dt id="CodePage"><code>CodePage</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		 <p>Defines the codepage of the downloaded web page. For example: <code>CodePage=28605</code> interprets the page as <code>Latin 9 (ISO-8859-15)</code>. <code>CodePage=65001</code> means <code>UTF-8</code>. <code>CodePage=0</code> means no conversion is done.</p>
 

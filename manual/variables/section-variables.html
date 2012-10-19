@@ -26,7 +26,7 @@ title: 'Section Variables'
 		<p>Section variables for meters have no value without a parameter.</p>
 	</dd>
 
-	<dt id="XY"><code>:X</code>, <code>:Y</code><span>Example: <code>[MeasureName:X]</code></span></dt>
+	<dt id="XY"><code>:X</code>, <code>:Y</code><small>Example: <code>[MeasureName:X]</code></small></dt>
 	<dd>
 		<p>The current <a href="/manual/meters/general-options#XY">X or Y position</a> of the meter.</p>
 		<p><strong>Note:</strong> This provides the "real" X or Y value, which is the position of the top-left corner of the meter area. This is always an integer, even if the meter has no X and Y <a href="/manual/meters/general-options#XY">options</a> set, or if the options use formulas, variables or relative positions.</p>
@@ -34,7 +34,7 @@ title: 'Section Variables'
 		<p>This also means that for a <a href="/manual/meters/string">string meter</a> with <a href="/manual/meters/string#StringAlign">StringAlign</a> options, the value of <code>[MeterName:X]</code> and <code>[MeterName:Y]</code> may not the same as the option values.</p>
 	</dd>
 
-	<dt id="WH"><code>:W</code>, <code>:H</code><span>Example: <code>[MeasureName:W]</code></span></dt>
+	<dt id="WH"><code>:W</code>, <code>:H</code><small>Example: <code>[MeasureName:W]</code></small></dt>
 	<dd>
 		<p>The current <a href="/manual/meters/general-options#WH">width or height</a> of the meter.</p>
 		<p><strong>Note:</strong> This provides the "real" W or H value. This is always an integer, even if the meter has no W and H <a href="/manual/meters/general-options#WH">options</a> set, or if the options use formulas or variables.</p>
@@ -44,35 +44,35 @@ title: 'Section Variables'
 <h2 id="MeasureParameters">Measure Parameters</h2>
 
 <dl>
-	<dt id="MeasureNone">None.<span>Example: <code>[MeasureName]</code></span></dt>
+	<dt id="MeasureNone">None.<small>Example: <code>[MeasureName]</code></small></dt>
 	<dd>
 		<p>If no parameters are given, the measure's <a href="/manual/measures#Values">string value</a> is provided.</p>
 	</dd>
 
-	<dt id="Colon"><code>:</code><span>Example: <code>[MeasureName:]</code></span></dt>
+	<dt id="Colon"><code>:</code><small>Example: <code>[MeasureName:]</code></small></dt>
 	<dd>
 		<p>If a blank parameter is given, the measure's <a href="/manual/measures#Values">number value</a> is provided, with up to ten decimal places of precision.</p>
 	</dd>
 
-	<dt id="Decimals"><code>:n</code><span>Example: <code>[MeasureName:10]</code></span></dt>
+	<dt id="Decimals"><code>:n</code><small>Example: <code>[MeasureName:10]</code></small></dt>
 	<dd>
 		<p>The measure's <a href="/manual/measures#Values">number value</a>, with the number of <strong>decimal places</strong> given.</p>
 		<p><strong>Multiple Parameters:</strong> This parameter may be combined with <a href="#Scale">Scale</a> and <a href="#Percentual">Percentual</a>.</p>
 	</dd>
 
-	<dt id="Scale"><code>:/n</code><span>Example: <code>[MeasureName:/1024]</code></span></dt>
+	<dt id="Scale"><code>:/n</code><small>Example: <code>[MeasureName:/1024]</code></small></dt>
 	<dd>
 		<p>The measure's <a href="/manual/measures#Values">number value</a>, <strong>scaled</strong> by the divisor given.</p>
 		<p><strong>Multiple Parameters:</strong> This parameter may be combined with <a href="#Decimals">Decimals</a> and <a href="#Percentual">Percentual</a>.</p>
 	</dd>
 
-	<dt id="Percentual"><code>:%</code><span>Example: <code>[MeasureName:%]</code></span></dt>
+	<dt id="Percentual"><code>:%</code><small>Example: <code>[MeasureName:%]</code></small></dt>
 	<dd>
 		<p>The measure's <a href="/manual/measures#Values">number value</a>, as a <strong>percentual</strong> value.</p>
 		<p><strong>Multiple Parameters:</strong> This parameter may be combined with <a href="#Decimals">Decimals</a> and <a href="#Scale">Scale</a>.</p>
 	</dd>
 
-	<dt id="MinValueMaxValue"><code>:MinValue</code> <code>:MaxValue</code><span>Example: <code>[MeasureName:MaxValue]</code></span></dt>
+	<dt id="MinValueMaxValue"><code>:MinValue</code> <code>:MaxValue</code><small>Example: <code>[MeasureName:MaxValue]</code></small></dt>
 	<dd>
 		<p>The measure's <a href="/manual/measures/general-options/#MinValue">MinValue</a> or <a href="/manual/measures/general-options/#MaxValue">MaxValue</a> number value.</p>
 		<p><strong>Multiple Parameters:</strong> This parameter may be combined with <a href="#Decimals">Decimals</a> and <a href="#Scale">Scale</a>.</p>

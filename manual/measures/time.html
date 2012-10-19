@@ -13,7 +13,7 @@ title: 'Time measure'
 		<p>All <a href="/manual/measures/general-options">general measure options</a> are valid.</p>
 	</dd>
 
-	<dt id="Format"><code>Format</code> <span>Default: <code>%H:%M:%S</code></span></dt>
+	<dt id="Format"><code>Format</code> <small>Default: <code>%H:%M:%S</code></small></dt>
 	<dd>
 		<p>Format for the measure value. This can be a combination of text and <a href="#FormatCodes">Format codes</a>.</p>
 
@@ -25,12 +25,12 @@ title: 'Time measure'
 		<p><a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a> or <a href="/manual/measures/calc">formula</a> defining a timestamp. If defined, the measure will use this date/time instead of the current system values.</p>
 	</dd>
 
-	<dt id="TimeZone"><code>TimeZone</code> <span>Default: <code>local</code></span></dt>
+	<dt id="TimeZone"><code>TimeZone</code> <small>Default: <code>local</code></small></dt>
 	<dd>
 		<p>If specified, GMT time is used, modified with the specified positive or negative offset number. E.g. <code>TimeZone=-5</code> would measure the time as <code>GMT -5.0</code>. If not specified, or set to <code>local</code>, local time for the computer is used.</p>
 	</dd>
 
-	<dt id="DaylightSavingTime"><code>DaylightSavingTime</code> <span>Default: <code>1</code></span></dt>
+	<dt id="DaylightSavingTime"><code>DaylightSavingTime</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>If <code>DaylightSavingTime</code> is set to <code>0</code> and <code>TimeZone</code> is supplied, the current local offset for daylight saving time is not applied to the value.</p>
 

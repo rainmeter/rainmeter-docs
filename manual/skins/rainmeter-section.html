@@ -8,18 +8,18 @@ title: '[Rainmeter] section'
 
 <h2 id="General">General Options</h2>
 <dl>
-	<dt id="Update"><code>Update</code> <span>Default: <code>1000</code></span></dt>
+	<dt id="Update"><code>Update</code> <small>Default: <code>1000</code></small></dt>
 	<dd>
 		Defines the update interval of the skin in milliseconds. On each update, meters and measures are updated.<br><br>
 		Using <code>-1</code> will update the skin only once on load (or on refresh). The skin can then be manually updated using the <a href="/manual/bangs#Update">!Update bang</a>.
 	</dd>
 
-	<dt id="DynamicWindowSize"><code>DynamicWindowSize</code> <span>Default: <code>0</code></span></dt>
+	<dt id="DynamicWindowSize"><code>DynamicWindowSize</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		If set to <code>1</code>, the window size is adjusted on each update to fit the meters.
 	</dd>
 
-	<dt id="DragMargins"><code>DragMargins</code> <span>Default: <code>0,0,0,0</code></span></dt>
+	<dt id="DragMargins"><code>DragMargins</code> <small>Default: <code>0,0,0,0</code></small></dt>
 	<dd>
 		Uses 4 values separated by commas to define the area from where the window can be dragged. The values define a margin of non-draggable area. It's also possible to use negative numbers in which case the margin is calculated from the opposite side. E.g. <code>DragMargins=0,-100,0,0</code>.
 	</dd>
@@ -34,7 +34,7 @@ title: '[Rainmeter] section'
 		<a href="/manual/options#Action">Action</a> to execute when the skin is unloaded or when Rainmeter is closed.
 	</dd>
 
-	<dt id="TransitionUpdate"><code>TransitionUpdate</code> <span>Default: <code>100</code></span></dt>
+	<dt id="TransitionUpdate"><code>TransitionUpdate</code> <small>Default: <code>100</code></small></dt>
 	<dd>
 		Defines the update time in milliseconds for meter transitions. While a transition is active the meter will update at this rate. Currently, only the <a href="/manual/meters/bitmap#BitmapTransitionFrames">Bitmap</a> meter supports meter transitions.
 	</dd>
@@ -53,7 +53,7 @@ title: '[Rainmeter] section'
 		<a href="/manual/options#Path">Path</a> of a background image file.
 	</dd>
 
-	<dt id="BackgroundMode"><code>BackgroundMode</code> <span>Default: <code>1</code></span></dt>
+	<dt id="BackgroundMode"><code>BackgroundMode</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		Defines the background mode for the skin. Valid values are:
 		<ul>
@@ -66,7 +66,7 @@ title: '[Rainmeter] section'
 		<br><code>BackgroundMode=2</code> : The <a href="/manual/options#Color">color</a> is set by adding a <a href="/manual/meters/general-options#SolidColor">SolidColor</a> option.<br>
 	</dd>
 
-	<dt id="BackgroundMargins"><code>BackgroundMargins</code> <span>Default: <code>0,0,0,0</code></span></dt>
+	<dt id="BackgroundMargins"><code>BackgroundMargins</code> <small>Default: <code>0,0,0,0</code></small></dt>
 	<dd>
 		If <code>BackgroundMode=3</code>, defines margins of the <code>Background</code> image that are not scaled. The parameters are <code>left,top,right,bottom</code>.
 		<br><br><strong>Example:</strong> <code>BackgroundMargins=0,10,0,20</code>.
@@ -95,7 +95,7 @@ title: '[Rainmeter] section'
 <h2 id="AeroBlur">Aero Blur options</h2>
 <dl>
 
-	<dt id="Blur"><code>Blur</code> <span>Default: <code>0</code></span></dt>
+	<dt id="Blur"><code>Blur</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		Set to 1 to enable Aero Blur on Windows Vista or later operating systems. If no BlurRegions are specified, the entire skin background is blurred.
 	</dd>

@@ -23,7 +23,7 @@ title: 'Image Meter'
 		Name(s) of the measure(s) to use in <code>ImageName</code> with the <code>%<em>N</em></code> syntax. This option does not need to be specified if not needed.
 	</dd>
 
-	<dt id="ImageName"><code>ImageName</code> <span>Default: <code>%1.png</code></span></dt>
+	<dt id="ImageName"><code>ImageName</code> <small>Default: <code>%1.png</code></small></dt>
 	<dd>
 		<a href="/manual/options#Path">Path</a> of the image file. The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:
 		{% highlight ini %}
@@ -41,12 +41,12 @@ ImageName=%1-%2.png
 		<a href="/manual/options#Path">Path</a> of the image folder location.
 	</dd>
 
-	<dt id="AntiAlias"><code>AntiAlias</code> <span>Default: <code>0</code></span></dt>
+	<dt id="AntiAlias"><code>AntiAlias</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		If set to <code>1</code>, the antialiased interpolation is used to display the image.
 	</dd>
 
-	<dt id="PreserveAspectRatio"><code>PreserveAspectRatio</code> <span>Default: <code>0</code></span></dt>
+	<dt id="PreserveAspectRatio"><code>PreserveAspectRatio</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		Controls how <code>W</code> and <code>H</code> scale the image when <code>Tile=0</code>. Valid values are:
 		<ul>
@@ -56,7 +56,7 @@ ImageName=%1-%2.png
 		</ul>
 	</dd>
 
-	<dt id="ScaleMargins"><code>ScaleMargins</code> <span>Format: <code>Left, Top, Right, Bottom</code></span></dt>
+	<dt id="ScaleMargins"><code>ScaleMargins</code> <small>Format: <code>Left, Top, Right, Bottom</code></small></dt>
 	<dd>
 		<p>Margins of the image to exclude from scaling when <code>Tile=0</code> and <code>PreserveAspectRatio=0</code>.</p>
 		<p><strong>Example:</strong> <code>ScaleMargins=10, 50, 10, 50</code></p>

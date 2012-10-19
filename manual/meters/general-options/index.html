@@ -23,7 +23,7 @@ title: 'General Meter Options'
 		"Binds" the meter to one or more measures. This means that the meter displays the values of these measures in some way. The exact form of the display depends on the type of meter. See each meter type's page for details about what kind of values are valid for that type, and how the values are displayed.
 	</dd>
 
-	<dt id="XY"><code>X</code>, <code>Y</code> <span>Default: <code>0</code></span></dt>
+	<dt id="XY"><code>X</code>, <code>Y</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		Specify the x and y position of the meter relative to the top-left edge of the skin. If the value is appended with <code>r</code>, the position is relative to the previous meter x or y position (e.g. <code>5r</code> or <code>(5 * 2)r</code>). If the value is appended with <code>R</code>, the position is relative to the bottom-right edge of the previous meter.
 	</dd>
@@ -33,19 +33,19 @@ title: 'General Meter Options'
 		The width and height of the meter. String meters and Image meters (with an image) can automatically determine width and height. For all other cases, <code>W</code> and <code>H</code> must be defined.
 	</dd>
 
-	<dt id="Hidden"><code>Hidden</code> <span>Default: <code>0</code></span></dt>
+	<dt id="Hidden"><code>Hidden</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		If set to <code>1</code>, the meter is hidden. The visibility can also be changed with the <a href="/manual/bangs#ShowHideToggleMeter">!ShowMeter and !HideMeter bangs</a>.
 	</dd>
 
-	<dt id="UpdateDivider"><code>UpdateDivider</code> <span>Default: <code>1</code></span></dt>
+	<dt id="UpdateDivider"><code>UpdateDivider</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>Sets the update frequency of the meter.</p>
 
 		<p><strong>Example:</strong> If set to <code>1</code>, the meter is updated on every <a href="/manual/skins/rainmeter-section#Update">update</a> cycle. If set to <code>5</code>, the meter is updated on every fifth update cycle and so forth.</p>
 	</dd>
 
-	<dt id="SolidColor"><code>SolidColor</code> (and <code>SolidColor2</code>) <span>Default: <code>0,0,0,0</code></span></dt>
+	<dt id="SolidColor"><code>SolidColor</code> (and <code>SolidColor2</code>) <small>Default: <code>0,0,0,0</code></small></dt>
 	<dd>
 		<p><a href="/manual/options#Color">Color</a> of the meter background. If <code>SolidColor2</code> is also specified, the background is a gradient composed of <code>SolidColor</code> and <code>SolidColor2</code>.</p>
 
@@ -57,7 +57,7 @@ title: 'General Meter Options'
 		Angle of the gradient in degrees (for <code>SolidColor</code> and <code>SolidColor2</code>).
 	</dd>
 
-	<dt id="BevelType"><code>BevelType</code> <span>Default: <code>0</code></span></dt>
+	<dt id="BevelType"><code>BevelType</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		If enabled, draws a bevel around the edges of the rectangle specified by <code>H</code> and <code>W</code>. Valid values are:
 		<ul>
@@ -67,19 +67,19 @@ title: 'General Meter Options'
 		</ul>
 	</dd>
 
-	<dt id="AntiAlias"><code>AntiAlias</code> <span>Default: <code>0</code></span></dt>
+	<dt id="AntiAlias"><code>AntiAlias</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		If set to <code>1</code>, antialising is used to display the meter.
 	</dd>
 
-	<dt id="DynamicVariables"><code>DynamicVariables</code> <span>Default: <code>0</code></span></dt>
+	<dt id="DynamicVariables"><code>DynamicVariables</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the meter is dynamic.</p>
 
 		<p><strong>See also:</strong> <a href="/manual/variables#DynamicVariables">Dynamic Variables</a></p>
 	</dd>
 
-	<dt id="TransformationMatrix"><code>TransformationMatrix</code> <span>Default: <code>1;0;0;1;0;0</code></span></dt>
+	<dt id="TransformationMatrix"><code>TransformationMatrix</code> <small>Default: <code>1;0;0;1;0;0</code></small></dt>
 	<dd>
 		<p>Defines a 3x2 matrix which can be used to transform the meter. Transformations include: scaling, skewing, and translating (ie. moving). There must be <strong>exactly</strong> 6 values separated by semicolons <code>;</code>. Combining these can have drastic effects on the meter it is applied to.</p>
 

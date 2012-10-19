@@ -27,12 +27,12 @@ title: 'Skin sections'
 		<p>As an example, by setting WindowX, WindowY, AnchorX and AnchorY all to 50% the config will be truly centered in the primary monitor regardless of screen resolution or aspect ratio.</p>
 	</dd>
 
-	<dt id="SavePosition"><code>SavePosition</code> <span>Default: <code>1</code></span></dt>
+	<dt id="SavePosition"><code>SavePosition</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, changes to the window position will be saved to Rainmeter.ini.</p>
 	</dd>
 
-	<dt id="AlwaysOnTop"><code>AlwaysOnTop</code> <span>Default: <code>0</code></span></dt>
+	<dt id="AlwaysOnTop"><code>AlwaysOnTop</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Defines the Z-position of the skin. Valid values are:
 		<ul>
@@ -44,47 +44,47 @@ title: 'Skin sections'
 		</ul></p>
 	</dd>
 
-	<dt id="Draggable"><code>Draggable</code> <span>Default: <code>1</code></span></dt>
+	<dt id="Draggable"><code>Draggable</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the skin can be dragged around with the mouse.</p>
 	</dd>
 
-	<dt id="SnapEdges"><code>SnapEdges</code> <span>Default: <code>1</code></span></dt>
+	<dt id="SnapEdges"><code>SnapEdges</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the skin will snap onto screen edges and other skins when moved. To disable snapping temporarily, hold the CTRL key down while moving the skin.</p>
 	</dd>
 
-	<dt id="HideOnMouseOver"><code>HideOnMouseOver</code> <span>Default: <code>0</code></span></dt>
+	<dt id="HideOnMouseOver"><code>HideOnMouseOver</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the skin will disappear when the cursor is over it and reappear when the cursor is moved away. To temporarily disable this behaviour, hold the CTRL down when moving the cursor.</p>
 	</dd>
 
-	<dt id="StartHidden"><code>StartHidden</code> <span>Default: <code>0</code></span></dt>
+	<dt id="StartHidden"><code>StartHidden</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the skin will start hidden. The <a href="/manual/bangs#ShowHideToggle">!Show bang</a> must be used to show the skin.</p>
 	</dd>
 
-	<dt id="AlphaValue"><code>AlphaValue</code> <span>Default: <code>255</code></span></dt>
+	<dt id="AlphaValue"><code>AlphaValue</code> <small>Default: <code>255</code></small></dt>
 	<dd>
 		<p>Sets the transparency of the skin. Valid values range from <code>0</code> (fully transparent) to <code>255</code> (solid).</p>
 	</dd>
 
-	<dt id="FadeDuration"><code>FadeDuration</code> <span>Default: <code>250</code></span></dt>
+	<dt id="FadeDuration"><code>FadeDuration</code> <small>Default: <code>250</code></small></dt>
 	<dd>
 		<p>Defines the length of the fade duration in milliseconds when activating/deactivating the skin or when the <a href="/manual/bangs#ShowHideToggleFade">fade bangs</a> are used.</p>
 	</dd>
 
-	<dt id="ClickThrough"><code>ClickThrough</code> <span>Default: <code>0</code></span></dt>
+	<dt id="ClickThrough"><code>ClickThrough</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, mouse clicks will pass through the skin. To temporary disable this, hold the CTRL key when clicking.</p>
 	</dd>
 
-	<dt id="KeepOnScreen"><code>KeepOnScreen</code> <span>Default: <code>1</code></span></dt>
+	<dt id="KeepOnScreen"><code>KeepOnScreen</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the skin will be kept within the bounds of the screen.</p>
 	</dd>
 
-	<dt id="LoadOrder"><code>LoadOrder</code> <span>Default: <code>0</code></span></dt>
+	<dt id="LoadOrder"><code>LoadOrder</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Determines the order in which the skins are loaded. The value can be any number (even negative). Skins with the lowest load order are loaded first.</p>
 		<p><strong>Example:</strong> Three skins having <code>LoadOrder=-1</code>, <code>LoadOrder=2</code> and <code>LoadOrder=5</code> would load the configs in that order, with the config with <code>LoadOrder=-1</code> appearing beneath the one with LoadOrder=2 which is in turn beneath the config containing <code>LoadOrder=5</code>. If two configs have the same value for LoadOrder, they are then loaded in alphabetical order.</p>

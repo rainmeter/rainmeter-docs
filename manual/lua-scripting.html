@@ -129,25 +129,25 @@ end
 <p>The <code>SKIN</code> object is created automatically.</p>
 
 <dl>
-	<dt id="GetMeasure"><code>GetMeasure</code> <span>Parameter: <code><strong>MeasureName</strong></code></span></dt>
+	<dt id="GetMeasure"><code>GetMeasure</code> <small>Parameter: <code><strong>MeasureName</strong></code></small></dt>
 	<dd>
 		<p>Creates an object for the named measure. Returns <code>nil</code> if the measure is not found.</p>
 		<p><strong>Example:</strong> <code>MyMeasure = SKIN:GetMeasure('MeasureName')</code></p>
 	</dd>
 
-	<dt id="GetMeter"><code>GetMeter</code> <span>Parameter: <code><strong>MeterName</strong></code></span></dt>
+	<dt id="GetMeter"><code>GetMeter</code> <small>Parameter: <code><strong>MeterName</strong></code></small></dt>
 	<dd>
 		<p>Creates an object for the named meter. Returns <code>nil</code> if the meter is not found.</p>
 		<p><strong>Example:</strong> <code>MyMeter = SKIN:GetMeter('MeterName')</code></p>
 	</dd>
 
-	<dt id="GetVariable"><code>GetVariable</code> <span>Parameter: <code><strong>MeterName</strong><em>, Default</em></code></span></dt>
+	<dt id="GetVariable"><code>GetVariable</code> <small>Parameter: <code><strong>MeterName</strong><em>, Default</em></code></small></dt>
 	<dd>
 		<p>Returns the current value of the named variable as a string. If the variable does not exist, returns the given default value, or <code>nil</code> if no default is given.</p>
 		<p><strong>Example:</strong> <code>MyVariable = SKIN:GetVariable('VariableName', 'n/a')</code></p>
 	</dd>
 
-	<dt id="Bang"><code>Bang</code> <span>Parameters: <code><strong>Bang</strong></code> or <code><strong>BangName</strong><em>, BangArg1, BangArg2, BangArgN</em></code></span></dt>
+	<dt id="Bang"><code>Bang</code> <small>Parameters: <code><strong>Bang</strong></code> or <code><strong>BangName</strong><em>, BangArg1, BangArg2, BangArgN</em></code></small></dt>
 	<dd>
 		<p>Executes a <a href="/manual/bangs">bang</a>. The bang can be constructed in one of two ways:</p>
 		<ol>
@@ -164,19 +164,19 @@ end
 		</ol>
 	</dd>
 
-	<dt id="MakePathAbsolute"><code>MakePathAbsolute</code> <span>Parameter: <code><strong>File/Folder</strong></code></span></dt>
+	<dt id="MakePathAbsolute"><code>MakePathAbsolute</code> <small>Parameter: <code><strong>File/Folder</strong></code></small></dt>
 	<dd>
 		<p>Converts a relative filepath into an absolute filepath, in the same manner as a <a href="/manual/options#Path">path option</a>. </p>
 		<p><strong>Example:</strong> <code>MyPath = SKIN:MakePathAbsolute('MyImage.png')</code></p>
 	</dd>
 
-	<dt id="ReplaceVariables"><code>ReplaceVariables</code> <span>Parameter: <code><strong>String</strong></code></span></dt>
+	<dt id="ReplaceVariables"><code>ReplaceVariables</code> <small>Parameter: <code><strong>String</strong></code></small></dt>
 	<dd>
 		<p>Returns the given string, with all valid <a href="/manual/variables">variable values</a> properly replaced. <a href="/manual/variables/section-variables">Section variables</a> are valid.</p>
 		<p><strong>Example:</strong> <code>MyString = SKIN:ReplaceVariables('The value of MyVariable is #MyVariable#.')</code></p>
 	</dd>
 
-	<dt id="ParseFormula"><code>ParseFormula</code> <span>Parameter: <code><strong>FormulaString</strong></code></span></dt>
+	<dt id="ParseFormula"><code>ParseFormula</code> <small>Parameter: <code><strong>FormulaString</strong></code></small></dt>
 	<dd>
 		<p>If the given string is a valid <a href="/manual/options#Number">formula</a>, evaluates the formula and returns the result as the number. Otherwise, returns <code>nil</code>.</p>
 		<p><strong>Example:</strong> <code>MyNumber = SKIN:ParseFormula('2+2')</code></p>
@@ -203,13 +203,13 @@ end
 		<p><strong>Example:</strong> <code>MyMeasureValue = MyMeasure:GetStringValue()</code></p>
 	</dd>
 
-	<dt id="GetOption"><code>GetOption</code> <span>Parameters: <code><strong>OptionName</strong><em>, Default</em></code></span></dt>
+	<dt id="GetOption"><code>GetOption</code> <small>Parameters: <code><strong>OptionName</strong><em>, Default</em></code></small></dt>
 	<dd>
 		<p>Returns the current value of the named option as a string. If the option does not exist, returns the given default value, or <code>''</code> if no default is given.</p>
 		<p><strong>Example:</strong> <code>MyGroup = MyMeasure:GetOption('Group', 'None')</code></p>
 	</dd>
 
-	<dt id="GetNumberOption"><code>GetNumberOption</code> <span>Parameters: <code><strong>OptionName</strong><em>, Default</em></code></span></dt>
+	<dt id="GetNumberOption"><code>GetNumberOption</code> <small>Parameters: <code><strong>OptionName</strong><em>, Default</em></code></small></dt>
 	<dd>
 		<p>Returns the current value of the named option as a number. If the option does not exist, or is not a valid number or <a href="/manual/options#Number">formula</a>, returns the given default value, or <code>0</code> if no default is given.</p>
 		<p><strong>Example:</strong> <code>MyUpdateDivider = MyMeasure:GetNumberOption(UpdateDivider, 1)</code></p>
@@ -274,7 +274,7 @@ end
 <p><strong>Example:</strong> <code>MyMeter = SKIN:GetMeter('MeterName')</code></p>
 
 <dl>
-	<dt id="GetOptionMeter"><code>GetOption</code> <span>Parameters: <code><strong>OptionName</strong><em>, Default</em></code></span></dt>
+	<dt id="GetOptionMeter"><code>GetOption</code> <small>Parameters: <code><strong>OptionName</strong><em>, Default</em></code></small></dt>
 	<dd>
 		<p>Returns the current value of the named option as a string. If the option does not exist, returns the given default value, or <code>''</code> if no default is given.</p>
 		<p><strong>Example:</strong> <code>MySolidColor = MyMeter:GetOption('SolidColor', '000000')</code></p>
@@ -286,13 +286,13 @@ end
 		<p><strong>Example:</strong> <code>MyMeterName = MyMeter:GetName()</code></p>
 	</dd>
 
-	<dt id="GetX"><code>GetX</code> <span>Parameters: <code><em>Absolute</em></code></span></dt>
+	<dt id="GetX"><code>GetX</code> <small>Parameters: <code><em>Absolute</em></code></small></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/meters/general-options/#XY">X position</a> of the meter as a number. If the optional <em>Absolute</em> parameter is <code>true</code>, returns the absolute (or <a href="/manual/variables/section-variables#XY">"real"</a>) X position.</p>
 		<p><strong>Example:</strong> <code>MyX = MyMeter:GetX()</code></p>
 	</dd>
 
-	<dt id="GetY"><code>GetY</code> <span>Parameters: <code><em>Absolute</em></code></span></dt>
+	<dt id="GetY"><code>GetY</code> <small>Parameters: <code><em>Absolute</em></code></small></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/meters/general-options/#XY">Y position</a> of the meter as a number. If the optional <em>Absolute</em> parameter is <code>true</code>, returns the absolute (or <a href="/manual/variables/section-variables#XY">"real"</a>) Y position.</p>
 		<p><strong>Example:</strong> <code>MyY = MyMeter:GetY()</code></p>

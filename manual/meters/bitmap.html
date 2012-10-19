@@ -32,7 +32,7 @@ title: 'Bitmap meter'
 		<br><br>If <code>BitmapExtend</code> is not set to <code>1</code>, the measure being used must return values from 0.0 to 1.0 or must have both <code>MaxValue</code> and <code>MinValue</code> set.
 	</dd>
 
-	<dt id="BitmapFrames"><code>BitmapFrames</code> <span>Default: <code>1</code></span></dt>
+	<dt id="BitmapFrames"><code>BitmapFrames</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		Number of frames in the image.
 	</dd>
@@ -46,19 +46,19 @@ title: 'Bitmap meter'
 		<br><br><strong>Example:</strong> If the bitmap has 10 values and each transition consists of 4 additional frames, then <code>BitmapFrames</code> should be set to <code>50</code> and <code>BitmapTransitionFrames</code> to <code>4</code>.
 	</dd>
 
-	<dt id="BitmapZeroFrame"><code>BitmapZeroFrame</code> <span>Default: <code>0</code></span></dt>
+	<dt id="BitmapZeroFrame"><code>BitmapZeroFrame</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		If set to <code>1</code>, the first frame is used only when the measured value is zero. Otherwise the frames are linearly determined by the measured value.
 	</dd>
 
-	<dt id="BitmapExtend"><code>BitmapExtend</code> <span>Default: <code>0</code></span></dt>
+	<dt id="BitmapExtend"><code>BitmapExtend</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		If set to <code>1</code> the bitmap is extended to display the whole value.
 
 		<br><br><strong>Example:</strong> If you define a bitmap that defines frames from 0 to 9 you can use this to display the measured value as the bitmap numbers.
 	</dd>
 
-	<dt id="BitmapDigits"><code>BitmapDigits</code> <span>Default: <code>0</code></span></dt>
+	<dt id="BitmapDigits"><code>BitmapDigits</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		Number of digits that are drawn (for <code>BitmapExtend=1</code>). The first frame is used if the value doesn't have as many digits as this defines.
 	</dd>
@@ -68,7 +68,7 @@ title: 'Bitmap meter'
 		Alignment of the bitmap value (for <code>BitmapExtend=1</code>). Valid values are <code>Left</code>, <code>Center</code>, and <code>Right</code>.
 	</dd>
 
-	<dt id="BitmapSeparation"><code>BitmapSeparation</code> <span>Default: <code>0</code></span></dt>
+	<dt id="BitmapSeparation"><code>BitmapSeparation</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		Positive or negative number used as the separation between digits when <code>BitmapDigits</code> is higher than one.
 	</dd>

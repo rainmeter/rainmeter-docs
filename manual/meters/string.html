@@ -18,7 +18,7 @@ title: 'String meter'
 		Name(s) of the measure(s) to use in <code>Text</code> with the <code>%<em>N</em></code> syntax. This option does not need to be specified if not needed.
 	</dd>
 
-	<dt id="Text"><code>Text</code> <span>Default: <code>%1</code></span></dt>
+	<dt id="Text"><code>Text</code> <small>Default: <code>%1</code></small></dt>
 	<dd>
 		Text to display. If <code>MeasureName</code> is specified, <code>Text</code> will default to the measure value. Otherwise no text will be displayed by default.
 
@@ -46,24 +46,24 @@ Text=This is text containing %1 and %2.
 		<br><br><strong>Note:</strong> It is preferable to put the entire string in <code>Text</code> instead of using this option.
 	</dd>
 
-	<dt id="FontFace"><code>FontFace</code> <span>Default: <code>Arial</code></span></dt>
+	<dt id="FontFace"><code>FontFace</code> <small>Default: <code>Arial</code></small></dt>
 	<dd>
 		Family name of the font to use for the text. The font must either be installed in Windows directly or must be <a href="/manual/skins/resources-folder#Fonts">loaded at runtime</a>.
 
 		<br><br><strong>See also:</strong> <a href="/tips/fonts-guide">Fonts Guide</a>.
 	</dd>
 
-	<dt id="FontSize"><code>FontSize</code> <span>Default: <code>10</code></span></dt>
+	<dt id="FontSize"><code>FontSize</code> <small>Default: <code>10</code></small></dt>
 	<dd>
 		Size of the font.
 	</dd>
 
-	<dt id="FontColor"><code>FontColor</code> <span>Default: <code>0,0,0,255</code></span></dt>
+	<dt id="FontColor"><code>FontColor</code> <small>Default: <code>0,0,0,255</code></small></dt>
 	<dd>
 		<a href="/manual/options#Color">Color</a> of the font.
 	</dd>
 
-	<dt id="StringAlign"><code>StringAlign</code> <span>Default: <code>Left</code></span></dt>
+	<dt id="StringAlign"><code>StringAlign</code> <small>Default: <code>Left</code></small></dt>
 	<dd>
 		Horizontal and vertical alignment of the string. Valid values are:
 		<ul>
@@ -74,54 +74,54 @@ Text=This is text containing %1 and %2.
 		The string will be aligned using the values of the <code>X</code> and or <code>Y</code> settings as the anchor point. So to CenterCenter align a string within a meter with a width and height of 100, set <code>X=50</code>, <code>Y=50</code> and <code>StringAlign=CenterCenter</code>.
 	</dd>
 
-	<dt id="StringStyle"><code>StringStyle</code> <span>Default: <code>Normal</code></span></dt>
+	<dt id="StringStyle"><code>StringStyle</code> <small>Default: <code>Normal</code></small></dt>
 	<dd>
 		Style of the string. Valid values are <code>Normal</code>, <code>Bold</code>, <code>Italic</code>, and <code>BoldItalic</code>.
 	</dd>
 
-	<dt id="StringCase"><code>StringCase</code> <span>Default: <code>None</code></span></dt>
+	<dt id="StringCase"><code>StringCase</code> <small>Default: <code>None</code></small></dt>
 	<dd>
 		Converts the string to a case. Valid values are <code>None</code>, <code>Upper</code>, <code>Lower</code>, and <code>Proper</code>.
 	</dd>
 
-	<dt id="StringEffect"><code>StringEffect</code> <span>Default: <code>None</code></span></dt>
+	<dt id="StringEffect"><code>StringEffect</code> <small>Default: <code>None</code></small></dt>
 	<dd>
 		Effect applied to a string. Valid values are <code>None</code>, <code>Shadow</code>, and <code>Border</code>.
 	</dd>
 
-	<dt id="FontEffectColor"><code>FontEffectColor</code> <span>Default: <code>0,0,0,255</code></span></dt>
+	<dt id="FontEffectColor"><code>FontEffectColor</code> <small>Default: <code>0,0,0,255</code></small></dt>
 	<dd>
 		<a href="/manual/options#Color">Color</a> of the StringEffect.
 	</dd>
 
-	<dt id="ClipString"><code>ClipString</code> <span>Default: <code>0</code></span></dt>
+	<dt id="ClipString"><code>ClipString</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		If set to <code>1</code>, the text is clipped with an ellipsis (...) when it exceeds the specified <code>W</code> and <code>H</code>. If <code>H</code> is large enough to allow multiple lines, the text is wrapped into two or more lines.
 	</dd>
 
-	<dt id="Angle"><code>Angle</code> <span>Default: <code>0.0</code></span></dt>
+	<dt id="Angle"><code>Angle</code> <small>Default: <code>0.0</code></small></dt>
 	<dd>
 		Defines the angle of the text in radians.
 		<br><br><strong>Note:</strong> The size and position of the text are always calculated as if the text is horizontal.
 	</dd>
 
-	<dt id="Percentual"><code>Percentual</code> <span>Default: <code>0</code></span></dt>
+	<dt id="Percentual"><code>Percentual</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		If set to <code>1</code>, percentual measure values are used for the <code>%<em>N</em></code> syntax. The measure(s) must be able to return <a href="/manual/measures#Percentage">percentual values</a>.
 	</dd>
 
-	<dt id="NumOfDecimals"><code>NumOfDecimals</code> <span>Default: <code>0</code></span></dt>
+	<dt id="NumOfDecimals"><code>NumOfDecimals</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		Number of decimals to display with numerical measure values for the <code>%<em>N</em></code> syntax.
 	</dd>
 
-	<dt id="Scale"><code>Scale</code> <span>Default: <code>1</code></span></dt>
+	<dt id="Scale"><code>Scale</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		Scaling factor used for the measure value(s) for the <code>%<em>N</em></code> syntax in <code>Text</code>. The measure value is divided by the specified value. If the specified value has a decimal point (e.g. <code>1000.0</code>), the result will also display decimals.
 		<br><br><strong>Note:</strong> If <code>AutoScale</code> is enabled, this option is ignored.
 	</dd>
 
-	<dt id="AutoScale"><code>AutoScale</code> <span>Default: <code>0</code></span></dt>
+	<dt id="AutoScale"><code>AutoScale</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		Automatically scales the measure value(s) for the <code>%<em>N</em></code> syntax in <code>Text</code>. The scaled result is appended with k, M, G, etc. as appropriate. Valid values are:
 		<ul>
