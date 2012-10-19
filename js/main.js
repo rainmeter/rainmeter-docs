@@ -5,22 +5,28 @@
 		var href = location.protocol + '//' + location.hostname + location.pathname;
 		$('li', $nav).each(function() {
 			var $li = $(this);
-			$li.children('ul').after(function() {
-				var $ul = $(this);
-				return $(document.createElement('span')).click(function() {
-					$ul.toggleClass('hide');
-					$(this).toggleClass('open');
-				});
-			});
-
 			$li.children('a').each(function() {
 				var $a = $(this);
 				if (href == this.href) {
-					$a.addClass('selected');
+					$a.addClass('active');
 					return false;
 				} else if (href.indexOf(this.href) == -1) {
 					$a.next().addClass('hide');
 				}
+			});
+
+			$li.children('ul').after(function() {
+				var $ul = $(this);
+				var $span = $(document.createElement('span')).addClass('expander');
+
+				if ($ul.hasClass('hide')) {
+					$span.addClass('open');
+				}
+
+				return $span.click(function() {
+					$ul.toggleClass('hide');
+					$(this).toggleClass('open');
+				});
 			});
 		});
 	}
