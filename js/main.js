@@ -1,75 +1,44 @@
-// (Yes, the code is ugly and I should use jQuery.)
-
-// Based on Sitemap Styler by Alen Grakalic (cssglobe.com)
+// Spice up the side nav.
 (function() {
-	var navlist = document.getElementById('sidenav');
-	if (navlist) {
-		var page = location.pathname;
-		var parts = page.split('/');
-		var partsIndex = 1;
+	var $nav = $('#sidenav');
+	if ($nav) {
+		var url = 'file:///manual/meters/general-options/';
+		$('li', $nav).each(function() {
+			var $li = $(this);
+			$li.children('ul').after(function() {
+				var $ul = $(this);
+				return $(document.createElement('span')).click(function() {
+					$ul.toggleClass('hide');
+					$(this).toggleClass('open');
+				});
+			});
 
-		handleItem = function(item) {
-			var itemLink = item.firstChild;
-			var itemPage = itemLink ? itemLink.href.slice(itemLink.href.indexOf(location.hostname) + location.hostname.length) : "";
-
-			var groups = item.getElementsByTagName('ul');
-			if (groups.length > 0) {
-				var group = groups[0];
-				group.style.display = 'none';
-				var span = document.createElement('span');
-				span.className = 'collapsed';
-
-				if (parts.length > partsIndex) {
-					itemIds = itemPage.split('/');
-					var match = false;
-					for (var j = 1; itemId = itemIds[j]; ++j) {
-						match = (parts[j] == itemId);
-						if (!match) {
-							break;
-						}
-					}
-					
-					if (match) {
-						group.style.display = 'block';
-						span.className = 'expanded';
-						++partsIndex;
-					}
+			$li.children('a').each(function() {
+				var $a = $(this);
+				if (url == this.href) {
+					$a.addClass('selected');
+					return false;
+				} else if (url.indexOf(this.href) == -1) {
+					$a.next().addClass('hide');
 				}
-
-				span.onclick = function() {
-					group.style.display = (group.style.display == 'none') ? 'block' : 'none';
-					span.className = (group.style.display == 'none') ? 'collapsed' : 'expanded';
-				};
-				item.appendChild(span);
-			}
-
-			if (itemPage == page) {
-				itemLink.className += ' selected';
-			}
-		};
-
-		var items = navlist.getElementsByTagName('li');
-		for (var i = 0; i < items.length; ++i) {
-			handleItem(items[i]);
-		}
+			});
+		});
 	}
 })();
 
-// Make ctrl+click on <dt> and <hN> tags anchor the page its id.
+// Make ctrl+click on <dt> and <hN> tags anchor the page with id.
 (function() {
-	var anchorTags = new Array('dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6');
-	for (var i = 0; anchorTag = anchorTags[i]; ++i) {
-		var elems = document.getElementsByTagName(anchorTag);
-		for (var j = 0; elem = elems[j]; ++j) {
-			if (elem.id) {
-				elem.onclick = function(e) {
+	$(['dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']).each(function () {
+		$(this).each(function() {
+			if (this.id) {
+				$(this).click(function(e) {
 					if (e.ctrlKey) {
 						window.location.hash = this.id;
 					}
-				};
+				});
 			}
-		}
-	}
+		});
+	});
 })();
 
 // Add Select all to <pre> blocks.
@@ -128,7 +97,7 @@
 })();
 
 // Based on Slimbox v2.04, (c) 2007-2010 Christophe Beyls <http://www.digitalia.be>, MIT-style license
-(function($) {
+(function() {
 	// Global variables, accessible to Slimbox only
 	var win = $(window), options, images, activeImage = -1, activeURL, compatibleOverlay, middle, centerWidth, centerHeight,
 		ie6 = !window.XMLHttpRequest, hiddenElements = [], documentElement = document.documentElement,
@@ -294,7 +263,7 @@
 
 		return false;
 	}
-})(jQuery);
+})();
 
 (function() {
 	if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
