@@ -51,6 +51,21 @@ MyOption=Hello, world!
 
 <p><a href="/manual/variables#DynamicVariables">Dynamic variables</a> are generally not needed with script measures. This is because functions are provided to get the current values of <a href="#GetVariable">variables</a>, <a href="#GetValue">measures</a> and <a href="#GetOption">options</a> within Lua. If these functions are used in the <a href="#Update">Update</a> function, they will return the current values at the time the function is called.</p>
 
+<h2 id="CommandMeasure">!CommandMeasure</h2>
+
+<p>The <a href="/manual/bangs#CommandMeasure">!CommandMeasure</a> bang can be used to execute Lua code in the context of a particular script instance:</p>
+
+	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "MyFunction()"</code></p></blockquote>
+
+<p>Multiple statements may be separated by semicolons (<code>;</code>). All statements are global.</p>
+
+	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "a = b; MyFunction(c)"</code></p></blockquote>
+
+<p>All statements must be passed as a single parameter in the bang. Because single-quotes (<code>'</code>) and double-quotes (<code>"</code>) are both valid string containers in Lua, while only double-quotes are recognized in Rainmeter, single quotes are recommended when passing strings with !CommandMeasure.</p>
+
+<p><a href="/manual/options#Number">Formulas</a> are also valid in !CommandMeasure arguments. As in other options, the formula must be enclosed in parentheses (<code>()</code>). For reliability, the formula should also be enclosed in single-quotes and converted to a number using <a href="http://www.lua.org/manual/5.1/manual.html#pdf-tonumber">tonumber</a>.</p>
+
+	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "a = '(2+2)'; a = tonumber(a)"</code></p></blockquote>
 
 
 <h2 id="Initialize">Initialize</h2>
@@ -88,26 +103,6 @@ end
 </ul>
 
 <p>The values provided by the script measure can be <a href="/manual/measures/#Usage">used in the same way as other measure values</a>. (<strong>Note:</strong> the values only update when the measure itself updates. Calling <code>Update()</code> within Lua does not update the measure values.)</p>
-
-
-
-
-<h2 id="CommandMeasure">!CommandMeasure</h2>
-
-<p>The <a href="/manual/bangs#CommandMeasure">!CommandMeasure</a> bang can be used to execute Lua code in the context of a particular script instance:</p>
-
-	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "MyFunction()"</code></p></blockquote>
-
-<p>Multiple statements may be separated by semicolons (<code>;</code>). All statements are global.</p>
-
-	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "a = b; MyFunction(c)"</code></p></blockquote>
-
-<p>All statements must be passed as a single parameter in the bang. Because single-quotes (<code>'</code>) and double-quotes (<code>"</code>) are both valid string containers in Lua, while only double-quotes are recognized in Rainmeter, single quotes are recommended when passing strings with !CommandMeasure.</p>
-
-<p><a href="/manual/options#Number">Formulas</a> are also valid in !CommandMeasure arguments. As in other options, the formula must be enclosed in parentheses (<code>()</code>). For reliability, the formula should also be enclosed in single-quotes and converted to a number using <a href="http://www.lua.org/manual/5.1/manual.html#pdf-tonumber">tonumber</a>.</p>
-
-	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "a = '(2+2)'; a = tonumber(a)"</code></p></blockquote>
-
 
 
 <h2 id="Log">Log</h2>
