@@ -22,9 +22,9 @@ title: 'WebParser Tutorial'
 <ul>
 	<li><strong>(?siU)</strong> - Which is an "options modifier" for the regular expression, telling it how you want it to behave.</li>
 	<li><strong>Search1</strong> - Which will be some text you will search on to get you right up to the data you want.</li>
-	<li><strong>(.*)</strong> - The data you want returned in the array to use in your skin. The parentheses tell it to "capture" everything between "Search1" and "Search2".  In our examples we are using the string ".*" in our captures, which simply means "." (any character) and "*" (zero or more of them).</li>
+	<li><strong>(.*)</strong> - The data you want returned in the array to use in your skin. The parentheses tell it to "capture" everything between "Search1" and "Search2". In our examples we are using the string ".*" in our captures, which simply means "." (any character) and "*" (zero or more of them).</li>
 	<li><strong>Search2</strong> - Use this to tell RegExp what to look for to know it's time to "stop" capturing information.</li>
-	<li><strong> .*</strong> - This will contain data from the website which is between this set of search/return parameters and the next one. It will not be returned as you did not enclose the .* in parentheses, and will not use a StringIndex number.  This is used to "skip" to the next search you want to do.</li>
+	<li><strong> .*</strong> - This will contain data from the website which is between this set of search/return parameters and the next one. It will not be returned as you did not enclose the .* in parentheses, and will not use a StringIndex number. This is used to "skip" to the next search you want to do.</li>
 </ul>
 
 <p><strong>What is this ?siU stuff?</strong></p>
@@ -37,7 +37,7 @@ title: 'WebParser Tutorial'
 <p>You have a web page you want to get the "TITLE" tag from. Here is the RegExp you would use:</p>
 <p><code>RegExp="(?siU)&lt;TITLE&gt;(.*)&lt;/TITLE&gt;"</code></p>
 <p>So we have told RegExp to search for the text "&lt;TITLE&gt;" then return everything after it in StringIndex 1 (the first capture) of the measure until it sees "&lt;/TITLE&gt;", where it will stop.</p>
-<p>This guide is meant to be simple and very "WebParser" focused.  It is NOT a full-blown guide to "Regular Expressions".  I would encourage you however to either now or later on open up a browser tab/window here: <a href="http://perlcity.com/perl-regular-expressions.html" target="_blank">Perl Regular Expressions</a> and take a look at the full range of possibilities for regular expressions.  It is a VERY powerful tool.</p>
+<p>This guide is meant to be simple and very "WebParser" focused. It is NOT a full-blown guide to "Regular Expressions". I would encourage you however to either now or later on open up a browser tab/window here: <a href="http://perlcity.com/perl-regular-expressions.html" target="_blank">Perl Regular Expressions</a> and take a look at the full range of possibilities for regular expressions. It is a VERY powerful tool.</p>
 
 <h3>Our Example Skin</h3>
 <p>So what we are going to do today is parse a website <a href="http://www.geobytes.com/IpLocator.htm?GetLocation" target="blank">http://www.geobytes.com/IpLocator.htm?GetLocation</a> to get our IP and location information to use in a skin. Click that link now if you want to open the page in a new tab/window.</p>
@@ -79,7 +79,7 @@ title: 'WebParser Tutorial'
  &lt;/h2&gt;
 </pre><br>
 
-<p><em>I hope I don't have to say that the actual IP address will be different for you than what is in this guide. If that comes as a surprise to you, please exit your browser now and uninstall Rainmeter.  Then restart your browser and go here: <a href="http://icanhascheezburger.com/" target="_blank">LOLCATS</a></em>
+<p><em>I hope I don't have to say that the actual IP address will be different for you than what is in this guide. If that comes as a surprise to you, please exit your browser now and uninstall Rainmeter. Then restart your browser and go here: <a href="http://icanhascheezburger.com/" target="_blank">LOLCATS</a></em>
 </p>
 
 <p>So let's start building our measures, and a sample meter showing the output.</p>
@@ -210,9 +210,9 @@ DBUG (04:38:07.000) WebParser.dll: [MeasureWebsite] (Index 10) -05:00
 DBUG (04:38:07.000) WebParser.dll: [MeasureWebsite] (Index 11) North America
 </pre>
 <p>Which will show every index / data combination retrieved by your measure. Very useful for figuring out why your "RegExp=" statement isn't working right.</p>
-<p>To turn the debugging off, remove the "Debug=1" statement from the measure, uncheck the boxes in Manage/Settings and delete the log file.  Refresh your skin.</p>
+<p>To turn the debugging off, remove the "Debug=1" statement from the measure, uncheck the boxes in Manage/Settings and delete the log file. Refresh your skin.</p>
 <br>
-<p><strong>I hope this guide will help you get started with WebParser.  It is one of the most powerful features of Rainmeter.</p>
+<p><strong>I hope this guide will help you get started with WebParser. It is one of the most powerful features of Rainmeter.</p>
 <p>I do recommend that you:</strong></p>
 <ul>
 	<li>Read the Rainmeter Manual entry for WebParser <a href="/manual/plugins/webparser" target="_blank">HERE</a></li>

@@ -17,7 +17,7 @@ Plugin=WebParser
 URL=http://SomeSite.com
 RegExp="(?siU)&lt;Item&gt;(.*)&lt;/Item&gt;.*&lt;Item&gt;(.*)&lt;/Item&gt;"
 {% endhighlight %}
-<p id="ParentChild">This example creates two <a href="#StringIndex">StringIndex</a> values in what is referred to as the "parent" WebParser measure.  The information is generally used in subsequent "child" WebParser measures:</p>
+<p id="ParentChild">This example creates two <a href="#StringIndex">StringIndex</a> values in what is referred to as the "parent" WebParser measure. The information is generally used in subsequent "child" WebParser measures:</p>
 {% highlight ini %}
 [MeasureChild1]
 Measure=Plugin
@@ -31,7 +31,7 @@ Plugin=WebParser
 URL=[MeasureParent]
 StringIndex=2
 {% endhighlight %}
-<p>The values of the two <a href="#ParentChild">child</a> measures are now the information parsed into StringIndexes 1 and 2 by the <a href="#ParentChild">parent</a> measure.  These can then be used with <a href="/manual/meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="/manual/meters">meters</a>.
+<p>The values of the two <a href="#ParentChild">child</a> measures are now the information parsed into StringIndexes 1 and 2 by the <a href="#ParentChild">parent</a> measure. These can then be used with <a href="/manual/meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="/manual/meters">meters</a>.
 
 <p><strong>Note:</strong> More information and examples for WebParser can be found at <a href="/tips/webparser-tutorial">WebParser Tutorial</a> and <a href="http://rainmeter.net/cms/Rainmeter101-Tutorial4">RSS Skin Tutorial</a>.</p>
 
@@ -63,7 +63,7 @@ StringIndex=2
 
 	<dt id="StringIndex"><code>StringIndex</code></dt>
 	<dd>
-		<p>Defines which captured string from the <code>RegExp</code> this measure returns.  This option is generally used in a <a href="#ParentChild">child</a> measure to determine which of the caputured values in a <a href="#ParentChild">parent</a> measure to use.</p>
+		<p>Defines which captured string from the <code>RegExp</code> this measure returns. This option is generally used in a <a href="#ParentChild">child</a> measure to determine which of the caputured values in a <a href="#ParentChild">parent</a> measure to use.</p>
 	</dd>
 
 	<dt id="StringIndex2"><code>StringIndex2</code></dt>
@@ -79,7 +79,7 @@ StringIndex=2
 	<dd>
 		<p>The rate in milliseconds determining how often the webpage is downloaded. This is relative to the config's main <a href="/manual/skins#Update">Update</a> rate <strong>and</strong> any <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> on the measure. So the formula would be <code>Update</code> X <code>UpdateDivider</code> X <code>UpdateRate</code> = "how often the measure connects to the site".</p>
 
-		<p><strong>Note:</strong> Some caution should be used in determining how often to connect to a site with WebParser.  Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
+		<p><strong>Note:</strong> Some caution should be used in determining how often to connect to a site with WebParser. Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
 	</dd>
 
 	<dt id="DecodeCharacterReference"><code>DecodeCharacterReference</code> <small>Default: <code>0</code></small></dt>
@@ -120,7 +120,7 @@ StringIndex=2
 	<dd>
 		<p>If the <code>Download</code> option is set to <code>1</code>, this option defines a relative path and file name where the downloaded file will be saved instead of in Windows <code>TEMP</code>.
 
-		<p>A folder <code>DownloadFile</code> will be created in the <a href="/manual/variables/built-in-variables#CURRENTPATH">current folder</a>, and the defined relative path and file name will be created under that.  It is not possible to specify an absolute path.</p>
+		<p>A folder <code>DownloadFile</code> will be created in the <a href="/manual/variables/built-in-variables#CURRENTPATH">current folder</a>, and the defined relative path and file name will be created under that. It is not possible to specify an absolute path.</p>
 
 		<p><strong>Note:</strong> This file is <strong>not</strong> a temporary file so it is <strong>not</strong> deleted after unloading a skin or exiting Rainmeter.</p>
 

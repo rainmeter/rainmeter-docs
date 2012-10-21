@@ -4,7 +4,7 @@ title: 'Convert Temperatures'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Converts temperatures between Celsius and Fahrenheit.  Use 'c' or 'f" as the scale you want to convert to.</p>
+<p>Converts temperatures between Celsius and Fahrenheit. Use 'c' or 'f' as the scale you want to convert to.</p>
 
 <div class="noscroll">
 {% highlight lua %}
@@ -15,7 +15,7 @@ function ConvertTemp(num, toScale)
 
 	local outTemp = 0
 
-	if toScale ==  'c' then
+	if toScale == 'c' then
 		outTemp = Round((5/9)*(num-32))
 	else
 		outTemp = Round((9/5)*num+32)

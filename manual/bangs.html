@@ -4,10 +4,10 @@ title: 'Bangs'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Bangs are commands that control various aspects of skins and Rainmeter.  They are executed when used with various <a href="/manual/options#Action">action options</a> in the skin.</p>
+<p>Bangs are commands that control various aspects of skins and Rainmeter. They are executed when used with various <a href="/manual/options#Action">action options</a> in the skin.</p>
 <p>Bangs can also be used from the Windows command line as a parameter to the Rainmeter.exe executable. Example: <code>"C:\Program Files\Rainmeter\Rainmeter.exe" !RefreshApp</code>.</p>
 
-<p><strong>Note:</strong> Many bangs have a <code>Config</code> parameter.  Unless otherwise specified, valid values are the <a href="/manual/skins#Config">config name</a> to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins.  When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
+<p><strong>Note:</strong> Many bangs have a <code>Config</code> parameter. Unless otherwise specified, valid values are the <a href="/manual/skins#Config">config name</a> to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins. When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
 
 <h2 id="OS">Operating System bangs</h2>
 <dl>
@@ -226,7 +226,7 @@ title: 'Bangs'
 	<li><code>Alpha</code> (required): From 0 (invisible) to 255 (opaque).</li>
 	<li><code>Config</code> (optional)</li>
 	</ul>
-	<br><strong>Example:</strong> <code>!SetTransparency  "128" "illustro\Clock"</code></dd>
+	<br><strong>Example:</strong> <code>!SetTransparency "128" "illustro\Clock"</code></dd>
 
 	<dt id="ZPos"><code>!ZPos</code> <small>Parameters: <code><strong>Position</strong><em>, Config</em></code></small></dt>
 	<dd>Sets the <a href="/manual/settings/skin-sections#AlwaysOnTop">Z-position</a> of a skin.
@@ -234,7 +234,7 @@ title: 'Bangs'
 	<li><code>Position</code> (required): <code>-2</code> for On desktop, <code>-1</code> for Bottom, <code>0</code> for Normal, <code>1</code> for On top, or <code>2</code> for Always on top.</li>
 	<li><code>Config</code> (optional)</li>
 	</ul>
-	<br><strong>Example:</strong> <code>!ZPos  "2" "illustro\Clock"</code></dd>
+	<br><strong>Example:</strong> <code>!ZPos "2" "illustro\Clock"</code></dd>
 
 	<dt id="Draggable"><code>!Draggable</code> <small>Parameters: <code><strong>Setting</strong><em>, Config</em></code></small></dt>
 	<dd>Sets the <a href="/manual/settings/skin-sections#Draggable">Draggable</a> option of a skin.
@@ -304,7 +304,7 @@ title: 'Bangs'
 	<li><code>Alpha</code> (required): From 0 (invisible) to 255 (opaque).</li>
 	<li><code>Group</code> (required): Name of the the group.</li>
 	</ul>
-	<br><strong>Example:</strong> <code>!SetTransparencyGroup  "128" "SuiteName"</code></dd>
+	<br><strong>Example:</strong> <code>!SetTransparencyGroup "128" "SuiteName"</code></dd>
 
 	<dt id="DraggableGroup"><code>!DraggableGroup</code> <small>Parameters: <code><strong>Setting, Group</strong></code></small></dt>
 	<dd>Sets the <a href="/manual/settings/skin-sections#Draggable">Draggable</a> option for each config in the specified <a href="/manual/groups">group</a>.

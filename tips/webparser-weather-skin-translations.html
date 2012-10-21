@@ -5,7 +5,7 @@ title: 'WebParser: Weather Skin Translations'
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
 <p>One of the things that is often asked is "How can I translate the weather conditions text, returned by WebParser when creating or editing a weather skin, to my own language?"</p>
-<p>This actually pretty simple to do.  First find the measure or measures (often in a weather skin there will be 3 - 5 of them) which are returning the "weather conditions" text.  It will look something like this:</p>
+<p>This actually pretty simple to do. First find the measure or measures (often in a weather skin there will be 3 - 5 of them) which are returning the "weather conditions" text. It will look something like this:</p>
 {% highlight ini %}
 [MeasureCurrentWeatherConditions]
 Measure=Plugin
@@ -14,7 +14,7 @@ Url=[MeasureYahooWeather]
 StringIndex=34
 {% endhighlight %}
 
-<p><em>Note that a weather skin normally works by having a first, primary measure that retrieves all the information from the weather RSS feed in one shot.  Then there will be subsequent measures which will extract the individual bits of information from the large array of values returned by this first measure.  So you will often see something like:</em></p>
+<p><em>Note that a weather skin normally works by having a first, primary measure that retrieves all the information from the weather RSS feed in one shot. Then there will be subsequent measures which will extract the individual bits of information from the large array of values returned by this first measure. So you will often see something like:</em></p>
 
 {% highlight ini %}
 [MeasureYahooWeather]
@@ -22,7 +22,7 @@ Measure=Plugin
 Plugin=WebParser
 UpdateRate=600
 URL=http://weather.yahooapis.com/forecastrss?p=#Location#&u=#Unit#
-RegExp="(?siU)&lt;title&gt;.*- (.*)&lt;/title&gt;.*&lt;link&gt;(.*)/\*(.*)&lt;/link&gt;.*&lt;description&gt;(.*)&lt;/description&gt;.*&lt;language&gt;(.*)&lt;/language&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;.*&lt;yweather:location city="(.*)".*region="(.*)".*country="(.*)".*&lt;yweather:units temperature="(.*)".*distance="(.*)".* pressure="(.*)".*speed="(.*)".*&lt;yweather:wind chill="(.*)".*direction="(.*)".*speed="(.*)".*&lt;yweather:atmosphere humidity="(.*)".* visibility="(.*)".*pressure="(.*)".* rising="(.*)".*&lt;yweather:astronomy sunrise="(.*)".*sunset="(.*)".*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;width&gt;(.*)&lt;/width&gt;.*&lt;height&gt;(.*)&lt;/height&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;url&gt;(.*)&lt;/url&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;geo:lat&gt;(.*)&lt;/geo:lat&gt;.*&lt;geo:long&gt;(.*)&lt;/geo:long&gt;.*&lt;link&gt;(.*)/\*(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubDate&gt;.*&lt;yweather:condition  text="(.*)".*code="(.*)".*temp="(.*)".*date="(.*)".*&lt;img src="(.*)".*Current Conditions:&lt;/b&gt;&lt;br /&gt;(.*)&lt;BR /&gt;.*Forecast:&lt;/b&gt;&lt;BR /&gt;(.*)&lt;br /&gt;.*(.*)&lt;br /&gt;.*&lt;a href="(.*)/\*(.*)"&gt;.*provided by &lt;a href="(.*)" &gt;(.*)&lt;/a&gt;.*&lt;yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*&lt;yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*"
+RegExp="(?siU)&lt;title&gt;.*- (.*)&lt;/title&gt;.*&lt;link&gt;(.*)/\*(.*)&lt;/link&gt;.*&lt;description&gt;(.*)&lt;/description&gt;.*&lt;language&gt;(.*)&lt;/language&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;.*&lt;yweather:location city="(.*)".*region="(.*)".*country="(.*)".*&lt;yweather:units temperature="(.*)".*distance="(.*)".* pressure="(.*)".*speed="(.*)".*&lt;yweather:wind chill="(.*)".*direction="(.*)".*speed="(.*)".*&lt;yweather:atmosphere humidity="(.*)".* visibility="(.*)".*pressure="(.*)".* rising="(.*)".*&lt;yweather:astronomy sunrise="(.*)".*sunset="(.*)".*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;width&gt;(.*)&lt;/width&gt;.*&lt;height&gt;(.*)&lt;/height&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;url&gt;(.*)&lt;/url&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;geo:lat&gt;(.*)&lt;/geo:lat&gt;.*&lt;geo:long&gt;(.*)&lt;/geo:long&gt;.*&lt;link&gt;(.*)/\*(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubDate&gt;.*&lt;yweather:condition text="(.*)".*code="(.*)".*temp="(.*)".*date="(.*)".*&lt;img src="(.*)".*Current Conditions:&lt;/b&gt;&lt;br /&gt;(.*)&lt;BR /&gt;.*Forecast:&lt;/b&gt;&lt;BR /&gt;(.*)&lt;br /&gt;.*(.*)&lt;br /&gt;.*&lt;a href="(.*)/\*(.*)"&gt;.*provided by &lt;a href="(.*)" &gt;(.*)&lt;/a&gt;.*&lt;yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*&lt;yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*"
 {% endhighlight %}
 
 <p><em>Followed by something like this later on in the skin:</em></p>
@@ -35,12 +35,12 @@ StringIndex=34
 {% endhighlight %}
 
 <p><em>As you can see, the measure [MeasureCurrentWeatherConditions] is using as its "Url=" the result of [MeasureYahooWeather] (our first main RSS measure) and specifically asking for StringIndex 34, the index in the array of returned values which holds the first of the "Weather Condition" values, in this case the "Current Conditions".</em></p>
-<p>Since Weather.com / Yahoo Weather return these values in English, you may want to translate them to your native language.  To do so, add a line at the end of each of the measures that specifically return "Weather Conditions" text.  In our current example, after the line "StringIndex=34".</p>
+<p>Since Weather.com / Yahoo Weather return these values in English, you may want to translate them to your native language. To do so, add a line at the end of each of the measures that specifically return "Weather Conditions" text. In our current example, after the line "StringIndex=34".</p>
 <p><strong>Substitute="Cloudy":"Bewölkt","Partly Cloudy":"Teilweise Bewölkt"</strong></p>
 <p>And so on... Continuing with the pattern:</p>
 <p><strong>Substitute="Thing to replace":"Thing to replace with","Thing to replace":"Thing to replace with"</strong></p>
-<p>The punctuation is important.  "Thing to replace" and "Thing to replace with" are enclosed in quotes.  There is a colon between them.  Pairs are separated with commas.</p>
-<p>That is all there is to it.  In our example above, "Cloudy" will be replaced with "Bewölkt" when the text is later displayed in a meter.</p>
+<p>The punctuation is important. "Thing to replace" and "Thing to replace with" are enclosed in quotes. There is a colon between them. Pairs are separated with commas.</p>
+<p>That is all there is to it. In our example above, "Cloudy" will be replaced with "Bewölkt" when the text is later displayed in a meter.</p>
 <br>
 <p><em>What "Weather Conditions" text codes are returned by Weather.com / Yahoo Weather so I know what to translate?"</em></p>
 <p>Here is a list with the number of the icon and the text returned:</p>
@@ -75,12 +75,12 @@ StringIndex=34
 26 - Cloudy
 27 - Mostly Cloudy Night (the "Night" will not be included)
 28 - Mostly Cloudy
-29 - Partly Cloudy Night  (the "Night" will not be included)
+29 - Partly Cloudy Night (the "Night" will not be included)
 30 - Partly Cloudy
-31 - Clear Night  (the "Night" will not be included)
+31 - Clear Night (the "Night" will not be included)
 32 - Sunny
 33 - Fair
-33 - Mostly Clear Night  (the "Night" will not be included)
+33 - Mostly Clear Night (the "Night" will not be included)
 34 - Fair
 34 - Mostly Sunny
 35 - Thunderstorms
@@ -93,7 +93,7 @@ StringIndex=34
 42 - Heavy Snow
 43 - Windy/Snowy
 44 - Partly Cloudy Day
-45 - Scattered Showers Night  (the "Night" will not be included)
+45 - Scattered Showers Night (the "Night" will not be included)
 46 - Snowy Night
-47 - Scattered T-Storms Night  (the "Night" will not be included)
+47 - Scattered T-Storms Night (the "Night" will not be included)
 </pre>

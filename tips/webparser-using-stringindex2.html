@@ -166,9 +166,9 @@ Plugin=WebParser
 Url=http://feeds.gawker.com/lifehacker/full
 RegExp="(?siU)&lt;channel&gt;.*&lt;image&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;#Item##Item##Item#"
 {% endhighlight %}</p>
-<p>Notice we are doing something a bit different here.  Instead of fully parsing the site into many, many StringIndexes on the main measure, we are just getting the main title and link for the site into StringIndexes 1 and 2, then getting the <em>entire</em> contents of each &lt;item&gt; into StringIndexes 3, 4 and 5.</p>
+<p>Notice we are doing something a bit different here. Instead of fully parsing the site into many, many StringIndexes on the main measure, we are just getting the main title and link for the site into StringIndexes 1 and 2, then getting the <em>entire</em> contents of each &lt;item&gt; into StringIndexes 3, 4 and 5.</p>
 
-<p>Now let's skip the measures for the main title and link, they are done the normal way.  Let's move down to this measure:<br>
+<p>Now let's skip the measures for the main title and link, they are done the normal way. Let's move down to this measure:<br>
 {% highlight ini %}
 [MeasureItem1Title]
 Measure=Plugin
@@ -179,7 +179,7 @@ StringIndex=3
 StringIndex2=1
 Substitute=#Sub#
 {% endhighlight %}</p>
-<p>What we are doing is using the StringIndex2= feature to get the &lt;title&gt; of the first &lt;item&gt; from the feed.  We define <code>StringIndex=3</code>, which will return the entire first &lt;item&gt; from the main WebParser measure at the top.  Then, unlike a normal "child" measure in WebParser, we use a RegExp= to parse the information in that <code>StringIndex=3</code> and return the single bit of information we want from that &lt;item&gt; in a <code>StringIndex2=1</code> on this measure.</p>
+<p>What we are doing is using the StringIndex2= feature to get the &lt;title&gt; of the first &lt;item&gt; from the feed. We define <code>StringIndex=3</code>, which will return the entire first &lt;item&gt; from the main WebParser measure at the top. Then, unlike a normal "child" measure in WebParser, we use a RegExp= to parse the information in that <code>StringIndex=3</code> and return the single bit of information we want from that &lt;item&gt; in a <code>StringIndex2=1</code> on this measure.</p>
 
 <p>Remember, the way StringIndex2 works is that IF a WebParser measure is using an earlier WebParser measure as the Url= AND the measure has a RegExp= on it, then the RegExp= is applied to the data in StringIndex, and the result is returned in StringIndex2.</p>
 
@@ -211,6 +211,6 @@ Substitute=#Sub#
 {% endhighlight %}</p>
 <p>So now we are getting the information for the entire second &lt;item&gt; from the main measure, which is in <code>StringIndex=4</code> on that measure. Then we parse it with a RegExp= and the result is returned in the <code>StringIndex2=1</code> on this measure.</p>
 
-<p>Play with this a bit, and you might find that it can save a lot of extra parsing and creating huge RegExp= options to parse absolutely everything out of a site all at once up front.  Get the main site in big chunks, then deal with the chunks as if they were sites in and of themselves.</p>
+<p>Play with this a bit, and you might find that it can save a lot of extra parsing and creating huge RegExp= options to parse absolutely everything out of a site all at once up front. Get the main site in big chunks, then deal with the chunks as if they were sites in and of themselves.</p>
 
-<p><em>Hint:  This can be a nice way to get around the limit of 99 StringIndex numbers on any single WebParser measure...</em></p>
+<p><em>Hint: This can be a nice way to get around the limit of 99 StringIndex numbers on any single WebParser measure...</em></p>
