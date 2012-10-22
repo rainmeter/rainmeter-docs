@@ -63,10 +63,6 @@ MyOption=Hello, world!
 
 <p>All statements must be passed as a single parameter in the bang. Because single-quotes (<code>'</code>) and double-quotes (<code>"</code>) are both valid string containers in Lua, while only double-quotes are recognized in Rainmeter, single quotes are recommended when passing strings with !CommandMeasure.</p>
 
-<p><a href="/manual/options#Number">Formulas</a> are also valid in !CommandMeasure arguments. As in other options, the formula must be enclosed in parentheses (<code>()</code>). For reliability, the formula should also be enclosed in single-quotes and converted to a number using <a href="http://www.lua.org/manual/5.1/manual.html#pdf-tonumber">tonumber</a>.</p>
-
-	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "a = '(2+2)'; a = tonumber(a)"</code></p></blockquote>
-
 
 <h2 id="Initialize">Initialize</h2>
 
