@@ -1,6 +1,6 @@
 ---
 layout: manual
-title: 'Styles'
+title: 'MeterStyles'
 ---
 <!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
@@ -16,12 +16,12 @@ title: 'Styles'
 
 <ul>
 	<li><p><a href="/manual/meters/general-options/#Meter">Meter</a>. The meter type must be explicitly set in order to identify a section as a meter.</p></li>
-	<li><p><a href="/manual/meters/general-options/#MeterStyle">MeterStyle</a> itself. This means that meter styles cannot be inherited through more than one generation. In other words, meters cannot have "grandparents."</p></li>
+	<li><p><a href="/manual/meters/general-options/#MeterStyle">MeterStyle</a> itself. This means that MeterStyles cannot be inherited through more than one generation. In other words, meters cannot have "grandparents."</p></li>
 </ul>
 
-<h2 id="StyleSections">Style Sections</h2>
+<h2 id="StyleSections">MeterStyle Sections</h2>
 
-<p>Meters may inherit options from sections that are not meters. A skin section of any name<sup>1</sup> that does not have the <code>Meter</code> or <code>Measure</code> options is informally called a <strong>style</strong>. A style section is completely ignored by Rainmeter unless it is referenced in the <code>MeterStyle</code> option of a meter. Options that are not valid for the child meter are also simply ignored, which means that the parent and child can be different types.</p>
+<p>Meters may inherit options from sections that are not meters. A skin section of any name<sup>1</sup> that does not have the <code>Meter</code> or <code>Measure</code> treated as a MeterStyle. A MeterStyle section is completely ignored by Rainmeter unless it is referenced in the <code>MeterStyle</code> option of a meter. Options that are not valid for the child meter are also simply ignored, which means that the parent and child can be different types.</p>
 
 <p class="footnote">1. Aside from [Rainmeter] and [Variables], which are <a href="/manual/skins/#Format">reserved for special purposes</a>.</p>
 
