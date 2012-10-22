@@ -11,7 +11,7 @@ subtitle: 'Functions: ReadIni(inputfile)'
 <div class="noscroll">
 {% highlight lua %}
 function ReadIni(inputfile)
-	local file = assert(io.open(inputfile, 'r'), 'Unable to open '..inputfile)
+	local file = assert(io.open(inputfile, 'r'), 'Unable to open ' .. inputfile)
 	local tbl,section = {}
 	local num = 0
 	for line in file:lines() do
@@ -24,11 +24,11 @@ function ReadIni(inputfile)
 			elseif key and command and section then
 				tbl[section][string.match(string.lower(key), '^s*(%S*)%s*$')] = string.match(command, '^s*(.-)%s*$')
 			elseif #line > 0 and section and not key or command then
-				print(num..': Invalid property or value.')
+				print(num .. ': Invalid property or value.')
 			end
 		end
 	end
-	if not section then print('No sections found in '..inputfile) end
+	if not section then print('No sections found in ' .. inputfile) end
 	file:close()
 	return tbl
 end

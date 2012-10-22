@@ -59,7 +59,7 @@ MyOption=Hello, world!
 
 <p>Multiple statements may be separated by semicolons (<code>;</code>). All statements are global.</p>
 
-	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "a = b; MyFunction(c)"</code></p></blockquote>
+	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "a = b; print(SKIN:ParseFormula('2+2'))"</code></p></blockquote>
 
 <p>All statements must be passed as a single parameter in the bang. Because single-quotes (<code>'</code>) and double-quotes (<code>"</code>) are both valid string containers in Lua, while only double-quotes are recognized in Rainmeter, single quotes are recommended when passing strings with !CommandMeasure.</p>
 
@@ -93,8 +93,7 @@ end
 
 <ul>
 	<li><p><code>return</code><br>Provides <em>0</em> as the number value, and <em>''</em> (blank) as the string value. The same is true if no <code>return</code> is stated.</p></li>
-	<li><p><code>return 99</code><br>Provides <em>99</em> as the number value, and <em>'99'</em> as the string value.</p></li>
-	<li><p><code>return '99'</code><br>Provides <em>99</em> as the number value, and <em>'99'</em> as the string value.</p></li>
+	<li><p><code>return 99</code> and <code>return '99'</code><br>Provides <em>99</em> as the number value, and <em>'99'</em> as the string value.</p></li>
 	<li><p><code>return 'Ninety-Nine'</code><br>Provides <em>0</em> as the number value (because the string cannot be converted to a number), and <em>'Ninety-Nine'</em> as the string value.</p></li>
 </ul>
 
@@ -105,7 +104,7 @@ end
 
 <p>Lua errors are logged in the <a href="/manual/user-interface/about">About</a> console. The <a href="http://www.lua.org/manual/5.1/manual.html#pdf-print">print</a> function may also be used to write strings to the log. This can provide helpful feedback when writing or troubleshooting a script.</p>
 
-	<blockquote><p><code>print('The current value of MyVariable is: '..MyVariable)</code></p></blockquote>
+	<blockquote><p><code>print('The current value of MyVariable is: ' .. MyVariable)</code></p></blockquote>
 
 
 

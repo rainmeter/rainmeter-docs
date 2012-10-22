@@ -12,7 +12,7 @@ function Delim(line, delimiter) -- Separate String by single character delimiter
 
 	local tbl={}
 
-	for word in string.gmatch(line, '[^%'..delimiter..']+') do
+	for word in string.gmatch(line, '[^%' .. delimiter .. ']+') do
 		table.insert(tbl, word)
 	end
 
