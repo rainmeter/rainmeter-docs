@@ -5,6 +5,16 @@ title: 'Bangs'
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
 <p>Bangs are commands that control various aspects of skins and Rainmeter. They are executed when used with various <a href="/manual/options#Action">action options</a> in the skin.</p>
+
+<ul>
+<li><a href="#OS#">Operating System bangs</a></li>
+<li><a href="#Application#">Application bangs</a></li>
+<li><a href="#Options#">Option and Variable bangs</a></li>
+<li><a href="#Skin#">Skin bangs</a></li>
+<li><a href="#Meter#">Meter bangs</a></li>
+<li><a href="#Measure#">Measure bangs</a></li>
+</ul>
+
 <p>Bangs can also be used from the Windows command line as a parameter to the Rainmeter.exe executable. Example: <code>"C:\Program Files\Rainmeter\Rainmeter.exe" !RefreshApp</code>.</p>
 
 <p><strong>Note:</strong> Many bangs have a <code>Config</code> parameter. Unless otherwise specified, valid values are the <a href="/manual/skins#Config">config name</a> to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins. When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
@@ -35,18 +45,18 @@ title: 'Bangs'
 <dl>
 	<dt id="About"><code>!About</code> <small>Parameter: <code><em>TabName</em></code></small></dt>
 	<dd>
-		Opens the <a href="/manual/user-interface/about">About</a> dialog.
+		Opens the <a href="/manual/user-interface/about">About</a> interface.
 		<ul>
-		<li><code>TabName</code> (optional): Opens the dialog to the defined tab. Valid values are: <code>Log</code> (default), <code>Skins</code>, <code>Plugins</code>, and <code>Version</code>. The value <code>Measures</code> is deprecated and will open the <code>Skins</code> tab.</li>
+		<li><code>TabName</code> (optional): Opens the interface to the defined tab. Valid values are: <code>Log</code> (default), <code>Skins</code>, <code>Plugins</code>, and <code>Version</code>. The value <code>Measures</code> is deprecated and will open the <code>Skins</code> tab.</li>
 		</ul>
 		<br><strong>Example:</strong> <code>!About Skins</code>
 	</dd>
 
 	<dt id="Manage"><code>!Manage</code> <small>Parameter: <code><em>TabName</em></code></small></dt>
 	<dd>
-		Opens the <a href="/manual/user-interface/manage">Manage</a> dialog.
+		Opens the <a href="/manual/user-interface/manage">Manage</a> interface.
 		<ul>
-		<li><code>TabName</code> (optional): Opens the dialog to the defined tab. Valid values are: <code>Skins</code> (default), <code>Layouts</code>, and <code>Settings</code>.</li>
+		<li><code>TabName</code> (optional): Opens the interface to the defined tab. Valid values are: <code>Skins</code> (default), <code>Layouts</code>, and <code>Settings</code>.</li>
 		</ul>
 		<br><strong>Example:</strong> <code>!Manage Settings</code>
 	</dd>
