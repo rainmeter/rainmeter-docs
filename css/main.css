@@ -618,16 +618,26 @@ table.contents tr td:nth-child(2){
 .exampleprev.floatleft {
 	margin-right: 20px;
 	float: left;
+	clear: left;
 }
 
 .exampleprev.floatright {
 	margin-left: 20px;
 	float: right;
+	clear: right;
 }
 
 .exampleprev * {
 	margin: 0;
 	padding: 0;
+}
+
+.exampleprev img.thumbnail {
+	max-width: 200px;
+}
+
+.center {
+	text-align: center;
 }
 
 .next-to-float {
