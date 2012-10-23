@@ -45,25 +45,25 @@ title: 'Bangs'
 <dl>
 	<dt id="About"><code>!About</code> <small>Parameter: <code><em>TabName</em></code></small></dt>
 	<dd>
-		Opens the <a href="/manual/user-interface/about">About</a> interface.
+		Opens the <a href="/manual/user-interface/about">About</a> window.
 		<ul>
-		<li><code>TabName</code> (optional): Opens the interface to the defined tab. Valid values are: <code>Log</code> (default), <code>Skins</code>, <code>Plugins</code>, and <code>Version</code>. The value <code>Measures</code> is deprecated and will open the <code>Skins</code> tab.</li>
+		<li><code>TabName</code> (optional): Name of the tab to open. Valid values are: <code>Log</code> (default), <code>Skins</code>, <code>Plugins</code>, and <code>Version</code>. The value <code>Measures</code> is deprecated and will open the <code>Skins</code> tab.</li>
 		</ul>
 		<br><strong>Example:</strong> <code>!About Skins</code>
 	</dd>
 
 	<dt id="Manage"><code>!Manage</code> <small>Parameter: <code><em>TabName</em></code></small></dt>
 	<dd>
-		Opens the <a href="/manual/user-interface/manage">Manage</a> interface.
+		Opens the <a href="/manual/user-interface/manage">Manage</a> window.
 		<ul>
-		<li><code>TabName</code> (optional): Opens the interface to the defined tab. Valid values are: <code>Skins</code> (default), <code>Layouts</code>, and <code>Settings</code>.</li>
+		<li><code>TabName</code> (optional): Name of the tab to open. Valid values are: <code>Skins</code> (default), <code>Layouts</code>, and <code>Settings</code>.</li>
 		</ul>
 		<br><strong>Example:</strong> <code>!Manage Settings</code>
 	</dd>
 
 	<dt id="Log"><code>!Log</code> <small>Parameters: <code><strong>String</strong><em>, ErrorType</em></code></small></dt>
 	<dd>
-		Writes a message to the <a href="/manual/user-interface/about#LogPanel">log</a>.
+		Writes a message to the <a href="/manual/user-interface/about#LogTab">log</a>.
 		<ul>
 		<li><code>String</code> (required): The string to be written to the log. If the string contains spaces, enclose the string in quotes.</li>
 		<li><code>ErrorType</code> (optional): Specifies the type of error. Valid values are: <code>Notice</code> (default), <code>Error</code>, <code>Warning</code>, and <code>Debug</code>.</li>
@@ -78,7 +78,7 @@ title: 'Bangs'
 
 	<dt id="LoadLayout"><code>!LoadLayout</code> <small>Parameters: <code><strong>LayoutName</strong></code></small></dt>
 	<dd>
-		Loads the named <a href="/manual/user-interface/manage#LayoutsPanel">layout</a>.
+		Loads the named <a href="/manual/user-interface/manage#LayoutsTab">layout</a>.
 	</dd>
 
 	<dt id="RefreshApp"><code>!RefreshApp</code></dt>
