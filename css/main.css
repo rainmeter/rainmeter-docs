@@ -640,6 +640,10 @@ table.contents tr td:nth-child(2){
 	text-align: center;
 }
 
+.right {
+	text-align: right;
+}
+
 .next-to-float {
 	display: table;
 	margin: 0 0 10px;
