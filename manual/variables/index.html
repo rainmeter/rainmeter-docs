@@ -4,13 +4,13 @@ title: 'Variables'
 ---
 <!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>A <strong>variable</strong> is a string of text that is associated with a short, memorable name. Variable names can be used in most <a href="/manual/options">options</a> throughout the skin, in place of the associated text.</p>
+<p>A <b>variable</b> is a string of text that is associated with a short, memorable name. Variable names can be used in most <a href="/manual/options">options</a> throughout the skin, in place of the associated text.</p>
 
 <p>Variables are helpful when a certain string is repeated many times throughout the skin. By referencing the variable name instead of the full string, the amount of "redundant" code is reduced, as is the overall size of the skin. Variables also simplify the task of changing values. A variable string can be modified in a single location, and without recreating the entire option in which it is used.</p>
 
 <h2 id="Section">[Variables] section</h2>
 
-<p>Each skin may have a special <a href="/manual/skins#Format">section</a> called <strong>[Variables]</strong>. Each option in [Variables] defines a variable name. Unlike most other <a href="/manual/options">option names</a> in Rainmeter, variable names are not limited to a specific list. They can have any valid name, as long as they do not conflict with Rainmeter's <a href="#BuiltInVariables">built-in variables</a>.</p>
+<p>Each skin may have a special <a href="/manual/skins#Format">section</a> called <b>[Variables]</b>. Each option in [Variables] defines a variable name. Unlike most other <a href="/manual/options">option names</a> in Rainmeter, variable names are not limited to a specific list. They can have any valid name, as long as they do not conflict with Rainmeter's <a href="#BuiltInVariables">built-in variables</a>.</p>
 
 {% highlight ini %}
 [Variables]
@@ -54,7 +54,7 @@ Bar=http://www.#Foo#.net/
 
 <h2 id="DynamicVariables">Dynamic Variables</h2>
 
-<p>A variable whose value changes while the skin is active is called a <strong>dynamic variable</strong>. Dynamic variables allow a skin to store, retrieve and display ever-changing information without <a href="/manual/skins#Refresh">refreshing</a> the skin.</p>
+<p>A variable whose value changes while the skin is active is called a <b>dynamic variable</b>. Dynamic variables allow a skin to store, retrieve and display ever-changing information without <a href="/manual/skins#Refresh">refreshing</a> the skin.</p>
 
 <p>Dynamic variables can only be used in a <a href="/manual/measures">measure</a> or <a href="/manual/meters">meter</a> with the option <code>DynamicVariables=1</code>. In addition, there are some <a href="/manual/plugins">plugins</a> which do not support dynamic variables at this time. The following are sections where dynamic variables cannot be used:</p>
 
@@ -81,7 +81,7 @@ Bar=http://www.#Foo#.net/
 
 <h2 id="SectionVariables">Section Variables</h2>
 
-<p>Some <a href="/manual/measures">measure</a> and <a href="/manual/meters">meter</a> properties can also be referenced as <a href="#DynamicVariables">dynamic</a> variables by using the section name in brackets (<code>[]</code>), as in <code>[SectionName]</code>. These <strong>section variables</strong> can also be modified by certain parameters, as in <code>[SectionName:P1,P2]</code>.</p>
+<p>Some <a href="/manual/measures">measure</a> and <a href="/manual/meters">meter</a> properties can also be referenced as <a href="#DynamicVariables">dynamic</a> variables by using the section name in brackets (<code>[]</code>), as in <code>[SectionName]</code>. These <b>section variables</b> can also be modified by certain parameters, as in <code>[SectionName:P1,P2]</code>.</p>
 
 <p>For more, see <a href="/manual/variables/section-variables">Section Variables</a>.</p>
 

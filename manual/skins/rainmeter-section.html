@@ -45,7 +45,7 @@ title: '[Rainmeter] section'
 <dl>
 	<dt>General image options</dt>
 	<dd>
-		All <a href="/manual/meters/general-options/image-options">general image options</a> are valid for <code>Background</code> <strong>except</strong> <code>Tile</code>, which is handled with <code>BackgroundMode</code>.
+		All <a href="/manual/meters/general-options/image-options">general image options</a> are valid for <code>Background</code> <b>except</b> <code>Tile</code>, which is handled with <code>BackgroundMode</code>.
 	</dd>
 
 	<dt id="Background"><code>Background</code></dt>
@@ -69,7 +69,7 @@ title: '[Rainmeter] section'
 	<dt id="BackgroundMargins"><code>BackgroundMargins</code> <small>Default: <code>0,0,0,0</code></small></dt>
 	<dd>
 		If <code>BackgroundMode=3</code>, defines margins of the <code>Background</code> image that are not scaled. The parameters are <code>left,top,right,bottom</code>.
-		<br><br><strong>Example:</strong> <code>BackgroundMargins=0,10,0,20</code>.
+		<br><br><b>Example:</b> <code>BackgroundMargins=0,10,0,20</code>.
 		<br>10 pixels from the top and 20 pixels from the bottom of the image are not scaled.
 	</dd>
 </dl>
@@ -81,14 +81,14 @@ title: '[Rainmeter] section'
 	<dd>
 		<p>If not blank, adds an item to the skin's <a href="/manual/user-interface/context-menus">context menu</a> under "Custom skin actions". Up to 15 <em>ContextTitleN</em> options are allowed, with up to 30 characters per option. Additional characters are truncated with an ellipsis (<code>...</code>). If more than 3 <em>ContextTitleN</em> options are given, "Custom skin actions" becomes a submenu. If a <em>ContextTitleN</em> option is not valid, all subsequent <em>ContextTitleN</em> options are ignored. In addition, if more than 3 options are given, and the value of <em>ContextTitleN</em> includes only dashes (<code>-</code>), the item is displayed as a separator.</p>
 
-		<p><strong>Note:</strong> Variables in <code>ContextTitleN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened.</p>
+		<p><b>Note:</b> Variables in <code>ContextTitleN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened.</p>
 	</dd>
 
 	<dt id="ContextAction"><code>ContextAction</code>, <code>ContextAction2</code>, <code>ContextAction3</code>... </dt>
 	<dd>
 		<p><a href="/manual/options#Action">Action</a> triggered by clicking the corresponding <a href="#ContextTitle">ContextTitleN</a> item. <em>ContextActionN</em> is required for <em>ContextTitleN</em> to be valid, unless the item is a separator.</p>
 
-		<p><strong>Note:</strong> Variables in <code>ContextActionN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu item is clicked.</p>
+		<p><b>Note:</b> Variables in <code>ContextActionN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu item is clicked.</p>
 	</dd>
 </dl>
 
@@ -119,7 +119,7 @@ title: '[Rainmeter] section'
 		<li><code>Radius</code> : Radius of the corners of rounded rectangles (required for <code>Type=2</code>)</li>
 		</ul>
 	</dd>
-	<br><strong>Note:</strong> Aero Blur options can be dynamically controlled with several <a href="/manual/bangs#ShowHideToggleBlur">bangs</a>.
+	<br><b>Note:</b> Aero Blur options can be dynamically controlled with several <a href="/manual/bangs#ShowHideToggleBlur">bangs</a>.
 	<h3>Example</h3>
 {% highlight ini %}
 [Rainmeter]
@@ -145,18 +145,18 @@ LeftMouseUpAction=[!AddBlur "1,0,0,200,80"]
 	<dt id="Author"><code>Author</code></dt>
 	<dd>
 		The author of the skin.
-		<br><br><strong>Note:</strong> This option is deprecated. Author should be defined in the <a href="/manual/skins/metadata-section">[Metadata]</a> section of the skin.
+		<br><br><b>Note:</b> This option is deprecated. Author should be defined in the <a href="/manual/skins/metadata-section">[Metadata]</a> section of the skin.
 	</dd>
 
 	<dt id="AppVersion"><code>AppVersion</code></dt>
 	<dd>
 		Defines the minimum version of Rainmeter required to use the skin. The formula to calculate the value is: <code>major * 1000000 + minor1 * 1000 + minor2</code>.
-		<br><br><strong>Note:</strong> This option is deprecated. Use the version capabilities in <a href="/manual/publishing-skins">Skin Packager</a>.
+		<br><br><b>Note:</b> This option is deprecated. Use the version capabilities in <a href="/manual/publishing-skins">Skin Packager</a>.
 	</dd>
 
 	<dt id="LocalFont"><code>LocalFont</code>, <code>LocalFont2</code>, ...</dt>
 	<dd>
 		Loads the specified TTF font files for use with <a href="/manual/meters/string#FontFace">FontFace</a> in String meters.
-		<br><br><strong>Note:</strong> This option is deprecated. Use the <a href="/manual/skins/resources-folder#Fonts">@Resources\Fonts</a> folder instead.
+		<br><br><b>Note:</b> This option is deprecated. Use the <a href="/manual/skins/resources-folder#Fonts">@Resources\Fonts</a> folder instead.
 	</dd>
 </dl>	

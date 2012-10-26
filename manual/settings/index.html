@@ -4,9 +4,9 @@ title: 'Settings'
 ---
 <!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>This page details the files and folders in which Rainmeter-wide and skin-specific <strong>settings</strong> are saved. These include each skin's position, transparency, draggability, active or inactive state, "snapping" behavior, and other general options. Normally, the user does not need to edit these files directly. Most settings can be changed using the <a href="/manual/user-interface/manage">Manager</a>, the <a href="/manual/user-interface/context-menus">context menu</a>, or <a href="/manual/bangs">bangs</a>.</p>
+<p>This page details the files and folders in which Rainmeter-wide and skin-specific <b>settings</b> are saved. These include each skin's position, transparency, draggability, active or inactive state, "snapping" behavior, and other general options. Normally, the user does not need to edit these files directly. Most settings can be changed using the <a href="/manual/user-interface/manage">Manager</a>, the <a href="/manual/user-interface/context-menus">context menu</a>, or <a href="/manual/bangs">bangs</a>.</p>
 
-<p><strong>Note:</strong> Many <a href="/manual/skins">skins</a> include features that are described as "settings," "options," "preferences," etc. that allow the user to customize the appearance and behavior of the skin. However, these features are different from the "settings" described on this page. They are handled entirely by the skin, usually as <a href="/manual/variables">variables</a>, and are not managed by Rainmeter at all. Options such as fonts, colors, passwords, RSS feeds and "weather codes" are in this category. These are not "standard" features, and are not supported in any formal way.</p>
+<p><b>Note:</b> Many <a href="/manual/skins">skins</a> include features that are described as "settings," "options," "preferences," etc. that allow the user to customize the appearance and behavior of the skin. However, these features are different from the "settings" described on this page. They are handled entirely by the skin, usually as <a href="/manual/variables">variables</a>, and are not managed by Rainmeter at all. Options such as fonts, colors, passwords, RSS feeds and "weather codes" are in this category. These are not "standard" features, and are not supported in any formal way.</p>
 
 
 
@@ -27,7 +27,7 @@ title: 'Settings'
 
 <h2 id="RainmeterIni">Rainmeter.ini</h2>
 
-<p>Most settings are saved in a file called <strong>Rainmeter.ini</strong>. The file is written as a standard <a href="http://en.wikipedia.org/wiki/INI_file">INI file</a>, which uses the following<sup>1</sup> format:</p>
+<p>Most settings are saved in a file called <b>Rainmeter.ini</b>. The file is written as a standard <a href="http://en.wikipedia.org/wiki/INI_file">INI file</a>, which uses the following<sup>1</sup> format:</p>
 
 {% highlight ini %}
 [Section]
@@ -67,7 +67,7 @@ Key=Value
 
 <h3 id="Layouts">Layouts</h3>
 
-<p>A <strong>layout</strong> (formerly <strong>theme</strong>) is a saved "session" or "state". The user can create a layout using the <a href="/manual/user-interface/manage#LayoutsTab">Manager</a>, which copies the settings in <a href="#RainmeterIni">Rainmeter.ini</a> to the layout file. These settings can later be restored using the Manager or the <a href="/manual/bangs#LoadLayout">!LoadLayout bang</a>. Layouts may also be <a href="/manual/installing-skins">installed with 3rd-party skins</a>.</p>
+<p>A <b>layout</b> (formerly <b>theme</b>) is a saved "session" or "state". The user can create a layout using the <a href="/manual/user-interface/manage#LayoutsTab">Manager</a>, which copies the settings in <a href="#RainmeterIni">Rainmeter.ini</a> to the layout file. These settings can later be restored using the Manager or the <a href="/manual/bangs#LoadLayout">!LoadLayout bang</a>. Layouts may also be <a href="/manual/installing-skins">installed with 3rd-party skins</a>.</p>
 
 <p>Global options under [Rainmeter] are not replaced when a layout is loaded, preserving local settings such as:</p>
 <ul>

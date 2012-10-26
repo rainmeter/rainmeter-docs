@@ -20,20 +20,20 @@ title: 'WebParser Tutorial'
 <code>RegExp="(?siU)Search1(.*)Search2.*"</code>
 <p>So enclosed in quotes, you have:</p>
 <ul>
-	<li><strong>(?siU)</strong> - Which is an "options modifier" for the regular expression, telling it how you want it to behave.</li>
-	<li><strong>Search1</strong> - Which will be some text you will search on to get you right up to the data you want.</li>
-	<li><strong>(.*)</strong> - The data you want returned in the array to use in your skin. The parentheses tell it to "capture" everything between "Search1" and "Search2". In our examples we are using the string ".*" in our captures, which simply means "." (any character) and "*" (zero or more of them).</li>
-	<li><strong>Search2</strong> - Use this to tell RegExp what to look for to know it's time to "stop" capturing information.</li>
-	<li><strong> .*</strong> - This will contain data from the website which is between this set of search/return parameters and the next one. It will not be returned as you did not enclose the .* in parentheses, and will not use a StringIndex number. This is used to "skip" to the next search you want to do.</li>
+	<li><b>(?siU)</b> - Which is an "options modifier" for the regular expression, telling it how you want it to behave.</li>
+	<li><b>Search1</b> - Which will be some text you will search on to get you right up to the data you want.</li>
+	<li><b>(.*)</b> - The data you want returned in the array to use in your skin. The parentheses tell it to "capture" everything between "Search1" and "Search2". In our examples we are using the string ".*" in our captures, which simply means "." (any character) and "*" (zero or more of them).</li>
+	<li><b>Search2</b> - Use this to tell RegExp what to look for to know it's time to "stop" capturing information.</li>
+	<li><b> .*</b> - This will contain data from the website which is between this set of search/return parameters and the next one. It will not be returned as you did not enclose the .* in parentheses, and will not use a StringIndex number. This is used to "skip" to the next search you want to do.</li>
 </ul>
 
-<p><strong>What is this ?siU stuff?</strong></p>
+<p><b>What is this ?siU stuff?</b></p>
 <p>The "?s" tells RegExp to ignore "line breaks" when doing a search. That way if you search for "Every good boy deserves favor" and it is split on two lines in the output, it will still match.</p>
 <p>The "i" tells the search to be "case insensitive". Matches will work on both upper and lower case.</p>
 <p>The "U" tells RegExp to be "ungreedy", meaning that it will return only the first instance of the match on the search string.</p>
 <p>These modifiers are not required, but you will find that they are generally the right way to go when using WebParser in Rainmeter, and you will want to use "(?siU)" to start your RegExp most of the time.</p>
 
-<p><strong>A quick example:</strong></p>
+<p><b>A quick example:</b></p>
 <p>You have a web page you want to get the "TITLE" tag from. Here is the RegExp you would use:</p>
 <p><code>RegExp="(?siU)&lt;TITLE&gt;(.*)&lt;/TITLE&gt;"</code></p>
 <p>So we have told RegExp to search for the text "&lt;TITLE&gt;" then return everything after it in StringIndex 1 (the first capture) of the measure until it sees "&lt;/TITLE&gt;", where it will stop.</p>
@@ -58,7 +58,7 @@ title: 'WebParser Tutorial'
 </div>
 
 <h3>Let's Build It</h3>
-<p>The first thing you want to do is to go to the web page in your browser, right-click, choose "View Page Source", copy everything, paste it into a text editor and save the output/source of the web page to a text file. (Save it as something like Webpage<strong>.txt</strong> and not .html, so you can easily use a text editor to work with it in a bit.)</p>
+<p>The first thing you want to do is to go to the web page in your browser, right-click, choose "View Page Source", copy everything, paste it into a text editor and save the output/source of the web page to a text file. (Save it as something like Webpage<b>.txt</b> and not .html, so you can easily use a text editor to work with it in a bit.)</p>
 
 <p>Let's start by looking at the first bit of information we want to retrieve.</p>
 <div class="exampleprev">
@@ -83,7 +83,7 @@ title: 'WebParser Tutorial'
 </p>
 
 <p>So let's start building our measures, and a sample meter showing the output.</p>
-<p><strong>First, we build the "parent" measure, containing the StringIndexes:</strong><br>
+<p><b>First, we build the "parent" measure, containing the StringIndexes:</b><br>
 {% highlight ini %}
 [MeasureWebSite]
 Measure=Plugin
@@ -94,9 +94,9 @@ RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddre
 {% endhighlight %}
 
 <p>What we are telling WebParser is:</p>
-<p><strong>UpdateRate=1800</strong> - We want to check the website at a rate 1800 times the value in the "Update=" parameter in the "Rainmeter" section. As this defaults to "1000" or once every 1000 milliseconds (1 second) we will be running WebParser every 1800 seconds or 30 minutes. This is plenty often, you could even check every hour or more as your IP information doesn't change much and you don't want to "spam" the website with requests. You may well find yourself blocked...</p>
-<p><strong>Url="http://www.geobytes.com/IpLocator.htm?GetLocation"</strong> - The URL to the website. It can be set as a variable in the "VARIABLES" section to make it easier to find and change if you want.>/p>
-<p><strong>RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value="(.*)"&gt;"</strong> - Ah, the meat and potatoes...</p>
+<p><b>UpdateRate=1800</b> - We want to check the website at a rate 1800 times the value in the "Update=" parameter in the "Rainmeter" section. As this defaults to "1000" or once every 1000 milliseconds (1 second) we will be running WebParser every 1800 seconds or 30 minutes. This is plenty often, you could even check every hour or more as your IP information doesn't change much and you don't want to "spam" the website with requests. You may well find yourself blocked...</p>
+<p><b>Url="http://www.geobytes.com/IpLocator.htm?GetLocation"</b> - The URL to the website. It can be set as a variable in the "VARIABLES" section to make it easier to find and change if you want.>/p>
+<p><b>RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value="(.*)"&gt;"</b> - Ah, the meat and potatoes...</p>
 <p>You are telling RegExp to:</p>
 <p>Use the (?siU) command parameters, (described earlier) search for IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value=" and capture to a StringIndex everything until it sees "&gt; where it will stop.</p>
 <p>So if we look again at our output in Webpage.txt </p>
@@ -113,7 +113,7 @@ RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddre
 </pre><br>
 <p>You can see that we will return 72.205.26.142 in StringIndex 1</p>
 
-<p><strong>Second, we build a "child" measure, to grab that information from StringIndex 1 of the "parent" measure.</strong><br>
+<p><b>Second, we build a "child" measure, to grab that information from StringIndex 1 of the "parent" measure.</b><br>
 {% highlight ini %}
 [MeasureIPAddress]
 Measure=Plugin
@@ -122,7 +122,7 @@ URL=[MeasureWebSite]
 StringIndex=1
 {% endhighlight %}
 
-<p><strong>Now let's display the value of our first child measure in a meter:</strong></p>
+<p><b>Now let's display the value of our first child measure in a meter:</b></p>
 {% highlight ini %}
 [MeterIPAddress]
 MeasureName=MeasureIPAddress
@@ -147,7 +147,7 @@ StringStyle=Bold
 Antialias=1
 {% endhighlight %}
 
-<p><strong>Now let's get the next bit of information we want from the website.</strong> (Remember, the RegExp reads the website in order from top to bottom, so you need to use the correct order in the "RegExp=" statement. You can display the information in any order you want on your skin however.)</p>
+<p><b>Now let's get the next bit of information we want from the website.</b> (Remember, the RegExp reads the website in order from top to bottom, so you need to use the correct order in the "RegExp=" statement. You can display the information in any order you want on your skin however.)</p>
 <p>The next bit in the Webpage.txt file is the "Country Code".</p>
 <pre>
 &lt;tr&gt;
@@ -162,7 +162,7 @@ RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddre
 <p>So after the first pair of start/stop searches, we are adding:</p>
 <code>.*ro-no_bots_pls12" value="(.*)" size="20".*</code>
 <p>This will tell RegExp to skip everything until it finds ro-no_bots_pls12" value=" and then return everything until it sees " size="20" and put it in StringIndex 2. The result in my example will be "US".</p>
-<p><strong>We will need another child measure to retrieve the data to display in our next meter:</strong></p>
+<p><b>We will need another child measure to retrieve the data to display in our next meter:</b></p>
 {% highlight ini %}
 [MeasureCountryCode]
 Measure=Plugin
@@ -171,7 +171,7 @@ URL=[MeasureWebSite]
 StringIndex=2
 {% endhighlight %}
 
-<p><strong>And another meter to display the information:</strong></p>
+<p><b>And another meter to display the information:</b></p>
 {% highlight ini %}
 [MeterCountryCode]
 MeasureName=MeasureCountryCode
@@ -184,7 +184,7 @@ Text=Country Code: %1
 <p>Ok, so you just carry on like that until you have retrieved all the data you want from the website. I won't lay it all out here, but you can go through the sample WebParserGuide.ini file installed by the .rmskin.</p>
 
 <h3>Using "DEBUG" to make things easier</h3>
-<p>Using The "<strong>Debug=1</strong>" statement in WebParser will cause your skin to output the index numbers and associated information into Rainmeter's log. Turn this on by putting "Debug=1" on your Measure:</p>
+<p>Using The "<b>Debug=1</b>" statement in WebParser will cause your skin to output the index numbers and associated information into Rainmeter's log. Turn this on by putting "Debug=1" on your Measure:</p>
 {% highlight ini %}
 [MeasureWebsite]
 Measure=Plugin
@@ -212,8 +212,8 @@ DBUG (04:38:07.000) WebParser.dll: [MeasureWebsite] (Index 11) North America
 <p>Which will show every index / data combination retrieved by your measure. Very useful for figuring out why your "RegExp=" statement isn't working right.</p>
 <p>To turn the debugging off, remove the "Debug=1" statement from the measure, uncheck the boxes in Manage/Settings and delete the log file. Refresh your skin.</p>
 <br>
-<p><strong>I hope this guide will help you get started with WebParser. It is one of the most powerful features of Rainmeter.</p>
-<p>I do recommend that you:</strong></p>
+<p><b>I hope this guide will help you get started with WebParser. It is one of the most powerful features of Rainmeter.</p>
+<p>I do recommend that you:</b></p>
 <ul>
 	<li>Read the Rainmeter Manual entry for WebParser <a href="/manual/plugins/webparser" target="_blank">HERE</a></li>
 	<li>Do the excellent RSS Reader Skin Tutorial by Alex2539 <a href="http://rainmeter.net/cms/Rainmeter101-Tutorial4" target="_blank">HERE</a></li>

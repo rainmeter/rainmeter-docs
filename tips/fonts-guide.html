@@ -6,21 +6,21 @@ title: 'Fonts Guide'
 
 <p>Fonts are used in <a href="/manual/meters/string">String</a> meters with the <a href="/manual/meters/string#FontFace">FontFace</a> option.</p>
 
-<p>The font must be a <strong>.ttf (TrueType)</strong> font, and not .otf (OpenType). If you have a .otf font, it is possible, but not certain, that the font can be converted using <a href="http://onlinefontconverter.com/">FontConverter.com</a> online. A reasonably high percentage of .otf fonts can successfully be converted and used.</p>
+<p>The font must be a <b>.ttf (TrueType)</b> font, and not .otf (OpenType). If you have a .otf font, it is possible, but not certain, that the font can be converted using <a href="http://onlinefontconverter.com/">FontConverter.com</a> online. A reasonably high percentage of .otf fonts can successfully be converted and used.</p>
 
 <h3>Using Fonts</h3>
-<p>Fonts are used by specifying the <strong>family name</strong> of the font in the <code>FontFace</code> option in the string meter. (e.g. <code>FontFace=Trebuchet MS</code>). This name can be found by double clicking the font .ttf file and at the very top in the Windows font viewer see the <strong>Font Name:</strong> at the top left.</p>
+<p>Fonts are used by specifying the <b>family name</b> of the font in the <code>FontFace</code> option in the string meter. (e.g. <code>FontFace=Trebuchet MS</code>). This name can be found by double clicking the font .ttf file and at the very top in the Windows font viewer see the <b>Font Name:</b> at the top left.</p>
 
 <p>Many fonts have subfamily names that are appended to the family name in Windows font viewer. The font name may be <em>MyFont Bold</em> or <em>MyFont BoldItalic</em>. Generally, you should not use these subfamily endings when identifying the font in Rainmeter with <code>FontFace=<em>MyFont</em></code>. This can involve a bit of trial and error, but in this example <em>MyFont</em> is the mostly likely correct family name.</p>
 
 <p>Most, but not all fonts can be modified with <a href="/manual/meters/string">string</a> meter options. (e.g. <code>StringStyle</code>, <code>StringEffect</code>) Alternatively, some fonts, particularly some of the ones with subfamily endings as above, will REQUIRE that the matching <a href="/manual/meters/string">StringStyle</a> option be added to the string meter. If there are problems using a font, try adding or removing these option on the string meter.</p>
 
 <h3>Installed Vs. Uninstalled Fonts</h3>
-<p>Fonts installed in Windows (they will be in the <strong>Windows\Fonts</strong> folder) may be used by simply specifying the family name in the <code>FontFace</code> option of a string meter as described above.</p>
+<p>Fonts installed in Windows (they will be in the <b>Windows\Fonts</b> folder) may be used by simply specifying the family name in the <code>FontFace</code> option of a string meter as described above.</p>
 
 <p>3rd-party font files not installed in Windows can be used by creating a folder <a href="/manual/skins/resources-folder#Fonts">@Resources\Fonts</a> in the root level folder of the skin, and putting the font .ttf files there. Rainmeter will automatically load any fonts found in that folder, and they will be available to use with the family name of the font as if they were installed in Windows.</p>
 
-<p><strong>Note:</strong> It is recommended that fonts <strong>not</strong> be distributed in a .rmskin set to automatically install in a user's Windows system. There is generally no need to do this, and it makes it more difficult for users who are running Rainmeter as a "portable" application to use the skin. The fonts should be put in the @Resources\Fonts folder and they will be available and used when the .rmskin is distributed.</p>
+<p><b>Note:</b> It is recommended that fonts <b>not</b> be distributed in a .rmskin set to automatically install in a user's Windows system. There is generally no need to do this, and it makes it more difficult for users who are running Rainmeter as a "portable" application to use the skin. The fonts should be put in the @Resources\Fonts folder and they will be available and used when the .rmskin is distributed.</p>
 
 <h3>Troubleshooting</h3>
 <p>There are two ways Rainmeter will react if there is a problem with a font or the way it has been used in a string meter.</p>

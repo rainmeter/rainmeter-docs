@@ -4,9 +4,9 @@ title: 'Lua Scripting'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Rainmeter has the ability to load and execute scripts in <strong>Lua</strong>, a <a href="http://en.wikipedia.org/wiki/Lua_(programming_language)">functional programming language</a>. Rainmeter includes the <a href="http://www.lua.org/manual/5.1/manual.html#5">Lua 5.1 standard libraries</a>, which encompass a variety of powerful features.</p>
+<p>Rainmeter has the ability to load and execute scripts in <b>Lua</b>, a <a href="http://en.wikipedia.org/wiki/Lua_(programming_language)">functional programming language</a>. Rainmeter includes the <a href="http://www.lua.org/manual/5.1/manual.html#5">Lua 5.1 standard libraries</a>, which encompass a variety of powerful features.</p>
 
-<p>A <strong>script</strong> refers to a set of Lua functions that is associated with a <a href="/manual/measures/script">script measure</a>. These functions may be executed when the skin <a href="#Initialize">loads</a>, when it <a href="#Update">updates</a>, or <a href="#CommandMeasure">on command</a>.</p>
+<p>A <b>script</b> refers to a set of Lua functions that is associated with a <a href="/manual/measures/script">script measure</a>. These functions may be executed when the skin <a href="#Initialize">loads</a>, when it <a href="#Update">updates</a>, or <a href="#CommandMeasure">on command</a>.</p>
 
 <p>This page details the Rainmeter-specific modifications and new functions that have been added to Rainmeter's built-in Lua environment. More documentation for Lua itself is available at:</p>
 
@@ -24,7 +24,7 @@ title: 'Lua Scripting'
 
 <p>The <a href="/manual/measures/script">script measure</a> is used to load a Lua script from a file and interface with the script. The <a href="/manual/measures/script#ScriptFile">script file</a> must be a text file, and typically has the extension <code>.lua</code>.</p>
 
-<p>Much like <a href="/manual/measures/plugin">plugin measures</a>, each script measure creates a separate <strong>instance</strong> of its script. This means that a skin can have any number of scripts loaded simultaneously&mdash;even from the same script file. (The order in which scripts are executed is determined by the <a href="/manual/measures/#Order">measure order</a>.) "Global" variables are not shared between instances.</p>
+<p>Much like <a href="/manual/measures/plugin">plugin measures</a>, each script measure creates a separate <b>instance</b> of its script. This means that a skin can have any number of scripts loaded simultaneously&mdash;even from the same script file. (The order in which scripts are executed is determined by the <a href="/manual/measures/#Order">measure order</a>.) "Global" variables are not shared between instances.</p>
 
 {% highlight ini %}
 [MeasureName]
@@ -66,7 +66,7 @@ MyOption=Hello, world!
 
 <h2 id="Initialize">Initialize</h2>
 
-<p>If the <strong>Initialize</strong> function is defined in any script, the function is called one time (without parameters) when the skin is activated or <a href="/manual/skins/#Refresh">refreshed</a>. This happens even if the script measure is <a href="/manual/measures/general-options/#Disabled">disabled</a>. If the script file is changed by a <a href="/manual/bangs#SetOption">!SetOption</a> bang, the new script's Initialize function is called as well.</p>
+<p>If the <b>Initialize</b> function is defined in any script, the function is called one time (without parameters) when the skin is activated or <a href="/manual/skins/#Refresh">refreshed</a>. This happens even if the script measure is <a href="/manual/measures/general-options/#Disabled">disabled</a>. If the script file is changed by a <a href="/manual/bangs#SetOption">!SetOption</a> bang, the new script's Initialize function is called as well.</p>
 
 {% highlight lua %}
 function Initialize()
@@ -80,7 +80,7 @@ end
 
 <h2 id="Update">Update</h2>
 
-<p>If the <strong>Update</strong> function is defined in any script, the function is called (without parameters) whenever the script measure <a href="/manual/skins/#Update">updates</a>. The script measure responds normally to the <a href="/manual/measures/general-options/#Disabled">Disabled</a> option, the <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> option, and all <a href="/manual/bangs#Measure">measure bangs</a>.</p>
+<p>If the <b>Update</b> function is defined in any script, the function is called (without parameters) whenever the script measure <a href="/manual/skins/#Update">updates</a>. The script measure responds normally to the <a href="/manual/measures/general-options/#Disabled">Disabled</a> option, the <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> option, and all <a href="/manual/bangs#Measure">measure bangs</a>.</p>
 
 {% highlight lua %}
 function Update()
@@ -89,7 +89,7 @@ function Update()
 end
 {% endhighlight %}
 
-<p>The Update function's <strong>return value</strong> determines what <a href="/manual/measures#Values">values</a> are provided by the script measure. Strings and numbers in Lua are analogous to string values and number values in Rainmeter measures. Examples:</p>
+<p>The Update function's <b>return value</b> determines what <a href="/manual/measures#Values">values</a> are provided by the script measure. Strings and numbers in Lua are analogous to string values and number values in Rainmeter measures. Examples:</p>
 
 <ul>
 	<li><p><code>return</code><br>Provides <em>0</em> as the number value, and <em>''</em> (blank) as the string value. The same is true if no <code>return</code> is stated.</p></li>
@@ -97,7 +97,7 @@ end
 	<li><p><code>return 'Ninety-Nine'</code><br>Provides <em>0</em> as the number value (because the string cannot be converted to a number), and <em>'Ninety-Nine'</em> as the string value.</p></li>
 </ul>
 
-<p>The values provided by the script measure can be <a href="/manual/measures/#Usage">used in the same way as other measure values</a>. (<strong>Note:</strong> the values only update when the measure itself updates. Calling <code>Update()</code> within Lua does not update the measure values.)</p>
+<p>The values provided by the script measure can be <a href="/manual/measures/#Usage">used in the same way as other measure values</a>. (<b>Note:</b> the values only update when the measure itself updates. Calling <code>Update()</code> within Lua does not update the measure values.)</p>
 
 
 <h2 id="Log">Log</h2>
@@ -110,7 +110,7 @@ end
 
 <h2 id="Functions">Functions</h2>
 
-<p>Lua functions are provided to identify a <a href="/manual/meters">meter</a>, a <a href="/manual/measures">measure</a>, or the current <a href="/manual/skins">skin</a> as a Lua <strong>object</strong>. Additional functions are provided for manipulating each type of object in specific ways.</p>
+<p>Lua functions are provided to identify a <a href="/manual/meters">meter</a>, a <a href="/manual/measures">measure</a>, or the current <a href="/manual/skins">skin</a> as a Lua <b>object</b>. Additional functions are provided for manipulating each type of object in specific ways.</p>
 
 
 
@@ -119,57 +119,57 @@ end
 <p>The <code>SKIN</code> object is created automatically.</p>
 
 <dl>
-	<dt id="GetMeasure"><code>GetMeasure</code> <small>Parameter: <code><strong>MeasureName</strong></code></small></dt>
+	<dt id="GetMeasure"><code>GetMeasure</code> <small>Parameter: <code><b>MeasureName</b></code></small></dt>
 	<dd>
 		<p>Creates an object for the named measure. Returns <code>nil</code> if the measure is not found.</p>
-		<p><strong>Example:</strong> <code>MyMeasure = SKIN:GetMeasure('MeasureName')</code></p>
+		<p><b>Example:</b> <code>MyMeasure = SKIN:GetMeasure('MeasureName')</code></p>
 	</dd>
 
-	<dt id="GetMeter"><code>GetMeter</code> <small>Parameter: <code><strong>MeterName</strong></code></small></dt>
+	<dt id="GetMeter"><code>GetMeter</code> <small>Parameter: <code><b>MeterName</b></code></small></dt>
 	<dd>
 		<p>Creates an object for the named meter. Returns <code>nil</code> if the meter is not found.</p>
-		<p><strong>Example:</strong> <code>MyMeter = SKIN:GetMeter('MeterName')</code></p>
+		<p><b>Example:</b> <code>MyMeter = SKIN:GetMeter('MeterName')</code></p>
 	</dd>
 
-	<dt id="GetVariable"><code>GetVariable</code> <small>Parameter: <code><strong>MeterName</strong><em>, Default</em></code></small></dt>
+	<dt id="GetVariable"><code>GetVariable</code> <small>Parameter: <code><b>MeterName</b><em>, Default</em></code></small></dt>
 	<dd>
 		<p>Returns the current value of the named variable as a string. If the variable does not exist, returns the given default value, or <code>nil</code> if no default is given.</p>
-		<p><strong>Example:</strong> <code>MyVariable = SKIN:GetVariable('VariableName', 'n/a')</code></p>
+		<p><b>Example:</b> <code>MyVariable = SKIN:GetVariable('VariableName', 'n/a')</code></p>
 	</dd>
 
-	<dt id="Bang"><code>Bang</code> <small>Parameters: <code><strong>Bang</strong></code> or <code><strong>BangName</strong><em>, BangArg1, BangArg2, BangArgN</em></code></small></dt>
+	<dt id="Bang"><code>Bang</code> <small>Parameters: <code><b>Bang</b></code> or <code><b>BangName</b><em>, BangArg1, BangArg2, BangArgN</em></code></small></dt>
 	<dd>
 		<p>Executes a <a href="/manual/bangs">bang</a>. The bang can be constructed in one of two ways:</p>
 		<ol>
 			<li>
 				<p>The entire bang as a single string.</p>
-				<p><strong>Example:</strong> <code>SKIN:Bang('!SetOption "MyMeter" "Text" "Hello, world!"')</code></p>
+				<p><b>Example:</b> <code>SKIN:Bang('!SetOption "MyMeter" "Text" "Hello, world!"')</code></p>
 				<p>Multiple bangs are valid using this method.</p>
-				<p><strong>Example:</strong> <code>SKIN:Bang('[!UpdateMeter "MyMeter"][!Redraw]')</code></p>
+				<p><b>Example:</b> <code>SKIN:Bang('[!UpdateMeter "MyMeter"][!Redraw]')</code></p>
 			</li>
 			<li>
 				<p>Each bang parameter as a separate parameter in the function.</p>
-				<p><strong>Example:</strong> <code>SKIN:Bang('!SetOption', 'MyMeter', 'Text', 'Hello, world!')</code></p>
+				<p><b>Example:</b> <code>SKIN:Bang('!SetOption', 'MyMeter', 'Text', 'Hello, world!')</code></p>
 			</li>
 		</ol>
 	</dd>
 
-	<dt id="MakePathAbsolute"><code>MakePathAbsolute</code> <small>Parameter: <code><strong>File/Folder</strong></code></small></dt>
+	<dt id="MakePathAbsolute"><code>MakePathAbsolute</code> <small>Parameter: <code><b>File/Folder</b></code></small></dt>
 	<dd>
 		<p>Converts a relative filepath into an absolute filepath, in the same manner as a <a href="/manual/options#Path">path option</a>. </p>
-		<p><strong>Example:</strong> <code>MyPath = SKIN:MakePathAbsolute('MyImage.png')</code></p>
+		<p><b>Example:</b> <code>MyPath = SKIN:MakePathAbsolute('MyImage.png')</code></p>
 	</dd>
 
-	<dt id="ReplaceVariables"><code>ReplaceVariables</code> <small>Parameter: <code><strong>String</strong></code></small></dt>
+	<dt id="ReplaceVariables"><code>ReplaceVariables</code> <small>Parameter: <code><b>String</b></code></small></dt>
 	<dd>
 		<p>Returns the given string, with all valid <a href="/manual/variables">variable values</a> properly replaced. <a href="/manual/variables/section-variables">Section variables</a> are valid.</p>
-		<p><strong>Example:</strong> <code>MyString = SKIN:ReplaceVariables('The value of MyVariable is #MyVariable#.')</code></p>
+		<p><b>Example:</b> <code>MyString = SKIN:ReplaceVariables('The value of MyVariable is #MyVariable#.')</code></p>
 	</dd>
 
-	<dt id="ParseFormula"><code>ParseFormula</code> <small>Parameter: <code><strong>FormulaString</strong></code></small></dt>
+	<dt id="ParseFormula"><code>ParseFormula</code> <small>Parameter: <code><b>FormulaString</b></code></small></dt>
 	<dd>
 		<p>If the given string is a valid <a href="/manual/options#Number">formula</a>, evaluates the formula and returns the result as the number. Otherwise, returns <code>nil</code>.</p>
-		<p><strong>Example:</strong> <code>MyNumber = SKIN:ParseFormula('2+2')</code></p>
+		<p><b>Example:</b> <code>MyNumber = SKIN:ParseFormula('2+2')</code></p>
 	</dd>
 </dl>
 
@@ -178,73 +178,73 @@ end
 <h3 id="MeasureObject">Measure object</h3>
 
 <p>A <code>Measure</code> object is created using <a href="#GetMeasure">GetMeasure</a>. It is linked to a specific <a href="/manual/measures">measure</a> in the skin.</p>
-<p><strong>Example:</strong> <code>MyMeasure = SKIN:GetMeasure('MeasureName')</code></p>
+<p><b>Example:</b> <code>MyMeasure = SKIN:GetMeasure('MeasureName')</code></p>
 
 <dl>
 	<dt id="GetValue"><code>GetValue</code></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/measures#Values">number value</a> of the measure.</p>
-		<p><strong>Example:</strong> <code>MyMeasureValue = MyMeasure:GetValue()</code></p>
+		<p><b>Example:</b> <code>MyMeasureValue = MyMeasure:GetValue()</code></p>
 	</dd>
 
 	<dt id="GetStringValue"><code>GetStringValue</code></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/measures#Values">string value</a> of the measure.</p>
-		<p><strong>Example:</strong> <code>MyMeasureValue = MyMeasure:GetStringValue()</code></p>
+		<p><b>Example:</b> <code>MyMeasureValue = MyMeasure:GetStringValue()</code></p>
 	</dd>
 
-	<dt id="GetOption"><code>GetOption</code> <small>Parameters: <code><strong>OptionName</strong><em>, Default</em></code></small></dt>
+	<dt id="GetOption"><code>GetOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
 	<dd>
 		<p>Returns the current value of the named option as a string. If the option does not exist, returns the given default value, or <code>''</code> if no default is given.</p>
-		<p><strong>Example:</strong> <code>MyGroup = MyMeasure:GetOption('Group', 'None')</code></p>
+		<p><b>Example:</b> <code>MyGroup = MyMeasure:GetOption('Group', 'None')</code></p>
 	</dd>
 
-	<dt id="GetNumberOption"><code>GetNumberOption</code> <small>Parameters: <code><strong>OptionName</strong><em>, Default</em></code></small></dt>
+	<dt id="GetNumberOption"><code>GetNumberOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
 	<dd>
 		<p>Returns the current value of the named option as a number. If the option does not exist, or is not a valid number or <a href="/manual/options#Number">formula</a>, returns the given default value, or <code>0</code> if no default is given.</p>
-		<p><strong>Example:</strong> <code>MyUpdateDivider = MyMeasure:GetNumberOption(UpdateDivider, 1)</code></p>
+		<p><b>Example:</b> <code>MyUpdateDivider = MyMeasure:GetNumberOption(UpdateDivider, 1)</code></p>
 	</dd>
 
 	<dt id="GetName"><code>GetName</code></dt>
 	<dd>
 		<p>Returns the measure's name as a string.</p>
-		<p><strong>Example:</strong> <code>MyMeasureName = MyMeasure:GetName()</code></p>
+		<p><b>Example:</b> <code>MyMeasureName = MyMeasure:GetName()</code></p>
 	</dd>
 
 	<dt id="GetMinValue"><code>GetMinValue</code></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/measures/general-options/#MinValue">minimum value</a> of the measure as a number.</p>
-		<p><strong>Example:</strong> <code>MyMeasureMin = MyMeasure:GetMinValue()</code></p>
+		<p><b>Example:</b> <code>MyMeasureMin = MyMeasure:GetMinValue()</code></p>
 	</dd>
 
 	<dt id="GetMaxValue"><code>GetMaxValue</code></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/measures/general-options/#MaxValue">maximum value</a> of the measure as a number.</p>
-		<p><strong>Example:</strong> <code>MyMeasureMax = MyMeasure:GetMaxValue()</code></p>
+		<p><b>Example:</b> <code>MyMeasureMax = MyMeasure:GetMaxValue()</code></p>
 	</dd>
 
 	<dt id="GetRelativeValue"><code>GetRelativeValue</code></dt>
 	<dd>
 		<p>Returns the measure's current number <a href="/manual/measures/#Percentage">percentage value</a> as a number, scaled from <code>0.0</code> to <code>1.0</code>.</p>
-		<p><strong>Example:</strong> <code>MyMeasureValue = MyMeasure:GetRelativeValue()</code></p>
+		<p><b>Example:</b> <code>MyMeasureValue = MyMeasure:GetRelativeValue()</code></p>
 	</dd>
 
 	<dt id="GetValueRange"><code>GetValueRange</code></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/measures/#Percentage">value range</a> of the measure as a number.</p>
-		<p><strong>Example:</strong> <code>MyMeasureRange = MyMeasure:GetValueRange()</code></p>
+		<p><b>Example:</b> <code>MyMeasureRange = MyMeasure:GetValueRange()</code></p>
 	</dd>
 
 	<dt id="Disable"><code>Disable</code></dt>
 	<dd>
 		<p>Disables the measure.</p>
-		<p><strong>Example:</strong> <code>MyMeasure:Disable()</code></p>
+		<p><b>Example:</b> <code>MyMeasure:Disable()</code></p>
 	</dd>
 
 	<dt id="Enable"><code>Enable</code></dt>
 	<dd>
 		<p>Enables the measure.</p>
-		<p><strong>Example:</strong> <code>MyMeasure:Enable()</code></p>
+		<p><b>Example:</b> <code>MyMeasure:Enable()</code></p>
 	</dd>
 </dl>
 
@@ -261,79 +261,79 @@ end
 <h3 id="MeterObject">Meter object</h3>
 
 <p>A <code>Meter</code> object is created using <a href="#GetMeter">GetMeter</a>. It is linked to a specific <a href="/manual/meters">meter</a> in the skin.</p>
-<p><strong>Example:</strong> <code>MyMeter = SKIN:GetMeter('MeterName')</code></p>
+<p><b>Example:</b> <code>MyMeter = SKIN:GetMeter('MeterName')</code></p>
 
 <dl>
-	<dt id="GetOptionMeter"><code>GetOption</code> <small>Parameters: <code><strong>OptionName</strong><em>, Default</em></code></small></dt>
+	<dt id="GetOptionMeter"><code>GetOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
 	<dd>
 		<p>Returns the current value of the named option as a string. If the option does not exist, returns the given default value, or <code>''</code> if no default is given.</p>
-		<p><strong>Example:</strong> <code>MySolidColor = MyMeter:GetOption('SolidColor', '000000')</code></p>
+		<p><b>Example:</b> <code>MySolidColor = MyMeter:GetOption('SolidColor', '000000')</code></p>
 	</dd>
 
 	<dt id="GetNameMeter"><code>GetName</code></dt>
 	<dd>
 		<p>Returns the measure's name as a string.</p>
-		<p><strong>Example:</strong> <code>MyMeterName = MyMeter:GetName()</code></p>
+		<p><b>Example:</b> <code>MyMeterName = MyMeter:GetName()</code></p>
 	</dd>
 
 	<dt id="GetX"><code>GetX</code> <small>Parameters: <code><em>Absolute</em></code></small></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/meters/general-options/#XY">X position</a> of the meter as a number. If the optional <em>Absolute</em> parameter is <code>true</code>, returns the absolute (or <a href="/manual/variables/section-variables#XY">"real"</a>) X position.</p>
-		<p><strong>Example:</strong> <code>MyX = MyMeter:GetX()</code></p>
+		<p><b>Example:</b> <code>MyX = MyMeter:GetX()</code></p>
 	</dd>
 
 	<dt id="GetY"><code>GetY</code> <small>Parameters: <code><em>Absolute</em></code></small></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/meters/general-options/#XY">Y position</a> of the meter as a number. If the optional <em>Absolute</em> parameter is <code>true</code>, returns the absolute (or <a href="/manual/variables/section-variables#XY">"real"</a>) Y position.</p>
-		<p><strong>Example:</strong> <code>MyY = MyMeter:GetY()</code></p>
+		<p><b>Example:</b> <code>MyY = MyMeter:GetY()</code></p>
 	</dd>
 
 	<dt id="GetW"><code>GetW</code></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/variables/section-variables#WH">"real"</a> <a href="/manual/meters/general-options/#WH">width</a> of the meter as a number.</p>
-		<p><strong>Example:</strong> <code>MyW = MyMeter:GetW()</code></p>
+		<p><b>Example:</b> <code>MyW = MyMeter:GetW()</code></p>
 	</dd>
 
 	<dt id="GetH"><code>GetH</code></dt>
 	<dd>
 		<p>Returns the current <a href="/manual/variables/section-variables#WH">"real"</a> <a href="/manual/meters/general-options/#WH">height</a> of the meter as a number.</p>
-		<p><strong>Example:</strong> <code>MyH = MyMeter:GetH()</code></p>
+		<p><b>Example:</b> <code>MyH = MyMeter:GetH()</code></p>
 	</dd>
 
 	<dt id="SetX"><code>SetX</code></dt>
 	<dd>
 		<p>Sets the <a href="/manual/meters/general-options/#XY">X position</a> of the meter.</p>
-		<p><strong>Example:</strong> <code>MyMeter:SetX()</code></p>
+		<p><b>Example:</b> <code>MyMeter:SetX()</code></p>
 	</dd>
 
 	<dt id="SetY"><code>SetY</code></dt>
 	<dd>
 		<p>Sets the <a href="/manual/meters/general-options/#XY">Y position</a> of the meter.</p>
-		<p><strong>Example:</strong> <code>MyMeter:SetY()</code></p>
+		<p><b>Example:</b> <code>MyMeter:SetY()</code></p>
 	</dd>
 
 	<dt id="SetW"><code>SetW</code></dt>
 	<dd>
 		<p>Sets the <a href="/manual/meters/general-options/#WH">width</a> of the meter.</p>
-		<p><strong>Example:</strong> <code>MyMeter:SetW()</code></p>
+		<p><b>Example:</b> <code>MyMeter:SetW()</code></p>
 	</dd>
 
 	<dt id="SetH"><code>SetH</code></dt>
 	<dd>
 		<p>Sets the <a href="/manual/meters/general-options/#WH">height</a> of the meter.</p>
-		<p><strong>Example:</strong> <code>MyMeter:SetH()</code></p>
+		<p><b>Example:</b> <code>MyMeter:SetH()</code></p>
 	</dd>
 
 	<dt id="Hide"><code>Hide</code></dt>
 	<dd>
 		<p><a href="/manual/meters/general-options/#Hidden">Hides</a> the meter.</p>
-		<p><strong>Example:</strong> <code>MyMeter:Hide()</code></p>
+		<p><b>Example:</b> <code>MyMeter:Hide()</code></p>
 	</dd>
 
 	<dt id="Show"><code>Show</code></dt>
 	<dd>
 		<p><a href="/manual/meters/general-options/#Hidden">Shows</a> the meter.</p>
-		<p><strong>Example:</strong> <code>MyMeter:Show()</code></p>
+		<p><b>Example:</b> <code>MyMeter:Show()</code></p>
 	</dd>
 </dl>
 

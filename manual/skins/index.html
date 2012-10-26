@@ -4,7 +4,7 @@ title: 'Skins'
 ---
 <!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Rainmeter's basic purpose is to run skins. A <strong>skin</strong> is a movable, dynamic, sometimes-interactive window that appears over the Windows desktop, and usually gathers and displays information of some kind.</p>
+<p>Rainmeter's basic purpose is to run skins. A <b>skin</b> is a movable, dynamic, sometimes-interactive window that appears over the Windows desktop, and usually gathers and displays information of some kind.</p>
 
 <p>Skins come with many different sizes, styles, user interfaces, and levels of complexity. Rainmeter includes utilities for <a href="/manual/publishing-skins">publishing</a> and <a href="/manual/installing-skins">installing</a> 3rd-party skins. Each skin is generally stored and loaded as an independent, self-contained module.</p>
 
@@ -27,7 +27,7 @@ title: 'Skins'
 
 <h3 id="Variants">Variants</h3>
 
-<p>If one folder contains multiple <code><em>SkinName</em>.ini</code><sup>1</sup> files, they are each considered <strong>variants</strong> of the same skin. This means that only one variant can be active at a time, and all variants use the same <a href="/manual/settings/skin-sections">settings</a>. Separate skins must be stored in separate folders.</p>
+<p>If one folder contains multiple <code><em>SkinName</em>.ini</code><sup>1</sup> files, they are each considered <b>variants</b> of the same skin. This means that only one variant can be active at a time, and all variants use the same <a href="/manual/settings/skin-sections">settings</a>. Separate skins must be stored in separate folders.</p>
 
 <p class="footnote">1. "YourName" and "SkinName" are examples.</p>
 
@@ -37,9 +37,9 @@ title: 'Skins'
 
 <h3 id="Config">Config</h3>
 
-<p>Each skin is identified with a certain <strong>config name</strong>. The config name is based on the path from the main Skins folder to the skin file. For example, if a skin is located at...</p>
+<p>Each skin is identified with a certain <b>config name</b>. The config name is based on the path from the main Skins folder to the skin file. For example, if a skin is located at...</p>
 
-	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<strong>Foo\Bar</strong>\SkinName.ini</code></p></blockquote>
+	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<b>Foo\Bar</b>\SkinName.ini</code></p></blockquote>
 
 <p>...then the config name would be:</p>
 
@@ -49,16 +49,16 @@ title: 'Skins'
 
 <h3 id="Root">Root config</h3>
 
-<p>Skins may also be stored in subfolders within the same <strong>root</strong> config folder. They share the same <a href="/manual/skins/resources-folder">@Resources</a> folder, and are <a href="/manual/publishing-skins">packaged</a> and <a href="/manual/installing-skins">installed</a> together. Otherwise, Rainmeter treats each subfolder as a separate config.</p>
+<p>Skins may also be stored in subfolders within the same <b>root</b> config folder. They share the same <a href="/manual/skins/resources-folder">@Resources</a> folder, and are <a href="/manual/publishing-skins">packaged</a> and <a href="/manual/installing-skins">installed</a> together. Otherwise, Rainmeter treats each subfolder as a separate config.</p>
 
 <p>For example, the following skins belong to the "illustro" suite:</p>
 
-	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<strong>illustro\Clock\Clock.ini</strong></code><br>
-	<code>C:\Users\YourName\Documents\Rainmeter\Skins\<strong>illustro\Network\Network.ini</strong></code></p></blockquote>
+	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<b>illustro\Clock\Clock.ini</b></code><br>
+	<code>C:\Users\YourName\Documents\Rainmeter\Skins\<b>illustro\Network\Network.ini</b></code></p></blockquote>
 
 <p>This means that they are both located in the same root config folder, "illustro," in the main Skins directory.</p>
 
-	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<strong>illustro\</strong></code></p></blockquote>
+	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<b>illustro\</b></code></p></blockquote>
 
 <p>Each skin has a unique config name:</p>
 
@@ -67,9 +67,9 @@ title: 'Skins'
 
 <p>But since they belong to the same root config, they share the same @Resources folder:</p>
 
-	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<strong>illustro\@Resources\</strong></code></p></blockquote>
+	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<b>illustro\@Resources\</b></code></p></blockquote>
 
-<p id="Suites">A <strong>suite</strong> is an informal term for skins that are organized together in this manner. Suites are often used by skin authors to make a set of skins that share a common style, or complement each other in some way. If a root config folder contains only one <code>SkinName.ini</code> file, then the config and root config are the same, and the skin can be stored, packaged and installed by itself.</p>
+<p id="Suites">A <b>suite</b> is an informal term for skins that are organized together in this manner. Suites are often used by skin authors to make a set of skins that share a common style, or complement each other in some way. If a root config folder contains only one <code>SkinName.ini</code> file, then the config and root config are the same, and the skin can be stored, packaged and installed by itself.</p>
 
 <h2 id="Format">Format</h2>
 
@@ -112,12 +112,12 @@ Key=Value
 
 <h2 id="Update">Update</h2>
 
-<p>When a skin is loaded, it <strong>updates</strong> on a regular cycle. The length of time between updates is defined by the <a href="/manual/skins/rainmeter-section#Update">Update</a> option in the [Rainmeter] section, and defaults to 1 second (or 1000 milliseconds). The update determines when the skin reacts to changes in the values of variables, measures and options.</p>
+<p>When a skin is loaded, it <b>updates</b> on a regular cycle. The length of time between updates is defined by the <a href="/manual/skins/rainmeter-section#Update">Update</a> option in the [Rainmeter] section, and defaults to 1 second (or 1000 milliseconds). The update determines when the skin reacts to changes in the values of variables, measures and options.</p>
 
 <p>Individual meters and measures can be made to update more slowly by "skipping" cycles, using the <a href="/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> option. In addition, the <a href="/manual/bangs#Update">!Update</a> bang forces the skin to update immediately, resetting the timed cycle.</p>
 
 <h2 id="Refresh">Refresh</h2>
 
-<p>When a skin <strong>refreshes</strong>, all values are reset, and the skin starts over as if it had just been loaded for the first time. Refreshing also applies any changes that have been made to the code in <code>SkinName.ini</code>.</p>
+<p>When a skin <b>refreshes</b>, all values are reset, and the skin starts over as if it had just been loaded for the first time. Refreshing also applies any changes that have been made to the code in <code>SkinName.ini</code>.</p>
 
 <p>A skin can be refreshed from the <a href="/manual/user-interface/context-menus">context menus</a>, or using the <a href="/manual/bangs#Refresh">!Refresh</a> bang.</p>

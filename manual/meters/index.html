@@ -5,7 +5,7 @@ subtitle: 'Meters display information.'
 ---
 <!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>A <strong>meter</strong> is an object that defines a visual element that is displayed in a <a href="/manual/skins">skin</a>. Meters are one of the two major kinds of objects in a skin, along with <a href="/manual/measures">measures</a>.</p>
+<p>A <b>meter</b> is an object that defines a visual element that is displayed in a <a href="/manual/skins">skin</a>. Meters are one of the two major kinds of objects in a skin, along with <a href="/manual/measures">measures</a>.</p>
 
 <h2 id="Usage">Usage</h2>
 
@@ -32,11 +32,11 @@ Text=Hello, world!
 
 <h2 id="Positions">Positions</h2>
 
-<p>A meter has a certain <strong>position</strong>, which is given by its <a href="/manual/meters/general-options#XY">X and Y options</a>, and <strong>dimensions</strong>, which are given by its <a href="/manual/meters/general-options#WH">W and H options</a>. This means that every meter is actually bounded by a rectangular block of pixels, even though it may have a <a href="/manual/meters/general-options/#SolidColor">transparent background</a> and therefore appear to be "free-floating."</p>
+<p>A meter has a certain <b>position</b>, which is given by its <a href="/manual/meters/general-options#XY">X and Y options</a>, and <b>dimensions</b>, which are given by its <a href="/manual/meters/general-options#WH">W and H options</a>. This means that every meter is actually bounded by a rectangular block of pixels, even though it may have a <a href="/manual/meters/general-options/#SolidColor">transparent background</a> and therefore appear to be "free-floating."</p>
 
 <p>Meters are positioned within the <a href="/manual/skins">skin window</a>. This means that when the skin is moved, its meters move with it. It also means that meter positions are given relative to the top-left corner of the skin, rather than the desktop. For example, a meter with the option <code>X=15</code> starts 15 pixels from the left edge of the skin.</p>
 
-<p>The dimensions of the <strong>skin window</strong> are determined by the positions and dimensions of all meters when the skin is loaded. If the skin has <a href="/manual/skins/rainmeter-section#DynamicWindowSize">DynamicWindowSize</a> enabled, the window will be "pushed" outward if meters are moved rightward or downward or expand in width or height. However, meters that move leftward beyond <code>X=0</code>, or upward beyond <code>Y=0</code>, will appear either "cut off" or completely invisible. There is no technical limit to the size of the skin window, but, practically speaking, skins should be made to fit within the current <a href="/manual/variables/built-in-variables#WORKAREAXYWH">desktop work area</a>.</p>
+<p>The dimensions of the <b>skin window</b> are determined by the positions and dimensions of all meters when the skin is loaded. If the skin has <a href="/manual/skins/rainmeter-section#DynamicWindowSize">DynamicWindowSize</a> enabled, the window will be "pushed" outward if meters are moved rightward or downward or expand in width or height. However, meters that move leftward beyond <code>X=0</code>, or upward beyond <code>Y=0</code>, will appear either "cut off" or completely invisible. There is no technical limit to the size of the skin window, but, practically speaking, skins should be made to fit within the current <a href="/manual/variables/built-in-variables#WORKAREAXYWH">desktop work area</a>.</p>
 
 <div class="exampleprev" style="max-width: 480px;">
 	<img src="/manual/img/meters/index-positions-example.png" />
@@ -48,12 +48,12 @@ Text=Hello, world!
 <p>The order of meters in the skin code is important in two ways:</p>
 
 <ul>
-	<li><p><strong>"Z" position.</strong> Meters are drawn in order. Later meters appear "on top of" or "in front of" earlier meters. This means that, for example, a background <a href="/manual/meters/image">image</a> that appears behind all other meters must be the first meter that appears in the skin code.</p></li>
-	<li><p><strong>Relative positions.</strong> A meter's <code>X</code> or <code>Y</code> position may be set <a href="/manual/meters/general-options/#XY">"relative"</a> to the position of the previous meter. This is useful for groups of meters that follow a common pattern, such as lists, tabs or menu items.</p></li>
+	<li><p><b>"Z" position.</b> Meters are drawn in order. Later meters appear "on top of" or "in front of" earlier meters. This means that, for example, a background <a href="/manual/meters/image">image</a> that appears behind all other meters must be the first meter that appears in the skin code.</p></li>
+	<li><p><b>Relative positions.</b> A meter's <code>X</code> or <code>Y</code> position may be set <a href="/manual/meters/general-options/#XY">"relative"</a> to the position of the previous meter. This is useful for groups of meters that follow a common pattern, such as lists, tabs or menu items.</p></li>
 </ul>
 
 <h2 id="MeterStyles">MeterStyles</h2>
 
-<p>Meters can use option values from other meters. Using the <a href="/manual/meters/general-options/#MeterStyle">MeterStyle</a> option, one meter may <strong>inherit</strong> all options from one or more "parent" sections.</p>
+<p>Meters can use option values from other meters. Using the <a href="/manual/meters/general-options/#MeterStyle">MeterStyle</a> option, one meter may <b>inherit</b> all options from one or more "parent" sections.</p>
 
 <p>For more, see <a href="/manual/meters/general-options/meterstyles">MeterStyles</a>.</p>

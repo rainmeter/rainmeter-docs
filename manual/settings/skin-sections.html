@@ -87,7 +87,7 @@ title: 'Skin sections'
 	<dt id="LoadOrder"><code>LoadOrder</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Determines the order in which the skins are loaded. The value can be any number (even negative). Skins with the lowest load order are loaded first.</p>
-		<p><strong>Example:</strong> Three skins having <code>LoadOrder=-1</code>, <code>LoadOrder=2</code> and <code>LoadOrder=5</code> would load the configs in that order, with the config with <code>LoadOrder=-1</code> appearing beneath the one with LoadOrder=2 which is in turn beneath the config containing <code>LoadOrder=5</code>. If two configs have the same value for LoadOrder, they are then loaded in alphabetical order.</p>
-		<p><strong>Note:</strong> The value of LoadOrder has no bearing on the <a href="#AlwaysOnTop">Z-position</a> of the skin. LoadOrder only affects how skins in the same Z-position interact with each other. That is to say, configs set to "Topmost" will always appear above configs set to "Normal", but two configs in "Topmost" will layer themselves according to their LoadOrder value.</p>
+		<p><b>Example:</b> Three skins having <code>LoadOrder=-1</code>, <code>LoadOrder=2</code> and <code>LoadOrder=5</code> would load the configs in that order, with the config with <code>LoadOrder=-1</code> appearing beneath the one with LoadOrder=2 which is in turn beneath the config containing <code>LoadOrder=5</code>. If two configs have the same value for LoadOrder, they are then loaded in alphabetical order.</p>
+		<p><b>Note:</b> The value of LoadOrder has no bearing on the <a href="#AlwaysOnTop">Z-position</a> of the skin. LoadOrder only affects how skins in the same Z-position interact with each other. That is to say, configs set to "Topmost" will always appear above configs set to "Normal", but two configs in "Topmost" will layer themselves according to their LoadOrder value.</p>
 	</dd>
 </dl>	

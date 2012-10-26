@@ -10,19 +10,19 @@ title: 'Bitmap meter'
 <dl>
 	<dt>General meter options</dt>
 	<dd>
-		All <a href="/manual/meters/general-options">general meter options</a> are valid, <strong>except</strong> <code>W</code> and <code>H</code>.
+		All <a href="/manual/meters/general-options">general meter options</a> are valid, <b>except</b> <code>W</code> and <code>H</code>.
 	</dd>
 
 	<dt>General image options</dt>
 	<dd>
-		All <a href="/manual/meters/general-options/image-options">general image options</a> are valid for <code>BitmapImage</code>, <strong>except</strong> <code>ImageCrop</code>, <code>ImageRotate</code> and <code>Tile</code>.
+		All <a href="/manual/meters/general-options/image-options">general image options</a> are valid for <code>BitmapImage</code>, <b>except</b> <code>ImageCrop</code>, <code>ImageRotate</code> and <code>Tile</code>.
 	</dd>
 
 	<dt id="MeasureName"><code>MeasureName</code></dt>
 	<dd>
 		Name of the measure used to determine the frame to display. The measures used must be able to return <a href="/manual/measures#Percentage">percentual values</a>.
 
-		<br><br><strong>Example:</strong> If the image contains 5 frames, the first frame is displayed when the percentual measure value is between 0% and 19%, the second frame is shown from 20% to 39% , and so on.
+		<br><br><b>Example:</b> If the image contains 5 frames, the first frame is displayed when the percentual measure value is between 0% and 19%, the second frame is shown from 20% to 39% , and so on.
 	</dd>
 
 	<dt id="BitmapImage"><code>BitmapImage</code></dt>
@@ -41,9 +41,9 @@ title: 'Bitmap meter'
 	<dd>
 		The number of transition frames per each actual frame. The transition frames are frames which are displayed when the measure value changes. The same number of transition frames must be used after each regular frame. The <a href="/manual/skins/rainmeter-section#TransitionUpdate">TransitionUpdate</a> option in the [Rainmeter] section determines the rate at which the transition frames change during the transition. The total duration of the transition is therefore <code>TransitionUpdate</code> multiplied by <code>BitmapTransitionFrames</code>.<br><br>
 
-		<strong>Note:</strong> <code>BitmapFrames</code> always defines the total number of frames in the bitmap, including the transition frames.
+		<b>Note:</b> <code>BitmapFrames</code> always defines the total number of frames in the bitmap, including the transition frames.
 
-		<br><br><strong>Example:</strong> If the bitmap has 10 values and each transition consists of 4 additional frames, then <code>BitmapFrames</code> should be set to <code>50</code> and <code>BitmapTransitionFrames</code> to <code>4</code>.
+		<br><br><b>Example:</b> If the bitmap has 10 values and each transition consists of 4 additional frames, then <code>BitmapFrames</code> should be set to <code>50</code> and <code>BitmapTransitionFrames</code> to <code>4</code>.
 	</dd>
 
 	<dt id="BitmapZeroFrame"><code>BitmapZeroFrame</code> <small>Default: <code>0</code></small></dt>
@@ -55,7 +55,7 @@ title: 'Bitmap meter'
 	<dd>
 		If set to <code>1</code> the bitmap is extended to display the whole value.
 
-		<br><br><strong>Example:</strong> If you define a bitmap that defines frames from 0 to 9 you can use this to display the measured value as the bitmap numbers.
+		<br><br><b>Example:</b> If you define a bitmap that defines frames from 0 to 9 you can use this to display the measured value as the bitmap numbers.
 	</dd>
 
 	<dt id="BitmapDigits"><code>BitmapDigits</code> <small>Default: <code>0</code></small></dt>
