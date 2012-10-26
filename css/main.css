@@ -633,7 +633,7 @@ table.contents tr td:nth-child(2){
 	padding: 0;
 }
 
-.exampleprev img.thumbnail {
+.exampleprev .thumbnail {
 	max-width: 200px;
 }
 
