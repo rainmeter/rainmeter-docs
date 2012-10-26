@@ -473,9 +473,7 @@ body {
 }
 
 #sidenav h1,
-#Sidenav h1 a,
-#sidenav h1 a:hover,
-#sidenav h1 a:visited {
+#Sidenav h1 a {
 	margin:10px 0 0 5px;
 	font-size:13px;
 	font-weight:bold;
