@@ -1,0 +1,134 @@
+---
+layout: manual
+title: 'Customizing'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Now that you are familiar with Rainmeter's basic <a href="/manual/rainmeter-101/using-rainmeter">user interface</a>, you're ready to start customizing Rainmeter to your liking.</p>
+
+<h2>Finding Skins</h2>
+
+<p>There is no official, central repository of Rainmeter skins. Rainmeter is an open platform, and skins can be found all over the Internet, from large screenshot galleries to small personal blogs and websites. That said, there are a few major sites where the Rainmeter community tends to gather:</p>
+
+<ul>
+	<li><p><b><a href="http://rainmeter.net/cms/Discover">Rainmeter.net</a></b><br>
+		The Rainmeter homepage highlights <a href="http://rainmeter.net/cms/Discover">Featured Suites</a> from veteran skin authors in the community.</p></li>
+	<li><p><b><a href="http://rainmeter.net/forum/viewforum.php?f=27">Rainmeter Forum</a></b><br>
+		Other members of the community like to <a href="http://rainmeter.net/forum/viewforum.php?f=27">share their creations</a> on the official boards.</p></li>
+	<li><p><b><a href="http://rainmeter.deviantart.com/">DeviantArt</a></b><br>
+		Probably the biggest and best collection of skins, deviantArt not only has a special <a href="http://browse.deviantart.com/customization/skins/sysmonitor/rainmeter/?order=5">Rainmeter category</a>, but also a dedicated <a href="http://rainmeter.deviantart.com/">Rainmeter Group</a>, which is run by members of the community and features a curated stream of skins, screenshots, tutorials, interviews and more. All skins on deviantArt are checked for <a href="#Malware">malware</a> before they are accepted by the group.</p></li>
+	<li><p><b><a href="http://www.customize.org/rainmeter/skins">Customize.org</a></b><br>
+		One of the first gathering places for Rainmeter enthusiasts, Customize.org hosts one of the <a href="">largest and oldest</a> Rainmeter skin collections.</p></li>
+	<li><p><b><a href="http://lifehacker.com/rainmeter/">Lifehacker</a></b><br>
+		Not only is the Lifehacker community full of Rainmeter users, but Lifehacker's editors frequently post featured desktops and how-to guides for popular skins under the <a href="http://lifehacker.com/rainmeter/">Rainmeter tag</a>. Be sure to browse the <a href="http://www.flickr.com/groups/lifehacker-desktop-showandtell/pool/">Lifehacker Desktop Show &amp; Tell</a> pool on <a href="http://www.flickr.com/">Flickr</a>, as well.</p></li>
+</ul>
+
+<h3 id="Malware">Malware</h3>
+
+<div class="exampleprev floatright">
+	<img src="/manual/img/rainmeter-101/cs-rmskin.png" class="thumbnail"/>
+	<p class="thumbnail">A verified ".rmskin" package. Look for the green Rainmeter icon.</p>
+</div>
+
+<p>Rainmeter is built on an open software ecosystem. And like other open software, we occasionally have to deal with malware in our midst. Other than Rainmeter.net, the websites listed above allow anyone to upload and publish their own skins, and most sites have no policy of verifying either the identity of the uploader or the integrity of the files. <strong>We rely on members of the community to be watchful for malware and report it when found.</strong></p>
+
+<p>We recommend that you follow some simple, common-sense tips to make sure that your computer stays malware-free:</p>
+
+<ul>
+	<li><p>Whenever possible, only download skins in the Rainmeter Skin Installer <i>(.rmskin)</i> format. Recent versions of Rainmeter require new skin packages to be created by Rainmeter's official <a href="/manual/publishing-skins">Skin Packager</a>, which helps reduce the risk of tampering. Many older skins may still be published as <i>.zip</i> files that must be installed manually&mdash;these files are at greater risk of containing malware, and you should look for a newer version of the skin, if possible. You should never download a <i>.exe</i> file that claims to be a Rainmeter skin installer.</i></p></li>
+	<li><p>Make sure the skin publisher is trustworthy. An account that is new, or has very few downloads, page views, or profile detals may be suspicious. Users that disable or delete comments on their submissions are also suspicious. In contrast, a long-standing author who has many comments and downloads is more likely to be safe.</p></li>
+	<li><p>If comments are enabled on the submission, check them to see if other users have reported the skin as malware. Likewise, if you discover that a skin is dangerous, please take a moment to warn your fellow Rainmeter users, by posting a message in the comments and reporting the submission to the side administrators. Sites like deviantArt and Flickr include an easy "Report Spam" button on every page.</p></li>
+	<li><p>If you are suspicious of a skin for any reason, upload the file to <a href="https://www.virustotal.com/">VirusTotal</a>, which will scan the file with over 40 anti-malware services and report the results to you. (Note that false positives are common; only report skins that are flagged as dangerous by a significant number of tests.)</p></li>
+</ul>
+
+<h2>Adding Skins</h2>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="/manual/img/installing-skins/InstallSkins02.png"><img src="/manual/img/installing-skins/InstallSkins02.png" class="thumbnail"/></a>
+	<p class="thumbnail">Installing a typical Rainmeter skin.</p>
+</div>
+
+<p>Installing a skin in the Rainmeter Skin Installer <i>(.rmskin)</i> format is easy. Just double-click the file to open the package with Rainmeter's built-in <a href="/manual/installing-skins">Skin Installer</a>, and follow the instructions like you did when you installed Rainmeter.</p>
+
+<p>(Skins that are not in the .rmskin format, but instead come in an archive file like <i>.zip</i>, <i>.rar</i> or <i>.7z</i>, require a few more steps. See <a href="/manual/installing-skins">Installing Skins</a> for more detailed instructions, including steps for installing skins on a portable version of Rainmeter.)</p>
+
+<p>For an example of a Rainmeter skin package, try downloading and installing one of the <a href="http://rainmeter.net/cms/Discover">Featured Suites</a> from the Rainmeter homepage.</p>
+
+<h2>Editing Skins</h2>
+
+<p>You have already learned how to change basic <a href="/manual/settings/skin-sections">skin settings</a> in Rainmeter. Now, it's time to learn how to make edits to a skin itself.</p>
+
+	<blockquote><p><i>Remember: every skin is different. Some skins provide more customization options, tools and instructions than others, and the processes for customizing two skins may be very different. In all cases, you should look to whatever documentation the author has provided, whether in the form of a "readme" file, an online support URL, or <code>;comments</code> embedded in the skin code.</i></p></blockquote>
+
+<h3>Controls</h3>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="/manual/img/rainmeter-101/cs-controls.png"><img src="/manual/img/rainmeter-101/cs-controls.png" class="thumbnail"/></a>
+	<p class="thumbnail">Built-in control tools for three featured suites.</p>
+</div>
+
+<p>If you're lucky, your skin will provide some kind of built-in graphical interface for changing its own code. In this case, all you need to do is follow the instructions provided, clicking buttons and typing or pasting new text values as needed. The skin may have control buttons embedded in the skin itself, or it may summon a separate skin or addon where you can change all customization options in one place.</p>
+
+<p>This kind of sophisticated control system is more the exception than the rule, and is usually found only on large suites. More often, you will need to edit the skin code directly in order to change or add your own values.</p>
+
+<h3>Variables</h3>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="/manual/img/rainmeter-101/cs-notepad.png"><img src="/manual/img/rainmeter-101/cs-notepad.png" class="thumbnail"/></a>
+	<p class="thumbnail">What a skin looks like on the inside.</p>
+</div>
+
+<p>Most of the time, a skin's customization options are saved as <a href="/manual/variables">variables</a>. For example, right-click the illustro "Clock" skin on your desktop, and select <code>Edit skin</code>. The file "Clock.ini" will open in Notepad (or your default text editor).</p>
+
+<p>This is what Rainmeter's configuration code looks like. (Click the image on the right to zoom in.)</p>
+
+<p>Although it may look complex, everything in this file is actually one of three basic elements:</p>
+
+<ul>
+	<li><p>A <b>section</b>. Section names are contained in brackets (<code>[]</code>) and are used to "declare" some property of the skin.</p></li>
+	<li><p>A <b>key</b>. Keys are found at the beginning of each line in a section, followed by an equal sign (<code>=</code>).</p></li>
+	<li><p>A <b>value</b>. The value is whatever meaning is assigned to a key&mdash;everything after the first equal sign (<code>=</code>) is the value. In Rainmeter, the pairing of a key and a value is called an <a href="/manual/options">option</a>.</p></li>
+</ul>
+
+<p>When you're editing variables in a skin, the <i>values</i> are what you are going to change.</p>
+
+<p>Scroll down in your text editor to the section called <code>[Variables]</code>. Here's what it looks like. (Code examples in this manual are highlighted to help you easily identify sections, keys and values.)</p>
+
+<div class="noscroll">{% highlight ini %}
+
+[Variables]
+; Variables declared here can be used later on between two # characters (e.g. #MyVariable#).
+fontName=Trebuchet MS
+textSize=8
+colorBar=235,170,0,255
+colorText=255,255,255,205
+
+{% endhighlight %}</div>
+
+<p>Try changing one of these variable values. Go to the line that begins with the <code>fontName</code> key, and change <code>Trebuchet MS</code> to another font - say, Times New Roman:</p>
+
+	<blockquote><p><code>fontName=Times New Roman</code></p></blockquote>
+
+<p>Then, save the file.</p>
+
+<h2>Refresh</h2>
+
+<p>The <a href="/manual/skins#Refresh">refresh</a> action is important in Rainmeter. The effect of refreshing a skin is the same as if you had unloaded and then re-loaded the skin. When this happens, all <a href="/manual/variables#DynamicVariables">dynamic</a> variables and other options are reset according to their original values in the skin file, and all <a href="/manual/measures">measures</a> restart from the beginning. Refreshing a skin is also necessary to apply any changes that have been made to a skin's files.</p>
+
+<p>You can refresh any skin by selecting <code>Refresh skin</code> in the context menu, or browsing to the skin in Manage and clicking the <code>Refresh</code> button in the top-right.</p>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="/manual/img/rainmeter-101/cs-refresh.png"><img src="/manual/img/rainmeter-101/cs-refresh.png" class="thumbnail"/></a>
+	<p class="thumbnail">It may be ugly, but the point is, it's different.</p>
+</div>
+
+	<blockquote><p><i>When skin files have been added, renamed or removed, you will need to refresh the entire Rainmeter application in the same way. You can do this by selecting <code>Refresh all</code> in the context menu or the bottom-left of the Manage window.</i></p></blockquote>
+
+<p>Try refreshing the Clock skin that you edited before. You will see the skin's font face instantly change.</p>
+
+<p>You have now edited your first skin! This is the same basic process that you will use to customize, modify, and eventually create skins of your own.</p>
+
+<p style="clear: both;">&nbsp;</p>
+
+<div class="right"><p><a href="/manual/rainmeter-101/creating-skins">Continue to: Creating Skins &raquo;</a></p> </div>
+<p><a href="/manual/rainmeter-101/using-rainmeter">&laquo; Back to: Using Rainmeter</a></p>
