@@ -138,6 +138,11 @@ img {
 	margin-right:auto;
 }
 
+img.freefloating {
+	border: none;
+	box-shadow: none;
+}
+
 code,
 pre {
 	padding:0 3px 2px;
@@ -643,6 +648,7 @@ table.contents tr td:nth-child(2){
 
 .right {
 	text-align: right;
+	float: right;
 }
 
 .next-to-float {
