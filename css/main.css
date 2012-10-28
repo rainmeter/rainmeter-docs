@@ -544,6 +544,7 @@ body {
 }
 
 .home #content {
+	width: 960px;
 	margin: 0;
 	background: none;
 	border: none;
@@ -683,6 +684,7 @@ table#contents tr td:nth-child(2){
 	width: 200px;
 	font-size: 0.9em;
 	float: right;
+	clear: right;
 }
 
 #footer {
