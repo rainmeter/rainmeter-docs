@@ -1,0 +1,274 @@
+---
+layout: manual
+title: 'Meters Tutorial'
+---
+<!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+	<blockquote><p><i>This tutorial is part of a series. If you aren't sure how you got here, you may want to start from <a href="/manual/rainmeter-101">the beginning</a>.</i></p></blockquote>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-myfirstskin.png"><img src="/manual/img/tutorials-beginner/meters-myfirstskin.png" class="thumbnail"/></a>
+</div>
+
+<p>Let's get started! This tutorial will focus on creating your first <a href="/manual/meters">meters</a>. Meters are a skin's <b>display</b> elements: the parts of the skin that you can see and click on your desktop. Every skin must have at least one meter, so that's where we'll begin.</p>
+
+<p>Hopefully, you already have the <code>MyFirstSkin.ini</code> file that you created <a href="/manual/rainmeter-101/creating-skins">earlier</a>. Open the skin in your text editor.</p>
+
+<h2>[Rainmeter]</h2>
+
+<p>The very first thing you're going to add to your skin is the <a href="/manual/skins/rainmeter-section">[Rainmeter] section</a>. This is a skin's "header" property, like the <code>&lt;head&gt;</code> tag in an HTML webpage. For now, your [Rainmeter] section will be mostly empty, except for one option:</p>
+
+<div class="noscroll">
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+{% endhighlight %}
+</div>
+
+<p>The <a href="/manual/skins/rainmeter-section#Update">Update</a> option is what sets the length of the skin's <a href="/manual/skins#Update">update cycle</a>. The length is given in milliseconds, or 1/1000ths of a second, so <code>Update=1000</code> means that the skin will update once per second. Updating is how the skin will react to changes in information. You'll see how this works in more detail later on.</p>
+
+<h2 id="StringMeter">String Meter</h2>
+
+<p>Now that you've given your skin a "head," it's time to give it a "body." You're going to create a <a href="/manual/meters/string">string meter</a>. This is one of the most common types of meters, and it is used to create <b>text</b>.</p>
+
+<div class="noscroll">
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+
+[MyMeter]
+Meter=String
+Text=Hello, world!
+{% endhighlight %}
+</div>
+
+<p>The <a href="/manual/meters/general-options#Meter">Meter</a> option is required to tell Rainmeter that this section is, in fact, a meter. All meters have this option. The value of the option determines what <em>type</em> of meter it is.</p>
+
+<p>The <a href="/manual/meters/string#Text">Text</a> option, on the other hand, is unique to the string meter. As you might have guessed, this is where you provide a string of text for Rainmeter to display.</p>
+
+<p>Believe it or not, what you have now is a complete, valid, working Rainmeter skin! Let's load it to see what it looks like. Load the skin using one of the methods that you learned before. You can either:</p>
+
+<ul>
+	<li><p>Open the <a href="/manual/user-interface/manage">Manage</a> window by left-clicking the Rainmeter tray icon, find <code>MyFirstSkin</code> in the <a href="/manual/user-interface/manage#SkinsList">skins list</a>, then click the <code>Load</code> button in the upper-right.</p></li>
+	<li><p>Open the <a href="/manual/user-interface/context-menus">context menu</a> by right-clicking the tray icon, then select <code>Skins</code> &rarr; <code>MyFirstSkin</code> &rarr; <code>MyFirstSkin.ini</code>.</p></li>
+</ul>
+
+<p>(As you get comfortable with Rainmeter's user interface, you'll decide whether you prefer working with the context menu or the Manage window.)</p>
+
+<p>Now, look up in the top-left corner of your desktop. There's your skin!</p>
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-helloworld.png"><img src="/manual/img/tutorials-beginner/meters-helloworld.png"/></a>
+		<p>Can you see me?</p>
+	</div>
+</div>
+
+<p>It's... not very big. Or pretty. Meters without any options tend to be very simple and unimpressive. So let's add some <b>formatting</b>.</p>
+
+<div class="noscroll">
+{% highlight ini %}
+[MyMeter]
+Meter=String
+Text=Hello, world!
+AntiAlias=1
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=20
+{% endhighlight %}
+</div>
+
+<p>Here's what we've added:</p>
+
+<ul>
+	<li><p><a href="/manual/meters/general-options#AntiAlias">AntiAlias</a><br>
+		A <a href="/manual/meters/general-options">general meter option</a> that smooths out the edges of a meter. This almost always improves the appearance of a string meter.</p></li>
+	<li><p><a href="/manual/meters/string#FontColor">FontColor</a><br>
+		A <a href="/manual/options#Color">color option</a> that changes the color of the text in this meter.</p></li>
+	<li><p><a href="/manual/meters/string#FontFace">FontFace</a><br>
+		An option that changes the font used for this meter. Rainmeter can use any font that you have installed in Windows, or another font in a skin's <a href="/manual/skins/resources-folder">@Resources folder</a>&mdash;but we'll get to that.</p></li>
+	<li><p><a href="/manual/meters/string#FontSize">FontSize</a><br>
+		The size of the font.</p></li>
+</ul>
+
+<p>Now, let's apply these changes by <a href="/manual/rainmeter-101/customizing#Refresh">refreshing</a> the skin. Once again, you can either press <code>Refresh</code> in the Manage window, or <code>MyFirstSkin</code> &rarr; <code>Refresh skin</code> in the context menu.</p>
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-hwformatted.png"><img src="/manual/img/tutorials-beginner/meters-hwformatted.png"/></a>
+		<p>Much nicer.</p>
+	</div>
+</div>
+
+<h2 id="Transparency">Transparency</h2>
+
+<p>Now that your skin is looking a little nicer, why don't you try clicking and dragging it somewhere else on your desktop?</p>
+
+<p>You may have found it hard to click. That's because Rainmeter skins are only clickable in a spot where there are some visible pixels. Right now, the only visible pixels are the letters themselves. The space in between the letters is completely <b>transparent</b>: there are no visible elements.</p>
+
+<p>To rectify this, we're going to add a <a href="/manual/meters/general-options#SolidColor">SolidColor</a> option. This is another <a href="/manual/options#Color">color option</a> that you can use to add a colored background to the entire area of any meter.</p>
+
+{% highlight ini %}
+[MyMeter]
+Meter=String
+Text=Hello, world!
+AntiAlias=1
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=20
+SolidColor=0,0,0
+{% endhighlight %}
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-solidcolor.png"><img src="/manual/img/tutorials-beginner/meters-solidcolor.png"/></a>
+		<p>Contrast FTW.</p>
+	</div>
+</div>
+
+<p>With the SolidColor option, it's also easier to see that the string meter, like all meters, has a perfectly rectangular area, with a defined <b>width</b> and <b>height</b>. This will be important later on, when you start working with your meters' positions and dimensions.</p>
+
+<p>For now, though, the skin looks kind of ugly with all that black, doesn't it? Let's try taking it down a little by adding some partial transparency to the SolidColor option. Adding a fourth term to any color option lets you change the <b>opacity</b> of the element, on a scale of 0&ndash;255:</p>
+
+<p><code>SolidColor=0,0,0,128</code></p>
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-solidcolor2.png"><img src="/manual/img/tutorials-beginner/meters-solidcolor2.png"/></a>
+		<p>I'm melting...</p>
+	</div>
+</div>
+
+<p>Hm. Better. But all we wanted to do was make the skin easier to click and drag, right? So let's take it down as far as it can go:</p>
+
+<p><code>SolidColor=0,0,0,1</code></p>
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-solidcolor3.png"><img src="/manual/img/tutorials-beginner/meters-solidcolor3.png"/></a>
+		<p>We hardly knew you, SolidColor.</p>
+	</div>
+</div>
+
+<p>Now, the background is almost perfectly invisible. But since it's still technically non-transparent&mdash;with an opacity of exactly 1/255&mdash;we can now click any part of the skin. Success!</p>
+
+<h2 id="Position">Position</h2>
+
+<p>Let's try adding another meter.</p>
+
+{% highlight ini %}
+[MyMeter]
+Meter=String
+Text=Hello, world!
+AntiAlias=1
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=20
+SolidColor=0,0,0,1
+
+[MyMeter2]
+Meter=String
+Text=I'm another meter.
+AntiAlias=1
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=20
+SolidColor=0,0,0,1
+{% endhighlight %}
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-secondmeter.png"><img src="/manual/img/tutorials-beginner/meters-secondmeter.png"/></a>
+		<p>What does it say?</p>
+	</div>
+</div>
+
+<p>Well, that's an issue. The reason that these meters are overlapping is because neither of them has a <b>position</b>. As a result, they both start in the same part of the skin window: specifically, the top-left corner.</p>
+
+<p>How do we move the second meter? First, we need to understand the <a href="/manual/meters/general-options#XY">X and Y</a> coordinate system.</p>
+
+<h3 id="AbsolutePositions">Absolute Positions</h3>
+
+<p>Since Rainmeter skins are two-dimensional, we use two numbers to place meters. <b>X</b> is the number of pixels from the leftmost edge of the skin to the meter; <b>Y</b> is the number of pixels from the topmost edge. All meters start at <code>X=0</code> and <code>Y=0</code> by default; this is called the <em>origin</em> of the skin. So in order to move this meter <em>down</em>, we need to add a <a href="/manual/meters/general-options#XY">Y</a> option:</p>
+
+<p><code>Y=38</code></p>
+
+<p>This pushes the second meter down 38 pixels. Now, both meters can be read clearly:</p>
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-secondmeter2.png"><img src="/manual/img/tutorials-beginner/meters-secondmeter2.png"/></a>
+	</div>
+</div>
+
+<h3 id="RelativePositions">Relative Positions</h3>
+
+<p>What if we add a third meter?</p>
+
+{% highlight ini %}
+[MyMeter3]
+Meter=String
+Text=Yet another string meter.
+AntiAlias=1
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=20
+SolidColor=0,0,0,1
+Y=76
+{% endhighlight %}
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-relative.png"><img src="/manual/img/tutorials-beginner/meters-relative.png"/></a>
+	</div>
+</div>
+
+<p>Now we have:</p>
+
+<ul>
+	<li><code>[MyMeter]</code> with no <code>Y=0</code> (the default).</li>
+	<li><code>[MyMeter2]</code> with <code>Y=38</code>.</li>
+	<li><code>[MyMeter3]</code> with <code>Y=76</code>.</li>
+</ul>
+
+<p>This works great. But if we start adding even more meters, it's going to get awfully tedious to calculate the new Y values by hand - especially if we add meters with different sizes. To solve this problem, Rainmeter allows you to place meters <b>relative</b> to the position of the previous meter, no matter where it is&mdash;you don't need to know the exact number. Putting a lowercase <code>r</code> on the end of the <code>Y</code> option changes the starting point from the origin of the <em>skin</em> to the origin of the previous <em>meter</em>. Using this feature, placing our meters becomes much more straightforward:</p>
+
+<ul>
+	<li><code>[MyMeter2]</code> with <code>Y=38r</code>.</li>
+	<li><code>[MyMeter3]</code> with <code>Y=38r</code>.</li>
+</ul>
+
+<p>The skin looks the same as it did before. But this gives an advantage to you as the skin author, making your code much easier to manage, especially if you want to change something later.</p>
+
+<h3 id="Dimensions">Dimensions</h3>
+
+<p>As we discovered earlier, meters have not only positions, but dimensions. Let's change the opacity on our <code>SolidColor</code> option again, so that we can see the dimensions of our meters more easily:</p>
+
+<p><code>SolidColor=0,0,0,128</code></p>
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-dimensions.png"><img src="/manual/img/tutorials-beginner/meters-dimensions.png"/></a>
+	</div>
+</div>
+
+<p>Because each string is a different length, each meter has a different width. This makes the skin look uneven. However, by adding <a href="/manual/meters/general-options#XY">width and height</a> options, we can force these meters into a certain shape. Just as X sets a number of pixels from the left edge of the skin, <b>W</b> (width) makes the meter extend a number of pixels from the left.<sup>1</sup> Likewise, <b>H</b> (height) makes the meter extend a number of pixels from the top. So if we add both<sup>2</sup> width and height options to all three meters, their areas will line up exactly.</p>
+
+<p>Add these options to <code>[MyMeter]</code>, <code>[MyMeter2]</code> and <code>[MyMeter3]</code>:</p>
+
+<p><code>W=320</code><br>
+	<code>H=38</code></p>
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-dimensions2.png"><img src="/manual/img/tutorials-beginner/meters-dimensions2.png"/></a>
+	</div>
+</div>
+
+<p class="footnote">1. There is an exception to this rule. String meters with a <a href="/manual/meters/string#StringAlign">StringAlign</a> option may change their origins from the top-left to the right, center, and/or bottom of the meter.<br>
+2. Most meter types require both a W and H option in order to set the dimensions. If one is missing, the other is ignored.</p>
+
+<p style="clear: both;">&nbsp;</p>
+
+<div class="right"><p><a href="/manual/rainmeter-101/beginner-tutorials/styles-tutorial">Continue to: Styles Tutorial &raquo;</a></p> </div>
+<p><a href="/manual/rainmeter-101/beginner-tutorials">&laquo; Back to: Beginner Tutorials</a></p>

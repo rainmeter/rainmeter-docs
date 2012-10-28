@@ -1,0 +1,117 @@
+---
+layout: manual
+title: 'Styles Tutorial'
+---
+<!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+	<blockquote><p><i>This tutorial is part of a series. If you aren't sure how you got here, you may want to start from <a href="/manual/rainmeter-101">the beginning</a>.</i></p></blockquote>
+
+<p>Let's stop for a minute and look at the skin we've created so far:</p>
+
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+
+[MyMeter]
+Meter=String
+Text=Hello, world!
+AntiAlias=1
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=20
+SolidColor=0,0,0,1
+W=320
+H=38
+
+[MyMeter2]
+Meter=String
+Text=I'm another meter.
+AntiAlias=1
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=20
+SolidColor=0,0,0,1
+Y=38r
+W=320
+H=38
+
+[MyMeter3]
+Meter=String
+Text=Yet another string meter.
+AntiAlias=1
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=20
+SolidColor=0,0,0,1
+Y=38r
+W=320
+H=38
+{% endhighlight %}
+
+<p>It's looking good. But it could be better. Right now, we have three meters, and most of the options on all three meters are exactly the same. This not only makes the skin file larger than it needs to be; it's also going to take a longer time to change an option like the font, color, or size. Wouldn't it be easier if all three meters could get their options from the same place?</p>
+
+<p>It would, and it is, with <a href="/manual/meters/general-options/meterstyles">styles</a>. Let's add a new section to our skin:</p>
+
+{% highlight ini %}
+[MyStringStyle]
+AntiAlias=1
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=20
+SolidColor=0,0,0,1
+Y=30r
+W=320
+H=38
+{% endhighlight %}
+
+<p>Note that this section does not have the <code>Meter</code> option. This means that Rainmeter won't treat the section as a meter. In fact, it will completely ignore this section, except when it is referenced as a style by another meter, using the <a href="/manual/meters/general-options#MeterStyle">MeterStyle</a> option:</p>
+
+{% highlight ini %}
+[MyMeter]
+Meter=String
+MeterStyle=MyStringStyle
+Text=Hello, world!
+
+[MyMeter2]
+Meter=String
+MeterStyle=MyStringStyle
+Text=I'm another meter.
+
+[MyMeter3]
+Meter=String
+MeterStyle=MyStringStyle
+Text=Yet another string meter.
+{% endhighlight %}
+
+<p>Now, all three meters will <b>inherit</b> the <code>AntiAlias</code>, <code>FontColor</code>, <code>FontFace</code>, <code>FontSize</code>, <code>SolidColor</code>, <code>Y</code>, <code>W</code> and <code>H</code> options from the style. If you want to change an option, all you have to do is edit the <code>[MyStringStyle]</code> section, and all three meters will be changed. For example:</p>
+
+<p><code>FontColor=255,128,0</code></p>
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-styles.png"><img src="/manual/img/tutorials-beginner/meters-styles.png"/></a>
+	</div>
+</div>
+
+<p>What if a meter and its style both have different values for the same option? The meter <b>overrides</b> the style.</p>
+
+{% highlight ini %}
+[MyMeter3]
+Meter=String
+MeterStyle=MyStringStyle
+Text=Yet another string meter.
+FontColor=0,255,0
+{% endhighlight %}
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/tutorials-beginner/meters-styles2.png"><img src="/manual/img/tutorials-beginner/meters-styles2.png"/></a>
+	</div>
+</div>
+
+<p>This gives you an enormous amount of flexibility when you're designing a skin. You can use a style to set a "template" for a group of skins to follow, while at the same time, you are able to change or add options on an individual meter without affecting the rest of the group.</p>
+
+<p style="clear: both;">&nbsp;</p>
+
+<div class="right"><p><a href="/manual/rainmeter-101/beginner-tutorials/measures-tutorial">Continue to: Measures Tutorial &raquo;</a></p> </div>
+<p><a href="/manual/rainmeter-101/meters-tutorial">&laquo; Back to: Meters Tutorial</a></p>
