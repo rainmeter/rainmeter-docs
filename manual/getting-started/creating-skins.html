@@ -38,9 +38,9 @@ title: 'Creating Skins'
 
 <p>But at the core of every skin is a single <i>.ini</i> file. Named <code>SkinName.ini</code>&mdash;where "SkinName" is the name of the skin&mdash;this is a text file that contains the fundamental code that Rainmeter uses to create a working skin.</p>
 
-<p>Because a skin may have any number of <a href="/manual/skins#Variants">variants</a>, skins are typically identified not by their file name, but by the folder where they are located. This is known as the skin's <a href="/manual/skins#Config">config name</a>. To quickly find out a skin's config name, just check the context menu&mdash;the first item is the config name. The Disk skin's config name is <code>illustro\Disk</code>.</p>
+<p>Because a skin may have any number of <a href="/manual/skins#Variants">variants</a>, skins are typically identified not by their file name, but by the folder where they are located. This is known as the skin's <a href="/manual/skins#Config">config name</a>. To quickly find out a skin's config name, just check the context menu&mdash;the first item is the config name. For example, the illustro "Clock" skin's config name is <code>illustro\Clock</code>.</p>
 
-<p>Each skin also has a <a href="/manual/skins#Root">root config folder</a>. This refers to the one folder that contains <em>all</em> of the skins belonging to a "suite," such as illustro. When the skins in a suite are organized together in this way, they can be exported to a <a href="/manual/publishing-skins">package</a>, and then <a href="/manual/installing-skins">installed</a> on another system, as a single collection. They can also share fonts, images and other resources in a way that separate skins cannot. (More on that later.)</p>
+<p>Each skin also has a <a href="/manual/skins#Root">root config folder</a>. This refers to the one folder that contains <em>all</em> of the skins belonging to a "suite," such as illustro. When the skins in a suite are organized together in this way, they can be exported to a <a href="/manual/publishing-skins">package</a>, and then <a href="/manual/installing-skins">installed</a> on another system, as a single collection. They can also share fonts, images and other resources in a way that separate skins cannot. For a simple skin that is not part of such a "suite," the config and root config are the same.</p>
 
 <p>Here's a quick reference chart to help you remember the relationship between skins, configs, variants and roots, using illustro as an example:</p>
 
@@ -103,8 +103,6 @@ Update=1000
 </div>
 
 <p>The <a href="/manual/skins/rainmeter-section#Update">Update</a> option is what sets the length of the skin's <a href="/manual/skins#Update">update cycle</a>. The length is given in milliseconds, or 1/1000ths of a second, so <code>Update=1000</code> means that the skin will update once per second. Updating is how the skin will react to changes in information. You'll see how this works in more detail later on.</p>
-
-<h2 id="StringMeter">String Meter</h2>
 
 <p>Now that you've given your skin a "head," it's time to give it a "body." You're going to create a <a href="/manual/meters/string">string meter</a>. This is one of the most common types of meters, and it is used to create <b>text</b>.</p>
 
