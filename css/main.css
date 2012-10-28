@@ -585,7 +585,8 @@ sup {
 	color:#777;
 }
 
-p.footnote {
+p.footnote,
+ol.footnote li {
 	color:#777;
 	font-size: 0.85em;
 }
