@@ -6,7 +6,7 @@ title: 'Customizing'
 
 <p>Now that you are familiar with Rainmeter's basic <a href="/manual/rainmeter-101/using-rainmeter">user interface</a>, you're ready to start customizing Rainmeter to your liking.</p>
 
-<h2>Finding Skins</h2>
+<h2 id="FindingSkins">Finding Skins</h2>
 
 <p>There is no official, central repository of Rainmeter skins. Rainmeter is an open platform, and skins can be found all over the Internet, from large screenshot galleries to small personal blogs and websites. That said, there are a few major sites where the Rainmeter community tends to gather:</p>
 
@@ -41,7 +41,7 @@ title: 'Customizing'
 	<li><p>If you are suspicious of a skin for any reason, upload the file to <a href="https://www.virustotal.com/">VirusTotal</a>, which will scan the file with over 40 anti-malware services and report the results to you. (Note that false positives are common; only report skins that are flagged as dangerous by a significant number of tests.)</p></li>
 </ul>
 
-<h2>Adding Skins</h2>
+<h2 id="AddingSkins">Adding Skins</h2>
 
 <div class="exampleprev floatright">
 	<a rel="lightbox" href="/manual/img/installing-skins/InstallSkins02.png"><img src="/manual/img/installing-skins/InstallSkins02.png" class="thumbnail"/></a>
@@ -54,13 +54,13 @@ title: 'Customizing'
 
 <p>For an example of a Rainmeter skin package, try downloading and installing one of the <a href="http://rainmeter.net/cms/Discover">Featured Suites</a> from the Rainmeter homepage.</p>
 
-<h2>Editing Skins</h2>
+<h2 id="EditingSkins">Editing Skins</h2>
 
 <p>You have already learned how to change basic <a href="/manual/settings/skin-sections">skin settings</a> in Rainmeter. Now, it's time to learn how to make edits to a skin itself.</p>
 
 	<blockquote><p><i>Remember: every skin is different. Some skins provide more customization options, tools and instructions than others, and the processes for customizing two skins may be very different. In all cases, you should look to whatever documentation the author has provided, whether in the form of a "readme" file, an online support URL, or <code>;comments</code> embedded in the skin code.</i></p></blockquote>
 
-<h3>Controls</h3>
+<h3 id="Controls">Controls</h3>
 
 <div class="exampleprev floatright">
 	<a rel="lightbox" href="/manual/img/rainmeter-101/cs-controls.png"><img src="/manual/img/rainmeter-101/cs-controls.png" class="thumbnail"/></a>
@@ -71,7 +71,7 @@ title: 'Customizing'
 
 <p>This kind of sophisticated control system is more the exception than the rule, and is usually found only on large suites. More often, you will need to edit the skin code directly in order to change or add your own values.</p>
 
-<h3>Variables</h3>
+<h3 id="Variables">Variables</h3>
 
 <div class="exampleprev floatright">
 	<a rel="lightbox" href="/manual/img/rainmeter-101/cs-notepad.png"><img src="/manual/img/rainmeter-101/cs-notepad.png" class="thumbnail"/></a>
@@ -89,6 +89,20 @@ title: 'Customizing'
 	<li><p>A <b>key</b>. Keys are found at the beginning of each line in a section, followed by an equal sign (<code>=</code>).</p></li>
 	<li><p>A <b>value</b>. The value is whatever meaning is assigned to a key&mdash;everything after the first equal sign (<code>=</code>) is the value. (Values must be constrained on a single line.) In Rainmeter, the pairing of a key and a value is called an <a href="/manual/options">option</a>.</p></li>
 </ul>
+
+<div class="noscroll">
+{% highlight ini %}
+[Section1]
+Key1=Value
+Key2=Value
+Key3=Value
+
+[Section2]
+Key1=Value
+Key2=Value
+Key3=Value
+{% endhighlight %}
+</div>
 
 <p>When you're editing variables in a skin, the <i>values</i> are what you are going to change.</p>
 
@@ -113,7 +127,7 @@ colorText=255,255,255,205
 
 <p>Then, save the file.</p>
 
-<h2>Refresh</h2>
+<h2 id="Refresh">Refresh</h2>
 
 <p>The <a href="/manual/skins#Refresh">refresh</a> action is important in Rainmeter. The effect of refreshing a skin is the same as if you had unloaded and then re-loaded the skin. When this happens, all <a href="/manual/variables#DynamicVariables">dynamic</a> variables and other options are reset according to their original values in the skin file, and all <a href="/manual/measures">measures</a> restart from the beginning. Refreshing a skin is also necessary to apply any changes that have been made to a skin's files.</p>
 
@@ -121,7 +135,7 @@ colorText=255,255,255,205
 
 <div class="exampleprev floatright">
 	<a rel="lightbox" href="/manual/img/rainmeter-101/cs-refresh.png"><img src="/manual/img/rainmeter-101/cs-refresh.png" class="thumbnail"/></a>
-	<p class="thumbnail">It may be ugly, but the point is, it's different.</p>
+	<p class="thumbnail">It may be ugly, but it's different.</p>
 </div>
 
 	<blockquote><p><i>When skin files have been added, renamed or removed, you will need to refresh the entire Rainmeter application in the same way. You can do this by selecting <code>Refresh all</code> in the context menu or the bottom-left of the Manage window.</i></p></blockquote>
@@ -130,7 +144,7 @@ colorText=255,255,255,205
 
 <p>You have now edited your first skin! This is the same basic process that you will use to customize, modify, and eventually create skins of your own.</p>
 
-<h2>Going Further</h2>
+<h2 id="GoingFurther">Going Further</h2>
 
 <p>If you don't find the option that you want to change in the <code>[Variables]</code> section, and the author has provided no other instructions, then your objective goes beyond merely "customizing" a skin: you will need to actually <i>modify</i> the skin away from the original author's design.</p>
 

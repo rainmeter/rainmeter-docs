@@ -638,6 +638,10 @@ table.contents tr td:nth-child(2){
 	padding: 0;
 }
 
+.exampleprev p {
+	text-align: left;
+}
+
 .exampleprev .thumbnail {
 	max-width: 200px;
 }

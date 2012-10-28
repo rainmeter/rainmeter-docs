@@ -4,7 +4,86 @@ title: 'Creating Skins'
 ---
 <!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p></p>
+<h2 id="WhatYouNeed">What You Need</h2>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="/manual/img/rainmeter-101/creating-texteditors.png"><img src="/manual/img/rainmeter-101/creating-texteditors.png" class="thumbnail"/></a>
+	<p class="thumbnail">An enhanced text editor with code highlighting makes a big difference.</p>
+</div>
+
+<p>Here's what you need to create Rainmeter skins:</p>
+
+<ol>
+	<li><a href="/manual/rainmeter-101/getting-started">Rainmeter</a>.</li>
+	<li>A text editor.</li>
+</ol>
+
+<p>And that's all. No extra software or materials of any kind are required.</p>
+
+<h3 id="TextEditor">Text Editor</h3>
+
+<p>That being said: while you <em>can</em> edit skins using Windows' built-in text editor, <a href="http://en.wikipedia.org/wiki/Notepad_(software)">Notepad</a>, we strongly recommend downloading an enhanced text editor, such as <a href="http://notepad-plus-plus.org/">Notepad++</a> or <a href="http://www.sublimetext.com/2">Sublime Text</a>. These applications come with powerful features like tabs, auto-completion, embedded file browsers and more. You can even download extensions that add Rainmeter-specific code highlighting, which makes it much faster and easier to read a skin's code and spot errors.</p>
+
+<p>For more information, see <a href="http://docs.rainmeter.net/tips/notepad-alternatives">Notepad Alternatives</a>.</p>
+
+<h3 id="ImageEditor">Image Editor</h3>
+
+<p>Depending on the kind of skin you want to make, you may also want to find a good piece of image editing software. Rainmeter can create text by itself, as well as simple shapes, like rectangles and circles, with solid colors or color gradients. But anything more complex will require a separately-created image file.</p>
+
+<p><a href="http://www.adobe.com/products/photoshop.html">Adobe Photoshop</a> is the usual gold standard for image editing, but there are other, less expensive alternatives worth considering, such as <a href="http://www.getpaint.net/">Paint.NET</a>, <a href="http://www.gimp.org/">GIMP</a>, or <a href="http://inkscape.org/">Inkscape</a>.</p>
+
+<h2 id="TheSkinFile">The Skin File</h2>
+
+<p>A skin can grow to become an enormously complex project by the time it's done. It may accumulate any number of images, icons, fonts, plugins, addons, scripts, and even <a href="/manual/skins/include-option">included</a> code that is strewn across multiple files and shared by other skins.</p>
+
+<p>But at the core of every skin is a single <i>.ini</i> file. Named <code>SkinName.ini</code>&mdash;where "SkinName" is the name of the skin&mdash;this is a text file that contains the fundamental code that Rainmeter uses to create a working skin.</p>
+
+<p>As you have learned, each skin is kept somewhere inside a <a href="/manual/skins#Root">root config folder</a>, which itself is kept in Rainmeter's main <a href="/manual/installing-rainmeter#DefaultFileLocations">Skins folder</a>:</p>
+
+	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins</code><sup>1</sup></p></blockquote>
+
+<p>Accordingly, you can identify any skin by its file path, according to a simple rule:</p>
+
+	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<b>ConfigName</b>\<b>SkinName.ini</b></code></p></blockquote>
+
+<p class="footnote">1. For Windows Vista, 7 and 8. For default folder locations on Windows XP, see <a href="/manual/installing-rainmeter#DefaultFileLocations">Installing Rainmeter</a>.</p>
+
+<p><div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/rainmeter-101/creating-illustro.png"><img src="/manual/img/rainmeter-101/creating-illustro.png"/></a>
+		<p>The illustro "Clock" skin is organized in the Skins folder. Remember that skins are identified by their config name, e.g. "illustro\Clock".</p>
+	</div>
+</div></p>
+
+<h2>Your First Skin</h2>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="/manual/img/rainmeter-101/creating-folderoptions.png"><img src="/manual/img/rainmeter-101/creating-folderoptions.png" class="thumbnail"/></a>
+</div>
+
+<p>Until now, you have been working with the pre-made <em>illustro</em> skins that come with Rainmeter. Now, you're going to create a new skin from scratch. You will use this same skin throughout the <a href="/manual/rainmeter-101/tutorials">tutorials</a> that follow.</p>
+
+<p>Open your Skins folder in Windows Explorer, and create a new folder. Call it <code>MyFirstSkin</code>. Next, you're going to create <code>MyFirstSkin.ini</code>.</p>
+
+	<blockquote>
+		<p><i>Before you continue, there is a setting in Windows Explorer that you may want to change in order to make this process easier.</i></p>
+
+		<p><i>Press <code>Alt</code> to show the menu bar in Explorer, then select <code>Tools</code> &rarr; <code>Folder options</code>. Click the <code>View</code> tab, and uncheck the option labeled <code>Hide extensions for known file types</code>. Press <code>Ok</code> to apply the change.</i></p>
+
+		<p><i>You can now see the "extensions" that signify different file types in Windows Explorer, such as </i>.txt<i> and </i>.ini<i>. This also allows you to change the extension when you rename a file.</i></p>
+	</blockquote>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="/manual/img/rainmeter-101/creating-rename.png"><img src="/manual/img/rainmeter-101/creating-rename.png" class="thumbnail"/></a>
+</div>
+
+<p>Open your new "MyFirstSkin" folder. Right-click inside the empty folder, and select <code>New</code> &rarr; <code>Text Document</code>. Windows will create the new file, and allow you to type in a new name. Type <code>MyFirstSkin.ini</code>. Make sure to remove the ".txt" at the end of the file name. Windows will ask you if you're sure about changing the extension; click <code>Yes</code>.</p>
+
+<p>Finally&mdash;open the Rainmeter context menu and click <code>Refresh all</code> to make Rainmeter see the new skin in your library.</p>
+
+<p>Congratulations! You have just created a new skin.</p>
+
+<p>Now it's time to put something in it.</p>
 
 <p style="clear: both;">&nbsp;</p>
 
