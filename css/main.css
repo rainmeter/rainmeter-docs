@@ -839,5 +839,11 @@ pre .ini .s { color:#445588 }
 	background-image:linear-gradient(top, #333, #222);
 	background-repeat:repeat-x;
 	filter:progid:dximagetransform.microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
-	box-shadow:0 1px 3px rgba(0, 0, 0, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.1)
+	box-shadow:0 1px 3px rgba(0, 0, 0, 0.2), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	border-top:1px solid #333;
+	position: absolute;
+	width: 100%;
+	margin:40px 0 0 0;
+	bottom: 0;
+	left: 0;
 }
