@@ -641,6 +641,10 @@ table#contents tr td:nth-child(2){
 	text-align: left;
 }
 
+.exampleprev img {
+	max-width: 650px;
+}
+
 .exampleprev .thumbnail {
 	max-width: 200px;
 }
