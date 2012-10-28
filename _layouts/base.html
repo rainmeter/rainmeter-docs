@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>{% if page.title %}{{ page.title }} - {% endif %}{{ page.layout_title }}</title>
+	<title>{% if page.title %}{{ page.title }} - {% endif %}{{ page.base_title }}</title>
 	<meta name="keywords" content="rainmeter,docs,documentation,manual,help,support" />
 	<link href="/css/main.css" rel="stylesheet">
 	<link rel="shortcut icon" href="http://rainmeter.net/cms/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
@@ -12,36 +12,36 @@
 	<div class="wrapper">
 		<div class="top">
 			<div class="container">
+				<div id="logo"></div>
 				<nav id="topnav">
 					<ul>
-					<li><b><a href="//rainmeter.net">Rainmeter</a></b>
 					<li><a href="//rainmeter.net">Home</a>
-					<li><a href="/">Docs</a>
+					<li><a href="//rainmeter.net/cms/About">About</a>
+					<li><a href="/" class="active">Docs</a>
+					<li><a href="//rainmeter.net/cms/Discover">Discover</a>
+					<li><a href="//rainmeter.net/cms/Develop">Develop</a>
 					<li><a href="//rainmeter.net/forum">Forum</a>
 					</ul>
 				</nav>
-
-				<form method="get" action="http://www.google.com/search">
-					<input type="hidden" name="sitesearch" value="docs.rainmeter.net">
-					<input id="search" name="q" maxlength="255" size="16" type="text" placeholder="Search">
-				</form>
 			</div>
 		</div>
 
 		<div class="container">
 			<div class="row">
-				{{ content }}
-			</div>
-		</div>
+				<div id="side-content">
+					<nav id="sidenav">
+						{{ page.base_nav }}
+					</nav>
 
-		<div class="footer-push"></div>
+					<form method="get" action="http://www.google.com/search">
+						<input name="sitesearch" value="rainmeter.net/cms" type="hidden">
+						<input id="search" name="q" maxlength="255" size="16" placeholder="Search" type="text">
+					</form>
+				</div>
 
-		<div class="bottom">
-			<div class="footer-left">
-				<p>Hosting provided by <a href="http://osirisdevelopment.com">Osiris Development</a>.</p>
-			</div>
-			<div class="footer-right">
-				<p><a href="http://osirisdevelopment.com/BatteryBar">BatteryBar</a>: the most accurate laptop battery meter available.</p>
+				<div class="content">
+					{{ content }}
+				</div>
 			</div>
 		</div>
 	</div>

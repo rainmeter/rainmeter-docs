@@ -1,32 +1,29 @@
 ---
 layout: base
-layout_title: 'Rainmeter Rainmeter Snippets'
+base_title: 'Rainmeter Rainmeter Snippets'
+base_nav: |
+  <h1>Snippets</h1>
+  <ul>
+  <li><a href="/snippets#General">General</a>
+  <li><a href="/snippets#Conversions">Conversions</a>
+  <li><a href="/snippets#FileInputOutput">File Input &amp; Output</a>
+  <li><a href="/snippets#Math">Math</a>
+  <li><a href="/snippets#Rainmeter">Rainmeter</a>
+  <li><a href="/snippets#Strings">Strings</a>
+  <li><a href="/snippets#Time">Time</a>
+  </ul>
+  
+  <h1>More</h1>
+  <ul>
+  <li><a href="/manual">2.4 Final Manual</a>
+  <li><a href="" style="color:gray; font-weight:normal">2.5 Beta Manual</a>
+  <li><a href="/tips">Tips &amp; Tricks</a>
+  <li><a href="/history">Version History</a>
+  </ul>
 ---
-<nav id="sidenav">
-	<h1>Snippets</h1>
-	<ul>
-	<li><a href="/snippets#General">General</a>
-	<li><a href="/snippets#Conversions">Conversions</a>
-	<li><a href="/snippets#FileInputOutput">File Input &amp; Output</a>
-	<li><a href="/snippets#Math">Math</a>
-	<li><a href="/snippets#Rainmeter">Rainmeter</a>
-	<li><a href="/snippets#Strings">Strings</a>
-	<li><a href="/snippets#Time">Time</a>
-	</ul>
 
-	<h1>More</h1>
-	<ul>
-	<li><a href="/manual">2.4 Final Manual</a>
-	<li><a href="" style="color:gray; font-weight:normal">2.5 Beta Manual</a>
-	<li><a href="/tips">Tips &amp; Tricks</a>
-	<li><a href="/history">Version History</a>
-	</ul>
-</nav>
-
-<div class="content">
-	<header>
-		<h1>{{ page.title }}</h1>
-		{% if page.subtitle %}<p>{{ page.subtitle }}</p>{% endif %}
-	</header>
-	<article>{{ content }}</article>
-</div>
+<header>
+	<h1>{{ page.title }}</h1>
+	{% if page.subtitle %}<p>{{ page.subtitle }}</p>{% endif %}
+</header>
+<article>{{ content }}</article>
