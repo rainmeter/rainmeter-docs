@@ -38,7 +38,17 @@ title: 'Creating Skins'
 
 <p>But at the core of every skin is a single <i>.ini</i> file. Named <code>SkinName.ini</code>&mdash;where "SkinName" is the name of the skin&mdash;this is a text file that contains the fundamental code that Rainmeter uses to create a working skin.</p>
 
-<p>As you have learned, each skin is kept somewhere inside a <a href="/manual/skins#Root">root config folder</a>, which itself is kept in Rainmeter's main <a href="/manual/installing-rainmeter#DefaultFileLocations">Skins folder</a>:</p>
+<p>Because a skin may have any number of <a href="/manual/skins#Variants">variants</a>, skins are typically identified not by their file name, but by the folder where they are located. This is known as the skin's <a href="/manual/skins#Config">config name</a>. To quickly find out a skin's config name, just check the context menu&mdash;the first item is the config name. The Disk skin's config name is <code>illustro\Disk</code>.</p>
+
+<p>Each skin also has a <a href="/manual/skins#Root">root config folder</a>. This refers to the one folder that contains <em>all</em> of the skins belonging to a "suite," such as illustro. When the skins in a suite are organized together in this way, they can be exported to a <a href="/manual/publishing-skins">package</a>, and then <a href="/manual/installing-skins">installed</a> on another system, as a single collection. They can also share fonts, images and other resources in a way that separate skins cannot. (More on that later.)</p>
+
+<p>Here's a quick reference chart to help you remember the relationship between skins, configs, variants and roots, using illustro as an example:</p>
+
+<p class="center">
+	<img src="/manual/img/getting-started/ur-config.png" class="freefloating"/>
+</p>
+
+<p>Root config folders are all organized in Rainmeter's main <a href="/manual/installing-rainmeter#DefaultFileLocations">Skins folder</a>:</p>
 
 	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins</code><sup>1</sup></p></blockquote>
 
@@ -46,14 +56,14 @@ title: 'Creating Skins'
 
 	<blockquote><p><code>C:\Users\YourName\Documents\Rainmeter\Skins\<b>ConfigName</b>\<b>SkinName.ini</b></code></p></blockquote>
 
-<p class="footnote">1. For Windows Vista, 7 and 8. For default folder locations on Windows XP, see <a href="/manual/installing-rainmeter#DefaultFileLocations">Installing Rainmeter</a>.</p>
-
 <p><div class="center">
 	<div class="exampleprev">
 		<a rel="lightbox" href="/manual/img/getting-started/creating-illustro.png"><img src="/manual/img/getting-started/creating-illustro.png"/></a>
 		<p>The illustro "Clock" skin is organized in the Skins folder. Remember that skins are identified by their config name, e.g. "illustro\Clock".</p>
 	</div>
 </div></p>
+
+<p class="footnote">1. For Windows Vista, 7 and 8. For default folder locations on Windows XP, see <a href="/manual/installing-rainmeter#DefaultFileLocations">Installing Rainmeter</a>.</p>
 
 <h2 id="YourFirstSkin">Your First Skin</h2>
 
@@ -79,11 +89,97 @@ title: 'Creating Skins'
 
 <p>Open your new "MyFirstSkin" folder. Right-click inside the empty folder, and select <code>New</code> &rarr; <code>Text Document</code>. Windows will create the new file, and allow you to type in a new name. Type <code>MyFirstSkin.ini</code>. Make sure to remove the ".txt" at the end of the file name. Windows will ask you if you're sure about changing the extension; click <code>Yes</code>.</p>
 
-<p>Finally&mdash;open the Rainmeter context menu and click <code>Refresh all</code> to make Rainmeter see the new skin in your library.</p>
+<p>Finally&mdash;open the Rainmeter context menu and click <code>Refresh all</code> to make Rainmeter see the new skin in your library. Then, open the skin in your text editor.</p>
 
-<p>Congratulations! You have just created a new skin.</p>
+<h3 id="HelloWorld">The "Hello, World!" Skin</h3>
 
-<p>Now it's time to put something in it.</p>
+<p>The very first thing you're going to add to your skin is the <a href="/manual/skins/rainmeter-section">[Rainmeter] section</a>. This is a skin's "header" property, like the <code>&lt;head&gt;</code> tag in an HTML webpage. For now, your [Rainmeter] section will be mostly empty, except for one option:</p>
+
+<div class="noscroll">
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+{% endhighlight %}
+</div>
+
+<p>The <a href="/manual/skins/rainmeter-section#Update">Update</a> option is what sets the length of the skin's <a href="/manual/skins#Update">update cycle</a>. The length is given in milliseconds, or 1/1000ths of a second, so <code>Update=1000</code> means that the skin will update once per second. Updating is how the skin will react to changes in information. You'll see how this works in more detail later on.</p>
+
+<h2 id="StringMeter">String Meter</h2>
+
+<p>Now that you've given your skin a "head," it's time to give it a "body." You're going to create a <a href="/manual/meters/string">string meter</a>. This is one of the most common types of meters, and it is used to create <b>text</b>.</p>
+
+<div class="noscroll">
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+
+[MyMeter]
+Meter=String
+Text=Hello, world!
+{% endhighlight %}
+</div>
+
+<p>The <a href="/manual/meters/general-options#Meter">Meter</a> option is required to tell Rainmeter that this section is, in fact, a meter. All meters have this option. The value of the option determines what <em>type</em> of meter it is.</p>
+
+<p>The <a href="/manual/meters/string#Text">Text</a> option, on the other hand, is unique to the string meter. As you might have guessed, this is where you provide a string of text for Rainmeter to display.</p>
+
+<p>Believe it or not, what you have now is a complete, valid, working Rainmeter skin! Let's load it to see what it looks like. Load the skin using one of the methods that you learned before. You can either:</p>
+
+<ul>
+	<li><p>Open the <a href="/manual/user-interface/manage">Manage</a> window by left-clicking the Rainmeter tray icon, find <code>MyFirstSkin</code> in the <a href="/manual/user-interface/manage#SkinsList">skins list</a>, then click the <code>Load</code> button in the upper-right.</p></li>
+	<li><p>Open the <a href="/manual/user-interface/context-menus">context menu</a> by right-clicking the tray icon, then select <code>Skins</code> &rarr; <code>MyFirstSkin</code> &rarr; <code>MyFirstSkin.ini</code>.</p></li>
+</ul>
+
+<p>(As you get comfortable with Rainmeter's user interface, you'll decide whether you prefer working with the context menu or the Manage window.)</p>
+
+<p>Now, look up in the top-left corner of your desktop. There's your skin!</p>
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/getting-started/basic-tutorials/meters-helloworld.png"><img src="/manual/img/getting-started/basic-tutorials/meters-helloworld.png"/></a>
+		<p>Can you see me?</p>
+	</div>
+</div>
+
+<p>It's... not very big. Or pretty. Meters without any options tend to be very simple and unimpressive. So let's add some <b>formatting</b>.</p>
+
+<div class="noscroll">
+{% highlight ini %}
+[MyMeter]
+Meter=String
+Text=Hello, world!
+AntiAlias=1
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=20
+{% endhighlight %}
+</div>
+
+<p>Here's what we've added:</p>
+
+<ul>
+	<li><p><a href="/manual/meters/general-options#AntiAlias">AntiAlias</a><br>
+		A <a href="/manual/meters/general-options">general meter option</a> that smooths out the edges of a meter. This almost always improves the appearance of a string meter.</p></li>
+	<li><p><a href="/manual/meters/string#FontColor">FontColor</a><br>
+		A <a href="/manual/options#Color">color option</a> that changes the color of the text in this meter.</p></li>
+	<li><p><a href="/manual/meters/string#FontFace">FontFace</a><br>
+		An option that changes the font used for this meter. Rainmeter can use any font that you have installed in Windows, or another font in a skin's <a href="/manual/skins/resources-folder">@Resources folder</a>&mdash;but we'll get to that.</p></li>
+	<li><p><a href="/manual/meters/string#FontSize">FontSize</a><br>
+		The size of the font.</p></li>
+</ul>
+
+<p>Now, let's apply these changes by <a href="/manual/getting-started/customizing#Refresh">refreshing</a> the skin. Once again, you can either press <code>Refresh</code> in the Manage window, or <code>MyFirstSkin</code> &rarr; <code>Refresh skin</code> in the context menu.</p>
+
+<div class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="/manual/img/getting-started/basic-tutorials/meters-hwformatted.png"><img src="/manual/img/getting-started/basic-tutorials/meters-hwformatted.png"/></a>
+		<p>Much nicer.</p>
+	</div>
+</div>
+
+<p style="clear: both;">&nbsp;</p>
+
+<p>Congratulations! You have just created a new skin. You are now ready to move on to the <a href="/manual/getting-started/basic-tutorials">Basic Tutorials.</a> This series will guide you through the entire process of creating several example skins, while teaching you about the fundamental elements of a Rainmeter skin.</p>
 
 <p style="clear: both;">&nbsp;</p>
 
