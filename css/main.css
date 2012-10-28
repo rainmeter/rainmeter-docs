@@ -667,7 +667,7 @@ table#contents tr td:nth-child(2){
 }*/
 
 .home-panel {
-	width: 620px;
+	width: 600px;
 	padding: 15px;
 	vertical-align: top;
 	background-color:rgba(252, 252, 252, 0.5);
@@ -682,7 +682,7 @@ table#contents tr td:nth-child(2){
 }
 
 .home-panel-right {
-	width: 300px;
+	width: 280px;
 	font-size: 0.9em;
 	float: right;
 	clear: right;
