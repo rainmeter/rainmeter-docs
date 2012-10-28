@@ -1,6 +1,6 @@
 // Spice up the side nav.
 (function() {
-	var $nav = $('#sidenav');
+	var $nav = $('#tree');
 	if ($nav) {
 		var href = location.protocol + '//' + location.hostname + location.pathname;
 		$('li', $nav).each(function() {

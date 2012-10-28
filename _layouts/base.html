@@ -3,9 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>{% if page.title %}{{ page.title }} - {% endif %}{{ page.base_title }}</title>
-	<meta name="keywords" content="rainmeter,docs,documentation,manual,help,support" />
 	<link href="/css/main.css" rel="stylesheet">
-	<link rel="shortcut icon" href="http://rainmeter.net/cms/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
+	<link rel="shortcut icon" href="http://rainmeter.net/cms/sites/default/files/favicon.ico">
 	<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script><![endif]-->
 </head>
 <body>
@@ -13,7 +12,7 @@
 		<div class="top">
 			<div class="container">
 				<div id="logo"></div>
-				<nav id="topnav">
+				<nav id="nav">
 					<ul>
 					<li><a href="//rainmeter.net">Home</a>
 					<li><a href="//rainmeter.net/cms/About">About</a>
@@ -29,7 +28,7 @@
 		<div class="container">
 			<div class="row">
 				<div id="side-content">
-					<nav id="sidenav">
+					<nav id="tree">
 						{{ page.base_nav }}
 					</nav>
 
@@ -39,7 +38,7 @@
 					</form>
 				</div>
 
-				<div class="content">
+				<div id="content">
 					{{ content }}
 				</div>
 			</div>
