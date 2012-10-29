@@ -5,7 +5,7 @@
 
 	document.write(
 		'<link href="css/main.css" rel="stylesheet">' +
-		'<div class="container"><div class="content">' +
+		'<div class="container"><div id="content">' +
 		'<header><h1>' + title + '</h1></header>' +
 		'<article>');
 
