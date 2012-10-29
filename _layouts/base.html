@@ -28,14 +28,16 @@
 		<div class="container">
 			<div class="row">
 				<div id="side-content">
-					<nav id="tree">
-						{{ page.base_nav }}
-					</nav>
 
 					<form method="get" action="http://www.google.com/search">
 						<input name="sitesearch" value="docs.rainmeter.net" type="hidden">
 						<input id="search" name="q" maxlength="255" size="16" placeholder="Search" type="text">
 					</form>
+					
+					<nav id="tree">
+						{{ page.base_nav }}
+					</nav>
+					
 				</div>
 
 				<div id="content">
