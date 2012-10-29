@@ -58,4 +58,73 @@ title: 'Tooltips'
 	<dd>
 		If set to 1, the ToolTip is not displayed.
 		<br><br><b>Note:</b> ToolTipHidden can also be used in the <code>[Rainmeter]</code> section to hide all tooltips in the skin.
-	</dd>	
+	</dd>
+
+<h2>Example</h2>
+
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+
+[MeasureCPU]
+Measure=CPU
+
+[MeasureCPUSpeed]
+Measure=Registry
+RegHKey=HKEY_LOCAL_MACHINE
+RegKey=HARDWARE\DESCRIPTION\System\CentralProcessor\0
+RegValue=~MHz
+UpdateDivider=86400
+
+[MeasureCPUName]
+Measure=Registry
+RegHKey=HKEY_LOCAL_MACHINE
+RegKey=HARDWARE\DESCRIPTION\System\CentralProcessor\0
+RegValue=ProcessorNameString
+UpdateDivider=86400
+
+[MeasureCPUIdentifier]
+Measure=Registry
+RegHKey=HKEY_LOCAL_MACHINE
+RegKey=HARDWARE\DESCRIPTION\System\CentralProcessor\0
+RegValue=Identifier
+UpdateDivider=86400
+
+[MeasureCPUText]
+Meter=String
+X=0
+Y=0
+FontFace=Segoe UI
+FontColor=255,255,255,255
+SolidColor=0,0,0,1
+FontSize=12
+StringStyle=Bold
+StringAlign=Left
+AntiAlias=1
+Text="CPU Usage:"
+ToolTipTitle=CPU Information
+ToolTipType=1
+ToolTipIcon=INFO
+ToolTipText=[MeasureCPUName]#CRLF#[MeasureCPUIdentifier]#CRLF#Running at: [MeasureCPUSpeed] Mhz
+DynamicVariables=1
+
+[MeterCPU%]
+MeasureName=MeasureCPU
+Meter=String
+X=140
+Y=-2r
+FontFace=Segoe UI
+FontColor=255,255,255,255
+FontSize=14
+StringStyle=Bold
+StringAlign=Right
+AntiAlias=1
+NumOfDecimals=0
+Percentual=1
+Text="%1%"
+{% endhighlight %}
+
+<div class="exampleprev">
+	<p><img src="/manual/img/example-meters/ExampleTooltip.png"/></p>
+	<p>An example skin demontrating the Tooltip option.</p>
+</div>	
