@@ -23,6 +23,29 @@ SolidColor=FF0000
 
 <p>One of many ways to obtain a desired color code is <a href="http://rainmeter.net/color/">Rainmeter Online Color Picker</a>.</p>
 
+<h3 id="ColorPicker">Color Picker</h3>
+
+<div class="fields">
+	<p>RGB:&nbsp;<input id="myRGB" style="width: 220" onClick="document.getElementById('myRGB').select()"></p>
+	<p>HEX:&nbsp;<input style="width: 220" class="color {pickerFace:3,pickerBorder:0,pickerOnfocus:false}" id="myColor" onClick=
+		"document.getElementById('myColor').select()" onchange="document.getElementById('myRGB').value = 
+		Math.round(255 * this.color.rgb[0]) + ',' + 
+		Math.round(255 * this.color.rgb[1]) + ',' + 
+		Math.round(255 * this.color.rgb[2]);"></p>
+</div>
+
+<script type="text/javascript" src="jscolor.js"></script>
+<script type="text/javascript">
+	function upperCase(x) {
+		var y=document.getElementById(x).value
+		document.getElementById(x).value=y.toUpperCase()
+	}
+	document.getElementById('myColor').color.showPicker();
+	document.getElementById('myRGB').value = '255,255,255';
+</script>
+
+
+
 <h2 id="Path">Path options</h2>
 <p>Path options specify the relative or absolute path of either a file or a folder (depending on the option). For example, the path of an image file is expected with <code>ImageName</code>.</p>
 
