@@ -454,6 +454,10 @@ body {
 	font-size:15px;
 }
 
+#category a {
+	color:#333;
+}
+
 #search-form:before {
 	content:" ";
 	position:absolute;
