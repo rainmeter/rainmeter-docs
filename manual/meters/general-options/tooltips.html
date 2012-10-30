@@ -4,60 +4,55 @@ title: 'Tooltips'
 ---
 <!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Creates a ToolTip which appears when the mouse is hovered over the meter.</p>
+<p>Creates a tooltip which appears when the mouse is hovered over the meter.</p>
 
 <h2>Options</h2>
 <dl>
-	<dt id="ToolTipText"><code>ToolTipText</code><small>Required</small></dt>
+	<dt id="ToolTipText"><code>ToolTipText</code></dt>
 	<dd>
-		The text to display.
+		Text to display. This option must be specified in order to use the tooltip.
+
 		<br><br>Values from <code>MeasureName</code> from the meter can be used with <code>%1</code>, <code>%2</code> etc. as appropriate for various meter types:
 		<ul>
-			<li>Line, String: %1, %2, %3, ...</li>
-			<li>Histogram: %1, %2</li>
-			<li>Others: %1</li>
+			<li><b>Line, String:</b> <code>%1</code>, <code>%2</code>, <code>%3</code>, ...</li>
+			<li><b>Histogram:</b> <code>%1</code>, %2</code></li>
+			<li><b>Others:</b> <code>%1</code></li>
 		</ul>
-		<br><b>Note:</b> To wrap the text on multiple lines, use the <a href="/manual/variables/built-in-variables#CRLF">Built-In Variable</a> <code>#CRLF#</code> to provide line breaks.
+		<b>Note:</b> To wrap the text on multiple lines, use the <a href="/manual/variables/built-in-variables#CRLF">#CRLF# variable</a>.
 	</dd>
 
 	<dt id="ToolTipTitle"><code>ToolTipTitle</code></dt>
 	<dd>
-		Sets a bold title for the tooltip. Only one line of text can be used.
+		Title of the tooltip. Only one line of text can be used.
 	</dd>
 
 	<dt id="ToolTipIcon"><code>ToolTipIcon</code></dt>
 	<dd>
-		Specifies an Icon to be placed in the tooltip. This can be the <a href="/manual/options#Path">path</a> to a .ico file or one of these preset icons:
+		Specifies the icon to use for the tooltip. This can be the <a href="/manual/options#Path">path</a> to a .ico file or one of the following preset icons:
 		<ul>
-			<li>INFO</li>
-			<li>WARNING</li>
-			<li>ERROR</li>
-			<li>QUESTION</li>
-			<li>SHIELD (Windows Vista and newer)</li>
+			<li><code>Info</code></li>
+			<li><code>Warning</code></li>
+			<li><code>Error</code></li>
+			<li><code>Question</code></li>
 		</ul>
-		<br><b>Note:</b> ToolTipTile is required to use ToolTipIcon.
+		<b>Note:</b> <code>ToolTipTitle</code> must be specified to use <code>ToolTipIcon</code>.
 	</dd>
 
 	<dt id="ToolTipType"><code>ToolTipType</code><small>Default: <code>0</code></small></dt>
 	<dd>
-		Defines the style of the tooltip. Valid values are:
-		<ul>
-			<li><code>0</code> Normal tooltip
-			<li><code>1</code> Ballon tooltip
-		</ul>
-		<br><b>Note:</b> <code>ToolTipType=1</code> is not supported on Windows XP.
+		If set to <code>1</code>, a balloon tooltip is displayed. Otherwise a normal tooltip displayed.
 	</dd>
 
 	<dt id="ToolTipWidth"><code>ToolTipWidth</code><small>Default: <code>1000</code></small></dt>
 	<dd>
 		Maximum width for the tooltip. When the width is reached, the text will automatically wrap.
-		<br><br><b>Note:</b> As a ToolTipTitle cannot be wrapped, do not set this width less than the length of the title, or there could be unexpected results.
+		<br><br><b>Note:</b> As a <code>ToolTipTitle</code> cannot be wrapped, do not set this width less than the length of the title, or there could be unexpected results.
 	</dd>
 
 	<dt id="ToolTipHidden"><code>ToolTipHidden</code><small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to 1, the ToolTip is not displayed.
-		<br><br><b>Note:</b> ToolTipHidden can also be used in the <code>[Rainmeter]</code> section to hide all tooltips in the skin.
+		If set to <code>1</code>, the tooltip is not displayed.
+		<br><br><b>Note:</b> This option can also be used in the <a href="/manual/settings/rainmeter-section">[Rainmeter] section</a> to hide all tooltips in the skin.
 	</dd>
 
 <h2>Example</h2>
