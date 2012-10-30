@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>{% if page.title %}{{ page.title }} - {% endif %}{{ page.base_title }}</title>
+	<title>{% if page.title %}{{ page.title }} - {% endif %}Rainmeter {{ page.base_title }}</title>
 	<link href="/css/main.css" rel="stylesheet">
 	<link rel="shortcut icon" href="http://rainmeter.net/cms/sites/default/files/favicon.ico">
 	<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script><![endif]-->
@@ -28,16 +28,16 @@
 		<div class="container">
 			<div class="row">
 				<div id="side-content">
+					<h1 id="category">{{ page.base_title }}</h1>
 
-					<form method="get" action="http://www.google.com/search">
+					<form id="search-form" method="get" action="http://www.google.com/search">
 						<input name="sitesearch" value="docs.rainmeter.net" type="hidden">
 						<input id="search" name="q" maxlength="255" size="16" placeholder="Search" type="text">
 					</form>
-					
+
 					<nav id="tree">
 						{{ page.base_nav }}
 					</nav>
-					
 				</div>
 
 				<div id="content">
