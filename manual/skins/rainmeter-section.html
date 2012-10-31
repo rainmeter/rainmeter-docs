@@ -38,7 +38,11 @@ title: '[Rainmeter] section'
 	<dd>
 		Defines the update time in milliseconds for meter transitions. While a transition is active the meter will update at this rate. Currently, only the <a href="/manual/meters/bitmap#BitmapTransitionFrames">Bitmap</a> meter supports meter transitions.
 	</dd>
-
+	
+	<dt id="ToolTipHidden"><code>ToolTipHidden</code><small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, all tooltips in the skin will be hidden. More information on <a href="/manual/meters/general-options/tooltips">tooltips</a>.
+	</dd>
 </dl>
 
 <h2 id="BackgroundOptions">Background options</h2>
@@ -71,6 +75,28 @@ title: '[Rainmeter] section'
 		If <code>BackgroundMode=3</code>, defines margins of the <code>Background</code> image that are not scaled. The parameters are <code>left,top,right,bottom</code>.
 		<br><br><b>Example:</b> <code>BackgroundMargins=0,10,0,20</code>.
 		<br>10 pixels from the top and 20 pixels from the bottom of the image are not scaled.
+	</dd>
+	
+	<dt id="SolidColor"><code>SolidColor</code>, <code>SolidColor2</code> <small>Default: <code>0,0,0,0</code></small></dt>
+	<dd>
+		<p>This option will specify the background <a href="/manual/options#Color">color</a> when <code>BackgroundMode=2</code>. If <code>SolidColor2</code> is also specified, the background is a <a href="#GradientAngle">gradient</a> composed of <code>SolidColor</code> and <code>SolidColor2</code>.</p>
+
+		<p><b>Hint:</b> <code>SolidColor=0,0,0,1</code> can be used to make transparent areas of the background clickable.</p>
+	</dd>
+
+	<dt id="GradientAngle"><code>GradientAngle</code></dt>
+	<dd>
+		Angle of the gradient in degrees (for <code>SolidColor</code> and <code>SolidColor2</code>) when <code>BackgroundMode=2</code>.
+	</dd>
+
+	<dt id="BevelType"><code>BevelType</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If enabled, draws a bevel around the edges of the entire skin when <code>BackgroundMode=2</code>. Valid values are:
+		<ul>
+		<li><code>0</code>: No bevel</li>
+		<li><code>1</code>: Raised</li>
+		<li><code>2</code>: Sunken</li>
+		</ul>
 	</dd>
 </dl>
 
