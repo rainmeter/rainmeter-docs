@@ -90,4 +90,9 @@ title: 'Skin sections'
 		<p><b>Example:</b> Three skins having <code>LoadOrder=-1</code>, <code>LoadOrder=2</code> and <code>LoadOrder=5</code> would load the configs in that order, with the config with <code>LoadOrder=-1</code> appearing beneath the one with LoadOrder=2 which is in turn beneath the config containing <code>LoadOrder=5</code>. If two configs have the same value for LoadOrder, they are then loaded in alphabetical order.</p>
 		<p><b>Note:</b> The value of LoadOrder has no bearing on the <a href="#AlwaysOnTop">Z-position</a> of the skin. LoadOrder only affects how skins in the same Z-position interact with each other. That is to say, configs set to "Topmost" will always appear above configs set to "Normal", but two configs in "Topmost" will layer themselves according to their LoadOrder value.</p>
 	</dd>
+	
+	<dt id="AutoSelectScreen"><code>AutoSelectScreen</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, the <a href="/manual/user-interface/manage#Monitors">WindowX/WindowY "@<em>N</em>"</a> settings are made automatically based on the position of the meter's window. This setting will reset to 0 when a monitor is selected in the <a href="/manual/user-interface/manage">Manage</a> window or on the skins <a href="/manual/user-interface/context-menus#SkinContextMenus">context menu</a>.
+	</dd>
 </dl>	
