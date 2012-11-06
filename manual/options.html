@@ -102,3 +102,19 @@ LeftMouseUpAction=!SetOption SomeMeter FontSize #VarName#
 LeftMouseUpAction=!SetOption SomeMeter FontSize #*VarName*#
 ; The FontSize option for SomeMeter will be set to the the string "#VarName#"
 {% endhighlight %}
+
+<h2 id="RegExp">Regular expression options</h2>
+
+<p>These options use <a href="http://www.pcre.org/">Perl Compatible Regular Expressions</a> (PCRE) to match specific parts of a plaintext string. Regular expressions are used when the structure of a piece of data is known, but the content is not.</p>
+
+<p>In Rainmeter, regular expressions are most prominently used by the <a href="/manual/plugins/webparser">WebParser plugin</a> to interpret (or "parse") web-based data sources, but they can also be used to modify the value of any measure using <a href="/manual/measures/general-options/substitute#RegExpSubsitute">Substitute options</a>.</p>
+
+<p>The PCRE library is maintained and documented by its own creators, not by any members of the Rainmeter development team. For more about using regular expressions, see the following resources:</p>
+
+<ul>
+	<li><p><a href="http://www.perl.com/doc/manual/html/pod/perlre.html">Documentation</a>.</p></li>
+	<li><p><a href="http://www.regular-expressions.info/tutorial.html">Tutorial</a>.</p></li>
+	<li><p><a href="http://www.cheatography.com/davechild/cheat-sheets/regular-expressions/">Cheat sheet</a>.</p></li>
+</ul>
+
+<p>Formats that are commonly parsed with regular expressions include <a href="http://en.wikipedia.org/wiki/Html">HTML</a>, <a href="http://en.wikipedia.org/wiki/Xml">XML</a>, <a href="http://en.wikipedia.org/wiki/Rss">RSS</a>, <a href="http://en.wikipedia.org/wiki/Atom_(standard)">Atom</a>, <a href="http://en.wikipedia.org/wiki/Json">JSON</a> and <a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>.</p>

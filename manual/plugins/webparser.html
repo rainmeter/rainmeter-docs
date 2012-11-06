@@ -6,7 +6,7 @@ title: 'WebParser plugin'
 
 <p><code>Plugin=WebParser</code> reads and parses information from web pages.</p>
 
-<p>The plugin uses <a href="http://www.regular-expressions.info/tutorial.html">Regular Expressions</a> to extract information from any web page or <a href="#Local">local file</a>.</p>
+<p>The plugin uses <a href="/manual/options#RegExp">Perl Compatible Regular Expressions</a> to extract information from any web page or <a href="#Local">local file</a>.</p>
 
 <h2>Usage</h2>
 <p>WebParser measures take the form:</p>
@@ -53,7 +53,7 @@ StringIndex=2
 
 	<dt id="RegExp"><code>RegExp</code></dt>
 	<dd>
-		<p>The regular expression used in parsing. The plugin uses <a href="http://www.pcre.org/">Perl Compatible Regular Expressions</a>, so check the <a href="http://www.perl.com/doc/manual/html/pod/perlre.html">Perl docs</a> for syntax and more info.</p>
+		<p>The <a href="/manual/options#RegExp">Perl compatible regular expression</a> used in parsing.</p>
 	</dd>
 
 	<dt id="FinishAction"><code>FinishAction</code></dt>
