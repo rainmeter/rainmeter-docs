@@ -60,7 +60,7 @@ end
 {% highlight lua %}
 function SplitLines(String)
 	local Table = {}
-	for Line in String:gmatch('[^\n]*') do
+	for Line in String:gmatch('[^\r\n]*') do
 		table.insert(Table, Line)
 	end
 	return Table
