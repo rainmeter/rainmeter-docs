@@ -6,6 +6,8 @@ title: 'Read &amp; Write a File'
 
 <p>These are general functions that can be used to read or write any type of string data to or from a permanent text file. These make use of Lua's <a href="http://lua-users.org/wiki/IoLibraryTutorial">Io Library</a> functions, which can be hard to understand without a template.</p>
 
+<h3 id="ReadFile">ReadFile</h3>
+
 <div class="noscroll">
 {% highlight lua %}
 function ReadFile(FilePath)
@@ -29,6 +31,40 @@ function ReadFile(FilePath)
 end
 {% endhighlight %}
 </div>
+
+<h3 id="ReadFileLines">ReadFileLines</h3>
+
+<p>Alternatively, instead of getting the entire file as a single string, you may instead want to break it down into its individual lines.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function ReadFileLines(FilePath)
+	-- HANDLE RELATIVE PATH OPTIONS.
+	FilePath = SKIN:MakePathAbsolute(FilePath)
+
+	-- OPEN FILE.
+	local File = io.open(FilePath)
+
+	-- HANDLE ERROR OPENING FILE.
+	if not File then
+		print('ReadFile: unable to open file at ' .. FilePath)
+		return
+	end
+
+	-- READ FILE CONTENTS AND CLOSE.
+	local Contents = {}
+	for Line in File:lines() do
+		table.insert(Contents, Line)
+	end
+
+	File:close()
+
+	return Contents
+end
+{% endhighlight %}
+</div>
+
+<h3 id="WriteFile">WriteFile</h3>
 
 <div class="noscroll">
 {% highlight lua %}
@@ -54,18 +90,4 @@ end
 {% endhighlight %}
 </div>
 
-<p>In addition, when reading a file, it is often helpful to break down the full string into individual lines. The function below takes a string and returns a table containing each line as an indexed value.</p>
-
-<div class="noscroll">
-{% highlight lua %}
-function SplitLines(String)
-	local Table = {}
-	for Line in String:gmatch('[^\r\n]*') do
-		table.insert(Table, Line)
-	end
-	return Table
-end
-{% endhighlight %}
-</div>
-
-<p>To merge a table into a single string with each value on a separate line, use <code>String = table.concat(Table, '\n')</code> </p>
+<p>To merge a table of "lines" into a single string with each value on a separate line, use <code>String = table.concat(Table, '\n')</code> </p>
