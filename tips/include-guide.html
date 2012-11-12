@@ -9,10 +9,16 @@ title: '@Include Guide'
 <p>While <a href="/manual/skins/include-option">@include</a> is a simple tool it is powerful as well. It can be used to make skin code shorter by stripping out longer code into shorter files. Repetitive code used in multiple skins can be managed with one file. It can even be used to load different code when you open a skin.</p>
 <h3>Using @include</h3>
 <p>There are several rules to using @include. The first is the @include call.<br>
-<pre>@include=SomeFile.inc</pre></p>
+{% highlight ini %}
+[Section]
+@include=SomeFile.inc
+{% endhighlight %}
+<p><b>Note:</b> The @include call must be made within a section. Authors have generally used the <code>[Rainmeter]</code> or <code>[Variables]</code> sections when appropriate.</p>
 <p>The second being the file that you're including.<br>
-<pre>[Variables]
-SomeVariable=AValue</pre></p>
+{% highlight ini %}
+[Variables]
+SomeVariable=AValue
+{% endhighlight %}
 <p>The file being used with @include must be formatted in the INI format, meaning that it has all the appropriate [sections] followed by Key=Value pairs. This includes using the [Variables] section.</p>
 <p>If you want to include more than one file, they need to be listed with unique identifiers.</p>
 <pre>@include=SomeFile.inc
@@ -44,6 +50,7 @@ Text=This Won't Work
 
 <p>YourSkin.ini<br>
 {% highlight ini %}
+[Variables]
 @include=SomeFile.inc
 
 [Foreground]
