@@ -1,0 +1,71 @@
+---
+layout: snippets
+title: 'Read &amp; Write a File'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>These are general functions that can be used to read or write any type of string data to or from a permanent text file. These make use of Lua's <a href="http://lua-users.org/wiki/IoLibraryTutorial">Io Library</a> functions, which can be hard to understand without a template.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function ReadFile(FileName)
+	-- HANDLE RELATIVE PATH OPTIONS.
+	FileName = SKIN:MakePathAbsolute(FileName)
+
+	-- OPEN FILE.
+	local File = io.open(FileName)
+
+	-- HANDLE ERROR OPENING FILE.
+	if not File then
+		print('ReadFile: unable to open file at ' .. FileName)
+		return
+	end
+
+	-- READ FILE CONTENTS AND CLOSE.
+	local Contents = File:read('*all')
+	File:close()
+
+	return Contents
+end
+{% endhighlight %}
+</div>
+
+<div class="noscroll">
+{% highlight lua %}
+function WriteFile(FileName, Contents)
+	-- HANDLE RELATIVE PATH OPTIONS.
+	FileName = SKIN:MakePathAbsolute(FileName)
+
+	-- OPEN FILE.
+	local File = io.open(FileName, 'w')
+	
+	-- HANDLE ERROR OPENING FILE.
+	if not File then
+		print('WriteFile: unable to open file at ' .. FileName)
+		return
+	end
+
+	-- WRITE CONTENTS AND CLOSE FILE
+	File:write(Contents)
+	File:close()
+
+	return true
+end
+{% endhighlight %}
+</div>
+
+<p>In addition, when reading a file, it is often helpful to break down the full string into individual lines. The function below takes a string and returns a table containing each line as an indexed value.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function SplitLines(String)
+	local Table = {}
+	for Line in String:gmatch('[^\n]*') do
+		table.insert(Table, Line)
+	end
+	return Table
+end
+{% endhighlight %}
+</div>
+
+<p>To merge a table into a single string with each value on a separate line, use <code>String = table.concat(Table, '\n')</code> </p>
