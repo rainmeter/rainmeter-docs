@@ -1,0 +1,112 @@
+---
+layout: manual
+title: 'Line meter'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Meter=Line</code> displays the measure values as a series of data points connected by straight line segments.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General meter options</dt>
+	<dd>
+		All <a href="!meters/general-options">general meter options</a> are valid.
+	</dd>
+
+	<dt id="LineCount"><code>LineCount</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		Number of lines in the meter.
+	</dd>
+
+	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<em>N</em></code></dt>
+	<dd>
+		Names of the measures to use as the source for a line. The measure(s) used must be able to return <a href="!measures#Percentage">percentual values</a>.
+	</dd>
+
+	<dt id="LineColor"><code>LineColor</code>, <code>LineColor2</code>, ..., <code>LineColor<em>N</em></code></dt>
+	<dd>
+		<a href="!options#Color">Color</a> for a line.
+	</dd>
+
+	<dt id="LineWidth"><code>LineWidth</code> <small>Default: <code>1.0</code></small></dt>
+	<dd>
+		Width of the line(s).
+	</dd>
+
+	<dt id="Scale"><code>Scale</code>, <code>Scale2</code>, ..., <code>Scale<em>N</em></code> <small>Default: <code>1.0</code></small></dt>
+	<dd>
+		Scales (multiplies) the measure value to use for a line by the specified number.
+
+		<br><br><b>Note:</b> If <code>AutoScale</code> is enabled, this option is ignored.
+	</dd>
+
+	<dt id="AutoScale"><code>AutoScale</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, the lines are automatically scaled so that the largest value is visible in the meter. Otherwise the largest maximum value of the all of the measures used is used as the scale.
+	</dd>
+
+	<dt id="HorizontalLines"><code>HorizontalLines</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, horizontal marker lines are displayed behind the lines.
+	</dd>
+
+	<dt id="HorizontalLineColor"><code>HorizontalLineColor</code> <small>Default: <code>0,0,0,255</code></small></dt>
+	<dd>
+		<a href="!options#Color">Color</a> of the horizontal marker lines (for <code>HorizontalLines=1</code>).
+	</dd>
+
+	<dt id="GraphStart"><code>GraphStart</code> <small>Default: <code>Right</code></small></dt>
+	<dd>
+		Starting point of the graph. Valid values are <code>Left</code> and <code>Right</code>.
+	</dd>
+
+	<dt id="GraphOrientation"><code>GraphOrientation</code> <small>Default: <code>Vertical</code></small></dt>
+	<dd>
+		Orientation of the graph elements. Valid values are <code>Horizontal</code> and <code>Vertical</code>.
+	</dd>
+
+	<dt id="Flip"><code>Flip</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, the meter is flipped vertically.
+	</dd>
+</dl>
+
+<h2>Example</h2>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterLine_1.0.rmskin" class="download"></a>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[MeterBackground]
+Meter=Image
+W=220
+H=80
+SolidColor=150,150,150,255
+
+[MeasureNetIn]
+Measure=NetIn
+
+[MeasureNetOut]
+Measure=NetOut
+
+[MeterNetworkLine]
+Meter=Line
+MeasureName=MeasureNetOut
+MeasureName2=MeasureNetIn
+X=5
+Y=5
+W=210
+H=70
+LineCount=2
+LineColor=140,252,124,255
+LineColor2=254,211,122,255
+SolidColor=0,0,0,255
+AutoScale=1
+AntiAlias=1
+{% endhighlight %}
+
+<div class="exampleprev">
+	<p><img src="!img/example-meters/ExampleMeterLine.jpg"/></p>
+	<p>An example skin demontrating a Line meter.</p>
+</div>

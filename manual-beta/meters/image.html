@@ -1,0 +1,99 @@
+---
+layout: manual
+title: 'Image Meter'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Meter=Image</code> displays either a static image or an image dependant on a measure value(s).</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General meter options</dt>
+	<dd>
+		All <a href="!meters/general-options">general meter options</a> are valid.
+	</dd>
+
+	<dt>General image options</dt>
+	<dd>
+		All <a href="!meters/general-options/image-options">general image options</a> are valid for <code>ImageName</code>.
+	</dd>
+
+	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<em>N</em></code></dt>
+	<dd>
+		Name(s) of the measure(s) to use in <code>ImageName</code> with the <code>%<em>N</em></code> syntax. This option does not need to be specified if not needed.
+	</dd>
+
+	<dt id="ImageName"><code>ImageName</code> <small>Default: <code>%1.png</code></small></dt>
+	<dd>
+		<a href="!options#Path">Path</a> of the image file. The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:
+		{% highlight ini %}
+MeasureName=SomeMeasure
+MeasureName2=SomeMeasure2
+ImageName=%1-%2.png
+; %1 and %2 will be replaced by the string values of SomeMeasure and
+; SomeMeasure2, respectively.
+{% endhighlight %}
+		<b>Note:</b> If an extension is not provided for the image file, .png is assumed.
+	</dd>
+
+	<dt id="Path"><code>Path</code></dt>
+	<dd>
+		<a href="!options#Path">Path</a> of the image folder location.
+	</dd>
+
+	<dt id="PreserveAspectRatio"><code>PreserveAspectRatio</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		Controls how <code>W</code> and <code>H</code> scale the image when <code>Tile=0</code>. Valid values are:
+		<ul>
+		<li><code>0</code>: The image is scaled to exactly fit the bounds specified by <code>W</code> and <code>H</code> without regard to aspect ratio.</li>
+		<li><code>1</code>: The image is scaled to fit within the bounds specified by <code>W</code> and/or <code>H</code> while preserving the aspect ratio.</li>
+		<li><code>2</code>: The image is scaled and cropped to fill the bounds specified by <code>W</code> and/or <code>H</code> while preserving the aspect ratio.</li>
+		</ul>
+	</dd>
+
+	<dt id="ScaleMargins"><code>ScaleMargins</code> <small>Format: <code>Left, Top, Right, Bottom</code></small></dt>
+	<dd>
+		<p>Margins of the image to exclude from scaling when <code>Tile=0</code> and <code>PreserveAspectRatio=0</code>.</p>
+		<p><b>Example:</b> <code>ScaleMargins=10, 50, 10, 50</code></p>
+	</dd>
+</dl>
+
+<p><b>Note:</b> Using the <a href="!meters/general-options#SolidColor">SolidColor</a> option, along with <a href="!meters/general-options#WH">W</a> and <a href="!meters/general-options#WH">H</a> options, an image meter may be used to draw squares, rectangles or lines without needing any <code>ImageName</code> or <code>MeasureName</code>.</p>
+
+<h2>Example</h2>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterImage_1.0.rmskin" class="download"></a>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+
+[MeterBackground]
+Meter=Image
+ImageName=#@#Images\Background.jpg
+W=200
+H=200
+GreyScale=1
+ImageTint=171,54,3,150
+
+[MeasureMyPictures]
+Measure=Plugin
+Plugin=QuotePlugin
+PathName=#@#\Pictures
+Subfolders=0
+FileFilter=*.jpg;*.gif;*.bmp;*.png
+UpdateDivider=10
+
+[MeterShowPicture]
+Meter=Image
+MeasureName=MeasureMyPictures
+X=25
+Y=25
+W=150
+H=150
+PreserveAspectRatio=1
+LeftMouseUpAction=!Refresh
+{% endhighlight %}
+
+<div class="exampleprev">
+	<p><img src="!img/example-meters/ExampleMeterImage.jpg"/></p>
+	<p>An example skin demontrating an Image meter.</p>
+</div>

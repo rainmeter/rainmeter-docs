@@ -1,0 +1,110 @@
+---
+layout: manual
+title: 'AdvancedCPU measure'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=AdvancedCPU</code> measures CPU usage by processes.</p>
+
+<p><b>Note:</b> The value is a calculation of process CPU time scaled by the number of CPU cores. In order to use the value as a <a href="!measures#Percentage">percentage</a> in meters, it must have the <a href="!measures/general-options/#MaxValue">MaxValue</a> of the measure dynamically set to the current value of an AdvancedCPU measure which has no <code>CPUInclude</code> or <code>CPUExclude</code> options. See the <a href="#Example">Example</a> below.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
+	</dd>
+
+	<dt id="CPUInclude"><code>CPUInclude</code></dt>
+	<dd>
+		<p>List of process names separated by <code>;</code> (semicolon) to use in measurements	. If specified, <code>CPUExclude</code> is ignored.</p>
+	</dd>
+
+	<dt id="CPUExclude"><code>CPUExclude</code></dt>
+	<dd>
+		<p>List of processes separated by <code>;</code> (semicolon) to ignore in measurements.</p>
+		<p><b>Note:</b> The process <b>Idle</b> is a placeholder process used to manage unused CPU, therefore it should be excluded with <code>CPUExclude=Idle</code> to obtain CPU or <code>TopProcess</code> usage.</p>
+	</dd>
+
+	<dt id="TopProcess"><code>TopProcess</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>Measures the process that is currently using the most CPU. Valid values are:
+		<ul>
+		<li><code>1</code> : The <a href="!measures#Values">value</a> will be the process CPU usage.</li>
+		<li><code>2</code> : The <a href="!measures#Values">string value</a> will be the process name. The number value is not altered.</li>
+		</ul></p>
+	</dd>
+</dl>
+
+<h2 id="Example">Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+BackGroundMode=2
+SolidColor=0,0,0,255
+
+;Measure maximum CPU time for use in MaxValue in other measures
+[MeasureCPUMax]
+Measure=Plugin
+Plugin=AdvancedCPU
+
+;Measure current CPU usage with MaxValue set
+[MeasureCPU]
+Measure=Plugin
+Plugin=AdvancedCPU
+CPUExclude=Idle
+MaxValue=[MeasureCPUMax]
+DynamicVariables=1
+
+;Measure Name of top process
+[MeasureTopName]
+Measure=Plugin
+Plugin=AdvancedCPU
+CPUExclude=Idle
+TopProcess=2
+
+;Measure CPU usage of top process with MaxValue set
+[MeasureTop%]
+Measure=Plugin
+Plugin=AdvancedCPU
+CPUExclude=Idle
+TopProcess=1
+MaxValue=[MeasureCPUMax]
+DynamicVariables=1
+
+;Show current CPU usage as a percentage
+[MeterCPU]
+Meter=String
+MeasureName=MeasureCPU
+Y=2R
+FontColor=255,255,255,255
+FontSize=12
+AntiAlias=1
+Percentual=1
+NumOfDecimals=2
+DynamicVariables=1
+Text=CPU Usage: %1
+
+;Show name of top process
+[MeterTopName]
+Meter=String
+MeasureName=MeasureTopName
+Y=2R
+FontColor=255,255,255,255
+FontSize=12
+AntiAlias=1
+
+;Show CPU usage of top process as a percentage
+[MeterTop%]
+Meter=String
+MeasureName=MeasureTop%
+X=2R
+Y=0r
+FontColor=255,255,255,255
+FontSize=12
+AntiAlias=1
+Percentual=1
+NumOfDecimals=2
+Text=(%1)
+{% endhighlight %}

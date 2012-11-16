@@ -1,0 +1,121 @@
+---
+layout: manual
+title: 'Options'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>While Rainmeter has hundreds of options in total for all the measures, meters, and plugins, many of them can be categorized into types. For example, some options represent colors while others are used to specify a path.</p>
+
+<h2 id="Color">Color options</h2>
+<p>Color options such as <code>SolidColor</code> and <code>FontColor</code> should use the RGBA (red-green-blue-alpha) notation in either the hexadecimal or decimal form.  The color results from a mixing of the red, green and blue components of the option, with the transparency (alpha channel) of the element set by the fourth component.</p>
+<p><b>Decimal colors</b> are specified as <code>RRR,GGG,BBB<em>,AAA</em></code>, where <code>RRR</code>, <code>GGG</code>, <code>BBB</code>, and <code><em>AAA</em></code> are decimal numbers from 0 to 255. Formulas can also be used in place of the numbers.</p>
+<p><b>Hexadecimal colors</b> are specified as <code>RRGGBB<em>AA</em></code>, where <code>RR</code>, <code>GG</code>, <code>BB</code>, and <code><em>AA</em></code> are hexadecimal numbers from 00 to FF.</p>
+
+<p><b>Note:</b> The alpha component is optional. As with the other components it is a value from 0 to 255 (00 to FF), with 0 being completely invisible (and the meter will not react to the mouse) to 255, which is completely opaque.  The default is 255 (or FF).</p>
+
+{% highlight ini %}
+; The following lines are equivalent to solid opaque red:
+SolidColor=255,0,0,255
+SolidColor=255,0,0
+SolidColor=(200 + 55),(2 - 2),0
+SolidColor=FF0000FF
+SolidColor=FF0000
+{% endhighlight %}
+
+<p>One of many ways to obtain a desired color code is <a href="http://rainmeter.net/color/">Rainmeter Online Color Picker</a>.</p>
+
+<h2 id="Path">Path options</h2>
+<p>Path options specify the relative or absolute path of either a file or a folder (depending on the option). For example, the path of an image file is expected with <code>ImageName</code>.</p>
+
+{% highlight ini %}
+; Relative paths (relative to current folder):
+ImageName=lolcat.png
+ImageName=..\lolcat.png
+
+; Absolute path:
+ImageName=C:\lolcats\lolcat.png
+{% endhighlight %}
+
+<h2 id="Number">Number options</h2>
+<p>Number options specify either a number or a <a href="!measures/calc#Formulas">formula</a> enclosed in parentheses.</p>
+
+{% highlight ini %}
+; The following lines are equivalent:
+FontSize=42
+FontSize=(40 + 2)
+FontSize=(2 &gt; 1 ? 42 : 666)
+{% endhighlight %}
+
+<h2 id="Action">Action options</h2>
+<p>Options in a skin which cause Rainmeter to take some action. Actions may be triggered by user input such as <a href="!mouse-actions">mouse actions</a>, or system events and changing values within the skin, such as <a href="!measures/general-options/ifactions">if actions</a>.</p>
+<p>Normally the value of an action option is going to be one or more <a href="!bangs">bangs</a>, or the execution of external commmands in Windows.</p>
+
+{% highlight ini %}
+; Single bang:
+LeftMouseUpAction=!HideMeter SomeMeter
+LeftMouseUpAction=[!HideMeter SomeMeter]
+
+; Multiple bangs:
+LeftMouseUpAction=[!HideMeter SomeMeter][!HideMeter SomeOtherMeter]
+{% endhighlight %}
+
+<p>For bangs that take parameters, the arguments should be separated by a space. Parameters that contain spaces must use quotes around the parameter.</p>
+{% highlight ini %}
+; These two lines are equivalent:
+LeftMouseUpAction=[!HideMeter SomeMeter]
+LeftMouseUpAction=[!HideMeter "SomeMeter"]
+
+; These two are NOT equivalent. The first line will cause an error due to the spaces
+; in the parameters while the second will properly set the value of SomeVariable
+; to: I think, therefore I am
+LeftMouseUpAction=[!SetVariable SomeVariable I think, therefore I am]
+LeftMouseUpAction=[!SetVariable SomeVariable "I think, therefore I am"]
+
+; These two may or may not be equivalent depending on the value of the #ImageFile#
+; variable. If #ImageFile# contains spaces, the first line will fail. In uncertain
+; cases, it is always best to use quotes as in the second line.
+LeftMouseUpAction=[!SetWallpaper #ImageFile#]
+LeftMouseUpAction=[!SetWallpaper "#ImageFile#"]
+{% endhighlight %}
+
+<p>External Windows commands can be executed by specifying the path to the executable and any parameters. Enclose any values with spaces in quotes.</p>
+{% highlight ini %}
+LeftMouseUpAction=["C:\Windows\Notepad.exe" MyFile.txt]
+; Runs Notepad.exe and loads the file MyFile.txt.
+
+LeftMouseUpAction=["http://rainmeter.net/forums"]
+; Opens the URL in the default web browser.
+{% endhighlight %}
+
+<p>A parameter containing quotes should be surrounded by a pair of triple quotes.</p>
+{% highlight ini %}
+; The first line will fail due to extra quotes. The second line will properly log
+; the string: Quotes are "fun"!
+LeftMouseUpAction=[!Log "Quotes are "fun"!"]
+LeftMouseUpAction=[!Log """Quotes are "fun"!"""]
+{% endhighlight %}
+
+<p>When using <code>#VarName#</code> or <code>[MeasureName]</code> in an action option, the current value of the variable or measure will be used. To have the literal string "#VarName#" or "[MeasureName]" used, in a !SetOption value for instance, use the "*" char as in <code>#*VarName*#</code> or <code>[*MeasureName*]</code> to tell Rainmeter you do not want the value resolved, but rather used as a literal string.</p>
+{% highlight ini %}
+LeftMouseUpAction=!SetOption SomeMeter FontSize #VarName#
+; The FontSize option for SomeMeter will be set to the current value of the variable.
+
+LeftMouseUpAction=!SetOption SomeMeter FontSize #*VarName*#
+; The FontSize option for SomeMeter will be set to the the string "#VarName#"
+{% endhighlight %}
+
+<h2 id="RegExp">Regular expression options</h2>
+
+<p>These options use <a href="http://www.pcre.org/">Perl Compatible Regular Expressions</a> (PCRE) to match specific parts of a plaintext string. Regular expressions are used when the structure of a piece of data is known, but the content is not.</p>
+
+<p>In Rainmeter, regular expressions are most prominently used by the <a href="!plugins/webparser">WebParser plugin</a> to interpret (or "parse") web-based data sources, but they can also be used to modify the value of any measure using <a href="!measures/general-options/substitute#RegExpSubsitute">Substitute options</a>.</p>
+
+<p>The PCRE library is maintained and documented by its own creators, not by any members of the Rainmeter development team. For more about using regular expressions, see the following resources:</p>
+
+<ul>
+	<li><p><a href="http://www.perl.com/doc/manual/html/pod/perlre.html">Documentation</a>.</p></li>
+	<li><p><a href="http://www.regular-expressions.info/tutorial.html">Tutorial</a>.</p></li>
+	<li><p><a href="http://www.cheatography.com/davechild/cheat-sheets/regular-expressions/">Cheat sheet</a>.</p></li>
+</ul>
+
+<p>Formats that are commonly parsed with regular expressions include <a href="http://en.wikipedia.org/wiki/Html">HTML</a>, <a href="http://en.wikipedia.org/wiki/Xml">XML</a>, <a href="http://en.wikipedia.org/wiki/Rss">RSS</a>, <a href="http://en.wikipedia.org/wiki/Atom_(standard)">Atom</a>, <a href="http://en.wikipedia.org/wiki/Json">JSON</a> and <a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>.</p>

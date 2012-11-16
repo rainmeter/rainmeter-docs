@@ -1,0 +1,88 @@
+---
+layout: manual
+title: 'Settings'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>This page details the files and folders in which Rainmeter-wide and skin-specific <b>settings</b> are saved. These include each skin's position, transparency, draggability, active or inactive state, "snapping" behavior, and other general options. Normally, the user does not need to edit these files directly. Most settings can be changed using the <a href="!user-interface/manage">Manager</a>, the <a href="!user-interface/context-menus">context menu</a>, or <a href="!bangs">bangs</a>.</p>
+
+<p><b>Note:</b> Many <a href="!skins">skins</a> include features that are described as "settings," "options," "preferences," etc. that allow the user to customize the appearance and behavior of the skin. However, these features are different from the "settings" described on this page. They are handled entirely by the skin, usually as <a href="!variables">variables</a>, and are not managed by Rainmeter at all. Options such as fonts, colors, passwords, RSS feeds and "weather codes" are in this category. These are not "standard" features, and are not supported in any formal way.</p>
+
+
+
+<h2 id="FilesFolders">Files and Folders</h2>
+
+<p>All Rainmeter settings files are stored in Rainmeter's application data folder. If Rainmeter has been installed normally, the default location of the folder is:</p>
+
+<ul>
+	<li><code>C:\Documents and Settings\YourName\Application Data\Rainmeter</code><sup>1</sup> (for Windows XP).</li>
+	<li><code>C:\Users\YourName\AppData\Roaming\Rainmeter</code><sup>1</sup> (for Windows Vista, 7 and 8).</li>
+</ul>
+
+<p>If Rainmeter is installed as a <a href="!installing-rainmeter#PortableInstallation">portable application</a>, settings files are found in the installation folder.</p>
+
+<p class="footnote">1. "YourName" is an example.</p>
+
+
+
+<h2 id="RainmeterIni">Rainmeter.ini</h2>
+
+<p>Most settings are saved in a file called <b>Rainmeter.ini</b>. The file is written as a standard <a href="http://en.wikipedia.org/wiki/INI_file">INI file</a>, which uses the following<sup>1</sup> format:</p>
+
+{% highlight ini %}
+[Section]
+Key=Value
+{% endhighlight %}
+
+<p>Each key is an <a href="!options">option</a> that modifies the property identified in the section name. The following sections are used in Rainmeter.ini:</p>
+
+<ul>
+	<li><p><a href="!settings/rainmeter-section">[Rainmeter]</a><br>
+		Defines global Rainmeter options.</p></li>
+	<li><p><a href="!settings/skin-sections">[Skin] sections</a><br>
+		Defines options related to individual skins. Each skin is identified by its <a href="!skins#Config">config name</a>.</p></li>
+	<li><p><a href="!settings/traymeasure-section">[TrayMeasure] section</a><br>
+		Defines options that change the appearance of Rainmeter's tray icon.</p></li>
+</ul>
+
+<p>When settings are changed in Rainmeter, they are saved to Rainmeter.ini automatically. If settings are changed in Rainmeter.ini, a <a href="!bangs#RefreshApp">refresh application</a> command is needed to apply the new settings.</p>
+
+<p class="footnote">1. "Section," "Key" and "Value" are examples.</p>
+
+
+
+<h2 id="OtherFiles">Other Files</h2>
+
+<h3 id="RainmeterData">Rainmeter.data</h3>
+
+<p>This file is used by Rainmeter's program and some <a href="!plugins">plugins</a> to store "global" settings that are not related to individual skins. These are system- or user-specific settings that are not saved with <a href="#Layouts">layouts</a>.</p>
+
+
+
+<h3 id="RainmeterStats">Rainmeter.stats</h3>
+
+<p>This file records Windows' network usage statistics over time. These statistics are used by the <a href="!measures/net">Net measures</a> to display "cumulative" network usage data. The contents of Rainmeter.stats may be cleared using the <a href="!bangs#ResetStats">!ResetStats bang</a>.</p>
+
+
+
+<h3 id="Layouts">Layouts</h3>
+
+<p>A <b>layout</b> (formerly <b>theme</b>) is a saved "session" or "state". The user can create a layout using the <a href="!user-interface/manage#LayoutsTab">Manager</a>, which copies the settings in <a href="#RainmeterIni">Rainmeter.ini</a> to the layout file. These settings can later be restored using the Manager or the <a href="!bangs#LoadLayout">!LoadLayout bang</a>. Layouts may also be <a href="!installing-skins">installed with 3rd-party skins</a>.</p>
+
+<p>Global options under [Rainmeter] are not replaced when a layout is loaded, preserving local settings such as:</p>
+<ul>
+<li>ConfigEditor</li>
+<li>SkinPath</li>
+<li>DisableVersionCheck</li>
+<li>Language</li>
+</ul>
+
+<h3 id="Plugins">Plugins</h3>
+
+<p><a href="!plugins/#Custom">Custom plugins</a> are installed to this folder. Plugins in this folder can be used in the same manner as the standard plugins included with Rainmeter.</p>
+
+
+
+<h3 id="Addons">Addons</h3>
+
+<p>3rd-party "addon" utilities, such as <a href="http://rainmeter.net/forum/viewtopic.php?f=18&t=6215">RainRGB</a>, can be installed to this folder. This is a legacy feature. As of Rainmeter 2.3, each skin or suite should include its own addons in the <a href="!skins/resources-folder">@Resources folder</a>.</p>

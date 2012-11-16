@@ -1,0 +1,58 @@
+---
+layout: manual
+title: 'Memory measures'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Measure=PhysicalMemory</code> measures Physical Memory : RAM.<br>
+	<code>Measure=SwapMemory</code> measures Swap Memory : RAM + Pagefile.sys.<br>
+	<code>Measure=Memory</code> measures Virtual Memory : RAM + RAM + Pagefile.sys.</p>
+
+<p>By default the value will be the amount of used memory. To obtain the free memory, add <a href="!measures/general-options/#InvertMeasure">InvertMeasure=1</a>.</p>
+
+<p>The measures will have a <a href="/measures/general-options#MinValue">MinValue</a> / <a href="/measures/general-options#MaxValue">MaxValue</a> range from 0 to the actual total size of the measured memory resource for use by meters requiring a <a href="!measures#Percentage">percentage</a>.</p>
+
+	<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="!measures/general-options">general measure options</a> <b>except</b> <code>MaxValue</code> are valid.
+	</dd>
+
+	<dt id="Total"><code>Total</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, measures the total memory.
+	</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[MeasurePhysMemTotal]
+Measure=PhysicalMemory
+Total=1
+UpdateDivider=3600
+
+[MeasurePhysMemUsed]
+Measure=PhysicalMemory
+UpdateDivider=2
+
+[MeasurePhysMemFree]
+Measure=PhysicalMemory
+InvertMeasure=1
+UpdateDivider=2
+
+[MeterText]
+Meter=String
+MeasureName=MeasurePhysMemTotal
+MeasureName2=MeasurePhysMemUsed
+MeasureName3=MeasurePhysMemFree
+FontColor=255,255,255,255
+SolidColor=0,0,0,255
+NumOfDecimals=1
+AutoScale=1
+Text="RAM Total: %1B, RAM Used: %2B, RAM Free: %3B"
+{% endhighlight %}	

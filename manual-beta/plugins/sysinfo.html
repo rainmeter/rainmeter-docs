@@ -1,0 +1,101 @@
+---
+layout: manual
+title: 'SysInfo plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=SysInfo</code> measures various information about your system.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="!measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="SysInfoType"><code>SysInfoType</code></dt>
+	<dd>
+		Piece of system information to retrieve.<br>String values (Can only be used with <a href="!meters/string">String</a> meters):
+		<ul>
+			<li><code>COMPUTER_NAME</code>: The computers name as specified in your system settings.</li>
+			<li><code>USER_NAME</code>: The username of the current user.</li>
+			<li><code>SCREEN_SIZE</code>: The resolution of the primary display monitor in a string of the form "width x height".</li>
+			<li><code>WORK_AREA</code>: The size of the client area of the primary display monitor in a string of the form "width x height".</li>
+			<li><code>OS_VERSION</code>: The current version of Windows.</li>
+			<li><code>OS_BITS</code>: Returns whether your OS is 32 or 64 bit.</li>
+			<li><code>ADAPTER_DESCRIPTION</code>: The description of the adapter specified by <code>SysInfoData</code>.</li>
+			<li><code>NET_MASK</code>: The current net mask. <code>SysInfoData</code> specifies which net mask if there are multiple.</li>
+			<li><code>IP_ADDRESS</code>: The current IP address. <code>SysInfoData</code> specifies which IP if there are multiple. 0-999 for installed, 1000-1999 for active</li>
+			<li><code>GATEWAY_ADDRESS</code>: The current gateway address. <code>SysInfoData</code> specifies which adapter if there are multiple.</li>
+			<li><code>HOST_NAME</code>: The current host name.</li>
+			<li><code>DOMAIN_NAME</code>: The current domain.</li>
+			<li><code>DNS_SERVER</code>: The DNS server address.</li>
+		</ul>
+		Numeric Values (Can be used anywhere):
+		<ul>
+			<li><code>SCREEN_WIDTH</code>: The width, in pixels, of the monitor. <code>SysInfoData</code> specifies which monitor if there are multiple.</li>
+			<li><code>SCREEN_HEIGHT</code>: The height, in pixels, of the monitor. <code>SysInfoData</code> specifies which monitor if there are multiple.</li>
+			<li><code>VIRTUAL_SCREEN_TOP</code>: Y-Coordinate of the upper left corner of the virtual screen. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
+			<li><code>VIRTUAL_SCREEN_LEFT</code>: X-Coordinate of the upper left corner of the virtual screen. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
+			<li><code>VIRTUAL_SCREEN_WIDTH</code>: Width of the virtual screen which encompases all display monitors.</li>
+			<li><code>VIRTUAL_SCREEN_HEIGHT</code>: Height of the virtual screen which encompases all display monitors.</li>
+			<li><code>WORK_AREA_TOP</code>: Y-Coordinate of the upper left corner of the client area. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
+			<li><code>WORK_AREA_LEFT</code>: X-Coordinate of the upper left corner of the client area. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
+			<li><code>WORK_AREA_WIDTH</code>: Width of the client area of the primary display monitor. Use <code>SysInfoData</code> to specify a different monitor, if there are several.</li>
+			<li><code>WORK_AREA_HEIGHT</code>: Height of the client area of the primary display monitor. Use <code>SysInfoData</code> to specify a different monitor, if there are several.</li>
+			<li><code>NUM_MONITORS</code>: The number of display monitors currently active.</li>
+		</ul>
+	</dd>
+
+	<dt id="SysInfoData"><code>SysInfoData</code></dt>
+	<dd>
+		Additional data that some of the SysInfoType items require. This is always a number. For SysInfoTypes which use SysInfoData to specify a monitor, the appropriate value to pass can be found by opening the Windows Display Properties dialog. It is important to note that "1" is not always the primary display monitor.
+	</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureOSVersion]
+Measure=Plugin
+Plugin=SysInfo
+SysInfoType=OS_VERSION
+UpdateDivider=-1
+
+[MeasureScreenWidth]
+Measure=Plugin
+Plugin=SysInfo
+SysInfoType=SCREEN_WIDTH
+SysInfoData=1
+
+[MeasureScreenHeight]
+Measure=Plugin
+Plugin=SysInfo
+SysInfoType=SCREEN_HEIGHT
+SysInfoData=1
+
+[MeterOSVersion]
+Meter=String
+MeasureName=MeasureOSVersion
+FontSize=12
+FontColor=255,255,255,255
+StringStyle=Bold
+AntiAlias=1
+Text=OS Version: %1
+
+[MeterScreenSize]
+Meter=String
+MeasureName=MeasureScreenWidth
+MeasureName2=MeasureScreenHeight
+Y=2R
+FontSize=12
+FontColor=255,255,255,255
+StringStyle=Bold
+AntiAlias=1
+Text=Screen Size: %1 x %2
+{% endhighlight %}

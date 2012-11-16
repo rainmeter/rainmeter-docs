@@ -1,0 +1,56 @@
+---
+layout: manual
+title: 'General Measure Options'
+---
+<!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Options available for use with all measures.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="Measure"><code>Measure</code></dt>
+	<dd>
+		Type of the measure (e.g. <code>CPU</code> or <code>FreeDiskSpace</code>).
+	</dd>
+
+	<dt id="UpdateDivider"><code>UpdateDivider</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		Frequency at which the measure value is updated. If set to <code>-1</code>, the measure will be updated only once on load or on refresh. Otherwise, the global <a href="!skins/rainmeter-section#Update"><code>Update</code></a> option is multiplied by the specified value to determine the update frequency.
+
+		<br><br><b>Example:</b> If <code>Update=1000</code> (in the [Rainmeter] section) and <code>UpdateDivider=30</code>, the measure is updated every 30 seconds.
+	</dd>
+
+	<dt id="InvertMeasure"><code>InvertMeasure</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, the measure value is inverted.
+
+		<br><br><b>Example:</b> With the <a href="!measures/freediskspace">FreeDiskSpace</a> measure, this option can be used to measure the used disk space instead of the free disk space.
+	</dd>
+
+	<dt id="MaxValue"><code>MaxValue</code> <small>Default: <code>1.0</code></small></dt>
+	<dd>
+		The maximum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.
+	</dd>
+
+	<dt id="MinValue"><code>MinValue</code> <small>Default: <code>0.0</code></small></dt>
+	<dd>
+		The minimum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.
+	</dd>
+
+	<dt id="AverageSize"><code>AverageSize</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		If set, the measure value will be an average of the specified number of past actual values.
+	</dd>
+
+	<dt id="DynamicVariables"><code>DynamicVariables</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>If set to <code>1</code>, the measure is dynamic.</p>
+
+		<p><b>See also:</b> <a href="!variables#DynamicVariables">Dynamic Variables</a></p>
+	</dd>
+
+	<dt id="Disabled"><code>Disabled</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, the measure value is never updated. A disabled measure always returns 0 as its value in numerical contexts (e.g. when used in a Calc formula or with IfActions), but may still return a textual value (e.g. when used in String meters).
+	</dd>
+</dl>	

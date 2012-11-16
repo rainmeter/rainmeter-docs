@@ -1,0 +1,81 @@
+---
+layout: manual
+title: 'Section Variables'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><a href="!measures">Measures</a> and <a href="!meters">meters</a> can be referenced as <a href="!variables">variables</a>. These are called <b>section variables</b>, and they can provide several kinds of information about the meter or measure.</p>
+
+<h2 id="Usage">Usage</h2>
+
+<p>A meter or measure is referenced as a section variable by placing the section name in brackets (<code>[]</code>). The value provided by a section variable can be changed by adding <a href="#MeterParameters">parameters</a> after a colon (<code>:</code>). Multiple parameters are separated by commas (<code>,</code>). Spaces are allowed after a comma.</p>
+
+	<blockquote><p><code>[SectionName:P1,P2]</code></p></blockquote>
+
+<p>Normal or <a href="!variables#BuiltInVariables">built-in</a> variables take priority over section variables, which means they can be used within section variables. For example: <code>[#Foo#:#Bar#]</code>. (The reverse, such as <code>#[Foo][Bar]#</code>, is not valid.)</p>
+
+<h3 id="DynamicVariables">Dynamic Variables</h3>
+
+<p>Section variables are always <a href="!variables#DynamicVariables">dynamic</a>. <code>DynamicVariables=1</code> is only needed in the section where the variable is being used, not the section that is being referenced.</p>
+
+<h2 id="MeterParameters">Meter Parameters</h2>
+
+<dl>
+	<dt id="MeterNone">None.</dt>
+	<dd>
+		<p>Section variables for meters have no value without a parameter.</p>
+	</dd>
+
+	<dt id="XY"><code>:X</code>, <code>:Y</code><small>Example: <code>[MeasureName:X]</code></small></dt>
+	<dd>
+		<p>The current <a href="!meters/general-options#XY">X or Y position</a> of the meter.</p>
+		<p><b>Note:</b> This provides the "real" X or Y value, which is the position of the top-left corner of the meter area. This is always an integer, even if the meter has no X and Y <a href="!meters/general-options#XY">options</a> set, or if the options use formulas, variables or relative positions.</p>
+
+		<p>This also means that for a <a href="!meters/string">string meter</a> with <a href="!meters/string#StringAlign">StringAlign</a> options, the value of <code>[MeterName:X]</code> and <code>[MeterName:Y]</code> may not be the same as the option values.</p>
+	</dd>
+
+	<dt id="WH"><code>:W</code>, <code>:H</code><small>Example: <code>[MeasureName:W]</code></small></dt>
+	<dd>
+		<p>The current <a href="!meters/general-options#WH">width or height</a> of the meter.</p>
+		<p><b>Note:</b> This provides the "real" W or H value. This is always an integer, even if the meter has no W and H <a href="!meters/general-options#WH">options</a> set, or if the options use formulas or variables.</p>
+	</dd>
+</dl>
+
+<h2 id="MeasureParameters">Measure Parameters</h2>
+
+<dl>
+	<dt id="MeasureNone">None.<small>Example: <code>[MeasureName]</code></small></dt>
+	<dd>
+		<p>If no parameters are given, the measure's <a href="!measures#Values">string value</a> is provided.</p>
+	</dd>
+
+	<dt id="Colon"><code>:</code><small>Example: <code>[MeasureName:]</code></small></dt>
+	<dd>
+		<p>If a blank parameter is given, the measure's <a href="!measures#Values">number value</a> is provided, with up to ten decimal places of precision.</p>
+	</dd>
+
+	<dt id="Decimals"><code>:n</code><small>Example: <code>[MeasureName:10]</code></small></dt>
+	<dd>
+		<p>The measure's <a href="!measures#Values">number value</a>, with the number of <b>decimal places</b> given.</p>
+		<p><b>Multiple Parameters:</b> This parameter may be combined with <a href="#Scale">Scale</a> and <a href="#Percentual">Percentual</a>.</p>
+	</dd>
+
+	<dt id="Scale"><code>:/n</code><small>Example: <code>[MeasureName:/1024]</code></small></dt>
+	<dd>
+		<p>The measure's <a href="!measures#Values">number value</a>, <b>scaled</b> by the divisor given.</p>
+		<p><b>Multiple Parameters:</b> This parameter may be combined with <a href="#Decimals">Decimals</a> and <a href="#Percentual">Percentual</a>.</p>
+	</dd>
+
+	<dt id="Percentual"><code>:%</code><small>Example: <code>[MeasureName:%]</code></small></dt>
+	<dd>
+		<p>The measure's <a href="!measures#Values">number value</a>, as a <b>percentual</b> value.</p>
+		<p><b>Multiple Parameters:</b> This parameter may be combined with <a href="#Decimals">Decimals</a> and <a href="#Scale">Scale</a>.</p>
+	</dd>
+
+	<dt id="MinValueMaxValue"><code>:MinValue</code> <code>:MaxValue</code><small>Example: <code>[MeasureName:MaxValue]</code></small></dt>
+	<dd>
+		<p>The measure's <a href="!measures/general-options/#MinValue">MinValue</a> or <a href="!measures/general-options/#MaxValue">MaxValue</a> number value.</p>
+		<p><b>Multiple Parameters:</b> This parameter may be combined with <a href="#Decimals">Decimals</a> and <a href="#Scale">Scale</a>.</p>
+	</dd>
+
+</dl>

@@ -1,0 +1,94 @@
+---
+layout: manual
+title: 'About'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>The About interface in Rainmeter is much more than the usual version number and link to a website. It is a powerful tool for finding and fixing problems with Rainmeter and skins. It consists of four main tabs:</p>
+
+<ul>
+<li><b><a href="#LogTab">Log</a></b>: Displays a running log of notifications and errors.</li>
+<li><b><a href="#SkinsTab">Skins</a></b>: Real-time display of important information about active skins.</li>
+<li><b><a href="#PluginsTab">Plugins</a></b>: Information about built-in and 3rd-party plugins installed in Rainmeter.</li>
+<li><b><a href="#VersionTab">Version</a></b>: Version and installed path information.</li>
+</ul>
+
+<p>About is accessed in several ways:</p>
+
+<ul>
+<li><b>Right-Click the Rainmeter icon in the Windows Notification Area on the taskbar and select "About".</b></li>
+<li>Click the <b>Open log</b> button in the <a href="!user-interface/manage">Manage window</a>.</li>
+<li>Using the <a href="!bangs#About">!About bang</a> as an <a href="!options#Action">action</a> in a skin or from the command line as a parameter to Rainmeter.exe.</li>
+<li>Right-Click any running skin on the desktop and select "Rainmeter / About".</li>
+</ul>
+
+<h2 id="LogTab">The Log tab</h2>
+
+<p><div class="exampleprev">
+<a rel="lightbox" href="!img/user-interface/About01.png"><img src="!img/user-interface/About01.png"/></a>
+</div></p>
+
+<p>When opened, the list displays the last 20 messages logged by Rainmeter. While left open, the log continues to add new messages to the top of the list.</p>
+
+<p>The log has three columns of information:</p>
+<ul>
+<li><b>Type</b>: The category of message:<br>&nbsp;<br>
+<b>Error</b> - An error impacting the functionality of Rainmeter or a skin.<br>
+<b>Warning</b> - An warning that some functionality is outside of normal parameters.<br>
+<b>Notice</b> - Normal activity logged to provide information about the success of some action.<br>
+<b>Debug</b> - Messages generated when Rainmeter or a skin is in <a href="!user-interface/manage#SettingsTab">Debug mode</a>.<br>&nbsp;</li>
+<li><b>Time</b>: The time in Hours:Minutes:Seconds.Milliseconds since Rainmeter was started.</li>
+<li><b>Message</b>: The text of the log message. Select a line and hit <b>CTRL-C</b> to copy the message to the Windows clipboard.</li>
+</ul>
+
+<p>The types of messages that are displayed by the log can be controlled with the checkboxes at the bottom of the list. This can be used to filter the display to only certain kinds of new messages.</p>
+
+<p><b>Note:</b> Custom log entries can be created using the <a href="!bangs#Log">!Log bang</a> from a skin, or the <a href="!lua-scripting#Log">print()</a> function in the <a href="!lua-scripting">Lua scripting language</a>. This can be very useful for debugging purposes.</p>
+
+<h2 id="SkinsTab">The Skins tab</h2>
+
+<p><div class="exampleprev">
+<a rel="lightbox" href="!img/user-interface/About02.png"><img src="!img/user-interface/About02.png"/></a>
+</div></p>
+
+<p>Extremely powerful tool displaying real-time information about currently active skins. The tab displays a list of currently active skin <a href="!skins#Config">config</a> names in the panel on the left. Selecting one from the list will update important information about the skin in real time, in the panel on the right.</p>
+
+<ul>
+<li><b>Measures</b>: Information about <a href="!measures">measures</a> in the selected skin.<br>&nbsp;<br>
+<b>Name</b> - The name of the measure.<br>
+<b>Range</b> - The current <a href="!measures/general-options/#MinValue">MinValue</a> and <a href="!measures/general-options/#MaxValue">MaxValue</a> values for the measure, expressed as a range of values.<br>
+<b>Value</b> - The current <a href="!measures#Values">string value</a> of the measure. Select a line and hit <b>CTRL-C</b> to copy the value to the Windows clipboard.<br>&nbsp;</li>
+
+<li><b>Variables</b>: Information about <a href="!variables">variables</a> in the selected skin.<br>&nbsp;<br>
+<b>Name</b> - The name of the variable.<br>
+<b>Value</b> - The current value of the variable. Select a line and hit <b>CTRL-C</b> to copy the value to the Windows clipboard.</li>
+</ul>
+
+<h2 id="PluginsTab">The Plugins tab</h2>
+
+<p><div class="exampleprev">
+<a rel="lightbox" href="!img/user-interface/About03.png"><img src="!img/user-interface/About03.png"/></a>
+</div></p>
+
+<p>Information about the built-in and 3rd-party <a href="!plugins">plugins</a> installed in Rainmeter.</p>
+<ul>
+<li><b>Name</b>: The name of the plugin .dll file.</li>
+<li><b>Version</b>: The version number of the plugin .dll file.</li>
+<li><b>Author</b>: The author name and other copyright information about the plugin.</li>
+</ul>
+<p><b>Note:</b> The list contains all plugins installed in Rainmeter. It does not reflect whether a particular plugin is actually loaded or running in a skin.</p>
+
+<h2 id="VersionTab">The Version tab</h2>
+
+<p><div class="exampleprev">
+<a rel="lightbox" href="!img/user-interface/About04.png"><img src="!img/user-interface/About04.png"/></a>
+</div></p>
+
+<p>Information about the installed version of Rainmeter.</p>
+<ul>
+<li><b>Version information</b>: The version, revision number, architecture and build date.</li>
+<li><b>Path information</b>: The paths to the program, settings and skins folders.</li>
+</ul>
+
+<p>Click <b>Copy to Clipboard</b> to copy the version and path information to the Windows clipboard.</p>
+

@@ -1,0 +1,65 @@
+---
+layout: manual
+title: 'IfActions'
+---
+<!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>IFActions are <a href="!options#Action">action options</a> you add to a measure to execute one or more <a href="!bangs">Bangs</a> or commands when a defined threshold value is returned by the measure. IfActions are done by using pairs of Above, Equal, and Below Value and Action statements. You may have one of each kind of IfAction in a single measure.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="IfAboveValue"><code>IfAboveValue</code></dt>
+	<dd>
+		The value used by IfAboveAction.
+	</dd>
+
+	<dt id="IfAboveAction"><code>IfAboveAction</code></dt>
+	<dd>
+		<a href="!options#Action">Action</a> to be executed when the measure goes above the value defined in IfAboveValue. The action is executed only at the moment when the measure exceeds the value, so it needs to go below the defined value before the action is executed again.
+	</dd>
+
+	<dt id="IfBelowValue"><code>IfBelowValue</code></dt>
+	<dd>
+		The value used by IfBelowAction.
+	</dd>
+
+	<dt id="IfBelowAction"><code>IfBelowAction</code></dt>
+	<dd>
+		<a href="!options#Action">Action</a> to be executed when the measure goes below the value defined in IfBelowValue. The action is executed only at the moment when the measure falls below the value, so it needs to go above the defined value before the action is executed again.
+	</dd>
+
+	<dt id="IfEqualValue"><code>IfEqualValue</code></dt>
+	<dd>
+		The value used by IfEqualAction.
+	</dd>
+
+	<dt id="IfEqualAction"><code>IfEqualAction</code></dt>
+	<dd>
+		<a href="!options#Action">Action</a> to be executed when the measure is equal with the value defined in IfEqualValue. The action is executed only once when the measure is equal to the value, so it needs to go above or below the defined value before the action is executed again. The compared value is rounded to an integer.
+	</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[MeasureCPU]
+Measure=CPU
+Processor=0
+IfAboveValue=49
+IfAboveAction=[!SetOption MeterCPU FontColor 255,0,0,255][!Redraw]
+IfBelowValue=50
+IfBelowAction=[!SetOption MeterCPU FontColor 0,255,0,255][!Redraw]
+
+[MeterCPU]
+Meter=String
+MeasureName=MeasureCPU
+X=0
+Y=0
+FontSize=15
+FontColor=0,255,0,255
+AntiAlias=1
+Text=CPU: %1%
+{% endhighlight %}

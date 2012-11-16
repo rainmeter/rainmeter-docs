@@ -1,0 +1,51 @@
+---
+layout: manual
+title: 'Process plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=Process</code> measures the running state of a process.</p>
+
+<p>The measure's <a href="!measures#Values">value</a> will be:
+<ul>
+<li><code>1</code> : The specified <code>ProcessName</code> is running.</li>
+<li><code>-1</code> : The specified <code>ProcessName</code> is not running.</li>
+</ul></p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="!measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="ProcessName"><code>ProcessName</code></dt>
+	<dd>
+		Name of the process (e.g. <code>Firefox.exe</code>).
+		<br><br><b>Notes:</b> Process can not be used to detect if a Windows "service" executable is running, as those processes are run inside of the "svchost.exe" container process. Also, the plugin may not be able to identify a process that is started with administrator privileges if Rainmeter is run with normal user privileges and UAC is enabled in Windows.
+	</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureProcess]
+Measure=Plugin
+Plugin=Process
+ProcessName=Notepad.exe
+Substitute="-1":"not running","1":"running"
+
+[MeterProcess]
+Meter=String
+MeasureName=MeasureProcess
+X=5
+Y=5
+W=200
+H=20
+FontColor=255,255,255,255
+Text=Notepad.exe is %1.
+{% endhighlight %}	

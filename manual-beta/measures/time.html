@@ -1,0 +1,105 @@
+---
+layout: manual
+title: 'Time measure'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Measure=Time</code> measures the current date and time.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
+	</dd>
+
+	<dt id="Format"><code>Format</code> <small>Default: <code>%H:%M:%S</code></small></dt>
+	<dd>
+		<p>Format for the measure value. This can be a combination of text and <a href="#FormatCodes">Format codes</a>.</p>
+
+		<p><b>Note:</b> If a <code>Format</code> is not given, the <a href="!measures#Values">string value</a> returned is in the format <code>%H:%M:%S</code>, however the <a href="!measures#Values">number value</a> will be a <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>. If a <code>Format</code> is given, the number value will be the value defined by the format, or zero if the format does not define a numerical value.</p>
+	</dd>
+
+	<dt id="TimeStamp"><code>TimeStamp</code></dt>
+	<dd>
+		<p><a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a> or <a href="!measures/calc">formula</a> defining a timestamp. If defined, the measure will use this date/time instead of the current system values.</p>
+	</dd>
+
+	<dt id="TimeZone"><code>TimeZone</code> <small>Default: <code>local</code></small></dt>
+	<dd>
+		<p>If specified, GMT time is used, modified with the specified positive or negative offset number. E.g. <code>TimeZone=-5</code> would measure the time as <code>GMT -5.0</code>. If not specified, or set to <code>local</code>, local time for the computer is used.</p>
+	</dd>
+
+	<dt id="DaylightSavingTime"><code>DaylightSavingTime</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>If <code>DaylightSavingTime</code> is set to <code>0</code> and <code>TimeZone</code> is supplied, the current local offset for daylight saving time is not applied to the value.</p>
+
+		<p><b>Note:</b> All locations do not follow the same daylight saving schedule, if any. If a Time measure is intended to provide the time in a specific location, and that location follows a different schedule from the user's local system, the default value will be wrong on certain dates over the course of the year. In order to provide an accurate time, <code>DaylightSavingTime</code> must be set to <code>0</code>, and <code>TimeZone</code> must be set in a way that accounts for the current daylight savings rules for that location.</p>
+	</dd>
+</dl>
+
+<h2 id="FormatCodes">Format codes</h2>
+<p>The following formatting codes can be used in the <code>Format</code> option.</p>
+
+<ul>
+<li><code>%a</code>: Abbreviated weekday name.</li>
+<li><code>%A</code>: Full weekday name.</li>
+<li><code>%b</code>: Abbreviated month name.</li>
+<li><code>%B</code>: Full month name.</li>
+<li><code>%c</code>: Date and time representation appropriate for locale.</li>
+<li><code>%d</code>: Day of month as number (01 - 31).</li>
+<li><code>%H</code>: Hour in 24-hour format (00 - 23).</li>
+<li><code>%I</code>: Hour in 12-hour format (01 - 12).</li>
+<li><code>%j</code>: Day of year as number (001 - 366).</li>
+<li><code>%m</code>: Month as number (01 - 12).</li>
+<li><code>%M</code>: Minute as number (00 - 59).</li>
+<li><code>%p</code>: Current locale's A.M./P.M. indicator for 12-hour clock.</li>
+<li><code>%S</code>: Second as number (00 - 59).</li>
+<li><code>%U</code>: Week of year as number, with Sunday as first day of week (00 - 53).</li>
+<li><code>%w</code>: Weekday as number (0 - 6, Sunday is 0).</li>
+<li><code>%W</code>: Week of year as number, with Monday as first day of week (00 - 53).</li>
+<li><code>%x</code>: Date representation for current locale.</li>
+<li><code>%X</code>: Time representation for current locale.</li>
+<li><code>%y</code>: Year without century (00 - 99).</li>
+<li><code>%Y</code>: Year with century.</li>
+<li><code>%z</code>, <code>%Z</code>: Either the time-zone name or time zone abbreviation, depending on registry settings.</li>
+<li><code>%%</code>: Percent sign.</li>
+<li><code>%#c</code>: Long date and time representation, appropriate for current locale (e.g. "Tuesday, March 14, 1995, 12:41:29").</li>
+<li><code>%#x</code>: Long date representation, appropriate to current locale (e.g. "Tuesday, March 14, 1995").</li>
+</ul>
+
+<p><code>locale-time</code> and <code>locale-date</code> will use the format that is set currently in Windows.</p>
+
+<p><b>Note:</b> To remove leading zeros in numerical format codes use <code>#</code> after <code>%</code> (e.g. <code>%#d</code> instead of <code>%d</code>).</p>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureDate]
+Measure=Time
+Format=%A, %B %#d, %Y
+
+[Measure12HrTime]
+Measure=Time
+Format=%#I:%M %p
+
+[Measure24HrTime]
+Measure=Time
+Format=%H:%M
+
+[MeterText]
+Meter=String
+MeasureName=MeasureDate
+MeasureName2=Measure12HrTime
+MeasureName3=Measure24HrTime
+X=5
+Y=5
+W=200
+H=25
+FontColor=255,255,255,255
+Text="Date: %1, 12-hour time: %2, 24-hour time: %3"
+{% endhighlight %}	

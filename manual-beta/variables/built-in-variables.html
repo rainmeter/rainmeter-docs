@@ -1,0 +1,136 @@
+---
+layout: manual
+title: 'Built-In Variables'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Rainmeter automatically creates a number of helpful <a href="!variables">variables</a> for each skin. These variables do not need to be defined in the [Variables] section and cannot be directly modified by actions in a skin. Some built-in variables are <a href="!variables#DynamicVariables">dynamic</a>.</p>
+
+<ul>
+<li><a href="#PathVariables">Path variables</a></li>
+<li><a href="#SkinVariables">Skin variables</a></li>
+<li><a href="#MiscVariables">Miscellaneous variables</a></li>
+<li><a href="#MonitorVariables">Monitor variables</a></li>
+</ul>
+
+<p><b>Note:</b> All path variables already contain a trailing slash "\".</p>
+
+<h3 id="PathVariables">Path variables</h3>
+<dl>
+	<dt id="PROGRAMDRIVE"><code>#PROGRAMDRIVE#</code> <small>Example: <code>C:</code> or <code>\\server\Users\</code></small></dt>
+	<dd>
+		<p>Drive or server Rainmeter is located on.</p>
+	</dd>
+
+	<dt id="PROGRAMPATH"><code>#PROGRAMPATH#</code> <small>Example: <code>C:\Program Files\Rainmeter\</code></small></dt>
+	<dd>
+		<p>Path to the program folder containing Rainmeter.exe.</p>
+	</dd>
+
+	<dt id="SETTINGSPATH"><code>#SETTINGSPATH#</code> <small>Example: <code>C:\Users\YourName\Appdata\Roaming\Rainmeter\</code></small></dt>
+	<dd>
+		<p>Path to the folder containing Rainmeter.ini and other settings files and folders.</p>
+	</dd>
+
+	<dt id="SKINSPATH"><code>#SKINSPATH#</code> <small>Example: <code>C:\Users\YourName\My Documents\Rainmeter\Skins\</code></small></dt>
+	<dd>
+		<p>Path to the skins folder.</p>
+	</dd>
+
+	<dt id="PLUGINSPATH"><code>#PLUGINSPATH#</code> <small>Example: <code>C:\Program Files\Rainmeter\Plugins\</code></small></dt>
+	<dd>
+		<p>Path to the built-in plugins folder.</p>
+
+	<dt id="ADDONSPATH"><code>#ADDONSPATH#</code> <small>Example: <code>C:\Users\YourName\Appdata\Roaming\Rainmeter\Addons\</code></small></dt>
+	<dd>
+		<p>Path to the addons folder.</p>
+
+		<p><b>Note:</b> <code>#ADDONSPATH#</code> should be avoided when possible. Addons should be kept in the <a href="!skins/resources-folder">@Resources folder</a> instead.</p>
+	</dd>
+</dl>
+
+<h3 id="SkinVariables">Skin variables</h3>
+<dl>
+	<dt id="@"><code>#@#</code> <small>Example: <code>C:\Users\YourName\Documents\Rainmeter\Skins\illustro\@Resources\</code></small></dt>
+	<dd>
+		<p>Path to the <a href="!skins/resources-folder">@Resources folder</a> for the current skin.</p>
+	</dd>
+
+	<dt id="CURRENTPATH"><code>#CURRENTPATH#</code> <small>Example: <code>C:\Users\YourName\Documents\Rainmeter\Skins\illustro\Clock\</code></small></dt>
+	<dd>
+		<p>Path to the folder containing the current skin file.</p>
+	</dd>
+
+	<dt id="CURRENTFILE"><code>#CURRENTFILE#</code> <small>Example: <code>Clock.ini</code></small></dt>
+	<dd>
+		<p>File name of the current skin.</p>
+	</dd>
+
+	<dt id="ROOTCONFIGPATH"><code>#ROOTCONFIGPATH#</code> <small>Example: <code>C:\Users\YourName\Documents\Rainmeter\Skins\illustro\</code></small></dt>
+	<dd>
+		<p>Path to <a href="!skins#Root">Root config</a> - Highest-level folder under the skins folder for the current skin.</p>
+	</dd>
+
+	<dt id="CURRENTCONFIG"><code>#CURRENTCONFIG#</code> <small>Example: <code>illustro\Clock</code></small></dt>
+	<dd>
+		<p><a href="!skins#Config">Config</a> name of current skin.</p>
+	</dd>
+
+	<dt id="CURRENTCONFIGXYWH"><code>#CURRENTCONFIGX#</code>, <code>#CURRENTCONFIGY#</code>, <code>#CURRENTCONFIGWIDTH#</code>, <code>#CURRENTCONFIGHEIGHT#</code></dt>
+	<dd>
+		<p>Position and size of the current skin.<br><br><b>Note:</b> These variables are <a href="!variables#DynamicVariables">dynamic</a>.</p>
+	</dd>
+</dl>
+
+<h3 id="MiscVariables">Miscellaneous variables</h3>
+<dl>
+	<dt id="CRLF"><code>#CRLF#</code></dt>
+	<dd>
+		<p>Creates a new line (carriage return / linefeed) where used.</p>
+	</dd>
+	<dt id="CURRENTSECTION"><code>#CURRENTSECTION#</code></dt>
+	<dd>
+		<p>The name of the section in which the variable is used. Provides a blank string if used in another context, such as <a href="!lua-scripting#GetVariable">GetVariable</a> in a Lua script.</p>
+	</dd>
+</dl>
+
+<h3 id="MonitorVariables">Monitor variables</h3>
+
+<p><b>Note:</b> These variables are <a href="!variables#DynamicVariables">dynamic</a>.</p>
+
+<dl>
+	<dt id="WORKAREAXYWH"><code>#WORKAREAX#</code>, <code>#WORKAREAY#</code>, <code>#WORKAREAWIDTH#</code>, <code>#WORKAREAHEIGHT#</code></dt>
+	<dd>
+		<p>Work area position and size of the current monitor.</p>
+	</dd>
+	
+	<dt id="SCREENAREAXYWH"><code>#SCREENAREAX#</code>, <code>#SCREENAREAY#</code>, <code>#SCREENAREAWIDTH#</code>, <code>#SCREENAREAHEIGHT#</code></dt>
+	<dd>
+		<p>Screen area position and size of the current monitor.</p>
+	</dd>
+
+	<dt id="PWORKAREAXYWH"><code>#PWORKAREAX#</code>, <code>#PWORKAREAY#</code>, <code>#PWORKAREAWIDTH#</code>, <code>#PWORKAREAHEIGHT#</code></dt>
+	<dd>
+		<p>Work area position and size of the primary monitor.</p>
+	</dd>
+	
+	<dt id="PSCREENAREAXYWH"><code>#PSCREENAREAX#</code>, <code>#PSCREENAREAY#</code>, <code>#PSCREENAREAWIDTH#</code>, <code>#PSCREENAREAHEIGHT#</code></dt>
+	<dd>
+		<p>Screen area position and size of the primary monitor.</p>
+	</dd>
+
+	<dt id="WORKAREAXYWH@"><code>#WORKAREAX@<em>N</em>#</code>, <code>#WORKAREAY@<em>N</em>#</code>, <code>#WORKAREAWIDTH@<em>N</em>#</code>, <code>#WORKAREAHEIGHT@<em>N</em>#</code></dt>
+	<dd>
+		<p>Work area position and size of the <em>N</em>th monitor.</p>
+	</dd>	
+
+	<dt id="SCREENAREAXYWH@"><code>#SCREENAREAX@<em>N</em>#</code>, <code>#SCREENAREAY@<em>N</em>#</code>, <code>#SCREENAREAWIDTH@<em>N</em>#</code>, <code>#SCREENAREAHEIGHT@<em>N</em>#</code></dt>
+	<dd>
+		<p>Screen area position and size of the <em>N</em>th monitor.</p>
+	</dd>
+
+	<dt id="VSCREENAREAXYWH"><code>#VSCREENAREAX#</code>, <code>#VSCREENAREAY#</code>, <code>#VSCREENAREAWIDTH#</code>, <code>#VSCREENAREAHEIGHT#</code></dt>
+	<dd>
+		<p>Position and size of the virtual screen.</p>
+	</dd>
+</dl>	

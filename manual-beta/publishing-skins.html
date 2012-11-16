@@ -1,0 +1,177 @@
+---
+layout: manual
+title: 'Publishing Skins (.rmskin)'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Rainmeter includes tools that make it easier to share skins that you have created with other users. This page describes how to use the <a href="#SkinPackager">Skin Packager</a> feature, and offers some guidelines for publishing a new skin in a public gallery, such as <a href="http://www.deviantart.com">deviantArt</a> or <a href="http://customize.org">Customize.org</a>.</p>
+
+<h2 id="SkinPackager">Skin Packager</h2>
+
+<p>The Skin Packager is used to create a "package" file that contains all of the files needed to <a href="!installing-skins">install a skin</a> in Rainmeter.</p>
+
+<p>The package file is created in the <em>"Rainmeter Skin Installer"</em> format, with the extension <b>.rmskin</b>. The file is actually a modified <a href="http://en.wikipedia.org/wiki/Zip_(file_format)">zip file</a>, with the addition of certain metadata that is used to verify the integrity of the package. (As of version <a href="/history#2.3">2.3</a>, Rainmeter will not install a normal ZIP file changed to the ".rmskin" extension; the package must be created with the Skin Packager.)</p>
+
+<p>To launch the Skin Packager, open the <a href="!user-interface/manage">Manage</a> window and click the button labeled <b>Create .rmskin package...</b> in the bottom-left.</p>
+
+<h3>Step 1: Information and Components</h3>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="!img/publishing-skins/packager1.png"><img src="!img/publishing-skins/packager1.png" class="thumbnail"></a>
+</div>
+
+<p>Start by providing some basic information about the skin:</p>
+
+<ul>
+	<li id="Name"><p><b>Name:</b><br>
+		The name of the skin. (Required.)</p></li>
+	<li id="Author"><p><b>Author:</b><br>
+		The name of the skin's author. (Required.)</p></li>
+	<li id="Version"><p><b>Version:</b><br>
+		The current version of the skin. This can be a number (such as "1.0"), a date ("15 November 2008"), or any other identifying string. (Optional.)</p></li>
+</ul>
+
+<p>Next, choose the files that will be added to the package:</p>
+
+<ul>
+	<li id="AddSkin"><p><b>Add skin...</b><br>
+		Choose the <a href="!skins#Root">root config folder</a> of your skin. This is the folder that will be copied to the user's <a href="!variables/built-in-variables#SKINSPATH">Skins directory</a> when the skin is installed. It must be a single folder that contains the entire skin or skins, including any <a href="!skins/resources-folder">resource files</a> needed, such as addon utilities or <a href="!skins/resources-folder#Fonts">fonts</a>. You may choose a folder from your own Skins directory, or somewhere else on your computer. Only one root config folder is allowed in a single package. (Required.)</p></li>
+	<li id="AddLayout"><p><b>Add layout...</b><br>
+		You may choose any number of <a href="!settings#Layouts">layouts</a> to be installed along with the skin.</p></li>
+	<li id="AddPlugin">
+		<p><b>Add plugin...</b><br>
+		You may choose any number of <a href="!plugins">plugins</a> to be installed along with the skin. Only <a href="!plugins#Custom">custom plugins</a> should be distributed in this way. The <a href="!plugins">standard plugins</a> described in this manual are included with all versions of Rainmeter, and never need to be installed separately. To include a custom plugin, you must provide both the 32-bit and 64-bit versions of the plugin to ensure compatibility on all systems.</p></li>
+</ul>
+
+
+
+<p>Click <b>Next</b> to continue.</p>
+
+<h3>Step 2: Options</h3>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="!img/publishing-skins/packager2.png"><img src="!img/publishing-skins/packager2.png" class="thumbnail"></a>
+</div>
+
+<p>All of the following fields are optional. The default settings are appropriate for most skins.</p>
+
+<ul>
+	<li id="SavePackageTo"><p><b>Save package to:</b><br>
+		Choose where the new package file will be created. Defaults to the current user's Desktop folder.</p></li>
+	<li id="AfterInstallation">
+		<p><b>After installation</b><br>
+		You may choose one of two actions for Rainmeter to take after installing the skin. (Before installing, the user will have the option to skip this action.)</p>
+		<ul>
+			<li id="LoadSkin"><p><b>Load skin:</b><br>
+				You may choose one of the skin ".ini" files in your package. This skin will be automatically loaded alongside any other skins that the user is already running. This setting is recommended for most skins.</p></li>
+			<li id="LoadLayout"><p><b>Load layout:</b><br>
+				If you added any <a href="!settings#Layouts">layouts</a> to the package, you may choose one layout to be loaded automatically, replacing the user's existing layout.</p></li>
+		</ul>
+	</li>
+	<li id="MinimumRequirements">
+		<p><b>Minimum requirements</b><br>
+		You may set the minimum versions of Rainmeter and/or Windows required for the skin. Rainmeter will not install the skin on a system that does not meet these requirements.</p>
+		<ul>
+			<li id="RainmeterVersion"><p><b>Rainmeter version:</b><br>
+				Defaults to the current version of Rainmeter on your system. If you are sure that the skin will work on an earlier version, you may change the minimum requirement accordingly. Rainmeter version numbers are written in the form <em>Major.Minor.Patch.Revision</em>. For example, <a href="/history#2.3">Rainmeter 2.3.3 (r1468)</a> would be written as <code>2.3.3.1468</code>.</p></li>
+			<li id="WindowsVersion"><p><b>Windows version:</b><br>
+				Defaults to <em>Windows XP</em>, which is the lowest version of Windows supported by Rainmeter. Some skins may require higher versions of Windows, depending on their plugins, addons, or other factors. For example, any skins that make use of the <a href="!plugins/win7audio">Win7Audio</a> plugin will require Windows Vista or above.</p></li>
+		</ul>
+	</li>
+</ul>
+
+<h3>Step 3: Advanced</h3>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="!img/publishing-skins/packager3.png"><img src="!img/publishing-skins/packager3.png" class="thumbnail"></a>
+</div>
+
+<p>For additional options, click the <b>Advanced</b> tab at the top of the window.</p>
+
+<ul>
+	<li id="HeaderImage"><p><b>Header image:</b><br>
+		You may choose a custom header image to be displayed in the <a href="!installing-skins">Skin Installer</a>. The image must be a bitmap image (.bmp) that is exactly 400x60 pixels in size.</p></li>
+	<li id="VariablesFiles">
+		<p><b>Variables files:</b><br>
+			Some skins have one or more <a href="!skins/include-option">include files</a> to store <a href="!variables">variables</a> that can be changed by the user. If a user is reinstalling or upgrading a skin that they already have in their library, they will most likely want to preserve their existing preferences. You may specify these files in your skin package, so that the existing variable values are used instead of the defaults in the package.</p>
+
+		<p>Specify the file location starting with the root config folder, e.g. <code>illustro\Clock\Variables.inc</code>. You may specify multiple files by separating them with pipes (<code>|</code>), e.g. <code>illustro\Clock\Variables.inc | illustro\Feeds\Variables.inc</code>.</p>
+	</li>
+	<li id="MergeSkins"><p><b>Merge skins</b><br>
+		If selected, the Skin Installer will not remove any existing files found in the user's Skins directory. (Normally, the root config folder is removed and replaced with the version in the skin package.) This can be used to install an "expansion" or a "patch" to a previously-installed skin, without duplicating unchanged files.</p></li>
+</ul>
+
+<p>Finally, click <b>Create package</b> to complete the process. It may take several seconds to create the package, depending on the size of your skin. The file will be saved in your <a href="#SavePackageTo">chosen location</a> as <em>Name_Version.rmskin</em> (using the "Name" and "Version" fields that you entered in the first step).</p>
+
+<h3 id="HiddenFiles">Hidden Files</h3>
+
+<p>The Skin Packager will ignore any hidden files or folders in your root config folder. You can take advantage of this behavior by storing development files (such as Photoshop "PSD" files, or backup copies of skin code) as hidden files, so that they are excluded from the final product.</p>
+
+<h2 id="PublishingGuidelines">Publishing Guidelines</h2>
+
+<p>When distributing a skin to a small or private group of users, strict adherence to standards probably isn't too important. However, you may want to publish your finished work in a public repository, such as the Rainmeter skin galleries on <a href="http://www.deviantart.com">deviantArt</a> or <a href="http://customize.org">Customize.org</a>, for other users to discover, download and share. In this case, taking the time to follow a few simple guidelines will be helpful to you, your users, and the Rainmeter community at large.</p>
+
+<h3 id="GuidelineSkinPackager">Use the Skin Packager.</h3>
+
+<p>Most sites that allow users to publish their Rainmeter skins now require the skins to be uploaded in the official ".rmskin" format created by Rainmeter's built-in <a href="#SkinPackager">Skin Packager</a>. This is not only more convenient for regular users, since a skin package can be installed automatically in just a few clicks&mdash;it is also safer. Rainmeter always checks the validity of a skin package before installing it, to ensure that the package was created by the Skin Packager and not modified or tampered with in any way.</p>
+
+<p>As with any open-source software ecosystem, malware disguised as Rainmeter skins has been an occasional concern for the community. By using the official format, you can help us reduce this concern by promoting a more secure method of distribution.</p>
+
+<h3 id="GuidelineMetadata">Use metadata.</h3>
+
+<p>Many skin authors tend to ignore the <a href="!skins/metadata-section">[Metadata] section</a> in their skins, because it has no effect on a skin's function or performance. But there are good reasons to make sure your skin is fully-tagged before you release it into the wild. A skin with complete metadata is easier to find in the <a href="!user-interface/manage">Manage</a> window, and offers a reliable, built-in way to provide users with setup and usage instructions, or at least direct them to a webpage or readme file with more information.</p>
+
+<p>In addition, because a skin's code is often copied or excerpted in posts and comments across the Internet, good metadata makes it easier to trace the code back to its source. The <a href="!skins/metadata-section#Version">Version</a> tag is especially helpful to avoid confusing multiple revisions of the same skin that have been released at different times.</p>
+
+<h3 id="GuidelineLicense">Choose the right license for your skin (and respect others').</h3>
+
+<p>The Rainmeter community is built around a free, open exchange of ideas and resources. We wholeheartedly encourage skin authors to release their works under terms that allow other users to borrow their code and concepts, modify them, and release them in a new, unique form. We believe that this kind of frictionless collaboration is a big part of what has made the Rainmeter ecosystem thrive.</p>
+
+<p>There are a number of open-source software licenses available, and it couldn't be easier to add them to your Rainmeter skin: just paste the name into the <a href="!skins/metadata-section#License">License</a> tag in your [Metadata] section. The following licenses are commonly used for Rainmeter skins, plugins and addons:</p>
+
+<ul>
+	<li><p><a href="http://creativecommons.org/choose/">Creative Commons</a></p></li>
+	<li><p><a href="http://www.gnu.org/licenses/gpl-howto.html">GNU Public License</a></p></li>
+	<li><p><a href="http://opensource.org/licenses/MIT">MIT License</a></p></li>
+</ul>
+
+<p>That said, the same rule applies to Rainmeter skins as it does to any other content on the Internet: if you are not explicitly given permission to use it, <em>you don't have permission</em>. You really need some indication of consent from the creator - even a quick email is enough. In addition, it's always a good idea to credit the original creators when you post your own skin, even if their license doesn't require it. This means not only the original author of some code that you have modified, but also any images, addons, plugins and fonts that are not your own.</p>
+
+<p>Make sure your license and credits are included both on your download page (for example, in the deviation comments on <a href="http://www.deviantart.com">deviantArt</a>) and somewhere in your skin package (either in your <a href="!skins/metadata-section">metadata</a> tags, or a separate "readme" file).</p>
+
+<h3 id="GuidelineLayouts">Clean up your layouts.</h3>
+
+<p>The ability to include a custom <a href="!settings#Layouts">layout</a> with your skin can make for a great presentation, especially in a large <a href="!skins#Suites">"suite"</a>, where it is helpful to provide a template or starting point for your users to get started on customizing their desktops instead of loading skins one by one.</p>
+
+<p>While arranging a layout on your own desktop, and using the <a href="!user-interface/manage#LayoutsTab">Manage</a> window to save it to a file, there are some steps you can take to make your layout load smoothly and cleanly on other users' desktops:</p>
+
+<ul>
+	<li><p>Remove <a href="!settings/skin-sections">[Skin] sections</a> that don't belong to your suite. An easy way to keep only the sections you need is to check the "Exclude unloaded skins" option when <a href="!user-interface/manage#SaveNewLayout">saving the layout</a>.</p></li>
+	<li><p>Remove options from your skin sections if they are unchanged from Rainmeter's default settings, such as <a href="!settings/skin-sections#Draggable">Draggable</a> or <a href="!settings/skin-sections#SnapEdges">SnapEdges</a>. This will both reduce the size of your layout file, and make it easier to keep track of your code if you need to edit any layout settings by hand.</p></li>
+	<li>
+		<p>Use the <a href="!settings/skin-sections#WindowXY">"From right" and "From bottom"</a> options to make sure your skins are loaded in the correct position regardless of the user's screen resolution. If you need to determine the skin's position in a more complex way, you can edit the "Rainmeter.ini" settings file for your layout and write your own formulas for the <a href="!settings/skin-sections#WindowXY">WindowX, WindowY,</a> <a href="!settings/skin-sections#AnchorXY">AnchorX and AnchorY</a> options for each skin section, using <a href="!variables/built-in-variables">built-in variables</a>. Here are some basic formulas you can use:</p>
+
+		<ul>
+			<li><p>Center a skin on the desktop:<br>
+				<code>WindowX=(#WORKAREAX# + (#WORKAREAWIDTH#  / 2 ) - (SkinWidth / 2) + Offset)</code><sup>1</sup><br>
+				<code>WindowY=(#WORKAREAY# + (#WORKAREAHEIGHT# / 2 ) - (SkinHeight / 2) + Offset)</code></p></li>
+			<li><p>Center a skin on the screen:<br>
+				<code>WindowX=((#SCREENAREAWIDTH#  / 2) - (SkinWidth / 2) + Offset)</code><br>
+				<code>WindowY=((#SCREENAREAHEIGHT# / 2) - (SkinHeight / 2) + Offset)</code></p></li>
+			<li><p>Align relative to the left edge of the desktop:<br>
+				<code>WindowX=(#WORKAREAX# + Offset)</code></p></li>
+			<li><p>Align relative to the right edge of the desktop:<br>
+				<code>WindowX=(Offset + SkinWidth)R</code><br>
+				or<br>
+				<code>WindowX=(#WORKAREAX# + #WORKAREAWIDTH# - SkinWidth - Offset)</code></p></li>
+			<li><p>Align relative to the top edge of the desktop:<br>
+				<code>WindowY=(#WORKAREAY# + Offset)</code></p></li>
+			<li><p>Align relative to the bottom edge of the desktop:<br>
+				<code>WindowY=(Offset + SkinHeight)B</code><br>
+				or<br>
+				<code>WindowY=(#WORKAREAY# + #WORKAREAHEIGHT# - SkinHeight - Offset)</code></p></li>
+		</ul>
+
+		<p class="footnote">1. "Offset" should be a number, e.g. <code>25R</code>, <code>-10B</code>, <code>(#WORKAREAX# + 75)</code>. If you don't need an offset (the skin is exactly centered or adjacent to the edge of the screen), leave it out. "SkinWidth" and "SkinHeight" should be the probable width and height of the skin.</p>
+	</li>
+</ul>

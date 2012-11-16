@@ -1,0 +1,90 @@
+---
+layout: manual
+title: 'CoreTemp plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=CoreTemp</code> retrieves infromation from the <a href="http://www.alcpu.com/CoreTemp/">CoreTemp</a> application.</p>
+
+<p><b>Note:</b> The CoreTemp application must be running in the background.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="!measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="CoreTempType"><code>CoreTempType</code></dt>
+	<dd>
+		Defines the information to measure. Valid values are:
+		<ul>
+		<li><code>Temperature</code>: Current temperature. <code>CoreTempIndex</code> must also be specified.</li>
+		<li><code>MaxTemperature</code>: Maximum temperature between all cores.</li>
+		<li><code>BusSpeed</code>: Bus frequency.</li>
+		<li><code>BusMultiplier</code>: Bus multiplier.</li>
+		<li><code>CpuName</code>: CPU model name.</li>
+		<li><code>CpuSpeed</code>: Core frequency.</li>
+		<li><code>TjMax</code>: Maximum allowed temperature. <code>CoreTempIndex</code> must also be specified.</li>
+		<li><code>Load</code>: Core load as percentage. <code>CoreTempIndex</code> must also be specified.</li>
+		<li><code>Vid</code>: Voltage value.</li>
+		</ul>
+	</dd>
+
+	<dt id="CoreTempIndex"><code>CoreTempIndex</code></dt>
+	<dd>Zero-based index of the core to measure. The first core is <code>0</code>, the second core is <code>1</code>, etc.</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureMaxTemp]
+Measure=Plugin
+Plugin=CoreTemp
+CoreTempType=MaxTemperature
+
+[MeasureCore1Temp]
+Measure=Plugin
+Plugin=CoreTemp
+CoreTempType=Temperature
+CoreTempIndex=0
+
+[MeasureCpuSpeed]
+Measure=Plugin
+Plugin=CoreTemp
+CoreTempType=CpuSpeed
+
+[MeterMaxTemp]
+Meter=String
+MeasureName=MeasureMaxTemp
+X=5
+Y=5
+W=200
+H=20
+FontColor=255,255,255,255
+Text="Max Temp: %1°C"
+
+[MeterCore1Temp]
+Meter=String
+MeasureName=MeasureCore1Temp
+X=5
+Y=25
+W=200
+H=20
+FontColor=255,255,255,255
+Text="Core 1 Temp: %1°C"
+
+[MeterCpuSpeed]
+Meter=String
+MeasureName=MeasureCpuSpeed
+X=5
+Y=45
+W=200
+H=20
+FontColor=255,255,255,255
+Text="Frequency: %1 MHz"
+{% endhighlight %}	

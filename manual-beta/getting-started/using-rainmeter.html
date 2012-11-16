@@ -1,0 +1,121 @@
+---
+layout: manual
+title: 'Using Rainmeter'
+---
+
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>The first time you run Rainmeter, your desktop will look something like this:</p>
+
+<p class="center">
+	<div class="exampleprev">
+		<a rel="lightbox" href="!img/getting-started/ur-firstrun.png"><img src="!img/getting-started/ur-firstrun.png" width="650"/></a>
+		<p><em>Illustro</em>, the standard "suite" that comes with Rainmeter.</p>
+	</div>
+</p>
+
+<p>Each small window on the right side of your screen ("System," "Disk," and so on) is a <a href="!skins">skin</a>. Rainmeter remembers each skin's location and settings independently. To move a skin, just click and drag it to a new location.</p>
+
+<h2 id="ContextMenu">Context Menu</h2>
+
+<div class="exampleprev floatright">
+	<a rel="lightbox" href="!img/getting-started/ur-context.png"><img src="!img/getting-started/ur-context.png" class="thumbnail"/></a>
+	<p class="thumbnail">A typical skin's context menu.</p>
+</div>
+
+<p>The easiest way to interact with Rainmeter skins is through the <a href="!user-interface/context-menus#SkinContextMenus">context menu</a>. A skin may have any number of tabs, buttons, menus, or other bells and whistles in its design&mdash;but no matter what, you can still access the context menu by right-clicking on the skin.</p>
+
+	<blockquote><p><i>Some skins may assign some other action to right-clicking on the skin. In this case, you can still override this action and open the context menu by holding down the <code>Ctrl</code> key when you right-click.</i></p></blockquote>
+
+<p>All skins have the same basic context menu items that you can see in the screenshot on the right. Some skins may have <a href="!skins/rainmeter-section#Context">custom items</a> to their context menus, but these these will not replace the basic items. Instead, both types of items will appear alongside each other.</p>
+
+<h3 id="LoadingUnloading">Loading and Unloading</h3>
+
+<p>You can use the context menu to load skins from your library. Right-click on any of the <em>illustro</em> skins, and select <code>illustro</code> &rarr; <code>Google</code> &rarr; <code>Google.ini</code>. The "Google" skin will appear in the top-left corner of your desktop. You can now drag it into place alongside your other skins.</p>
+
+<div class="exampleprev floatleft">
+	<img src="!img/getting-started/ur-google.png" class="thumbnail"/>
+	<p class="thumbnail">The Google skin has been loaded.</p>
+</div>
+
+<p>You can also unload a skin with the context menu. Right-click the new Google skin, and select <code>Unload skin</code>. You will see the skin fade away and disappear.</p>
+
+<p>When a skin is unloaded, its location and settings are still saved. To see how this works, load the Google skin again. Notice that, instead of appearing in the top-left, it appears in the same location where you dragged it before.</p>
+
+<h3 id="Variants">Variants</h3>
+
+<p>When you loaded the Google skin, there was only one option under the "Google" menu, <code>Google.ini</code>. This is how most skins work: each skin is saved as a "<code>SkinName.ini</code>" file in a separate folder. What happens when there is more than one skin in the same folder? The answer is that these skins become <a href="!skins#Variants">variants</a> of each other.</p>
+
+<div class="exampleprev floatright">
+	<a href="!img/getting-started/ur-variants.png" rel="lightbox"><img src="!img/getting-started/ur-variants.png" class="thumbnail"/></a>
+	<p class="thumbnail">"Disk" has two variants.</p>
+</div>
+
+<p>To see an example of a skin with variants, right-click the "Disk" skin and select <code>Variants</code> in the context menu. You can see that the <code>2 Disks.ini</code> variant is already active. Click <code>1 Disk.ini</code> to switch to that variant. Notice how the new variant replaces the old variant on the desktop. Variants share the same location and settings, and only one of a skin's variants may be loaded at one time.</p>
+
+<h3 id="Settings">Settings</h3>
+
+<p>Rainmeter keeps track of a number of basic <a href="!settings/skin-sections">skin settings</a>. These settings are created automatically for each skin. They include things like <a href="!settings/skin-sections#AlwaysOnTop">position</a> (whether a skin stays on top of all windows or is pinned to the desktop), <a href="!settings/skin-sections#SnapEdges">snap to edges</a> (whether skins automatically align with other skins when they are dragged close together), and of course, the skin's <a href="!settings/skin-sections#WindowXY">coordinates</a> (location on the desktop) and which variant is loaded.</p>
+
+<div class="exampleprev floatleft">
+	<img src="!img/getting-started/ur-transparency.png" class="thumbnail"/>
+	<p class="thumbnail">"Welcome" is now transparent.</p>
+</div>
+
+<p>One of the most popular skin settings is <a href="!settings/skin-sections#AlphaValue">transparency</a>. Try changing the transparency of the "Welcome to Rainmeter!" skin in the center of your desktop. Right-click the skin to open the context menu, then select <code>Settings</code> &rarr; <code>Transparency</code> &rarr; <code>50%</code>. Now you can partially see through the skin and onto the desktop below.</p>
+
+<p>Rainmeter does not manage any other "settings" beyond the basic ones found here. Extra customization options&mdash;like fonts, colors, images and passwords&mdash;are all stored and managed separately by the skins themselves, as <a href="!variables">variables</a>. This means that saving and restoring your layout settings in Rainmeter will <em>not</em> affect your customizations for specific skins. (It also means that backing up your Rainmeter settings will not protect your customizations, so make sure to back up your skin files, as well.)</p>
+
+<h2 id="TrayIcon">Tray Icon</h2>
+
+<div class="exampleprev floatright">
+	<a href="!img/getting-started/ur-tray.png" rel="lightbox"><img src="!img/getting-started/ur-tray.png" class="thumbnail"/></a>
+	<p class="thumbnail">There are two ways to open the context menu.</p>
+</div>
+
+<p>Rainmeter has a notification area icon. You can reach the context menu for each of your loaded skins by right-clicking on the icon. This is a handy way to access a skin when you can't right-click it for some reason (usually when the skin is <a href="!settings/skin-sections#StartHidden">hidden</a>). It's also a good place to see a complete list of all the skins that you have loaded.</p>
+
+<h2 id="Manage">Manage</h2>
+
+<p>Aside from the context menus, the most important part of Rainmeter's basic user interface is the <a href="!user-interface/manage">Manage</a> window. Open Manage by selecting <code>Manage</code> from the context menu, or by left-clicking once on the tray icon.</p>
+
+<div class="exampleprev floatleft">
+	<a href="!img/getting-started/ur-manage.png" rel="lightbox"><img src="!img/getting-started/ur-manage.png" class="thumbnail"/></a>
+	<p class="thumbnail">The "Manage" window shows your whole library.</p>
+</div>
+
+<h3 id="Skins">Skins</h3>
+
+<p>The <a href="!user-interface/manage#SkinsTab">Skins</a> tab allows you to load, unload, or change settings for your entire library of skins. You can go to a specific skin's settings in the Manage window by choosing <code>Manage skin</code> from the skin's context menu, or choosing from the <code>Active skins</code> drop-down menu in Manage. You can also right-click to open any skin's folder in Windows Explorer, where you can see other resource files for that skin, such as images or <a href="!lua-scripting">scripts</a>, or delete a skin's file, from your computer.</p>
+
+<p>The Manage window does many of the same tasks as the context menu, but when you need to load or edit options for a number of skins at the same time, it's much easier to use the window.</p>
+
+<h3 id="Layouts">Layouts</h3>
+
+<p>Manage is also where you can load and save <a href="!user-interface/manage#LayoutsTab">layouts</a>. A <a href="!settings#Layouts">layout</a> is a permanent copy of your skin settings, including both loaded and unloaded skins. (Again, these settings do not account for changes to your skin files, which include any extra customization options. Loading a layout will also not recover a skin that has been deleted from your library.) When you save a layout, you have the option of excluding settings for unloaded skins, which is a good way to "clean up" skins that you may no longer have or use. You can also associate your current wallpaper with your layout.</p>
+
+<h2 id="About">About</h2>
+
+<p>The last part of Rainmeter's interface is the <a href="!user-interface/about">About</a> window. Open About by selecting <code>About</code> from the context menu, or by clicking <code>Open log</code> in Manage.</p>
+
+<div class="exampleprev floatright">
+	<a href="!img/getting-started/ur-about.png" rel="lightbox"><img src="!img/getting-started/ur-about.png" class="thumbnail"/></a>
+	<p class="thumbnail">The "About" window shows you what Rainmeter is doing.</p>
+</div>
+
+<h3 id="Log">Log</h3>
+
+<p>The <a href="!user-interface/about#LogTab">Log</a> tab is where Rainmeter keeps a running record of what it is doing. This is also where Rainmeter reports errors related to a skin or the program itself. In addition, the <a href="!user-interface/about#SkinsTab">Skins</a> tab will show you the current values of all <a href="!measures">measures</a> and <a href="!variables">variables</a> in the skin. (You'll learn more about those later.) This makes the About window an invaluable assistant whenever you're writing, editing or troubleshooting a skin.</p>
+
+<h3 id="Version">Version</h3>
+
+<p>The other tabs show information about the version of Rainmeter you are using, as well as the versions of <a href="!plugins">plugins</a> that you have installed. If you are ever having a technical issue and need to ask for support from the Rainmeter community, the About window is where you can find a wealth of information about your Rainmeter setup that may be helpful in solving your problem.</p>
+
+<h2 id="ExitingRainmeter">Exiting Rainmeter</h2>
+
+<p>Rainmeter saves all <a href="!settings">settings</a> automatically. If you exit Rainmeter (by clicking <code>Exit</code> in the context menu), or even if the program crashes unexpectedly, all skins' settings are still saved, and your current layout will be loaded automatically the next time Rainmeter is launched.</p>
+
+<p style="clear: both;">&nbsp;</p>
+
+<div class="right"><p><a href="!getting-started/customizing">Continue to: Customizing &raquo;</a></p> </div>
+<p><a href="!getting-started/setting-up">&laquo; Back to: Setting Up</a></p>

@@ -1,0 +1,87 @@
+---
+layout: manual
+title: 'PerfMon plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=PerfMon</code> retrieves infromation from the <a href="http://technet.microsoft.com/en-us/library/dd744567.aspx">Windows Performance Monitor</a>.</p>
+
+<p>The Performance Monitor exposes several counters, which track various information. All available counters can be viewed using the Performance Monitor application. To open it, either run PerfMon.msc or type it in the Start menu.</p>
+
+<p><b>Note:</b> The names of the objects, counters and instances must be in English.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="!measures/general-options">general measure options</a> are valid.
+	</dd>
+
+	<dt id="PerfMonObject"><code>PerfMonObject</code></dt>
+	<dd>
+		Name of the performance object.
+		<br><br><b>Examples:</b> <code>Memory</code>, <code>Processor</code>
+	</dd>
+
+	<dt id="PerfMonCounter"><code>PerfMonCounter</code></dt>
+	<dd>
+		Name of the performance counter.
+		<br><br><b>Examples:</b> <code>% Processor Time</code>, <code>Disk Read Bytes/sec</code>
+	</dd>
+
+	<dt id="PerfMonInstance"><code>PerfMonInstance</code></dt>
+	<dd>
+		Name of the counter instance. Can be left unspecified if the counter does not have any instances.
+		<br><br><b>Example:</b> <code>_Total</code>
+	</dd>
+
+	<dt id="PerfMonDifference"><code>PerfMonDifference</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		If set to <code>0</code>, the current value of the counter is used as the measure value. If set to <code>1</code>, the difference between the current and previous counter value is used instead. This is useful as many of the performance values are counters and you usually want to know how much the counter has increased since last update.
+	</dd>
+</dl>
+
+<h2>Example</h2>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureProcessCount]
+; Measures the number of processes running.
+Measure=Plugin
+Plugin=PerfMon
+PerfMonObject=System
+PerfMonCounter=Processes
+PerfMonDifference=0
+
+[MeasureDiskAccess]
+; Measures disk access of the C: drive.
+Measure=Plugin
+Plugin=PerfMon
+PerfMonObject=LogicalDisk
+PerfMonCounter=Disk Bytes/sec
+PerfMonInstance=C:
+
+[MeterProcessCount]
+Meter=String
+MeasureName=MeasureProcessCount
+X=5
+Y=5
+W=200
+H=20
+FontColor=255,255,255,255
+Text=Total processes: %1
+
+[MeterDiskAccess]
+Meter=String
+MeasureName=MeasureDiskAccess
+X=5
+Y=25
+W=200
+H=20
+FontColor=255,255,255,255
+AutoScale=1
+Text=Disk access: %1B/sec
+{% endhighlight %}	

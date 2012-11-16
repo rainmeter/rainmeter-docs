@@ -1,0 +1,112 @@
+---
+layout: manual
+title: 'Bitmap meter'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Meter=Bitmap</code> displays a frame of an image depending on the measure value.</p></p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General meter options</dt>
+	<dd>
+		All <a href="!meters/general-options">general meter options</a> are valid, <b>except</b> <code>W</code> and <code>H</code>.
+	</dd>
+
+	<dt>General image options</dt>
+	<dd>
+		All <a href="!meters/general-options/image-options">general image options</a> are valid for <code>BitmapImage</code>, <b>except</b> <code>ImageCrop</code>, <code>ImageRotate</code> and <code>Tile</code>.
+	</dd>
+
+	<dt id="MeasureName"><code>MeasureName</code></dt>
+	<dd>
+		Name of the measure used to determine the frame to display. The measures used must be able to return <a href="!measures#Percentage">percentual values</a>.
+
+		<br><br><b>Example:</b> If the image contains 5 frames, the first frame is displayed when the percentual measure value is between 0% and 19%, the second frame is shown from 20% to 39% , and so on.
+	</dd>
+
+	<dt id="BitmapImage"><code>BitmapImage</code></dt>
+	<dd>
+		<a href="!options#Path">Path</a> to the image. The frames in the images can be laid out either horizontally or vertically (the orientation is determined automatically from the height or the width of the image). The size of a single frame is also determined automatically, so no extra space should surround the frames.
+
+		<br><br>If <code>BitmapExtend</code> is not set to <code>1</code>, the measure being used must return values from 0.0 to 1.0 or must have both <code>MaxValue</code> and <code>MinValue</code> set.
+	</dd>
+
+	<dt id="BitmapFrames"><code>BitmapFrames</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		Number of frames in the image.
+	</dd>
+
+	<dt id="BitmapTransitionFrames"><code>BitmapTransitionFrames</code></dt>
+	<dd>
+		The number of transition frames per each actual frame. The transition frames are frames which are displayed when the measure value changes. The same number of transition frames must be used after each regular frame. The <a href="!skins/rainmeter-section#TransitionUpdate">TransitionUpdate</a> option in the [Rainmeter] section determines the rate at which the transition frames change during the transition. The total duration of the transition is therefore <code>TransitionUpdate</code> multiplied by <code>BitmapTransitionFrames</code>.<br><br>
+
+		<b>Note:</b> <code>BitmapFrames</code> always defines the total number of frames in the bitmap, including the transition frames.
+
+		<br><br><b>Example:</b> If the bitmap has 10 values and each transition consists of 4 additional frames, then <code>BitmapFrames</code> should be set to <code>50</code> and <code>BitmapTransitionFrames</code> to <code>4</code>.
+	</dd>
+
+	<dt id="BitmapZeroFrame"><code>BitmapZeroFrame</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, the first frame is used only when the measured value is zero. Otherwise the frames are linearly determined by the measured value.
+	</dd>
+
+	<dt id="BitmapExtend"><code>BitmapExtend</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code> the bitmap is extended to display the whole value.
+
+		<br><br><b>Example:</b> If you define a bitmap that defines frames from 0 to 9 you can use this to display the measured value as the bitmap numbers.
+	</dd>
+
+	<dt id="BitmapDigits"><code>BitmapDigits</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		Number of digits that are drawn (for <code>BitmapExtend=1</code>). The first frame is used if the value doesn't have as many digits as this defines.
+	</dd>
+
+	<dt id="BitmapAlign"><code>BitmapAlign</code></dt>
+	<dd>
+		Alignment of the bitmap value (for <code>BitmapExtend=1</code>). Valid values are <code>Left</code>, <code>Center</code>, and <code>Right</code>.
+	</dd>
+
+	<dt id="BitmapSeparation"><code>BitmapSeparation</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		Positive or negative number used as the separation between digits when <code>BitmapDigits</code> is higher than one.
+	</dd>
+</dl>
+
+<h2>Example</h2>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterBitmap_1.0.rmskin" class="download"></a>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+
+[MeasureCPU]
+Measure=CPU
+
+[MeterLabel]
+Meter=Image
+ImageName=#@#Images\CPULabel.png
+X=0
+Y=0
+
+[MeterCPU]
+Meter=Bitmap
+MeasureName=MeasureCPU
+X=0
+Y=5R
+BitmapImage=#@#Images\nums.png
+BitmapFrames=10
+BitmapExtend=1
+BitmapDigits=2
+
+[MeterPercentSign]
+Meter=Image
+ImageName=#@#Images\percent.png
+X=70R
+Y=r
+{% endhighlight %}
+
+<div class="exampleprev">
+	<p><img src="!img/example-meters/ExampleMeterBitmap.jpg"/></p>
+	<p>An example skin demontrating a Bitmap meter.</p>
+</div>

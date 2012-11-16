@@ -1,0 +1,156 @@
+---
+layout: manual
+title: 'Roundline meter'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Meter=Roundline</code> displays a single circular line that rotates around a point based on the measure value.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General meter options</dt>
+	<dd>
+		<p>All <a href="!meters/general-options">general meter options</a> are valid.</p>
+	</dd>
+
+	<dt id="MeasureName"><code>MeasureName</code></dt>
+	<dd>
+		<p>Name of the measure whose percentual value controls the angle of rotation. The measure must be able to return <a href="!measures#Percentage">percentual values</a>.</p>
+		<p><b>Note:</b> If MeasureName is not specified, then a number value of <code>1.0</code> is used by the meter.</p>
+	</dd>
+
+	<dt id="LineWidth"><code>LineWidth</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>Width of the line.</p>
+	</dd>
+
+	<dt id="LineLength"><code>LineLength</code></dt>
+	<dd>
+		<p>Length of the line. The length is always measured from the center of rotation (regardless of the <code>LineStart</code> option).</p>
+	</dd>
+
+	<dt id="LengthShift"><code>ControlLength, LengthShift</code></dt>
+	<dd>
+		<p>If ControlLength is set to 1, the measure value controls the <code>LineLength</code> from <code>LineLength</code> to <code>LineLength + LengthShift</code>.</p>
+	</dd>
+
+	<dt id="LineStart"><code>LineStart</code></dt>
+	<dd>
+		<p>Defines the distance from the center at which the line starts.</p>
+	</dd>
+
+	<dt id="ControlStart"><code>ControlStart, StartShift</code></dt>
+	<dd>
+		<p>If <code>ControlStart</code> is set to 1, the measure controls the <code>LineStart</code> from <code>LineStart</code> to <code>LineStart + StartShift</code>.</p>
+	</dd>
+
+	<dt id="StartAngle"><code>StartAngle</code></dt>
+	<dd>
+		<p>The starting angle for the line. This is in radians and the zero angle is at the right. The default rotation direction is clockwise.</p>
+	</dd>
+
+	<dt id="ControlAngle"><code>ControlAngle, RotationAngle</code></dt>
+	<dd>
+		<p>Unless <code>ControlAngle</code> is set to 0, the measure controls the <code>RotationAngle</code> from 0 to <code>RotationAngle</code>. The size of the rotation angle for the line. Use a negative value for counter-clockwise rotation.</p>
+	</dd>
+
+	<dt id="ValueRemainder"><code>ValueRemainder</code></dt>
+	<dd>
+		<p>Use remainder instead of the actual measured value. This can be used to draw an analog clock.</p>
+	</dd>
+
+	<dt id="LineColor"><code>LineColor</code></dt>
+	<dd>
+		<p>The <a href="!options#Color">Color</a> of the line.</p>
+	</dd>
+
+	<dt id="Solid"><code>Solid</code></dt>
+	<dd>
+		<p>Set to 1 and the meter will draw a pie-chart instead.</p>
+	</dd>
+
+</dl>
+
+<h2>Remarks</h2>
+<p>The angle of the line is determined by the measure. By default, the minimum position is pointing to the right, the line then moves clockwise until it is pointing to the right again.</p>
+
+<p>If the width and height are not defined, the center point is at the X and Y position of the meter and any part of the meter that intersects with the edges of the skin window will be cut off. If width and height are specified, the center point will be in the middle of the bounding box and the skin window will include the meter.</p>
+
+<p>If <code>MeasureName</code> is not specified, then a circle may be drawn without requiring any measure in the skin to create a value.</p>
+
+<h2>Example</h2>
+<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterRoundline_1.0.rmskin" class="download"></a>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+
+[MeasureFreeDisk]
+Measure=FreeDiskSpace
+Drive=C:
+
+[MeasureTotalDisk]
+Measure=FreeDiskSpace
+Drive=C:
+Total=1
+
+[MeterTotalDisk]
+Meter=Roundline
+MeasureName=MeasureTotalDisk
+X=0
+Y=0
+W=120
+H=120
+StartAngle=4.712
+RotationAngle=6.283
+LineLength=60
+LineColor=62,140,132,255
+Solid=1
+AntiAlias=1
+
+[MeterFreeDisk]
+Meter=Roundline
+MeasureName=MeasureFreeDisk
+X=0
+Y=0
+W=120
+H=120
+StartAngle=4.712
+RotationAngle=6.283
+LineLength=56
+LineColor=216,242,240,255
+Solid=1
+AntiAlias=1
+
+[MeterTotalText]
+Meter=String
+MeasureName=MeasureTotalDisk
+X=60
+Y=130
+FontFace=Segoe UI
+FontSize=12
+FontColor=62,140,132,255
+StringStyle=Bold
+StringAlign=Center
+AntiAlias=1
+AutoScale=1
+Text=Total: %1
+
+[MeterFreeText]
+Meter=String
+MeasureName=MeasureFreeDisk
+X=60
+Y=R
+FontFace=Segoe UI
+FontSize=12
+FontColor=216,242,240,255
+StringStyle=Bold
+StringAlign=Center
+AntiAlias=1
+AutoScale=1
+Text=Free: %1
+{% endhighlight %}
+
+<div class="exampleprev">
+	<p><img src="!img/example-meters/ExampleMeterRoundline.jpg"/></p>
+	<p>An example skin demontrating a Roundline meter.</p>
+</div>

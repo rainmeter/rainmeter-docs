@@ -1,0 +1,101 @@
+---
+layout: manual
+title: 'Variables'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>A <b>variable</b> is a string of text that is associated with a short, memorable name. Variable names can be used in most <a href="!options">options</a> throughout the skin, in place of the associated text.</p>
+
+<p>Variables are helpful when a certain string is repeated many times throughout the skin. By referencing the variable name instead of the full string, the amount of "redundant" code is reduced, as is the overall size of the skin. Variables also simplify the task of changing values. A variable string can be modified in a single location, and without recreating the entire option in which it is used.</p>
+
+<h2 id="Section">[Variables] section</h2>
+
+<p>Each skin may have a special <a href="!skins#Format">section</a> called <b>[Variables]</b>. Each option in [Variables] defines a variable name. Unlike most other <a href="!options">option names</a> in Rainmeter, variable names are not limited to a specific list. They can have any valid name, as long as they do not conflict with Rainmeter's <a href="#BuiltInVariables">built-in variables</a>.</p>
+
+{% highlight ini %}
+[Variables]
+Foo=This is a string!
+Bar=So is this!
+{% endhighlight %}
+
+<h3 id="Using">Using Variables</h3>
+
+<p>Variable names are referenced in other options by surrounding the name with pound signs (<code>#</code>), as in <code>#Foo#</code>. When the skin is loaded, Rainmeter replaces the variable reference with the corresponding string. Variables are inserted "literally," which means they can be mixed with other variables or regular text.</p>
+
+{% highlight ini %}
+[MeterFoo]
+Meter=String
+Text=The value of my "Foo" variable is: #Foo#
+FontColor=#Red#,#Green#,#Blue#,#Alpha#
+
+[MeterBar]
+Meter=String
+Text=The value of my "Bar" variable is: #Bar#
+FontColor=#Red#,#Green#,#Blue#,#Alpha#
+{% endhighlight %}
+
+<p>Variables can also be used to define other variables:</p>
+
+{% highlight ini %}
+[Variables]
+Foo=rainmeter
+Bar=http://www.#Foo#.net/
+{% endhighlight %}
+
+<h3 id="Changing">Changing Variables</h3>
+
+<p>The <a href="!bangs#WriteKeyValue">!WriteKeyValue</a> bang can be used to rewrite values in [Variables]. The skin must be <a href="!skins#Refresh">refreshed</a> to apply changes made by !WriteKeyValue.</p>
+
+	<blockquote><p><code>!WriteKeyValue "Variables" "Foo" "This is a new string!"</code></p></blockquote>
+
+<p>Alternatively, the <a href="!bangs#SetVariable">!SetVariable</a> bang can be used to change variable values <a href="#DynamicVariables">dynamically</a>. !SetVariable can be used to create a variable that does not already exist in the [Variables] section.</p>
+
+	<blockquote><p><code>!SetVariable "Foo" "This is a new string!"</code></p></blockquote>
+
+<h2 id="DynamicVariables">Dynamic Variables</h2>
+
+<p>A variable whose value changes while the skin is active is called a <b>dynamic variable</b>. Dynamic variables allow a skin to store, retrieve and display ever-changing information without <a href="!skins#Refresh">refreshing</a> the skin.</p>
+
+<p>Dynamic variables can only be used in a <a href="!measures">measure</a> or <a href="!meters">meter</a> with the option <code>DynamicVariables=1</code>. In addition, there are some <a href="!plugins">plugins</a> which do not support dynamic variables at this time. The following are sections where dynamic variables cannot be used:</p>
+
+<ul>
+	<li><a href="!skins/rainmeter-section">[Rainmeter]</a></li>
+	<li><a href="!variables#Section">[Variables]</a></li>
+	<li><a href="!skins/metadata-section">[Metadata]</a></li>
+	<li><a href="!plugins/inputtext">InputText</a></li>
+	<li><a href="!plugins/itunes">iTunes</a></li>
+	<li><a href="!plugins/mediakey">MediaKey</a></li>
+	<li><a href="!plugins/power">Power</a></li>
+	<li><a href="!plugins/virtualdesktops">VirtualDesktops</a></li>
+	<li><a href="!plugins/webparser">WebParser</a></li>
+	<li>3rd-party plugins are not guaranteed to support dynamic variables.</li>
+</ul>
+
+<p>When a meter or measure has dynamic variables enabled, Rainmeter uses marginally more processor power. This difference is negligible for most skins, but it may be noticeable in very large, complex skins with many dynamic variables, or on <a href="!meters/image">image</a> meters with very large images. For this reason, it is recommended to use dynamic variables only when necessary, and use alternatives such as <a href="!bangs#SetOption">!SetOption</a> in other cases.</p>
+
+<h2 id="BuiltInVariables">Built-In Variables</h2>
+
+<p>Rainmeter automatically creates a number of helpful variables for each skin. These variables do not need to be defined in the [Variables] section. Some built-in variables are <a href="#DynamicVariables">dynamic</a>.</p>
+
+<p>For a complete list, see <a href="!variables/built-in-variables">Built-In Variables</a>.</p>
+
+<h2 id="SectionVariables">Section Variables</h2>
+
+<p>Some <a href="!measures">measure</a> and <a href="!meters">meter</a> properties can also be referenced as <a href="#DynamicVariables">dynamic</a> variables by using the section name in brackets (<code>[]</code>), as in <code>[SectionName]</code>. These <b>section variables</b> can also be modified by certain parameters, as in <code>[SectionName:P1,P2]</code>.</p>
+
+<p>For more, see <a href="!variables/section-variables">Section Variables</a>.</p>
+
+<h2 id="EnvironmentVariables">Environment Variables</h2>
+
+<p>Windows <a href="http://en.wikipedia.org/wiki/Environment_variable#Windows">environment variables</a> can be referenced as variables in Rainmeter by using the variable name contained between percent signs (<code>%</code>), such as <code>%APPDATA%</code> or <code>%SystemDrive%</code>. To see a complete list of environment variables available on your system, open a Windows command prompt (cmd.exe) and type <code>set</code>.</p>
+
+<h2 id="Escape">Escaping Variables</h2>
+
+<p>Rainmeter always attempts to replace <code>#Name#</code> or <code>[Name]</code> with a value, if "Name" refers to an existing variable, meter or measure. To prevent a variable reference from being replaced, place asterisks (<code>*</code>) inside the containers, as in:</p>
+
+<ul>
+	<li><code>#*Foo*#</code></li>
+	<li><code>[*Bar*]</code></li>
+</ul>
+
+<p>These are replaced with <code>#Foo#</code> and <code>#Bar#</code>, respectively. The <a href="!bangs#SetOption">!SetOption</a> bang can use these escape characters to protect variable references when setting options on dynamic meters or measures.</p>

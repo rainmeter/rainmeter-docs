@@ -1,0 +1,99 @@
+---
+layout: manual
+title: 'General Meter Options'
+---
+<!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Options available for use with all meters.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="Meter"><code>Meter</code></dt>
+	<dd>
+		Type of the meter (e.g. <code>Bar</code> or <code>String</code>).
+	</dd>
+
+	<dt id="MeterStyle"><code>MeterStyle</code></dt>
+	<dd>
+		<p>Specifies one or more sections as <a href="!meters/general-options/meterstyles">MeterStyles</a> from which option values are inherited. Multiple MeterStyles are delimited with pipes (<code>|</code>).</p>
+	</dd>
+
+	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, <code>MeasureName3</code>... </dt>
+	<dd>
+		"Binds" the meter to one or more measures. This means that the meter displays the values of these measures in some way. The exact form of the display depends on the type of meter. See each meter type's page for details about what kind of values are valid for that type, and how the values are displayed.
+	</dd>
+
+	<dt id="XY"><code>X</code>, <code>Y</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		Specify the x and y position of the meter relative to the top-left edge of the skin. If the value is appended with <code>r</code>, the position is relative to the previous meter x or y position (e.g. <code>5r</code> or <code>(5 * 2)r</code>). If the value is appended with <code>R</code>, the position is relative to the bottom-right edge of the previous meter.
+	</dd>
+
+	<dt id="WH"><code>W</code>, <code>H</code></dt>
+	<dd>
+		The width and height of the meter. String meters and Image meters (with an image) can automatically determine width and height. For all other cases, <code>W</code> and <code>H</code> must be defined.
+	</dd>
+
+	<dt id="Hidden"><code>Hidden</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, the meter is hidden. The visibility can also be changed with the <a href="!bangs#ShowHideToggleMeter">!ShowMeter and !HideMeter bangs</a>.
+	</dd>
+
+	<dt id="UpdateDivider"><code>UpdateDivider</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>Sets the update frequency of the meter.</p>
+
+		<p><b>Example:</b> If set to <code>1</code>, the meter is updated on every <a href="!skins/rainmeter-section#Update">update</a> cycle. If set to <code>5</code>, the meter is updated on every fifth update cycle and so forth.</p>
+	</dd>
+
+	<dt id="SolidColor"><code>SolidColor</code>, <code>SolidColor2</code> <small>Default: <code>0,0,0,0</code></small></dt>
+	<dd>
+		<p><a href="!options#Color">Color</a> of the meter background. If <code>SolidColor2</code> is also specified, the background is a <a href="#GradientAngle">gradient</a> composed of <code>SolidColor</code> and <code>SolidColor2</code>.</p>
+
+		<p><b>Hint:</b> <code>SolidColor=0,0,0,1</code> can be used to make transparent areas of the meter clickable.</p>
+	</dd>
+
+	<dt id="GradientAngle"><code>GradientAngle</code></dt>
+	<dd>
+		Angle of the gradient in degrees (for <code>SolidColor</code> and <code>SolidColor2</code>).
+	</dd>
+
+	<dt id="BevelType"><code>BevelType</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If enabled, draws a bevel around the edges of the rectangle specified by <code>H</code> and <code>W</code>. Valid values are:
+		<ul>
+		<li><code>0</code>: No bevel</li>
+		<li><code>1</code>: Raised</li>
+		<li><code>2</code>: Sunken</li>
+		</ul>
+	</dd>
+
+	<dt id="AntiAlias"><code>AntiAlias</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		If set to <code>1</code>, antialising is used to display the meter.
+	</dd>
+
+	<dt id="DynamicVariables"><code>DynamicVariables</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>If set to <code>1</code>, the meter is dynamic.</p>
+
+		<p><b>See also:</b> <a href="!variables#DynamicVariables">Dynamic Variables</a></p>
+	</dd>
+
+	<dt id="TransformationMatrix"><code>TransformationMatrix</code> <small>Default: <code>1;0;0;1;0;0</code></small></dt>
+	<dd>
+		<p>Defines a 3x2 matrix which can be used to transform the meter. Transformations include: scaling, skewing, and translating (ie. moving). There must be <b>exactly</b> 6 values separated by semicolons <code>;</code>. Combining these can have drastic effects on the meter it is applied to.</p>
+
+		<p><b>See also:</b> <a href="/tips/transformation-matrix-guide">Transformation Matrix</a></p>
+
+		<p><b>Examples:</b>
+		<ul>
+			<li><code>TransformationMatrix=-1; 0; 0; 1; 40; 0</code>: This will flip <code>X</code> along the line <code>X=20</code>.</li>
+			<li><code>TransformationMatrix=1; 0; 0; -1; 0; 100</code>: This will flip <code>Y</code> along the line <code>Y=50</code>.</li>
+			<li><code>TransformationMatrix=0.5; 0; 0; 1; 25; 0</code>: This will scale <code>X</code> by <code>0.5</code> at <code>X=50</code>.</li>
+		</ul></p>
+
+		<p><b>Note:</b> All transformations are relative to the top left corner of the window and not to the meter itself. So if you want to rotate the meter by its center the translation component in the matrix must be relative to the top left corner of the window.</p>
+
+		<p>Also note that the even if the meter's visual location and orientation is changed by the transformation the place where it would be located without the transformation will still be used to define the window size and register the mouse clicks. This might change in the future though.</p>
+	</dd>
+</dl>
