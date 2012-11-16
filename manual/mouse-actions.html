@@ -4,12 +4,12 @@ title: 'Mouse Actions'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Mouse actions are <a href="/manual/options#Action">action options</a> used on any visible part of the skin. The action is triggered by specific mouse events.</p>
+<p>Mouse actions are <a href="!options#Action">action options</a> used on any visible part of the skin. The action is triggered by specific mouse events.</p>
 
 <h2>Usage</h2>
 <ul>
-<li>On any <a href="/manual/meters">meter</a>. The target area detected by the mouse will be any non-tranparent areas of the meter, or any part of the meter which has a non-transparent meter or skin background behind it.</li>
-<li>In the <a href="/manual/skins/rainmeter-section">[Rainmeter]</a> section of the skin if <a href="/manual/skins/rainmeter-section#Background">Background</a> is defined.</li>
+<li>On any <a href="!meters">meter</a>. The target area detected by the mouse will be any non-tranparent areas of the meter, or any part of the meter which has a non-transparent meter or skin background behind it.</li>
+<li>In the <a href="!skins/rainmeter-section">[Rainmeter]</a> section of the skin if <a href="!skins/rainmeter-section#Background">Background</a> is defined.</li>
 </ul>
 <p><b>Note:</b> Actions defined for a meter will override actions defined in the <code>[Rainmeter]</code> section.</p>
 
@@ -19,53 +19,53 @@ title: 'Mouse Actions'
 <dl>
 	<dt id="LeftMouseDownAction"><code>LeftMouseDownAction</code></dt>
 	<dd>
-		<p><a href="/manual/options#Action">Action</a> to execute when the left mouse button is pressed.</p>
+		<p><a href="!options#Action">Action</a> to execute when the left mouse button is pressed.</p>
 		<b>Note:</b> This disables dragging the skin. See <a href="#LeftMouseUpAction">LeftMouseUpAction</a>.
 	</dd>
 
 	<dt id="RightMouseDownAction"><code>RightMouseDownAction</code></dt>
 	<dd>
-		<p><a href="/manual/options#Action">Action</a> to execute when the right mouse button is pressed.</p>
+		<p><a href="!options#Action">Action</a> to execute when the right mouse button is pressed.</p>
 		<b>Note:</b> This disables the skin context menu.
 	</dd>
 
 	<dt id="MiddleMouseDownAction"><code>MiddleMouseDownAction</code></dt>
 	<dd>
-		<a href="/manual/options#Action">Action</a> to execute when the middle mouse button is pressed.
+		<a href="!options#Action">Action</a> to execute when the middle mouse button is pressed.
 	</dd>
 
 	<dt id="LeftMouseUpAction"><code>LeftMouseUpAction</code></dt>
 	<dd>
-		<p><a href="/manual/options#Action">Action</a> to execute when the left mouse button is released.</p>
+		<p><a href="!options#Action">Action</a> to execute when the left mouse button is released.</p>
 		<b>Note:</b> This will generally be the desired option for a left mouse click. LeftMouseDownAction should be avoided unless there is a specific need to trap the downward press, as it will disable the ability to drag the skin.
 	</dd>
 
 	<dt id="RightMouseUpAction"><code>RightMouseUpAction</code></dt>
 	<dd>
-		<p><a href="/manual/options#Action">Action</a> to execute when the right mouse button is released.</p>
+		<p><a href="!options#Action">Action</a> to execute when the right mouse button is released.</p>
 		<b>Note:</b> This disables the skin context menu.
 	</dd>
 
 	<dt id="MiddleMouseUpAction"><code>MiddleMouseUpAction</code></dt>
 	<dd>
-		<a href="/manual/options#Action">Action</a> to execute when the middle mouse button is released.
+		<a href="!options#Action">Action</a> to execute when the middle mouse button is released.
 	</dd>
 
 	<dt id="LeftMouseDoubleClickAction"><code>LeftMouseDoubleClickAction</code></dt>
 	<dd>
-		<p><a href="/manual/options#Action">Action</a> to execute when the left mouse button is double clicked.</p>
+		<p><a href="!options#Action">Action</a> to execute when the left mouse button is double clicked.</p>
 		<b>Note:</b> If <code>LeftMouseDownAction</code> or <code>LeftMouseUpAction</code> is also set, both will be executed.
 	</dd>
 
 	<dt id="RightMouseDoubleClickAction"><code>RightMouseDoubleClickAction</code></dt>
 	<dd>
-		<p><a href="/manual/options#Action">Action</a> to execute when the right mouse button is double clicked.</p>
+		<p><a href="!options#Action">Action</a> to execute when the right mouse button is double clicked.</p>
 		<b>Note:</b> This disables the skin context menu.
 	</dd>
 
 	<dt id="MiddleMouseDoubleClickAction"><code>MiddleMouseDoubleClickAction</code></dt>
 	<dd>
-		<a href="/manual/options#Action">Action</a> to execute when the middle mouse button is double clicked.
+		<a href="!options#Action">Action</a> to execute when the middle mouse button is double clicked.
 	</dd>
 </dl>
 
@@ -73,12 +73,12 @@ title: 'Mouse Actions'
 <dl>
 	<dt id="MouseOverAction"><code>MouseOverAction</code></dt>
 	<dd>
-		<a href="/manual/options#Action">Action</a> to execute when the mouse cursor is over the meter or skin.
+		<a href="!options#Action">Action</a> to execute when the mouse cursor is over the meter or skin.
 	</dd>
 
 	<dt id="MouseLeaveAction"><code>MouseLeaveAction</code></dt>
 	<dd>
-		<a href="/manual/options#Action">Action</a> to execute when the mouse cursor leaves the meter or skin.
+		<a href="!options#Action">Action</a> to execute when the mouse cursor leaves the meter or skin.
 	</dd>
 </dl>
 
@@ -88,15 +88,15 @@ title: 'Mouse Actions'
 	<dd>
 		<p>When set to 1 (default) on a meter with a mouse action, a pointer cursor will be shown when hovering the mouse over the meter.</p>
 
-		<p>The default for the entire skin can be set to 0 by putting <code>MouseActionCursor=0</code> in the <a href="/manual/skins/rainmeter-section">[Rainmeter]</a> section of the skin. This can then be overridden on a meter-by-meter basis with <code>MouseActionCursor=1</code>.</p>
+		<p>The default for the entire skin can be set to 0 by putting <code>MouseActionCursor=0</code> in the <a href="!skins/rainmeter-section">[Rainmeter]</a> section of the skin. This can then be overridden on a meter-by-meter basis with <code>MouseActionCursor=1</code>.</p>
 
 		<p><b>Note:</b> If you have a meter with a mouse action, and there is a meter on top of it, you will need to set <code>MouseActionCursor=0</code> on the foreground meter (even if it does not have a mouse action).</p>
 	</dd>
 
 	<dt id="MouseActionCursorName"><code>MouseActionCursorName</code></dt>
 	<dd>
-		<p>If a custom cursor file (i.e. .cur or .ani) is found in <a href="/manual/skins/resources-folder#Cursors">@Resources\Cursors</a> in the root config folder of a skin, it will be automatically loaded and available as an alternative for the standard "hand" pointer for meters or skins with a mouse action.</p>
+		<p>If a custom cursor file (i.e. .cur or .ani) is found in <a href="!skins/resources-folder#Cursors">@Resources\Cursors</a> in the root config folder of a skin, it will be automatically loaded and available as an alternative for the standard "hand" pointer for meters or skins with a mouse action.</p>
 
-		<p>The option can be used with <code>MouseActionCursorName=MyCustomCursor.cur</code> in any meter or the <a href="/manual/skins/rainmeter-section">[Rainmeter]</a> section. No path is used in the option. In addition, several built-in Windows cursors may be used without needing any file name or extension. <code>Hand, Text, Help, Busy, Cross, Pen</code></p>
+		<p>The option can be used with <code>MouseActionCursorName=MyCustomCursor.cur</code> in any meter or the <a href="!skins/rainmeter-section">[Rainmeter]</a> section. No path is used in the option. In addition, several built-in Windows cursors may be used without needing any file name or extension. <code>Hand, Text, Help, Busy, Cross, Pen</code></p>
 	</dd>
 </dl>

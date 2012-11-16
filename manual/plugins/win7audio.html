@@ -6,13 +6,13 @@ title: 'Win7Audio plugin'
 
 <p><code>Plugin=Win7AudioPlugin</code> controls the sound device and volume for Windows Vista and newer. Previous versions of Windows are not supported.</p>
 
-<p>Returns the name of the current sound device (when used in a <a href="/manual/meters/string">String</a> meter) and the percentage (0-100) of current volume level (when used in a meter which requires a <a href="/manual/measures#Percentage">percentage</a>).</p>
+<p>Returns the name of the current sound device (when used in a <a href="!meters/string">String</a> meter) and the percentage (0-100) of current volume level (when used in a meter which requires a <a href="!measures#Percentage">percentage</a>).</p>
 
 <h2>Options</h2>
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+		All <a href="!measures/general-options">general measure options</a> are valid.
 	</dd>
 </dl>
 
@@ -25,7 +25,7 @@ Plugin=Win7AudioPlugin
 {% endhighlight %}
 
 <h2>Bangs</h2>
-<p>To control the sound device or volume, use the <a href="/manual/bangs#CommandMeasure">!CommandMeasure</a> bang. In the examples below <code>MeasureWin7Audio</code> is the section name for the Win7Audio measure. Your <a href="/manual/skins#Format">section name</a> may differ.</p>
+<p>To control the sound device or volume, use the <a href="!bangs#CommandMeasure">!CommandMeasure</a> bang. In the examples below <code>MeasureWin7Audio</code> is the section name for the Win7Audio measure. Your <a href="!skins#Format">section name</a> may differ.</p>
 <dl>
 	<dt id="ToggleNext"><code>!CommandMeasure "MeasureWin7Audio" "ToggleNext"</code></dt>
 	<dd>

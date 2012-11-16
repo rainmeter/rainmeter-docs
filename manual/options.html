@@ -37,7 +37,7 @@ ImageName=C:\lolcats\lolcat.png
 {% endhighlight %}
 
 <h2 id="Number">Number options</h2>
-<p>Number options specify either a number or a <a href="/manual/measures/calc#Formulas">formula</a> enclosed in parentheses.</p>
+<p>Number options specify either a number or a <a href="!measures/calc#Formulas">formula</a> enclosed in parentheses.</p>
 
 {% highlight ini %}
 ; The following lines are equivalent:
@@ -47,8 +47,8 @@ FontSize=(2 &gt; 1 ? 42 : 666)
 {% endhighlight %}
 
 <h2 id="Action">Action options</h2>
-<p>Options in a skin which cause Rainmeter to take some action. Actions may be triggered by user input such as <a href="/manual/mouse-actions">mouse actions</a>, or system events and changing values within the skin, such as <a href="/manual/measures/general-options/ifactions">if actions</a>.</p>
-<p>Normally the value of an action option is going to be one or more <a href="/manual/bangs">bangs</a>, or the execution of external commmands in Windows.</p>
+<p>Options in a skin which cause Rainmeter to take some action. Actions may be triggered by user input such as <a href="!mouse-actions">mouse actions</a>, or system events and changing values within the skin, such as <a href="!measures/general-options/ifactions">if actions</a>.</p>
+<p>Normally the value of an action option is going to be one or more <a href="!bangs">bangs</a>, or the execution of external commmands in Windows.</p>
 
 {% highlight ini %}
 ; Single bang:
@@ -108,7 +108,7 @@ LeftMouseUpAction=!SetOption SomeMeter FontSize #*VarName*#
 
 <p>These options use <a href="http://www.pcre.org/">Perl Compatible Regular Expressions</a> (PCRE) to match specific parts of a plaintext string. Regular expressions are used when the structure of a piece of data is known, but the content is not.</p>
 
-<p>In Rainmeter, regular expressions are most prominently used by the <a href="/manual/plugins/webparser">WebParser plugin</a> to interpret (or "parse") web-based data sources, but they can also be used to modify the value of any measure using <a href="/manual/measures/general-options/substitute#RegExpSubsitute">Substitute options</a>.</p>
+<p>In Rainmeter, regular expressions are most prominently used by the <a href="!plugins/webparser">WebParser plugin</a> to interpret (or "parse") web-based data sources, but they can also be used to modify the value of any measure using <a href="!measures/general-options/substitute#RegExpSubsitute">Substitute options</a>.</p>
 
 <p>The PCRE library is maintained and documented by its own creators, not by any members of the Rainmeter development team. For more about using regular expressions, see the following resources:</p>
 

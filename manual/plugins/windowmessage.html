@@ -10,7 +10,7 @@ title: 'WindowMessage plugin'
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		All <a href="/manual/measures/general-options">general measure options</a> are valid.
+		All <a href="!measures/general-options">general measure options</a> are valid.
 	</dd>
 
 	<dt id="WindowName"><code>WindowName</code></dt>
@@ -30,7 +30,7 @@ title: 'WindowMessage plugin'
 </dl>
 
 <h2>Bangs</h2>
-<p>Messages can also be sent on demand with the <a href="/manual/bangs#CommandMeasure">!CommandMeasure</a> bang. The arguments are similar that of the <code>WindowMessage</code> option. <code>!CommandMeasure "MeasureName" "SendMessage Msg wParam lParam"</code></p>
+<p>Messages can also be sent on demand with the <a href="!bangs#CommandMeasure">!CommandMeasure</a> bang. The arguments are similar that of the <code>WindowMessage</code> option. <code>!CommandMeasure "MeasureName" "SendMessage Msg wParam lParam"</code></p>
 
 <h2>Examples</h2>
 
@@ -54,7 +54,7 @@ WindowClass=Winamp v1.x
 WindowMessage=1024 0 104
 {% endhighlight %}
 
-<p>Show song progress. In the following example, the <code>[MeasureWinampDuration]</code> will return the current song position as a value between <code>0</code> and <code>1</code>. Then you can use the <a href="/manual/meters/bar">Bar</a> meter to display the value.</p>
+<p>Show song progress. In the following example, the <code>[MeasureWinampDuration]</code> will return the current song position as a value between <code>0</code> and <code>1</code>. Then you can use the <a href="!meters/bar">Bar</a> meter to display the value.</p>
 
 {% highlight ini %}
 [MeasureWinampFull]

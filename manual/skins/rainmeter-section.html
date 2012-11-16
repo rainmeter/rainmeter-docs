@@ -11,7 +11,7 @@ title: '[Rainmeter] section'
 	<dt id="Update"><code>Update</code> <small>Default: <code>1000</code></small></dt>
 	<dd>
 		Defines the update interval of the skin in milliseconds. On each update, meters and measures are updated.<br><br>
-		Using <code>-1</code> will update the skin only once on load (or on refresh). The skin can then be manually updated using the <a href="/manual/bangs#Update">!Update bang</a>.
+		Using <code>-1</code> will update the skin only once on load (or on refresh). The skin can then be manually updated using the <a href="!bangs#Update">!Update bang</a>.
 	</dd>
 
 	<dt id="DynamicWindowSize"><code>DynamicWindowSize</code> <small>Default: <code>0</code></small></dt>
@@ -26,22 +26,22 @@ title: '[Rainmeter] section'
 
 	<dt id="OnRefreshAction"><code>OnRefreshAction</code></dt>
 	<dd>
-		<a href="/manual/options#Action">Action</a> to execute when the skin is loaded or refreshed.
+		<a href="!options#Action">Action</a> to execute when the skin is loaded or refreshed.
 	</dd>
 
 	<dt id="OnCloseAction"><code>OnCloseAction</code></dt>
 	<dd>
-		<a href="/manual/options#Action">Action</a> to execute when the skin is unloaded or when Rainmeter is closed.
+		<a href="!options#Action">Action</a> to execute when the skin is unloaded or when Rainmeter is closed.
 	</dd>
 
 	<dt id="TransitionUpdate"><code>TransitionUpdate</code> <small>Default: <code>100</code></small></dt>
 	<dd>
-		Defines the update time in milliseconds for meter transitions. While a transition is active the meter will update at this rate. Currently, only the <a href="/manual/meters/bitmap#BitmapTransitionFrames">Bitmap</a> meter supports meter transitions.
+		Defines the update time in milliseconds for meter transitions. While a transition is active the meter will update at this rate. Currently, only the <a href="!meters/bitmap#BitmapTransitionFrames">Bitmap</a> meter supports meter transitions.
 	</dd>
 	
 	<dt id="ToolTipHidden"><code>ToolTipHidden</code><small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, all tooltips in the skin will be hidden. More information on <a href="/manual/meters/general-options/tooltips">tooltips</a>.
+		If set to <code>1</code>, all tooltips in the skin will be hidden. More information on <a href="!meters/general-options/tooltips">tooltips</a>.
 	</dd>
 </dl>
 
@@ -49,12 +49,12 @@ title: '[Rainmeter] section'
 <dl>
 	<dt>General image options</dt>
 	<dd>
-		All <a href="/manual/meters/general-options/image-options">general image options</a> are valid for <code>Background</code> <b>except</b> <code>Tile</code>, which is handled with <code>BackgroundMode</code>.
+		All <a href="!meters/general-options/image-options">general image options</a> are valid for <code>Background</code> <b>except</b> <code>Tile</code>, which is handled with <code>BackgroundMode</code>.
 	</dd>
 
 	<dt id="Background"><code>Background</code></dt>
 	<dd>
-		<a href="/manual/options#Path">Path</a> of a background image file.
+		<a href="!options#Path">Path</a> of a background image file.
 	</dd>
 
 	<dt id="BackgroundMode"><code>BackgroundMode</code> <small>Default: <code>1</code></small></dt>
@@ -67,7 +67,7 @@ title: '[Rainmeter] section'
 		<li><code>3</code> : Fill by scaling image as defined by <code>Background</code></li>
 		<li><code>4</code> : Fill by tiling image as defined by <code>Background</code></li>
 		</ul>
-		<br><code>BackgroundMode=2</code> : The <a href="/manual/options#Color">color</a> is set by adding a <a href="/manual/meters/general-options#SolidColor">SolidColor</a> option.<br>
+		<br><code>BackgroundMode=2</code> : The <a href="!options#Color">color</a> is set by adding a <a href="!meters/general-options#SolidColor">SolidColor</a> option.<br>
 	</dd>
 
 	<dt id="BackgroundMargins"><code>BackgroundMargins</code> <small>Default: <code>0,0,0,0</code></small></dt>
@@ -79,7 +79,7 @@ title: '[Rainmeter] section'
 	
 	<dt id="SolidColor"><code>SolidColor</code>, <code>SolidColor2</code> <small>Default: <code>0,0,0,0</code></small></dt>
 	<dd>
-		<p>This option will specify the background <a href="/manual/options#Color">color</a> when <code>BackgroundMode=2</code>. If <code>SolidColor2</code> is also specified, the background is a <a href="#GradientAngle">gradient</a> composed of <code>SolidColor</code> and <code>SolidColor2</code>.</p>
+		<p>This option will specify the background <a href="!options#Color">color</a> when <code>BackgroundMode=2</code>. If <code>SolidColor2</code> is also specified, the background is a <a href="#GradientAngle">gradient</a> composed of <code>SolidColor</code> and <code>SolidColor2</code>.</p>
 
 		<p><b>Hint:</b> <code>SolidColor=0,0,0,1</code> can be used to make transparent areas of the background clickable.</p>
 	</dd>
@@ -105,16 +105,16 @@ title: '[Rainmeter] section'
 <dl>
 	<dt id="ContextTitle"><code>ContextTitle</code>, <code>ContextTitle2</code>, <code>ContextTitle3</code>... </dt>
 	<dd>
-		<p>If not blank, adds an item to the skin's <a href="/manual/user-interface/context-menus">context menu</a> under "Custom skin actions". Up to 15 <em>ContextTitleN</em> options are allowed, with up to 30 characters per option. Additional characters are truncated with an ellipsis (<code>...</code>). If more than 3 <em>ContextTitleN</em> options are given, "Custom skin actions" becomes a submenu. If a <em>ContextTitleN</em> option is not valid, all subsequent <em>ContextTitleN</em> options are ignored. In addition, if more than 3 options are given, and the value of <em>ContextTitleN</em> includes only dashes (<code>-</code>), the item is displayed as a separator.</p>
+		<p>If not blank, adds an item to the skin's <a href="!user-interface/context-menus">context menu</a> under "Custom skin actions". Up to 15 <em>ContextTitleN</em> options are allowed, with up to 30 characters per option. Additional characters are truncated with an ellipsis (<code>...</code>). If more than 3 <em>ContextTitleN</em> options are given, "Custom skin actions" becomes a submenu. If a <em>ContextTitleN</em> option is not valid, all subsequent <em>ContextTitleN</em> options are ignored. In addition, if more than 3 options are given, and the value of <em>ContextTitleN</em> includes only dashes (<code>-</code>), the item is displayed as a separator.</p>
 
-		<p><b>Note:</b> Variables in <code>ContextTitleN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened.</p>
+		<p><b>Note:</b> Variables in <code>ContextTitleN</code> are always <a href="!variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened.</p>
 	</dd>
 
 	<dt id="ContextAction"><code>ContextAction</code>, <code>ContextAction2</code>, <code>ContextAction3</code>... </dt>
 	<dd>
-		<p><a href="/manual/options#Action">Action</a> triggered by clicking the corresponding <a href="#ContextTitle">ContextTitleN</a> item. <em>ContextActionN</em> is required for <em>ContextTitleN</em> to be valid, unless the item is a separator.</p>
+		<p><a href="!options#Action">Action</a> triggered by clicking the corresponding <a href="#ContextTitle">ContextTitleN</a> item. <em>ContextActionN</em> is required for <em>ContextTitleN</em> to be valid, unless the item is a separator.</p>
 
-		<p><b>Note:</b> Variables in <code>ContextActionN</code> are always <a href="/manual/variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu item is clicked.</p>
+		<p><b>Note:</b> Variables in <code>ContextActionN</code> are always <a href="!variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu item is clicked.</p>
 	</dd>
 </dl>
 
@@ -145,7 +145,7 @@ title: '[Rainmeter] section'
 		<li><code>Radius</code> : Radius of the corners of rounded rectangles (required for <code>Type=2</code>)</li>
 		</ul>
 	</dd>
-	<br><b>Note:</b> Aero Blur options can be dynamically controlled with several <a href="/manual/bangs#ShowHideToggleBlur">bangs</a>.
+	<br><b>Note:</b> Aero Blur options can be dynamically controlled with several <a href="!bangs#ShowHideToggleBlur">bangs</a>.
 	<h3>Example</h3>
 {% highlight ini %}
 [Rainmeter]
@@ -171,18 +171,18 @@ LeftMouseUpAction=[!AddBlur "1,0,0,200,80"]
 	<dt id="Author"><code>Author</code></dt>
 	<dd>
 		The author of the skin.
-		<br><br><b>Note:</b> This option is deprecated. Author should be defined in the <a href="/manual/skins/metadata-section">[Metadata]</a> section of the skin.
+		<br><br><b>Note:</b> This option is deprecated. Author should be defined in the <a href="!skins/metadata-section">[Metadata]</a> section of the skin.
 	</dd>
 
 	<dt id="AppVersion"><code>AppVersion</code></dt>
 	<dd>
 		Defines the minimum version of Rainmeter required to use the skin. The formula to calculate the value is: <code>major * 1000000 + minor1 * 1000 + minor2</code>.
-		<br><br><b>Note:</b> This option is deprecated. Use the version capabilities in <a href="/manual/publishing-skins">Skin Packager</a>.
+		<br><br><b>Note:</b> This option is deprecated. Use the version capabilities in <a href="!publishing-skins">Skin Packager</a>.
 	</dd>
 
 	<dt id="LocalFont"><code>LocalFont</code>, <code>LocalFont2</code>, ...</dt>
 	<dd>
-		Loads the specified TTF font files for use with <a href="/manual/meters/string#FontFace">FontFace</a> in String meters.
-		<br><br><b>Note:</b> This option is deprecated. Use the <a href="/manual/skins/resources-folder#Fonts">@Resources\Fonts</a> folder instead.
+		Loads the specified TTF font files for use with <a href="!meters/string#FontFace">FontFace</a> in String meters.
+		<br><br><b>Note:</b> This option is deprecated. Use the <a href="!skins/resources-folder#Fonts">@Resources\Fonts</a> folder instead.
 	</dd>
 </dl>	

@@ -10,7 +10,7 @@ title: 'Substitute'
 <dl>
 	<dt id="Subsitute"><code>Substitute</code></dt>
 	<dd>
-		A list of comma delimited <code>"pattern":"replacement"</code> pairs. All occurences of <code>pattern</code> in the <a href="/manual/measures/#Values">measure string value</a> are replaced with <code>replacement</code> (e.g. <code>"This":"That"</code> substitutes all occurences of <em>This</em> with <em>That</em>).
+		A list of comma delimited <code>"pattern":"replacement"</code> pairs. All occurences of <code>pattern</code> in the <a href="!measures/#Values">measure string value</a> are replaced with <code>replacement</code> (e.g. <code>"This":"That"</code> substitutes all occurences of <em>This</em> with <em>That</em>).
 
 		<br><br>If multiple <code>"pattern":"replacement"</code> pairs are specified, each substitution is attempted in the specified order (e.g. <code>"This":"That","Here":"There"</code> first replaces all occurences of <em>This</em> with <em>That</em> and then replaces all occurences of <em>Here</em> with <em>There</em>.
 
@@ -21,7 +21,7 @@ title: 'Substitute'
 
 	<dt id="RegExpSubsitute"><code>RegExpSubsitute</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, <a href="/manual/options#RegExp">Perl compatible regular expressions</a> can be used in the <code>pattern</code> part of <code>Substitute</code> pairs.
+		If set to <code>1</code>, <a href="!options#RegExp">Perl compatible regular expressions</a> can be used in the <code>pattern</code> part of <code>Substitute</code> pairs.
 
 		<br><br>If captures are used in the pattern (e.g. <code>(.*)</code>), they can be referenced in the <code>replacement</code> part using <code>\1</code> (first capture), <code>\2</code> (second capture), etc. The entire match can also be referenced with <code>\0</code>.
 	</dd>

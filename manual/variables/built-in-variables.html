@@ -4,7 +4,7 @@ title: 'Built-In Variables'
 ---
 <!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Rainmeter automatically creates a number of helpful <a href="/manual/variables">variables</a> for each skin. These variables do not need to be defined in the [Variables] section and cannot be directly modified by actions in a skin. Some built-in variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.</p>
+<p>Rainmeter automatically creates a number of helpful <a href="!variables">variables</a> for each skin. These variables do not need to be defined in the [Variables] section and cannot be directly modified by actions in a skin. Some built-in variables are <a href="!variables#DynamicVariables">dynamic</a>.</p>
 
 <ul>
 <li><a href="#PathVariables">Path variables</a></li>
@@ -45,7 +45,7 @@ title: 'Built-In Variables'
 	<dd>
 		<p>Path to the addons folder.</p>
 
-		<p><b>Note:</b> <code>#ADDONSPATH#</code> should be avoided when possible. Addons should be kept in the <a href="/manual/skins/resources-folder">@Resources folder</a> instead.</p>
+		<p><b>Note:</b> <code>#ADDONSPATH#</code> should be avoided when possible. Addons should be kept in the <a href="!skins/resources-folder">@Resources folder</a> instead.</p>
 	</dd>
 </dl>
 
@@ -53,7 +53,7 @@ title: 'Built-In Variables'
 <dl>
 	<dt id="@"><code>#@#</code> <small>Example: <code>C:\Users\YourName\Documents\Rainmeter\Skins\illustro\@Resources\</code></small></dt>
 	<dd>
-		<p>Path to the <a href="/manual/skins/resources-folder">@Resources folder</a> for the current skin.</p>
+		<p>Path to the <a href="!skins/resources-folder">@Resources folder</a> for the current skin.</p>
 	</dd>
 
 	<dt id="CURRENTPATH"><code>#CURRENTPATH#</code> <small>Example: <code>C:\Users\YourName\Documents\Rainmeter\Skins\illustro\Clock\</code></small></dt>
@@ -68,17 +68,17 @@ title: 'Built-In Variables'
 
 	<dt id="ROOTCONFIGPATH"><code>#ROOTCONFIGPATH#</code> <small>Example: <code>C:\Users\YourName\Documents\Rainmeter\Skins\illustro\</code></small></dt>
 	<dd>
-		<p>Path to <a href="/manual/skins#Root">Root config</a> - Highest-level folder under the skins folder for the current skin.</p>
+		<p>Path to <a href="!skins#Root">Root config</a> - Highest-level folder under the skins folder for the current skin.</p>
 	</dd>
 
 	<dt id="CURRENTCONFIG"><code>#CURRENTCONFIG#</code> <small>Example: <code>illustro\Clock</code></small></dt>
 	<dd>
-		<p><a href="/manual/skins#Config">Config</a> name of current skin.</p>
+		<p><a href="!skins#Config">Config</a> name of current skin.</p>
 	</dd>
 
 	<dt id="CURRENTCONFIGXYWH"><code>#CURRENTCONFIGX#</code>, <code>#CURRENTCONFIGY#</code>, <code>#CURRENTCONFIGWIDTH#</code>, <code>#CURRENTCONFIGHEIGHT#</code></dt>
 	<dd>
-		<p>Position and size of the current skin.<br><br><b>Note:</b> These variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.</p>
+		<p>Position and size of the current skin.<br><br><b>Note:</b> These variables are <a href="!variables#DynamicVariables">dynamic</a>.</p>
 	</dd>
 </dl>
 
@@ -90,13 +90,13 @@ title: 'Built-In Variables'
 	</dd>
 	<dt id="CURRENTSECTION"><code>#CURRENTSECTION#</code></dt>
 	<dd>
-		<p>The name of the section in which the variable is used. Provides a blank string if used in another context, such as <a href="/manual/lua-scripting#GetVariable">GetVariable</a> in a Lua script.</p>
+		<p>The name of the section in which the variable is used. Provides a blank string if used in another context, such as <a href="!lua-scripting#GetVariable">GetVariable</a> in a Lua script.</p>
 	</dd>
 </dl>
 
 <h3 id="MonitorVariables">Monitor variables</h3>
 
-<p><b>Note:</b> These variables are <a href="/manual/variables#DynamicVariables">dynamic</a>.</p>
+<p><b>Note:</b> These variables are <a href="!variables#DynamicVariables">dynamic</a>.</p>
 
 <dl>
 	<dt id="WORKAREAXYWH"><code>#WORKAREAX#</code>, <code>#WORKAREAY#</code>, <code>#WORKAREAWIDTH#</code>, <code>#WORKAREAHEIGHT#</code></dt>

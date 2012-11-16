@@ -4,7 +4,7 @@ title: 'Bangs'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Bangs are commands that control various aspects of skins and Rainmeter. They are executed when used with <a href="/manual/options#Action">action options</a> in the skin.</p>
+<p>Bangs are commands that control various aspects of skins and Rainmeter. They are executed when used with <a href="!options#Action">action options</a> in the skin.</p>
 
 <ul>
 <li><a href="#OS">Operating System bangs</a></li>
@@ -17,7 +17,7 @@ title: 'Bangs'
 
 <p>Bangs can also be used from the Windows command line as a parameter to the Rainmeter.exe executable. Example: <code>"C:\Program Files\Rainmeter\Rainmeter.exe" !RefreshApp</code>.</p>
 
-<p><b>Note:</b> Many bangs have a <code>Config</code> parameter. Unless otherwise specified, valid values are the <a href="/manual/skins#Config">config name</a> to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins. When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
+<p><b>Note:</b> Many bangs have a <code>Config</code> parameter. Unless otherwise specified, valid values are the <a href="!skins#Config">config name</a> to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins. When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
 
 <h2 id="OS">Operating System bangs</h2>
 <dl>
@@ -45,7 +45,7 @@ title: 'Bangs'
 <dl>
 	<dt id="About"><code>!About</code> <small>Parameter: <code><em>TabName</em></code></small></dt>
 	<dd>
-		Opens the <a href="/manual/user-interface/about">About</a> window.
+		Opens the <a href="!user-interface/about">About</a> window.
 		<ul>
 		<li><code>TabName</code> (optional): Name of the tab to open. Valid values are: <code>Log</code> (default), <code>Skins</code>, <code>Plugins</code>, and <code>Version</code>. The value <code>Measures</code> is deprecated and will open the <code>Skins</code> tab.</li>
 		</ul>
@@ -54,7 +54,7 @@ title: 'Bangs'
 
 	<dt id="Manage"><code>!Manage</code> <small>Parameter: <code><em>TabName</em></code></small></dt>
 	<dd>
-		Opens the <a href="/manual/user-interface/manage">Manage</a> window.
+		Opens the <a href="!user-interface/manage">Manage</a> window.
 		<ul>
 		<li><code>TabName</code> (optional): Name of the tab to open. Valid values are: <code>Skins</code> (default), <code>Layouts</code>, and <code>Settings</code>.</li>
 		</ul>
@@ -63,7 +63,7 @@ title: 'Bangs'
 
 	<dt id="Log"><code>!Log</code> <small>Parameters: <code><b>String</b><em>, ErrorType</em></code></small></dt>
 	<dd>
-		Writes a message to the <a href="/manual/user-interface/about#LogTab">log</a>.
+		Writes a message to the <a href="!user-interface/about#LogTab">log</a>.
 		<ul>
 		<li><code>String</code> (required): The string to be written to the log. If the string contains spaces, enclose the string in quotes.</li>
 		<li><code>ErrorType</code> (optional): Specifies the type of error. Valid values are: <code>Notice</code> (default), <code>Error</code>, <code>Warning</code>, and <code>Debug</code>.</li>
@@ -78,7 +78,7 @@ title: 'Bangs'
 
 	<dt id="LoadLayout"><code>!LoadLayout</code> <small>Parameters: <code><b>LayoutName</b></code></small></dt>
 	<dd>
-		Loads the named <a href="/manual/user-interface/manage#LayoutsTab">layout</a>.  A layout can also be loaded from the Windows command line:<br><br>
+		Loads the named <a href="!user-interface/manage#LayoutsTab">layout</a>.  A layout can also be loaded from the Windows command line:<br><br>
 		<b>Example:</b> <code>"C:\Program Files\Rainmeter\Rainmeter.exe" !LoadLayout "My Saved Layout"</code>
 	</dd>
 
@@ -120,7 +120,7 @@ title: 'Bangs'
 <dl>
 	<dt id="SetOption"><code>!SetOption</code> <small>Parameters: <code><b>Meter/Measure, Option, Value</b><em>, Config</em></code></small></dt>
 	<dd>
-		Sets an option (ie. FontSize, Text, Formula, etc.) of a <a href="/manual/meters">meter</a> or <a href="/manual/measures">measure</a>.
+		Sets an option (ie. FontSize, Text, Formula, etc.) of a <a href="!meters">meter</a> or <a href="!measures">measure</a>.
 		<ul>
 		<li><code>Meter/Measure</code> (required): Name of the meter or measure section.</li>
 		<li><code>Option</code> (required): Name of the option to be changed.</li>
@@ -133,7 +133,7 @@ title: 'Bangs'
 
 	<dt id="SetVariable"><code>!SetVariable</code> <small>Parameters: <code><b>Variable, Value</b><em>, Config</em></code></small></dt>
 	<dd>
-		Sets a new value for a <a href="/manual/variables">variable</a>. The meter or measure where the variable is used must enable <a href="/manual/variables#DynamicVariables">DynamicVariables</a>. !SetVariable can create a new variable in memory, even if it is not pre-defined in the <a href="/manual/variables#Section">[Variables]</a> section.
+		Sets a new value for a <a href="!variables">variable</a>. The meter or measure where the variable is used must enable <a href="!variables#DynamicVariables">DynamicVariables</a>. !SetVariable can create a new variable in memory, even if it is not pre-defined in the <a href="!variables#Section">[Variables]</a> section.
 		<ul>
 		<li><code>Variable</code> (required): Name of the variable.</li>
 		<li><code>Value</code> (required): New value to be set.</li>
@@ -159,7 +159,7 @@ title: 'Bangs'
 <dl>
 	<dt id="SetOptionGroup"><code>!SetOptionGroup</code> <small>Parameters: <code><b>Group, Option, Value</b><em>, Config</em></code></small></dt>
 	<dd>
-		Sets an option (ie. FontSize, Text, Formula, etc.) of <a href="/manual/meters">meters</a> and <a href="/manual/measures">measures</a> in the specified <a href="/manual/groups">group</a>.
+		Sets an option (ie. FontSize, Text, Formula, etc.) of <a href="!meters">meters</a> and <a href="!measures">measures</a> in the specified <a href="!groups">group</a>.
 		<ul>
 		<li><code>Group</code> (required): Name of the group.</li>
 		<li><code>Option</code> (required): Name of the option to be changed.</li>
@@ -171,7 +171,7 @@ title: 'Bangs'
 
 	<dt id="SetVariableGroup"><code>!SetVariableGroup</code> <small>Parameters: <code><b>Variable, Value, Group</b></code></small></dt>
 	<dd>
-		Changes the value of a <a href="/manual/variables">variable</a> in the configs of the specified <a href="/manual/groups">group</a>.
+		Changes the value of a <a href="!variables">variable</a> in the configs of the specified <a href="!groups">group</a>.
 		<ul>
 		<li><code>Variable</code> (required): Name of the variable.</li>
 		<li><code>Value</code> (required): New value to be set.</li>
@@ -202,7 +202,7 @@ title: 'Bangs'
 
 	<dt id="ShowHideToggleBlur"><code>!ShowBlur</code>, <code>!HideBlur</code>, <code>!ToggleBlur</code> <small>Parameter: <code><em>Config</em></code></small></dt>
 	<dd>
-		Shows or hides the <a href="/manual/skins/rainmeter-section#AeroBlur">blur</a> behind a skin.
+		Shows or hides the <a href="!skins/rainmeter-section#AeroBlur">blur</a> behind a skin.
 		<ul>
 		<li><code>Config</code> (optional)</li>
 		</ul>
@@ -210,9 +210,9 @@ title: 'Bangs'
 
 	<dt id="AddRemoveBlur"><code>!AddBlur</code>, <code>!RemoveBlur</code> <small>Parameter: <code><b>Region</b><em>, Config</em></code></small></dt>
 	<dd>
-		Adds or removes a <a href="/manual/skins/rainmeter-section#AeroBlur">blur</a> region to/from existing blur areas.
+		Adds or removes a <a href="!skins/rainmeter-section#AeroBlur">blur</a> region to/from existing blur areas.
 		<ul>
-		<li><code>Region</code> (required): <a href="/manual/skins/rainmeter-section#BlurRegion">Region</a> to add or remove a blur effect.</li>
+		<li><code>Region</code> (required): <a href="!skins/rainmeter-section#BlurRegion">Region</a> to add or remove a blur effect.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
 	</dd>
@@ -258,7 +258,7 @@ title: 'Bangs'
 
 	<dt id="Update"><code>!Update</code> <small>Parameter: <code><em>Config</em></code></small></dt>
 	<dd>
-		Forces an update of the skin. All <a href="/manual/measures">measures</a> and <a href="/manual/meters">meters</a> are updated.
+		Forces an update of the skin. All <a href="!measures">measures</a> and <a href="!meters">meters</a> are updated.
 		<ul>
 		<li><code>Config</code> (optional)</li>
 		</ul>
@@ -282,7 +282,7 @@ title: 'Bangs'
 
 	<dt id="SkinMenu"><code>!SkinMenu</code> <small>Parameter: <code><em>Config</em></code></small></dt>
 	<dd>
-		Opens the skin <a href="/manual/user-interface/context-menus">context menu</a> at the current mouse position.
+		Opens the skin <a href="!user-interface/context-menus">context menu</a> at the current mouse position.
 		<ul>
 		<li><code>Config</code> (optional)</li>
 		</ul>
@@ -290,7 +290,7 @@ title: 'Bangs'
 
 	<dt id="SetTransparency"><code>!SetTransparency</code> <small>Parameters: <code><b>Alpha</b><em>, Config</em></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#AlphaValue">transparency</a> of a skin.
+		Sets the <a href="!settings/skin-sections#AlphaValue">transparency</a> of a skin.
 		<ul>
 		<li><code>Alpha</code> (required): From 0 (invisible) to 255 (opaque).</li>
 		<li><code>Config</code> (optional)</li>
@@ -300,7 +300,7 @@ title: 'Bangs'
 
 	<dt id="ZPos"><code>!ZPos</code> <small>Parameters: <code><b>Position</b><em>, Config</em></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#AlwaysOnTop">Z-position</a> of a skin.
+		Sets the <a href="!settings/skin-sections#AlwaysOnTop">Z-position</a> of a skin.
 		<ul>
 		<li><code>Position</code> (required): <code>-2</code> for On desktop, <code>-1</code> for Bottom, <code>0</code> for Normal, <code>1</code> for On top, or <code>2</code> for Always on top.</li>
 		<li><code>Config</code> (optional)</li>
@@ -310,7 +310,7 @@ title: 'Bangs'
 
 	<dt id="Draggable"><code>!Draggable</code> <small>Parameters: <code><b>Setting</b><em>, Config</em></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#Draggable">Draggable</a> option of a skin.
+		Sets the <a href="!settings/skin-sections#Draggable">Draggable</a> option of a skin.
 		<ul>
 		<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 		<li><code>Config</code> (optional)</li>
@@ -319,7 +319,7 @@ title: 'Bangs'
 
 	<dt id="KeepOnScreen"><code>!KeepOnScreen</code> <small>Parameters: <code><b>Setting</b><em>, Config</em></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#KeepOnScreen">KeepOnScreen</a> option of a skin.
+		Sets the <a href="!settings/skin-sections#KeepOnScreen">KeepOnScreen</a> option of a skin.
 		<ul>
 		<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 		<li><code>Config</code> (optional)</li>
@@ -328,7 +328,7 @@ title: 'Bangs'
 
 	<dt id="ClickThrough"><code>!ClickThrough</code> <small>Parameters: <code><b>Setting</b><em>, Config</em></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#ClickThrough">ClickThrough</a> option of a skin.
+		Sets the <a href="!settings/skin-sections#ClickThrough">ClickThrough</a> option of a skin.
 		<ul>
 		<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 		<li><code>Config</code> (optional)</li>
@@ -337,7 +337,7 @@ title: 'Bangs'
 
 	<dt id="SnapEdges"><code>!SnapEdges</code> <small>Parameters: <code><b>Setting</b><em>, Config</em></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#SnapEdges">SnapEdges</a> option of a skin.
+		Sets the <a href="!settings/skin-sections#SnapEdges">SnapEdges</a> option of a skin.
 		<ul>
 		<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 		<li><code>Config</code> (optional)</li>
@@ -349,7 +349,7 @@ title: 'Bangs'
 <dl>
 	<dt id="ShowHideToggleGroup"><code>!ShowGroup</code>, <code>!HideGroup</code>, <code>!ToggleGroup</code> <small>Parameter: <code><b>Group</b></code></small></dt>
 	<dd>
-		Shows or hides a <a href="/manual/groups">group</a> of active skins.
+		Shows or hides a <a href="!groups">group</a> of active skins.
 		<ul>
 		<li><code>Group</code> (required): Group to show or hide.</li>
 		</ul>
@@ -358,7 +358,7 @@ title: 'Bangs'
 
 	<dt id="ShowHideToggleFadeGroup"><code>!ShowFadeGroup</code>, <code>!HideFadeGroup</code>, <code>!ToggleFadeGroup</code> <small>Parameter: <code><b>Group</b></code></small></dt>
 	<dd>
-		Shows or hides a <a href="/manual/groups">group</a> of active skins with a fade effect.
+		Shows or hides a <a href="!groups">group</a> of active skins with a fade effect.
 		<ul>
 		<li><code>Group</code> (required): Group to show or hide with a fade effect.</li>
 		</ul>
@@ -366,7 +366,7 @@ title: 'Bangs'
 
 	<dt id="DeactivateConfigGroup"><code>!DeactivateConfigGroup</code> <small>Parameter: <code><b>Group</b></code></small></dt>
 	<dd>
-		Deactivates a <a href="/manual/groups">group</a> of skins.
+		Deactivates a <a href="!groups">group</a> of skins.
 		<ul>
 		<li><code>Group</code> (required): Group to deactivate.</li>
 		</ul>
@@ -374,7 +374,7 @@ title: 'Bangs'
 
 	<dt id="RedrawGroup"><code>!RedrawGroup</code> <small>Parameter: <code><b>Group</b></code></small></dt>
 	<dd>
-		Forces the redraw of a <a href="/manual/groups">group</a> of skins.
+		Forces the redraw of a <a href="!groups">group</a> of skins.
 		<ul>
 		<li><code>Group</code> (required): Group to redraw.</li>
 		</ul>
@@ -382,7 +382,7 @@ title: 'Bangs'
 
 	<dt id="RefreshGroup"><code>!RefreshGroup</code> <small>Parameter: <code><b>Group</b></code></small></dt>
 	<dd>
-		Reads the skin file and recreates a <a href="/manual/groups">group</a> skins.
+		Reads the skin file and recreates a <a href="!groups">group</a> skins.
 		<ul>
 		<li><code>Group</code> (required): Group to refresh.</li>
 		</ul>
@@ -390,7 +390,7 @@ title: 'Bangs'
 
 	<dt id="SetTransparencyGroup"><code>!SetTransparencyGroup</code> <small>Parameters: <code><b>Alpha, Group</b></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#AlphaValue">transparency</a> of the configs in the specified <a href="/manual/groups">group</a>.
+		Sets the <a href="!settings/skin-sections#AlphaValue">transparency</a> of the configs in the specified <a href="!groups">group</a>.
 		<ul>
 		<li><code>Alpha</code> (required): From 0 (invisible) to 255 (opaque).</li>
 		<li><code>Group</code> (required): Name of the the group.</li>
@@ -400,7 +400,7 @@ title: 'Bangs'
 
 	<dt id="DraggableGroup"><code>!DraggableGroup</code> <small>Parameters: <code><b>Setting, Group</b></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#Draggable">Draggable</a> option for each config in the specified <a href="/manual/groups">group</a>.
+		Sets the <a href="!settings/skin-sections#Draggable">Draggable</a> option for each config in the specified <a href="!groups">group</a>.
 		<ul>
 		<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 		<li><code>Group</code> (required): Name of the group.</li>
@@ -409,7 +409,7 @@ title: 'Bangs'
 
 	<dt id="ZPosGroup"><code>!ZPosGroup</code> <small>Parameters: <code><b>Position, Group</b></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#AlwaysOnTop">Z-position</a> of the configs in the specified <a href="/manual/groups">group</a>.
+		Sets the <a href="!settings/skin-sections#AlwaysOnTop">Z-position</a> of the configs in the specified <a href="!groups">group</a>.
 		<ul>
 		<li><code>Position</code> (required): <code>-2</code> for On desktop, <code>-1</code> for Bottom, <code>0</code> for Normal, <code>1</code> for On top, or <code>2</code> for Always on top.</li>
 		<li><code>Group</code> (required): Name of the group.</li>
@@ -418,7 +418,7 @@ title: 'Bangs'
 
 	<dt id="KeepOnScreenGroup"><code>!KeepOnScreenGroup</code> <small>Parameters: <code><b>Setting, Group</b></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#KeepOnScreen">KeepOnScreen</a> setting for the specified <a href="/manual/groups">group</a>.
+		Sets the <a href="!settings/skin-sections#KeepOnScreen">KeepOnScreen</a> setting for the specified <a href="!groups">group</a>.
 		<ul>
 		<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 		<li><code>Group</code> (required): Name of the group.</li>
@@ -427,7 +427,7 @@ title: 'Bangs'
 
 	<dt id="SnapEdgesGroup"><code>!SnapEdgesGroup</code> <small>Parameters: <code><b>Setting, Group</b></code></small></dt>
 	<dd>
-		Sets the <a href="/manual/settings/skin-sections#SnapEdges">SnapEdges</a> setting for the specified <a href="/manual/groups">group</a>.
+		Sets the <a href="!settings/skin-sections#SnapEdges">SnapEdges</a> setting for the specified <a href="!groups">group</a>.
 		<ul>
 		<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 		<li><code>Group</code> (required): Name of the group.</li>
@@ -439,7 +439,7 @@ title: 'Bangs'
 <dl>
 	<dt id="ShowHideToggleMeter"><code>!ShowMeter</code>, <code>!HideMeter</code>, <code>!ToggleMeter</code> <small>Parameters: <code><b>Meter</b><em>, Config</em></code></small></dt>
 	<dd>
-		Shows or hides the given <a href="/manual/meters">meter</a>.
+		Shows or hides the given <a href="!meters">meter</a>.
 		<ul>
 		<li><code>Meter</code> (required): Name of the meter to show or hide.</li>
 		<li><code>Config</code> (optional)</li>
@@ -449,7 +449,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeter"><code>!UpdateMeter</code> <small>Parameters: <code><b>Meter</b><em>, Config</em></code></small></dt>
 	<dd>
-		Immediately updates the given <a href="/manual/meters">meter</a> regardless of <a href="/manual/meters/general-options#UpdateDivider">UpdateDivider</a>.
+		Immediately updates the given <a href="!meters">meter</a> regardless of <a href="!meters/general-options#UpdateDivider">UpdateDivider</a>.
 		<ul>
 		<li><code>Meter</code> (required): Name of the meter to update.</li>
 		<li><code>Config</code> (optional)</li>
@@ -459,7 +459,7 @@ title: 'Bangs'
 
 	<dt id="MoveMeter"><code>!MoveMeter</code> <small>Parameters: <code><b>X, Y, Meter</b><em>, Config</em></code></small></dt>
 	<dd>
-		Moves the given <a href="/manual/meters">meter</a> (not the window) to the specified position. The new position is relative to the top left corner of the skin.
+		Moves the given <a href="!meters">meter</a> (not the window) to the specified position. The new position is relative to the top left corner of the skin.
 		<ul>
 		<li><code>X</code> (required): New X position.</li>
 		<li><code>Y</code> (required): New Y position.</li>
@@ -474,7 +474,7 @@ title: 'Bangs'
 <dl>
 	<dt id="ShowHideToggleMeterGroup"><code>!ShowMeterGroup</code>, <code>!HideMeterGroup</code>, <code>!ToggleMeterGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
-		Shows or hides a <a href="/manual/groups">group</a> of <a href="/manual/meters">meters</a>.
+		Shows or hides a <a href="!groups">group</a> of <a href="!meters">meters</a>.
 		<ul>
 		<li><code>Group</code> (required): Group to show or hide.</li>
 		<li><code>Config</code> (optional).</li>
@@ -483,7 +483,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeterGroup"><code>!UpdateMeterGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
-		Immediately updates all of the given <a href="/manual/meters">meters</a> in the specified <a href="/manual/groups">group</a> regardless of <a href="/manual/meters/general-options#UpdateDivider">UpdateDivider</a>.
+		Immediately updates all of the given <a href="!meters">meters</a> in the specified <a href="!groups">group</a> regardless of <a href="!meters/general-options#UpdateDivider">UpdateDivider</a>.
 		<ul>
 		<li><code>Group</code> (required): Name of the meter group to update.</li>
 		<li><code>Config</code> (optional)</li>
@@ -495,7 +495,7 @@ title: 'Bangs'
 <dl>
 	<dt id="EnableDisableToggleMeasure"><code>!EnableMeasure</code>, <code>!DisableMeasure</code>, <code>!ToggleMeasure</code> <small>Parameters: <code><b>Measure</b><em>, Config</em></code></small></dt>
 	<dd>
-		Enables or disables the given <a href="/manual/measures">measure</a>.
+		Enables or disables the given <a href="!measures">measure</a>.
 		<ul>
 		<li><code>Measure</code> (required): Name of the measure.</li>
 		<li><code>Config</code> (optional)</li>
@@ -505,7 +505,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeasure"><code>!UpdateMeasure</code> <small>Parameters: <code><b>Measure</b><em>, Config</em></code></small></dt>
 	<dd>
-		Immediately updates the given <a href="/manual/measures">measure</a> regardless of <a href="/manual/measures/general-options#UpdateDivider">UpdateDivider</a>.
+		Immediately updates the given <a href="!measures">measure</a> regardless of <a href="!measures/general-options#UpdateDivider">UpdateDivider</a>.
 		<ul>
 		<li><code>Measure</code> (required): Name of the measure.</li>
 		<li><code>Config</code> (optional)</li>
@@ -515,7 +515,7 @@ title: 'Bangs'
 
 	<dt id="CommandMeasure"><code>!CommandMeasure</code> <small>Parameters: <code><b>Measure, Arguments</b><em>, Config</em></code></small></dt>
 	<dd>
-		Sends a command to the given <a href="/manual/measures">measure</a>.
+		Sends a command to the given <a href="!measures">measure</a>.
 		<ul>
 		<li><code>Measure</code> (required): Name of the measure.</li>
 		<li><code>Arguments</code> (required): Arguments to send to the measure.</li>
@@ -529,7 +529,7 @@ title: 'Bangs'
 <dl>
 	<dt id="EnableDisableToggleMeasureGroup"><code>!EnableMeasureGroup</code>, <code>!DisableMeasureGroup</code>, <code>!ToggleMeasureGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
-		Enables or disables the given <a href="/manual/measures">measures</a> in the specified group.
+		Enables or disables the given <a href="!measures">measures</a> in the specified group.
 		<ul>
 		<li><code>Group</code> (required): Name of the group.</li>
 		<li><code>Config</code> (optional)</li>
@@ -538,7 +538,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeasureGroup"><code>!UpdateMeasureGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
-		Immediately updates all of the <a href="/manual/measures">measure</a> in the specified group regardless of <a href="/manual/measures/general-options#UpdateDivider">UpdateDivider</a>.
+		Immediately updates all of the <a href="!measures">measure</a> in the specified group regardless of <a href="!measures/general-options#UpdateDivider">UpdateDivider</a>.
 		<ul>
 		<li><code>Group</code> (required): Name of the group.</li>
 		<li><code>Config</code> (optional)</li>
