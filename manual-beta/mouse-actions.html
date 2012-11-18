@@ -14,75 +14,122 @@ title: 'Mouse Actions'
 <p><b>Note:</b> Actions defined for a meter will override actions defined in the <code>[Rainmeter]</code> section.</p>
 
 
-<h2>Mouse Click Options</h2>
+<h2 id="MouseClickOptions">Mouse Click Options</h2>
 <p><b>Note:</b> Mouse Click Options may be overridden by holding down <b>CTRL</b> while clicking.</p>
 <dl>
 	<dt id="LeftMouseDownAction"><code>LeftMouseDownAction</code></dt>
 	<dd>
 		<p><a href="!options#Action">Action</a> to execute when the left mouse button is pressed.</p>
-		<b>Note:</b> This disables dragging the skin. See <a href="#LeftMouseUpAction">LeftMouseUpAction</a>.
+		<b>Note:</b> This disables dragging the skin. See <a href="#LeftMouseUpAction">LeftMouseUpAction</a>.</p>
 	</dd>
 
 	<dt id="RightMouseDownAction"><code>RightMouseDownAction</code></dt>
 	<dd>
 		<p><a href="!options#Action">Action</a> to execute when the right mouse button is pressed.</p>
-		<b>Note:</b> This disables the skin context menu.
+		<b>Note:</b> This disables the skin context menu.</p>
 	</dd>
 
 	<dt id="MiddleMouseDownAction"><code>MiddleMouseDownAction</code></dt>
 	<dd>
-		<a href="!options#Action">Action</a> to execute when the middle mouse button is pressed.
+		<p><a href="!options#Action">Action</a> to execute when the middle mouse button is pressed.</p>
 	</dd>
 
 	<dt id="LeftMouseUpAction"><code>LeftMouseUpAction</code></dt>
 	<dd>
 		<p><a href="!options#Action">Action</a> to execute when the left mouse button is released.</p>
-		<b>Note:</b> This will generally be the desired option for a left mouse click. LeftMouseDownAction should be avoided unless there is a specific need to trap the downward press, as it will disable the ability to drag the skin.
+		<b>Note:</b> This will generally be the desired option for a left mouse click. LeftMouseDownAction should be avoided unless there is a specific need to trap the downward press, as it will disable the ability to drag the skin.</p>
 	</dd>
 
 	<dt id="RightMouseUpAction"><code>RightMouseUpAction</code></dt>
 	<dd>
 		<p><a href="!options#Action">Action</a> to execute when the right mouse button is released.</p>
-		<b>Note:</b> This disables the skin context menu.
+		<b>Note:</b> This disables the skin context menu.</p>
 	</dd>
 
 	<dt id="MiddleMouseUpAction"><code>MiddleMouseUpAction</code></dt>
 	<dd>
-		<a href="!options#Action">Action</a> to execute when the middle mouse button is released.
+		<p><a href="!options#Action">Action</a> to execute when the middle mouse button is released.</p>
 	</dd>
 
 	<dt id="LeftMouseDoubleClickAction"><code>LeftMouseDoubleClickAction</code></dt>
 	<dd>
 		<p><a href="!options#Action">Action</a> to execute when the left mouse button is double clicked.</p>
-		<b>Note:</b> If <code>LeftMouseDownAction</code> or <code>LeftMouseUpAction</code> is also set, both will be executed.
+		<b>Note:</b> If <code>LeftMouseDownAction</code> or <code>LeftMouseUpAction</code> is also set, both will be executed.</p>
 	</dd>
 
 	<dt id="RightMouseDoubleClickAction"><code>RightMouseDoubleClickAction</code></dt>
 	<dd>
 		<p><a href="!options#Action">Action</a> to execute when the right mouse button is double clicked.</p>
-		<b>Note:</b> This disables the skin context menu.
+		<b>Note:</b> This disables the skin context menu.</p>
 	</dd>
 
 	<dt id="MiddleMouseDoubleClickAction"><code>MiddleMouseDoubleClickAction</code></dt>
 	<dd>
-		<a href="!options#Action">Action</a> to execute when the middle mouse button is double clicked.
+		<p><a href="!options#Action">Action</a> to execute when the middle mouse button is double clicked.</p>
 	</dd>
+	
+	<dt id="X1MouseDownAction"><code>X1MouseDownAction, X2MouseDownAction</code></dt>
+	<dd>
+		<p><a href="!options#Action">Action</a> to execute when a supported extra mouse button is pressed.</p>
+		<p><b>Note:</b> Some manufacturers and/or software have the ability to change what each extra button can do, therefore these actions may not work for everyone. It is not recommended to distribute skins that rely on these actions.</p>
+	</dd>
+	
+	<dt id="X1MouseUpAction"><code>X1MouseUpAction, X2MouseUpAction</code></dt>
+	<dd>
+		<p><a href="!options#Action">Action</a> to execute when a supported extra mouse button is released.</p>
+	</dd>	
+
+	<dt id="X1MouseDoubleClickAction"><code>X1MouseDoubleClickAction, X2MouseDoubleClickAction</code></dt>
+	<dd>
+		<p><a href="!options#Action">Action</a> to execute when a supported extra mouse button is double clicked.</p>
+	</dd>
+
 </dl>
 
-<h2>Mouse Hover Options</h2>
+
+
+<h2 id="MouseHoverOptions">Mouse Hover Options</h2>
 <dl>
 	<dt id="MouseOverAction"><code>MouseOverAction</code></dt>
 	<dd>
-		<a href="!options#Action">Action</a> to execute when the mouse cursor is over the meter or skin.
+		<p><a href="!options#Action">Action</a> to execute when the mouse cursor is moved over the meter or skin.</p>
 	</dd>
 
 	<dt id="MouseLeaveAction"><code>MouseLeaveAction</code></dt>
 	<dd>
-		<a href="!options#Action">Action</a> to execute when the mouse cursor leaves the meter or skin.
+		<p><a href="!options#Action">Action</a> to execute when the mouse cursor leaves the meter or skin.</p>
 	</dd>
 </dl>
 
-<h2>Mouse Cursor Options</h2>
+<h2 id="MouseWheelOptions">Mouse Wheel Scroll Options</h2>
+
+<p><a href="!options#Action">Actions</a> to be taken when a skin has <a href="">focus</a> in Windows (set by clicking on the skin) and the mouse scroll wheel is rotated while the cursor is over the skin, [if the option is in [Rainmeter]) or over a meter containing the option.</p>
+
+<p><b>Note:</b> Skins set to <a href="!settings/skin-sections#ClickThrough">click through</a> cannot receive focus.</p>
+
+<dl>
+	<dt id="MouseScrollDownAction"><code>MouseScrollDownAction</code></dt>
+	<dd>
+		<p><a href="!options#Action">Action</a> to execute when the mouse wheel is rotated down.</p>
+	</dd>
+	
+	<dt id="MouseScrollUpAction"><code>MouseScrollUpAction</code></dt>
+	<dd>
+		<p><a href="!options#Action">Action</a> to execute when the mouse wheel is rotated up.</p>
+	</dd>
+
+	<dt id="MouseScrollLeftAction"><code>MouseScrollLeftAction</code></dt>
+	<dd>
+		<p><a href="!options#Action">Action</a> to execute when the mouse wheel is tilted or rotated to the left. <i>Not all mice have this capability.</i></p>
+	</dd>
+
+	<dt id="MouseScrollRightAction"><code>MouseScrollRightAction</code></dt>
+	<dd>
+		<p><a href="!options#Action">Action</a> to execute when the mouse wheel is tilted or rotated to the right. <i>Not all mice have this capability.</i></p>
+	</dd>
+</dl>	
+	
+<h2 id="MouseCursorOptions">Mouse Cursor Options</h2>
 <dl>
 	<dt id="MouseActionCursor"><code>MouseActionCursor</code> <small>Default: <code>1</code></small></dt>
 	<dd>
