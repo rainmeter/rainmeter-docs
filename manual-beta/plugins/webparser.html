@@ -99,14 +99,14 @@ StringIndex=2
 		<ul>
 			<li><code>0</code>: Does not log DEBUG messages from WebParser.</li>
 			<li><code>1</code>: Logs DEBUG message to the log. Rainmeter must also be in <a href="!settings/rainmeter-section#Debug">Debug</a> mode.</li>
-			<li><code>2</code>: Saves the downloaded webpage to <code>C:\WebParserDump.txt</code>. This can be useful since some web servers send different information depending which client requests it. Remember to remove this from your config once you have it working correctly.</li>
+			<li><code>2</code>: Saves the downloaded webpage to <code>WebParserDump.txt</code> in the current skin folder. This can be useful since some web servers send different information depending which client requests it. Remember to remove this from your config once you have it working correctly.</li>
 		</ul>
 		 <p><b>Hint:</b> Determining <a href="#StringIndex">StringIndex</a> values to use in a <a id="#ParentChild">child</a> measure can be done by setting <code>Debug=1</code> on a measure having the <code>RegExp</code> option, which will display matched strings and StringIndex numbers in the Rainmeter <a href="!user-interface/about#LogTab">log</a></p>
 	</dd>
 
 	<dt id="Debug2File"><code>Debug2File</code></dt>
 	<dd>
-		<p>If the <code>Debug</code> option is set to <code>2</code>, this option can be set to the path and name of the file to use for the downloaded webpage instead of <code>C:\WebParserDump.txt</code>.</p>
+		<p>If the <code>Debug</code> option is set to <code>2</code>, this option can be set to the path and name of the file to use for the downloaded webpage instead of <code>WebParserDump.txt</code> in the current skin folder.</p>
 
 		<p><b>Note:</b> The folder for the file must already exist.</p>
 	</dd>
