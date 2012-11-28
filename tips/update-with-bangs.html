@@ -35,7 +35,7 @@ Now the value of both the measure and the meter have been updated.  However, the
  
 That will update both the measure and the meter, and will redraw the entire skin. The effect is that when you click on the meter, it will instantly display the new image.  The advantage to this "targetted" approach is that you are using the minimum of resources to accomplish what you want, and are allowing measures and meters not involved to update normally.</li><br/>
  
-<p><b>Note:</b> Why don't we just automatically do a the "redraw" when we do !UpdateMeter?  This is because the entire skin must ALWAYS be redrawn due to how Rainmeter displays meters.  Keeping them separate allows you to update several meters in one "action", then at the end redraw the entire skin just one time.<br/><br/>
+<p><b>Note:</b> Why don't we just automatically do the "redraw" when we do !UpdateMeter?  This is because the entire skin must ALWAYS be redrawn due to how Rainmeter displays meters.  Keeping them separate allows you to update several meters in one "action", then at the end redraw the entire skin just one time.<br/><br/>
 
 <code>LeftMouseUpAction=[!SetOption MeterOne FontSize 12][!SetOption MeterTwo FontSize 11][!UpdateMeter MeterOne][!UpdateMeter MeterTwo][!Redraw]</code></p>
 
