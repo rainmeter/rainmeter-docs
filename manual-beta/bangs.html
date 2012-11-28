@@ -263,7 +263,7 @@ title: 'Bangs'
 
 	<dt id="Update"><code>!Update</code> <small>Parameter: <code><em>Config</em></code></small></dt>
 	<dd>
-		Forces an update of the skin. All <a href="!measures">measures</a> and <a href="!meters">meters</a> are updated.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] and immediately updates the entire skin, all <a href="!measures">measures</a> and <a href="!meters">meters</a>.
 		<ul>
 		<li><code>Config</code> (optional)</li>
 		</ul>
@@ -271,7 +271,7 @@ title: 'Bangs'
 
 	<dt id="Redraw"><code>!Redraw</code> <small>Parameter: <code><em>Config</em></code></small></dt>
 	<dd>
-		Forces the redraw of a skin.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] and immediately redraws all visible elements of the entire skin.  Meters will use the last value obtained for any measures or variables referenced.
 		<ul>
 		<li><code>Config</code> (optional)</li>
 		</ul>
@@ -379,7 +379,7 @@ title: 'Bangs'
 
 	<dt id="RedrawGroup"><code>!RedrawGroup</code> <small>Parameter: <code><b>Group</b></code></small></dt>
 	<dd>
-		Forces the redraw of a <a href="!groups">group</a> of skins.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] and immediately redraws all visible elements of the specified group of skins.  Meters will use the last value obtained for any measures or variables referenced.
 		<ul>
 		<li><code>Group</code> (required): Group to redraw.</li>
 		</ul>
@@ -454,7 +454,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeter"><code>!UpdateMeter</code> <small>Parameters: <code><b>Meter</b><em>, Config</em></code></small></dt>
 	<dd>
-		Immediately updates the given <a href="!meters">meter</a> regardless of <a href="!meters/general-options#UpdateDivider">UpdateDivider</a>.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meter, and immediately updates the meter, obtaining new current values for any measures or variables referenced.
 		<ul>
 		<li><code>Meter</code> (required): Name of the meter to update.</li>
 		<li><code>Config</code> (optional)</li>
@@ -488,7 +488,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeterGroup"><code>!UpdateMeterGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
-		Immediately updates all of the given <a href="!meters">meters</a> in the specified <a href="!groups">group</a> regardless of <a href="!meters/general-options#UpdateDivider">UpdateDivider</a>.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meters in the specified group, and immediately updates the meters, obtaining new current values for any measures or variables referenced.
 		<ul>
 		<li><code>Group</code> (required): Name of the meter group to update.</li>
 		<li><code>Config</code> (optional)</li>
@@ -510,7 +510,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeasure"><code>!UpdateMeasure</code> <small>Parameters: <code><b>Measure</b><em>, Config</em></code></small></dt>
 	<dd>
-		Immediately updates the given <a href="!measures">measure</a> regardless of <a href="!measures/general-options#UpdateDivider">UpdateDivider</a>.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!measures/general-options#UpdateDivider">UpdateDivider</a> on the measure, and immediately updates the measure.
 		<ul>
 		<li><code>Measure</code> (required): Name of the measure.</li>
 		<li><code>Config</code> (optional)</li>
@@ -543,7 +543,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeasureGroup"><code>!UpdateMeasureGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
-		Immediately updates all of the <a href="!measures">measure</a> in the specified group regardless of <a href="!measures/general-options#UpdateDivider">UpdateDivider</a>.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!measures/general-options#UpdateDivider">UpdateDivider</a> on the measures in the specified group, and immediately updates the measures.
 		<ul>
 		<li><code>Group</code> (required): Name of the group.</li>
 		<li><code>Config</code> (optional)</li>
