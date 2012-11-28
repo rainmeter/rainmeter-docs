@@ -454,7 +454,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeter"><code>!UpdateMeter</code> <small>Parameters: <code><b>Meter</b><em>, Config</em></code></small></dt>
 	<dd>
-		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meter, and immediately updates the meter, obtaining new current values for any measures or variables referenced.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meter, and immediately updates the meter, obtaining new current values for any measures or variables referenced.  Note that the meter is not redrawn with any new values until the next update, or if a <a href="!bangs#Redraw">!Redraw</a> bang is used.
 		<ul>
 		<li><code>Meter</code> (required): Name of the meter to update.</li>
 		<li><code>Config</code> (optional)</li>
@@ -488,7 +488,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeterGroup"><code>!UpdateMeterGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
-		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meters in the specified group, and immediately updates the meters, obtaining new current values for any measures or variables referenced.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meters in the specified group, and immediately updates the meters, obtaining new current values for any measures or variables referenced.  Note that the meters are not redrawn with any new values until the next update, or if a <a href="!bangs#RedrawGroup">!RedrawGroup</a> bang is used.
 		<ul>
 		<li><code>Group</code> (required): Name of the meter group to update.</li>
 		<li><code>Config</code> (optional)</li>
