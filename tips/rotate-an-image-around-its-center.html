@@ -43,7 +43,7 @@ H=(SQRT(#ImageW# ** 2 + #ImageH# ** 2))
 <img src="/tips/img/rotate-an-image-around-its-center/RotateImage2.png"/>
 </div><br/><br/>
 
-<p><b>Note:</b> If the image being used is "square", then you will not need the formula to set the width and height of the meter.  In fact, doing so will make the overall size of the meter container unnecessarily large.  Simply use the full size of the image when specifying the <code>W</code> and <code>H</code> options in the meter.</p>
+<p><b>Note:</b> If the visible part of the image being used is "round", then you will not need the formula to set the width and height of the meter.  In fact, doing so will make the overall size of the meter container unnecessarily large.  Simply use the full size of the image when specifying the <code>W</code> and <code>H</code> options in the meter.</p>
 
 {% highlight ini %}
 [Rainmeter]
@@ -62,7 +62,7 @@ MaxValue=360
 [MeterRotate]
 Meter=Rotator
 MeasureName=MeasureRotate
-ImageName=Rectangle.png
+ImageName=Circle.png
 OffsetX=(#ImageW# / 2)
 OffsetY=(#ImageH# / 2)
 W=#ImageW#
