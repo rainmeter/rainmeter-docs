@@ -119,7 +119,7 @@ Formula=cCounter+(cCounter&lt;#MaxNumber#)
 Measure=Calc
 Formula=cCounter+1
 IfAboveValue=#MaxNumber#
-IfAboveAction=[!Disable cCounter]["Some Action"]
+IfAboveAction=[!DisableMeasure cCounter]["Some Action"]
 {% endhighlight %}
 
 <p>This will count up to the MaxNumber, disable itself so it doesn't continue to count, and execute some action such as opening an addon. This method can be used to execute some action a certain number of updates after skin is loaded.</p>
@@ -130,7 +130,7 @@ IfAboveAction=[!Disable cCounter]["Some Action"]
 Measure=Calc
 Formula=Counter
 IfAboveValue=#MaxNumber#
-IfAboveAction=[!Disable cCounter]["Some Action"]
+IfAboveAction=[!DisableMeasure cCounter]["Some Action"]
 {% endhighlight %}
 
 <p><b>Note:</b> To execute a set of commands when the skin is loaded or refreshed, without using a counter, use <code>OnRefreshAction=!SomeAction</code> in the <code>[Rainmeter]</code> section of the skin.</p>
