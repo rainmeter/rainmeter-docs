@@ -1,0 +1,849 @@
+---
+layout: manual-beta
+title: 'FileView plugin'
+---
+<!--{% comment %}--><base href="../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p><code>Plugin=FileView</code> retrieves information about folders and files.</p>
+
+<p>The plugin gathers all the folder and file names, sizes, dates and icons in the selected folder. It counts the number of files and folders and obtains the combined size. It can also search recursively through all the subfolders of the selected folder to obtain the totals for count and size.</p>
+
+<p>FileView operates with a "parent / child" approach.  A main "parent" FileView measure is used to obtain all the information for a selected folder, and then "child" measures are used to read individual entries from the parent using the <code>Path=</code> option.
+
+<h2>Usage</h2>
+<p>FileView measures take the form:</p>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[MeasureFolder]
+Measure=Plugin
+Plugin=FileView
+Path="C:\Program Files\Rainmeter"
+ShowDotDot=0
+ShowFolder=0
+Count=3
+{% endhighlight %}
+<p id="ParentChild">In this example, this "parent" measure will obtain name, size, date and icon information about all files in the selected folder, then create three <a href="#Index">Index</a> values for the first three files. The information is used in subsequent "child" FileView measures:</p>
+{% highlight ini %}
+[MeasureChild1]
+Measure=Plugin
+Plugin=FileView
+Path=[MeasureFolder]
+Type=FileName
+Index=1
+
+[MeasureChild2]
+Measure=Plugin
+Plugin=FileView
+Path=[MeasureFolder]
+Type=FileName
+Index=2
+
+[MeasureChild3]
+Measure=Plugin
+Plugin=FileView
+Path=[MeasureFolder]
+Type=FileName
+Index=3
+{% endhighlight %}
+<p>The values of the three <a href="#ParentChild">child</a> measures are now the FileName information parsed into Indexes 1 through 3 by the <a href="#ParentChild">parent</a> measure. These can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="!meters">meters</a>.</p>
+
+<p>Another way to use the information in child measures is:</p>
+{% highlight ini %}
+[MeasureChild1]
+Measure=Plugin
+Plugin=FileView
+Path=[MeasureFolder]
+Type=FileName
+Index=1
+
+[MeasureChild2]
+Measure=Plugin
+Plugin=FileView
+Path=[MeasureFolder]
+Type=FileSize
+Index=1
+
+[MeasureChild3]
+Measure=Plugin
+Plugin=FileView
+Path=[MeasureFolder]
+Type=FileDate
+Index=1
+{% endhighlight %}
+<p>The values of the three child measures are now the FileName, FileSize and FileDate information from the first file (Index 1) of the parent measure.</p>
+
+<p>In these examples, three indexes are created due to the <code>Count=3</code> option on the parent measure.  However, the information for all files and / or folders are obtained by the plugin, and subsequent or previous entries can be assigned to the three indexes by using !CommandMeasure statements described below.  This will allow a skin to "scroll" through the files and / or folders in a dynamic way.</p> 
+
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
+	</dd>
+
+	<dt id="ParentPath"><code>Path</code></dt>
+	<dd>
+		<p><b>In a parent measure</b>, the path of the folder to read. If Path="", then the plugin defaults to <b>My Computer</b>.<br/><b>In a child measure</b>, this is used to identfy the <code>[MeasureName]</code> of the parent measure to read values from.</p>
+	</dd>
+</dl>
+
+<h2>Parent measure only options</h2>
+<dl>
+	<dt id="Recursive"><code>Recursive</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>If 1, the plugin searches all sub-folders updating only the file count, folder count and overall folder size. This option does not index specific files in sub-folders.</p>
+	</dd>
+	
+	<dt id="Count"><code>Count</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>The number of items to be indexed at one time.</p>
+	</dd>
+
+	<dt id="ShowDotDot"><code>ShowDotDot</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>If 1, the <code>..</code> folder (representing the <b>previous folder</b>) will be included. <code>ShowDotDot=0</code> means that the <code>..</code> folder is ignored.</p>
+	</dd>
+
+	<dt id="ShowFolder"><code>ShowFolder</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>If 1, folders will be included, along with files. If <code>ShowFolder=0</code>, folders are ignored.<br/><br/>
+		<b>Note: </b>This does not control the <code>..</code> folder, use <a href="#ShowDotDot">ShowDotDot</a> above.</p>
+	</dd>
+
+	<dt id="ShowFile"><code>ShowFile</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>If 1, files will be included, along with folders. If <code>ShowFile=0</code>, files are ignored.</p>
+	</dd>
+
+	<dt id="ShowHidden"><code>ShowHidden</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>If 1, hidden files and folders will be included. If <code>ShowHidden=0</code>, hidden files and folders are ignored.</p>
+	</dd>
+
+	<dt id="ShowSystem"><code>ShowSystem</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>If 0, protected operating system files are ignored. If ShowSystem=1, protected operating system files are included.</p>
+	</dd>
+
+	<dt id="HideExtensions"><code>HideExtensions</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>If 1, file extensions are removed when used with <code>Type=FileName</code>.</p>
+	</dd>
+
+	<dt id="Extensions"><code>Extensions</code></dt>
+	<dd>
+		<p>Semi-colon separated list of file extensions that limits the type of files to be included. (eg. If <code>Extensions="jpg;png"</code>, only .jpg and .png files will be included.</p>
+	</dd>
+
+	<dt id="SortType"><code>SortType</code> <small>Default: <code>Name</code></small></dt>
+	<dd>
+		<p>Type of information to sort the entries by. Options include: <code>Name</code>, <code>Size</code>, <code>Type</code>, <code>Date</code>.</p>
+	</dd>
+
+	<dt id="SortDateType"><code>SortDateType</code> <small>Default: <code>Modified</code></small></dt>
+	<dd>
+		<p>File and folder date entry to use for sorting when <code>SortType=Date</code>. Options include: <code>Modified</code>, <code>Created</code>, <code>Accessed</code>.</p>
+	</dd>
+
+	<dt id="SortAscending"><code>SortAscending</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>If 1, sorts the entries in ascending order. <code>SortAscending=0</code> will sort in descending order.</p>
+	</dd>
+
+	<dt id="WildcardSearch"><code>WildcardSearch</code> <small>Default: <code>"*.*"</code></small></dt>
+	<dd>
+		<p>Filter the files and folders obtained using wildcards. Standard <code>*</code> and <code>?</code> characters can be used.</p>
+	</dd>
+</dl>
+
+<h2>Child measure only options</h2>
+<dl>
+	<dt id="Index"><code>Index</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>Index of the file or folder from the parent measure. This should not exceed the <code>Count</code> number in the parent measure. If it does, the items will wrap around. So if <code>Count=8</code>, then <code>Index=9</code> will return the value from <code>Index=1</code>.</p>
+	</dd>
+
+	<dt id="IgnoreCount"><code>IgnoreCount</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>If 1, the Index will represent the actual index of the file or folder in the list. This is useful to display a particular file or folder at all times (like the <code>..</code> folder).</p>
+	</dd>
+
+	<dt id="Type"><code>Type</code> <small>Default: <code>FolderPath</code></small></dt>
+	<dd>
+		<p>Type of information to obtain from the parent measure. Options include: <code>FolderPath</code>, <code>FolderSize</code>, <code>FileCount</code>, <code>FolderCount</code>, <code>FileName</code>, <code>FileType</code>, <code>FileSize</code>, <code>FileDate</code>, <code>FilePath</code>, and <code>Icon</code>.<br/><br/>
+		<b>Note: </b>If <code>Type=Icon</code>, the the full path and name of the icon file will be the returned value See <a href="#IconPath">IconPath</a> below.  This can be used with <code>MeasureName</code> or <code>ImageName</code> in an Image meter to display the icon.</p>
+	</dd>
+
+	<dt id="DateType"><code>DateType</code> <small>Default: <code>Modified</code></small></dt>
+	<dd>
+		<p>The date entry to retrieve from the parent measure when <code>Type=Date</code>. Options include: <code>Modified</code>, <code>Created</code>, <code>Accessed</code>.</p>
+	</dd>
+
+	<dt id="IconPath"><code>IconPath</code></dt>
+	<dd>
+		<p>Path and name of file location where the icon is to be saved when <code>Type=Icon</code>. If no path is given, the icon will be saved in the current skin folder in the style of "iconX.ico", where "X" is the index number.</p>
+	</dd>
+
+	<dt id="IconSize"><code>IconSize</code> <small>Default: <code>Medium</code></small></dt>
+	<dd>
+		<p>Size of the icon to save. Options include: <code>Small</code> for a 16x16 icon, <code>Medium</code> for a 32x32 icon, <code>Large</code> for a 48x48 icon, <code>ExtraLarge</code> for a 256x256 icon.</p>
+	</dd>
+</dl>
+
+<h2>Plugin Commands</h2>
+
+<h2>Parent measure only commands</h2>
+<dl>
+	<dt id="PageUp"><code>PageUp</code></dt>
+	<dd>
+		<p>Decrease the current page count. For instance, If Count=8, and there are currently 25 files in the list, then there are a total of 4 pages. So if the plugin is currently displaying items 8-15 (page 2), and the PageUp command is sent to the parent measure, it will decrease the page count by one, and the items that will be displayed will be items 0-7 (page 1).<br/><br/>
+		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PageUp"</code>.</p>
+	</dd>
+
+	<dt id="PageDown"><code>PageDown</code></dt>
+	<dd>
+		<p>PageDown - Increases the page count.<br/><br/>
+		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PageDown"</code>.</p>
+	</dd>
+
+	<dt id="IndexUp"><code>IndexUp</code></dt>
+	<dd>
+		<p>Decreases the index by 1. This is useful for mouse scroll actions.<br/><br/>
+		<b>Usage example: </b><code>MouseScrollUpAction=!CommandMeasure "ParentMeasureName" "IndexUp"</code>.</p>
+	</dd>
+
+	<dt id="IndexDown"><code>IndexDown</code></dt>
+	<dd>
+		<p>Increases the index by 1. This is useful for mouse scroll actions.<br/><br/>
+		<b>Usage example: </b><code>MouseScrollDownAction=!CommandMeasure "ParentMeasureName" "IndexDown"</code>.</p>
+	</dd>
+
+	<dt id="Update"><code>Update</code></dt>
+	<dd>
+		<p>Updates the measure, reading the disk and recreating all values in the parent measure.<br/><br/>
+		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "Update"</code>.</p>
+	</dd>
+
+	<dt id="PreviousFolder"><code>PreviousFolder</code></dt>
+	<dd>
+		<p>This will change the path to the folder one higher in the folder structure. (behaves like clicking on the <code>..</code> folder.)<br/><br/>
+		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PreviousFolder"</code>.</p>
+	</dd>
+</dl>
+
+<h2>Child measure only commands</h2>
+<dl>
+	<dt id="FollowPath"><code>FollowPath</code></dt>
+	<dd>
+		<p>If the index referenced in the child measure is currently a folder, then the parent measure's <code>Path</code> is updated to the new path. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a "DoubleClick" action.<br/><br/>
+		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ParentMeasureName" "FollowPath"</code>.</p>
+	</dd>
+
+	<dt id="Open"><code>Open</code></dt>
+	<dd>
+		<p>This will open the file or folder that the index represents. If it is a folder, the folder is opened in Windows Explorer. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a "DoubleClick" action.<br/><br/>
+		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ParentMeasureName" "Open"</code>.</p>
+	</dd>
+</dl>
+	
+<h2>Example</h2>
+
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+MouseScrollUpAction=[!CommandMeasure mPath "IndexUp"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+MouseScrollDownAction=[!CommandMeasure mPath "IndexDown"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+
+[Variables]
+IconSize=Large
+
+;----------------------------------------------------
+; Styles
+;----------------------------------------------------
+
+[TextStyle]
+FontColor=255,255,255,255
+AntiAlias=1
+
+[TextHighlight]
+FontColor=150,150,255,255
+
+[IconStyle]
+X=5
+Y=r
+AntiAlias=1
+
+[HighlightStyle]
+SolidColor=0,0,0,1
+X=5
+Y=5R
+W=380
+H=([Index1Icon:H] &gt; [Index1Info:H] ? [Index1Icon:H] : [Index1Info:H])
+DynamicVariables=1
+MouseOverAction=[!SetOption #CURRENTSECTION# SolidColor "50,50,255,150"][!UpdateMeter #CURRENTSECTION#][!Redraw]
+MouseLeaveAction=[!SetOption #CURRENTSECTION# SolidColor ""][!UpdateMeter #CURRENTSECTION#][!Redraw]
+
+[InfoStyle]
+X=5R
+Y=r
+Text="%1 #CRLF#%2 #CRLF#%3 "
+AutoScale=1
+AntiAlias=1
+
+;----------------------------------------------------
+; Measures
+;----------------------------------------------------
+
+[mPath]
+Measure=Plugin
+Plugin=FileView
+Path="C:\"
+Count=8
+
+[mFolderCount]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FolderCount
+Group=Children
+
+[mFileCount]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileCount
+Group=Children
+
+[mFolderSize]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FolderSize
+Group=Children
+
+;----------------------------------------------------
+; Index 1
+
+[mIndex1Name]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileName
+Index=1
+Group=Children
+
+[mIndex1Size]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileSize
+Index=1
+Group=Children
+
+[mIndex1Date]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileDate
+Index=1
+Group=Children
+
+[mIndex1Icon]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=Icon
+IconSize=#IconSize#
+Index=1
+Group=Children
+
+;----------------------------------------------------
+; Index 2
+
+[mIndex2Name]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileName
+Index=2
+Group=Children
+
+[mIndex2Size]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileSize
+Index=2
+Group=Children
+
+[mIndex2Date]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileDate
+Index=2
+Group=Children
+
+[mIndex2Icon]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=Icon
+IconSize=#IconSize#
+Index=2
+Group=Children
+
+;----------------------------------------------------
+; Index 3
+
+[mIndex3Name]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileName
+Index=3
+Group=Children
+
+[mIndex3Size]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileSize
+Index=3
+Group=Children
+
+[mIndex3Date]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileDate
+Index=3
+Group=Children
+
+[mIndex3Icon]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=Icon
+IconSize=#IconSize#
+Index=3
+Group=Children
+
+;----------------------------------------------------
+; Index 4
+
+[mIndex4Name]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileName
+Index=4
+Group=Children
+
+[mIndex4Size]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileSize
+Index=4
+Group=Children
+
+[mIndex4Date]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileDate
+Index=4
+Group=Children
+
+[mIndex4Icon]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=Icon
+IconSize=#IconSize#
+Index=4
+Group=Children
+
+;----------------------------------------------------
+; Index 5
+
+[mIndex5Name]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileName
+Index=5
+Group=Children
+
+[mIndex5Size]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileSize
+Index=5
+Group=Children
+
+[mIndex5Date]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileDate
+Index=5
+Group=Children
+
+[mIndex5Icon]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=Icon
+IconSize=#IconSize#
+Index=5
+Group=Children
+
+;----------------------------------------------------
+; Index 6
+
+[mIndex6Name]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileName
+Index=6
+Group=Children
+
+[mIndex6Size]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileSize
+Index=6
+Group=Children
+
+[mIndex6Date]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileDate
+Index=6
+Group=Children
+
+[mIndex6Icon]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=Icon
+IconSize=#IconSize#
+Index=6
+Group=Children
+
+;----------------------------------------------------
+; Index 7
+
+[mIndex7Name]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileName
+Index=7
+Group=Children
+
+[mIndex7Size]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileSize
+Index=7
+Group=Children
+
+[mIndex7Date]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileDate
+Index=7
+Group=Children
+
+[mIndex7Icon]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=Icon
+IconSize=#IconSize#
+Index=7
+Group=Children
+
+;----------------------------------------------------
+; Index 8
+
+[mIndex8Name]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileName
+Index=8
+Group=Children
+
+[mIndex8Size]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileSize
+Index=8
+Group=Children
+
+[mIndex8Date]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=FileDate
+Index=8
+Group=Children
+
+[mIndex8Icon]
+Measure=Plugin
+Plugin=FileView
+Path=[mPath]
+Type=Icon
+IconSize=#IconSize#
+Index=8
+Group=Children
+
+;----------------------------------------------------
+; Meters
+;----------------------------------------------------
+
+[Background]
+Meter=Image
+SolidColor=0,0,0,200
+W=400
+H=500
+
+[PathTitle]
+Meter=String
+MeterStyle=TextStyle
+Text=Path:
+
+[Path]
+Meter=String
+MeasureName=mPath
+MeterStyle=TextStyle | TextHighlight
+Text="%1 "
+X=R
+
+[FolderCountTitle]
+Meter=String
+MeterStyle=TextStyle
+X=0
+Y=R
+Text=Folders:
+
+[FolderCount]
+Meter=String
+MeasureName=mFolderCount
+MeterStyle=TextStyle | TextHighlight
+X=R
+Y=r
+
+[FileCountTitle]
+Meter=String
+MeterStyle=TextStyle
+X=10R
+Y=r
+Text=Files:
+
+[FileCount]
+Meter=String
+MeasureName=mFileCount
+MeterStyle=TextStyle | TextHighlight
+X=R
+Y=r
+
+[FolderSizeTitle]
+Meter=String
+MeterStyle=TextStyle
+X=10R
+Y=r
+Text=Size:
+
+[FolderSize]
+Meter=String
+MeasureName=mFolderSize
+MeterStyle=TextStyle | TextHighlight
+X=R
+Y=r
+AutoScale=1
+
+[Index1]
+Meter=Image
+MeterStyle=HighlightStyle
+LeftMouseDoubleClickAction=[!CommandMeasure mIndex1Name "FollowPath"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+
+[Index1Icon]
+Meter=Image
+MeasureName=mIndex1Icon
+MeterStyle=IconStyle
+
+[Index1Info]
+Meter=String
+MeasureName=mIndex1Name
+MeasureName2=mIndex1Size
+MeasureName3=mIndex1Date
+MeterStyle=TextStyle | InfoStyle
+
+[Index2]
+Meter=Image
+MeterStyle=HighlightStyle
+LeftMouseDoubleClickAction=[!CommandMeasure mIndex2Name "FollowPath"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+
+[Index2Icon]
+Meter=Image
+MeasureName=mIndex2Icon
+MeterStyle=IconStyle
+
+[Index2Info]
+Meter=String
+MeasureName=mIndex2Name
+MeasureName2=mIndex2Size
+MeasureName3=mIndex2Date
+MeterStyle=TextStyle | InfoStyle
+
+[Index3]
+Meter=Image
+MeterStyle=HighlightStyle
+LeftMouseDoubleClickAction=[!CommandMeasure mIndex3Name "FollowPath"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+
+[Index3Icon]
+Meter=Image
+MeasureName=mIndex3Icon
+MeterStyle=IconStyle
+
+[Index3Info]
+Meter=String
+MeasureName=mIndex3Name
+MeasureName2=mIndex3Size
+MeasureName3=mIndex3Date
+MeterStyle=TextStyle | InfoStyle
+
+[Index4]
+Meter=Image
+MeterStyle=HighlightStyle
+LeftMouseDoubleClickAction=[!CommandMeasure mIndex4Name "FollowPath"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+
+[Index4Icon]
+Meter=Image
+MeasureName=mIndex4Icon
+MeterStyle=IconStyle
+
+[Index4Info]
+Meter=String
+MeasureName=mIndex4Name
+MeasureName2=mIndex4Size
+MeasureName3=mIndex4Date
+MeterStyle=TextStyle | InfoStyle
+
+[Index5]
+Meter=Image
+MeterStyle=HighlightStyle
+LeftMouseDoubleClickAction=[!CommandMeasure mIndex5Name "FollowPath"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+
+[Index5Icon]
+Meter=Image
+MeasureName=mIndex5Icon
+MeterStyle=IconStyle
+
+[Index5Info]
+Meter=String
+MeasureName=mIndex5Name
+MeasureName2=mIndex5Size
+MeasureName3=mIndex5Date
+MeterStyle=TextStyle | InfoStyle
+
+[Index6]
+Meter=Image
+MeterStyle=HighlightStyle
+LeftMouseDoubleClickAction=[!CommandMeasure mIndex6Name "FollowPath"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+
+[Index6Icon]
+Meter=Image
+MeasureName=mIndex6Icon
+MeterStyle=IconStyle
+
+[Index6Info]
+Meter=String
+MeasureName=mIndex6Name
+MeasureName2=mIndex6Size
+MeasureName3=mIndex6Date
+MeterStyle=TextStyle | InfoStyle
+
+[Index7]
+Meter=Image
+MeterStyle=HighlightStyle
+LeftMouseDoubleClickAction=[!CommandMeasure mIndex7Name "FollowPath"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+
+[Index7Icon]
+Meter=Image
+MeasureName=mIndex7Icon
+MeterStyle=IconStyle
+
+[Index7Info]
+Meter=String
+MeasureName=mIndex7Name
+MeasureName2=mIndex7Size
+MeasureName3=mIndex7Date
+MeterStyle=TextStyle | InfoStyle
+
+[Index8]
+Meter=Image
+MeterStyle=HighlightStyle
+LeftMouseDoubleClickAction=[!CommandMeasure mIndex8Name "FollowPath"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+
+[Index8Icon]
+Meter=Image
+MeasureName=mIndex8Icon
+MeterStyle=IconStyle
+
+[Index8Info]
+Meter=String
+MeasureName=mIndex8Name
+MeasureName2=mIndex8Size
+MeasureName3=mIndex8Date
+MeterStyle=TextStyle | InfoStyle
+
+[PageUp]
+Meter=String
+MeterStyle=TextStyle
+FontSize=15
+X=5
+Y=10R
+Text=Page Up
+LeftMouseDoubleClickAction=[!CommandMeasure mPath "PageUp"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+MouseOverAction=[!SetOption #CURRENTSECTION# SolidColor "50,50,255,150"][!UpdateMeter #CURRENTSECTION#][!Redraw]
+MouseLeaveAction=[!SetOption #CURRENTSECTION# SolidColor ""][!UpdateMeter #CURRENTSECTION#][!Redraw]
+
+[PageDown]
+Meter=String
+MeterStyle=TextStyle
+FontSize=15
+X=10R
+Y=r
+Text=Page Down
+LeftMouseDoubleClickAction=[!CommandMeasure mPath "PageDown"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+MouseOverAction=[!SetOption #CURRENTSECTION# SolidColor "50,50,255,150"][!UpdateMeter #CURRENTSECTION#][!Redraw]
+MouseLeaveAction=[!SetOption #CURRENTSECTION# SolidColor ""][!UpdateMeter #CURRENTSECTION#][!Redraw]
+
+[PreviousFolder]
+Meter=String
+MeterStyle=TextStyle
+FontSize=15
+X=10R
+Y=r
+Text=Previous Folder
+LeftMouseDoubleClickAction=[!CommandMeasure mPath "PreviousFolder"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
+MouseOverAction=[!SetOption #CURRENTSECTION# SolidColor "50,50,255,150"][!UpdateMeter #CURRENTSECTION#][!Redraw]
+MouseLeaveAction=[!SetOption #CURRENTSECTION# SolidColor ""][!UpdateMeter #CURRENTSECTION#][!Redraw]
+{% endhighlight %}
