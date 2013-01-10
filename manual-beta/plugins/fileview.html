@@ -201,37 +201,37 @@ Index=1
 	<dt id="PageUp"><code>PageUp</code></dt>
 	<dd>
 		<p>Decrease the current page count. For instance, If Count=8, and there are currently 25 files in the list, then there are a total of 4 pages. So if the plugin is currently displaying items 8-15 (page 2), and the PageUp command is sent to the parent measure, it will decrease the page count by one, and the items that will be displayed will be items 0-7 (page 1).<br/><br/>
-		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PageUp"</code>.</p>
+		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PageUp"</code></p>
 	</dd>
 
 	<dt id="PageDown"><code>PageDown</code></dt>
 	<dd>
-		<p>PageDown - Increases the page count.<br/><br/>
-		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PageDown"</code>.</p>
+		<p>Increases the page count.<br/><br/>
+		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PageDown"</code></p>
 	</dd>
 
 	<dt id="IndexUp"><code>IndexUp</code></dt>
 	<dd>
 		<p>Decreases the index by 1. This is useful for mouse scroll actions.<br/><br/>
-		<b>Usage example: </b><code>MouseScrollUpAction=!CommandMeasure "ParentMeasureName" "IndexUp"</code>.</p>
+		<b>Usage example: </b><code>MouseScrollUpAction=!CommandMeasure "ParentMeasureName" "IndexUp"</code></p>
 	</dd>
 
 	<dt id="IndexDown"><code>IndexDown</code></dt>
 	<dd>
 		<p>Increases the index by 1. This is useful for mouse scroll actions.<br/><br/>
-		<b>Usage example: </b><code>MouseScrollDownAction=!CommandMeasure "ParentMeasureName" "IndexDown"</code>.</p>
+		<b>Usage example: </b><code>MouseScrollDownAction=!CommandMeasure "ParentMeasureName" "IndexDown"</code></p>
 	</dd>
 
 	<dt id="Update"><code>Update</code></dt>
 	<dd>
 		<p>Updates the measure, reading the disk and recreating all values in the parent measure.<br/><br/>
-		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "Update"</code>.</p>
+		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "Update"</code></p>
 	</dd>
 
 	<dt id="PreviousFolder"><code>PreviousFolder</code></dt>
 	<dd>
 		<p>This will change the path to the folder one higher in the folder structure. (behaves like clicking on the <code>..</code> folder.)<br/><br/>
-		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PreviousFolder"</code>.</p>
+		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PreviousFolder"</code></p>
 	</dd>
 </dl>
 
@@ -240,13 +240,13 @@ Index=1
 	<dt id="FollowPath"><code>FollowPath</code></dt>
 	<dd>
 		<p>If the index referenced in the child measure is currently a folder, then the parent measure's <code>Path</code> is updated to the new path. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a "DoubleClick" action.<br/><br/>
-		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ChildMeasureName" "FollowPath"</code>.</p>
+		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ChildMeasureName" "FollowPath"</code></p>
 	</dd>
 
 	<dt id="Open"><code>Open</code></dt>
 	<dd>
 		<p>This will open the file or folder that the index represents. If it is a folder, the folder is opened in Windows Explorer. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a "DoubleClick" action.<br/><br/>
-		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ChildMeasureName" "Open"</code>.</p>
+		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ChildMeasureName" "Open"</code></p>
 	</dd>
 </dl>
 	
