@@ -240,13 +240,13 @@ Index=1
 	<dt id="FollowPath"><code>FollowPath</code></dt>
 	<dd>
 		<p>If the index referenced in the child measure is currently a folder, then the parent measure's <code>Path</code> is updated to the new path. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a "DoubleClick" action.<br/><br/>
-		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ParentMeasureName" "FollowPath"</code>.</p>
+		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ChildMeasureName" "FollowPath"</code>.</p>
 	</dd>
 
 	<dt id="Open"><code>Open</code></dt>
 	<dd>
 		<p>This will open the file or folder that the index represents. If it is a folder, the folder is opened in Windows Explorer. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a "DoubleClick" action.<br/><br/>
-		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ParentMeasureName" "Open"</code>.</p>
+		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ChildMeasureName" "Open"</code>.</p>
 	</dd>
 </dl>
 	
