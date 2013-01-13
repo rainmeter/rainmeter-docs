@@ -20,6 +20,17 @@ title: 'General Measure Options'
 		<br><br><b>Example:</b> If <code>Update=1000</code> (in the [Rainmeter] section) and <code>UpdateDivider=30</code>, the measure is updated every 30 seconds.
 	</dd>
 
+	<dt id="OnUpdateAction"><code>OnUpdateAction</code></dt>
+	<dd>
+		<p><a href="!options#Action">Action</a> to execute on each <a href="!skins/rainmeter-section#Update"Update</a> of the measure. This option obeys any <a href="UpdateDivider">UpdateDivider</a> on the measure.</p>
+	</dd>
+
+	<dt id="OnChangeAction"><code>OnChangeAction</code></dt>
+	<dd>
+		<p><a href="!options#Action">Action</a> to execute when the number or string value of the measure changes.  The inital change from "nothing" to a value when the skin is loaded or refreshed is ignored.<br/><br/>
+		<b>Note: </b>With plugins that are "threaded", which includes <a href="http://docs.rainmeter.net/manual-beta/plugins/webparser">WebParser</a> and <a href="http://docs.rainmeter.net/manual-beta/plugins/fileview">FileView</a> today, the action will fire on the first change when loading or refreshing the skin.</p>
+	</dd>	
+	
 	<dt id="InvertMeasure"><code>InvertMeasure</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		If set to <code>1</code>, the measure value is inverted.
