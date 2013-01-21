@@ -85,7 +85,7 @@ Index=1
 		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
 	</dd>
 
-	<dt id="ParentPath"><code>Path</code></dt>
+	<dt id="Path"><code>Path</code></dt>
 	<dd>
 		<p><b>In a parent measure</b>, the path of the folder to read. If Path="", then the plugin defaults to <b>My Computer</b>.<br/><b>In a child measure</b>, this is used to identfy the <code>[MeasureName]</code> of the parent measure to read values from.</p>
 	</dd>
@@ -93,6 +93,11 @@ Index=1
 
 <h2>Parent measure options</h2>
 <dl>
+	<dt id="FinishAction"><code>FinishAction</code></dt>
+	<dd>
+		<p>A <a href="!bangs">bang</a> or <a href="!options#Action">action</a> that is executed when the plugin has completed reading the folders and files.  This can be used to ensure that a large folder structure is fully read before other actions are taken.</p>
+	</dd>
+	
 	<dt id="Recursive"><code>Recursive</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If 1, the plugin searches all sub-folders updating only the file count, folder count and overall folder size. This option does not index specific files in sub-folders.</p>
