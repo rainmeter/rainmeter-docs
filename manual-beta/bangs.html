@@ -83,7 +83,7 @@ title: 'Bangs'
 
 	<dt id="LoadLayout"><code>!LoadLayout</code> <small>Parameters: <code><b>LayoutName</b></code></small></dt>
 	<dd>
-		Loads the named <a href="!user-interface/manage#LayoutsTab">layout</a>.  A layout can also be loaded from the Windows command line:<br><br>
+		Loads the named <a href="!user-interface/manage#LayoutsTab">layout</a>. A layout can also be loaded from the Windows command line:<br><br>
 		<b>Example:</b> <code>"C:\Program Files\Rainmeter\Rainmeter.exe" !LoadLayout "My Saved Layout"</code>
 	</dd>
 
@@ -271,7 +271,7 @@ title: 'Bangs'
 
 	<dt id="Redraw"><code>!Redraw</code> <small>Parameter: <code><em>Config</em></code></small></dt>
 	<dd>
-		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] and immediately redraws all visible elements of the entire skin.  Meters will use the last value obtained for any measures or variables referenced.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] and immediately redraws all visible elements of the entire skin. Meters will use the last value obtained for any measures or variables referenced.
 		<ul>
 		<li><code>Config</code> (optional)</li>
 		</ul>
@@ -384,10 +384,10 @@ title: 'Bangs'
 		<li><code>Group</code> (required): Group to redraw.</li>
 		</ul>
 	</dd>
-	
+
 	<dt id="RedrawGroup"><code>!RedrawGroup</code> <small>Parameter: <code><b>Group</b></code></small></dt>
 	<dd>
-		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] and immediately redraws all visible elements of the specified group of skins.  Meters will use the last value obtained for any measures or variables referenced.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] and immediately redraws all visible elements of the specified group of skins. Meters will use the last value obtained for any measures or variables referenced.
 		<ul>
 		<li><code>Group</code> (required): Group to redraw.</li>
 		</ul>
@@ -462,7 +462,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeter"><code>!UpdateMeter</code> <small>Parameters: <code><b>Meter</b><em>, Config</em></code></small></dt>
 	<dd>
-		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meter, and immediately updates the meter, obtaining new current values for any measures or variables referenced.  Note that the meter is not redrawn with any new values until the next update, or if a <a href="!bangs#Redraw">!Redraw</a> bang is used.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meter, and immediately updates the meter, obtaining new current values for any measures or variables referenced. Note that the meter is not redrawn with any new values until the next update, or if a <a href="!bangs#Redraw">!Redraw</a> bang is used.
 		<ul>
 		<li><code>Meter</code> (required): Name of the meter to update. Use <code>*</code> to update all meters.</li>
 		<li><code>Config</code> (optional)</li>
@@ -496,7 +496,7 @@ title: 'Bangs'
 
 	<dt id="UpdateMeterGroup"><code>!UpdateMeterGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
-		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meters in the specified group, and immediately updates the meters, obtaining new current values for any measures or variables referenced.  Note that the meters are not redrawn with any new values until the next update, or if a <a href="!bangs#RedrawGroup">!RedrawGroup</a> bang is used.
+		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meters in the specified group, and immediately updates the meters, obtaining new current values for any measures or variables referenced. Note that the meters are not redrawn with any new values until the next update, or if a <a href="!bangs#RedrawGroup">!RedrawGroup</a> bang is used.
 		<ul>
 		<li><code>Group</code> (required): Name of the meter group to update.</li>
 		<li><code>Config</code> (optional)</li>

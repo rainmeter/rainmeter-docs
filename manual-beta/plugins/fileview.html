@@ -8,7 +8,7 @@ title: 'FileView plugin'
 
 <p>The plugin gathers all the folder and file names, sizes, dates and icons in the selected folder. It counts the number of files and folders and obtains the combined size. It can also search recursively through all the subfolders of the selected folder to obtain the totals for count and size.</p>
 
-<p>FileView operates with a "parent / child" approach.  A main "parent" FileView measure is used to obtain all the information for a selected folder, and then "child" measures are used to read individual entries from the parent using the <code>Path=</code> option.
+<p>FileView operates with a "parent / child" approach. A main "parent" FileView measure is used to obtain all the information for a selected folder, and then "child" measures are used to read individual entries from the parent using the <code>Path=</code> option.
 
 <h2>Usage</h2>
 <p>FileView measures take the form:</p>
@@ -75,7 +75,7 @@ Index=1
 {% endhighlight %}
 <p>The values of the three child measures are now the FileName, FileSize and FileDate information from the first file (Index 1) of the parent measure.</p>
 
-<p>In these examples, three indexes are created due to the <code>Count=3</code> option on the parent measure.  However, the information for all files and / or folders are obtained by the plugin, and subsequent or previous entries can be assigned to the three indexes by using !CommandMeasure statements described below.  This will allow a skin to "scroll" through the files and / or folders in a dynamic way.</p> 
+<p>In these examples, three indexes are created due to the <code>Count=3</code> option on the parent measure. However, the information for all files and / or folders are obtained by the plugin, and subsequent or previous entries can be assigned to the three indexes by using !CommandMeasure statements described below. This will allow a skin to "scroll" through the files and / or folders in a dynamic way.</p>
 
 
 <h2>Options</h2>
@@ -87,7 +87,7 @@ Index=1
 
 	<dt id="Path"><code>Path</code></dt>
 	<dd>
-		<p><b>In a parent measure</b>, the path of the folder to read. If Path="", then the plugin defaults to <b>My Computer</b>.<br/><b>In a child measure</b>, this is used to identfy the <code>[MeasureName]</code> of the parent measure to read values from.</p>
+		<p><b>In a parent measure</b>, the path of the folder to read. If Path="", then the plugin defaults to <b>My Computer</b>.<br><b>In a child measure</b>, this is used to identfy the <code>[MeasureName]</code> of the parent measure to read values from.</p>
 	</dd>
 </dl>
 
@@ -95,14 +95,14 @@ Index=1
 <dl>
 	<dt id="FinishAction"><code>FinishAction</code></dt>
 	<dd>
-		<p>A <a href="!bangs">bang</a> or <a href="!options#Action">action</a> that is executed when the plugin has completed reading the folders and files.  This can be used to ensure that a large folder structure is fully read before other actions are taken.</p>
+		<p>A <a href="!bangs">bang</a> or <a href="!options#Action">action</a> that is executed when the plugin has completed reading the folders and files. This can be used to ensure that a large folder structure is fully read before other actions are taken.</p>
 	</dd>
-	
+
 	<dt id="Recursive"><code>Recursive</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If 1, the plugin searches all sub-folders updating only the file count, folder count and overall folder size. This option does not index specific files in sub-folders.</p>
 	</dd>
-	
+
 	<dt id="Count"><code>Count</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>The number of items to be indexed at one time.</p>
@@ -115,7 +115,7 @@ Index=1
 
 	<dt id="ShowFolder"><code>ShowFolder</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		<p>If 1, folders will be included, along with files. If <code>ShowFolder=0</code>, folders are ignored.<br/><br/>
+		<p>If 1, folders will be included, along with files. If <code>ShowFolder=0</code>, folders are ignored.<br><br>
 		<b>Note: </b>This does not control the <code>..</code> folder, use <a href="#ShowDotDot">ShowDotDot</a> above.</p>
 	</dd>
 
@@ -179,8 +179,8 @@ Index=1
 
 	<dt id="Type"><code>Type</code> <small>Default: <code>FolderPath</code></small></dt>
 	<dd>
-		<p>Type of information to obtain from the parent measure. Options include: <code>FolderPath</code>, <code>FolderSize</code>, <code>FileCount</code>, <code>FolderCount</code>, <code>FileName</code>, <code>FileType</code>, <code>FileSize</code>, <code>FileDate</code>, <code>FilePath</code>, and <code>Icon</code>.<br/><br/>
-		<b>Note: </b>If <code>Type=Icon</code>, the the full path and name of the icon file will be the returned value. See <a href="#IconPath">IconPath</a> below.  This can be used with <code>MeasureName</code> or <code>ImageName</code> in an Image meter to display the icon.</p>
+		<p>Type of information to obtain from the parent measure. Options include: <code>FolderPath</code>, <code>FolderSize</code>, <code>FileCount</code>, <code>FolderCount</code>, <code>FileName</code>, <code>FileType</code>, <code>FileSize</code>, <code>FileDate</code>, <code>FilePath</code>, and <code>Icon</code>.<br><br>
+		<b>Note: </b>If <code>Type=Icon</code>, the the full path and name of the icon file will be the returned value. See <a href="#IconPath">IconPath</a> below. This can be used with <code>MeasureName</code> or <code>ImageName</code> in an Image meter to display the icon.</p>
 	</dd>
 
 	<dt id="DateType"><code>DateType</code> <small>Default: <code>Modified</code></small></dt>
@@ -205,37 +205,37 @@ Index=1
 <dl>
 	<dt id="PageUp"><code>PageUp</code></dt>
 	<dd>
-		<p>Decrease the current page count. For instance, If Count=8, and there are currently 25 files in the list, then there are a total of 4 pages. So if the plugin is currently displaying items 8-15 (page 2), and the PageUp command is sent to the parent measure, it will decrease the page count by one, and the items that will be displayed will be items 0-7 (page 1).<br/><br/>
+		<p>Decrease the current page count. For instance, If Count=8, and there are currently 25 files in the list, then there are a total of 4 pages. So if the plugin is currently displaying items 8-15 (page 2), and the PageUp command is sent to the parent measure, it will decrease the page count by one, and the items that will be displayed will be items 0-7 (page 1).<br><br>
 		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PageUp"</code></p>
 	</dd>
 
 	<dt id="PageDown"><code>PageDown</code></dt>
 	<dd>
-		<p>Increases the page count.<br/><br/>
+		<p>Increases the page count.<br><br>
 		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PageDown"</code></p>
 	</dd>
 
 	<dt id="IndexUp"><code>IndexUp</code></dt>
 	<dd>
-		<p>Decreases the index by 1. This is useful for mouse scroll actions.<br/><br/>
+		<p>Decreases the index by 1. This is useful for mouse scroll actions.<br><br>
 		<b>Usage example: </b><code>MouseScrollUpAction=!CommandMeasure "ParentMeasureName" "IndexUp"</code></p>
 	</dd>
 
 	<dt id="IndexDown"><code>IndexDown</code></dt>
 	<dd>
-		<p>Increases the index by 1. This is useful for mouse scroll actions.<br/><br/>
+		<p>Increases the index by 1. This is useful for mouse scroll actions.<br><br>
 		<b>Usage example: </b><code>MouseScrollDownAction=!CommandMeasure "ParentMeasureName" "IndexDown"</code></p>
 	</dd>
 
 	<dt id="Update"><code>Update</code></dt>
 	<dd>
-		<p>Updates the measure, reading the disk and recreating all values in the parent measure.<br/><br/>
+		<p>Updates the measure, reading the disk and recreating all values in the parent measure.<br><br>
 		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "Update"</code></p>
 	</dd>
 
 	<dt id="PreviousFolder"><code>PreviousFolder</code></dt>
 	<dd>
-		<p>This will change the path to the folder one higher in the folder structure. (behaves like clicking on the <code>..</code> folder.)<br/><br/>
+		<p>This will change the path to the folder one higher in the folder structure. (behaves like clicking on the <code>..</code> folder.)<br><br>
 		<b>Usage example: </b><code>LeftMouseUpAction=!CommandMeasure "ParentMeasureName" "PreviousFolder"</code></p>
 	</dd>
 </dl>
@@ -244,17 +244,17 @@ Index=1
 <dl>
 	<dt id="FollowPath"><code>FollowPath</code></dt>
 	<dd>
-		<p>If the index referenced in the child measure is currently a folder, then the parent measure's <code>Path</code> is updated to the new path. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a "DoubleClick" action.<br/><br/>
+		<p>If the index referenced in the child measure is currently a folder, then the parent measure's <code>Path</code> is updated to the new path. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a "DoubleClick" action.<br><br>
 		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ChildMeasureName" "FollowPath"</code></p>
 	</dd>
 
 	<dt id="Open"><code>Open</code></dt>
 	<dd>
-		<p>This will open the file or folder that the index represents. If it is a folder, the folder is opened in Windows Explorer. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a "DoubleClick" action.<br/><br/>
+		<p>This will open the file or folder that the index represents. If it is a folder, the folder is opened in Windows Explorer. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a "DoubleClick" action.<br><br>
 		<b>Usage example: </b><code>LeftMouseDoubleClickAction=!CommandMeasure "ChildMeasureName" "Open"</code></p>
 	</dd>
 </dl>
-	
+
 <h2>Example</h2>
 
 {% highlight ini %}

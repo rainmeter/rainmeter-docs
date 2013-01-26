@@ -69,7 +69,7 @@ StringIndex=2
 	<dt id="StringIndex2"><code>StringIndex2</code></dt>
 	<dd>
 		<p>The second string index is used when using a <code>RegExp</code> in a measure that uses data from another WebParser measure (i.e. the <code>URL</code> points to a <a href="#ParentChild">parent</a> measure. In this case the <code>StringIndex</code> defines the index of the result of the parent measure's <code>RegExp</code> and the <code>StringIndex2</code> defines the index of this measure's <code>RegExp</code> (i.e. it defines the string that the measure returns).</p>
-		
+
 		<p>More information on using StringIndex2 can be found <a href="/tips/webparser-using-stringindex2">here</a>.</p>
 
 		<p><b>Note:</b> If the <code>RegExp</code> is not defined in this measure, the <code>StringIndex2</code> has no effect.</p>
@@ -140,16 +140,16 @@ StringIndex=2
 	<dd>
 		<p>Proxy server to use with the plugin. The following settings are valid:</p>
 		</ul>
-		<li><b>/auto</b><br/>
+		<li><b>/auto</b><br>
 		This will use the proxy settings contained in the options for Internet Explorer. (default)</li>
-		<li><b>/none</b><br/>
+		<li><b>/none</b><br>
 		This will make a direct connection, and will not use any proxy setting.</li>
-		<li><b>ServerName:Port</b><br/>
+		<li><b>ServerName:Port</b><br>
 		This will connect to the proxy server hostname or ip address and port defined. Port is often optional with proxy servers.</li>
 		</ul>
-		
-		<br/><p>This option can also be set in the <a href="http://docs.rainmeter.net/manual-beta/settings#RainmeterData">Rainmeter.data</a> file.  If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
-		
+
+		<br><p>This option can also be set in the <a href="http://docs.rainmeter.net/manual-beta/settings#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
+
 		<p><b>Note: </b>The plugin doesn't support any authentication, so <b>only</b> use proxy settings that do not require it.</p>
 
 		<p><b>Examples:</b> <code>ProxyServer=/none</code>, <code>ProxyServer=192.168.1.1:8080</code>, <code>ProxyServer=ProxyHostname.net</code></p>

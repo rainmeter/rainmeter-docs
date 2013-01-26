@@ -9,15 +9,15 @@ title: 'Mouse Variables'
 
 <p>There are two variants of the function.</p>
 <ul>
-<li><b>$MouseX$</b> and <b>$MouseY$</b><br/>
+<li><b>$MouseX$</b> and <b>$MouseY$</b><br>
 Contains the current X and Y position of the mouse in pixels relative to the meter or skin.</li>
-<li><b>$MouseX:%$</b> and <b>$MouseY:%$</b><br/>
+<li><b>$MouseX:%$</b> and <b>$MouseY:%$</b><br>
 Contains the current X and Y position of the mouse as a percentage relative to the meter or skin.</li>
 </ul>
 
 <h2>Usage</h2>
 
-<p>The variables are only created and used in the context of a mouse click action.  Primarily, they will be used as a parameter to a <a href="http://docs.rainmeter.net/manual-beta/bangs">Bang</a>. For instance:</p>
+<p>The variables are only created and used in the context of a mouse click action. Primarily, they will be used as a parameter to a <a href="http://docs.rainmeter.net/manual-beta/bangs">Bang</a>. For instance:</p>
 
 <p><code>LeftMouseUpAction=[!SetOption SomeMeter X $MouseX$][!UpdateMeter *][!Redraw]</code></p>
 <p><code>LeftMouseUpAction=!CommandMeasure ScriptMeasure GetRGB($MouseX$,$MouseY$)</code></p>

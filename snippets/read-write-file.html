@@ -74,7 +74,7 @@ function WriteFile(FilePath, Contents)
 
 	-- OPEN FILE.
 	local File = io.open(FilePath, 'w')
-	
+
 	-- HANDLE ERROR OPENING FILE.
 	if not File then
 		print('WriteFile: unable to open file at ' .. FilePath)

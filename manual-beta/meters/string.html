@@ -98,22 +98,22 @@ Text=This is text containing %1 and %2.
 	<dd>
 		<p>Controls how strings are truncated (clipped) or wrapped to fit in or expand the containing meter. Valid values are:</p>
 		<ul>
-		<li><code>0</code>: Disabled.  The string will not be clipped or wrapped. (default)</li>
-		<li><code>1</code>: Enabled.  The string will be clipped with an added ellipsis <code>...</code> when it exceeds the specified <code>W</code> (<a href="!meters/general-options#WH">width</a>) option on the meter. If the <code>H</code> (<a href="!meters/general-options#WH">height</a>) option is large enough to allow multiple lines, the text is wrapped until the value of <code>H</code> is reached, then clipped.</li>
-		<li><code>2</code>: Auto.  The string will be clipped or wrapped based on the value of <code>W</code> and/or <code>H</code>.  If the width or height are not specified, the meter itself will change size to accommodate the string. This setting works in conjunction with the <a href="#ClipStringW">ClipStringW</a> and <a href="#ClipStringH">ClipStringH</a> options below, to set a "maximum" size that the meter should expand to accomodate the string before clipping.
+		<li><code>0</code>: Disabled. The string will not be clipped or wrapped. (default)</li>
+		<li><code>1</code>: Enabled. The string will be clipped with an added ellipsis <code>...</code> when it exceeds the specified <code>W</code> (<a href="!meters/general-options#WH">width</a>) option on the meter. If the <code>H</code> (<a href="!meters/general-options#WH">height</a>) option is large enough to allow multiple lines, the text is wrapped until the value of <code>H</code> is reached, then clipped.</li>
+		<li><code>2</code>: Auto. The string will be clipped or wrapped based on the value of <code>W</code> and/or <code>H</code>. If the width or height are not specified, the meter itself will change size to accommodate the string. This setting works in conjunction with the <a href="#ClipStringW">ClipStringW</a> and <a href="#ClipStringH">ClipStringH</a> options below, to set a "maximum" size that the meter should expand to accomodate the string before clipping.
 		</ul>
 	</dd>
-	
+
 	<dt id="ClipStringW"><code>ClipStringW</code></dt>
-	<dd>	
-		<p>Sets a maximum width that the meter will expand to accomodate the string when <code>ClipString=Auto</code>.  This setting is ignored if the <code>W</code> option is set.</p>
-	</dd>	
-	
+	<dd>
+		<p>Sets a maximum width that the meter will expand to accomodate the string when <code>ClipString=Auto</code>. This setting is ignored if the <code>W</code> option is set.</p>
+	</dd>
+
 	<dt id="ClipStringH"><code>ClipStringH</code></dt>
 	<dd>
-		<p>Sets a maximum height that the meter will expand to accomodate the string when <code>ClipString=Auto</code>.  This setting is ignored if the <code>H</code> option is set.</p>
+		<p>Sets a maximum height that the meter will expand to accomodate the string when <code>ClipString=Auto</code>. This setting is ignored if the <code>H</code> option is set.</p>
 	</dd>
-	
+
 	<dt id="Angle"><code>Angle</code> <small>Default: <code>0.0</code></small></dt>
 	<dd>
 		Defines the angle of the text in radians.

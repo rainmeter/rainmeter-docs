@@ -4,74 +4,74 @@ title: 'Update with Bangs'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>Normally, Rainmeter skins are driven by the value of the <code>Update</code> option in the [Rainmeter] section of the skin.  On each update, all measures and meters are updated, obtaining current values with measures, then updating and redrawing all meters with the new values.  The <code>UpdateDivider</code> option is used to have some measures or meters update less often, if the information being obtained doesn't change as often as the Update option in the skin.</p>
+<p>Normally, Rainmeter skins are driven by the value of the <code>Update</code> option in the [Rainmeter] section of the skin. On each update, all measures and meters are updated, obtaining current values with measures, then updating and redrawing all meters with the new values. The <code>UpdateDivider</code> option is used to have some measures or meters update less often, if the information being obtained doesn't change as often as the Update option in the skin.</p>
 
-<p>However, there are times when you might want all or part of a skin to update "on demand", rather than waiting for the next normal update.  This is most often desired when there are mouse actions in a skin, and you want the skin to react to immediately when you hover over or click on the skin or some meter.</p>
+<p>However, there are times when you might want all or part of a skin to update "on demand", rather than waiting for the next normal update. This is most often desired when there are mouse actions in a skin, and you want the skin to react to immediately when you hover over or click on the skin or some meter.</p>
 
 <p><b>For example:</b></p>
 
-<p>You have a Quote plugin that is obtaining random images from some folder.  You have the Quote measure set with an UpdateDivider of 30, so combined with an Update of 1000, a new random image is displayed every 30 seconds.  However, you might want to have a left-click on the image meter immediately go out and get a new image and display it, but you don't want to wait up to 30 seconds for the new image to display.</p>
+<p>You have a Quote plugin that is obtaining random images from some folder. You have the Quote measure set with an UpdateDivider of 30, so combined with an Update of 1000, a new random image is displayed every 30 seconds. However, you might want to have a left-click on the image meter immediately go out and get a new image and display it, but you don't want to wait up to 30 seconds for the new image to display.</p>
 
 <p>There are several bangs that can help make your skins more responsive.</p>
 
 <ul>
-<li>You can use <code>!Update</code> along with the mouse action to force the entire skin to immediately update.<br/><br/>
- 
-<code>LeftMouseUpAction=!Update</code><br/><br/>
- 
-This is the "brute force" approach, and may be the most simple and effective if you want the entire skin to update on some action.  It should be remembered that the !Update bang overrides the Update value in [Rainmeter], but does not override any UpdateDivider options in measures or meters.  The design of the skin should be taken into consideration when deciding if this is best, or a more "targetted" approach with the following bangs.</li><br/>
- 
-<li>You can use <code>!UpdateMeasure</code> to force a single measure to immediately update.  Any Update or UpdateDivider settings will be ignored, and the measure will immediately obtain a new current value.  In our example about the Quote plugin above, this would be a good way to have the plugin go get a new image "on demand".<br/><br/>
- 
-<code>LeftMouseUpAction=!UpdateMeasure MeasureRandomImage</code><br/><br/>
- 
-So far so good, however the Image meter dislpaying the result will still wait for the next update to get the new value from the measure.  We can address that by adding another bang, <code>!UpdateMeter</code>.<br/><br/>
- 
-<code>LeftMouseUpAction=[!UpdateMeasure MeasureRandomImage][!UpdateMeter MeterImage]</code><br/><br/>
- 
-Now the value of both the measure and the meter have been updated.  However, the Image meter will not actually be "drawn" again with the new result until the next update.  We need one more step, <code>!Redraw</code>.<br/><br/>
- 
-<code>LeftMouseUpAction=[!UpdateMeasure MeasureRandomImage][!UpdateMeter MeterImage][!Redraw]</code><br/><br/>
- 
-That will update both the measure and the meter, and will redraw the entire skin. The effect is that when you click on the meter, it will instantly display the new image.  The advantage to this "targetted" approach is that you are using the minimum of resources to accomplish what you want, and are allowing measures and meters not involved to update normally.</li><br/>
- 
-<p><b>Note:</b> Why don't we just automatically do the "redraw" when we do !UpdateMeter?  This is because the entire skin must ALWAYS be redrawn due to how Rainmeter displays meters.  Keeping them separate allows you to update several meters in one "action", then at the end redraw the entire skin just one time.<br/><br/>
+<li>You can use <code>!Update</code> along with the mouse action to force the entire skin to immediately update.<br><br>
+
+<code>LeftMouseUpAction=!Update</code><br><br>
+
+This is the "brute force" approach, and may be the most simple and effective if you want the entire skin to update on some action. It should be remembered that the !Update bang overrides the Update value in [Rainmeter], but does not override any UpdateDivider options in measures or meters. The design of the skin should be taken into consideration when deciding if this is best, or a more "targetted" approach with the following bangs.</li><br>
+
+<li>You can use <code>!UpdateMeasure</code> to force a single measure to immediately update. Any Update or UpdateDivider settings will be ignored, and the measure will immediately obtain a new current value. In our example about the Quote plugin above, this would be a good way to have the plugin go get a new image "on demand".<br><br>
+
+<code>LeftMouseUpAction=!UpdateMeasure MeasureRandomImage</code><br><br>
+
+So far so good, however the Image meter dislpaying the result will still wait for the next update to get the new value from the measure. We can address that by adding another bang, <code>!UpdateMeter</code>.<br><br>
+
+<code>LeftMouseUpAction=[!UpdateMeasure MeasureRandomImage][!UpdateMeter MeterImage]</code><br><br>
+
+Now the value of both the measure and the meter have been updated. However, the Image meter will not actually be "drawn" again with the new result until the next update. We need one more step, <code>!Redraw</code>.<br><br>
+
+<code>LeftMouseUpAction=[!UpdateMeasure MeasureRandomImage][!UpdateMeter MeterImage][!Redraw]</code><br><br>
+
+That will update both the measure and the meter, and will redraw the entire skin. The effect is that when you click on the meter, it will instantly display the new image. The advantage to this "targetted" approach is that you are using the minimum of resources to accomplish what you want, and are allowing measures and meters not involved to update normally.</li><br>
+
+<p><b>Note:</b> Why don't we just automatically do the "redraw" when we do !UpdateMeter?  This is because the entire skin must ALWAYS be redrawn due to how Rainmeter displays meters. Keeping them separate allows you to update several meters in one "action", then at the end redraw the entire skin just one time.<br><br>
 
 <code>LeftMouseUpAction=[!SetOption MeterOne FontSize 12][!SetOption MeterTwo FontSize 11][!UpdateMeter MeterOne][!UpdateMeter MeterTwo][!Redraw]</code></p>
 
-<br/><p><b>Here are the entries for these bangs from the <a href="/manual/bangs">manual</a> as a reference.</b></p>
+<br><p><b>Here are the entries for these bangs from the <a href="/manual/bangs">manual</a> as a reference.</b></p>
 
 <p><b>Entire skins:</b></p>
 
-<p>!Update<br/>
+<p>!Update<br>
 Overrides the setting of the <code>Update</code> option in [Rainmeter] and immediately updates the entire skin, all measures and meters. This does not override any UpdateDivider options on measures or meters. </p>
 
-<p>!Redraw<br/>
-Overrides the setting of the <code>Update</code> option in [Rainmeter] and immediately redraws all visible elements of the entire skin.  Meters will use the last value obtained for any measures or variables referenced.</p>
+<p>!Redraw<br>
+Overrides the setting of the <code>Update</code> option in [Rainmeter] and immediately redraws all visible elements of the entire skin. Meters will use the last value obtained for any measures or variables referenced.</p>
 
 <p><b>Measures and meters within a skin:</b></p>
 
-<p>!UpdateMeasure<br/>
+<p>!UpdateMeasure<br>
 Overrides the setting of the <code>Update</code> option in [Rainmeter] or any <code>UpdateDivider</code> on the measure, and immediately updates the measure.</p>
 
-<p>!UpdateMeter<br/>
-Overrides the setting of the <code>Update</code> option in [Rainmeter] or any <code>UpdateDivider</code> on the meter, and immediately updates the meter, obtaining new current values for any measures or variables referenced.  Note that the meter is not redrawn with any new values until the next update, or if a <code>!Redraw</code> bang is used.</p>
+<p>!UpdateMeter<br>
+Overrides the setting of the <code>Update</code> option in [Rainmeter] or any <code>UpdateDivider</code> on the meter, and immediately updates the meter, obtaining new current values for any measures or variables referenced. Note that the meter is not redrawn with any new values until the next update, or if a <code>!Redraw</code> bang is used.</p>
 
 <p><b>There are also group versions of these bangs</b></p>
 
 <p><b>Entire skins:</b></p>
 
-<p>!UpdateGroup<br/>
+<p>!UpdateGroup<br>
 Overrides the setting of the <code>Update</code> option in [Rainmeter] and immediately updates the skins in the specified group, all measures and meters. This does not override any UpdateDivider options on measures or meters. </p>
 
-<p>!RedrawGroup<br/>
-Overrides the setting of the <code>Update</code> option in [Rainmeter] and immediately redraws all visible elements of the skins in the specified group.  Meters will use the last value obtained for any measures or variables referenced.</p>
+<p>!RedrawGroup<br>
+Overrides the setting of the <code>Update</code> option in [Rainmeter] and immediately redraws all visible elements of the skins in the specified group. Meters will use the last value obtained for any measures or variables referenced.</p>
 
 <p><b>Measures and meters within a skin:</b></p>
 
-<p>!UpdateMeasureGroup<br/>
+<p>!UpdateMeasureGroup<br>
 Overrides the setting of the <code>Update</code> option in [Rainmeter] or any <code>UpdateDivider</code> on the measures in the specified group, and immediately updates the measures.</p>
 
-<p>!UpdateMeterGroup<br/>
-Overrides the setting of the <code>Update</code> option in [Rainmeter] or any <code>UpdateDivider</code> on the meters in the specified group, and immediately updates the meters, obtaining new current values for any measures or variables referenced.  Note that the meters are not redrawn with any new values until the next update, or if a <code>!RedrawGroup</code> bang is used.</p>
+<p>!UpdateMeterGroup<br>
+Overrides the setting of the <code>Update</code> option in [Rainmeter] or any <code>UpdateDivider</code> on the meters in the specified group, and immediately updates the meters, obtaining new current values for any measures or variables referenced. Note that the meters are not redrawn with any new values until the next update, or if a <code>!RedrawGroup</code> bang is used.</p>
 
