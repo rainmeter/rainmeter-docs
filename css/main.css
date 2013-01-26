@@ -279,6 +279,10 @@ dd {
 	background-color:transparent;
 }
 
+dd p:last-child {
+	margin-bottom:0;
+}
+
 table {
 	max-width:100%;
 	color:#333;
