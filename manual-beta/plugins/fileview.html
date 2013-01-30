@@ -77,6 +77,34 @@ Index=1
 
 <p>In these examples, three indexes are created due to the <code>Count=3</code> option on the parent measure. However, the information for all files and / or folders are obtained by the plugin, and subsequent or previous entries can be assigned to the three indexes by using !CommandMeasure statements described below. This will allow a skin to "scroll" through the files and / or folders in a dynamic way.</p>
 
+<p><b>Note:</b> A FileView measure will not re-read the disk information on a normal update cycle using <a href="!tips/update-guide">UpdateDivider</a> on the measure, nor when the <a href="!bangs#Update">!Update</a> / <a href="!bangs#UpdateMeasure">!UpdateMeasure</a> bangs are used.  If the options on the parent measure are changed dynamically with <a href="!bangs#SetVariable">!SetVariable</a> or <a href="!bangs#SetOption">!SetOption</a>, the <a href="#Update">Update plugin command</a> will need to be used to update the values.<p>
+
+{% highlight ini %}
+[MeasureFolder]
+Measure=Plugin
+Plugin=FileView
+Path="C:\ImageFolder"
+Count=3
+
+[MeterChangeFolder]
+Meter=Image
+W=26
+H=25
+SolidColor=0,0,0,255
+LeftMouseUpAction=[!SetOption MeasureFolder Path "C:\VideoFolder"][!CommandMeasure MeasureFolder Update]
+{% endhighlight %}
+
+<p>If it is desired that a folder be monitored for new or changed files, the <a href="#Update">Update plugin command</a> should be used in conjunction with an <a href="!measures/general-options#OnUpdateAction">OnUpdateAction</a> statement to keep the measure current with changing disk information.</p> 
+
+{% highlight ini %}
+[MeasureFolder]
+Measure=Plugin
+Plugin=FileView
+Path="C:\ImageFolder"
+Count=3
+UpdateDivider=5
+OnUpdateAction=!CommandMeasure MeasureFolder Update
+{% endhighlight %}
 
 <h2>Options</h2>
 <dl>
@@ -209,6 +237,12 @@ Index=1
 
 <h2>Parent measure commands</h2>
 <dl>
+
+	<dt id="Update"><code>Update</code></dt>
+	<dd>
+		<p>Updates the measure, reading the disk and recreating all values in the parent measure.</p>
+	</dd>
+	
 	<dt id="PageUp"><code>PageUp</code></dt>
 	<dd>
 		<p>Decreases the current page count.</p>
@@ -233,11 +267,6 @@ Index=1
 	<dt id="IndexDown"><code>IndexDown</code></dt>
 	<dd>
 		<p>Increases the index by 1. This is useful for mouse scroll actions.</p>
-	</dd>
-
-	<dt id="Update"><code>Update</code></dt>
-	<dd>
-		<p>Updates the measure, reading the disk and recreating all values in the parent measure.</p>
 	</dd>
 
 	<dt id="PreviousFolder"><code>PreviousFolder</code></dt>
