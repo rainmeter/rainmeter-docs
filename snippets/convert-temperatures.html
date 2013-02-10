@@ -16,9 +16,9 @@ function ConvertTemp(num, toScale)
 	local outTemp = 0
 
 	if toScale == 'c' then
-		outTemp = Round((5/9)*(num-32))
+		outTemp = Round((5 / 9) * (num - 32))
 	else
-		outTemp = Round((9/5)*num+32)
+		outTemp = Round((9 / 5) * num + 32)
 	end
 
 	return outTemp
@@ -26,7 +26,7 @@ end
 
 function Round(num, idp)
 	assert(tonumber(num), 'Round expects a number.')
-	local mult = 10^(idp or 0)
+	local mult = 10 ^ (idp or 0)
 	if num >= 0 then
 		return math.floor(num * mult + 0.5) / mult
 	else

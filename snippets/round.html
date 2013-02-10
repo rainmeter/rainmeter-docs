@@ -12,7 +12,7 @@ title: 'Round'
 {% highlight lua %}
 function Round(num, idp)
 	assert(tonumber(num), 'Round expects a number.')
-	local mult = 10^(idp or 0)
+	local mult = 10 ^ (idp or 0)
 	if num >= 0 then
 		return math.floor(num * mult + 0.5) / mult
 	else

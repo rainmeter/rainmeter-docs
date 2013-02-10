@@ -14,17 +14,17 @@ title: 'Read INI'
 {% highlight lua %}
 function ReadIni(inputfile)
 	local file = assert(io.open(inputfile, 'r'), 'Unable to open ' .. inputfile)
-	local tbl,section = {}
+	local tbl, section = {}
 	local num = 0
 	for line in file:lines() do
-		num = num+1
-		if not string.match(line, '^%s-;') then
-			local key,command = string.match(line, '^([^=]+)=(.+)')
-			if string.match(line, '^%s-%[.+') then
-				section = string.lower(string.match(line, '^%s-%[([^%]]+)'))
+		num = num + 1
+		if not line:match('^%s-;') then
+			local key, command = line:match('^([^=]+)=(.+)')
+			if line:match('^%s-%[.+') then
+				section = line:match('^%s-%[([^%]]+)'):lower()
 				if not tbl[section] then tbl[section] = {} end
 			elseif key and command and section then
-				tbl[section][string.match(string.lower(key), '^s*(%S*)%s*$')] = string.match(command, '^s*(.-)%s*$')
+				tbl[section][key:lower():match('^s*(%S*)%s*$')] = command:match('^s*(.-)%s*$')
 			elseif #line > 0 and section and not key or command then
 				print(num .. ': Invalid property or value.')
 			end

@@ -14,7 +14,7 @@ function AddCommas(num)
 	local replaceCount = 0
 
 	while true do
-		outNum, replaceCount = string.gsub(outNum, "^(-?%d+)(%d%d%d)", '%1,%2')
+		outNum, replaceCount = outNum:gsub("^(-?%d+)(%d%d%d)", '%1,%2')
 		if (replaceCount == 0) then
 			break
 		end

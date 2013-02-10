@@ -13,9 +13,9 @@ title: 'Switch'
 {% highlight lua %}
 Variable = 'Match1'
 
-if string.lower(Variable) == 'match1' then
+if Variable:lower() == 'match1' then
 	result = 'Example text.'
-elseif string.lower(Variable) == 'match2' then
+elseif Variable:lower() == 'match2' then
 	result = 'Other example text.'
 else
 	result = 'No match found.'
@@ -33,7 +33,7 @@ Table = switch{
 	default = function(tbl) return 'No match found' end,
 }
 
-result = Table:case(string.lower(Variable), 'Example text.')
+result = Table:case(Variable:lower(), 'Example text.')
 {% endhighlight %}
 
 <div class="noscroll">
