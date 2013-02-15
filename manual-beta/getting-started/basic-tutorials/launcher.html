@@ -1,0 +1,108 @@
+---
+layout: manual-beta
+title: 'Launcher'
+---
+<!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<h2>Creating a new skin</h2>
+
+<p>First, make sure you have done through the guide on creating a simple "hello world" skin at <a href="!getting-started/creating-skins">Creating Skins</a> so you understand how to create a .ini skin file in the Skins folder, and how to refresh Rainmeter so it sees your new entry.</p>
+
+<p>So let's create a new folder under Skins, where we will store all of the skins we create in these tutorials.  We want to keep them together in one <a href="!skins#Root">root config</a> folder, so we can later look at how to share some settings and resources between them.</p>
+
+<p>In Windows Explorer, create a new folder called <b>Tutorials</b>.  Under that folder, create another new folder called <b>Launcher</b>.  In that <b>Tutorials\Launcher</b> folder, create a new empty text file. In Windows explorer, you can simply right-click in the folder and say "New / Text document".  Give it the name <b>Launcher.ini</b>.</p>
+
+<p>Now, left-click the Rainmeter icon in the Windows notification area on your taskbar, to open the <a href="!user-interface/manage#SkinsTab">Manage</a> dialog.  Click on the <b>Refresh all</b> button on the bottom left, and you should see your new <b>Tutorials / Launcher</b> config in the list.  Find <b>Launcher.ini</b> in the list, right-click it and say "Edit".  This will open the new skin file in your default text editor. Don't load the skin just yet, we need to add some code first...</p>
+
+<h2>Building the Launcher skin</h2>
+
+<p>First, as we did in our ealier "hello world" skin, let's add the [Rainmeter] section to control the Update speed of the skin.</p>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+{% endhighlight %}
+
+<p>Then, we can add our first <a href="!meters">meter</a> to the skin.</p>
+{% highlight ini %}
+[MeterLaunch1]
+Meter=String
+X=5
+Y=5
+FontFace=Trebuchet MS
+FontSize=14
+FontColor=255,255,255,255
+StringStyle=Bold
+AntiAlias=1
+Text=Notepad
+SolidColor=0,0,0,1
+LeftMouseUpAction=["C:\Windows\System32\Notepad.exe"]
+{% endhighlight %}
+
+<p>Note that the first two things we must do is create a <a href="!skins#Format">[SectionName]</a> for the meter, and tell Rainmeter what type of meter this is.</p>
+{% highlight ini %}
+[MeterLaunch1]
+Meter=String
+{% endhighlight %}
+
+<p>This is a <a href="!meters/string">String meter</a>, one of the most commonly used meters.  It is used to display some text on the screen.  Formatting control, like the postion, size, color and font face can all be controlled with a combination of <a href="!meters/general-options">General meter options</a> and the options specific to the <a href="!meters/string">String meter</a>. Let's look at some we have used here.</p>
+
+<p>
+<ul>
+<li><a href="!meters/general-options#XY">X and Y</a>: These control the postion of the meter relative to the overall skin.  So what we are saying here is that we want this first meter to be five pixels right of the left edge of the skin, and five pixels down from the top of the skin.</li>
+<li><a href="!meters/string#FontFace">FontFace</a>: This determines which <a href="http://docs.rainmeter.net/tips/fonts-guide">font</a> you want to use when displaying the string.</li>
+<li><a href="!meters/string#FontSize">FontSize</a>: The size in points for the font.</li>
+<li><a href="!meters/string#FontColor">FontColor</a>: The <a href="!options#Color">color</a> for the text.</li>
+<li><a href="!meters/string#StringStyle">StringStyle</a>: Contols some sytle options for the string.  We are using a <b>Bold</b> style.</li>
+<li><a href="!meters/general-options#AntiAlias">AntiAlias</a>: Does font smoothing on the text, to improve the display quality.</li>
+</ul>
+
+<p>Then we are setting the <a href="!meters/string#Text">Text</a> option of the meter with <code>Text=Notepad</code>, defining the string of text we wish to display. String meters can also use the value of <a href="!meters/string#MeasureName">Measures</a> as the text to display, we will go into that in more detail in a future tutorial.</p>
+
+<p>The last two options in the meter are what really makes this into a "launcher", and not just some text on the screen.</p>
+
+<ul>
+<li><a href="!meters/general-options#SolidColor">SolidColor</a>=0,0,0,1: This is a little trick used to create a solid but invisible "box" behind the string meter, to make clicking on the text easier.</li>
+<li><a href="!mouse-actions#LeftMouseUpAction">LeftMouseUpAction</a>=["C:\Windows\System32\Notepad.exe"]: This is a <a href="!mouse-actions">mouse action</a>, telling Rainmeter to take the defined <a href="!options#Action">action option</a> when the meter is clicked with the mouse. In this case, we are launching the application <b>Notepad.exe</b> found in the folder <b>C:\Windows\System32\</b>.  We will go into much more detail on different types of <a href="!options#Action">actions</a> and <a href="!bangs">Bangs</a> in future tutorials.</li>
+</ul>
+
+<p>So let's load our new skin and take a look at where we stand.  From the <a href="!user-interface/manage#SkinsTab">Manage</a> dialog, find the <b>Launcher.ini</b> entry in the list and click on the <b>Load</b> button on the upper right.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/launcher/LauncherImage01.jpg"><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage01.jpg" class="thumbnail"/></a>
+</div>
+
+<p>Drag the skin anywhere on the screen you like.  Rainmeter will remember the postion any time you load this skin in the future.  You can also right-click the skin to change other <a href="!user-interface/context-menus">skin options</a> as desired.</p>
+
+<p>There we have our first meter, and a fully functioning Rainmeter skin.  Clicking on the <b>Notepad</b> text will launch the application. Congratulations!  Take a short break.</p>
+
+<h2>Adding another meter</h2>
+
+<p>Next, let's add another meter to launch another application.  The format of the meter will be much the same as the earlier one, but we need to do some things to make sure the <b>postion</b> of the meter is appropriate.</p>
+
+{% highlight ini %}
+[MeterLaunch2]
+Meter=String
+X=0r
+Y=2R
+FontFace=Trebuchet MS
+FontSize=14
+FontColor=255,255,255,255
+StringStyle=Bold
+SolidColor=0,0,0,1
+AntiAlias=1
+Text=Paint
+LeftMouseUpAction=["MSPaint.exe"]
+{% endhighlight %}
+
+<p>The important changes here are in the <a href="!meters/general-options#XY">X and Y</a> options for the meter.  Remember that <b>X</b> and <b>Y</b> set the position of a meter in the context of the overall skin.  Note that we are using <b>relative postioning</b> to set the <b>X</b> option zero pixels relative to the left of the <b>previous meter</b>, (in effect the same <b>X</b> as before) and the <b>Y</b> option two pixels relative to the botton of the previous meter.  We could also have specifically set the value of <b>X</b> and <b>Y</b> to some hard-coded value, but using relative positioning is often much easier when laying out a skin's meters.</p>
+
+<p>We have changed the <code>Text</code> and <code>LeftMouseUpAction</code> options for our second application, and we can now use <b>Manage</b> and the <b>Refresh</b> button at the upper right to see our changes in action.  Note that you can also right-click the skin on the screen and say <b>Refresh skin</b>.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/launcher/LauncherImage02.jpg"><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage02.jpg" class="thumbnail"/></a>
+</div>
+
+<p style="clear: both;">&nbsp;</p>
+
+<div class="right"><p><a href="!getting-started/basic-tutorials/Clock">Continue to: Clock &raquo;</a></p> </div>
+<p><a href="!getting-started/basic-tutorials/index">&laquo; Back to: Basic Tutorials</a></p>
