@@ -6,7 +6,7 @@ title: 'Launcher'
 
 <h2>Creating a new skin</h2>
 
-<p>First, make sure you have done through the guide on creating a simple "hello world" skin at <a href="!getting-started/creating-skins">Creating Skins</a> so you understand how to create a .ini skin file in the Skins folder, and how to refresh Rainmeter so it sees your new entry.</p>
+<p>First, make sure you have gone through the guide on creating a simple "hello world" skin at <a href="!getting-started/creating-skins">Creating Skins</a> so you understand how to create a .ini skin file in the Skins folder, and how to refresh Rainmeter so it sees your new entry.</p>
 
 <p>So let's create a new folder under Skins, where we will store all of the skins we create in these tutorials.  We want to keep them together in one <a href="!skins#Root">root config</a> folder, so we can later look at how to share some settings and resources between them.</p>
 
@@ -44,7 +44,7 @@ LeftMouseUpAction=["C:\Windows\System32\Notepad.exe"]
 Meter=String
 {% endhighlight %}
 
-<p>This is a <a href="!meters/string">String meter</a>, one of the most commonly used meters.  It is used to display some text on the screen.  Formatting control, like the postion, size, color and font face can all be controlled with a combination of <a href="!meters/general-options">General meter options</a> and the options specific to the <a href="!meters/string">String meter</a>. Let's look at some we have used here.</p>
+<p>This is a <a href="!meters/string">String meter</a>, one of the most commonly used meters.  It is used to display some text on the screen.  Formatting control, like the postion, size, color and font face can all be set with a combination of <a href="!meters/general-options">General meter options</a> and the options specific to the <a href="!meters/string">String meter</a>. Let's look at some we have used here.</p>
 
 <p>
 <ul>
@@ -102,7 +102,121 @@ LeftMouseUpAction=["MSPaint.exe"]
 
 <p>We have changed the <code>Text</code> and <code>LeftMouseUpAction</code> options for our second application, and we can now use <b>Manage</b> and the <b>Refresh</b> button at the upper right to see our changes in action.  Note that you can also right-click the skin on the screen and say <b>Refresh skin</b>.</p>
 
+<h2 style="clear: both;">A new meter type: The Image meter</h2>
+
+<p>Now we are going to shift gears a bit, and introduce a new meter type.  What we want to do with the next meter is display an image, which we can click on to launch the application.</p>
+
+{% highlight ini %}
+[MeterLaunch3Image]
+Meter=Image
+ImageName=#@#Images\Calc.png
+W=32
+H=32
+X=0r
+Y=2R
+LeftMouseUpAction=["Calc.exe"]
+{% endhighlight %}
+
+<p>We have created a new section that has the <a href="!meters">Meter</a> option set to <code>Meter=<a href="!meters/image">Image</a></code>.  We are going to use an image file we will include with our skin, so we have a couple of things to do to set that up correctly.</p>
+
+<ul>
+<li>First, we need to create a folder to hold all the images for our tutorial skins.  We will use this folder not only for this <b>Launcher</b> skin, but other ones going forward.<br/><br/>
+In Windows Explorer, create a new folder under <b>Skins\Tutorials\</b> called <b>@Resources</b>.  The <a href="!skins/resources-folder">@Resources folder</a> is a special folder under the <a href="!skins#Root">root config</a> of a skin or suite of skins, used to hold images, sounds, fonts, include files and other shared resources for the skins.<br/><br/></li>
+<li>In this <b>Skins\Tutorials\@Resources\</b> folder, create a new folder called <b>Images</b>.  Download and copy the image below into that <b>Skins\Tutorials\@Resources\Images</b> folder.</li>
+</ul>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/launcher/LauncherImage02.jpg"><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage02.jpg" class="thumbnail"/></a>
+</div>
+
+<p style="clear: both;">Now let's go back to our skin code.  We have set the <a href="!meters/image#ImageName">ImageName</a> option to use the built-in <code>#@#</code> shortcut for the <b>@Resources</b> folder, and the sub-folder of <b>Images</b> where we put our <b>Calc.png</b> image file.  The Image meter will load and display this image.</p>
+
+<p>Next, we decided that the 128x128 pixels size of that original image file was just too large for our purposes.  So we used the <a href="!meters/general-options#WH">W and H</a> (width and height) options to change the size of the image to 32x32 pixels when displayed. Just like the String meter, Image meters use both <a href="!meters/general-options">General meter options</a> and options specific to the <a href="!meters/image">Image meter</a> type.</p>
+
+<p>Just as you did with the second String meter above, use relative postioning and the <a href="!meters/general-options#XY">X and Y</a> options to position the image below the previous meter.</p>
+
+{% highlight ini %}
+ImageName=#@#Images\Calc.png
+W=32
+H=32
+X=0r
+Y=2R
+{% endhighlight %}
+
+<p>Then, just as with the String meters above, set the <b>LeftMouseUpAction</b> option to <code>LeftMouseUpAction=["Calc.exe"]</code> so that the Windows Calculator is launched when the image is clicked.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/launcher/LauncherImage03.jpg"><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage03.jpg" class="thumbnail"/></a>
+</div>
+
+<p>Save your changes and refresh the skin. Click on the image to launch Windows Calculator.</p>
+
+<p style="clear: both;">You could just use the image as is, but let's add a string label next to the image.  For that, create a new String meter, much like the ones above.</p>
+
+{% highlight ini %}
+[MeterLaunch3Text]
+Meter=String
+X=0R
+Y=6r
+FontFace=Trebuchet MS
+FontSize=14
+FontColor=146,197,94,255
+StringStyle=Bold
+SolidColor=0,0,0,1
+AntiAlias=1
+Text=Calculator
+LeftMouseUpAction=["Calc.exe"]
+{% endhighlight %}
+
+<p>Notice that we have used the <a href="!meters/general-options#XY">X and Y</a> options to set the position of the meter lined up on the left with the previous meter (the Image meter), and six pixels below the top of it.  That will align the meter more or less centered to the right of the image of the calculator. We add the same <b>LeftMouseAction</b> that the Image meter has, so you can click on either to launch the application.  Just for fun, we also changed the <b>FontColor</b> of the string.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/launcher/LauncherImage04.jpg"><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage04.jpg" class="thumbnail"/></a>
+</div>
+
+<p>Save your changes and refresh the skin.</p>
+
+<p style="clear: both;">Having this skin just sorta float on the desktop is ok, but let's add a background meter to put a nice dark box behind the entire skin.</p>
+
+<p>An important concept in Rainmeter is that fact that how meters that "overlap" in position display from the standpoint of which is in "front" and which is in "back" on the screen is determined by the position of the meter's code in the skin .ini file.  Since we want our background meter to be "behind" all the other meters, we need to put the code for it before the other meters we want in front.</p>
+
+<p>So, let's go back up to the top of the skin, just below the [Rainmeter] section, but before the first String meter <b>[MeterLaunch1]</b> and put in our new background Image meter.</p>
+
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+
+[MeterBackground]
+Meter=Image
+W=145
+H=95
+SolidColor=60,60,60,255
+
+[MeterLaunch1]
+Meter=String
+X=5
+Y=5
+FontFace=Trebuchet MS
+FontSize=14
+FontColor=255,255,255,255
+StringStyle=Bold
+SolidColor=0,0,0,1
+AntiAlias=1
+Text=Notepad
+LeftMouseUpAction=["C:\Windows\System32\Notepad.exe"]
+{% endhighlight %}
+
+<p>We have set a specific <a href="!meters/general-options#WH">W and H</a> (width and height) so the meter is large enough to hold all the others, and no <a href="!meters/general-options#XY">X and Y</a> options.  This is so the meter will be at the far left and top of the overall skin.  We then set <code>SolidColor=60,60,60,255</code>, which in the absence of any <code>ImageName</code> on an Image meter will simply draw a square or rectangle based on the size of the <b>W</b> and <b>H</b> options.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/launcher/LauncherImage05.jpg"><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage05.jpg" class="thumbnail"/></a>
+</div>
+
+<p>Save your changes and refresh the skin.</p>
+
+<p style="clear: both;">Good job! You now have a pretty functional launcher skin that you can add items to, (just follow the patterns you used above) change string or image format options and positioning to modify to your tastes, and end up with something that is both functional and shows off your creativity.</p>
+
 <p style="clear: both;">&nbsp;</p>
 
-<div class="right"><p><a href="!getting-started/basic-tutorials/Clock">Continue to: Clock &raquo;</a></p> </div>
+<div class="right"><p><!--<a href="!getting-started/basic-tutorials/clock">--><span style="color:gray; font-weight:normal">Continue to: Clock &raquo;</span><!--</a>--></p> </div>
 <p><a href="!getting-started/basic-tutorials/index">&laquo; Back to: Basic Tutorials</a></p>
