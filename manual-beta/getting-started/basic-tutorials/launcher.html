@@ -129,7 +129,7 @@ In Windows Explorer, create a new folder under <b>Skins\Tutorials\</b> called <b
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/launcher/calc.png"><img src="!img/getting-started/basic-tutorials/launcher/calc.png" class="thumbnail"/></a>
 </div>
 
-<p style="clear: both;">Now let's go back to our skin code.  We have set the <a href="!meters/image#ImageName">ImageName</a> option to use the built-in <code>#@#</code> shortcut for the <b>@Resources</b> folder, and the sub-folder of <b>Images</b> where we put our <b>Calc.png</b> image file.  The Image meter will load and display this image.</p>
+<p style="clear: both;">Now let's go back to our skin code.  We have set the <a href="!meters/image#ImageName">ImageName</a> option to use the built-in <code>#@#</code> shortcut for the <b>@Resources</b> folder, and the sub-folder of <b>Images</b> where we put our <b>calc.png</b> image file.  The Image meter will load and display this image.</p>
 
 <p>Next, we decided that the 128x128 pixels size of that original image file was just too large for our purposes.  So we used the <a href="!meters/general-options#WH">W and H</a> (width and height) options to change the size of the image to 32x32 pixels when displayed. Just like the String meter, Image meters use both <a href="!meters/general-options">General meter options</a> and options specific to the <a href="!meters/image">Image meter</a> type.</p>
 
@@ -168,7 +168,7 @@ Text=Calculator
 LeftMouseUpAction=["Calc.exe"]
 {% endhighlight %}
 
-<p>Notice that we have used the <a href="!meters/general-options#XY">X and Y</a> options to set the position of the meter lined up on the left with the previous meter (the Image meter), and six pixels below the top of it.  That will align the meter more or less centered to the right of the image of the calculator. We add the same <b>LeftMouseAction</b> that the Image meter has, so you can click on either to launch the application.  Just for fun, we also changed the <b>FontColor</b> of the string.</p>
+<p>Notice that we have used the <a href="!meters/general-options#XY">X and Y</a> options to set the position of the meter lined up just to the right of the previous meter (the Image meter), and six pixels below the top of it.  That will align the meter more or less centered to the right of the image of the calculator. We add the same <b>LeftMouseAction</b> that the Image meter has, so you can click on either to launch the application.  Just for fun, we also changed the <b>FontColor</b> of the string.</p>
 
 <div class="exampleprev floatleft">
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/launcher/LauncherImage04.jpg"><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage04.jpg" class="thumbnail"/></a>
