@@ -1,0 +1,104 @@
+---
+layout: tips
+title: 'Radians Guide'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Two of the meters in Rainmeter use a unit of measurement called <b>Radians</b> in order to calculate a position on the circumference of a circle.  This is a common unit used by mathematicians, scientists, and yes, programmers when working with things that are round.  This guide will try to make it easier to understand, calculate and use radians in the context of Rainmeter.</p>
+
+<p>The two meters that use radians in their options are <a href="!meters/roundline">Roundline</a> and <a href="!meters/rotator">Rotator</a>.  Roundline draws a line that rotates around a center point based on some measure value.  Rotator does much the same, using an image you provide rather than drawing a line. Both use <a href="!meters/rotator#StartAngle">StartAngle</a> and <a href="!meters/rotator#RotationAngle">RotationAngle</a> to control the starting point on the circle, and the total amount of distance around the circle that constitutes 100 percent.  That way they can be used to display the value of any measure (or formula) that defines a percentage.</p>
+
+<h2>So what are radians?</h2>
+
+<p>Without going too deeply into the math involved, (there are tons of sites like <a href="http://en.wikipedia.org/wiki/Radian">Wikipidia</a> that can melt your brain with the details) radians measure a <b>distance</b> in <b>degrees</b> around the circumference of a circle.  The default starting point, which is 0° or 360° degrees, is directly to the <b>right of the center</b> point.  This is probably the most important thing to wrap your head around right from the start.  Radians have nothing at all to do with the degrees on a <b>compass</b>, which is traditionally shown with 0° degrees (or North) pointing straight up.</p>
+
+<p>So in short, radians are a way of defining a point on a circle, by starting at 0° degrees (directly to the right of center) and measuring the <b>distance</b> around the circle until you get to the point you want.</p>
+
+<p>The method for calculating the number of radians to any point of a circle is pretty simple.  It does make use of the mathematical constant <a href="http://en.wikipedia.org/wiki/Pi">PI</a> and PI has the advantage of making these calculation work independant of the size of the circle.</p>
+
+<p>You are unlikely to be able to think about the distance around a circle in terms of radians automatically.  They are defined as very precise numbers with lots of decimal places, and in any case you would need to factor the mathematical constant PI into things, and ... let's just stop there.  You can however think of a circle in terms of degrees.  A circle has 360 degrees, and we are all used to and can easily picture what 45°, 90°, 180° and 270° mean in terms of distance.  All we need to do is think about the circle with 0° pointing to the right of center, and add the number of degrees we need to get to the desired point.<p>
+
+<p>So for example, if we want to define the point at the <b>top</b> of a circle, we can easily see that it will be 270° away from 0°, going clockwise around the circle.  So what we want is a way to define that distance of 270° as a number of <b>radians</b>. This is done with a simple formula:</p>
+
+<p><b>Degrees to Radians:</b> (<i>degrees</i>*(PI/180))</p>
+
+<p>You can also reverse the process if you need to:</p>
+
+<p><b>Radians to Degrees:</b> (<i>radians</i>*(180/PI))</p>
+
+<p>Even better, here is a cheat-sheet of the radians for the most common numbers of degrees. While Rainmeter is drawing things based on relatively big pixels, and thus the <b>Radians (approx)</b> works fine for most cases, it is more accurate to use the <b>Radians (exact)</b> formula in the options in Rainmeter.</p>
+
+<p><table class="table-striped">
+<tr><td><b>Degrees</b></td><td>&nbsp;</td><td><b>Radians (exact)</b></td><td>&nbsp;</td><td><b>Radians (approx)</b></td></tr>
+<tr><td>15°</td><td>&nbsp;</td><td>(PI/12)</td><td>&nbsp;</td><td>0.262</td></tr>
+<tr><td>30°</td><td>&nbsp;</td><td>(PI/6)</td><td>&nbsp;</td><td>0.524</td></tr>
+<tr><td>45°</td><td>&nbsp;</td><td>(PI/4)</td><td>&nbsp;</td><td>0.785</td></tr>
+<tr><td>60°</td><td>&nbsp;</td><td>(PI/3)</td><td>&nbsp;</td><td>1.047</td></tr>
+<tr><td>75°</td><td>&nbsp;</td><td>((5*PI)/12)</td><td>&nbsp;</td><td>1.309</td></tr>
+<tr><td>90°</td><td>&nbsp;</td><td>(PI/2)</td><td>&nbsp;</td><td>1.571</td></tr>
+<tr><td>105°</td><td>&nbsp;</td><td>((7*PI)/12)</td><td>&nbsp;</td><td>1.833</td></tr>
+<tr><td>120°</td><td>&nbsp;</td><td>((2*PI)/3)</td><td>&nbsp;</td><td>2.094</td></tr>
+<tr><td>135°</td><td>&nbsp;</td><td>((3*PI)/4)</td><td>&nbsp;</td><td>2.356</td></tr>
+<tr><td>150°</td><td>&nbsp;</td><td>((5*PI)/6)</td><td>&nbsp;</td><td>2.618</td></tr>
+<tr><td>165°</td><td>&nbsp;</td><td>((11*PI)/12)</td><td>&nbsp;</td><td>2.880</td></tr>
+<tr><td>180°</td><td>&nbsp;</td><td>(PI)</td><td>&nbsp;</td><td>3.142</td></tr>
+<tr><td>270°</td><td>&nbsp;</td><td>((3*PI)/2)</td><td>&nbsp;</td><td>4.712</td></tr>
+<tr><td>195°</td><td>&nbsp;</td><td>((13*PI)/12)</td><td>&nbsp;</td><td>3.403</td></tr>
+<tr><td>210°</td><td>&nbsp;</td><td>((7*PI)/6)</td><td>&nbsp;</td><td>3.665</td></tr>
+<tr><td>225°</td><td>&nbsp;</td><td>((5*PI)/4)</td><td>&nbsp;</td><td>3.927</td></tr>
+<tr><td>240°</td><td>&nbsp;</td><td>((4*PI)/3)</td><td>&nbsp;</td><td>4.189</td></tr>
+<tr><td>255°</td><td>&nbsp;</td><td>((17*PI)/12)</td><td>&nbsp;</td><td>4.451</td></tr>
+<tr><td>270°</td><td>&nbsp;</td><td>((3*PI)/2)</td><td>&nbsp;</td><td>4.712</td></tr>
+<tr><td>285°</td><td>&nbsp;</td><td>((19*PI)/12)</td><td>&nbsp;</td><td>4.974</td></tr>
+<tr><td>300°</td><td>&nbsp;</td><td>((5*PI)/3)</td><td>&nbsp;</td><td>5.236</td></tr>
+<tr><td>315°</td><td>&nbsp;</td><td>((7*PI)/4)</td><td>&nbsp;</td><td>5.498</td></tr>
+<tr><td>330°</td><td>&nbsp;</td><td>((11*PI)/6)</td><td>&nbsp;</td><td>5.760</td></tr>
+<tr><td>345°</td><td>&nbsp;</td><td>((23*PI)/12)</td><td>&nbsp;</td><td>6.021</td></tr>
+<tr><td>360°/ 0°</td><td>&nbsp;</td><td>(2*PI)</td><td>&nbsp;</td><td>6.283</td></tr>
+</table></p>
+
+<h2>Example</h2>
+
+<p>We can use a CPU meausre, which returns the amount of CPU usage as a percentage from 0% to 100%.  Then we want to have a <a href="!meters/roundline">Roundline</a> meter that displays the current value as filling a circle.  We want the starting point at the top of the circle, and 100% defined as coming all the way back around to the top.</p>
+
+{% highlight ini %}
+[MeasureCPU]
+Measure=CPU
+
+[MeterCPUCircle]
+Meter=Roundline
+MeasureName=MeasureCPU
+W=40
+H=40
+StartAngle=((3*PI)/2)
+RotationAngle=(2*PI)
+LineWidth=5
+LineStart=15
+LineLength=20
+LineColor=255,255,255,255
+Solid=1
+AntiAlias=1
+{% endhighlight %}
+
+<p>The important bits here are the two options <a href="!meters/rotator#StartAngle">StartAngle</a> and <a href="!meters/rotator#RotationAngle">RotationAngle</a>.  StartAngle is defined as <b>((3*PI)/2)</b>, which is to say <b>270°</b>.  This means that if you start directly from the right of center at <b>0° / 360°</b> it will take <b>270°</b> degrees in <b>radians</b> to define the distance to the top of the circle moving clockwise. That will be the starting point for the meter. RotationAngle is defined as <b>(2*PI)</b>, which is telling Rainmeter that the distance defined as <b>100%</b> is all the way around <b>360°</b>, or the full circle.</p>
+
+<p>In another example, if you wanted to do a "VU Meter" type of approach, with the starting point on the left and 100% defined on the right, you would use:</p>
+
+{% highlight ini %}
+StartAngle=(PI)
+RotationAngle=(PI)
+{% endhighlight %}
+
+<p>If you look at the cheat-sheet above, you will see that this is saying start <b>180°</b> clockwise from <b>0° / 360°</b> (remember, starting directly right of center), and travel a total distance of <b>180°</b> from there to define <b>100%</b>.  
+
+<h2>A Rainmeter shortcut</h2>
+
+<p>While we think it is important to have a basic understanding of how <b>radians</b> work in Rainmeter, there is a way to cheat.  There is a function we have created that can be used to automtically convert a number of degrees to a number of radians for you. It is the <a href="!measures/calc#Functions">Rad(x)</a> function, which will convert "x" as a number of degrees to the corresponding number of radians.</p>
+
+<p>So in our first example above, we could also use:</p>
+<p>
+{% highlight ini %}
+StartAngle=(Rad(270))
+RotationAngle=(Rad(360))
+{% endhighlight %}
+</p>
