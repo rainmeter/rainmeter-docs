@@ -58,8 +58,6 @@ title: 'Radians Guide'
 <tr><td>360&deg;</td><td>&nbsp;</td><td>(2*PI)</td><td>&nbsp;</td><td>6.283</td></tr>
 </table></p>
 
-<p>Note that in the context of <b>StartAngle</b>, <b>0&deg;</b> and <b>360&deg;</b> are really the same thing, as they both define the point on the circle that is directly to the right of center.</p>
-
 <h2>Example</h2>
 
 <p>We can use a CPU meausre, which returns the amount of CPU usage as a percentage from 0% to 100%.  Then we want to have a <a href="http://docs.rainmeter.net/manual-beta/meters/roundline">Roundline</a> meter that displays the current value as filling a circle.  We want the starting point at the top of the circle, and 100% defined as coming all the way back around to the top.</p>
@@ -84,6 +82,8 @@ AntiAlias=1
 {% endhighlight %}
 
 <p>The important bits here are the two options <a href="http://docs.rainmeter.net/manual-beta/meters/rotator#StartAngle">StartAngle</a> and <a href="http://docs.rainmeter.net/manual-beta/meters/rotator#RotationAngle">RotationAngle</a>.  StartAngle is defined as <b>((3*PI)/2)</b>, which is to say <b>270&deg;</b>.  This means that if you start directly from the right of center at <b>0&deg; / 360&deg;</b> it will take <b>270&deg;</b> degrees in <b>radians</b> to define the distance to the top of the circle moving clockwise. That will be the starting point for the meter. RotationAngle is defined as <b>(2*PI)</b>, which is telling Rainmeter that the distance defined as <b>100%</b> is all the way around <b>360&deg;</b>, or the full circle.</p>
+
+<p>Note that in the context of StartAngle, <b>0&deg;</b> and <b>360&deg;</b> are really the same thing, as they both define the point on the circle that is directly to the right of center.</p>
 
 <p>In another example, if you wanted to do a "VU Meter" type of approach, with the starting point on the left and 100% defined on the right, you would use:</p>
 
