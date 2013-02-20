@@ -211,7 +211,7 @@ LineColor=#LightBlue#
 AntiAlias=1
 {% endhighlight %}
 
-<p>Next we want to create a <a href="!meters/string">String</a> meter showing the actual value we are getting in the <b>[MeasureCPU]</b> measure, and center it inside our circle. We have talked about string meters and positioning in ealier tutorials, so let's just add the following as a new section at the end of our skin code.</p>
+<p>Next we want to create a <a href="!meters/string">String</a> meter showing the actual value we are getting in the <b>[MeasureCPU]</b> measure, and center it inside our circle. We have talked about string meters and positioning in ealier tutorials, so let's just add the following as a new section at the end of your skin code.</p>
 
 {% highlight ini %}
 [MeterCPUPercent]
@@ -228,13 +228,313 @@ AntiAlias=1
 Text=%1%
 {% endhighlight %}
 
-<p>Save and refesh the skin to see our new meter.</p>
+<p>Save and refesh the skin to see your new meter.</p>
 
 <div class="exampleprev floatleft">
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage05.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage05.jpg" class="thumbnail"/></a>
 </div>
 
-<p style="clear: both;">
+<p style="clear: both;">You know, it would be nice if the color of that text changed when the CPU usage hits some value we define. What we can do is change the color to "red" if the value is at or above 25%, and back to "blue" if it is below that value.</p>
+
+<p>Go back near the top of the code and find the the <b>[MeasureCPU]</b> measure.  Let's add a few lines to it.</p>
+
+{% highlight ini %}
+[MeasureCPU]
+Measure=CPU
+IfAboveValue=24
+IfAboveAction=[!SetOption MeterCPUPercent FontColor #LightRed#][!UpdateMeter *][!Redraw]
+IfBelowValue=25
+IfBelowAction=[!SetOption MeterCPUPercent FontColor #LightBlue#][!UpdateMeter *][!Redraw]
+{% endhighlight %}
+
+<p>This is using <a href="!measures/general-options/ifactions">IfAction</a> options to do the following:</p>
+
+<ul>
+<li>If the value of the measure moves above 24, use the <a href="!bangs#SetOption">!SetOption</a> bang to change the <b>FontColor</b> option on the <b>[MeterCPUPercent]</b> meter to the value of the variable <b>#LightRed#</b> we defined earlier in <b>[Variables]</b>.</li>
+<li>If the value of the measure falls below 25, use the <a href="!bangs#SetOption">!SetOption</a> bang to change the <b>FontColor</b> option on the meter to the value of the variable <b>#LightBlue#</b> we defined earlier in <b>[Variables]</b>, in effect changing it back to the original color.</li>
+</ul>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage06.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage06.jpg" class="thumbnail"/></a>
+</div>
+
+<h2 style="clear: both;">Line meter</h2>
+
+<p>Next we are going to touch on another meter type in Rainmeter.  The <a href="!meters/line">Line meter</a> displays the percentage value of a measure (or more than one measure) as a series of points over time, connected to create lines on a graph.</p>
+
+<p>Add a new section to the skin.</p>
+
+{% highlight ini %}
+[MeterCPULine]
+Meter=Line
+MeasureName=MeasureCPU
+X=49
+Y=8
+W=130
+H=38
+LineCount=1
+LineColor=#LightBlue#
+LineWidth=1
+HorizontalLines=1
+HorizontalLineColor=#AlmostBlack#
+SolidColor=#DarkBlue#
+{% endhighlight %}
+
+<p>The <a href="!meters/line">Line meter</a> is pretty self-explanatory, you "bind" one or more measures to the meter with <a href="!meters/general-options#MeasureName">MeasureName</a>, and then use options like <a href="!meters/line#LineWidth">LineWidth</a> and <a href="!meters/line#LineColor">LineColor</a> to control how the meter looks.  The line is plotted over time on a graph that is defined by the <a href="!meters/general-options#WH">W and H</a> options of the meter.  The additional <a href="!meters/line#HorizontalLines">HorizontalLines</a> and <a href="!meters/line#HorizontalLineColor">HorizontalLineColor</a> options draw the background lines on the graph, in the desired color.  Finally, we set a <a href="http://docs.rainmeter.net/manual-beta/meters/general-options#SolidColor">SolidColor</a> option on the meter to define a overall background color. Refresh the skin and have a look.  Let it run for a while so you can see the movement of the line.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage07.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage07.jpg" class="thumbnail"/></a>
+</div>
+
+<p style="clear: both;">We should put a label on the Line meter, so it is clear what it is measuring.  We have looked at the <a href="!meters/string">String</a> meter previously, so let's just add one a take a look at the result.</p>
+
+{% highlight ini %}
+[MeterCPUText]
+Meter=String
+FontFace=Segoe UI
+FontSize=15
+FontColor=#LightBlue#
+X=48
+Y=4
+StringStyle=Bold
+AntiAlias=1
+Text=CPU
+{% endhighlight %}
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage08.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage08.jpg" class="thumbnail"/></a>
+</div>
+
+<h2 style="clear: both;">Measuring a hard drive</h2>
+
+<p>It is time to introduce a new measure type to our skin.  We are going to be measuring the <b>total</b>, <b>used</b>, and <b>free</b> space on one of your hard drives.  We will display the <b>used</b> space on a circular Roundline meter almost exactly as we did with the CPU measurement, then display the other information, <b>total</b> and <b>free</b> space, in string meters next to it.</p>
+
+<p>First, let's set up the measures you will need.  Back up in your skin code, right under the <b>[MeasureCPU]</b> we created in the beginning, and add some new measures.</p>
+
+{% highlight ini %}
+[MeasureDriveTotal]
+Measure=FreeDiskSpace
+Drive=#CurrentDrive#
+Total=1
+IgnoreRemovable=0
+DynamicVariables=1
+UpdateDivider=-1
+
+[MeasureDriveFree]
+Measure=FreeDiskSpace
+Drive=#CurrentDrive#
+IgnoreRemovable=0
+DynamicVariables=1
+UpdateDivider=5
+
+[MeasureDriveUsed]
+Measure=FreeDiskSpace
+Drive=#CurrentDrive#
+InvertMeasure=1
+IgnoreRemovable=0
+DynamicVariables=1
+UpdateDivider=5
+{% endhighlight %}
+
+<p>The <a href="!measures/freediskspace">FreeDiskSpace</a> measure obtains space information about a drive.  There are several options we are using that should be explained.</p>
+
+<ul>
+<li><a href="!measures/freediskspace#Drive">Drive</a>=#CurrentDrive#<br/>
+This option tells the measure which drive to examine.  In this case, we are using one of the variables we defined earlier, to set the value to <b>C:</b>.</li>
+<li><a href="!measures/freediskspace#IgnoreRemovable">IgnoreRemovable</a>=0<br/>
+By default, FreeDiskSpace will ignore all removable drives like USB or optical drives. Set <b>IgnoreRemovable=1</b> to enable measuring these kinds of drives.</li>
+<li><a href="!measures/general-options#InvertMeasure">InvertMeasure</a>=1<br/>
+By default, FreeDiskSpace will measure the free space on a drive. To measure the used space, you use the <a href="!measures/general-options">General Measure Option</a> <b>InvertMeasure=1</b> to reverse what is measured.</li>
+</ul>
+
+<p>In addition, we are using two other options on the measures we have not looked at before.</p>
+
+<p><a href="!variables#DynamicVariables">DynamicVariables</a> is used to tell a measure or meter that any variables used in the section should be re-evaluated on each update of the section.  In order to have Rainmeter use as few resources as possible, variables are only evaluated when the measure or meter is created, and will not detect any dynamic changes to variables it uses, if this option is not set.  It will become clear in a little bit why we want this option on our FreeDiskSpace measures.</p>
+
+<p><a href="!measures/general-options#UpdateDivider">UpdateDivider</a> is used to control how often a measure or meter is updated.  The overall <a href="!skins/rainmeter-section#Update">Update</a> of the skin is set in the <b>[Rainmeter]</b> section at the top of the skin, and defines how often in milliseconds the skin is updated. In our case, and by default, this is <code>Update=1000</code> or once a second.</p>
+
+<p>The <code>UpdateDivider=5</code> option we are setting on these FreeDiskSpace measures tells Rainmeter to update these measures every 5 updates of the skin, or in our case every 5 seconds.  UpdateDivider should be considered for any measures that don't need to be updated as often as the Update option alone, to reduce the amount of work that Rainmeter has to do.  In the case of FreeDiskSpace, this is particularly useful as actually reading the drives once every second would be more resource hungry than is really needed.</p>
+
+<p>See the guide at <a href="http://docs.rainmeter.net/tips/update-guide">Update Guide</a> for a lot more detail and explanation.</p>
+
+<p>Ok, our measures are all set up, and providing the various kinds of space measurements for our drive in bytes.  One thing that should be noted is that the FreeDiskSpace measure also automatically sets the <a href="!measures/general-options#MinValue">MinValue</a> and <a href="!measures/general-options#MaxValue">MaxValue</a> of the measure, so the value can be used in meters that require a <a href="!measures#Percentage">Percentage</a>, like the <b>Roundline</b> meter we are about to create.</p>
+
+<p>Add the following new meters to the skin.</p>
+
+{% highlight ini %}
+[MeterDriveCircleBack]
+Meter=Roundline
+X=5
+Y=63
+W=40
+H=40
+StartAngle=(Rad(270))
+RotationAngle=(Rad(360))
+LineStart=15
+LineLength=20
+Solid=1
+LineColor=#MediumBlue#
+AntiAlias=1
+
+[MeterDriveCircle]
+Meter=Roundline
+MeasureName=MeasureDriveUsed
+X=5
+Y=63
+W=40
+H=40
+StartAngle=(Rad(270))
+RotationAngle=(Rad(360))
+LineStart=15
+LineLength=20
+Solid=1
+LineColor=#LightBlue#
+AntiAlias=1
+
+[MeterDriveCircleLabel]
+Meter=String
+FontFace=Segoe UI
+FontSize=10
+FontColor=#LightBlue#
+X=26
+Y=83
+StringAlign=CenterCenter
+StringStyle=Bold
+Percentual=1
+AntiAlias=1
+DynamicVariables=1
+Text=#CurrentDrive#
+{% endhighlight %}
+
+<p>Note that these are pretty much identical to the meters we created earlier to show the CPU usage as a circular <a href="!meters/roundline">Roundline</a> meter. We bind the active Roundline meter <b>[MeterDriveCircle]</b> to the measure <b>[MeasureDriveUsed]</b> to display the amount of "used" space, and instead of showing any measured value inside the circle in <b>[MeterDriveCircleLabel]</b>, we simply create a label with the value of the current drive letter we created in the variable <b>#CurrentDrive#</b>.  We again set <code>DynamicVariables=1</code> on this label meter.  We will see why shortly.  Save and refresh the skin to see how we are doing.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage09.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage09.jpg" class="thumbnail"/></a>
+</div>
+
+<p style="clear: both;">Finally, we can create a nice backgound to match the one behind the Line meter we created in <b>[MeterCPULine]</b>, by simply creating an <a href="!meters/image">Image</a> meter with a <a href="!meters/general-options#SolidColor">SolidColor</a> and no <a href="!meters/general-options#MeasureName">MeasureName</a> option, then two <a href="!meters/string">String</a> meters to display the other drive space information, <b>total</b> and <b>free</b>.  Add the following meters to the bottom of the skin. Save and refresh.</p>
+
+{% highlight ini %}
+[MeterDriveBack]
+Meter=Image
+X=49
+Y=63
+W=130
+H=38
+SolidColor=#DarkBlue#
+
+[MeterDriveTotalLabel]
+Meter=String
+FontFace=Segoe UI
+FontSize=11
+FontColor=#LightBlue#
+X=50
+Y=64
+StringStyle=Bold
+StringAlign=Left
+AutoScale=1
+AntiAlias=1
+Text=Total:
+
+[MeterDriveTotal]
+Meter=String
+MeasureName=MeasureDriveTotal
+FontFace=Segoe UI
+FontSize=11
+FontColor=#LightBlue#
+X=180
+Y=64
+StringStyle=Bold
+StringAlign=Right
+AutoScale=1
+AntiAlias=1
+Text=%1B
+
+[MeterDriveFreeLabel]
+Meter=String
+FontFace=Segoe UI
+FontSize=11
+FontColor=#LightBlue#
+X=50
+Y=81
+W=130
+H=18
+ClipString=1
+StringStyle=Bold
+AutoScale=1
+AntiAlias=1
+Text=Free:
+
+[MeterDriveFree]
+Meter=String
+MeasureName=MeasureDriveFree
+FontFace=Segoe UI
+FontSize=11
+FontColor=#LightBlue#
+X=180
+Y=81
+StringStyle=Bold
+StringAlign=Right
+AutoScale=1
+AntiAlias=1
+Text=%1B
+{% endhighlight %}
+
+<p>One new option we have used in two of these meters should be explained. The <a href="!measures/freediskspace">FreeDiskSpace</a> measure obtains the space values from the drive in <b>bytes</b>.  For most of us, that is going to be a really huge and long number, (my one-terabyte C: drive has a total of 1000097181696 bytes for instance) and probably not one we want to display on a skin.  The <a href="!meters/string#AutoScale">AutoScale</a> option on the string meter will automatically scale the number to <b>megabytes</b>, <b>gigabytes</b>, <b>terabytes</b> etc. and append the appropriate <b>M / G / T</b> label to the end.  We have added an extra hard-coded <b>B</b> at the end of the text, so it will display as for instance: <b>931 GB</b>. Let's take a look.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage10.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage10.jpg" class="thumbnail"/></a>
+</div>
+
+<h2 style="clear: both;">What about those dynamic variables?</h2>
+
+<p>I promised we would get back to the reason why we added <a href="!variables#DynamicVariables">DynamicVariables=1</a> to a few measures and meters.  Our last goal is to have the skin dynamically change the <b>Drive</b> that we measure and display when we move the mouse over the skin.</p>
+
+<p>If you look back to the <b>[Variables]</b> section, you will see that we set the following:</p>
+
+{% highlight ini %}
+CurrentDrive=C:
+Drive1=C:
+Drive2=D:
+{% endhighlight %}
+
+<p>Then in our FreeDiskSpace measures <b>[MeasureDriveTotal]</b>, <b>[MeasureDriveFree]</b>, and <b>[MeasureDriveUsed]</b>, we set the <a href="!measures/freediskspace#Drive">Drive</a> option to that variable <b>#CurrentDrive#</b>.  So to start with, the measures are looking at the <b>C:</b> drive.  What we want to do is set the value of <b>#CurrentDrive#</b> to be equal to the value of the variable <b>#Drive2#</b> when we move the mouse over the skin, and back to <b>#Drive1#</b> when we move the mouse away.</p>
+
+<p>To accomplish this, we need to add new <a href="!mouse-actions">Mouse actions</a> to the skin, and some <a href="!bangs">Bangs</a> that are executed by the mouse actions.</p>
+
+<p>Let's go back up to our <b>[MeterBackground]</b> meter, the first one after the measures in the skin. Change it by adding our mouse action lines.</p>
+
+{% highlight ini %}
+[MeterBackground]
+Meter=Image
+X=0
+Y=0
+W=185
+H=110
+SolidColor=#AlmostBlack#
+MouseOverAction=[!SetVariable CurrentDrive #Drive2#][!UpdateMeasure *][!UpdateMeter *][!Redraw]
+MouseLeaveAction=[!SetVariable CurrentDrive #Drive1#][!UpdateMeasure *][!UpdateMeter *][!Redraw]
+{% endhighlight %}
+
+<p style="clear: both;">What this is saying is:</p>
+
+<ul>
+<li>If the mouse moves over the background meter, use the <a href="!bangs#SetVariable">!SetVariable</a> bang to change the value of the variable <b>CurrentDrive</b> to the value of the variable <b>Drive2</b>.</li>
+<li>If the mouse moves away from the background meter, use the <a href="!bangs#SetVariable">!SetVariable</a> bang to change the value of the variable <b>CurrentDrive</b> to the value of the variable <b>Drive1</b>, or in effect back to the original value.</li>
+<li>Then we are using the <a href="!bangs#UpdateMeasure">!UpdateMeasure</a>, <a href="!bangs#UpdateMeter">!UpdateMeter</a>, and <a href="!bangs#Redraw">!Redraw</a> bangs to have the change take place as soon as we move the mouse over or away, and not wait for the next update of the skin.</li>
+</ul>
+
+<p>This functionality is why we added <a href="!variables#DynamicVariables">DynamicVariables=1</a> to the measures and meters which are using the <b>#CurrentDrive#</b> variable.  That option allows the measures and meters to re-evaluate the variable on each update of the section, so when we change it with <b>!SetVariable</b> they react to the change.</p>
+
+<p>So we are finally there... Great job!  Here are two shots of your final skin, the first with the mouse away from the skin and the second with the mouse over the skin.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage10.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage10.jpg" class="thumbnail"/></a>
+</div>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage11.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage11.jpg" class="thumbnail"/></a>
+</div>
 
 <p style="clear: both;">&nbsp;</p>
 
