@@ -130,7 +130,111 @@ This option tells the Roundline that instead of a single line, we want the meter
 
 <h2>Continuing the skin</h2>
 
+<p>That Roundline meter looks a little funny by itself, so let's add another Roundline meter to serve as a "background" for it. In your code, move up <b>above</b> the <b>[MeterCPUCircle]</b> section we added before, and insert a new meter section.  Remember, we want this meter to be "behind" <b>[MeterCPUCircle]</b>, so it needs to be "before" it in the actual .ini skin code.</p>
 
+{% highlight ini %}
+[MeterCPUCircleBack]
+Meter=Roundline
+X=5
+Y=8
+W=40
+H=40
+StartAngle=(Rad(270))
+RotationAngle=(Rad(360))
+LineStart=15
+LineLength=20
+Solid=1
+LineColor=#MediumBlue#
+AntiAlias=1
+{% endhighlight %}
+
+<p>What we are doing here is creating another Roundline meter, at the same <a href="!meters/general-options#XY">X and Y</a> position as the one that comes after, but behind it. All of the options in <b>[MeterCPUCircleBack]</b> are the same as those in <b>[MeterCPUCircle]</b>, with the exception that there is no <a href="!meters/general-options#MeasureName">MeasureName</a> option to "bind" a measure to the meter.  Roundline will by default use a value of <b>100%</b> in this case, in effect allowing us to draw a full circle that we can use as a background.  Oh, we also used a different variable for the color of the line. Refresh the skin to see the change.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage04.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage04.jpg" class="thumbnail"/></a>
+</div>
+
+<p style="clear: both;">Your entire skin code should now look like this:</p>
+
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+
+[Variables]
+DarkBlue=27,63,107,255
+MediumBlue=92,135,209,255
+LightBlue=207,224,255,255
+LightRed=250,148,135,255
+AlmostBlack=40,40,40,255
+CurrentDrive=C:
+Drive1=C:
+Drive2=D:
+
+[MeasureCPU]
+Measure=CPU
+
+[MeterBackground]
+Meter=Image
+X=0
+Y=0
+W=185
+H=110
+SolidColor=#AlmostBlack#
+
+[MeterCPUCircleBack]
+Meter=Roundline
+X=5
+Y=8
+W=40
+H=40
+StartAngle=(Rad(270))
+RotationAngle=(Rad(360))
+LineStart=15
+LineLength=20
+Solid=1
+LineColor=#MediumBlue#
+AntiAlias=1
+
+[MeterCPUCircle]
+Meter=Roundline
+MeasureName=MeasureCPU
+X=5
+Y=8
+W=40
+H=40
+StartAngle=(Rad(270))
+RotationAngle=(Rad(360))
+LineStart=15
+LineLength=20
+Solid=1
+LineColor=#LightBlue#
+AntiAlias=1
+{% endhighlight %}
+
+<p>Next we want to create a <a href="!meters/string">String</a> meter showing the actual value we are getting in the <b>[MeasureCPU]</b> measure, and center it inside our circle. We have talked about string meters and positioning in ealier tutorials, so let's just add the following as a new section at the end of our skin code.</p>
+
+{% highlight ini %}
+[MeterCPUPercent]
+Meter=String
+MeasureName=MeasureCPU
+FontFace=Segoe UI
+FontSize=8
+FontColor=#LightBlue#
+X=26
+Y=28
+StringAlign=CenterCenter
+StringStyle=Bold
+AntiAlias=1
+Text=%1%
+{% endhighlight %}
+
+<p>Save and refesh the skin to see our new meter.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage05.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage05.jpg" class="thumbnail"/></a>
+</div>
+
+<p style="clear: both;">
 
 <p style="clear: both;">&nbsp;</p>
 
