@@ -20,6 +20,117 @@ title: 'System'
 
 <h2>Building the System skin</h2>
 
+<p>First, as we did in our ealier tutorial, let's add the [Rainmeter] section to control the Update speed of the skin.</p>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+{% endhighlight %}
+
+<p>The next thing we are going to do is define some <a href="!variables">variables</a> for the skin. Variables are used to create a value, which can be used repeatedly in the skin by enclosing the variable name in <b>##</b> (example: <b>#VarName#</b>).  In order to change the value in all places it is used, you only need to change it one time in the <a href="!variables#Section">[Variables]</a> section of the skin.</p>
+
+{% highlight ini %}
+[Variables]
+DarkBlue=27,63,107,255
+MediumBlue=92,135,209,255
+LightBlue=207,224,255,255
+LightRed=250,148,135,255
+AlmostBlack=40,40,40,255
+CurrentDrive=C:
+Drive1=C:
+Drive2=D:
+{% endhighlight %}
+
+<p>Now we will cheat a bit.  In earlier tutorials, we waited until the end and put a solid background on the skin using an <a href="!meters/image">Image</a> meter. Let's go ahead and add that now, so we can demonstrate the first use of one of those <b>variables</b> we created above.</p>
+
+{% highlight ini %}
+[MeterBackground]
+Meter=Image
+X=0
+Y=0
+W=185
+H=110
+SolidColor=#AlmostBlack#
+{% endhighlight %}
+
+<p>Note that we have used the variable <b>#AlmostBlack#</b> in the <a href="!meters/general-options#SolidColor">SolidColor</a> option for this meter.  The meter will then use the value we defined as <code>AlmostBlack=40,40,40,255</code> in the <b>[Variables]</b> section earlier.  Remember that if you define SolidColor on an image meter with <b>no MeasureName</b> option, it simply draws a square or rectangle based on the <a href="!meters/general-options#WH">W and H</a> (width and height) options.</p>
+
+<p>So let's load our new skin and take a look at where we stand.  From the <a href="!user-interface/manage#SkinsTab">Manage</a> dialog, find the <b>System.ini</b> entry in the list and click on the <b>Load</b> button on the upper right.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage01.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage01.jpg" class="thumbnail"/></a>
+</div>
+
+<p style="clear: both;">Not much to look at just yet...</p>
+
+<p>Next, let's create a measure to get the current amout of <a href="!measures/cpu">CPU</a> usage, as a percentage, on each update.</p>
+
+{% highlight ini %}
+[MeasureCPU]
+Measure=CPU
+{% endhighlight %}
+
+<p>Now it is time to introduce a new meter type.  We are going to display the value of that <b>[MeasureCPU]</b> measure as filling a cirle on the screen using a <a href="!meters/roundline">Roundline</a> meter. Create a new section with this code:</p>
+
+{% highlight ini %}
+[MeterCPUCircle]
+Meter=Roundline
+MeasureName=MeasureCPU
+X=5
+Y=8
+W=40
+H=40
+StartAngle=(Rad(270))
+RotationAngle=(Rad(360))
+LineStart=15
+LineLength=20
+Solid=1
+LineColor=#LightBlue#
+AntiAlias=1
+{% endhighlight %}
+
+<p>Refresh the skin so we can see what it is doing as we walk through the options.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage01.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage01.jpg" class="thumbnail"/></a>
+</div>
+
+<p style="clear: both;">What the <b>Roundline</b> meter does is draw a line that rotates around the center of a circle defined by the <a href="!meters/general-options#WH">W and H</a> options of the meter.  In this case, we have defined the size of the meter (and thus the circle) as <b>40x40 pixels</b>.  Keep in mind that this defines a circle that has a total width of 40 pixels, and a width from the <b>center</b> to the edge as 20 pixels.</p>
+
+<h2>Roundline - Working with angles</h2>
+
+<p>Now we need to define two options to control how the meter works.  First, we need to tell the Roundline where the line should point when the value is <b>0%</b> (the starting point).  This is done with the <a href="!meters/roundline#StartAngle">StartAngle</a> option.  We also need to tell the Roundline how much of the circle to use as <b>100%</b> (the distance to travel when the value is 100%).  This is done with the <a href="!meters/roundline#RotationAngle">RotationAngle</a> option. As you can see, we have set the value of <b>StartAngle</b> to <code>StartAngle=(Rad(270))</code>, and the value of <b>RotationAngle</b> to <code>RotationAngle=(Rad(360))</code>.  Let's talk about that for a minute.</p>
+
+<p>The <b>angles</b> in a <b>Roundline</b> meter are defined in <b>Radians</b>.  Radians are a unit of measure used to define degrees of distance around a circle, starting with <b>0&deg;</b>, which is <b>the point directly to the right of the center of the circle</b>.  This is important!  Do not picture a <b>compass</b> in your head, which has <b>0&deg;</b> (North) pointing "up". Radians are defined with <b>0&deg;</b> pointing to the <b>right</b>.</p>
+
+<p>I highly recommend taking a minute and reading through the explanation at <a href="http://docs.rainmeter.net/tips/radians-guide">Radians Guide</a>.</p>
+
+<p>So beginning with <a href="!meters/roundline#StartAngle">StartAngle</a>, we are telling the Roundline that the starting point of the meter is a <b>distance</b> of <b>270&deg; degrees</b> in radians from the 0&deg; position of directly right. That will move the starting point around clockwise to the "top" of the meter, which is what we want.</p>
+
+<p>Next, we are setting the <a href="!meters/roundline#RotationAngle">RotationAngle</a> option to <b>360&deg; degrees</b> in radians, which tells the Roundline that the <b>distance</b> to travel around the circle from the starting point defined in <a href="!meters/roundline#StartAngle">StartAngle</a> will be the full circle (a circle has 360 degrees).  We want the entire circle to fill when the value of the measure is 100%.</p>
+
+<p><i>Note that we are using the <a href="!measures/calc#Functions">Rad(x)</a> function to make it easier to convert <b>degrees</b> (which are easy to picture in our heads) into <b>radians</b> (which are mathematically useful, but stupidly complicated).</i></p>
+
+<h2>Roundline - The line options</h2>
+
+<p>By default, the <b>Roundline</b> meter will draw a single line from the center of the meter to the outside edge, pointing to the position represented by the value of the measure.  We don't want a "pointer" in this case, but want to draw and fill a circle.  There are few options we have used to control this.</p>
+
+<ul>
+<li><a href = "!meters/roundline#LineStart">LineStart</a>=15<br/>
+This tells the Roundline that we want the line to start 15 pixels from the center of the meter.</li>
+<li><a href = "!meters/roundline#LineLength">LineLength</a>=20<br/>
+This sets the overall length of the line to 20 pixels.  Remember that our meter is 40 pixlels wide in total, but only 20 pixels wide from the center to the outside edge.<br/><br/>
+The result of these two options is a line that starts 15 pixels from the center, and extends to the full 20 pixels defined as the length from the center to the edge.  So in effect, a 5 pixel line at the outside edge.<br/><br/></li>
+<li><a href = "!meters/roundline#Solid">Solid</a>=1<br/>
+This option tells the Roundline that instead of a single line, we want the meter to "fill" from the postion defined as 0% to the current value represented by the measure. So instead of a "pointer", we get a circle being filled as the value changes.</li>
+</ul>
+
+<p>Then we are using one of the variables we defined in the <b>[Variables]</b> section at the beginning. We want to set the color of the circle to a nice light blue, which we defined as <code>LightBlue=207,224,255,255</code>.  So we set the option in the Roundline meter to <code>LineColor=#LightBlue#</code>.
+
+<p>Good job!  Roundline is a very useful and flexible meter type in Rainmeter, and once you play with the options and different behaviors you will find lots of creative ways to use it. Take a breather...</p>
+
+<h2>Continuing the skin</h2>
+
+
 
 <p style="clear: both;">&nbsp;</p>
 
