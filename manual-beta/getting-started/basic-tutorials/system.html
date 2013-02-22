@@ -98,7 +98,7 @@ AntiAlias=1
 
 <h2>Roundline - Working with angles</h2>
 
-<p>Now we need to define two options to control how the meter works.  First, we need to tell the Roundline where the line should point when the value is <b>0%</b> (the starting point).  This is done with the <a href="!meters/roundline#StartAngle">StartAngle</a> option.  We also need to tell the Roundline how much of the circle to use as <b>100%</b> (the distance to travel when the value is 100%).  This is done with the <a href="!meters/roundline#RotationAngle">RotationAngle</a> option. As you can see, we have set the value of <b>StartAngle</b> to <code>StartAngle=(Rad(270))</code>, and the value of <b>RotationAngle</b> to <code>RotationAngle=(Rad(360))</code>.  Let's talk about that for a minute.</p>
+<p>We first needed to define two options to control how the meter works.  We need to tell the Roundline where the line should point when the value is <b>0%</b> (the starting point).  This is done with the <a href="!meters/roundline#StartAngle">StartAngle</a> option.  We also need to tell the Roundline how much of the circle to use as <b>100%</b> (the distance to travel when the value is 100%).  This is done with the <a href="!meters/roundline#RotationAngle">RotationAngle</a> option. As you can see, we have set the value of <b>StartAngle</b> to <code>StartAngle=(Rad(270))</code>, and the value of <b>RotationAngle</b> to <code>RotationAngle=(Rad(360))</code>.  Let's talk about that for a minute.</p>
 
 <p>The <b>angles</b> in a <b>Roundline</b> meter are defined in <b>Radians</b>.  Radians are a unit of measure used to define degrees of distance around a circle, starting with <b>0&deg;</b>, which is <b>the point directly to the right of the center of the circle</b>.  This is important!  Do not picture a <b>compass</b> in your head, which has <b>0&deg;</b> (North) pointing "up". Radians are defined with <b>0&deg;</b> pointing to the <b>right</b>.</p>
 
@@ -286,7 +286,7 @@ SolidColor=#DarkBlue#
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage07.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage07.jpg" class="thumbnail"/></a>
 </div>
 
-<p style="clear: both;">We should put a label on the Line meter, so it is clear what it is measuring.  We have looked at the <a href="!meters/string">String</a> meter previously, so let's just add one a take a look at the result.</p>
+<p style="clear: both;">We should put a label on the Line meter, so it is clear what it is measuring.  We have looked at the <a href="!meters/string">String</a> meter previously, so let's just add one and take a look at the result.</p>
 
 {% highlight ini %}
 [MeterCPUText]
