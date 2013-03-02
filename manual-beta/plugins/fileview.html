@@ -131,6 +131,7 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 	<dt id="Recursive"><code>Recursive</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the plugin searches all sub-folders updating only the file count, folder count and overall folder size. This option does not index specific files in sub-folders.</p>
+		<p>If set to <code>2</code>, the plugin indexes all files in the folder tree defined in <a href="#Path">Path</a>. Folders are not indexed. <a href="#PluginCommands">Plugin commands</a> <a href="#FollowPath">FollowPath</a> and <a href="#PreviousFolder">PreviousFolder</a> are disabled, and <a href="#ShowFile">ShowFile</a>, <a href="#ShowFolder">ShowFolder</a>, and <a href="#ShowDotDot">ShowDotDot</a> options have no effect. <a href="#WildcardSearch">WildcardSearch</a> will only work if the file is found in a folder that also matches the pattern.</p>
 	</dd>
 
 	<dt id="Count"><code>Count</code> <small>Default: <code>1</code></small></dt>
@@ -233,7 +234,7 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 	</dd>
 </dl>
 
-<h2>Plugin Commands</h2>
+<h2 id="PluginCommands">Plugin Commands</h2>
 
 <h2>Parent measure commands</h2>
 <dl>
