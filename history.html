@@ -8,6 +8,19 @@ title: 'Version History'
 
 <h2 id="2.5">Rainmeter 2.5</h2>
 
+<h3 id="r1806">10 February, 2013 <small>(r1806)</small></h3>
+<ul>
+<li><b>Added</b> Ping: Added FinishAction to plugin.  Action to execute as soon as a successful value is returned, or when the number of milliseconds set in the Timeout option is reached.</li>
+<li><b>Changed</b> InputText: Updated to current Rainmeter API.  Options in plugin can now use dynamic variables.</li>
+<li><b>Fixed</b> InputText: Fixed issues with handle leaks caused by threading.</li>
+<li><b>Fixed</b> InputText: Fixed an issue that prevented input using a <a href="http://en.wikipedia.org/wiki/Input_method_editor">language IME</a> in the field.</li>
+<li><b>Added</b> FileView: Added Recursive=2 option. Allows recursive indexing of files in a folder tree. Folders are ignored with this option. Plugin commands FollowPath and PreviousFolder are disabled, and ShowFile, ShowFolder, and ShowDotDot options have no effect.</li>
+<li><b>Changed</b> FileView: Drives are now sorted.</li>
+<li><b>Changed</b> FileView: Drives are now counted as folders for Type=FolderCount.</li>
+<li><b>Changed</b> FileView: Folders now return dates and times.</li>
+<li><b>Added</b> Plugin API: Added new RMG_SKINNAME and RMG_SKINWINDOWHANDLE options to RmGet() to plugin SDK.</li>
+</ul>
+
 <h3 id="r1792">10 February, 2013 <small>(r1792)</small></h3>
 <ul>
 <li><b>Fixed</b> FileView: Corrected an issue where an invalid path could crash Rainmeter.</li>
