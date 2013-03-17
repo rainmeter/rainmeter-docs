@@ -1,0 +1,372 @@
+---
+layout: manual
+title: 'Clock'
+---
+<!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<h2>Creating your second tutorial skin</h2>
+
+<p>First, make sure you have gone through the guide on creating a simple "hello world" skin at <a href="!getting-started/creating-skins">Creating Skins</a> so you understand how to create a .ini skin file in the Skins folder, and how to refresh Rainmeter so it sees your new entry.</p>
+
+<p>In the previous tutorial, you should have already created a folder under Skins called <b>Tutorials</b>. We are going to add a new folder under that one to create our new skin.  Under <b>Skins\Tutorials\</b> create a new folder called <b>Clock</b>.
+
+<p>In that <b>Tutorials\Clock</b> folder, create a new empty text file. In Windows explorer, you can simply right-click in the folder and say "New / Text document".  Give it the name <b>Clock.ini</b> being sure that the <a href="!getting-started/creating-skins#YourFirstSkin">extension</a> is <b>.ini</b> and not <b>.ini.txt</b>.</p>
+
+<p>Now, left-click the Rainmeter icon in the Windows notification area on your taskbar, to open the <a href="!user-interface/manage#SkinsTab">Manage</a> dialog.  Click on the <b>Refresh all</b> button on the bottom left, and you should see your new <b>Tutorials / Clock</b> config in the list.  Find <b>Clock.ini</b> in the list, right-click it and say "Edit".  This will open the new skin file in your default text editor. Don't load the skin just yet, we need to add some code first...</p>
+
+<h2>Building the Clock skin</h2>
+
+<p>This tutorial will introduce using <a href="!measures">Measures</a> in a skin. Measures are used to obtain some information in Rainmeter, from your computer's system, text files, web sites, and other sources.  In addition, we will be using some more features of the <a href="!meters/string">String meter</a> and dip our toes a little deeper into using <a href="!options#Action">action options</a> and <a href="!bangs">Bangs</a> in your skin.</p>
+
+<p>First, as we did in our ealier tutorial, let's add the [Rainmeter] section to control the Update speed of the skin.</p>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+{% endhighlight %}
+
+<p>Now let's add our first <a href="!measures">Measure</a>, in this case a <a href="!measures/time">Time</a> measure to retrieve information about the system time from your computer.</p>
+
+{% highlight ini %}
+[MeasureTime]
+Measure=Time
+Format=%#I:%M
+{% endhighlight %}
+
+<p>Do check out the manual entry for the <a href="!measures/time#FormatCodes">Time</a> measure to see how that <a href="!measures/time#Format">Format</a> option is used to obtain the time information you want. We are using a format of <b>"hour in 12 hour time:minutes"</b> for this measure.</p>
+
+<p>So let's add a meter to display this value we obtained with our measure.  First, we are going to use the <a href="!meters/general-options/meterstyles">MeterStyle</a> option by creating a <b>[TextStyle]</b> section to set up some common string formatting options. This way we won't have to repeat them in every meter we create.  Then add the new <b>[MeterTime]</b> meter.</p>
+
+{% highlight ini %}
+[TextStyle]
+FontFace=Trebuchet MS
+FontColor=255,245,207,255
+SolidColor=0,0,0,1
+StringStyle=Bold
+StringAlign=Right
+AntiAlias=1
+
+[MeterTime]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureTime
+X=165
+Y=0
+FontSize=40
+{% endhighlight %}
+
+<p>The key to using measures and meters together is using the <a href="!meters/general-options#MeasureName">MeasureName</a> option to "bind" the measure <b>[MeasureTime]</b> to the meter.  What that means is that this meter will display the value returned by the measure on each <a href="http://docs.rainmeter.net/tips/update-guide">Update</a>.</p>
+
+<p>So let's load our new skin and take a look at where we stand.  From the <a href="!user-interface/manage#SkinsTab">Manage</a> dialog, find the <b>Clock.ini</b> entry in the list and click on the <b>Load</b> button on the upper right.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/clock/ClockImage01.jpg"><img src="!img/getting-started/basic-tutorials/clock/ClockImage01.jpg" class="thumbnail"/></a>
+</div>
+
+<p>Drag the skin anywhere on the screen you like.  Rainmeter will remember the postion any time you load this skin in the future.  You can also right-click the skin to change other <a href="!user-interface/context-menus">skin options</a> as desired.</p>
+
+<h2 style="clear: both;">Adding more measures and meters</h2>
+
+<p>We are going to use various elements of the system time in different meters in our skin, so let's create some more measures to gather different types of information.</p>
+
+{% highlight ini %}
+[MeasureSeconds]
+Measure=Time
+Format=%S
+
+[MeasureAMPM]
+Measure=Time
+Format=%p
+
+[MeasureMonthName]
+Measure=Time
+Format=%B
+
+[MeasureDayOfMonth]
+Measure=Time
+Format=%#d
+
+[MeasureYear]
+Measure=Time
+Format=%Y
+
+[MeasureDayOfWeek]
+Measure=Time
+Format=%A
+{% endhighlight %}
+
+<p>Now, start building meters to display all these different measure values. Let's start with the first one, so we can look at a new meter positioning concept.</p>
+
+{% highlight ini %}
+[MeterSeconds]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureSeconds
+X=204
+Y=8
+FontSize=18
+FontColor=255,231,135,255
+{% endhighlight %}
+
+<p>Note that we are using the <code>MeasureName=MeasureSeconds</code> option to bind this meter to the appropriate measure.</p>
+
+<p>Now, if you look above, you will see that in the MeterStyle section <b>[TextStyle]</b> we have defined many format options for our string meters that we want to share with the meters rather than repeating them in each one.  One of these is the <a href="!meters/string#StringAlign">StringAlign</a> option, which will allow us to align the text in the meter based on the <a href="!meters/general-options#XY">X and Y</a> options for the meter.  In this case, we are going to right-align all of our meters.  You will see why as we continue with the layout.  In the previous <b>[MeterTime]</b> meter, we aligned the meter so the right-most edge was at the <b>X</b> postion of <b>165</b> in the skin. For this meter, we are aligning the right-most edge at the <b>X</b> postion of <b>204</b>.</p>
+
+</p>In addition, we want this meter to have a different color.  So, we are "overriding" the <code>FontColor=255,245,207,255</code> option we set in the <b>[TextStyle]</b> MeterStyle, by specifically setting <code>FontColor=255,231,135,255</code> for this meter.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/clock/ClockImage02.jpg"><img src="!img/getting-started/basic-tutorials/clock/ClockImage02.jpg" class="thumbnail"/></a>
+</div>
+
+<p>Save and refresh the skin to see the changes.</p>
+
+<p style="clear: both;">Continue creating the meters to display the information from the various measures.</p>
+
+{% highlight ini %}
+[MeterAMPM]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureAMPM
+X=204
+Y=30
+FontSize=16
+FontColor=255,231,135,255
+
+[MeterMonthDayYear]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureMonthName
+MeasureName2=MeasureDayOfMonth
+MeasureName3=MeasureYear
+X=204
+Y=0R
+FontSize=13
+Text=%1 %2, %3
+
+[MeterDayOfWeek]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureDayOfWeek
+X=204
+Y=0R
+FontSize=13
+{% endhighlight %}
+
+<p>As you can see, there is a different approach to binding measures to meters in the <b>[MeterMonthDayYear]</b> meter above.</p>
+
+{% highlight ini %}
+[MeterMonthDayYear]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureMonthName
+MeasureName2=MeasureDayOfMonth
+MeasureName3=MeasureYear
+X=204
+Y=0R
+FontSize=13
+Text=%1 %2, %3
+{% endhighlight %}
+
+<p>Since we want to use the value of three different measures in this meter, we use the <a href="!meters/string#MeasureName">MeasureName</a> option to define all three measures as being bound to this meter. Then we can use the <a href="!meters/string#Text">Text</a> option with <b>%1 %2, %3</b> to display each of the three measure values, including adding a hard coded comma for formatting.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/clock/ClockImage03.jpg"><img src="!img/getting-started/basic-tutorials/clock/ClockImage03.jpg" class="thumbnail"/></a>
+</div>
+
+<p>Save and refresh the skin to see the changes.</p>
+
+<p style="clear: both;">Now you can see why we wanted to right-align our string meters.  As the time changes and becomes longer and shorter, we don't want the postion of the meters to change.  We want to keep things lined up and tidy.  The following image demonstrates how it looks when the time is much longer.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/clock/ClockImage04.jpg"><img src="!img/getting-started/basic-tutorials/clock/ClockImage04.jpg" class="thumbnail"/></a>
+</div>
+
+<p style="clear: both;">Let's add a background image like we did in the earlier tutorial, by going up above all the existing meters and adding a new Image meter.</p>
+
+{% highlight ini %}
+[MeterBackground]
+Meter=Image
+W=210
+H=107
+SolidColor=60,60,60,255
+
+[TextStyle]
+FontFace=Trebuchet MS
+FontColor=255,245,207,255
+SolidColor=0,0,0,1
+StringStyle=Bold
+StringAlign=Right
+AntiAlias=1
+{% endhighlight %}
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/clock/ClockImage05.jpg"><img src="!img/getting-started/basic-tutorials/clock/ClockImage05.jpg" class="thumbnail"/></a>
+</div>
+
+<p>Save and refresh the skin to see the changes. Congratuations!  Nice looking clock skin.</p>
+
+<h2 style="clear: both;">Some extra credit work</h2>
+
+<p>We are going to add a couple more features to our clock, so we can touch again on using <a href="!options#Action">Action options</a> and <a href="!bangs">Bangs</a> in your skins.</p>
+
+<p>First, let's add the ability to toggle the display of the time between 12-hour and 24-hour when we hover the mouse over the <b>[MeterTime]</b> meter. Find that meter, and add a couple of lines.</p>
+
+{% highlight ini %}
+[MeterTime]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureTime
+X=165
+Y=0
+FontSize=40
+MouseOverAction=[!SetOption MeasureTime Format "%H:%M"][!UpdateMeasure MeasureTime][!UpdateMeter *][!Redraw]
+MouseLeaveAction=[!SetOption MeasureTime Format "%#I:%M"][!UpdateMeasure MeasureTime][!UpdateMeter *][!Redraw]
+{% endhighlight %}
+
+<p>This is using a <a href="http://docs.rainmeter.net/manual/mouse-actions">Mouse action</a> and a handful of <a href="!bangs">Bangs</a>.</p>
+
+<p>What we are doing when we move the mouse over the meter is to use the <a href="!bangs#SetOption">!SetOption</a> bang to change the <code>Format</code> option of the <b>[MeasureTime]</b> measure to obtain the time from the system using the code for 24-hour time (%H) instead of 12-hour time (%I).  Then we are using the <a href="!bangs#UpdateMeasure">!UpdateMeasure</a>, <a href="!bangs#UpdateMeter">!UpdateMeter</a>, and <a href="!bangs#Redraw">!Redraw</a> bangs to have the change take place as soon as we move the mouse over, and not wait for the next update of the skin.</p>
+
+<p>When we move the mouse away from the meter, we are using the same combination of bangs to set the format back to 12-Hour time and update things.</p>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/clock/ClockImage06.jpg"><img src="!img/getting-started/basic-tutorials/clock/ClockImage06.jpg" class="thumbnail"/></a>
+	<p>Mouse Off</p>	
+</div>
+
+<div class="exampleprev floatleft">
+	<a rel="lightbox" href="!img/getting-started/basic-tutorials/clock/ClockImage07.jpg"><img src="!img/getting-started/basic-tutorials/clock/ClockImage07.jpg" class="thumbnail"/></a>
+	<p>Mouse Over</p>
+</div>
+
+<h2 style="clear: both;">"It tolls for thee"</h2>
+
+<p>Next, we can add some sound to our clock. What we will do is have the skin play a .wav file of a grandfather clock striking when the time is exactly on the hour.</p>
+
+<p>First, we need get the sound file and put it in the right location in your skin folders.  Right-click the link below and save the file <b>HourChime.wav</b> to your computer. Put it in a new <b>Sounds</b> folder in our <b>Skins\Tutorials\@Resources</b> folder we created before.  So it will be <b>Skins\Tutorials\@Resources\Sounds\HourChime.wav</b></p>
+
+<p><a href="!img/getting-started/basic-tutorials/clock/HourChime.wav">Download HourChime.wav</a></p>
+
+<p>Now we can add a new measure to control when the sound is played.  Let's go up to the top of the skin, right after the <b>[MeasureTime]</b> measure we already have, and add a new one.</p>
+
+{% highlight ini %}
+[MeasureTime]
+Measure=Time
+Format=%#I:%M
+
+[MeasureChimeHour]
+Measure=Time
+Format=%M
+IfEqualValue=0
+IfEqualAction=[Play "#@#Sounds\HourChime.wav"]
+{% endhighlight %}
+
+<p>This <b>[MeasureChimeHour]</b> measure is getting the number of <b>minutes</b> (%M) from the system time, and then using an <a href="!measures/general-options/ifactions">IfAction</a> to check the value of the measure on each update.  If the value is equal to zero <code>IfEqualValue=0</code>, then the associated <code>IfEqualAction=[Play "#@#Sounds\HourChime.wav"]</code> is executed.  This uses the <a href="!bangs#Play">Play</a> bang to load and play the <b>HourChime.wav</b> file.</p>
+
+<p>After making the changes, save and refresh the skin. Congratulations!  You now have a beautiful, functional AND annoying skin!</p>
+
+<p>We have jumped around a bit, so here is the entire completed skin so you can check that your code is the same.</p>
+
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+
+[MeasureTime]
+Measure=Time
+Format=%#I:%M
+
+[MeasureChimeHour]
+Measure=Time
+Format=%M
+IfEqualValue=0
+IfEqualAction=[Play "#@#Sounds\HourChime.wav"]
+
+[MeasureSeconds]
+Measure=Time
+Format=%S
+
+[MeasureAMPM]
+Measure=Time
+Format=%p
+
+[MeasureMonthName]
+Measure=Time
+Format=%B
+
+[MeasureDayOfMonth]
+Measure=Time
+Format=%#d
+
+[MeasureYear]
+Measure=Time
+Format=%Y
+
+[MeasureDayOfWeek]
+Measure=Time
+Format=%A
+
+[MeterBackground]
+Meter=Image
+W=210
+H=107
+SolidColor=60,60,60,255
+
+[TextStyle]
+FontFace=Trebuchet MS
+FontColor=255,245,207,255
+SolidColor=0,0,0,1
+StringStyle=Bold
+StringAlign=Right
+AntiAlias=1
+
+[MeterTime]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureTime
+X=165
+Y=0
+FontSize=40
+MouseOverAction=[!SetOption MeasureTime Format "%H:%M"][!UpdateMeasure MeasureTime][!UpdateMeter *][!Redraw]
+MouseLeaveAction=[!SetOption MeasureTime Format "%#I:%M"][!UpdateMeasure MeasureTime][!UpdateMeter *][!Redraw]
+
+[MeterSeconds]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureSeconds
+X=204
+Y=8
+FontSize=18
+FontColor=255,231,135,255
+
+[MeterAMPM]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureAMPM
+X=204
+Y=30
+FontSize=16
+FontColor=255,231,135,255
+
+[MeterMonthDayYear]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureMonthName
+MeasureName2=MeasureDayOfMonth
+MeasureName3=MeasureYear
+X=204
+Y=0R
+FontSize=13
+Text=%1 %2, %3
+
+[MeterDayOfWeek]
+Meter=String
+MeterStyle=TextStyle
+MeasureName=MeasureDayOfWeek
+X=204
+Y=0R
+FontSize=13
+{% endhighlight %}
+
+<p style="clear: both;">&nbsp;</p>
+
+<div class="right"><p><a href="!getting-started/basic-tutorials/system">Continue to: System &raquo;</a></p> </div>
+<p><a href="!getting-started/basic-tutorials/clock">&laquo; Back to: Clock</a></p>

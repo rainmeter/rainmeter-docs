@@ -1,5 +1,5 @@
 ---
-layout: manual-beta
+layout: manual
 title: 'Bangs'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
@@ -464,7 +464,7 @@ title: 'Bangs'
 	<dd>
 		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!meters/general-options#UpdateDivider">UpdateDivider</a> on the meter, and immediately updates the meter, obtaining new current values for any measures or variables referenced. Note that the meter is not redrawn with any new values until the next update, or if a <a href="!bangs#Redraw">!Redraw</a> bang is used.
 		<ul>
-		<li><code>Meter</code> (required): Name of the meter to update.</li>
+		<li><code>Meter</code> (required): Name of the meter to update. Use <code>*</code> to update all meters.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
 		<br><b>Example:</b> <code>!UpdateMeter "MyMeter"</code>
@@ -520,7 +520,7 @@ title: 'Bangs'
 	<dd>
 		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!measures/general-options#UpdateDivider">UpdateDivider</a> on the measure, and immediately updates the measure.
 		<ul>
-		<li><code>Measure</code> (required): Name of the measure.</li>
+		<li><code>Measure</code> (required): Name of the measure. Use <code>*</code> to update all measures.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
 		<br><b>Example:</b> <code>!UpdateMeasure "CPUMeasure"</code>

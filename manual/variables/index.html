@@ -62,7 +62,6 @@ Bar=http://www.#Foo#.net/
 	<li><a href="!skins/rainmeter-section">[Rainmeter]</a></li>
 	<li><a href="!variables#Section">[Variables]</a></li>
 	<li><a href="!skins/metadata-section">[Metadata]</a></li>
-	<li><a href="!plugins/inputtext">InputText</a></li>
 	<li><a href="!plugins/itunes">iTunes</a></li>
 	<li><a href="!plugins/mediakey">MediaKey</a></li>
 	<li><a href="!plugins/power">Power</a></li>
@@ -84,6 +83,10 @@ Bar=http://www.#Foo#.net/
 <p>Some <a href="!measures">measure</a> and <a href="!meters">meter</a> properties can also be referenced as <a href="#DynamicVariables">dynamic</a> variables by using the section name in brackets (<code>[]</code>), as in <code>[SectionName]</code>. These <b>section variables</b> can also be modified by certain parameters, as in <code>[SectionName:P1,P2]</code>.</p>
 
 <p>For more, see <a href="!variables/section-variables">Section Variables</a>.</p>
+
+<h2 id="EventVariables">Event Variables</h2>
+
+<p>Some <a href="!options#Action">action options</a> allow the use of special variables that are related to the specific event that triggers the action. These variables are referenced by surrounding the name with dollar signs (<code>$</code>), as in <code>$Foo$</code>. Event variables are evaluated at the time the action is triggered, used to execute the action, and then immediately discarded. For example, when using a command with the <a href="!plugins/inputtext">InputText</a> plugin, the event variable <code>$UserInput$</code> refers to the string that was entered into a text input box by the user.</p>
 
 <h2 id="EnvironmentVariables">Environment Variables</h2>
 
