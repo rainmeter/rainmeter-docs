@@ -1,0 +1,24 @@
+---
+layout: snippets
+title: 'SortRandom'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Sorts a given table into a random order.</p>
+
+<div class="noscroll">{% highlight lua %}
+function SortRandom(input)
+	assert(type(input) == 'table', ('SortRandom must receive a table. Received %s instead.'):format(type(input)))
+	math.randomseed(tonumber(tostring(os.time()):reverse():sub(1,6)))
+	
+	local temp = {}
+	repeat
+		table.insert(temp, table.remove(input, math.random(1, #input)))
+	until #input == 0
+
+	return temp
+end -- SortRandom
+{% endhighlight %}
+</div>
+
+<p><b>Note:</b> Unlike table.sort this function does not directly manipulate the original table. The sorted table is returned as a result of the function.</p>
