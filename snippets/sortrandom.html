@@ -13,8 +13,8 @@ function SortRandom(input)
 	
 	local temp, newinput = {}, {}
 
-	for k, v in pairs(input) do
-		newinput[k] = v
+	for _, v in pairs(input) do
+		table.insert(newinput, v)
 	end
 
 	while #newinput > 0 do
