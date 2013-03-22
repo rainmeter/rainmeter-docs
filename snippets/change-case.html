@@ -1,0 +1,35 @@
+---
+layout: snippets
+title: 'Change Case'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>These functions can be used to change a string to either Sentence Case or Camel Case.</p>
+
+<div class="noscroll">
+{% highlight lua %}
+function SentenceCase(input, tabs)
+	assert(type(input) == 'string', ('SentenceCase must receive a string. Received %s instead.'):format(type(input)))
+
+	return (input:gsub('[^.]+', function(sentence)
+			local space, first, rest = sentence:match('(%s*)(.)(.*)')
+	
+			return space .. first:upper() .. rest:lower():gsub('%si%s', ' I ')
+		end))
+end -- SentenceCase
+{% endhighlight %}
+</div>
+
+<div class="noscroll">
+{% highlight lua %}
+function CamelCase(input, tabs)
+	assert(type(input) == 'string', ('CamelCase must receive a string. Received %s instead.'):format(type(input)))
+
+	return (input:gsub('%w+', function(word)
+			local first, rest = word:match('(.)(.*)')
+	
+			return first:upper() .. rest:lower()
+		end))
+end -- CamelCase
+{% endhighlight %}
+</div>
