@@ -8,7 +8,7 @@ title: 'Change Case'
 
 <div class="noscroll">
 {% highlight lua %}
-function SentenceCase(input, tabs)
+function SentenceCase(input)
 	assert(type(input) == 'string', ('SentenceCase must receive a string. Received %s instead.'):format(type(input)))
 
 	return (input:gsub('[^.]+', function(sentence)
@@ -22,7 +22,7 @@ end -- SentenceCase
 
 <div class="noscroll">
 {% highlight lua %}
-function CamelCase(input, tabs)
+function CamelCase(input)
 	assert(type(input) == 'string', ('CamelCase must receive a string. Received %s instead.'):format(type(input)))
 
 	return (input:gsub('%w+', function(word)
