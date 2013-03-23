@@ -66,7 +66,7 @@ FontSize=40
 
 <h2 style="clear: both;">Adding more measures and meters</h2>
 
-<p>We are going to use various elements of the system time in different meters in our skin, so let's create some more measures to gather different types of information.</p>
+<p>We are going to use various elements of the system time in different meters in our skin, so let's create some more measures to gather different types of information. Go back up to just under our [MeasureTime] section and add some new measures.</p>
 
 {% highlight ini %}
 [MeasureSeconds]
@@ -94,7 +94,7 @@ Measure=Time
 Format=%A
 {% endhighlight %}
 
-<p>Now, start building meters to display all these different measure values. Let's start with the first one, so we can look at a new meter positioning concept.</p>
+<p>Now, start building meters to display all these different measure values. Let's start with the first one, so we can look at a new meter positioning concept.  Head back down to the bottom of your skin and add this new meter.</p>
 
 {% highlight ini %}
 [MeterSeconds]
@@ -119,7 +119,7 @@ FontColor=255,231,135,255
 
 <p>Save and refresh the skin to see the changes.</p>
 
-<p style="clear: both;">Continue creating the meters to display the information from the various measures.</p>
+<p style="clear: both;">Continue creating the meters at the bottom of your skin, to display the information from the various measures.</p>
 
 {% highlight ini %}
 [MeterAMPM]
@@ -222,7 +222,7 @@ MouseOverAction=[!SetOption MeasureTime Format "%H:%M"][!UpdateMeasure MeasureTi
 MouseLeaveAction=[!SetOption MeasureTime Format "%#I:%M"][!UpdateMeasure MeasureTime][!UpdateMeter *][!Redraw]
 {% endhighlight %}
 
-<p>This is using a <a href="http://docs.rainmeter.net/manual-beta/mouse-actions">Mouse action</a> and a handful of <a href="!bangs">Bangs</a>.</p>
+<p>This is using a <a href="http://docs.rainmeter.net/manual/mouse-actions">Mouse action</a> and a handful of <a href="!bangs">Bangs</a>.</p>
 
 <p>What we are doing when we move the mouse over the meter is to use the <a href="!bangs#SetOption">!SetOption</a> bang to change the <code>Format</code> option of the <b>[MeasureTime]</b> measure to obtain the time from the system using the code for 24-hour time (%H) instead of 12-hour time (%I).  Then we are using the <a href="!bangs#UpdateMeasure">!UpdateMeasure</a>, <a href="!bangs#UpdateMeter">!UpdateMeter</a>, and <a href="!bangs#Redraw">!Redraw</a> bangs to have the change take place as soon as we move the mouse over, and not wait for the next update of the skin.</p>
 
