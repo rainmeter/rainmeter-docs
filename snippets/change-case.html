@@ -16,7 +16,7 @@ function SentenceCase(input)
 	
 			return space .. first:upper() .. rest:lower():gsub('%si%s', ' I ')
 		end))
-end -- SentenceCase
+end
 {% endhighlight %}
 </div>
 
@@ -30,6 +30,6 @@ function TitleCase(input)
 	
 			return first:upper() .. rest:lower()
 		end))
-end -- TitleCase
+end
 {% endhighlight %}
 </div>
