@@ -4,7 +4,7 @@ title: 'Change Case'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>These functions can be used to change a string to either Sentence Case or Camel Case.</p>
+<p>These functions can be used to change a string to either Sentence (first word capitalized) Case or Title (each word capitalized) Case.</p>
 
 <div class="noscroll">
 {% highlight lua %}
@@ -22,14 +22,14 @@ end -- SentenceCase
 
 <div class="noscroll">
 {% highlight lua %}
-function CamelCase(input)
-	assert(type(input) == 'string', ('CamelCase must receive a string. Received %s instead.'):format(type(input)))
+function TitleCase(input)
+	assert(type(input) == 'string', ('TitleCase must receive a string. Received %s instead.'):format(type(input)))
 
 	return (input:gsub('%w+', function(word)
 			local first, rest = word:match('(.)(.*)')
 	
 			return first:upper() .. rest:lower()
 		end))
-end -- CamelCase
+end -- TitleCase
 {% endhighlight %}
 </div>
