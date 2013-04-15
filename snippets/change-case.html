@@ -11,10 +11,10 @@ title: 'Change Case'
 function SentenceCase(input)
 	assert(type(input) == 'string', ('SentenceCase must receive a string. Received %s instead.'):format(type(input)))
 
-	return (input:gsub('[^.]+', function(sentence)
+	return (input:gsub('[^.!?]+', function(sentence)
 			local space, first, rest = sentence:match('(%s*)(.)(.*)')
 	
-			return space .. first:upper() .. rest:lower():gsub('%si%s', ' I ')
+			return space .. first:upper() .. rest:lower():gsub("%si([%s'])", ' I%1')
 		end))
 end
 {% endhighlight %}
@@ -25,11 +25,7 @@ end
 function TitleCase(input)
 	assert(type(input) == 'string', ('TitleCase must receive a string. Received %s instead.'):format(type(input)))
 
-	return (input:gsub('%w+', function(word)
-			local first, rest = word:match('(.)(.*)')
-	
-			return first:upper() .. rest:lower()
-		end))
+	return (input:gsub('(%S)(%S*)', function(first, rest) return first:upper() .. rest:lower() end))
 end
 {% endhighlight %}
 </div>
