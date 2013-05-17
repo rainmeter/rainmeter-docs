@@ -27,6 +27,9 @@
 
 		<div class="container">
 			<div class="row">
+				{% if page.index %}
+				<div id="content" class="index">
+				{% else %}
 				<div id="side-content">
 					<h1 id="category"><a href="/{{ page.base_name }}">{{ page.base_title }}</a></h1>
 
@@ -41,6 +44,7 @@
 				</div>
 
 				<div id="content">
+				{% endif %}
 					{{ content }}
 				</div>
 			</div>
