@@ -549,12 +549,9 @@ body {
 	box-shadow:inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 0 1px rgba(80, 84, 92, 0.45), 0 1px 2px rgba(80, 84, 92, 0.2);
 }
 
-.full #content {
-	margin-left:20px;
-}
-
 #content.index {
-	width:100%;
+	width:960px;
+	margin-left:20px;
 }
 
 .index-header {
