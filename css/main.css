@@ -554,20 +554,20 @@ body {
 	margin-left:20px;
 }
 
-.index-header {
+#index-left { 
+	width:60%;
+	padding:20px;
+	border-right:1px solid #ddd;
+}
+
+#index-left h2 {
 	padding:0;
 	margin-bottom:0;
 	font-weight:normal;
 }
 
-.index-description {
+#index-left p {
 	margin-bottom:30px;
-}
-
-#index-left { 
-	width:60%;
-	padding:20px;
-	border-right:1px solid #ddd;
 }
 
 #index-right {
@@ -587,6 +587,7 @@ article > *:first-child {
 	padding-top:0;
 }
 
+#index-left > *:last-child,
 article > *:last-child {
 	margin-bottom:0;
 }
