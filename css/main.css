@@ -557,10 +557,11 @@ body {
 .index-header {
 	padding:0;
 	margin-bottom:0;
+	font-weight:normal;
 }
 
 .index-description {
-	margin-bottom:20px;
+	margin-bottom:30px;
 }
 
 #index-left { 
