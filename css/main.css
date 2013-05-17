@@ -705,45 +705,10 @@ table#contents tr td:nth-child(2){
 }
 
 #footer {
-	margin-top:15px;
-	float:right;
-	opacity:0.75;
+	margin:25px 0 15px 0;
 	text-align:right;
 	font-size:11px;
-	line-height:14px;
-}
-
-.footer-push {
-	height: 80px;
-}
-
-.footer-left {
-	display: inline-block;
-	text-align: left;
-	float: left;
-}
-
-.footer-right {
-	text-align: right;
-}
-
-.footer-left p,
-.footer-right p {
-	margin: 10px;
-	font-size: 0.8em;
-	color:#999;
-}
-
-.footer-left a,
-.footer-right a {
-	font-weight: bold;
-	color:#777;
-	text-decoration:none;
-}
-
-.footer-left a:hover,
-.footer-right a:hover {
-	color:#fff;
+	opacity:0.75;
 }
 
 /*
