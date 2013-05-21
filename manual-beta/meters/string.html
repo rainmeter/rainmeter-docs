@@ -107,12 +107,12 @@ Text=This is text containing %1 and %2.
 
 	<dt id="ClipStringW"><code>ClipStringW</code></dt>
 	<dd>
-		<p>Sets a maximum width that the meter will expand to accomodate the string when <code>ClipString=2</code>. This setting is ignored if the <code>W</code> option is set.</p>
+		<p>Sets a maximum width that the meter will expand to accommodate the string when <code>ClipString=2</code>. This setting is ignored if the <code>W</code> option is set.</p>
 	</dd>
 
 	<dt id="ClipStringH"><code>ClipStringH</code></dt>
 	<dd>
-		<p>Sets a maximum height that the meter will expand to accomodate the string when <code>ClipString=2</code>. This setting is ignored if the <code>H</code> option is set.</p>
+		<p>Sets a maximum height that the meter will expand to accommodate the string when <code>ClipString=2</code>. This setting is ignored if the <code>H</code> option is set.</p>
 	</dd>
 
 	<dt id="Angle"><code>Angle</code> <small>Default: <code>0.0</code></small></dt>
@@ -123,23 +123,23 @@ Text=This is text containing %1 and %2.
 
 	<dt id="Percentual"><code>Percentual</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, percentual measure values are used for the <code>%<em>N</em></code> syntax. The measure(s) must be able to return <a href="!measures#Percentage">percentual values</a>.
+		If set to <code>1</code>, the value of bound measures are converted to a <a href="!measures#Percentage">percentage</a>.  This is useful if a measure does not return a percentage value, but either automatically defines a valid "range" of values (e.g. <a href="!measures/freediskspace">FreeDiskSpace</a>) or when the <a href="!measures/general-options#MinValue">MinValue</a> and/or <a href="!measures/general-options#MaxValue">MaxValue</a> options are manually set on the measure.
 	</dd>
 
 	<dt id="NumOfDecimals"><code>NumOfDecimals</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		Number of decimals to display with numerical measure values for the <code>%<em>N</em></code> syntax.
+		Number of decimals to display with numerical measure values.
 	</dd>
 
 	<dt id="Scale"><code>Scale</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		Scaling factor used for the measure value(s) for the <code>%<em>N</em></code> syntax in <code>Text</code>. The measure value is divided by the specified value. If the specified value has a decimal point (e.g. <code>1000.0</code>), the result will also display decimals.
+		Scaling factor used for the measure values. The measure value is divided by the specified value. If the specified value has a decimal point (e.g. <code>1000.0</code>), the result will also display decimals.
 		<br><br><b>Note:</b> If <code>AutoScale</code> is enabled, this option is ignored.
 	</dd>
 
 	<dt id="AutoScale"><code>AutoScale</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		Automatically scales the measure value(s) for the <code>%<em>N</em></code> syntax in <code>Text</code>. The scaled result is appended with k, M, G, etc. as appropriate. Valid values are:
+		Automatically scales the measure values. The scaled result is appended with k, M, G, etc. as appropriate. Valid values are:
 		<ul>
 		<li><code>0</code>: Disabled.</li>
 		<li><code>1</code>: Scales by 1024.</li>
@@ -231,4 +231,4 @@ Text=This text will wrap due to ClipString=1
 <div class="exampleprev">
 	<p><img src="!img/example-meters/ExampleMeterString.jpg"/></p>
 	<p>An example skin showing various string options.</p>
-</div>	
+</div>
