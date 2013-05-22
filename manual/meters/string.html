@@ -10,19 +10,21 @@ title: 'String meter'
 <dl>
 	<dt>General meter options</dt>
 	<dd>
-		All <a href="!meters/general-options">general meter options</a> are valid.
+		<p>All <a href="!meters/general-options">general meter options</a> are valid.</p>
 	</dd>
 
 	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<em>N</em></code></dt>
 	<dd>
-		Name(s) of the measure(s) to use in <code>Text</code> with the <code>%<em>N</em></code> syntax. This option does not need to be specified if not needed.
+		<p>Name(s) of the measure(s) bound to the meter. The meter will display the current value of the measure defined in <code>MeasureName</code>, with values for additional measures bound to the meter available using the <code>%<em>N</em></code> syntax in the <a href="#Text">Text</a> option.</p>
+		
+		<p>The meter does not require a <code>MeasureName<em>N</em></code> option if the <a href="#Text">Text</a> option alone will be used to define the string to display.</p>
 	</dd>
 
 	<dt id="Text"><code>Text</code> <small>Default: <code>%1</code></small></dt>
 	<dd>
-		Text to display. If <code>MeasureName</code> is specified, <code>Text</code> will default to the measure value. Otherwise no text will be displayed by default.
+		<p>Text to display. If <code>MeasureName</code> is specified, <code>Text</code> will default to the value of the measure.</p>
 
-		<br><br>The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:
+		<p>The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:</p>
 {% highlight ini %}
 MeasureName=SomeMeasure
 MeasureName2=SomeMeasure2
@@ -30,68 +32,75 @@ Text=This is text containing %1 and %2.
 ; %1 and %2 will be replaced by the string values of SomeMeasure and
 ; SomeMeasure2, respectively.
 {% endhighlight %}
+	
+	<p>The <code>Text</code> option can take any combination of the following forms:</p>
+	<ul>
+	<li>Display the value of a measure bound with <code>MeasureName</code></li>
+	<li>Display the values of multiple measures bound with <code>MeasureName<em>N</em></code>, and formatted with the <code>%<em>N</em></code> syntax.</li>
+	<li>Display static text defined in the option.</li>
+	<li>Display the current value of any <a href="!variables">variables</a> or <a href="!variables/section-variables">section variables</a>.  <em>Note that the meter must contain the <a href="!meters/general-options#DynamicVariables">DynamicVariables</a> option to use the current value of variables or measures defined as a section variable.</em></li>
 	</dd>
 
 	<dt id="Prefix"><code>Prefix</code></dt>
 	<dd>
-		Text displayed before <code>Text</code>.
+		<p>Text displayed before <code>Text</code>.</p>
 
-		<br><br><b>Note:</b> It is preferable to put the entire string in <code>Text</code> instead of using this option.
+		<p><b>Note:</b> It is preferable to put the entire string in <code>Text</code> instead of using this option.</p>
 	</dd>
 
 	<dt id="Postfix"><code>Postfix</code></dt>
 	<dd>
-		Text displayed after <code>Text</code>.
+		<p>Text displayed after <code>Text</code>.</p>
 
-		<br><br><b>Note:</b> It is preferable to put the entire string in <code>Text</code> instead of using this option.
+		<p><b>Note:</b> It is preferable to put the entire string in <code>Text</code> instead of using this option.</p>
 	</dd>
 
 	<dt id="FontFace"><code>FontFace</code> <small>Default: <code>Arial</code></small></dt>
 	<dd>
-		Family name of the font to use for the text. The font must either be installed in Windows directly or must be <a href="!skins/resources-folder#Fonts">loaded at runtime</a>.
+		<p>Family name of the font to use for the text. The font must either be installed in Windows directly or must be <a href="!skins/resources-folder#Fonts">loaded at runtime</a>.</p>
 
-		<br><br><b>See also:</b> <a href="/tips/fonts-guide">Fonts Guide</a>.
+		<p><b>See also:</b> <a href="/tips/fonts-guide">Fonts Guide</a>.</p>
 	</dd>
 
 	<dt id="FontSize"><code>FontSize</code> <small>Default: <code>10</code></small></dt>
 	<dd>
-		Size of the font.
+		<p>Size of the font.</p>
 	</dd>
 
 	<dt id="FontColor"><code>FontColor</code> <small>Default: <code>0,0,0,255</code></small></dt>
 	<dd>
-		<a href="!options#Color">Color</a> of the font.
+		<p><a href="!options#Color">Color</a> of the font.</p>
 	</dd>
 
 	<dt id="StringAlign"><code>StringAlign</code> <small>Default: <code>Left</code></small></dt>
 	<dd>
-		Horizontal and vertical alignment of the string. Valid values are:
+		<p>Horizontal and vertical alignment of the string. Valid values are:</p>
 		<ul>
 		<li><code>Left</code>, <code>Right</code>, <code>Center</code> (or <code>LeftTop</code>, <code>RightTop</code>, <code>CenterTop</code>)</li>
 		<li><code>LeftBottom</code>, <code>RightBottom</code>, <code>CenterBottom</code></li>
 		<li><code>LeftCenter</code>, <code>RightCenter</code>, <code>CenterCenter</code></li>
 		</ul>
-		The string will be aligned using the values of the <code>X</code> and or <code>Y</code> settings as the anchor point. So to CenterCenter align a string within a meter with a width and height of 100, set <code>X=50</code>, <code>Y=50</code> and <code>StringAlign=CenterCenter</code>.
+		<p>The string will be aligned using the values of the <code>X</code> and or <code>Y</code> settings as the anchor point. So to CenterCenter align a string within a meter with a width and height of 100, set <code>X=50</code>, <code>Y=50</code> and <code>StringAlign=CenterCenter</code>.</p>
 	</dd>
 
 	<dt id="StringStyle"><code>StringStyle</code> <small>Default: <code>Normal</code></small></dt>
 	<dd>
-		Style of the string. Valid values are <code>Normal</code>, <code>Bold</code>, <code>Italic</code>, and <code>BoldItalic</code>.
+		<p>Style of the string. Valid values are <code>Normal</code>, <code>Bold</code>, <code>Italic</code>, and <code>BoldItalic</code>.</p>
 	</dd>
 
 	<dt id="StringCase"><code>StringCase</code> <small>Default: <code>None</code></small></dt>
 	<dd>
-		Converts the string to a case. Valid values are <code>None</code>, <code>Upper</code>, <code>Lower</code>, and <code>Proper</code>.
+		<p>Converts the string to a case. Valid values are <code>None</code>, <code>Upper</code>, <code>Lower</code>, and <code>Proper</code>.</p>
 	</dd>
 
 	<dt id="StringEffect"><code>StringEffect</code> <small>Default: <code>None</code></small></dt>
 	<dd>
-		Effect applied to a string. Valid values are <code>None</code>, <code>Shadow</code>, and <code>Border</code>.
+		<p>Effect applied to a string. Valid values are <code>None</code>, <code>Shadow</code>, and <code>Border</code>.</p>
 	</dd>
 
 	<dt id="FontEffectColor"><code>FontEffectColor</code> <small>Default: <code>0,0,0,255</code></small></dt>
 	<dd>
-		<a href="!options#Color">Color</a> of the StringEffect.
+		<p><a href="!options#Color">Color</a> of the StringEffect.</p>
 	</dd>
 
 	<dt id="ClipString"><code>ClipString</code> <small>Default: <code>0</code></small></dt>
@@ -102,7 +111,7 @@ Text=This is text containing %1 and %2.
 		<li><code>1</code>: Enabled. The string will be clipped with an added ellipsis <code>...</code> when it exceeds the specified <code>W</code> (<a href="!meters/general-options#WH">width</a>) option on the meter. If the <code>H</code> (<a href="!meters/general-options#WH">height</a>) option is large enough to allow multiple lines, the text is wrapped until the value of <code>H</code> is reached, then clipped.</li>
 		<li><code>2</code>: Auto. The string will be clipped or wrapped based on the value of <code>W</code> and/or <code>H</code>. If the width or height are not specified, the meter itself will change size to accommodate the string. This setting works in conjunction with the <a href="#ClipStringW">ClipStringW</a> and <a href="#ClipStringH">ClipStringH</a> options below, to set a "maximum" size that the meter should expand to accomodate the string before clipping.
 		</ul>
-		<br><p><b>Note: </b>The changing size of meters when <code>ClipString=2</code> can cause truncation issues with the overall window size of the skin, unless <a href="!skins/rainmeter-section#DynamicWindowSize">DynamicWindowSize=1</a> is set in the [Rainmeter] section of the skin.</p>
+		<p><b>Note: </b>The changing size of meters when <code>ClipString=2</code> can cause truncation issues with the overall window size of the skin, unless <a href="!skins/rainmeter-section#DynamicWindowSize">DynamicWindowSize=1</a> is set in the [Rainmeter] section of the skin.</p>
 	</dd>
 
 	<dt id="ClipStringW"><code>ClipStringW</code></dt>
@@ -117,29 +126,31 @@ Text=This is text containing %1 and %2.
 
 	<dt id="Angle"><code>Angle</code> <small>Default: <code>0.0</code></small></dt>
 	<dd>
-		Defines the angle of the text in radians.
-		<br><br><b>Note:</b> The size and position of the text are always calculated as if the text is horizontal.
+		<p>Defines the angle of the text in radians.</p>
+		
+		<p><b>Note:</b> The size and position of the text are always calculated as if the text is horizontal.</p>
 	</dd>
 
 	<dt id="Percentual"><code>Percentual</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the value of bound measures are converted to a <a href="!measures#Percentage">percentage</a>.  This is useful if a measure does not return a percentage value, but either automatically defines a valid "range" of values (e.g. <a href="!measures/freediskspace">FreeDiskSpace</a>) or when the <a href="!measures/general-options#MinValue">MinValue</a> and/or <a href="!measures/general-options#MaxValue">MaxValue</a> options are manually set on the measure.
+		<p>If set to <code>1</code>, the value of bound measures are converted to a <a href="!measures#Percentage">percentage</a>.  This is useful if a measure does not return a percentage value, but either automatically defines a valid "range" of values (e.g. <a href="!measures/freediskspace">FreeDiskSpace</a>) or when the <a href="!measures/general-options#MinValue">MinValue</a> and/or <a href="!measures/general-options#MaxValue">MaxValue</a> options are manually set on the measure.</p>
 	</dd>
 
 	<dt id="NumOfDecimals"><code>NumOfDecimals</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		Number of decimals to display with numerical measure values.
+		<p>Number of decimals to display with numerical measure values.</p>
 	</dd>
 
 	<dt id="Scale"><code>Scale</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		Scaling factor used for the measure values. The measure value is divided by the specified value. If the specified value has a decimal point (e.g. <code>1000.0</code>), the result will also display decimals.
-		<br><br><b>Note:</b> If <code>AutoScale</code> is enabled, this option is ignored.
+		<p>Scaling factor used for the measure values. The measure value is divided by the specified value. If the specified value has a decimal point (e.g. <code>1000.0</code>), the result will also display decimals.</p>
+		
+		<p><b>Note:</b> If <code>AutoScale</code> is enabled, this option is ignored.</p>
 	</dd>
 
 	<dt id="AutoScale"><code>AutoScale</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		Automatically scales the measure values. The scaled result is appended with k, M, G, etc. as appropriate. Valid values are:
+		<p>Automatically scales the measure values. The scaled result is appended with k, M, G, etc. as appropriate. Valid values are:</p>
 		<ul>
 		<li><code>0</code>: Disabled.</li>
 		<li><code>1</code>: Scales by 1024.</li>
