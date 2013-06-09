@@ -25,7 +25,7 @@ title: 'Image Meter'
 
 	<dt id="ImageName"><code>ImageName</code> <small>Default: <code>%1.png</code></small></dt>
 	<dd>
-		<a href="!options#Path">Path</a> of the image file. The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:
+		Name of the image file. The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:
 		{% highlight ini %}
 MeasureName=SomeMeasure
 MeasureName2=SomeMeasure2
@@ -34,11 +34,6 @@ ImageName=%1-%2.png
 ; SomeMeasure2, respectively.
 {% endhighlight %}
 		<b>Note:</b> If an extension is not provided for the image file, .png is assumed.
-	</dd>
-
-	<dt id="Path"><code>Path</code></dt>
-	<dd>
-		<a href="!options#Path">Path</a> of the image folder location.
 	</dd>
 
 	<dt id="PreserveAspectRatio"><code>PreserveAspectRatio</code> <small>Default: <code>0</code></small></dt>
@@ -64,6 +59,16 @@ ImageName=%1-%2.png
 </dl>
 
 <p><b>Note:</b> Using the <a href="!meters/general-options#SolidColor">SolidColor</a> option, along with <a href="!meters/general-options#WH">W</a> and <a href="!meters/general-options#WH">H</a> options, an image meter may be used to draw squares, rectangles or lines without needing any <code>ImageName</code> or <code>MeasureName</code>.</p>
+
+<h3 id="Deprecated">Deprecated Features</h3>
+
+<p>The following options have been deprecated and should not be used. They are still supported, but may be removed in future versions.</p>
+
+<ul>
+	<li><p><code>Path</code><br>
+		The Path option to define the location of images is replaced by the <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> option.
+	</li>
+</ul>	
 
 <h2>Example</h2>
 <a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterImage_1.0.rmskin" class="download"></a>
