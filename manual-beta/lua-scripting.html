@@ -190,32 +190,6 @@ end
 	<dd>
 		<p>Returns the current <a href="!measures#Values">string value</a> of the measure.</p>
 		<p><b>Example:</b> <code>MyMeasureValue = MyMeasure:GetStringValue()</code></p>
-		
-		<p>If the string value is numeric, additional formatting can optionally be added by including a table of parameters as an argument to the function.</p>
-		
-		<p><b>Examples:</b></p>
-{% highlight lua %}
-MyMeasureValue = MyMeasure:GetStringValue({NumOfDecimals=2, Percentual=1})
-
-options = {
-	AutoScale = 1,
-	NumOfDecimals = 2
-	}
-MyMeasureValue = MyMeasure:GetStringValue(options)
-{% endhighlight %}		
-		
-		<p>Parameter table values:</p>
-		<ul>
-		<li><code>AutoScale</code> : Automatically scales the number by the following values. The result is appended with k, M, G, etc. as appropriate.<br>
-			<code>0</code> : Disabled (default)<br>
-			<code>1</code> : Scales by 1024<br>
-			<code>2</code> : Scales by 1000<br>
-			<code>101</code> : Scales by 1024 with kilo as the lowest unit.<br>
-			<code>102</code> : Scales by 1000 with kilo as the lowest unit.</li>
-		<li><code>Scale</code> : Divides the number by the Scale value.  Default is <code>1</code>, ignored with AutoScale enabled.</li>
-		<li><code>NumOfDecimals</code> : Displays the number with decimal places.  Default is <code>0</code>.</li>
-		<li><code>Percentual</code> : If set to <code>1</code>, converts the value to a <a href="!measures#Percentage">percentage</a>, based on the range (MinValue / MaxValue) of the measure. Default is <code>0</code></li>
-		</ul>
 	</dd>
 
 	<dt id="GetOption"><code>GetOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
