@@ -112,7 +112,7 @@ Formula=5
 
 [MeasureTwo]
 Measure=Calc
-Formula=(MeasureOne &lt; 6) ? 1 : -1
+Formula=MeasureOne &lt; 6 ? 1 : -1
 {% endhighlight %}
 <p>This measure would return the number 1 since the condition <code>MeasureOne &lt; 6</code> evaluates to true.</p>
 <p>Conditional operators can be nested. It should be noted that there is a maximum of 30 nested operators.</p>
@@ -123,7 +123,7 @@ Formula=2
 
 [MeasureTwo]
 Measure=Calc
-Formula=(MeasureOne &lt; 1) ? 99 : ((MeasureOne &lt; 2) ? 98 : ((MeasureOne &lt; 3) ? 97 : 96))
+Formula=MeasureOne &lt; 1 ? 99 : (MeasureOne &lt; 2 ? 98 : (MeasureOne &lt; 3 ? 97 : 96))
 {% endhighlight %}
 <p>This measure would return 97. Since the first statement of <code>MeasureOne &lt; 1</code> is false, the formula begins testing the nested formulas in order until the condition becomes true . If none of the conditions are met, the final false value of 96 would be set.</p>
 
