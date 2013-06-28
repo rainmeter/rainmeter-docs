@@ -1,0 +1,772 @@
+---
+layout: tips
+title: 'RSS Feed Tutorial'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>One of the most common uses of the <a href="/manual/plugins/webparser">WebParser plugin</a> in Rainmeter is to create a skin to parse and display information from an RSS or Atom feed.  While this guide is not intended as a <a href="!tips/webparser-tutorial">tutorial for the WebParser plugin</a>, it should help you get started with creating your own feed reader skins.  Due to the standard nature of RSS and Atom feeds, this is really one of the easier things to do with WebParser, and what you learn from doing this can be a lot of help with other, more complicated parsing of web sites.</p>
+
+<p>RSS and Atom feeds follow certain patterns that make them fairly easy to parse.  While there are differences between the RSS and Atom standards, which we will touch on a bit later, let's use a simple RSS output to outline how they are laid out.</p>
+
+{% highlight ini %}
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;rss version="2.0"&gt;
+&lt;channel&gt;
+ &lt;title&gt;RSS Title&lt;/title&gt;
+ &lt;description&gt;This is an example of an RSS feed&lt;/description&gt;
+ &lt;link&gt;http://www.someexamplerssdomain.com/main.html&lt;/link&gt;
+ &lt;lastBuildDate&gt;Mon, 06 Sep 2009 16:45:00 +0000 &lt;/lastBuildDate&gt;
+ 
+ &lt;item&gt;
+  &lt;title&gt;Example entry&lt;/title&gt;
+  &lt;description&gt;Here is some text containing an interesting description.&lt;/description&gt;
+  &lt;link&gt;http://www.wikipedia.org/&lt;/link&gt;
+  &lt;pubDate&gt;Mon, 06 Sep 2009 16:45:00 +0000 &lt;/pubDate&gt;
+ &lt;/item&gt;
+ 
+&lt;/channel&gt;
+&lt;/rss&gt;
+{% endhighlight %}
+
+<p>As you can see, the pattern is that there is a header section which contains "tags" for the <em>title</em>, <em>description</em>, <em>link</em> and <em>lastBuildDate</em> of the overall feed.  This is followed by a series of one or more <em>item</em> entries, each of which has its own set of title/description/link/pubDate tags.  It should be noted that there can be MANY other tags in a feed.  However, in an RSS feed, the ones we are going to look at are the ones that are certain to be there, and will have the information we want for a simple RSS skin.</p>
+
+<h3>Sample RSS feed</h3>
+
+<p>What we want to do is take some representative example of an RSS feed, and get that header title, link and last build date information, then a few "items", with their title, link and publication dates. Then we will build a simple skin to display our results.</p>
+
+<p>For our example of an RSS feed, let's use the feed from the site <a href="http://www.breakingnews.com/">http://www.breakingnews.com/</a>.  The RSS feed is found at the URL <a href="http://www.breakingnews.com/feeds/rss/">http://www.breakingnews.com/feeds/rss/</a>.  If we go to that URL in our web browser, we get HTML output that looks like this:</p>
+
+{% highlight ini %}
+&lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
+&lt;rss version="2.0"&gt;&lt;channel&gt;&lt;title&gt;Breaking news - www.breakingnews.com&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/feeds/rss/&lt;/link&gt;&lt;description&gt;The latest breaking news around the world from hundreds of sources, all in one place.&lt;/description&gt;&lt;lastBuildDate&gt;Thu, 27 Jun 2013 13:43:09 GMT&lt;/lastBuildDate&gt;&lt;generator&gt;PyRSS2Gen-1.0.0&lt;/generator&gt;&lt;docs&gt;http://blogs.law.harvard.edu/tech/rss&lt;/docs&gt;&lt;item&gt;&lt;title&gt;Trayvon Martin's friend resumes testimony at George Zimmerman trial - @AP&lt;/title&gt;&lt;link&gt;http://abcnews.go.com/US/wireStory/martin-friend-resumes-testimony-zimmerman-trial-19505376#.Ucw_kPlatBk&lt;/link&gt;&lt;description&gt;Trayvon Martin's friend resumes testimony at George Zimmerman trial - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGKLiihEM/2013/06/27/trayvon-martins-friend-resumes-testimony-at-georg&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 13:36:05 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Russia says it has replaced military personnel with civilian workers at naval base in Syria - @AP&lt;/title&gt;&lt;link&gt;http://www.montereyherald.com/world/ci_23550633/russia-subs-military-civilians-at-syrian-base&lt;/link&gt;&lt;description&gt;Russia says it has replaced military personnel with civilian workers at naval base in Syria - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGOrKihEM/2013/06/27/russia-says-it-has-replaced-military-personnel-wit&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 13:22:51 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Several Sopranos cast members already inside St. John the Divine for James Gandolfini's funeral, including Edie Falco; Alec Baldwin also made his way in - @alexifriedman&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGILDihEM/2013/06/27/several-sopranos-cast-members-already-inside-st-j&lt;/link&gt;&lt;description&gt;Several Sopranos cast members already inside St. John the Divine for James Gandolfini's funeral, including Edie Falco; Alec Baldwin also made his way in - @alexifriedman&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGILDihEM/2013/06/27/several-sopranos-cast-members-already-inside-st-j&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 13:21:44 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Ecuador renounces renewed trade benefits from US Congress - @AP&lt;/title&gt;&lt;link&gt;http://www.foxnews.com/world/2013/06/27/ecuador-renounces-renewed-trade-benefits-from-us-congress/&lt;/link&gt;&lt;description&gt;Ecuador renounces renewed trade benefits from US Congress - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGNr8iREM/2013/06/27/ecuador-renounces-renewed-trade-benefits-from-us-c&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 13:14:38 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Libya's defense minister relieved from post following deadly clashes in Tripoli, country's prime minister says - @Reuters&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGLrdiREM/2013/06/27/libyas-defense-minister-relieved-from-post-follow&lt;/link&gt;&lt;description&gt;Libya's defense minister relieved from post following deadly clashes in Tripoli, country's prime minister says - @Reuters&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGLrdiREM/2013/06/27/libyas-defense-minister-relieved-from-post-follow&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 13:02:41 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Weekly US unemployment benefit applications fall to 346K, a sign of steady job gains - @AP&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGNr_iBEM/2013/06/27/weekly-us-unemployment-benefit-applications-fall-t&lt;/link&gt;&lt;description&gt;Weekly US unemployment benefit applications fall to 346K, a sign of steady job gains - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGNr_iBEM/2013/06/27/weekly-us-unemployment-benefit-applications-fall-t&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 12:34:55 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;US consumers spend 0.3% more in May as their income rises 0.5% - @AP&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGIrwiBEM/2013/06/27/us-consumers-spend-03-more-in-may-as-their-incom&lt;/link&gt;&lt;description&gt;US consumers spend 0.3% more in May as their income rises 0.5% - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGIrwiBEM/2013/06/27/us-consumers-spend-03-more-in-may-as-their-incom&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 12:33:55 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Condition of Nelson Mandela improved overnight, remains critical but is stable, Presidency says - @PresidencyZA&lt;/title&gt;&lt;link&gt;http://www.thepresidency.gov.za/pebble.asp?relid=15645&lt;/link&gt;&lt;description&gt;Condition of Nelson Mandela improved overnight, remains critical but is stable, Presidency says - @PresidencyZA&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGLrgiBEM/2013/06/27/condition-of-nelson-mandela-improved-overnight-re&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 12:30:46 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;President Obama says he will not send US jets to intercept Snowden when he travels next - @Reuters&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGILJiBEM/2013/06/27/president-obama-says-he-will-not-send-us-jets-to-i&lt;/link&gt;&lt;description&gt;President Obama says he will not send US jets to intercept Snowden when he travels next - @Reuters&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGILJiBEM/2013/06/27/president-obama-says-he-will-not-send-us-jets-to-i&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 11:50:39 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;President Obama says the Supreme Court 'made a mistake' in voting rights ruling - @AP&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGLK5iBEM/2013/06/27/president-obama-says-the-supreme-court-made-a-mis&lt;/link&gt;&lt;description&gt;President Obama says the Supreme Court 'made a mistake' in voting rights ruling - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGLK5iBEM/2013/06/27/president-obama-says-the-supreme-court-made-a-mis&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 11:46:53 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;/channel&gt;&lt;/rss&gt;
+{% endhighlight %}
+
+<p><em>Since a feed is meant to be read by a computer program that will parse the data from the XML / HTML output, there is often no attempt made to have the text be particularly formatted or easy to read.  Notice that this feed doesn't use any linefeeds at all to break up the information, as that isn't important to how we parse the data. Sometimes a feed in your browser WILL have some HTML formatting codes to make it easier to view.  If it does, you should right click and use "view page source" (or some variant of that depending on your browser), so you are looking at the raw HTML output and not formatted data.</em><p>
+
+<p>If we look through this output, we can spot the patterns of XML "tags" that we described above.</p>
+
+<p>We have the title of the feed in<br>
+<code>&lt;title&gt;Breaking news - www.breakingnews.com&lt;/title&gt;</code><br>
+
+a link to the feed in<br>
+<code>&lt;link&gt;http://www.breakingnews.com/feeds/rss/&lt;/link&gt;</code><br>
+
+and the date the feed was last updated in<br>
+<code>&lt;lastBuildDate&gt;Thu, 27 Jun 2013 13:43:09 GMT&lt;/lastBuildDate&gt;</code>.</p>
+
+<p>We can then see the first of our &lt;item&gt; tags<p>
+
+<p>This is followed by a title of<br>
+<code>&lt;title&gt;Trayvon Martin's friend resumes testimony at George Zimmerman trial - @AP&lt;/title&gt;</code><br>
+
+a link of<br>
+<code>&lt;link&gt;http://abcnews.go.com/US/wireStory/martin-friend-resumes-testimony-zimmerman-trial-19505376#.Ucw_kPlatBk&lt;/link&gt;</code><br>
+
+and a bit later on, a publication date of<br>
+<code>&lt;pubDate&gt;Thu, 27 Jun 2013 13:36:05 GMT&lt;/pubDate&gt;</code>.</p>
+
+<p>We know when we are done with any given item when we see the &lt;/item&gt; tag.</p>
+
+<p>This is followed by more &lt;item&gt; tags, each with their own titles, links and publication dates.</p>
+ 
+<h3>Building our skin</h3>
+
+<p>First, let's get the skin started.</p>
+
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+{% endhighlight %}
+
+<p>Now we will start building our first WebParser measure.</p>
+
+{% highlight ini %}
+[MeasureSite]
+Measure=Plugin
+Plugin=WebParser
+URL=http://www.breakingnews.com/feeds/rss/
+{% endhighlight %}
+
+<p>The next thing we will need is the all-important <code>RegExp</code> option. Again, this guide is not a tutorial for the WebParser measure, nor a tutorial for <a href="/manual/options#RegExp">Regular Expressions</a>.  However, at a high level what we want to do is use a regular expression in the "parent measure" to search the feed and capture parts of it into <code>StringIndex</code> numbers that we will use later in "child measures".</p>
+
+<p>We can begin by getting the title of the feed into a StringIndex.</p>
+
+{% highlight ini %}
+[MeasureSite]
+Measure=Plugin
+Plugin=WebParser
+URL=http://www.breakingnews.com/feeds/rss/
+RegExp=(?siU)&lt;title&gt;(.*)&lt;/title&gt;
+{% endhighlight %}
+
+<p>So we are searching for &lt;title&gt;, capturing <code>()</code> any number of characters of any kind <code>.*</code> into StringIndex number 1, and ending the capture when the text &lt;/title&gt; is found.</p>
+
+<p>Let's extend that <code>RegExp</code> option and get the link for the site and the last build date into StringIndex numbers 2 and 3.</p>
+
+{% highlight ini %}
+RegExp=(?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;
+{% endhighlight %}
+
+<p><em>Notice that we use <code>.*</code> without parentheses to "skip" any number of any characters, without capturing anything.</em></p>
+
+<p>So now we have those three bits of information we parsed into StringIndex numbers 1, 2 and 3.  We can build some child WebParser measures to contain each of those values, that we can then use in meters.</p>
+
+{% highlight ini %}
+[MeasureSite]
+Measure=Plugin
+Plugin=WebParser
+URL=http://www.breakingnews.com/feeds/rss/
+RegExp=(?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;
+
+[MeasureSiteTitle]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=1
+
+[MeasureSiteLink]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=2
+
+[MeasureSiteBuildDate]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=3
+
+[MeterSiteTitle]
+Meter=String
+MeasureName=MeasureSiteTitle
+LeftMouseUpAction=["[MeasureSiteLink]"]
+DynamicVariables=1
+{% endhighlight %}
+
+<h3>Getting the first feed item</h3>
+
+<p>Now that we have retrieved the site header information into our first three StringIndex numbers, let's get the first of the items from the feed.  We do that by again extending our <code>RegExp</code> option.</p>
+
+{% highlight ini %}
+[MeasureSite]
+Measure=Plugin
+Plugin=WebParser
+URL=http://www.breakingnews.com/feeds/rss/
+RegExp=(?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;
+{% endhighlight %}
+
+<p>The added parsing code will skip to the first &lt;item&gt;, then find the &lt;title&gt;, &lt;link&gt; and &lt;pubDate&gt;.  It will put them in StringIndex numbers 4, 5 and 6.  Just count the instances of <code>(.*)</code> in the expression to determine which StringIndex numbers contain each value.</p>
+
+<p>Following the same pattern as above, we can add new child measures to reference these StringIndex numbers.</p>
+
+{% highlight ini %}
+[MeasureItem1Title]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=4
+
+[MeasureItem1Link]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=5
+
+[MeasureItem1Date]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=6
+{% endhighlight %}
+
+<h3>Adding more feed items</h3>
+
+<p>Adding another item is as simple as extending our <code>RegExp</code> option to get the next &lt;item&gt; into the next three StringIndex numbers.</p>
+
+{% highlight ini %}
+(?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;
+{% endhighlight %}
+
+<p>And create some more child WebParser measures for those values.</p>
+
+{% highlight ini %}
+[MeasureItem2Title]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=7
+
+[MeasureItem2Link]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=8
+
+[MeasureItem2Date]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=9
+{% endhighlight %}
+
+<p>Adding a third item is just more of the same.</p>
+
+{% highlight ini %}
+(?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;
+{% endhighlight %}
+
+<h3>That RegExp is getting pretty long...</h3>
+
+<p>If you are retrieving a number of items, let's say five for instance, that <code>RegExp</code> is going to get pretty long and a bit hard to debug.  Let's use a little trick with a variable to simplify it a bit. Go back up to the top of your skin right under the [Rainmeter] section, and create a new [Variables] section.</p>
+
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[Variables]
+Item=.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;
+{% endhighlight %}
+
+<p>And change our <code>RegExp</code> option in our parent measure to use that new variable.</p>
+
+{% highlight ini %}
+[MeasureSite]
+Measure=Plugin
+Plugin=WebParser
+URL=http://www.breakingnews.com/feeds/rss/
+RegExp=(?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;#Item#
+{% endhighlight %}
+
+<p>Since the variable <code>#Item#</code> is replaced in the <code>RegExp</code> with <code>.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;</code>, we still get our parse of the site header information into StringIndex numbers 1, 2 and 3, and our first &lt;item&gt; into StringIndex numbers 4, 5 and 6.  However the <code>RegExp</code> is quite a bit shorter and easier to read and debug.  Adding more items is as simple as repeating that variable.</p>
+
+{% highlight ini %}
+RegExp=(?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;#Item##Item##Item##Item##Item#
+{% endhighlight %}
+
+<p>That will get a total of five items, with the total of StrinIndex numbers at 18.  Now you just create all the child measures you need to pick off those 18 values, and display them as you like in meters.</p>
+
+<h3>A few more advanced suggestions</h3>
+
+<p><b>DecodeCharacterReference</b></p>
+
+<p>An RSS or Atom feed can contain the HTML codes for some characters, ones that you would want to display as the actual character instead of the code.  For instance, the raw data might contain the code <code>&amp;lt;</code> which is the <code>&lt;</code> character.  You don't want to dislay the code, but the actual <code>&lt;</code>. 
+
+<p>If you add the option <a href="/manual/plugins/webparser#DecodeCharacterReference">DecodeCharacterReference=1</a> to any or all desired <b>child</b> measures, Rainmeter will translate and display the correct character for the embedded HTML code.</p>
+
+{% highlight ini %}
+[MeasureItem1Title]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=4
+DecodeCharacterReference=1
+{% endhighlight %}
+
+<p><em>Generally, you will need this only on the "title" child measures, as the "link" and "pubdate" entries will almost never contain any of these HTML codes.</em></p>
+
+<p><b>Substitute</b></p>
+
+<p>One of the other things you will run into in feeds, more often in Atom feeds than in RSS, is the <code>&lt;![CDATA[  ]]&gt;</code> tag around some data.  It will take the form <code>&lt;![CDATA[Some Text in here]]&gt;</code>. This special tag construct in HTML just means that any text inside the opening <code>&lt;![CDATA[</code> and the closing <code>]]&gt;</code> will be displayed as the characters, without any problems with characters that are illegal in XML data. (like &amp;, &lt;, &gt; &quot; and others)</p>
+
+<p>While it would be complicated and annoying to use your regular expression to "parse around" this tag, you certainly don't want that text displayed as part of your skin output.  You can use the <a href="/manual/measures/general-options/substitute">Substitute</a> option to find and remove this text on any or all <b>child</b> measures.  Note that sometime the feed will start and end the tag with <code>&lt;</code> and <code>&gt;</code> and sometimes not. We should use Substitute to take care of both cases.</p>
+
+{% highlight ini %}
+[MeasureItem1Title]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=4
+DecodeCharacterReference=1
+Substitute="&lt;![CDATA[":"","]]&gt;":"","![CDATA[":"","]]":""
+{% endhighlight %}
+
+<p><b>Regular Expression Substitute</b></p>
+
+<p>Sometimes a feed will be formatted in such a way that there are leading spaces or tabs in front of a value.  An example would be:</p>
+
+{% highlight ini %}
+&lt;item&gt;
+	&lt;title&gt;
+		This is an item title
+	&lt;/title&gt;
+&lt;/item&gt;
+{% endhighlight %}
+
+<p>We don't want to capture and display those leading tab characters in this example, so we can use the <a href="/manual/measures/general-options/substitute#RegExpSubstitute">RegExpSubstitute</a> option instead of the normal Substitute, so we can take advantage of the additional power of regular expressions in our substitution.</p>
+
+{% highlight ini %}
+[MeasureItem1Title]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=4
+DecodeCharacterReference=1
+RegExpSubstitute=1
+Substitute="^\s+":"","&lt;!\[CDATA\[":"","\]\]&gt;":"","!\[CDATA\[":"","\]\]":""
+{% endhighlight %}
+
+<p>We are using the regular expression construct at the beginning to say "if the start of the string <code>^</code> contains one or more "white space" characters <code>\s+</code>, then change them to empty strings <code>""</code>.</p>
+
+<p><em>Note that since the <code>[</code> and <code>]</code> characters are "reserved" in regular expressions, we needed to "escape" them using the <code>\</code> character in our <code>Substitute</code> when we use <code>RegExpSubstitute</code>.</em></p>
+
+<p><b>Lookahead Assertions</b></p>
+
+<p>In our example above, we used our #Item# variable in our <code>RegExp</code> option to retrieve five "items" from the feed. What if there are currently only four items in the feed?  Our regular expression will fail, and no information at all will be obtained.<p>
+
+<p>You can protect against this by using what is known in regular expressions as a "lookahead assertion".  What this does is basically say "if the following text exists, then parse it this way.  If not, then just skip that part of the regular expression without failing".  The format for using a lookahead assertion in regular expressions looks a bit daunting, but in concept it is not too hard to wrap your head around.  I strongly suggest looking at the guide at <a href="/tips/webparser-lookahead-assertions-in-regexp">WebParser - Lookahead Assertions</a>.</p>
+
+<p>To cut to the chase, if we change our #Item# variable to this:</p>
+
+{% highlight ini %}
+[Variables]
+Item=(?(?=.*&lt;item&gt;).*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubDate&gt;)
+{% endhighlight %}
+
+<p>Then we are saying "look ahead" <code>(?</code> for a string that equals <code>(?=</code> .*&lt;item&gt;)"  Note the trailing parentheses to end the "look for" part of the expression.  If the string <code>.*&lt;item&gt;</code> is found, then execute the the parse <code>.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubDate&gt;</code>.  Note that then we follow the entire thing with another ending parentheses, to end the "look ahead" part of the expression.</p>
+
+<p>If the lookahead assertion fails, only that part contained in it will be ignored, and any other parts of the expression will still be evaluated and return data.</p>
+
+<h3 id="FullSkin">Putting it all together</h3>
+
+<p>Here is a full skin, using all we have learned so far, that will parse and display the first five items from our RSS feed site.  You can copy this code and paste it into a new skin to test it out, modify the output meters as and if you like, and you are well on your way!</p>
+
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+
+[Variables]
+Item=(?(?=.*&lt;item&gt;).*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubDate&gt;)
+Sub="^\s+":"","&lt;!\[CDATA\[":"","\]\]&gt;":"","!\[CDATA\[":"","\]\]":""
+
+[MeasureSite]
+Measure=Plugin
+Plugin=WebParser
+URL=http://www.breakingnews.com/feeds/rss/
+RegExp=(?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;#Item##Item##Item##Item##Item#
+
+;Site info
+
+[MeasureSiteTitle]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=1
+DecodeCharacterReference=1
+RegExpSubstitute=1
+Substitute=#Sub#
+
+[MeasureSiteLink]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=2
+
+[MeasureSiteDate]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=3
+
+;Item 1 info
+
+[MeasureItem1Title]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=4
+DecodeCharacterReference=1
+RegExpSubstitute=1
+Substitute=#Sub#
+
+[MeasureItem1Link]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=5
+
+[MeasureItem1Date]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=6
+
+;Item 2 info
+
+[MeasureItem2Title]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=7
+DecodeCharacterReference=1
+RegExpSubstitute=1
+Substitute=#Sub#
+
+[MeasureItem2Link]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=8
+
+[MeasureItem2Date]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=9
+
+;Item 3 info
+
+[MeasureItem3Title]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=10
+DecodeCharacterReference=1
+RegExpSubstitute=1
+Substitute=#Sub#
+
+[MeasureItem3Link]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=11
+
+[MeasureItem3Date]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=12
+
+;Item 4 info
+
+[MeasureItem4Title]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=13
+DecodeCharacterReference=1
+RegExpSubstitute=1
+Substitute=#Sub#
+
+[MeasureItem4Link]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=14
+
+[MeasureItem4Date]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=15
+
+;Item 5 info
+
+[MeasureItem5Title]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=16
+DecodeCharacterReference=1
+RegExpSubstitute=1
+Substitute=#Sub#
+
+[MeasureItem5Link]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=17
+
+[MeasureItem5Date]
+Measure=Plugin
+Plugin=WebParser
+URL=[MeasureSite]
+StringIndex=18
+
+;MeterStyles
+
+[TextStyle]
+X=5
+Y=3R
+W=290
+H=40
+FontFace=Segoe UI
+FontSize=11
+FontColor=255,255,255,255
+SolidColor=0,0,0,1
+ClipString=1
+AntiAlias=1
+ToolTipWidth=300
+
+;Meters
+
+[MeterBackground]
+Meter=Image
+W=300
+H=255
+SolidColor=50,50,50,255
+
+[MeterSite]
+Meter=String
+MeasureName=MeasureSiteTitle
+MeterStyle=TextStyle
+H=20
+Y=5
+FontColor=196,245,184,255
+StringStyle=Bold
+LeftMouseUpAction=["[MeasureSiteLink]"]
+ToolTipText=%1#CRLF#[MeasureSiteDate]
+DynamicVariables=1
+
+[MeterItem1]
+Meter=String
+MeasureName=MeasureItem1Title
+MeterStyle=TextStyle
+Y=10R
+LeftMouseUpAction=["[MeasureItem1Link]"]
+ToolTipText=%1#CRLF#[MeasureItem1Date]
+DynamicVariables=1
+
+[MeterItem2]
+Meter=String
+MeasureName=MeasureItem2Title
+MeterStyle=TextStyle
+LeftMouseUpAction=["[MeasureItem2Link]"]
+ToolTipText=%1#CRLF#[MeasureItem2Date]
+DynamicVariables=1
+
+[MeterItem3]
+Meter=String
+MeasureName=MeasureItem3Title
+MeterStyle=TextStyle
+LeftMouseUpAction=["[MeasureItem3Link]"]
+ToolTipText=%1#CRLF#[MeasureItem3Date]
+DynamicVariables=1
+
+[MeterItem4]
+Meter=String
+MeasureName=MeasureItem4Title
+MeterStyle=TextStyle
+LeftMouseUpAction=["[MeasureItem4Link]"]
+ToolTipText=%1#CRLF#[MeasureItem4Date]
+DynamicVariables=1
+
+[MeterItem5]
+Meter=String
+MeasureName=MeasureItem5Title
+MeterStyle=TextStyle
+LeftMouseUpAction=["[MeasureItem5Link]"]
+ToolTipText=%1#CRLF#[MeasureItem5Date]
+DynamicVariables=1
+{% endhighlight %}
+
+<h3>Atom vs. RSS feeds</h3>
+
+<p>The instructions and examples above should work for virtually any RSS feed site.  However, if the site you are parsing is based on the Atom feed standard, there are some differences we need to take into account.  Here is a sample of an Atom feed:</p>
+
+{% highlight ini %}
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+ 
+&lt;feed xmlns="http://www.w3.org/2005/Atom"&gt;
+ 
+        &lt;title&gt;Example Feed&lt;/title&gt;
+        &lt;subtitle&gt;A subtitle.&lt;/subtitle&gt;
+        &lt;link href="http://example.org/feed/" rel="self" /&gt;
+        &lt;link href="http://example.org/" /&gt;
+        &lt;id&gt;urn:uuid:60a76c80-d399-11d9-b91C-0003939e0af6&lt;/id&gt;
+        &lt;updated&gt;2003-12-13T18:30:02Z&lt;/updated&gt;
+ 
+ 
+        &lt;entry&gt;
+                &lt;title&gt;Atom-Powered Robots Run Amok&lt;/title&gt;
+                &lt;link href="http://example.org/2003/12/13/atom03" /&gt;
+                &lt;link rel="alternate" type="text/html" href="http://example.org/2003/12/13/atom03.html"/&gt;
+                &lt;link rel="edit" href="http://example.org/2003/12/13/atom03/edit"/&gt;
+                &lt;id&gt;urn:uuid:1225c695-cfb8-4ebb-aaaa-80da344efa6a&lt;/id&gt;
+                &lt;updated&gt;2003-12-13T18:30:02Z&lt;/updated&gt;
+                &lt;summary&gt;Some text.&lt;/summary&gt;
+                &lt;author&gt;
+                      &lt;name&gt;John Doe&lt;/name&gt;
+                      &lt;email&gt;johndoe@example.com&lt;/email&gt;
+                &lt;/author&gt;
+        &lt;/entry&gt;
+ 
+&lt;/feed&gt;
+{% endhighlight %}
+
+<p>As you can see, there are differences in both the names of the "tags" used to identify data values, and some differences in formatting within the tags themselves.</p>
+
+<p>RSS</p>
+{% highlight ini %}
+&lt;item&gt;
+&lt;title&gt;
+&lt;link&gt;
+&lt;pubDate&gt;
+{% endhighlight %}
+
+<p>Atom</p>
+{% highlight ini %}
+&lt;entry&gt;
+&lt;title type="SomeValue"&gt;
+&lt;link href="SomeSite.com"/&gt;
+&lt;updated&gt;
+{% endhighlight %}
+
+<p>Fortunately, we can for the most part just change our <code>RegExp</code> to account for these differences, and the balance of what we learned making our RSS skin works just fine.  It should also be noted that the order of the tags in different Atoms feeds can vary, where RSS feeds generally have the tags always in the same order.  This may mean some re-ordering of the StringIndex numbers you use with your measures.</p>
+
+<p>Here is an example output from the Atom feed on the Rainmeter forums:</p>
+
+{% highlight ini %}
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-gb"&gt;
+&lt;link rel="self" type="application/atom+xml" href="http://rainmeter.net/forum/feed.php" /&gt;
+
+&lt;title&gt;Rainmeter Forums&lt;/title&gt;
+&lt;link href="http://rainmeter.net/forum/index.php" /&gt;
+&lt;updated&gt;2013-06-28T10:02:44-05:00&lt;/updated&gt;
+
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[Rainmeter Forums]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;id&gt;http://rainmeter.net/forum/feed.php&lt;/id&gt;
+&lt;entry&gt;
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[Virginityrocks]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;updated&gt;2013-06-28T10:02:44-05:00&lt;/updated&gt;
+&lt;published&gt;2013-06-28T10:02:44-05:00&lt;/published&gt;
+&lt;id&gt;http://rainmeter.net/forum/viewtopic.php?p=89161#p89161&lt;/id&gt;
+&lt;link href="http://rainmeter.net/forum/viewtopic.php?p=89161#p89161"/&gt;
+&lt;title type="html"&gt;&lt;![CDATA[Bugs &amp; Feature Suggestions • Re: Rainmeter in the taskbar]]&gt;&lt;/title&gt;
+
+&lt;content type="html"&gt;&lt;![CDATA[
+You can pl...&lt;p&gt;Statistics: Posted by &lt;a href=""&gt;Virginityrocks&lt;/a&gt; — Fri Jun 28, 2013 10:02 am&lt;/p&gt;]]&gt;&lt;/content&gt;
+&lt;/entry&gt;
+&lt;entry&gt;
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[Virginityrocks]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;updated&gt;2013-06-28T09:31:33-05:00&lt;/updated&gt;
+&lt;published&gt;2013-06-28T09:31:33-05:00&lt;/published&gt;
+&lt;id&gt;http://rainmeter.net/forum/viewtopic.php?p=89160#p89160&lt;/id&gt;
+&lt;link href="http://rainmeter.net/forum/viewtopic.php?p=89160#p89160"/&gt;
+&lt;title type="html"&gt;&lt;![CDATA[Bugs &amp; Feature Suggestions • Re: Empty &quot;blank&quot; characters not showing when using UseD2D=1]]&gt;&lt;/title&gt;
+
+&lt;content type="html"&gt;&lt;![CDATA[
+It's a leg...&lt;p&gt;Statistics: Posted by &lt;a href=""&gt;Virginityrocks&lt;/a&gt; — Fri Jun 28, 2013 9:31 am&lt;/p&gt;]]&gt;&lt;/content&gt;
+&lt;/entry&gt;
+&lt;entry&gt;
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[vandey]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;updated&gt;2013-06-28T08:56:44-05:00&lt;/updated&gt;
+&lt;published&gt;2013-06-28T08:56:44-05:00&lt;/published&gt;
+&lt;id&gt;http://rainmeter.net/forum/viewtopic.php?p=89159#p89159&lt;/id&gt;
+&lt;link href="http://rainmeter.net/forum/viewtopic.php?p=89159#p89159"/&gt;
+&lt;title type="html"&gt;&lt;![CDATA[Bugs &amp; Feature Suggestions • Feature Request: Stay on top when computer locked]]&gt;&lt;/title&gt;
+
+&lt;content type="html"&gt;&lt;![CDATA[
+I have a s...&lt;p&gt;Statistics: Posted by &lt;a href=""&gt;vandey&lt;/a&gt; — Fri Jun 28, 2013 8:56 am&lt;/p&gt;]]&gt;&lt;/content&gt;
+&lt;/entry&gt;
+&lt;entry&gt;
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[moshi]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;updated&gt;2013-06-28T08:40:20-05:00&lt;/updated&gt;
+&lt;published&gt;2013-06-28T08:40:20-05:00&lt;/published&gt;
+&lt;id&gt;http://rainmeter.net/forum/viewtopic.php?p=89158#p89158&lt;/id&gt;
+&lt;link href="http://rainmeter.net/forum/viewtopic.php?p=89158#p89158"/&gt;
+&lt;title type="html"&gt;&lt;![CDATA[Bugs &amp; Feature Suggestions • Re: Empty &quot;blank&quot; characters not showing when using UseD2D=1]]&gt;&lt;/title&gt;
+
+&lt;content type="html"&gt;&lt;![CDATA[
+i am prett...&lt;p&gt;Statistics: Posted by &lt;a href=""&gt;moshi&lt;/a&gt; — Fri Jun 28, 2013 8:40 am&lt;/p&gt;]]&gt;&lt;/content&gt;
+&lt;/entry&gt;
+&lt;entry&gt;
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[psyco]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;updated&gt;2013-06-28T07:23:55-05:00&lt;/updated&gt;
+&lt;published&gt;2013-06-28T07:23:55-05:00&lt;/published&gt;
+&lt;id&gt;http://rainmeter.net/forum/viewtopic.php?p=89157#p89157&lt;/id&gt;
+&lt;link href="http://rainmeter.net/forum/viewtopic.php?p=89157#p89157"/&gt;
+&lt;title type="html"&gt;&lt;![CDATA[Help: Rainmeter Skins • Re: Image ABOVE text]]&gt;&lt;/title&gt;
+
+&lt;content type="html"&gt;&lt;![CDATA[
+ikarus1969...&lt;p&gt;Statistics: Posted by &lt;a href=""&gt;psyco&lt;/a&gt; — Fri Jun 28, 2013 7:23 am&lt;/p&gt;]]&gt;&lt;/content&gt;
+&lt;/entry&gt;
+&lt;entry&gt;
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[ikarus1969]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;updated&gt;2013-06-28T06:18:58-05:00&lt;/updated&gt;
+&lt;published&gt;2013-06-28T06:18:58-05:00&lt;/published&gt;
+&lt;id&gt;http://rainmeter.net/forum/viewtopic.php?p=89156#p89156&lt;/id&gt;
+&lt;link href="http://rainmeter.net/forum/viewtopic.php?p=89156#p89156"/&gt;
+&lt;title type="html"&gt;&lt;![CDATA[Help: Rainmeter Skins • Re: IP Location Map]]&gt;&lt;/title&gt;
+
+&lt;content type="html"&gt;&lt;![CDATA[
+what about...&lt;p&gt;Statistics: Posted by &lt;a href=""&gt;ikarus1969&lt;/a&gt; — Fri Jun 28, 2013 6:18 am&lt;/p&gt;]]&gt;&lt;/content&gt;
+&lt;/entry&gt;
+&lt;entry&gt;
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[alexandeu]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;updated&gt;2013-06-28T05:04:46-05:00&lt;/updated&gt;
+&lt;published&gt;2013-06-28T05:04:46-05:00&lt;/published&gt;
+&lt;id&gt;http://rainmeter.net/forum/viewtopic.php?p=89155#p89155&lt;/id&gt;
+&lt;link href="http://rainmeter.net/forum/viewtopic.php?p=89155#p89155"/&gt;
+&lt;title type="html"&gt;&lt;![CDATA[General Discussion • A thank you note.]]&gt;&lt;/title&gt;
+
+&lt;content type="html"&gt;&lt;![CDATA[
+As I alway...&lt;p&gt;Statistics: Posted by &lt;a href=""&gt;alexandeu&lt;/a&gt; — Fri Jun 28, 2013 5:04 am&lt;/p&gt;]]&gt;&lt;/content&gt;
+&lt;/entry&gt;
+&lt;entry&gt;
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[moshi]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;updated&gt;2013-06-28T04:41:46-05:00&lt;/updated&gt;
+&lt;published&gt;2013-06-28T04:41:46-05:00&lt;/published&gt;
+&lt;id&gt;http://rainmeter.net/forum/viewtopic.php?p=89154#p89154&lt;/id&gt;
+&lt;link href="http://rainmeter.net/forum/viewtopic.php?p=89154#p89154"/&gt;
+&lt;title type="html"&gt;&lt;![CDATA[Help: Rainmeter Application • Re: Email settings folder path...c:/where?]]&gt;&lt;/title&gt;
+
+&lt;content type="html"&gt;&lt;![CDATA[
+Quote:Does...&lt;p&gt;Statistics: Posted by &lt;a href=""&gt;moshi&lt;/a&gt; — Fri Jun 28, 2013 4:41 am&lt;/p&gt;]]&gt;&lt;/content&gt;
+&lt;/entry&gt;
+&lt;entry&gt;
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[Frostschaden]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;updated&gt;2013-06-28T03:57:11-05:00&lt;/updated&gt;
+&lt;published&gt;2013-06-28T03:57:11-05:00&lt;/published&gt;
+&lt;id&gt;http://rainmeter.net/forum/viewtopic.php?p=89153#p89153&lt;/id&gt;
+&lt;link href="http://rainmeter.net/forum/viewtopic.php?p=89153#p89153"/&gt;
+&lt;title type="html"&gt;&lt;![CDATA[Help: Rainmeter Skins • Re: IP Location Map]]&gt;&lt;/title&gt;
+
+&lt;content type="html"&gt;&lt;![CDATA[
+The soluti...&lt;p&gt;Statistics: Posted by &lt;a href=""&gt;Frostschaden&lt;/a&gt; — Fri Jun 28, 2013 3:57 am&lt;/p&gt;]]&gt;&lt;/content&gt;
+&lt;/entry&gt;
+&lt;entry&gt;
+&lt;author&gt;&lt;name&gt;&lt;![CDATA[ikarus1969]]&gt;&lt;/name&gt;&lt;/author&gt;
+&lt;updated&gt;2013-06-28T03:37:52-05:00&lt;/updated&gt;
+&lt;published&gt;2013-06-28T03:37:52-05:00&lt;/published&gt;
+&lt;id&gt;http://rainmeter.net/forum/viewtopic.php?p=89152#p89152&lt;/id&gt;
+&lt;link href="http://rainmeter.net/forum/viewtopic.php?p=89152#p89152"/&gt;
+&lt;title type="html"&gt;&lt;![CDATA[Help: Rainmeter Skins • Re: Image ABOVE text]]&gt;&lt;/title&gt;
+
+&lt;content type="html"&gt;&lt;![CDATA[
+Change the...&lt;p&gt;Statistics: Posted by &lt;a href=""&gt;ikarus1969&lt;/a&gt; — Fri Jun 28, 2013 3:37 am&lt;/p&gt;]]&gt;&lt;/content&gt;
+&lt;/entry&gt;
+&lt;/feed&gt;
+{% endhighlight %}
+
+<p>And the variable for the #Item# and the parent WebParser measure you can use to parse the same five items from this feed:</p>
+
+{% highlight ini %}
+[Variables]
+Item=(?(?=.*&lt;entry&gt;).*&lt;entry&gt;.*&lt;updated&gt;(.*)&lt;/updated&gt;.*&lt;link.*"(.*)".*&lt;title.*&gt;(.*)&lt;/title&gt;)
+Sub="^\s+":"","&lt;!\[CDATA\[":"","\]\]&gt;":"","!\[CDATA\[":"","\]\]":""
+
+[MeasureSite]
+Measure=Plugin
+Plugin=WebParser
+URL=http://rainmeter.net/forum/feed.php
+RegExp=(?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link.*"(.*)".*&lt;updated&gt;(.*)&lt;/updated&gt;#Item##Item##Item##Item##Item#
+{% endhighlight %}
+
+<h3>Important links</h3>
+
+<ul>
+<li><a href="http://docs.rainmeter.net/manual/plugins/webparser">WebParser manual entry.</a></li>
+<li><a href="http://docs.rainmeter.net/manual/options#RegExp">Regular Expressions in Rainmeter.</a></li>
+<li><a href="http://en.wikipedia.org/wiki/RSS">The RSS standard on Wikipedia.</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Atom_(standard)">The Atom standard on Wikipedia.</a></li>
+<li><a href="http://rainmeter.net/forum/viewtopic.php?p=5635#p5635">RainRegExp tool for Rainmeter.</a></li>
+<li><a href="http://rainmeter.net/forum/viewtopic.php?p=89073#p89073">Alternatives to Google Reader and Rainmeter.</a></li>
+</ul>
+<br>
+
+
+
