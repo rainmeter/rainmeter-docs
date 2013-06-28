@@ -184,7 +184,7 @@ StringIndex=6
 
 <p>Adding another item is as simple as extending our <code>RegExp</code> option to get the next &lt;item&gt; into the next three StringIndex numbers.</p>
 
-{% highlight ini %}
+{% highlight text %}
 (?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;
 {% endhighlight %}
 
@@ -212,7 +212,7 @@ StringIndex=9
 
 <p>Adding a third item is just more of the same.</p>
 
-{% highlight ini %}
+{% highlight text %}
 (?siU)&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;lastBuildDate&gt;(.*)&lt;/lastBuildDate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;
 {% endhighlight %}
 
