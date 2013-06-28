@@ -8,7 +8,7 @@ title: 'RSS Feed Tutorial'
 
 <p>RSS and Atom feeds follow certain patterns that make them fairly easy to parse.  While there are differences between the RSS and Atom standards, which we will touch on a bit later, let's use a simple RSS output to outline how they are laid out.</p>
 
-{% highlight ini %}
+{% highlight text %}
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;rss version="2.0"&gt;
 &lt;channel&gt;
@@ -36,7 +36,7 @@ title: 'RSS Feed Tutorial'
 
 <p>For our example of an RSS feed, let's use the feed from the site <a href="http://www.breakingnews.com/">http://www.breakingnews.com/</a>.  The RSS feed is found at the URL <a href="http://www.breakingnews.com/feeds/rss/">http://www.breakingnews.com/feeds/rss/</a>.  If we go to that URL in our web browser, we get HTML output that looks like this:</p>
 
-{% highlight ini %}
+{% highlight text %}
 &lt;?xml version="1.0" encoding="iso-8859-1"?&gt;
 &lt;rss version="2.0"&gt;&lt;channel&gt;&lt;title&gt;Breaking news - www.breakingnews.com&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/feeds/rss/&lt;/link&gt;&lt;description&gt;The latest breaking news around the world from hundreds of sources, all in one place.&lt;/description&gt;&lt;lastBuildDate&gt;Thu, 27 Jun 2013 13:43:09 GMT&lt;/lastBuildDate&gt;&lt;generator&gt;PyRSS2Gen-1.0.0&lt;/generator&gt;&lt;docs&gt;http://blogs.law.harvard.edu/tech/rss&lt;/docs&gt;&lt;item&gt;&lt;title&gt;Trayvon Martin's friend resumes testimony at George Zimmerman trial - @AP&lt;/title&gt;&lt;link&gt;http://abcnews.go.com/US/wireStory/martin-friend-resumes-testimony-zimmerman-trial-19505376#.Ucw_kPlatBk&lt;/link&gt;&lt;description&gt;Trayvon Martin's friend resumes testimony at George Zimmerman trial - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGKLiihEM/2013/06/27/trayvon-martins-friend-resumes-testimony-at-georg&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 13:36:05 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Russia says it has replaced military personnel with civilian workers at naval base in Syria - @AP&lt;/title&gt;&lt;link&gt;http://www.montereyherald.com/world/ci_23550633/russia-subs-military-civilians-at-syrian-base&lt;/link&gt;&lt;description&gt;Russia says it has replaced military personnel with civilian workers at naval base in Syria - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGOrKihEM/2013/06/27/russia-says-it-has-replaced-military-personnel-wit&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 13:22:51 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Several Sopranos cast members already inside St. John the Divine for James Gandolfini's funeral, including Edie Falco; Alec Baldwin also made his way in - @alexifriedman&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGILDihEM/2013/06/27/several-sopranos-cast-members-already-inside-st-j&lt;/link&gt;&lt;description&gt;Several Sopranos cast members already inside St. John the Divine for James Gandolfini's funeral, including Edie Falco; Alec Baldwin also made his way in - @alexifriedman&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGILDihEM/2013/06/27/several-sopranos-cast-members-already-inside-st-j&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 13:21:44 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Ecuador renounces renewed trade benefits from US Congress - @AP&lt;/title&gt;&lt;link&gt;http://www.foxnews.com/world/2013/06/27/ecuador-renounces-renewed-trade-benefits-from-us-congress/&lt;/link&gt;&lt;description&gt;Ecuador renounces renewed trade benefits from US Congress - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGNr8iREM/2013/06/27/ecuador-renounces-renewed-trade-benefits-from-us-c&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 13:14:38 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Libya's defense minister relieved from post following deadly clashes in Tripoli, country's prime minister says - @Reuters&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGLrdiREM/2013/06/27/libyas-defense-minister-relieved-from-post-follow&lt;/link&gt;&lt;description&gt;Libya's defense minister relieved from post following deadly clashes in Tripoli, country's prime minister says - @Reuters&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGLrdiREM/2013/06/27/libyas-defense-minister-relieved-from-post-follow&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 13:02:41 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Weekly US unemployment benefit applications fall to 346K, a sign of steady job gains - @AP&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGNr_iBEM/2013/06/27/weekly-us-unemployment-benefit-applications-fall-t&lt;/link&gt;&lt;description&gt;Weekly US unemployment benefit applications fall to 346K, a sign of steady job gains - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGNr_iBEM/2013/06/27/weekly-us-unemployment-benefit-applications-fall-t&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 12:34:55 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;US consumers spend 0.3% more in May as their income rises 0.5% - @AP&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGIrwiBEM/2013/06/27/us-consumers-spend-03-more-in-may-as-their-incom&lt;/link&gt;&lt;description&gt;US consumers spend 0.3% more in May as their income rises 0.5% - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGIrwiBEM/2013/06/27/us-consumers-spend-03-more-in-may-as-their-incom&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 12:33:55 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;Condition of Nelson Mandela improved overnight, remains critical but is stable, Presidency says - @PresidencyZA&lt;/title&gt;&lt;link&gt;http://www.thepresidency.gov.za/pebble.asp?relid=15645&lt;/link&gt;&lt;description&gt;Condition of Nelson Mandela improved overnight, remains critical but is stable, Presidency says - @PresidencyZA&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGLrgiBEM/2013/06/27/condition-of-nelson-mandela-improved-overnight-re&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 12:30:46 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;President Obama says he will not send US jets to intercept Snowden when he travels next - @Reuters&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGILJiBEM/2013/06/27/president-obama-says-he-will-not-send-us-jets-to-i&lt;/link&gt;&lt;description&gt;President Obama says he will not send US jets to intercept Snowden when he travels next - @Reuters&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGILJiBEM/2013/06/27/president-obama-says-he-will-not-send-us-jets-to-i&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 11:50:39 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;item&gt;&lt;title&gt;President Obama says the Supreme Court 'made a mistake' in voting rights ruling - @AP&lt;/title&gt;&lt;link&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGLK5iBEM/2013/06/27/president-obama-says-the-supreme-court-made-a-mis&lt;/link&gt;&lt;description&gt;President Obama says the Supreme Court 'made a mistake' in voting rights ruling - @AP&lt;/description&gt;&lt;guid isPermaLink="true"&gt;http://www.breakingnews.com/item/ahZzfmJyZWFraW5nbmV3cy13d3ctaHJkcg0LEgRTZWVkGLK5iBEM/2013/06/27/president-obama-says-the-supreme-court-made-a-mis&lt;/guid&gt;&lt;pubDate&gt;Thu, 27 Jun 2013 11:46:53 GMT&lt;/pubDate&gt;&lt;/item&gt;&lt;/channel&gt;&lt;/rss&gt;
 {% endhighlight %}
@@ -286,7 +286,7 @@ Substitute="&lt;![CDATA[":"","]]&gt;":"","![CDATA[":"","]]":""
 
 <p>Sometimes a feed will be formatted in such a way that there are leading spaces or tabs in front of a value.  An example would be:</p>
 
-{% highlight ini %}
+{% highlight text %}
 &lt;item&gt;
 	&lt;title&gt;
 		This is an item title
@@ -566,7 +566,7 @@ DynamicVariables=1
 
 <p>The instructions and examples above should work for virtually any RSS feed site.  However, if the site you are parsing is based on the Atom feed standard, there are some differences we need to take into account.  Here is a sample of an Atom feed:</p>
 
-{% highlight ini %}
+{% highlight text %}
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
  
 &lt;feed xmlns="http://www.w3.org/2005/Atom"&gt;
@@ -599,7 +599,7 @@ DynamicVariables=1
 <p>As you can see, there are differences in both the names of the "tags" used to identify data values, and some differences in formatting within the tags themselves.</p>
 
 <p>RSS</p>
-{% highlight ini %}
+{% highlight text %}
 &lt;item&gt;
 &lt;title&gt;
 &lt;link&gt;
@@ -607,7 +607,7 @@ DynamicVariables=1
 {% endhighlight %}
 
 <p>Atom</p>
-{% highlight ini %}
+{% highlight text %}
 &lt;entry&gt;
 &lt;title type="SomeValue"&gt;
 &lt;link href="SomeSite.com"/&gt;
@@ -618,7 +618,7 @@ DynamicVariables=1
 
 <p>Here is an example output from the Atom feed on the Rainmeter forums:</p>
 
-{% highlight ini %}
+{% highlight text %}
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-gb"&gt;
 &lt;link rel="self" type="application/atom+xml" href="http://rainmeter.net/forum/feed.php" /&gt;
