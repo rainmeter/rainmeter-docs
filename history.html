@@ -8,6 +8,14 @@ title: 'Version History'
 
 <h2 id="3.0">Rainmeter 3.0</h2>
 
+<h3 id="r2012">14 July, 2013 <small>(r2012)</small></h3>
+<ul>
+<li><b>Changed</b> String meter: Trailing spaces are displayed in the Text option if the value is enclosed in quotes.  This was previously changed in D2D, and now has the same behavior in GDI+.</li>
+<li><b>Added</b> !PauseMeasure: New <a href="http://docs.rainmeter.net/manual-beta/bangs#PauseMeasure">!PauseMeasure</a>, <a href="http://docs.rainmeter.net/manual-beta/bangs#PauseMeasure">!UnpauseMeasure</a>, and <a href="http://docs.rainmeter.net/manual-beta/bangs#PauseMeasure">!TogglePauseMeasure</a> bangs. This is similar to a disabled measure, however the measure retains its current value instead of changing to 0.  Group versions of these bangs also added.</li>
+<li><b>Changed</b> !SetWallpaper: Changed the problem that an image file set with !SetWallpaper would be locked in Windows.</li>
+<li><b>Fixed</b> Rainmeter: Fix for a problem with !DeactivateConfig in a OnCloseAction that could cause high CPU usage.</li>
+</ul>
+
 <h3 id="r1995">30 June, 2013 <small>(r1995)</small></h3>
 <ul>
 <li><b>Changed</b> Error Logging: Improved the About/Log dialog to better show the source of errors.  Where possible, the config\skin.ini and meter or measure section producing the error will be displayed.</li>

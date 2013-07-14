@@ -513,8 +513,20 @@ title: 'Bangs'
 		<li><code>Measure</code> (required): Name of the measure.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
+		This behavior can also be controlled with the <a href="!measures/general-options#Disabled">Disabled</a> general measure option. Numeric values in measures will be set to zero when the measure is disabled.  <br>
 		<br><b>Example:</b> <code>!ToggleMeasure "CPUMeasure"</code>
 	</dd>
+
+	<dt id="PauseMeasure"><code>!PauseMeasure</code>, <code>!UnpauseMeasure</code>, <code>!TogglePauseMeasure</code> <small>Parameters: <code><b>Measure</b><em>, Config</em></code></small></dt>
+	<dd>
+		Pauses or unpauses updating the given <a href="!measures">measure</a>.
+		<ul>
+		<li><code>Measure</code> (required): Name of the measure.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+		This is similar to <a href="#EnableDisableToggleMeasure">!DisableMeasure</a> / <a href="#EnableDisableToggleMeasure">!EnableMeasure</a>, however the numeric value of the measure will contain the most recent value, rather than being set to zero.<br>
+		<br><b>Example:</b> <code>!TogglePauseMeasure "CPUMeasure"</code>
+	</dd>	
 
 	<dt id="UpdateMeasure"><code>!UpdateMeasure</code> <small>Parameters: <code><b>Measure</b><em>, Config</em></code></small></dt>
 	<dd>
@@ -549,6 +561,15 @@ title: 'Bangs'
 		</ul>
 	</dd>
 
+	<dt id="PauseMeasureGroup"><code>!PauseMeasureGroup</code>, <code>!UnpauseMeasureGroup</code>, <code>!TogglePauseMeasureGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
+	<dd>
+		Pauses or unpauses updating the given <a href="!measures">measure</a> in the specified group.
+		<ul>
+		<li><code>Group</code> (required): Name of the group.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	</dd>		
+	
 	<dt id="UpdateMeasureGroup"><code>!UpdateMeasureGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
 		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!measures/general-options#UpdateDivider">UpdateDivider</a> on the measures in the specified group, and immediately updates the measures.
