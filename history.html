@@ -8,6 +8,15 @@ title: 'Version History'
 
 <h2 id="3.0">Rainmeter 3.0</h2>
 
+<h3 id="r2022">21 July, 2013 <small>(r2022)</small></h3>
+<ul>
+<li><b>Removed</b> String meter: Due to problems and inconsistent behavior, removed the ability to include trailing spaces on the Text option that was added in previous betas.  See the new Padding option for an alternative solution.</li>
+<li><b>Added</b> Meters: Added <a href="http://docs.rainmeter.net/manual-beta/meters/general-options#Padding">Padding</a>=<i>left,top,right,bottom</i> option to meters. Allows adding pixels around any or all sides a meter. The width and height of the meter will dynamically be adjusted to the new size.</li>
+<li><b>Added</b> Measures: Added <a href="http://docs.rainmeter.net/manual-beta/measures/general-options#Paused">Paused</a>=<i>0/1</i> option to measures.  This allows setting the "paused" state of a measure, in addition to the !PauseMeasure/!UnpauseMeasure/!TogglePauseMeasure bangs previously added.</li>
+<li><b>Fixed</b> !SetWallpaper: Improved performance when setting the wallpaper with large images.</li>
+<li><b>Changed</b> Button meter: Changed the mouse <i>over</i> behavior to ignore transparent areas of the image, to match the mouse <i>click</i> behavior.</li>
+</ul>
+
 <h3 id="r2012">14 July, 2013 <small>(r2012)</small></h3>
 <ul>
 <li><b>Changed</b> String meter: Trailing spaces are displayed in the Text option if the value is enclosed in quotes.  This was previously changed in D2D, and now has the same behavior in GDI+.</li>
