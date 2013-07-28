@@ -44,11 +44,11 @@ LeftMouseUpAction=["C:\Windows\System32\Notepad.exe"]
 Meter=String
 {% endhighlight %}
 
-<p>This is a <a href="!meters/string">String meter</a>, one of the most commonly used meters.  It is used to display some text on the screen.  Formatting control, like the postion, size, color and font face can all be set with a combination of <a href="!meters/general-options">General meter options</a> and the options specific to the <a href="!meters/string">String meter</a>. Let's look at some we have used here.</p>
+<p>This is a <a href="!meters/string">String meter</a>, one of the most commonly used meters.  It is used to display some text on the screen.  Formatting control, like the position, size, color and font face can all be set with a combination of <a href="!meters/general-options">General meter options</a> and the options specific to the <a href="!meters/string">String meter</a>. Let's look at some we have used here.</p>
 
 <p>
 <ul>
-<li><a href="!meters/general-options#XY">X and Y</a>: These control the postion of the meter relative to the overall skin.  So what we are saying here is that we want this first meter to be five pixels right of the left edge of the skin, and five pixels down from the top of the skin.</li>
+<li><a href="!meters/general-options#XY">X and Y</a>: These control the position of the meter relative to the overall skin.  So what we are saying here is that we want this first meter to be five pixels right of the left edge of the skin, and five pixels down from the top of the skin.</li>
 <li><a href="!meters/string#FontFace">FontFace</a>: This determines which <a href="http://docs.rainmeter.net/tips/fonts-guide">font</a> you want to use when displaying the string.</li>
 <li><a href="!meters/string#FontSize">FontSize</a>: The size in points for the font.</li>
 <li><a href="!meters/string#FontColor">FontColor</a>: The <a href="!options#Color">color</a> for the text.</li>
@@ -71,13 +71,13 @@ Meter=String
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/launcher/LauncherImage01.jpg"><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage01.jpg" class="thumbnail"/></a>
 </div>
 
-<p>Drag the skin anywhere on the screen you like.  Rainmeter will remember the postion any time you load this skin in the future.  You can also right-click the skin to change other <a href="!user-interface/context-menus">skin options</a> as desired.</p>
+<p>Drag the skin anywhere on the screen you like.  Rainmeter will remember the position any time you load this skin in the future.  You can also right-click the skin to change other <a href="!user-interface/context-menus">skin options</a> as desired.</p>
 
 <p style="clear: both;">There we have our first meter, and a fully functioning Rainmeter skin.  Clicking on the <b>Notepad</b> text will launch the application. Congratulations!  Take a short break.</p>
 
 <h2>Adding another meter</h2>
 
-<p>Next, let's add another meter to launch another application.  The format of the meter will be much the same as the earlier one, but we need to do some things to make sure the <b>postion</b> of the meter is appropriate.</p>
+<p>Next, let's add another meter to launch another application.  The format of the meter will be much the same as the earlier one, but we need to do some things to make sure the <b>position</b> of the meter is appropriate.</p>
 
 {% highlight ini %}
 [MeterLaunch2]
@@ -94,7 +94,7 @@ Text=Paint
 LeftMouseUpAction=["MSPaint.exe"]
 {% endhighlight %}
 
-<p>The important changes here are in the <a href="!meters/general-options#XY">X and Y</a> options for the meter.  Remember that <b>X</b> and <b>Y</b> set the position of a meter in the context of the overall skin.  Note that we are using <b>relative postioning</b> to set the <b>X</b> option zero pixels relative to the left of the <b>previous meter</b>, (in effect the same <b>X</b> as before) and the <b>Y</b> option two pixels relative to the botton of the previous meter.  We could also have specifically set the value of <b>X</b> and <b>Y</b> to some hard-coded value, but using relative positioning is often much easier when laying out a skin's meters.</p>
+<p>The important changes here are in the <a href="!meters/general-options#XY">X and Y</a> options for the meter.  Remember that <b>X</b> and <b>Y</b> set the position of a meter in the context of the overall skin.  Note that we are using <b>relative positioning</b> to set the <b>X</b> option zero pixels relative to the left of the <b>previous meter</b>, (in effect the same <b>X</b> as before) and the <b>Y</b> option two pixels relative to the botton of the previous meter.  We could also have specifically set the value of <b>X</b> and <b>Y</b> to some hard-coded value, but using relative positioning is often much easier when laying out a skin's meters.</p>
 
 <div class="exampleprev floatleft">
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/launcher/LauncherImage02.jpg"><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage02.jpg" class="thumbnail"/></a>
@@ -133,7 +133,7 @@ In Windows Explorer, create a new folder under <b>Skins\Tutorials\</b> called <b
 
 <p>Next, we decided that the 128x128 pixels size of that original image file was just too large for our purposes.  So we used the <a href="!meters/general-options#WH">W and H</a> (width and height) options to change the size of the image to 32x32 pixels when displayed. Just like the String meter, Image meters use both <a href="!meters/general-options">General meter options</a> and options specific to the <a href="!meters/image">Image meter</a> type.</p>
 
-<p>Just as you did with the second String meter above, use relative postioning and the <a href="!meters/general-options#XY">X and Y</a> options to position the image below the previous meter.</p>
+<p>Just as you did with the second String meter above, use relative positioning and the <a href="!meters/general-options#XY">X and Y</a> options to position the image below the previous meter.</p>
 
 {% highlight ini %}
 ImageName=#@#Images\Calc.png
