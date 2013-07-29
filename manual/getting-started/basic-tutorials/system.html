@@ -62,7 +62,7 @@ SolidColor=#AlmostBlack#
 
 <p style="clear: both;">Not much to look at just yet...</p>
 
-<p>Next, let's create a measure to get the current amout of <a href="!measures/cpu">CPU</a> usage, as a percentage, on each update.</p>
+<p>Next, let's create a measure to get the current amount of <a href="!measures/cpu">CPU</a> usage, as a percentage, on each update.</p>
 
 {% highlight ini %}
 [MeasureCPU]
@@ -118,7 +118,7 @@ AntiAlias=1
 <li><a href = "!meters/roundline#LineStart">LineStart</a>=15<br/>
 This tells the Roundline that we want the line to start 15 pixels from the center of the meter.</li>
 <li><a href = "!meters/roundline#LineLength">LineLength</a>=20<br/>
-This sets the overall length of the line to 20 pixels.  Remember that our meter is 40 pixlels wide in total, but only 20 pixels wide from the center to the outside edge.<br/><br/>
+This sets the overall length of the line to 20 pixels.  Remember that our meter is 40 pixels wide in total, but only 20 pixels wide from the center to the outside edge.<br/><br/>
 The result of these two options is a line that starts 15 pixels from the center, and extends to the full 20 pixels defined as the length from the center to the edge.  So in effect, a 5 pixel line at the outside edge.<br/><br/></li>
 <li><a href = "!meters/roundline#Solid">Solid</a>=1<br/>
 This option tells the Roundline that instead of a single line, we want the meter to "fill" from the position defined as 0% to the current value represented by the measure. So instead of a "pointer", we get a circle being filled as the value changes.</li>
@@ -228,7 +228,7 @@ AntiAlias=1
 Text=%1%
 {% endhighlight %}
 
-<p>Save and refesh the skin to see your new meter.</p>
+<p>Save and refresh the skin to see your new meter.</p>
 
 <div class="exampleprev floatleft">
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage05.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage05.jpg" class="thumbnail"/></a>
@@ -412,7 +412,7 @@ Text=#CurrentDrive#
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage09.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage09.jpg" class="thumbnail"/></a>
 </div>
 
-<p style="clear: both;">Finally, we can create a nice backgound to match the one behind the Line meter we created in <b>[MeterCPULine]</b>, by simply creating an <a href="!meters/image">Image</a> meter with a <a href="!meters/general-options#SolidColor">SolidColor</a> and no <a href="!meters/general-options#MeasureName">MeasureName</a> option, then some <a href="!meters/string">String</a> meters to display the other drive space information, <b>total</b> and <b>free</b>.  Add the following meters to the bottom of the skin. Save and refresh.</p>
+<p style="clear: both;">Finally, we can create a nice background to match the one behind the Line meter we created in <b>[MeterCPULine]</b>, by simply creating an <a href="!meters/image">Image</a> meter with a <a href="!meters/general-options#SolidColor">SolidColor</a> and no <a href="!meters/general-options#MeasureName">MeasureName</a> option, then some <a href="!meters/string">String</a> meters to display the other drive space information, <b>total</b> and <b>free</b>.  Add the following meters to the bottom of the skin. Save and refresh.</p>
 
 {% highlight ini %}
 [MeterDriveBack]
