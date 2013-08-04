@@ -8,6 +8,14 @@ title: 'Version History'
 
 <h2 id="3.0">Rainmeter 3.0</h2>
 
+<p>August 4, 2013 - Revision 2047<br/>
+<ul>
+<li><b>Changed</b> WebParser: WebParser now supports <a href="http://docs.rainmeter.net/manual-beta/variables#DynamicVariables">Dynamic Variables</a>. See <a href="http://rainmeter.net/forum/viewtopic.php?p=90521#p90521">Change Announcements</a> for <b>important</b> details.</li>
+<li><b>Changed</b> Rainmeter: Important improvements made to the D2D (Direct2D) rendering option for Rainmeter.  See <a href="http://rainmeter.net/forum/viewtopic.php?p=90520#p90520">Change Announcements</a> for <b>important</b> details.</li>
+<li><b>Added</b> Manage Dialog: Added "UseD2D" option in the Manage / Settings Tab. If checked, all skins are refreshed using D2D (Direct2D) rendering. The option is disabled on systems that do not support D2D.  Windows 7 with the latest <a href="http://www.microsoft.com/en-us/download/details.aspx?id=36805">Platform Update</a> or Windows 8 is required.</li>
+<li><b>Added</b> Rainmeter: Added AccurateText option in the [Rainmeter] section of skins. When AccurateText=0 (default) and UseD2D=0, inaccurate GDI+ measuring of text is used. When AccurateText=1 and UseD2D=0, Accurate measuring occurs similar to D2D. When AccurateText=0 and UseD2D=1, D2D adds padding to the text similar to GDI+. When AccurateText=1 and UseD2D=1, Accurate measuring occurs using D2D.</li>
+</ul>
+
 <h3 id="r2022">21 July, 2013 <small>(r2022)</small></h3>
 <ul>
 <li><b>Removed</b> String meter: Due to problems and inconsistent behavior, removed the ability to include trailing spaces on the Text option that was added in previous betas.  See the new Padding option for an alternative solution.</li>

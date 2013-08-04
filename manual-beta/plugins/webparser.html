@@ -33,6 +33,7 @@ StringIndex=2
 {% endhighlight %}
 <p>The values of the two <a href="#ParentChild">child</a> measures are now the information parsed into StringIndexes 1 and 2 by the <a href="#ParentChild">parent</a> measure. These can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="!meters">meters</a>.
 
+
 <p><b>Note:</b> More information and examples for WebParser can be found at <a href="/tips/webparser-tutorial">WebParser Tutorial</a> and <a href="/tips/rss-feed-tutorial">RSS/Atom Feed Tutorial</a>.</p>
 
 <h2>Options</h2>
@@ -49,6 +50,10 @@ StringIndex=2
 		<p id="Authentication">WebParser <b>cannot</b> use cookies or other session-based authentication, so it <b>cannot</b> be used to retrieve information from web sites requiring a login. However, Webparser <b>can</b> be used on sites which support <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP authentication</a>. E.g. <code>http://myname:mypassword@somesite.com</code>.</p>
 
 		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="http://en.wikipedia.org/wiki/File_URI_scheme">URI scheme</a>. E.g. <code>URL=file://<a href="!variables/built-in-variables#CURRENTPATH">#CURRENTPATH#</a>SomeFile.txt</code>.</p>
+		
+		<p>If you want to use the current value of a WebParser measure in a dynamic way as a <a href="!variables/section-variables">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
+
+		<p><code>URL=http://SomeSite.com\[&WebMeasure]</code></p>
 	</dd>
 
 	<dt id="RegExp"><code>RegExp</code></dt>
@@ -79,7 +84,11 @@ StringIndex=2
 	<dd>
 		<p>The rate in milliseconds determining how often the webpage is downloaded. This is relative to the config's main <a href="!skins#Update">Update</a> rate <b>and</b> any <a href="!measures/general-options/#UpdateDivider">UpdateDivider</a> on the measure. So the formula would be <code>Update</code> X <code>UpdateDivider</code> X <code>UpdateRate</code> = "how often the measure connects to the site".</p>
 
-		<p><b>Note:</b> Some caution should be used in determining how often to connect to a site with WebParser. Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
+		<p><b>Notes:</b> Some caution should be used in determining how often to connect to a site with WebParser. Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
+		
+		<p>In order to override the UpdateRate set on a WebParser measure, to have it connect to the site and download the data "right now", the <a href="!bangs#CommandMeasure">!CommandMeasure</a> bang must be used, with the name of the "parent" measure as the first parameter, and "Update" as the second.</p>
+		
+		<p><code>LeftMouseUpAction=[!SetOption WebMeasure URL "http://SomeNewSite.com"][!CommandMeasure WebMeasure Update]</code></p>
 	</dd>
 
 	<dt id="DecodeCharacterReference"><code>DecodeCharacterReference</code> <small>Default: <code>0</code></small></dt>
@@ -162,6 +171,22 @@ StringIndex=2
 		 <p>Codepage definitions and more information can be found at <a href="http://www.microsoft.com/globaldev/reference/wincp.mspx">Windows code pages</a>.</p>
 	</dd>
 </dl>
+
+<h2>WebParser and Dynamic Variables</h2>
+
+<p>Dynamic variables can be used with the WebParser plugin.  There are some things specific to WebParser that should be kept in mind when doing things in a dynamic way in WebParser measures:</p>
+
+<p>WebParser uses <a href="#UpdateRate">UpdateRate</a> to determine how often the plugin should actually access the site or file. While you can dynamically change any option on a WebParser measure, the plugin will not use the changes and access the site again until the next UpdateRate is reached. Just using <a href="!bangs#Update">!Update</a> or <a href="!bangs#UpdateMeasure">!UpdateMeasure</a> will NOT override the UpdateRate.</p>
+
+<p>In order to have a dynamic change make WebParser parse the site "right now", you will use the <a href="!bangs#CommandMeasure">!CommandMeasure</a> bang with the "parent" WebParser measure as the first parameter, and "Update" as the second.</p>
+
+<p><code>LeftMouseUpAction=[!SetOption WebMeasure URL "http://SomeNewSite.com"][!CommandMeasure WebMeasure Update]</code></p>
+
+<p>If you dynamically change an option on a "child" WebParser measure that depends on a "parent" measure, (like StringIndex for instance) you MUST use !CommandMeasure with "Update", targeting the "parent" WebParser measure. The values of child WebParser measures are a function of the parent measure, and are only updated when the parent is. You should never use !CommandMeasure on a "child" measure.</p>
+
+<p>If you want to use the current value of a WebParser measure in a dynamic way as a <a href="!variables/section-variables">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
+
+<p><code>URL=http://SomeSite.com\[&WebMeasure]</code></p>
 
 <h2>Examples</h2>
 
