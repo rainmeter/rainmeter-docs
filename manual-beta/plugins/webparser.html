@@ -51,7 +51,7 @@ StringIndex=2
 
 		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="http://en.wikipedia.org/wiki/File_URI_scheme">URI scheme</a>. E.g. <code>URL=file://<a href="!variables/built-in-variables#CURRENTPATH">#CURRENTPATH#</a>SomeFile.txt</code>.</p>
 		
-		<p>If you want to use the current value of a WebParser measure in a dynamic way as a <a href="!variables/section-variables">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
+		<p>If you want to use the current value of a measure in a dynamic way as a <a href="!variables/section-variables">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
 
 		<p><code>URL=http://SomeSite.com\[&WebMeasure]</code></p>
 	</dd>
@@ -184,7 +184,7 @@ StringIndex=2
 
 <p>If you dynamically change an option on a "child" WebParser measure that depends on a "parent" measure, (like StringIndex for instance) you MUST use !CommandMeasure with "Update", targeting the "parent" WebParser measure. The values of child WebParser measures are a function of the parent measure, and are only updated when the parent is. You should never use !CommandMeasure on a "child" measure.</p>
 
-<p>If you want to use the current value of a WebParser measure in a dynamic way as a <a href="!variables/section-variables">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
+<p>If you want to use the current value of a measure in a dynamic way as a <a href="!variables/section-variables">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
 
 <p><code>URL=http://SomeSite.com\[&WebMeasure]</code></p>
 
