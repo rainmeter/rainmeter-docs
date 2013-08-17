@@ -56,7 +56,9 @@ Bar=http://www.#Foo#.net/
 
 <p>A variable whose value changes while the skin is active is called a <b>dynamic variable</b>. Dynamic variables allow a skin to store, retrieve and display ever-changing information without <a href="!skins#Refresh">refreshing</a> the skin.</p>
 
-<p>Dynamic variables can only be used in a <a href="!measures">measure</a> or <a href="!meters">meter</a> with the option <code>DynamicVariables=1</code>. In addition, there are some <a href="!plugins">plugins</a> which do not support dynamic variables at this time. The following are sections where dynamic variables cannot be used:</p>
+<p>Dynamic variables can only be used in a <a href="!measures">measure</a> or <a href="!meters">meter</a> with the option <code>DynamicVariables=1</code>. Any <code>[MeasureName]</code> used in a bang as a <a href="!variables/section-variables">Section Variable</a> is automatically dynamic, and <code>DynamicVariables=1</code> is not required.</p>
+
+<p>In addition, there are some <a href="!plugins">plugins</a> which do not support dynamic variables at this time. The following are sections where dynamic variables cannot be used:</p>
 
 <ul>
 	<li><a href="!skins/rainmeter-section">[Rainmeter]</a></li>
