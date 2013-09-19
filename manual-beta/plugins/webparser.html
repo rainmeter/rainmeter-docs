@@ -166,9 +166,26 @@ StringIndex=2
 
 	<dt id="CodePage"><code>CodePage</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		 <p>Defines the codepage of the downloaded web page. For example: <code>CodePage=28605</code> interprets the page as <code>Latin 9 (ISO-8859-15)</code>. <code>CodePage=65001</code> means <code>UTF-8</code>. <code>CodePage=0</code> means no conversion is done.</p>
+		 <p>Defines the <a href="http://en.wikipedia.org/wiki/Code_page">code page</a> of the downloaded URL=http:// web page or external file read with URL=file://.</p>
+		 
+		 <p>Most web sites on the web today are encoded with the Unicode UTF-8 standard.  This is the default for WebParser, and it will seamlessly handle the site. No CodePage option is needed.</p>
 
-		 <p>Codepage definitions and more information can be found at <a href="http://www.microsoft.com/globaldev/reference/wincp.mspx">Windows code pages</a>.</p>
+		 <p>However, there may be some older web sites that are encoded in a language / character set specific way. On a web site, the encoding used can generally be determined by viewing the raw HTML source and checking the "charset" meta value in the "head" section of the page. (i.e. meta charset="UTF-8")</p>
+		 
+		 <p>Some Examples are:</p>
+		 <ul>
+		 <li><code>CodePage=1200</code> : Unicode UTF-16 LE (Little Endian)</li>
+		 <li><code>CodePage=1251</code> : ANSI Cyrillic; Cyrillic (Windows)</li>
+		 <li><code>CodePage=1252</code> : ANSI Latin 1; Western European (Windows)</li>
+		 <li><code>CodePage=28605</code> : ISO 8859-15 Latin 9</li>
+		 <li><code>CodePage=65001</code> : Unicode UTF-8</li>
+		 </ul>
+		 
+		 <p>In addition, there are times when an external local file to be parsed with URL=file:// will be encoded in other than the ANSI (really ASCII plus "extended ASCII" specific to the locale of the computer) encoding used as the default in most Windows-based text editors. Primarily this will be in Unicode UFT-16 LE. In this case, the <code>CodePage=1200</code> option must be used to tell WebParer how to interpret the resource being read.</p>
+		 
+		 <p>Codepage definitions and more information can be found at <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx">Windows code pages</a>.</p>
+		 
+		 <p>Additional general help with Unicode encoding in Rainmeter can be found at <a href="http://rainmeter.net/forum/viewtopic.php?p=92182#p92182">Character Encoding in Rainmeter</a>.</p>
 	</dd>
 </dl>
 
