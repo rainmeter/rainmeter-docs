@@ -1,0 +1,100 @@
+---
+layout: tips
+title: 'Advanced .rmskin Options'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>There are times that you want to release a new version of a skin or "suite" of skins.  This might be to:</p>
+
+<ul>
+<li><b>Completely replace the skin or suite of skins.</b><br/>
+- Simply create a new .rmskin with all files.<br/>
+- The installing user may or may not have installed the previous version of your .rmskin. It is just a "new" install if not, and a "replace" if so.</li>
+<li><b>Change only some files in a suite of skins while leaving others alone.</b><br/>
+- Create a new .rmskin, with the same root config folder, but only the files you want to replace in the folder tree.  You must use <b>Merge skins</b>. (See below for instructions)<br/>
+- The installing user must have installed the previous version of your .rmskin.</li>
+<li><b>Add new skins and / or other files to an existing installation.</b><br/>
+- Create a new .rmskin, with the same root config folder, but only the files you want to add in the folder tree.  You must use <b>Merge skins</b>. (See below for instructions)<br/>
+- The installing user must have installed the previous version of your .rmskin.</li>
+</ul>
+
+<p>With <b>any</b> of these three approaches you use, (or a combination of the second and third) one thing that needs to be kept in mind is that a user may have set the <b>variables</b> you put in to have the skin work correctly for that user. This might be variables for cosmetic colors, fonts or sizes, or variables for gmail logins, RSS feed URL's, weather location codes or other functional settings for the user.</p>
+
+<p><b>Variables are key=value options in a <code>[Variables]</code> section in a .inc or .ini file.</b></p>
+
+<p>In any case, unless you want to the user to have to "start over" with configuring your skin or suite with their personal information and cosmetic choices, You should consider using one or both of the following advanced options for your new .rmskin.</p>
+
+<h2>Using Advanced Options</h2>
+
+<p>Create your .rsmkin from the <b>Manage</b> dialog. Once you have selected the root config folder for the skin or suite of skin, click <b>Next</b>.  Set any options on the <b>Options</b> tab before continuing.</p>
+
+<p>Select the <b>Advanced</b> tab on this dialog:<br/>
+<div class="exampleprev">
+	<a rel="lightbox" href="!img/advanced-rmskin-options/Advanced.jpg"><img src="!img/advanced-rmskin-options/Advanced.jpg"/></a>
+</div>
+</p>
+
+<h3>Advanced option - Variables files:</h3>
+
+<p><div class="exampleprev">
+	<a rel="lightbox" href="!img/advanced-rmskin-options/AdvancedVariables.jpg"><img src="!img/advanced-rmskin-options/AdvancedVariables.jpg"/></a>
+</div></p>
+
+<p>Specify the file location starting with the root config folder.  Multiple files can be added by separating them with the pipe <code>|</code> symbol.</p>
+
+<p><b>Format:</b> <code>RootConfigFolder\Folder\MyVars.inc | RootConfigFolder\Folder\MySkin.ini</code><br/>
+<b>Example:</b> <code>MySuite\@Resources\Includes\SuiteVars.inc | MySuite\Clock\AnalogClock.ini</code></p>
+
+<p><b>Result:</b><br/>
+<ul>
+<li>Any existing variables that are in both the current file(s) and the .rmskin are left unchanged.</li>
+<li>Any existing lines that are in both the current file(s) and the .rmskin and are not variables are replaced.</li>
+<li>Any lines of any type that are in the .rmskin and not in the current file(s) are added.</li>
+<li>Any lines of any type that are in the current file(s) and not in the .rmskin are removed.</li>
+</ul>
+</p>
+
+<h3>Advanced option - Merge skins:</h3>
+
+<p><div class="exampleprev">
+	<a rel="lightbox" href="!img/advanced-rmskin-options/AdvancedMerge.jpg"><img src="!img/advanced-rmskin-options/AdvancedMerge.jpg"/></a>
+</div></p>
+
+<p><b>Result:</b><br/>
+<ul>
+<li>The root config folder is not removed or backed up.</li>
+<li>Any new files in the .rmskin are added.</li>
+<li>Any changed files in the .rmskin are completely replaced.</li>
+<li>Any files that are in the root config folder but not in the .rmskin are left unchanged.</li>
+<li>Merge skins cannot be used to remove any files.</li>
+</ul>
+</p>
+
+<h3>Both Variables files and Merge skins:</h3>
+<p>One or more .ini (or .inc) files are listed in Variables files, and Merge skins is checked.</p>
+
+<p><b>Result:</b><br/>
+<ul>
+<li>Both actions are done.</li>
+<li>Can be used used to change a skin .ini file while leaving existing variable values set by the user unchanged.</li>
+<li>Can be used to add lines to a .inc file, while leaving existing variable values set by the user unchanged.</li>
+</ul>
+</p>
+
+<h3>Neither advanced option:</h3>
+
+<p><b>Result:</b><br/>
+<ul>
+<li>The root config folder is backed up and removed.</li>
+<li>All files are completely replaced.</li>
+</ul>
+</p>
+
+<h3>What won't work:</h3>
+
+<ul>
+<li>The installing user can't have added any new files that are not in the .rmskin, unless Merge skins was used.</li>
+<li>The installing user can't have added any new lines of any type in any file if that file exists in the .rmskin.</li>
+</ul>
+
+<p><b>Final note:</b> It wouldn't do any harm, and might even make you a friend, if you just add files that contains variables to the "Variables files" option in "Advanced" even if it ISN'T a new version of your skin. Just always do it... Why?  If an end-user installs your suite, does all the setting up of all the variables for his personal information and all that, then screws up one or more skins trying to customize something, they will thank you when you tell them they can just "re-install" your .rsmkin again and get back to square one without losing all the variables they set.</p>
