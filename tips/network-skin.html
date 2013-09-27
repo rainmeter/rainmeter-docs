@@ -1,0 +1,349 @@
+---
+layout: tips
+title: 'Network Skin'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>One of the things folks like to have on their desktop is a skin to monitor the behavior and traffic of their network.</p>
+
+<p>The <a href="http://docs.rainmeter.net/manual/measures/net">NetIn / NetOut / NetTotal</a> measures in Rainmeter can be used to monitor all traffic in and out of the NIC (Network Interface Card) on your computer.</p>
+
+<p>However, there are a few considerations you should keep in mind to have a skin that is useful, accurate and informative.</p>
+
+<h2>The Interface option</h2>
+
+<p>One of the options that can be set on the Net measures is <a href="http://docs.rainmeter.net/manual/measures/net#Interface">Interface</a>. This is the index number of the network adapter (NIC) you want to measure.  It defaults to "0", which is just "all interfaces".</p>
+
+<p>This default value will likely be fine for you, assuming you don't have more than one network adapter on your computer, or are only using one at a time. However, you might find that the traffic values that the measures return are incorrect. Sometimes they can be double the expected values or even more.  This will be the case if you have more than one active network adapter, or sometimes due to some "virtual interfaces" that Windows detects.</p>
+
+<p>This can be corrected by choosing the correct <code>Interface</code> option for the measure(s).</p> 
+
+<h3>Finding your Interface:</h3>
+
+To find the correct <code>Interface</code> option for your system, you should do the following:
+<ul>
+<li>Open Manage from the Rainmeter tray icon</li>
+<li>Go to the Settings tab</li>
+<li>Turn on "Debug mode" and "Log to file"</li>
+<li>Exit Rainmeter</li>
+<li>Start Rainmeter</li>
+<li>Open Manage from the Rainmeter tray icon</li>
+<li>Go to the Settings tab</li>
+<li>Select "Show log file"</li>
+</ul>
+
+<p>That debug version of the log file will include a list of all network interfaces with the number Rainmeter will use. In my case, my physical (Hardware=Yes) NIC interface is at:<br/>
+{% highlight text %}
+DBUG (00:00:00.031) : 8: Realtek PCIe GBE Family Controller
+DBUG (00:00:00.031) :   Alias: Ethernet
+DBUG (00:00:00.031) :   Type=Ethernet(6), Hardware=Yes, Filter=No
+{% endhighlight %}
+</p>
+
+<p>So I use "8" in Interface.  The key is generally using the one that is <b>Hardware=Yes</b>.</p>
+
+When done:
+<ul>
+<li>Open Manage from the Rainmeter tray icon</li>
+<li>Go to the Settings tab</li>
+<li>Turn off "Debug mode" and "Log to file"</li>
+<li>Select "Delete log file"</li>
+</ul>
+
+<p><i>Don't leave the log running both writing to file and in debug mode when you don't need it. It will cause Rainmeter to work a lot harder than it has to.</i></p>
+
+<h2>Smoothing out the traffic values</h2>
+
+<p>The network measures in Rainmeter measure the average number of <b>Bytes</b> sent through the interface every second. However, the nature of network traffic is that it can be very "spiky". Many people find that a network skin has a more useful behavior if we "smooth out" these spikes a bit. So the traffic values "ramp up" and "ramp down" as the values change, rather than having a very jerky behavior.</p>
+
+<p>This can be done by using the <a href="http://docs.rainmeter.net/manual/measures/general-options#AverageSize">AverageSize</a> option on the measure(s).  This will cause the measure(s) to average the returned values over the number of skin updates specified in the <code>AverageSize</code> option.</p>
+
+<p>e.g: <code>AverageSize=5</code></p>
+
+<h2>Using Network values as a percentage</h2>
+
+<p>While it is simple enough to just display the number of Bytes / kBytes / MBytes from the measures in a <a href="http://docs.rainmeter.net/manual/meters/string">String</a> meter using <a href="http://docs.rainmeter.net/manual/meters/string#AutoScale">AutoScale</a> to format the numbers, you may want to display the traffic in a meter that requires a <a href="http://docs.rainmeter.net/manual/measures#Percentage">percentage</a>.  This would include the <a href="http://docs.rainmeter.net/manual/meters/bar">Bar</a>, <a href="http://docs.rainmeter.net/manual/meters/bitmap">Bitmap</a>, <a href="http://docs.rainmeter.net/manual/meters/histogram">Histogram</a>, <a href="http://docs.rainmeter.net/manual/meters/line">Line</a>, <a href="http://docs.rainmeter.net/manual/meters/rotator">Rotator</a> and <a href="http://docs.rainmeter.net/manual/meters/roundline">Roundline</a> meters.</p>
+
+<p>As discussed in the <a href="http://docs.rainmeter.net/manual/measures#Percentage">percentage</a> manual entry, these meters will require that a "range" of values is provided, so the meter knows where in the scale of 0% to 100% the current value of the measure lies.</p>
+
+<p>Some measures, like <a href="http://docs.rainmeter.net/manual/measures/freediskspace">FreeDiskSpace</a> for instance, automatically set this "range", based on examining the resource being measured.  The Network measures also attempt to do this, but with some serious limitations. What the measures do is dynamically set the maximum value for the range to the highest value the measure has been since the skin was loaded or refreshed.  This can cause really undesirable behavior on these "percentage" meters until your skin has been running for a while and you have done things to  use a large percentage of your total bandwidth. </p>
+
+<h3>Setting the MinValue / MaxValue options:</h3>
+
+<p>The way to correct this behavior is to manually set the <a href="http://docs.rainmeter.net/manual/measures/general-options#MinValue">MinValue</a> and <a href="http://docs.rainmeter.net/manual/measures/general-options#MaxValue">MaxValue</a> options on the network measure(s).  This will explicitly set the possible "range" of values for the measure so that meters requiring a percentage will immediately and correctly know where in the range of 0% to 100% the current value lies.</p>
+
+<h3>Finding your maximum download and upload bandwidth:</h3>
+
+<p>What we want to do is find and enter the maximum bandwidth your network connection supports.  There are a couple of things to keep in mind:<br/>
+<ul>
+<li>The maximum bandwidth your ISP told you is a baldfaced lie.</li>
+<li>Rainmeter measures network traffic in <b>bytes</b> per second, while most descriptions of network traffic in other contexts (Wikipedia articles about network traffic, the amount your ISP advertises, many online testing sites, etc.) describe network traffic in <b>bits</b>, or generally <b>Megabits / Mbps</b> per second.  A <b>byte</b> is <b>8 bits</b>.  The good news is that Rainmeter will handle this conversion for you.</li>
+</ul>
+</p>
+
+<h3>speedtest.net</h3>
+
+<p>One of the better places to get a reasonably accurate measurement of your maximum download and upload bandwidth is the <a href="http://speedtest.net">SpeedTest</a> site.  Simply go to this site, click on <b>Begin Test</b>, and wait.  In less than a minute, you will be given the maximum speeds the site sees for your computer.</p>
+
+<div class="exampleprev">
+	<a rel="lightbox" href="!img/network-skin/Speedtest.png"><img src="!img/network-skin/Speedtest.png"/></a>
+</div>
+
+<p>As you can see from the image, the values returned by SpeedTest are in <b>Mbps</b> or Megabits per second. This is just what we need for Rainmeter.</p>
+
+<p>So to use these values in your skin, you simply need to plug them into the <code>MaxValue</code> options for your measures.</p>
+
+<p>There is one more little calculation you need to do though. Remember that Rainmeter measures network traffic in <b>bytes</b>, and although it will handle any conversion from <b>bits</b> (the Mbps from SpeedTest) to <b>bytes</b>, we are talking about <b>Mega</b> or million bits/bytes.  Simple enough, a <b>Megabyte</b> is <b>1048576 bytes</b>.</p>
+
+<h3>Let's put it together:</h3>
+
+<p>I discovered that my Interface should be set to "8", my maximum download speed from SpeedTest is "33.12" and my maximum upload speed is "11.71"  I want to smooth out the traffic by averaging the results every "5" skin updates:</p>
+
+{% highlight ini %}
+[MeasureNetIn]
+Measure=NetIn
+Interface=8
+MinValue=0
+MaxValue=(33.12 * 1048576)
+AverageSize=5
+
+[MeasureNetOut]
+Measure=NetOut
+Interface=8
+MinValue=0
+MaxValue=(11.71 * 1048576)
+AverageSize=5
+{% endhighlight %}
+
+<h3>Sample Skin:</h3>
+
+<p>I have put all this together in a reasonably simple little skin that:<br/>
+<ul>
+<li>Tests your network connection to be sure it is active.</li>
+<li>Gets and displays both your LAN (local) IP address and WAN (Internet) IP address. Simply move the mouse over the skin to toggle the value between them.  Click the skin to copy your WAN IP address to the Windows clipboard.</li>
+<li>Displays an image that dynamically indicates Downloading/Uploading/Both/Neither/Error as appropriate.</li>
+<li>Displays the current download and upload traffic in bytes/kbytes/Mbytes, scaling automatically.</li>
+<li>Displays a Bar meter for download and upload values, as a percentage of the total bandwidth your connection supports.</li>
+</ul>
+
+<p>I have put some things in <code>[Variables]</code> to make them easy to change.  Be SURE to change the values for your maximum download and upload bandwidth. Feel free to either use this skin as is, or tear it apart to make it your own.</p>
+
+<a href="!img/network-skin/NetTraffic.rmskin" class="download"></a>
+{% highlight ini %}
+[Rainmeter]
+Update=1000
+AccurateText=1
+LeftMouseUpAction=[!SetClip "[MeasureIPWeb]"][Play "#@#Sounds\Copy.wav"]
+MouseOverAction=[!SetOption MeterWANIPText Text "[MeasureIPLan]"][!UpdateMeter MeterWANIPText][!Redraw]
+MouseLeaveAction=[!SetOption MeterWANIPText Text ""][!UpdateMeter MeterWANIPText][!Redraw]
+
+[Metadata]
+Name=NetTraffic
+Author=JSMorley
+Information=Description:|Network Information
+Version=Aug 31, 2013
+License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
+
+[Variables]
+;Set these for sure
+;http://speedtest.net
+MaxDownloadMbits=33.82
+MaxUploadMbits=4.85
+
+;Set this if needed
+Interface=0
+
+Font=Trebuchet MS
+LabelColor=220,220,220
+ValueColor=255,254,222,255
+ImagePath=#@#Images\
+
+[MeterAllBackground]
+Meter=Image
+W=170
+H=78
+SolidColor=20,20,20,255
+SolidColor2=23,46,29,255
+
+;[GATHER Network]=================================
+
+[MeasureNetwork]
+Measure=Plugin
+Plugin=WebParser.dll
+Url=http://www.msftncsi.com/ncsi.txt
+RegExp="^(.*)$"
+UpdateRate=30
+ForceReload=1
+StringIndex=1
+FinishAction=!EnableMeasure MeasureNetworkLua #CURRENTCONFIG#
+
+[MeasureNetIn]
+Measure=NetIn
+Interface=#Interface#
+MinValue=0
+MaxValue=(#MaxDownloadMbits# * 1048576)
+AverageSize=5
+
+[MeasureInDelay]
+Measure=Calc
+Formula=MeasureNetIn
+
+[MeasureNetOut]
+Measure=NetOut
+Interface=#Interface#
+MinValue=0
+MaxValue=(#MaxUploadMbits# * 1048576)
+AverageSize=5
+
+[MeasureOutDelay]
+Measure=Calc
+Formula=MeasureNetOut
+
+;[Network WEB IP]=================================
+
+[MeasureIPLan]
+Measure=Plugin
+Plugin=Plugins\SysInfo.dll
+SysInfoType=IP_ADDRESS
+
+[MeasureIPWeb]
+Measure=Plugin
+Plugin=Plugins\WebParser.dll
+Url=http://checkip.dyndns.org
+RegExp="(?siU)Address: (.*)&lt;/body&gt;"
+StringIndex=1
+UpdateRate=-1
+
+[MeterIPLabel]
+Meter=String
+X=10
+Y=7
+FontFace=#Font#
+FontColor=#LabelColor#
+FontSize=11
+StringStyle=Normal
+StringAlign=Left
+AntiAlias=1
+Text="IP:"
+
+[MeterWANIPText]
+Meter=String
+MeasureName=MeasureIPWeb
+X=160
+Y=0r
+FontFace=#Font#
+FontColor=#ValueColor#
+SolidColor=0,0,0,1
+FontSize=11
+StringStyle=Normal
+StringAlign=Right
+AntiAlias=1
+
+;[Network TRAFFIC IMAGE]========================
+
+[MeterNetworkImage]
+Meter=IMAGE
+ImageName=#ImagePath#NetworkError.png
+X=10
+Y=26r
+W=30
+H=30
+AntiAlias=1
+
+[MeasureNetworkLua]
+Measure=Script
+ScriptFile=NetTraffic.lua
+Disabled=1
+
+;[Network INBOUND TRAFFIC]========================
+
+[MeterNetInPre]
+Meter=String
+X=50
+Y=-6r
+FontFace=#Font#
+FontColor=#LabelColor#
+FontSize=11
+StringStyle=Normal
+StringAlign=Left
+AntiAlias=1
+Text="DN:"
+
+[MeterNetInText]
+MeasureName=MeasureInDelay
+Meter=String
+X=160
+Y=0r
+FontFace=#Font#
+FontColor=#ValueColor#
+FontSize=11
+StringStyle=Normal
+StringAlign=Right
+AntiAlias=1
+AutoScale=1
+NumOfDecimals=1
+Text="%1B"
+
+[MeterNetInBar]
+Meter=Bar
+MeasureName=MeasureNetIn
+X=50
+Y=0R
+W=110
+H=2
+BarColor=104,199,128,255
+SolidColor=60,60,60,255
+BarOrientation=Horizontal
+
+;[Network OUTBOUND TRAFFIC]=======================
+
+[MeterNetOUTPre]
+Meter=String
+X=50
+Y=5r
+FontFace=#Font#
+FontColor=#LabelColor#
+FontSize=11
+StringStyle=Normal
+StringAlign=Left
+AntiAlias=1
+Text="UP:"
+
+[MeterNetOutText]
+MeasureName=MeasureOutDelay
+Meter=String
+X=160
+Y=0r
+FontFace=#Font#
+FontColor=#ValueColor#
+FontSize=11
+StringStyle=Normal
+StringAlign=Right
+AntiAlias=1
+AutoScale=1
+NumOfDecimals=1
+Text="%1B"
+
+[MeterNetOutBar]
+Meter=Bar
+MeasureName=MeasureNetOut
+X=50
+Y=0R
+W=110
+H=2
+BarColor=104,199,128,255
+SolidColor=60,60,60,255
+BarOrientation=Horizontal
+{% endhighlight %}
+
+<p><div class="exampleprev">
+	<a rel="lightbox" href="!img/network-skin/NetTraffic.png"><img src="!img/network-skin/NetTraffic.png"/></a>
+</div></p>
+
+<p><div class="exampleprev">
+	<a rel="lightbox" href="!img/network-skin/NetTraffic.gif"><img src="!img/network-skin/NetTraffic.gif"/></a>
+</div></p>
+
+
+
+
