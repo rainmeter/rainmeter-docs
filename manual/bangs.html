@@ -17,7 +17,7 @@ title: 'Bangs'
 
 <p>Bangs can also be used from the Windows command line as a parameter to the Rainmeter.exe executable. Example: <code>"C:\Program Files\Rainmeter\Rainmeter.exe" !RefreshApp</code>.</p>
 
-<p><b>Note:</b> Many bangs have a <code>Config</code> parameter. Unless otherwise specified, valid values are the <a href="!skins#Config">config name</a> to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins. When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
+<p><b>Note:</b> Many bangs have a <code>Config</code> parameter. Unless otherwise specified, valid values are the <a href="!skins#Config">config name</a> of a currently loaded skin to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins. When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
 
 <h2 id="OS">Operating System bangs</h2>
 <dl>
@@ -52,13 +52,15 @@ title: 'Bangs'
 		<br><b>Example:</b> <code>!About Skins</code>
 	</dd>
 
-	<dt id="Manage"><code>!Manage</code> <small>Parameter: <code><em>TabName</em></code></small></dt>
+	<dt id="Manage"><code>!Manage</code> <small>Parameters: <code><em>TabName, Config, File</em></code></small></dt>
 	<dd>
 		Opens the <a href="!user-interface/manage">Manage</a> window.
 		<ul>
 		<li><code>TabName</code> (optional): Name of the tab to open. Valid values are: <code>Skins</code> (default), <code>Layouts</code>, and <code>Settings</code>.</li>
+		<li><code>Config</code> (optional): <a href="!skins#Config">Config name</a>.  If specified the list on the left will jump to and select the named config. If Config is specified, then TabName is required.</li>
+		<li><code>File</code> (optional): A skin .ini file in a named config.  If specified the list on the left will jump to and select the named skin .ini file.  If File is specified, then TabName and Config are required.</li>		
 		</ul>
-		<br><b>Example:</b> <code>!Manage Settings</code>
+		<br><b>Example:</b> <code>!Manage Skins "illustro\Clock" "Clock.ini"</code>
 	</dd>
 
 	<dt id="TrayMenu"><code>!TrayMenu</code></dt>
@@ -513,8 +515,20 @@ title: 'Bangs'
 		<li><code>Measure</code> (required): Name of the measure.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
+		This behavior can also be controlled with the <a href="!measures/general-options#Disabled">Disabled</a> general measure option. Numeric values in measures will be set to zero when the measure is disabled.  <br>
 		<br><b>Example:</b> <code>!ToggleMeasure "CPUMeasure"</code>
 	</dd>
+
+	<dt id="PauseMeasure"><code>!PauseMeasure</code>, <code>!UnpauseMeasure</code>, <code>!TogglePauseMeasure</code> <small>Parameters: <code><b>Measure</b><em>, Config</em></code></small></dt>
+	<dd>
+		Pauses or unpauses updating the given <a href="!measures">measure</a>.
+		<ul>
+		<li><code>Measure</code> (required): Name of the measure.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+		This is similar to <a href="#EnableDisableToggleMeasure">!DisableMeasure</a> / <a href="#EnableDisableToggleMeasure">!EnableMeasure</a>, however the numeric value of the measure will contain the most recent value, rather than being set to zero.<br>
+		<br><b>Example:</b> <code>!TogglePauseMeasure "CPUMeasure"</code>
+	</dd>	
 
 	<dt id="UpdateMeasure"><code>!UpdateMeasure</code> <small>Parameters: <code><b>Measure</b><em>, Config</em></code></small></dt>
 	<dd>
@@ -549,6 +563,15 @@ title: 'Bangs'
 		</ul>
 	</dd>
 
+	<dt id="PauseMeasureGroup"><code>!PauseMeasureGroup</code>, <code>!UnpauseMeasureGroup</code>, <code>!TogglePauseMeasureGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
+	<dd>
+		Pauses or unpauses updating the given <a href="!measures">measure</a> in the specified group.
+		<ul>
+		<li><code>Group</code> (required): Name of the group.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	</dd>		
+	
 	<dt id="UpdateMeasureGroup"><code>!UpdateMeasureGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
 		Overrides the setting of the <a href="!skins/rainmeter-section#Update">Update</a> option in [Rainmeter] or any <a href="!measures/general-options#UpdateDivider">UpdateDivider</a> on the measures in the specified group, and immediately updates the measures.

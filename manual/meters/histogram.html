@@ -6,90 +6,97 @@ title: 'Histogram meter'
 
 <p><code>Meter=Histogram</code> displays a histogram for the current and past values of one or two measures.</p></p>
 
+<p>The primary graph is defined with <a href="#MeasureName">MeasureName</a>, with an optional secondary graph defined by <a href="MeasureName">MeasureName2</a>.</p>
+
 <h2>Options</h2>
 <dl>
 	<dt>General meter options</dt>
 	<dd>
-		All <a href="!meters/general-options">general meter options</a> are valid.
+		<p>All <a href="!meters/general-options">general meter options</a> are valid.</p>
 	</dd>
 
 	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code></dt>
 	<dd>
-		Name of the primary (required) and secondary (optional) measures to use for the histogram. The measure(s) used must be able to return <a href="!measures#Percentage">percentual values</a>.
-
-		<br><br><b>Note:</b> <code>SecondaryMeasureName</code> is deprecated. Use <code>MeasureName2</code> instead.
+		<p>Name of the primary (required) and secondary (optional) measures to use for the histogram. The measure(s) used must be able to return <a href="!measures#Percentage">percentual values</a>.</p>
 	</dd>
 
 	<dt id="Autoscale"><code>Autoscale</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the histogram is automatically scaled to show all the values.
+		<p>If set to <code>1</code>, the histogram is automatically scaled to show all the values.</p>
 	</dd>
 
 	<dt id="GraphStart"><code>GraphStart</code> <small>Default: <code>Right</code></small></dt>
 	<dd>
-		Starting point of the graph. Valid values are <code>Left</code> and <code>Right</code>.
+		<p>Starting point of the graph. Valid values are <code>Left</code> and <code>Right</code>.</p>
 	</dd>
 
 	<dt id="GraphOrientation"><code>GraphOrientation</code> <small>Default: <code>Vertical</code></small></dt>
 	<dd>
-		Orientation of the graph elements. Valid values are <code>Horizontal</code> and <code>Vertical</code>.
+		<p>Orientation of the graph elements. Valid values are <code>Horizontal</code> and <code>Vertical</code>.</p>
 	</dd>
 
 	<dt id="Flip"><code>Flip</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the meter is flipped vertically.
+		<p>If set to <code>1</code>, the meter is flipped vertically.</p>
 	</dd>
 
-	<dt id="PrimaryColor"><code>PrimaryColor</code> <small>Default: <code>008000</code></small></dt>
+	<dt id="PrimaryColor"><code>PrimaryColor</code>, <code>SecondaryColor</code>, <code>BothColor</code> <small>Default: <code>008000</code></small></dt>
 	<dd>
-		<a href="!options#Color">Color</a> for the primary histogram.
+		<p><a href="!options#Color">Color</a> for the primary, secondary or both histograms.</p>
 	</dd>
 
-	<dt id="SecondaryColor"><code>SecondaryColor</code> <small>Default: <code>FF0080</code></small></dt>
+	<dt id="PrimaryImagePath"><code>PrimaryImagePath</code>, <code>SecondaryImagePath</code>, <code>BothImagePath</code></dt>
 	<dd>
-		<a href="!options#Color">Color</a> for the secondary histogram.
+		<p><a href="!options#Path">Path</a> to the location of optional image used behind the primary, secondary or both histograms.</p>
 	</dd>
-
-	<dt id="BothColor"><code>BothColor</code> <small>Default: <code>FFFF00</code></small></dt>
-	<dd>
-		<a href="!options#Color">Color</a> for the overlapped area between the primary and secondary histograms.
-	</dd>
-
+	
 	<dt id="PrimaryImage"><code>PrimaryImage</code>, <code>SecondaryImage</code>, <code>BothImage</code></dt>
 	<dd>
-		<a href="!options#Path">Path</a> of optional image(s) used behind the primary, secondary or both histograms.
+		<p>Optional image used behind the primary, secondary or both histograms.</p>
+		
+		<p><b>Note: </b>The image size cannot be modified with the <a href="http://docs.rainmeter.net/manual/meters/general-options#WH">W</a> or <a href="http://docs.rainmeter.net/manual/meters/general-options#WH">H</a> general meter options, and will be displayed in the original image size.  The histogram will be constrained to the size of the image.</p>
 	</dd>
 
 	<dt id="ImageCrop"><code>PrimaryImageCrop</code>, <code>SecondaryImageCrop</code>, <code>BothImageCrop</code></dt>
 	<dd>
-		See <a href="!meters/general-options/image-options#ImageCrop">ImageCrop</a>.
+		<p>See <a href="!meters/general-options/image-options#ImageCrop">ImageCrop</a>.</p>
 	</dd>
 
 	<dt id="ImageTint"><code>PrimaryImageTint</code>, <code>SecondaryImageTint</code>, <code>BothImageTint</code></dt>
 	<dd>
-		See <a href="!meters/general-options/image-options#ImageTint">ImageTint</a>.
+		<p>See <a href="!meters/general-options/image-options#ImageTint">ImageTint</a>.</p>
 	</dd>
 
 	<dt id="ImageAlpha"><code>PrimaryImageAlpha</code>, <code>SecondaryImageAlpha</code>, <code>BothImageImageAlpha</code></dt>
 	<dd>
-		See <a href="!meters/general-options/image-options#ImageAlpha">ImageAlpha</a>.
+		<p>See <a href="!meters/general-options/image-options#ImageAlpha">ImageAlpha</a>.</p>
 	</dd>
 
 	<dt id="ImageFlip"><code>PrimaryImageFlip</code>, <code>SecondaryImageFlip</code>, <code>BothImageFlip</code></dt>
 	<dd>
-		See <a href="!meters/general-options/image-options#ImageFlip">ImageFlip</a>.
+		<p>See <a href="!meters/general-options/image-options#ImageFlip">ImageFlip</a>.</p>
 	</dd>
 
 	<dt id="ImageRotate"><code>PrimaryImageRotate</code>, <code>SecondaryImageRotate</code>, <code>BothImageRotate</code></dt>
 	<dd>
-		See <a href="!meters/general-options/image-options#ImageRotate">ImageRotate</a>.
+		<p>See <a href="!meters/general-options/image-options#ImageRotate">ImageRotate</a>.</p>
 	</dd>
 
 	<dt id="ColorMatrix"><code>PrimaryColorMatrix<em>N</em></code>, <code>SecondaryColorMatrix<em>N</em></code>, <code>BothImageColorMatrix<em>N</em></code></dt>
 	<dd>
-		See <a href="!meters/general-options/image-options#ColorMatrix">ColorMatrix<em>N</em></a>.
+		<p>See <a href="!meters/general-options/image-options#ColorMatrix">ColorMatrix<em>N</em></a>.</p>
 	</dd>
 </dl>
+
+<h3 id="Deprecated">Deprecated Features</h3>
+
+<p>The following options have been deprecated and should not be used. They are still supported, but may be removed in future versions.</p>
+
+<ul>
+	<li><p><code>SecondaryMeasure</code><br>
+		<a href="#MeasureName">MeasureName2</a> should be used to define an optional secondary measure for the meter.
+	</li>
+</ul>	
 
 <h2>Example</h2>
 <a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterHistogram_1.0.rmskin" class="download"></a>

@@ -17,6 +17,11 @@ title: '[Rainmeter] section'
 		<p><b>Note:</b> Update is not related to the system clock, and if a computer is busy or a complicated skin takes longer than the interval to complete a full update of the skin, updates can be unreliable in relation to elapsed time.  Do not use the Update value to drive clocks or other timing sensitive functions.</p>		
 	</dd>
 
+	<dt id="AccurateText"><code>AccurateText</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>If set to <code>1</code>, String meters are measured and rendered using improved padding and character spacing similar to that provided by Direct2D.</p>
+	</dd>
+
 	<dt id="DynamicWindowSize"><code>DynamicWindowSize</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the window size is adjusted on each update to fit the meters.</p>
@@ -51,6 +56,11 @@ title: '[Rainmeter] section'
 	<dd>
 		<p><a href="!options#Action">Action</a> to execute when the skin loses focus in Windows.</p>
 	</dd>
+	
+	<dt id="OnWakeAction"><code>OnWakeAction</code></dt>
+	<dd>
+		<p><a href="!options#Action">Action</a> to execute when Windows returns from the sleep or hibernate states.</p>
+	</dd>	
 
 	<dt id="TransitionUpdate"><code>TransitionUpdate</code> <small>Default: <code>100</code></small></dt>
 	<dd>
@@ -203,4 +213,4 @@ LeftMouseUpAction=[!AddBlur "1,0,0,200,80"]
 		<p>Loads the specified TTF font files for use with <a href="!meters/string#FontFace">FontFace</a> in String meters.</p>
 		<p><b>Note:</b> This option is deprecated. Use the <a href="!skins/resources-folder#Fonts">@Resources\Fonts</a> folder instead.</p>
 	</dd>
-</dl>	
+</dl>
