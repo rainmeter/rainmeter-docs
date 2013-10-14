@@ -10,42 +10,44 @@ title: 'Bar meter'
 <dl>
 	<dt>General meter options</dt>
 	<dd>
-		All <a href="!meters/general-options">general meter options</a> are valid.
+		<p>All <a href="!meters/general-options">general meter options</a> are valid.</p>
 	</dd>
 
 	<dt>General image options</dt>
 	<dd>
-		All <a href="!meters/general-options/image-options">general image options</a> are valid for <code>BarImage</code>.
+		<p>All <a href="!meters/general-options/image-options">general image options</a> are valid for <code>BarImage</code>.</p>
 	</dd>
 
 	<dt id="MeasureName"><code>MeasureName</code></dt>
 	<dd>
-		Name of the measure to use. The measure used must be able to return <a href="!measures#Percentage">percentual values</a>.
+		<p>Name of the measure to use. The measure used must be able to return <a href="!measures#Percentage">percentual values</a>.</p>
 	</dd>
 
 	<dt id="BarColor"><code>BarColor</code></dt>
 	<dd>
-		<a href="!options#Color">Color</a> of the bar.
+		<p><a href="!options#Color">Color</a> of the bar.</p>
 	</dd>
 
 	<dt id="BarImage"><code>BarImage</code></dt>
 	<dd>
-		<a href="!options#Path">Path</a> to an image to use for the bar instead of <code>BarColor</code>.
+		<p><a href="!options#Path">Path</a> to an image to use for the bar instead of <code>BarColor</code>.</p>
+		<p>The image is "revealed" to the <a href="!measures#Percentage">percentage</a> defined by the current value of the <a href="#MeasureName">MeasureName</a> bound to the meter.</p>
+		<p><b>Note: </b>The image size cannot be modified with the <a href="!meters/general-options#WH">W</a> or <a href="!meters/general-options#WH">H</a> general meter options, and will be displayed in the original image size.  The bar will be constrained to the size of the image.</p>
 	</dd>
 
 	<dt id="BarBorder"><code>BarBorder</code></dt>
 	<dd>
-		If <code>BarImage</code> is specified, defines the number of pixels on either side of the image that are always drawn (i.e. top and bottom margins for vertical bars, left and right margins for horizontal bars).
+		<p>If <code>BarImage</code> is specified, defines the number of pixels on either side of the image that are always drawn (i.e. top and bottom margins for vertical bars, left and right margins for horizontal bars).</p>
 	</dd>
 
 	<dt id="BarOrientation"><code>BarOrientation</code> <small>Default: <code>Horizontal</code></small></dt>
 	<dd>
-		Orientation of the bar. Valid values are <code>Horizontal</code> and <code>Vertical</code>.
+		<p>Orientation of the bar. Valid values are <code>Horizontal</code> and <code>Vertical</code>.</p>
 	</dd>
 
 	<dt id="Flip"><code>Flip</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the direction of the bar is flipped.
+		<p>If set to <code>1</code>, the direction of the bar is flipped.</p>
 	</dd>
 </dl>
 
