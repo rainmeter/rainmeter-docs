@@ -9,23 +9,23 @@ title: 'RSS Feed Tutorial'
 <p>RSS and Atom feeds follow certain patterns that make them fairly easy to parse.  While there are differences between the RSS and Atom standards, which we will touch on a bit later, let's use a simple RSS output to outline how they are laid out.</p>
 
 {% highlight text %}
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;rss version="2.0"&gt;
-&lt;channel&gt;
- &lt;title&gt;RSS Title&lt;/title&gt;
- &lt;description&gt;This is an example of an RSS feed&lt;/description&gt;
- &lt;link&gt;http://www.someexamplerssdomain.com/main.html&lt;/link&gt;
- &lt;lastBuildDate&gt;Mon, 06 Sep 2009 16:45:00 +0000 &lt;/lastBuildDate&gt;
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+ <title>RSS Title</title>
+ <description>This is an example of an RSS feed</description>
+ <link>http://www.someexamplerssdomain.com/main.html</link>
+ <lastBuildDate>Mon, 06 Sep 2009 16:45:00 +0000 </lastBuildDate>
  
- &lt;item&gt;
-  &lt;title&gt;Example entry&lt;/title&gt;
-  &lt;description&gt;Here is some text containing an interesting description.&lt;/description&gt;
-  &lt;link&gt;http://www.wikipedia.org/&lt;/link&gt;
-  &lt;pubDate&gt;Mon, 06 Sep 2009 16:45:00 +0000 &lt;/pubDate&gt;
- &lt;/item&gt;
+ <item>
+  <title>Example entry</title>
+  <description>Here is some text containing an interesting description.</description>
+  <link>http://www.wikipedia.org/</link>
+  <pubDate>Mon, 06 Sep 2009 16:45:00 +0000 </pubDate>
+ </item>
  
-&lt;/channel&gt;
-&lt;/rss&gt;
+</channel>
+</rss>
 {% endhighlight %}
 
 <p>As you can see, the pattern is that there is a header section which contains "tags" for the <em>title</em>, <em>description</em>, <em>link</em> and <em>lastBuildDate</em> of the overall feed.  This is followed by a series of one or more <em>item</em> entries, each of which has its own set of title/description/link/pubDate tags.  It should be noted that there can be MANY other tags in a feed.  However, in an RSS feed, the ones we are going to look at are the ones that are certain to be there, and will have the information we want for a simple RSS skin.</p>
