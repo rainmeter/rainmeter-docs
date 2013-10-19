@@ -9,16 +9,16 @@ title: 'WebParser: Lookahead Assertions in RegExp'
 <p>The best way to explain this is probably to give an example with an explanation of what it is doing.</p>
 <p>Let's start with an HTML file. We will use the "file://" functionality of WebParser for this test, so we can parse a local file on our hard drive.<br>
 {% highlight html %}
-&lt;HTML&gt;
-	&lt;BODY&gt;
-		&lt;Item&gt;
-			&lt;Name&gt;Larry&lt;/Name&gt;
-		&lt;/Item&gt;
-		&lt;Item&gt;
-			&lt;Name&gt;Curly&lt;/Name&gt;
-		&lt;/Item&gt;
-	&lt;/BODY&gt;
-&lt;/HTML&gt;
+<HTML>
+	<BODY>
+		<Item>
+			<Name>Larry</Name>
+		</Item>
+		<Item>
+			<Name>Curly</Name>
+		</Item>
+	</BODY>
+</HTML>
 {% endhighlight %}</p>
 <p>Normally, we might use something like this in a WebParser measure to search for and return three results:<br>
 {% highlight ini %}
@@ -26,13 +26,13 @@ title: 'WebParser: Lookahead Assertions in RegExp'
 Measure=Plugin
 Plugin=WebParser
 URL=file://#CURRENTPATH#MyFile.html
-RegExp="(?siU)&lt;Item&gt;.*&lt;Name&gt;(.*)&lt;/Name&gt;.*&lt;Item&gt;.*&lt;Name&gt;(.*)&lt;/Name&gt;.*&lt;Item&gt;.*&lt;Name&gt;(.*)&lt;/Name&gt;.*"
+RegExp="(?siU)<Item>.*<Name>(.*)</Name>.*<Item>.*<Name>(.*)</Name>.*<Item>.*<Name>(.*)</Name>.*"
 {% endhighlight %}</p>
 <p>The problem is, there are only two instances of "&lt;Item&gt;" in this file at this time, and the regular expression will fail and no results will be returned to the WebParser measure. A feed or web site might have none or twenty "&lt;Item&gt;" occurrences, and you can't always know ahead of time.</p>
 <p>Using a "lookahead assertion" will allow you to solve this. You can use a RegExp of:<br>
 {% highlight ini %}
 ;RegExp with look-ahead assertions
-RegExp="(?siU)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)"
+RegExp="(?siU)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name>)"
 {% endhighlight %}
 Now the WebParser measure will return the two StringIndexes for "Larry" and "Curly", and will just return a null value for the third search item without failing.</p>
 <p>What <code>(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)</code> is saying is "Look ahead and see if there is a pattern of <code>.*&lt;Item&gt;</code> coming up, and if so, execute the expression <code>.*&lt;Name&gt;(.*)&lt;/Name&gt;</code>", or in shorthand: "(? [Do] (?= [If this is found] ) [stuff to Do] )". If not, just shrug and continue...</p>
@@ -42,7 +42,7 @@ Now the WebParser measure will return the two StringIndexes for "Larry" and "Cur
 DynamicWindowSize=1
 
 [Variables]
-Get=(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)
+Get=(?(?=.*<Item>).*<Name>(.*)</Name>)
 
 [MeasureParent]
 Measure=Plugin
