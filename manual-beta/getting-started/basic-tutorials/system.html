@@ -6,7 +6,7 @@ title: 'System'
 
 <h2>Introduction</h2>
 
-<p>With this tutorial, we are going to cover several things.  First, we are going to introduce two new measure and two new meter types, as well as some new options for controlling how they work.  We will also touch on the use of <a href="http://docs.rainmeter.net/tips/update-guide">UpdateDivider</a> on measures to control the performance of a skin, and will explore using <a href="!variables">Variables</a> to set, use and change values shared by measures and meters.</p>
+<p>With this tutorial, we are going to cover several things. First, we are going to introduce two new measure and two new meter types, as well as some new options for controlling how they work. We will also touch on the use of <a href="http://docs.rainmeter.net/tips/update-guide">UpdateDivider</a> on measures to control the performance of a skin, and will explore using <a href="!variables">Variables</a> to set, use and change values shared by measures and meters.</p>
 
 <p>There is a lot going on in this skin, so let's explore the end-result a bit so you can get a sense of where we are going as we work through it. First, let's take a look at the final skin.</p>
 
@@ -16,7 +16,7 @@ title: 'System'
 	</div>	
 </div>
 
-<p style="clear: both;">What we are going to do is measure the percent usage of the CPU, and the space on a couple of hard drives.  Then we are going to create some circular meters showing the usage with <a href="!meters/roundline">Roundline</a> meters.  We are going to monitor the CPU with a <a href="!meters/line">Line</a> meter, and display some information about the space on your hard drives.  You only see one hard drive in that image? We will get to that...</p>
+<p style="clear: both;">What we are going to do is measure the percent usage of the CPU, and the space on a couple of hard drives. Then we are going to create some circular meters showing the usage with <a href="!meters/roundline">Roundline</a> meters. We are going to monitor the CPU with a <a href="!meters/line">Line</a> meter, and display some information about the space on your hard drives. You only see one hard drive in that image? We will get to that...</p>
 
 <h2>Building the System skin</h2>
 
@@ -26,7 +26,7 @@ title: 'System'
 Update=1000
 {% endhighlight %}
 
-<p>The next thing we are going to do is define some <a href="!variables">variables</a> for the skin. Variables are used to create a value, which can be used repeatedly in the skin by enclosing the variable name in <b>##</b> (example: <b>#VarName#</b>).  In order to change the value in all places it is used, you only need to change it one time in the <a href="!variables#Section">[Variables]</a> section of the skin.</p>
+<p>The next thing we are going to do is define some <a href="!variables">variables</a> for the skin. Variables are used to create a value, which can be used repeatedly in the skin by enclosing the variable name in <b>##</b> (example: <b>#VarName#</b>). In order to change the value in all places it is used, you only need to change it one time in the <a href="!variables#Section">[Variables]</a> section of the skin.</p>
 
 {% highlight ini %}
 [Variables]
@@ -40,7 +40,7 @@ Drive1=C:
 Drive2=D:
 {% endhighlight %}
 
-<p>Now we will cheat a bit.  In earlier tutorials, we waited until the end and put a solid background on the skin using an <a href="!meters/image">Image</a> meter. Let's go ahead and add that now, so we can demonstrate the first use of one of those <b>variables</b> we created above.</p>
+<p>Now we will cheat a bit. In earlier tutorials, we waited until the end and put a solid background on the skin using an <a href="!meters/image">Image</a> meter. Let's go ahead and add that now, so we can demonstrate the first use of one of those <b>variables</b> we created above.</p>
 
 {% highlight ini %}
 [MeterBackground]
@@ -52,9 +52,9 @@ H=110
 SolidColor=#AlmostBlack#
 {% endhighlight %}
 
-<p>Note that we have used the variable <b>#AlmostBlack#</b> in the <a href="!meters/general-options#SolidColor">SolidColor</a> option for this meter.  The meter will then use the value we defined as <code>AlmostBlack=40,40,40,255</code> in the <b>[Variables]</b> section earlier.  Remember that if you define SolidColor on an image meter with <b>no MeasureName</b> option, it simply draws a square or rectangle based on the <a href="!meters/general-options#WH">W and H</a> (width and height) options.</p>
+<p>Note that we have used the variable <b>#AlmostBlack#</b> in the <a href="!meters/general-options#SolidColor">SolidColor</a> option for this meter. The meter will then use the value we defined as <code>AlmostBlack=40,40,40,255</code> in the <b>[Variables]</b> section earlier. Remember that if you define SolidColor on an image meter with <b>no MeasureName</b> option, it simply draws a square or rectangle based on the <a href="!meters/general-options#WH">W and H</a> (width and height) options.</p>
 
-<p>So let's load our new skin and take a look at where we stand.  From the <a href="!user-interface/manage#SkinsTab">Manage</a> dialog, find the <b>System.ini</b> entry in the list and click on the <b>Load</b> button on the upper right.</p>
+<p>So let's load our new skin and take a look at where we stand. From the <a href="!user-interface/manage#SkinsTab">Manage</a> dialog, find the <b>System.ini</b> entry in the list and click on the <b>Load</b> button on the upper right.</p>
 
 <div class="exampleprev floatleft">
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage02.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage02.jpg" class="thumbnail"/></a>
@@ -69,7 +69,7 @@ SolidColor=#AlmostBlack#
 Measure=CPU
 {% endhighlight %}
 
-<p>Now it is time to introduce a new meter type.  We are going to display the value of that <b>[MeasureCPU]</b> measure as filling a cirle on the screen using a <a href="!meters/roundline">Roundline</a> meter. Create a new section with this code:</p>
+<p>Now it is time to introduce a new meter type. We are going to display the value of that <b>[MeasureCPU]</b> measure as filling a cirle on the screen using a <a href="!meters/roundline">Roundline</a> meter. Create a new section with this code:</p>
 
 {% highlight ini %}
 [MeterCPUCircle]
@@ -94,43 +94,43 @@ AntiAlias=1
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage03.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage03.jpg" class="thumbnail"/></a>
 </div>
 
-<p style="clear: both;">What the <b>Roundline</b> meter does is draw a line that rotates around the center of a circle defined by the <a href="!meters/general-options#WH">W and H</a> options of the meter.  In this case, we have defined the size of the meter (and thus the circle) as <b>40x40 pixels</b>.  Keep in mind that this defines a circle that has a total width of 40 pixels, and a width from the <b>center</b> to the edge as 20 pixels.</p>
+<p style="clear: both;">What the <b>Roundline</b> meter does is draw a line that rotates around the center of a circle defined by the <a href="!meters/general-options#WH">W and H</a> options of the meter. In this case, we have defined the size of the meter (and thus the circle) as <b>40x40 pixels</b>. Keep in mind that this defines a circle that has a total width of 40 pixels, and a width from the <b>center</b> to the edge as 20 pixels.</p>
 
 <h2>Roundline - Working with angles</h2>
 
-<p>We first needed to define two options to control how the meter works.  We need to tell the Roundline where the line should point when the value is <b>0%</b> (the starting point).  This is done with the <a href="!meters/roundline#StartAngle">StartAngle</a> option.  We also need to tell the Roundline how much of the circle to use as <b>100%</b> (the distance to travel when the value is 100%).  This is done with the <a href="!meters/roundline#RotationAngle">RotationAngle</a> option. As you can see, we have set the value of <b>StartAngle</b> to <code>StartAngle=(Rad(270))</code>, and the value of <b>RotationAngle</b> to <code>RotationAngle=(Rad(360))</code>.  Let's talk about that for a minute.</p>
+<p>We first needed to define two options to control how the meter works. We need to tell the Roundline where the line should point when the value is <b>0%</b> (the starting point). This is done with the <a href="!meters/roundline#StartAngle">StartAngle</a> option. We also need to tell the Roundline how much of the circle to use as <b>100%</b> (the distance to travel when the value is 100%). This is done with the <a href="!meters/roundline#RotationAngle">RotationAngle</a> option. As you can see, we have set the value of <b>StartAngle</b> to <code>StartAngle=(Rad(270))</code>, and the value of <b>RotationAngle</b> to <code>RotationAngle=(Rad(360))</code>. Let's talk about that for a minute.</p>
 
-<p>The <b>angles</b> in a <b>Roundline</b> meter are defined in <b>Radians</b>.  Radians are a unit of measure used to define degrees of distance around a circle, starting with <b>0&deg;</b>, which is <b>the point directly to the right of the center of the circle</b>.  This is important!  Do not picture a <b>compass</b> in your head, which has <b>0&deg;</b> (North) pointing "up". Radians are defined with <b>0&deg;</b> pointing to the <b>right</b>.</p>
+<p>The <b>angles</b> in a <b>Roundline</b> meter are defined in <b>Radians</b>. Radians are a unit of measure used to define degrees of distance around a circle, starting with <b>0&deg;</b>, which is <b>the point directly to the right of the center of the circle</b>. This is important!  Do not picture a <b>compass</b> in your head, which has <b>0&deg;</b> (North) pointing "up". Radians are defined with <b>0&deg;</b> pointing to the <b>right</b>.</p>
 
 <p>I highly recommend taking a minute and reading through the explanation at <a href="http://docs.rainmeter.net/tips/radians-guide">Radians Guide</a>.</p>
 
 <p>So beginning with <a href="!meters/roundline#StartAngle">StartAngle</a>, we are telling the Roundline that the starting point of the meter is a <b>distance</b> of <b>270&deg; degrees</b> in radians from the 0&deg; position of directly right. That will move the starting point around clockwise to the "top" of the meter, which is what we want.</p>
 
-<p>Next, we are setting the <a href="!meters/roundline#RotationAngle">RotationAngle</a> option to <b>360&deg; degrees</b> in radians, which tells the Roundline that the <b>distance</b> to travel around the circle from the starting point defined in <a href="!meters/roundline#StartAngle">StartAngle</a> will be the full circle (a circle has 360 degrees).  We want the entire circle to fill when the value of the measure is 100%.</p>
+<p>Next, we are setting the <a href="!meters/roundline#RotationAngle">RotationAngle</a> option to <b>360&deg; degrees</b> in radians, which tells the Roundline that the <b>distance</b> to travel around the circle from the starting point defined in <a href="!meters/roundline#StartAngle">StartAngle</a> will be the full circle (a circle has 360 degrees). We want the entire circle to fill when the value of the measure is 100%.</p>
 
 <p><i>Note that we are using the <a href="!measures/calc#Functions">Rad(x)</a> function to make it easier to convert <b>degrees</b> (which are easy to picture in our heads) into <b>radians</b> (which are mathematically useful, but stupidly complicated).</i></p>
 
 <h2>Roundline - The line options</h2>
 
-<p>By default, the <b>Roundline</b> meter will draw a single line from the center of the meter to the outside edge, pointing to the position represented by the value of the measure.  We don't want a "pointer" in this case, but want to draw and fill a circle.  There are few options we have used to control this.</p>
+<p>By default, the <b>Roundline</b> meter will draw a single line from the center of the meter to the outside edge, pointing to the position represented by the value of the measure. We don't want a "pointer" in this case, but want to draw and fill a circle. There are few options we have used to control this.</p>
 
 <ul>
 <li><a href = "!meters/roundline#LineStart">LineStart</a>=15<br/>
 This tells the Roundline that we want the line to start 15 pixels from the center of the meter.</li>
 <li><a href = "!meters/roundline#LineLength">LineLength</a>=20<br/>
-This sets the overall length of the line to 20 pixels.  Remember that our meter is 40 pixels wide in total, but only 20 pixels wide from the center to the outside edge.<br/><br/>
-The result of these two options is a line that starts 15 pixels from the center, and extends to the full 20 pixels defined as the length from the center to the edge.  So in effect, a 5 pixel line at the outside edge.<br/><br/></li>
+This sets the overall length of the line to 20 pixels. Remember that our meter is 40 pixels wide in total, but only 20 pixels wide from the center to the outside edge.<br/><br/>
+The result of these two options is a line that starts 15 pixels from the center, and extends to the full 20 pixels defined as the length from the center to the edge. So in effect, a 5 pixel line at the outside edge.<br/><br/></li>
 <li><a href = "!meters/roundline#Solid">Solid</a>=1<br/>
 This option tells the Roundline that instead of a single line, we want the meter to "fill" from the position defined as 0% to the current value represented by the measure. So instead of a "pointer", we get a circle being filled as the value changes.</li>
 </ul>
 
-<p>Then we are using one of the variables we defined in the <b>[Variables]</b> section at the beginning. We want to set the color of the circle to a nice light blue, which we defined as <code>LightBlue=207,224,255,255</code>.  So we set the option in the Roundline meter to <code>LineColor=#LightBlue#</code>.
+<p>Then we are using one of the variables we defined in the <b>[Variables]</b> section at the beginning. We want to set the color of the circle to a nice light blue, which we defined as <code>LightBlue=207,224,255,255</code>. So we set the option in the Roundline meter to <code>LineColor=#LightBlue#</code>.
 
 <p>Good job!  Roundline is a very useful and flexible meter type in Rainmeter, and once you play with the options and different behaviors you will find lots of creative ways to use it. Take a breather...</p>
 
 <h2>Continuing the skin</h2>
 
-<p>That Roundline meter looks a little funny by itself, so let's add another Roundline meter to serve as a "background" for it. In your code, move up <b>above</b> the <b>[MeterCPUCircle]</b> section we added before, and insert a new meter section.  Remember, we want this meter to be "behind" <b>[MeterCPUCircle]</b>, so it needs to be "before" it in the actual .ini skin code.</p>
+<p>That Roundline meter looks a little funny by itself, so let's add another Roundline meter to serve as a "background" for it. In your code, move up <b>above</b> the <b>[MeterCPUCircle]</b> section we added before, and insert a new meter section. Remember, we want this meter to be "behind" <b>[MeterCPUCircle]</b>, so it needs to be "before" it in the actual .ini skin code.</p>
 
 {% highlight ini %}
 [MeterCPUCircleBack]
@@ -148,7 +148,7 @@ LineColor=#MediumBlue#
 AntiAlias=1
 {% endhighlight %}
 
-<p>What we are doing here is creating another Roundline meter, at the same <a href="!meters/general-options#XY">X and Y</a> position as the one that comes after, but behind it. All of the options in <b>[MeterCPUCircleBack]</b> are the same as those in <b>[MeterCPUCircle]</b>, with the exception that there is no <a href="!meters/general-options#MeasureName">MeasureName</a> option to "bind" a measure to the meter.  Roundline will by default use a value of <b>100%</b> in this case, in effect allowing us to draw a full circle that we can use as a background.  Oh, we also used a different variable for the color of the line. Refresh the skin to see the change.</p>
+<p>What we are doing here is creating another Roundline meter, at the same <a href="!meters/general-options#XY">X and Y</a> position as the one that comes after, but behind it. All of the options in <b>[MeterCPUCircleBack]</b> are the same as those in <b>[MeterCPUCircle]</b>, with the exception that there is no <a href="!meters/general-options#MeasureName">MeasureName</a> option to "bind" a measure to the meter. Roundline will by default use a value of <b>100%</b> in this case, in effect allowing us to draw a full circle that we can use as a background. Oh, we also used a different variable for the color of the line. Refresh the skin to see the change.</p>
 
 <div class="exampleprev floatleft">
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage04.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage04.jpg" class="thumbnail"/></a>
@@ -236,7 +236,7 @@ Text=%1%
 
 <p style="clear: both;">You know, it would be nice if the color of that text changed when the CPU usage hits some value we define. What we can do is change the color to "red" if the value is at or above 25%, and back to "blue" if it is below that value.</p>
 
-<p>Go back near the top of the code and find the the <b>[MeasureCPU]</b> measure.  Let's add a few lines to it.</p>
+<p>Go back near the top of the code and find the the <b>[MeasureCPU]</b> measure. Let's add a few lines to it.</p>
 
 {% highlight ini %}
 [MeasureCPU]
@@ -260,7 +260,7 @@ IfBelowAction=[!SetOption MeterCPUPercent FontColor #LightBlue#][!UpdateMeter *]
 
 <h2 style="clear: both;">Line meter</h2>
 
-<p>Next we are going to touch on another meter type in Rainmeter.  The <a href="!meters/line">Line meter</a> displays the percentage value of a measure (or more than one measure) as a series of points over time, connected to create lines on a graph.</p>
+<p>Next we are going to touch on another meter type in Rainmeter. The <a href="!meters/line">Line meter</a> displays the percentage value of a measure (or more than one measure) as a series of points over time, connected to create lines on a graph.</p>
 
 <p>Add a new section to the skin.</p>
 
@@ -280,13 +280,13 @@ HorizontalLineColor=#AlmostBlack#
 SolidColor=#DarkBlue#
 {% endhighlight %}
 
-<p>The <a href="!meters/line">Line meter</a> is pretty self-explanatory, you "bind" one or more measures to the meter with <a href="!meters/general-options#MeasureName">MeasureName</a>, and then use options like <a href="!meters/line#LineWidth">LineWidth</a> and <a href="!meters/line#LineColor">LineColor</a> to control how the meter looks.  The line is plotted over time on a graph that is defined by the <a href="!meters/general-options#WH">W and H</a> options of the meter.  The additional <a href="!meters/line#HorizontalLines">HorizontalLines</a> and <a href="!meters/line#HorizontalLineColor">HorizontalLineColor</a> options draw the background lines on the graph, in the desired color.  Finally, we set a <a href="http://docs.rainmeter.net/manual-beta/meters/general-options#SolidColor">SolidColor</a> option on the meter to define a overall background color. Refresh the skin and have a look.  Let it run for a while so you can see the movement of the line.</p>
+<p>The <a href="!meters/line">Line meter</a> is pretty self-explanatory, you "bind" one or more measures to the meter with <a href="!meters/general-options#MeasureName">MeasureName</a>, and then use options like <a href="!meters/line#LineWidth">LineWidth</a> and <a href="!meters/line#LineColor">LineColor</a> to control how the meter looks. The line is plotted over time on a graph that is defined by the <a href="!meters/general-options#WH">W and H</a> options of the meter. The additional <a href="!meters/line#HorizontalLines">HorizontalLines</a> and <a href="!meters/line#HorizontalLineColor">HorizontalLineColor</a> options draw the background lines on the graph, in the desired color. Finally, we set a <a href="http://docs.rainmeter.net/manual-beta/meters/general-options#SolidColor">SolidColor</a> option on the meter to define a overall background color. Refresh the skin and have a look. Let it run for a while so you can see the movement of the line.</p>
 
 <div class="exampleprev floatleft">
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage07.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage07.jpg" class="thumbnail"/></a>
 </div>
 
-<p style="clear: both;">We should put a label on the Line meter, so it is clear what it is measuring.  We have looked at the <a href="!meters/string">String</a> meter previously, so let's just add one and take a look at the result.</p>
+<p style="clear: both;">We should put a label on the Line meter, so it is clear what it is measuring. We have looked at the <a href="!meters/string">String</a> meter previously, so let's just add one and take a look at the result.</p>
 
 {% highlight ini %}
 [MeterCPUText]
@@ -307,9 +307,9 @@ Text=CPU
 
 <h2 style="clear: both;">Measuring a hard drive</h2>
 
-<p>It is time to introduce a new measure type to our skin.  We are going to be measuring the <b>total</b>, <b>used</b>, and <b>free</b> space on one of your hard drives.  We will display the <b>used</b> space on a circular Roundline meter almost exactly as we did with the CPU measurement, then display the other information, <b>total</b> and <b>free</b> space, in string meters next to it.</p>
+<p>It is time to introduce a new measure type to our skin. We are going to be measuring the <b>total</b>, <b>used</b>, and <b>free</b> space on one of your hard drives. We will display the <b>used</b> space on a circular Roundline meter almost exactly as we did with the CPU measurement, then display the other information, <b>total</b> and <b>free</b> space, in string meters next to it.</p>
 
-<p>First, let's set up the measures you will need.  Back up in your skin code, right under the <b>[MeasureCPU]</b> we created in the beginning, and add some new measures.</p>
+<p>First, let's set up the measures you will need. Back up in your skin code, right under the <b>[MeasureCPU]</b> we created in the beginning, and add some new measures.</p>
 
 {% highlight ini %}
 [MeasureDriveTotal]
@@ -336,11 +336,11 @@ DynamicVariables=1
 UpdateDivider=5
 {% endhighlight %}
 
-<p>The <a href="!measures/freediskspace">FreeDiskSpace</a> measure obtains space information about a drive.  There are several options we are using that should be explained.</p>
+<p>The <a href="!measures/freediskspace">FreeDiskSpace</a> measure obtains space information about a drive. There are several options we are using that should be explained.</p>
 
 <ul>
 <li><a href="!measures/freediskspace#Drive">Drive</a>=#CurrentDrive#<br/>
-This option tells the measure which drive to examine.  In this case, we are using one of the variables we defined earlier, to set the value to <b>C:</b>.</li>
+This option tells the measure which drive to examine. In this case, we are using one of the variables we defined earlier, to set the value to <b>C:</b>.</li>
 <li><a href="!measures/freediskspace#IgnoreRemovable">IgnoreRemovable</a>=0<br/>
 By default, FreeDiskSpace will ignore all removable drives like USB or optical drives. Set <b>IgnoreRemovable=0</b> to enable measuring these kinds of drives.</li>
 <li><a href="!measures/general-options#InvertMeasure">InvertMeasure</a>=1<br/>
@@ -349,15 +349,15 @@ By default, FreeDiskSpace will measure the free space on a drive. To measure the
 
 <p>In addition, we are using two other options on the measures we have not looked at before.</p>
 
-<p><a href="!variables#DynamicVariables">DynamicVariables</a> is used to tell a measure or meter that any variables used in the section should be re-evaluated on each update of the section.  In order to have Rainmeter use as few resources as possible, variables are only evaluated when the measure or meter is created, and will not detect any dynamic changes to variables it uses, if this option is not set.  It will become clear in a little bit why we want this option on our FreeDiskSpace measures.</p>
+<p><a href="!variables#DynamicVariables">DynamicVariables</a> is used to tell a measure or meter that any variables used in the section should be re-evaluated on each update of the section. In order to have Rainmeter use as few resources as possible, variables are only evaluated when the measure or meter is created, and will not detect any dynamic changes to variables it uses, if this option is not set. It will become clear in a little bit why we want this option on our FreeDiskSpace measures.</p>
 
-<p><a href="!measures/general-options#UpdateDivider">UpdateDivider</a> is used to control how often a measure or meter is updated.  The overall <a href="!skins/rainmeter-section#Update">Update</a> of the skin is set in the <b>[Rainmeter]</b> section at the top of the skin, and defines how often in milliseconds the skin is updated. In our case, and by default, this is <code>Update=1000</code> or once a second.</p>
+<p><a href="!measures/general-options#UpdateDivider">UpdateDivider</a> is used to control how often a measure or meter is updated. The overall <a href="!skins/rainmeter-section#Update">Update</a> of the skin is set in the <b>[Rainmeter]</b> section at the top of the skin, and defines how often in milliseconds the skin is updated. In our case, and by default, this is <code>Update=1000</code> or once a second.</p>
 
-<p>The <code>UpdateDivider=5</code> option we are setting on these FreeDiskSpace measures tells Rainmeter to update these measures every 5 updates of the skin, or in our case every 5 seconds.  UpdateDivider should be considered for any measures that don't need to be updated as often as the Update option alone, to reduce the amount of work that Rainmeter has to do.  In the case of FreeDiskSpace, this is particularly useful as actually reading the drives once every second would be more resource hungry than is really needed.</p>
+<p>The <code>UpdateDivider=5</code> option we are setting on these FreeDiskSpace measures tells Rainmeter to update these measures every 5 updates of the skin, or in our case every 5 seconds. UpdateDivider should be considered for any measures that don't need to be updated as often as the Update option alone, to reduce the amount of work that Rainmeter has to do. In the case of FreeDiskSpace, this is particularly useful as actually reading the drives once every second would be more resource hungry than is really needed.</p>
 
 <p>See the guide at <a href="http://docs.rainmeter.net/tips/update-guide">Update Guide</a> for a lot more detail and explanation.</p>
 
-<p>Ok, our measures are all set up, and providing the various kinds of space measurements for our drive in bytes.  One thing that should be noted is that the FreeDiskSpace measure also automatically sets the <a href="!measures/general-options#MinValue">MinValue</a> and <a href="!measures/general-options#MaxValue">MaxValue</a> of the measure, so the value can be used in meters that require a <a href="!measures#Percentage">Percentage</a>, like the <b>Roundline</b> meter we are about to create.</p>
+<p>Ok, our measures are all set up, and providing the various kinds of space measurements for our drive in bytes. One thing that should be noted is that the FreeDiskSpace measure also automatically sets the <a href="!measures/general-options#MinValue">MinValue</a> and <a href="!measures/general-options#MaxValue">MaxValue</a> of the measure, so the value can be used in meters that require a <a href="!measures#Percentage">Percentage</a>, like the <b>Roundline</b> meter we are about to create.</p>
 
 <p>Add the following new meters to the skin.</p>
 
@@ -406,13 +406,13 @@ DynamicVariables=1
 Text=#CurrentDrive#
 {% endhighlight %}
 
-<p>Note that these are pretty much identical to the meters we created earlier to show the CPU usage as a circular <a href="!meters/roundline">Roundline</a> meter. We bind the active Roundline meter <b>[MeterDriveCircle]</b> to the measure <b>[MeasureDriveUsed]</b> to display the amount of "used" space, and instead of showing any measured value inside the circle in <b>[MeterDriveCircleLabel]</b>, we simply create a label with the value of the current drive letter we created in the variable <b>#CurrentDrive#</b>.  We again set <code>DynamicVariables=1</code> on this label meter.  We will see why shortly.  Save and refresh the skin to see how we are doing.</p>
+<p>Note that these are pretty much identical to the meters we created earlier to show the CPU usage as a circular <a href="!meters/roundline">Roundline</a> meter. We bind the active Roundline meter <b>[MeterDriveCircle]</b> to the measure <b>[MeasureDriveUsed]</b> to display the amount of "used" space, and instead of showing any measured value inside the circle in <b>[MeterDriveCircleLabel]</b>, we simply create a label with the value of the current drive letter we created in the variable <b>#CurrentDrive#</b>. We again set <code>DynamicVariables=1</code> on this label meter. We will see why shortly. Save and refresh the skin to see how we are doing.</p>
 
 <div class="exampleprev floatleft">
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage09.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage09.jpg" class="thumbnail"/></a>
 </div>
 
-<p style="clear: both;">Finally, we can create a nice background to match the one behind the Line meter we created in <b>[MeterCPULine]</b>, by simply creating an <a href="!meters/image">Image</a> meter with a <a href="!meters/general-options#SolidColor">SolidColor</a> and no <a href="!meters/general-options#MeasureName">MeasureName</a> option, then some <a href="!meters/string">String</a> meters to display the other drive space information, <b>total</b> and <b>free</b>.  Add the following meters to the bottom of the skin. Save and refresh.</p>
+<p style="clear: both;">Finally, we can create a nice background to match the one behind the Line meter we created in <b>[MeterCPULine]</b>, by simply creating an <a href="!meters/image">Image</a> meter with a <a href="!meters/general-options#SolidColor">SolidColor</a> and no <a href="!meters/general-options#MeasureName">MeasureName</a> option, then some <a href="!meters/string">String</a> meters to display the other drive space information, <b>total</b> and <b>free</b>. Add the following meters to the bottom of the skin. Save and refresh.</p>
 
 {% highlight ini %}
 [MeterDriveBack]
@@ -480,7 +480,7 @@ AntiAlias=1
 Text=%1B
 {% endhighlight %}
 
-<p>One new option we have used in two of these meters should be explained. The <a href="!measures/freediskspace">FreeDiskSpace</a> measure obtains the space values from the drive in <b>bytes</b>.  For most of us, that is going to be a really huge and long number, (my one-terabyte C: drive has a total of 1000097181696 bytes for instance) and probably not one we want to display on a skin.  The <a href="!meters/string#AutoScale">AutoScale</a> option on the string meter will automatically scale the number to <b>megabytes</b>, <b>gigabytes</b>, <b>terabytes</b> etc. and append the appropriate <b>M / G / T</b> label to the end.  We have added an extra hard-coded <b>B</b> at the end of the text, so it will display as for instance: <b>931 GB</b>. Let's take a look.</p>
+<p>One new option we have used in two of these meters should be explained. The <a href="!measures/freediskspace">FreeDiskSpace</a> measure obtains the space values from the drive in <b>bytes</b>. For most of us, that is going to be a really huge and long number, (my one-terabyte C: drive has a total of 1000097181696 bytes for instance) and probably not one we want to display on a skin. The <a href="!meters/string#AutoScale">AutoScale</a> option on the string meter will automatically scale the number to <b>megabytes</b>, <b>gigabytes</b>, <b>terabytes</b> etc. and append the appropriate <b>M / G / T</b> label to the end. We have added an extra hard-coded <b>B</b> at the end of the text, so it will display as for instance: <b>931 GB</b>. Let's take a look.</p>
 
 <div class="exampleprev floatleft">
 	<a rel="lightbox" href="!img/getting-started/basic-tutorials/system/SystemImage10.jpg"><img src="!img/getting-started/basic-tutorials/system/SystemImage10.jpg" class="thumbnail"/></a>
@@ -488,7 +488,7 @@ Text=%1B
 
 <h2 style="clear: both;">What about those dynamic variables?</h2>
 
-<p>I promised we would get back to the reason why we added <a href="!variables#DynamicVariables">DynamicVariables=1</a> to a few measures and meters.  Our last goal is to have the skin dynamically change the <b>Drive</b> that we measure and display when we move the mouse over the skin.</p>
+<p>I promised we would get back to the reason why we added <a href="!variables#DynamicVariables">DynamicVariables=1</a> to a few measures and meters. Our last goal is to have the skin dynamically change the <b>Drive</b> that we measure and display when we move the mouse over the skin.</p>
 
 <p>If you look back to the <b>[Variables]</b> section, you will see that we set the following:</p>
 
@@ -498,7 +498,7 @@ Drive1=C:
 Drive2=D:
 {% endhighlight %}
 
-<p>Then in our FreeDiskSpace measures <b>[MeasureDriveTotal]</b>, <b>[MeasureDriveFree]</b>, and <b>[MeasureDriveUsed]</b>, we set the <a href="!measures/freediskspace#Drive">Drive</a> option to that variable <b>#CurrentDrive#</b>.  So to start with, the measures are looking at the <b>C:</b> drive.  What we want to do is set the value of <b>#CurrentDrive#</b> to be equal to the value of the variable <b>#Drive2#</b> when we move the mouse over the skin, and back to <b>#Drive1#</b> when we move the mouse away.</p>
+<p>Then in our FreeDiskSpace measures <b>[MeasureDriveTotal]</b>, <b>[MeasureDriveFree]</b>, and <b>[MeasureDriveUsed]</b>, we set the <a href="!measures/freediskspace#Drive">Drive</a> option to that variable <b>#CurrentDrive#</b>. So to start with, the measures are looking at the <b>C:</b> drive. What we want to do is set the value of <b>#CurrentDrive#</b> to be equal to the value of the variable <b>#Drive2#</b> when we move the mouse over the skin, and back to <b>#Drive1#</b> when we move the mouse away.</p>
 
 <p>To accomplish this, we need to add new <a href="!mouse-actions">Mouse actions</a> to the skin, and some <a href="!bangs">Bangs</a> that are executed by the mouse actions.</p>
 
@@ -524,7 +524,7 @@ MouseLeaveAction=[!SetVariable CurrentDrive #Drive1#][!UpdateMeasure *][!UpdateM
 <li>Then we are using the <a href="!bangs#UpdateMeasure">!UpdateMeasure</a>, <a href="!bangs#UpdateMeter">!UpdateMeter</a>, and <a href="!bangs#Redraw">!Redraw</a> bangs to have the change take place as soon as we move the mouse over or away, and not wait for the next update of the skin.</li>
 </ul>
 
-<p>This functionality is why we added <a href="!variables#DynamicVariables">DynamicVariables=1</a> to the measures and meters which are using the <b>#CurrentDrive#</b> variable.  That option allows the measures and meters to re-evaluate the variable on each update of the section, so when we change it with <b>!SetVariable</b> they react to the change.</p>
+<p>This functionality is why we added <a href="!variables#DynamicVariables">DynamicVariables=1</a> to the measures and meters which are using the <b>#CurrentDrive#</b> variable. That option allows the measures and meters to re-evaluate the variable on each update of the section, so when we change it with <b>!SetVariable</b> they react to the change.</p>
 
 <p>So we are finally there... Great job!  Here are two shots of your final skin, the first with the mouse away from the skin and the second with the mouse over the skin.</p>
 

@@ -12,9 +12,9 @@ title: 'Network Skin'
 
 <h2>The Interface option</h2>
 
-<p>One of the options that can be set on the Net measures is <a href="http://docs.rainmeter.net/manual/measures/net#Interface">Interface</a>. This is the index number of the network adapter (NIC) you want to measure.  It defaults to "0", which is just "all interfaces".</p>
+<p>One of the options that can be set on the Net measures is <a href="http://docs.rainmeter.net/manual/measures/net#Interface">Interface</a>. This is the index number of the network adapter (NIC) you want to measure. It defaults to "0", which is just "all interfaces".</p>
 
-<p>This default value will likely be fine for you, assuming you don't have more than one network adapter on your computer, or are only using one at a time. However, you might find that the traffic values that the measures return are incorrect. Sometimes they can be double the expected values or even more.  This will be the case if you have more than one active network adapter, or sometimes due to some "virtual interfaces" that Windows detects.</p>
+<p>This default value will likely be fine for you, assuming you don't have more than one network adapter on your computer, or are only using one at a time. However, you might find that the traffic values that the measures return are incorrect. Sometimes they can be double the expected values or even more. This will be the case if you have more than one active network adapter, or sometimes due to some "virtual interfaces" that Windows detects.</p>
 
 <p>This can be corrected by choosing the correct <code>Interface</code> option for the measure(s).</p> 
 
@@ -40,7 +40,7 @@ DBUG (00:00:00.031) :   Type=Ethernet(6), Hardware=Yes, Filter=No
 {% endhighlight %}
 </p>
 
-<p>So I use "8" in Interface.  The key is generally using the one that is <b>Hardware=Yes</b>.</p>
+<p>So I use "8" in Interface. The key is generally using the one that is <b>Hardware=Yes</b>.</p>
 
 When done:
 <ul>
@@ -56,34 +56,34 @@ When done:
 
 <p>The network measures in Rainmeter measure the average number of <b>Bytes</b> sent through the interface every second. However, the nature of network traffic is that it can be very "spiky". Many people find that a network skin has a more useful behavior if we "smooth out" these spikes a bit. So the traffic values "ramp up" and "ramp down" as the values change, rather than having a very jerky behavior.</p>
 
-<p>This can be done by using the <a href="http://docs.rainmeter.net/manual/measures/general-options#AverageSize">AverageSize</a> option on the measure(s).  This will cause the measure(s) to average the returned values over the number of skin updates specified in the <code>AverageSize</code> option.</p>
+<p>This can be done by using the <a href="http://docs.rainmeter.net/manual/measures/general-options#AverageSize">AverageSize</a> option on the measure(s). This will cause the measure(s) to average the returned values over the number of skin updates specified in the <code>AverageSize</code> option.</p>
 
 <p>e.g: <code>AverageSize=5</code></p>
 
 <h2>Using Network values as a percentage</h2>
 
-<p>While it is simple enough to just display the number of Bytes / kBytes / MBytes from the measures in a <a href="http://docs.rainmeter.net/manual/meters/string">String</a> meter using <a href="http://docs.rainmeter.net/manual/meters/string#AutoScale">AutoScale</a> to format the numbers, you may want to display the traffic in a meter that requires a <a href="http://docs.rainmeter.net/manual/measures#Percentage">percentage</a>.  This would include the <a href="http://docs.rainmeter.net/manual/meters/bar">Bar</a>, <a href="http://docs.rainmeter.net/manual/meters/bitmap">Bitmap</a>, <a href="http://docs.rainmeter.net/manual/meters/histogram">Histogram</a>, <a href="http://docs.rainmeter.net/manual/meters/line">Line</a>, <a href="http://docs.rainmeter.net/manual/meters/rotator">Rotator</a> and <a href="http://docs.rainmeter.net/manual/meters/roundline">Roundline</a> meters.</p>
+<p>While it is simple enough to just display the number of Bytes / kBytes / MBytes from the measures in a <a href="http://docs.rainmeter.net/manual/meters/string">String</a> meter using <a href="http://docs.rainmeter.net/manual/meters/string#AutoScale">AutoScale</a> to format the numbers, you may want to display the traffic in a meter that requires a <a href="http://docs.rainmeter.net/manual/measures#Percentage">percentage</a>. This would include the <a href="http://docs.rainmeter.net/manual/meters/bar">Bar</a>, <a href="http://docs.rainmeter.net/manual/meters/bitmap">Bitmap</a>, <a href="http://docs.rainmeter.net/manual/meters/histogram">Histogram</a>, <a href="http://docs.rainmeter.net/manual/meters/line">Line</a>, <a href="http://docs.rainmeter.net/manual/meters/rotator">Rotator</a> and <a href="http://docs.rainmeter.net/manual/meters/roundline">Roundline</a> meters.</p>
 
 <p>As discussed in the <a href="http://docs.rainmeter.net/manual/measures#Percentage">percentage</a> manual entry, these meters will require that a "range" of values is provided, so the meter knows where in the scale of 0% to 100% the current value of the measure lies.</p>
 
-<p>Some measures, like <a href="http://docs.rainmeter.net/manual/measures/freediskspace">FreeDiskSpace</a> for instance, automatically set this "range", based on examining the resource being measured.  The Network measures also attempt to do this, but with some serious limitations. What the measures do is dynamically set the maximum value for the range to the highest value the measure has been since the skin was loaded or refreshed.  This can cause really undesirable behavior on these "percentage" meters until your skin has been running for a while and you have done things to  use a large percentage of your total bandwidth. </p>
+<p>Some measures, like <a href="http://docs.rainmeter.net/manual/measures/freediskspace">FreeDiskSpace</a> for instance, automatically set this "range", based on examining the resource being measured. The Network measures also attempt to do this, but with some serious limitations. What the measures do is dynamically set the maximum value for the range to the highest value the measure has been since the skin was loaded or refreshed. This can cause really undesirable behavior on these "percentage" meters until your skin has been running for a while and you have done things to  use a large percentage of your total bandwidth. </p>
 
 <h3>Setting the MinValue / MaxValue options:</h3>
 
-<p>The way to correct this behavior is to manually set the <a href="http://docs.rainmeter.net/manual/measures/general-options#MinValue">MinValue</a> and <a href="http://docs.rainmeter.net/manual/measures/general-options#MaxValue">MaxValue</a> options on the network measure(s).  This will explicitly set the possible "range" of values for the measure so that meters requiring a percentage will immediately and correctly know where in the range of 0% to 100% the current value lies.</p>
+<p>The way to correct this behavior is to manually set the <a href="http://docs.rainmeter.net/manual/measures/general-options#MinValue">MinValue</a> and <a href="http://docs.rainmeter.net/manual/measures/general-options#MaxValue">MaxValue</a> options on the network measure(s). This will explicitly set the possible "range" of values for the measure so that meters requiring a percentage will immediately and correctly know where in the range of 0% to 100% the current value lies.</p>
 
 <h3>Finding your maximum download and upload bandwidth:</h3>
 
-<p>What we want to do is find and enter the maximum bandwidth your network connection supports.  There are a couple of things to keep in mind:<br/>
+<p>What we want to do is find and enter the maximum bandwidth your network connection supports. There are a couple of things to keep in mind:<br/>
 <ul>
 <li>The maximum bandwidth your ISP told you is a baldfaced lie.</li>
-<li>Rainmeter measures network traffic in <b>bytes</b> per second, while most descriptions of network traffic in other contexts (Wikipedia articles about network traffic, the amount your ISP advertises, many online testing sites, etc.) describe network traffic in <b>bits</b>, or generally <b>Megabits / Mbps</b> per second.  A <b>byte</b> is <b>8 bits</b>.  The good news is that Rainmeter will handle this conversion for you.</li>
+<li>Rainmeter measures network traffic in <b>bytes</b> per second, while most descriptions of network traffic in other contexts (Wikipedia articles about network traffic, the amount your ISP advertises, many online testing sites, etc.) describe network traffic in <b>bits</b>, or generally <b>Megabits / Mbps</b> per second. A <b>byte</b> is <b>8 bits</b>. The good news is that Rainmeter will handle this conversion for you.</li>
 </ul>
 </p>
 
 <h3>speedtest.net</h3>
 
-<p>One of the better places to get a reasonably accurate measurement of your maximum download and upload bandwidth is the <a href="http://speedtest.net">SpeedTest</a> site.  Simply go to this site, click on <b>Begin Test</b>, and wait.  In less than a minute, you will be given the maximum speeds the site sees for your computer.</p>
+<p>One of the better places to get a reasonably accurate measurement of your maximum download and upload bandwidth is the <a href="http://speedtest.net">SpeedTest</a> site. Simply go to this site, click on <b>Begin Test</b>, and wait. In less than a minute, you will be given the maximum speeds the site sees for your computer.</p>
 
 <div class="exampleprev">
 	<a rel="lightbox" href="!img/network-skin/Speedtest.png"><img src="!img/network-skin/Speedtest.png"/></a>
@@ -93,7 +93,7 @@ When done:
 
 <p>So to use these values in your skin, you simply need to plug them into the <code>MaxValue</code> options for your measures.</p>
 
-<p>There is one more little calculation you need to do though. Remember that Rainmeter measures network traffic in <b>bytes</b>, and although it will handle any conversion from <b>bits</b> (the Mbps from SpeedTest) to <b>bytes</b>, we are talking about <b>Mega</b> or million bits/bytes.  Simple enough, a <b>Megabyte</b> is <b>1048576 bytes</b>.</p>
+<p>There is one more little calculation you need to do though. Remember that Rainmeter measures network traffic in <b>bytes</b>, and although it will handle any conversion from <b>bits</b> (the Mbps from SpeedTest) to <b>bytes</b>, we are talking about <b>Mega</b> or million bits/bytes. Simple enough, a <b>Megabyte</b> is <b>1048576 bytes</b>.</p>
 
 <h3>Let's put it together:</h3>
 
@@ -120,13 +120,13 @@ AverageSize=5
 <p>I have put all this together in a reasonably simple little skin that:<br/>
 <ul>
 <li>Tests your network connection to be sure it is active.</li>
-<li>Gets and displays both your LAN (local) IP address and WAN (Internet) IP address. Simply move the mouse over the skin to toggle the value between them.  Click the skin to copy your WAN IP address to the Windows clipboard.</li>
+<li>Gets and displays both your LAN (local) IP address and WAN (Internet) IP address. Simply move the mouse over the skin to toggle the value between them. Click the skin to copy your WAN IP address to the Windows clipboard.</li>
 <li>Displays an image that dynamically indicates Downloading/Uploading/Both/Neither/Error as appropriate.</li>
 <li>Displays the current download and upload traffic in bytes/kbytes/Mbytes, scaling automatically.</li>
 <li>Displays a Bar meter for download and upload values, as a percentage of the total bandwidth your connection supports.</li>
 </ul>
 
-<p>I have put some things in <code>[Variables]</code> to make them easy to change.  Be SURE to change the values for your maximum download and upload bandwidth. Feel free to either use this skin as is, or tear it apart to make it your own.</p>
+<p>I have put some things in <code>[Variables]</code> to make them easy to change. Be SURE to change the values for your maximum download and upload bandwidth. Feel free to either use this skin as is, or tear it apart to make it your own.</p>
 
 <a href="!img/network-skin/NetTraffic.rmskin" class="download"></a>
 {% highlight ini %}

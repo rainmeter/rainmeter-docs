@@ -168,7 +168,7 @@ StringIndex=2
 	<dd>
 		 <p>Defines the <a href="http://en.wikipedia.org/wiki/Code_page">code page</a> of the downloaded URL=http:// web page or external file read with URL=file://.</p>
 		 
-		 <p>Most web sites on the web today are encoded with the Unicode UTF-8 standard.  This is the default for WebParser, and it will seamlessly handle the site. No CodePage option is needed.</p>
+		 <p>Most web sites on the web today are encoded with the Unicode UTF-8 standard. This is the default for WebParser, and it will seamlessly handle the site. No CodePage option is needed.</p>
 
 		 <p>However, there may be some older web sites that are encoded in a language / character set specific way. On a web site, the encoding used can generally be determined by viewing the raw HTML source and checking the "charset" meta value in the "head" section of the page. (i.e. meta charset="UTF-8")</p>
 		 
@@ -191,7 +191,7 @@ StringIndex=2
 
 <h2 id="Dynamic">WebParser and Dynamic Variables</h2>
 
-<p>Dynamic variables can be used with the WebParser plugin.  There are some things specific to WebParser that should be kept in mind when doing things in a dynamic way in WebParser measures:</p>
+<p>Dynamic variables can be used with the WebParser plugin. There are some things specific to WebParser that should be kept in mind when doing things in a dynamic way in WebParser measures:</p>
 
 <p>WebParser uses <a href="#UpdateRate">UpdateRate</a> to determine how often the plugin should actually access the site or file. While you can dynamically change any option on a WebParser measure, the plugin will not use the changes and access the site again until the next UpdateRate is reached. Just using <a href="!bangs#Update">!Update</a> or <a href="!bangs#UpdateMeasure">!UpdateMeasure</a> will NOT override the UpdateRate.</p>
 

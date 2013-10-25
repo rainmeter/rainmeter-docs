@@ -72,7 +72,7 @@ title: 'Version History'
 <p>August 12, 2013 - Revision 2076<br/>
 <ul>
 <li><b>Changed</b> Script: We have now added support for Unicode characters in Lua scripting. There are some limitations, see <a href="http://rainmeter.net/forum/viewtopic.php?p=90816#p90816">Change Announcements</a> for important details.</li>
-<li><b>Changed</b> Direct2D: There have been many fixes and improvements for compatibility with the new UseD2D / Direct2D functionality and older skins.  See <a href="http://rainmeter.net/forum/viewtopic.php?p=90817#p90817">Change Announcements</a> for details.</li>
+<li><b>Changed</b> Direct2D: There have been many fixes and improvements for compatibility with the new UseD2D / Direct2D functionality and older skins. See <a href="http://rainmeter.net/forum/viewtopic.php?p=90817#p90817">Change Announcements</a> for details.</li>
 </ul>
 
 <p>August 4, 2013 - Revision 2050<br/>
@@ -85,31 +85,31 @@ Special bug fix release<br/>
 <p>August 4, 2013 - Revision 2047<br/>
 <ul>
 <li><b>Changed</b> WebParser: WebParser now supports <a href="http://docs.rainmeter.net/manual-beta/variables#DynamicVariables">Dynamic Variables</a>. See <a href="http://rainmeter.net/forum/viewtopic.php?p=90521#p90521">Change Announcements</a> for <b>important</b> details.</li>
-<li><b>Changed</b> Rainmeter: Important improvements made to the D2D (Direct2D) rendering option for Rainmeter.  See <a href="http://rainmeter.net/forum/viewtopic.php?p=90520#p90520">Change Announcements</a> for <b>important</b> details.</li>
-<li><b>Added</b> Manage Dialog: Added "UseD2D" option in the Manage / Settings Tab. If checked, all skins are refreshed using D2D (Direct2D) rendering. The option is disabled on systems that do not support D2D.  Windows 7 with the latest <a href="http://www.microsoft.com/en-us/download/details.aspx?id=36805">Platform Update</a> or Windows 8 is required.</li>
+<li><b>Changed</b> Rainmeter: Important improvements made to the D2D (Direct2D) rendering option for Rainmeter. See <a href="http://rainmeter.net/forum/viewtopic.php?p=90520#p90520">Change Announcements</a> for <b>important</b> details.</li>
+<li><b>Added</b> Manage Dialog: Added "UseD2D" option in the Manage / Settings Tab. If checked, all skins are refreshed using D2D (Direct2D) rendering. The option is disabled on systems that do not support D2D. Windows 7 with the latest <a href="http://www.microsoft.com/en-us/download/details.aspx?id=36805">Platform Update</a> or Windows 8 is required.</li>
 <li><b>Added</b> Rainmeter: Added AccurateText option in the [Rainmeter] section of skins. When AccurateText=0 (default) and UseD2D=0, inaccurate GDI+ measuring of text is used. When AccurateText=1 and UseD2D=0, Accurate measuring occurs similar to D2D. When AccurateText=0 and UseD2D=1, D2D adds padding to the text similar to GDI+. When AccurateText=1 and UseD2D=1, Accurate measuring occurs using D2D.</li>
 </ul>
 
 <h3 id="r2022">21 July, 2013 <small>(r2022)</small></h3>
 <ul>
-<li><b>Removed</b> String meter: Due to problems and inconsistent behavior, removed the ability to include trailing spaces on the Text option that was added in previous betas.  See the new Padding option for an alternative solution.</li>
+<li><b>Removed</b> String meter: Due to problems and inconsistent behavior, removed the ability to include trailing spaces on the Text option that was added in previous betas. See the new Padding option for an alternative solution.</li>
 <li><b>Added</b> Meters: Added <a href="http://docs.rainmeter.net/manual-beta/meters/general-options#Padding">Padding</a>=<i>left,top,right,bottom</i> option to meters. Allows adding pixels around any or all sides a meter. The width and height of the meter will dynamically be adjusted to the new size.</li>
-<li><b>Added</b> Measures: Added <a href="http://docs.rainmeter.net/manual-beta/measures/general-options#Paused">Paused</a>=<i>0/1</i> option to measures.  This allows setting the "paused" state of a measure, in addition to the !PauseMeasure/!UnpauseMeasure/!TogglePauseMeasure bangs previously added.</li>
+<li><b>Added</b> Measures: Added <a href="http://docs.rainmeter.net/manual-beta/measures/general-options#Paused">Paused</a>=<i>0/1</i> option to measures. This allows setting the "paused" state of a measure, in addition to the !PauseMeasure/!UnpauseMeasure/!TogglePauseMeasure bangs previously added.</li>
 <li><b>Fixed</b> !SetWallpaper: Improved performance when setting the wallpaper with large images.</li>
 <li><b>Changed</b> Button meter: Changed the mouse <i>over</i> behavior to ignore transparent areas of the image, to match the mouse <i>click</i> behavior.</li>
 </ul>
 
 <h3 id="r2012">14 July, 2013 <small>(r2012)</small></h3>
 <ul>
-<li><b>Changed</b> String meter: Trailing spaces are displayed in the Text option if the value is enclosed in quotes.  This was previously changed in D2D, and now has the same behavior in GDI+.</li>
-<li><b>Added</b> !PauseMeasure: New <a href="http://docs.rainmeter.net/manual-beta/bangs#PauseMeasure">!PauseMeasure</a>, <a href="http://docs.rainmeter.net/manual-beta/bangs#PauseMeasure">!UnpauseMeasure</a>, and <a href="http://docs.rainmeter.net/manual-beta/bangs#PauseMeasure">!TogglePauseMeasure</a> bangs. This is similar to a disabled measure, however the measure retains its current value instead of changing to 0.  Group versions of these bangs also added.</li>
+<li><b>Changed</b> String meter: Trailing spaces are displayed in the Text option if the value is enclosed in quotes. This was previously changed in D2D, and now has the same behavior in GDI+.</li>
+<li><b>Added</b> !PauseMeasure: New <a href="http://docs.rainmeter.net/manual-beta/bangs#PauseMeasure">!PauseMeasure</a>, <a href="http://docs.rainmeter.net/manual-beta/bangs#PauseMeasure">!UnpauseMeasure</a>, and <a href="http://docs.rainmeter.net/manual-beta/bangs#PauseMeasure">!TogglePauseMeasure</a> bangs. This is similar to a disabled measure, however the measure retains its current value instead of changing to 0. Group versions of these bangs also added.</li>
 <li><b>Changed</b> !SetWallpaper: Changed the problem that an image file set with !SetWallpaper would be locked in Windows.</li>
 <li><b>Fixed</b> Rainmeter: Fix for a problem with !DeactivateConfig in a OnCloseAction that could cause high CPU usage.</li>
 </ul>
 
 <h3 id="r1995">30 June, 2013 <small>(r1995)</small></h3>
 <ul>
-<li><b>Changed</b> Error Logging: Improved the About/Log dialog to better show the source of errors.  Where possible, the config\skin.ini and meter or measure section producing the error will be displayed.</li>
+<li><b>Changed</b> Error Logging: Improved the About/Log dialog to better show the source of errors. Where possible, the config\skin.ini and meter or measure section producing the error will be displayed.</li>
 <li><b>Fixed</b> String Meter: Corrected a bug where trailing spaces were not displayed when the option value was enclosed in quotes. <code>Text="Some Trailing spaces&nbsp;&nbsp;&nbsp;&nbsp;"</code></li>
 </ul>
 
@@ -133,7 +133,7 @@ Special bug fix release<br/>
 
 <h3 id="r1950">9 June, 2013 <small>(r1950)</small></h3>
 <ul>
-<li><b>Added</b> New <a href="http://docs.rainmeter.net/manual-beta/meters/general-options/image-options#ImagePath">ImagePath</a> option added to General Image Options.  This replaces the Path option on Image meters, and extends the functionality to all other meters that support images. <i>Note that Histogram uses PrimaryImagePath, SecondaryImagePath and BothImagePath due to the fact that the Histogram meter has an optional secondary measure binding.</i></li>
+<li><b>Added</b> New <a href="http://docs.rainmeter.net/manual-beta/meters/general-options/image-options#ImagePath">ImagePath</a> option added to General Image Options. This replaces the Path option on Image meters, and extends the functionality to all other meters that support images. <i>Note that Histogram uses PrimaryImagePath, SecondaryImagePath and BothImagePath due to the fact that the Histogram meter has an optional secondary measure binding.</i></li>
 </ul>
 
 <h3 id="r1946">4 June, 2013 <small>(r1946)</small></h3>
@@ -208,7 +208,7 @@ Special bug fix release<br/>
 
 <h3 id="r1819">10 March, 2013 <small>(r1819)</small></h3>
 <ul>
-<li><b>Changed</b> InputText: Improved formula and section variables support in measure options and inline CommandN option. X, Y, W, H and FontSize are supported.  DynamicVariables is not required on the measure.</li>
+<li><b>Changed</b> InputText: Improved formula and section variables support in measure options and inline CommandN option. X, Y, W, H and FontSize are supported. DynamicVariables is not required on the measure.</li>
 <li><b>Changed</b> SkinInstaller: Remove all [Rainmeter] section options from layouts installed by a .rmskin. Skin authors may not automatically overwrite the user's settings for these options.</li>
 <li><b>Changed</b> SkinInstaller: Add FileView to protected official plugins, FileView.dll may not be distributed with a .rmskin.</li>
 </ul>
@@ -221,8 +221,8 @@ Special bug fix release<br/>
 
 <h3 id="r1806">3 March, 2013 <small>(r1806)</small></h3>
 <ul>
-<li><b>Added</b> Ping: Added FinishAction to plugin.  Action to execute as soon as a successful value is returned, or when the number of milliseconds set in the Timeout option is reached.</li>
-<li><b>Changed</b> InputText: Updated to current Rainmeter API.  Options in plugin can now use dynamic variables.</li>
+<li><b>Added</b> Ping: Added FinishAction to plugin. Action to execute as soon as a successful value is returned, or when the number of milliseconds set in the Timeout option is reached.</li>
+<li><b>Changed</b> InputText: Updated to current Rainmeter API. Options in plugin can now use dynamic variables.</li>
 <li><b>Fixed</b> InputText: Fixed issues with handle leaks caused by threading.</li>
 <li><b>Fixed</b> InputText: Fixed an issue that prevented input using a <a href="http://en.wikipedia.org/wiki/Input_method_editor">language IME</a> in the field.</li>
 <li><b>Added</b> FileView: Added Recursive=2 option. Allows recursive indexing of files in a folder tree. Folders are ignored with this option. Plugin commands FollowPath and PreviousFolder are disabled, and ShowFile, ShowFolder, and ShowDotDot options have no effect.</li>

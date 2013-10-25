@@ -12,15 +12,15 @@ title: 'Unicode in Rainmeter'
 
 <h3>ANSI</h3>
 
-<p>This is an informal (and really inaccurate) term used by text editors for files encoded to display the ASCII - Extended ASCII character set.  ASCII is the first 129 characters, including A-Z, a-z, numbers, punctuation, and some control characters and symbols.</p>
+<p>This is an informal (and really inaccurate) term used by text editors for files encoded to display the ASCII - Extended ASCII character set. ASCII is the first 129 characters, including A-Z, a-z, numbers, punctuation, and some control characters and symbols.</p>
 
-<p>The "extended" part of the set from characters 129 to 256 will be based on the Windows Codepage (locale) active in your Windows system.  For people in the USA and Western Europe, this will be <a href="http://en.wikipedia.org/wiki/Windows-1252">Windows-1252</a> (ISO 8859-1), which will display international characters from European languages. Things like umlauts, accents and graves. However, if you for instance have your Windows locale set to "Russian", it will use <a href="http://en.wikipedia.org/wiki/Windows-1251">Windows-1251</a> (ISO 8859-5), which will replace the European characters with Cyrillic.</p>
+<p>The "extended" part of the set from characters 129 to 256 will be based on the Windows Codepage (locale) active in your Windows system. For people in the USA and Western Europe, this will be <a href="http://en.wikipedia.org/wiki/Windows-1252">Windows-1252</a> (ISO 8859-1), which will display international characters from European languages. Things like umlauts, accents and graves. However, if you for instance have your Windows locale set to "Russian", it will use <a href="http://en.wikipedia.org/wiki/Windows-1251">Windows-1251</a> (ISO 8859-5), which will replace the European characters with Cyrillic.</p>
 
-<p>If you won't be trying to use characters other than standard (0-128) ASCII in your skins, or do not intend to distribute your skins to folks using other languages on their system, then just staying with the default ANSI encoding in your text editor is going to work fine for any files used in Rainmeter, and you probably don't even need to read the rest of this.  However...</p>
+<p>If you won't be trying to use characters other than standard (0-128) ASCII in your skins, or do not intend to distribute your skins to folks using other languages on their system, then just staying with the default ANSI encoding in your text editor is going to work fine for any files used in Rainmeter, and you probably don't even need to read the rest of this. However...</p>
 
 <h3>Unicode</h3>
 
-<p><a href="http://en.wikipedia.org/wiki/Unicode">Unicode</a> is a standard for displaying a much wider variety of characters on any system, without worrying about localization or code pages.  It includes all the ASCII characters, pretty much every character in every alphabet, as well as a large number of special characters and symbols.</p>
+<p><a href="http://en.wikipedia.org/wiki/Unicode">Unicode</a> is a standard for displaying a much wider variety of characters on any system, without worrying about localization or code pages. It includes all the ASCII characters, pretty much every character in every alphabet, as well as a large number of special characters and symbols.</p>
 
 <p>There are several ways that characters are encoded in the Unicode standard. The ones you will see most often, and which we will deal with below are:</p>
 
@@ -45,7 +45,7 @@ A variant of the UTF-8 standard with a <a href="http://en.wikipedia.org/wiki/Byt
 <li><b>UTF-16 LE</b> (Sublime Text)</li>
 </ul>
 
-<p>It's that simple.  Now you can embed strings like Самое прекрасное в стандартах то, что есть так много, чтобы выбрать из. in your file(s) and Rainmeter will handle them properly on any user's system.</p>
+<p>It's that simple. Now you can embed strings like Самое прекрасное в стандартах то, что есть так много, чтобы выбрать из. in your file(s) and Rainmeter will handle them properly on any user's system.</p>
 
 <p><i>We will refer to this as UTF-16 from here out. While the naming convention varies from editor to editor, it is basically the same standard in each.</i></p>
 
@@ -53,20 +53,20 @@ A variant of the UTF-8 standard with a <a href="http://en.wikipedia.org/wiki/Byt
 
 <h2>Using Unicode with WebParser</h2>
 
-<p>In order to reduce the amount of data that must be transmitted to support Unicode, and to maintain compatibility with the widest range of legacy operating systems and applications, web sites that you access with the WebParser plugin will almost always be encoded in UTF-8.  The WebParser plugin automatically uses this encoding standard when retrieving web sites, and converts the text to UTF-16 for Rainmeter to handle.  There is nothing you need to do with any local file encoding for this to work correctly and seamlessly on any user's system.</p>
+<p>In order to reduce the amount of data that must be transmitted to support Unicode, and to maintain compatibility with the widest range of legacy operating systems and applications, web sites that you access with the WebParser plugin will almost always be encoded in UTF-8. The WebParser plugin automatically uses this encoding standard when retrieving web sites, and converts the text to UTF-16 for Rainmeter to handle. There is nothing you need to do with any local file encoding for this to work correctly and seamlessly on any user's system.</p>
 
 <h3>Using the file:// protocol with WebParser to read local files</h3>
 
-<p>If you are going to be creating a local text file containing Unicode characters that you want to parse with WebParser using the <code>URL=File://SomeFile.txt</code> URL option, you can encode this file as UTF-16.  However, there is another step required in Rainmeter to have this work correctly.</p>
+<p>If you are going to be creating a local text file containing Unicode characters that you want to parse with WebParser using the <code>URL=File://SomeFile.txt</code> URL option, you can encode this file as UTF-16. However, there is another step required in Rainmeter to have this work correctly.</p>
 
-<p>As noted above, WebParser assumes all resources it accesses (web sites or files) are encoded in the web-standard UTF-8. When parsing a local file encoded in UTF-16, you must set a <code>Codepage=1200</code> option on the parent WebParser measure reading the file.  Using the <a href="http://docs.rainmeter.net/manual-beta/plugins/webparser#CodePage">Codepage</a> of 1200 will tell WebParser that the resource is encoded as UTF-16.</p>
+<p>As noted above, WebParser assumes all resources it accesses (web sites or files) are encoded in the web-standard UTF-8. When parsing a local file encoded in UTF-16, you must set a <code>Codepage=1200</code> option on the parent WebParser measure reading the file. Using the <a href="http://docs.rainmeter.net/manual-beta/plugins/webparser#CodePage">Codepage</a> of 1200 will tell WebParser that the resource is encoded as UTF-16.</p>
 
-<p>An alternative is to encode the file as UTF-8.  This will allow WebParser to read the file correctly without any Codepage setting. I tend to recommend using UTF-16 however, as I prefer the relative simplicity of just encoding all files in UTF-16 in Rainmeter if Unicode is desired. (The only exception then will be some rare cases with Lua scripting involving reading/writing external files, as noted below.)</p>
+<p>An alternative is to encode the file as UTF-8. This will allow WebParser to read the file correctly without any Codepage setting. I tend to recommend using UTF-16 however, as I prefer the relative simplicity of just encoding all files in UTF-16 in Rainmeter if Unicode is desired. (The only exception then will be some rare cases with Lua scripting involving reading/writing external files, as noted below.)</p>
 
 <h2>Using Unicode with Lua scripting</h2>
 <p><i><b>Note:</b> Unicode with Lua requires at least Rainmeter 3.0.</i></p>
 
-<p>If you are using a Lua script with your skin, any use of Unicode pretty much anywhere in the skin will require that that .lua script file be encoded as UTF-16 to work.  This would include:</p>
+<p>If you are using a Lua script with your skin, any use of Unicode pretty much anywhere in the skin will require that that .lua script file be encoded as UTF-16 to work. This would include:</p>
 
 <ul>
 <li>Embedding Unicode characters in your Lua script file.</li>
@@ -80,7 +80,7 @@ A variant of the UTF-8 standard with a <a href="http://en.wikipedia.org/wiki/Byt
 
 <h3>Caveats with Unicode in Lua</h3>
 
-<p>The Lua programming language is an older language, and is designed to be very platform independent.  The result is that the native string libraries in Lua are written in such a way that the handling of multi-byte Unicode characters is imperfect.  Without getting too far under the covers, the language internally always handles strings as 8-bit single-byte characters. What this means is that certain string functions that use hard-coded character positions (i.e. "return the 4th character from the string") can have incorrect results with multi-byte Unicode character strings.</p>
+<p>The Lua programming language is an older language, and is designed to be very platform independent. The result is that the native string libraries in Lua are written in such a way that the handling of multi-byte Unicode characters is imperfect. Without getting too far under the covers, the language internally always handles strings as 8-bit single-byte characters. What this means is that certain string functions that use hard-coded character positions (i.e. "return the 4th character from the string") can have incorrect results with multi-byte Unicode character strings.</p>
 
 <p>This will normally not be an issue, as that kind of syntax is going to be very rare in the context of Lua with Rainmeter, but it is worth understanding the implications described at the end of <a href="http://rainmeter.net/forum/viewtopic.php?p=90816#p90816">this post</a>.</p>
 
@@ -88,27 +88,27 @@ A variant of the UTF-8 standard with a <a href="http://en.wikipedia.org/wiki/Byt
 
 <p>As noted above, you must always save the Lua script .lua file encoded as UTF-16 to use Unicode with Lua and Rainmeter. However, there may be times you want to read or write to external files from your Lua script. If you want to use Unicode with these external files, things have to be handled in a particular way.</p>
 
-<p>I mentioned earlier that Lua always treats text as 8-bit single-byte characters.  What the means in this context is that in effect Lua "internally" views all text as UTF-8, even though we always have the .lua file encoded as UTF-16 to work with Rainmeter.  So Lua requires that any text file it reads or creates itself be encoded in UTF-8 to handle Unicode characters properly.</p>
+<p>I mentioned earlier that Lua always treats text as 8-bit single-byte characters. What the means in this context is that in effect Lua "internally" views all text as UTF-8, even though we always have the .lua file encoded as UTF-16 to work with Rainmeter. So Lua requires that any text file it reads or creates itself be encoded in UTF-8 to handle Unicode characters properly.</p>
 
 <h3>Reading an external file with Unicode in Lua</h3>
 
-<p>To read an external file which will contain Unicode characters, you should encode the external file in UTF-8 with BOM.  In Notepad++ that is UTF-8 with BOM, and in Notepad it is just UTF-8 (which always has a BOM).</p>
+<p>To read an external file which will contain Unicode characters, you should encode the external file in UTF-8 with BOM. In Notepad++ that is UTF-8 with BOM, and in Notepad it is just UTF-8 (which always has a BOM).</p>
 
-<p><i>You can do this UTF-8 without BOM, but I recommend against it.  The reason is that there is literally no difference between a file encoded as ANSI with just "Hello world" in it and the same file encoded as UTF-8 without BOM.  The first 128 characters of ANSI and the first 128 characters of UTF-8 are exactly the same, and it is only either the fact that the file already contains Unicode characters, or the BOM, that specifically identifies the encoding.</p>
+<p><i>You can do this UTF-8 without BOM, but I recommend against it. The reason is that there is literally no difference between a file encoded as ANSI with just "Hello world" in it and the same file encoded as UTF-8 without BOM. The first 128 characters of ANSI and the first 128 characters of UTF-8 are exactly the same, and it is only either the fact that the file already contains Unicode characters, or the BOM, that specifically identifies the encoding.</p>
 
-<p>The upshot of this is that any text editor opening this file will see it as ANSI.  If you encode the file as UTF-8 without BOM, save it, and open it again, it will be ANSI.  You won't be able to add Unicode characters to it until you change the encoding to UTF-8 again, add the Unicode characters while it is still open, and save it.  Then when it is opened again, it will be seen as UTF-8.  Adding the BOM to the file makes it unambiguously UTF-8, and will save a lot of head scratching by users trying to edit your files.  In any case, the Windows Notepad.exe editor simply won't save a UTF-8 file without BOM. It always adds it when you save.</i></p>
+<p>The upshot of this is that any text editor opening this file will see it as ANSI. If you encode the file as UTF-8 without BOM, save it, and open it again, it will be ANSI. You won't be able to add Unicode characters to it until you change the encoding to UTF-8 again, add the Unicode characters while it is still open, and save it. Then when it is opened again, it will be seen as UTF-8. Adding the BOM to the file makes it unambiguously UTF-8, and will save a lot of head scratching by users trying to edit your files. In any case, the Windows Notepad.exe editor simply won't save a UTF-8 file without BOM. It always adds it when you save.</i></p>
 
 <p>Anyway, as long as your <b>.lua is encoded in UTF-16</b>, and the <b>external file is encoded in UTF-8</b>, there is nothing special you need to do to read in the file contents in Lua.</p>
 
 <h3>Writing an external file with Unicode in Lua</h3>
 
-<p>This is also quite simple.  When Lua creates a file, it will open the file in Windows and write any string of characters you want to the file.  Lua can't, and doesn't need to, "decide" or "ask" that the file be encoded in ANSI or UTF-8.</p>
+<p>This is also quite simple. When Lua creates a file, it will open the file in Windows and write any string of characters you want to the file. Lua can't, and doesn't need to, "decide" or "ask" that the file be encoded in ANSI or UTF-8.</p>
 
 <p>If you plan to write Unicode characters to the file, you will just need to first write the BOM (Byte Order Mark) to the file after you open it. Then just write away with any characters you want.</p>
 
 <p>The act of writing the BOM to the first three characters of the file is literally all that is needed to turn an ANSI file into a UTF-8 with BOM file in Windows.</p>
 
-<p>Ok, what is the BOM sequence of three characters?  It is "EF BB BF" in hex.  To write it to the file in Lua, you can either use the string <code>ï»¿</code> or the Lua character escape codes <code>\239\187\191</code>.</p>
+<p>Ok, what is the BOM sequence of three characters?  It is "EF BB BF" in hex. To write it to the file in Lua, you can either use the string <code>ï»¿</code> or the Lua character escape codes <code>\239\187\191</code>.</p>
 
 <p>So after you open a new file in write mode, first just:</p>
 
