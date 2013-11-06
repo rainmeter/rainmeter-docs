@@ -4,19 +4,19 @@ title: 'IfConditions'
 ---
 <!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p><b>IfCondition</b> options are used in any measure, of any type, to evaluate a mathematical formula you define. The formula will be evaluated as "true" or "false", and will execute <b>IfTrueAction</b> or <b>IfFalseAction</b> <a href="!options#Action">action options</a>, which will contain one or more <a href="!bangs">Bangs</a> or commands. The IfTrueAction or IfFalseAction options will be executed on each update of the measure, based on the formula evaluating, or continuing to evaluate, as "true" or "false".</p>
+<p><b>IfCondition</b> options are used in any measure, of any type, to evaluate a mathematical formula. The formula will be evaluated as "true" or "false", and will execute <b>IfTrueAction</b> or <b>IfFalseAction</b> <a href="!options#Action">action options</a>, which will contain one or more <a href="!bangs">Bangs</a> or commands. The IfTrueAction or IfFalseAction options will be executed on each update of the measure, based on the formula evaluating, or continuing to evaluate, as "true" or "false".</p>
 
 <p>There can be as many sets of IfCondition and IfTrueAction / IfFalseAction options as desired, by using IfCondition2, IfCondition3 and so on. For each IfCondition<i>N</i> option in the measure, there can be one instance of either IfTrueAction<i>N</i>, IfFalseAction<i>N</i> or both.</p>
 
-<p>The formula that is used in the IfCondition option can be any mathematical formula, using the same syntax and operators described for the <a href="measures/calc">Calc measure</a>. The only Calc measure specific functions that can't be used are Counter and Random.</p>
+<p>The formula that is used in the IfCondition option can be any mathematical formula, using the same syntax, operators and constants available in the <a href="measures/calc">Calc measure</a>. The only Calc measure specific functions that can't be used are Counter and Random.</p>
 
-<p>Generally speaking, IfCondition will be used to create a test using the current value of one or more measures, and take action when the formula either evaluates as "true" or "false". This is <i>similar</i> in concept to the <a href="http://docs.rainmeter.net/manual/measures/general-options/ifactions">IfActions</a> functionality, with a few important and powerful differences.</p>
+<p>Generally speaking, IfCondition will be used to create a test using the current numeric value of one or more measures, and take action when the formula either evaluates as "true" or "false". This is <i>similar</i> in concept to the <a href="http://docs.rainmeter.net/manual/measures/general-options/ifactions">IfActions</a> functionality, with a few important and powerful differences.</p>
 
 <ul>
 <li>The formula is not based on the value of the measure the IfCondition is in, but can reference any measures, variables or section variables.</li>
-<li>Since there can be an IfTrueAction<i>N</i>, IfFalseAction<i>N</i> or both for each IfCondition<i>N</i>, you can take appropriate actions not only when the result is "true", but also when it is "false".</li> 
+<li>There can be an IfTrueAction, IfFalseAction or both for each IfCondition, so you can take appropriate actions not only when the result is "true", but also when it is "false".</li> 
 <li>The IfTrueAction or IfFalseAction is executed on each update of the measure. Unlike IfActions, it is not dependent on the IfCondition being "true" then "false" then "true" again.</li>
-<li>The syntax allows for a single IfCondition to embed logical AND <code>&&</code> and OR <code>||</code> comparisons in the formula.  Unlike IfEqualValue for instance, which allows for a single comparison, you could use <code>IfCondition=(MeasureName = 5) || (MeasureName = 10)</code>, to check if the value of MeasureName is "5" OR "10".  You can also use the full range of logical operators, so rather than being limited to "equal", "above" or "below", you can use any of <code><></code> <code>=</code> <code>></code> <code><</code> <code><=</code> <code>>=</code> <code>&&</code> <code>||</code>.</li>
+<li>The syntax allows for a single IfCondition to embed logical AND <code>&&</code> and OR <code>||</code> comparisons in the formula.  Unlike IfEqualValue for instance, which allows for a single comparison, you could use <code>IfCondition=(MeasureName = 5) || (MeasureName = 10)</code>, to check if the value of MeasureName is "5" OR "10".  You can also use the full range of logical operators, so rather than being limited to "equal", "above" or "below", you can use any of <code><></code> <code>=</code> <code><</code> <code>></code> <code><=</code> <code>>=</code> <code>&&</code> <code>||</code>.</li>
 
 
 <h2>Options</h2>
@@ -26,10 +26,10 @@ title: 'IfConditions'
 		<p>A mathematical formula, which when evaluated will result in "true" or "false".</p>
 		<p><b>Examples:</b></p>
 		<p><code>IfCondition=MeasureName >= 10</code></p>
-		<p><code>IfCondition=MeasureOne = ((MeasureTwo / 5) + 1)</code></p>
+		<p><code>IfCondition=MeasureOne = (MeasureTwo + #VarName#) / 2</code></p>
 		<p><code>IfCondition=(MeasureName > 5) && (MeasureName < 10)</code></p>
 		<p><code>IfCondition=(MeasureName = 25) || (MeasureName = 50) || (MeasureName = 75)</code></p>
-		<p><b>Note:</b> The comparison on either side of the logical AND <code>&&</code> and OR <code>||</code> operators must be enclosed in (parentheses).</p>
+		<p><b>Note:</b> The comparison on either side of logical AND <code>&&</code> and OR <code>||</code> operators must be enclosed in (parentheses).</p>
 	</dd>
 
 	<dt id="IfTrueAction"><code>IfTrueAction, IfTrueAction2, IfTrueAction3 ...</code></dt>
@@ -43,7 +43,33 @@ title: 'IfConditions'
 	</dd>
 </dl>
 
-<p><b>Note:</b> Since the IfCondition is evaluated on every update of the measure, care should be taken not to create an infinite loop with the actions taken in IfTrueAction or IfFalseAction.  In particular, <code>!Refresh</code>, <code>!Update</code> and <code>!UpdateMeasure #CURRENTSECTION#</code> should be avoided.</code></p>
+<p><b>Notes:</b></p> 
+
+<ul>
+<li>
+<p>Each set of IfCondition<i>N</i>, IfTrueAction<i>N</i> and / or IfFalseAction<i>N</i> options stand on their own. There is no implied "if / then / else" logic created by multiple IfCondition options.</p>
+
+{% highlight ini %}
+IfCondition=MeasureName > 5
+IfTrueAction=[!SetOption MeterName FontColor "#Yellow#"]
+IfCondition2=MeasureName > 10
+IfTrueAction2=[!SetOption MeterName FontColor "#Red#"]
+{% endhighlight %}
+
+<p>Both "actions" would be executed if the value of MeasureName is greater than 10. This is likely not the desired result. Logical AND and OR comparisons should be done in the IfConditions themselves.</p>
+
+{% highlight ini %}
+IfCondition=(MeasureName > 5) && (MeasureName <= 10)
+IfTrueAction=[!SetOption MeterName FontColor "#Yellow#"]
+IfCondition2=MeasureName > 10
+IfTrueAction2=[!SetOption MeterName FontColor "#Red#"]
+{% endhighlight %}
+</li>
+<li>
+
+<p>Since the IfCondition is evaluated on every update of the measure, care should be taken not to create an infinite loop with the actions taken in IfTrueAction or IfFalseAction.  In particular, <code>!Refresh</code>, <code>!Update</code> and <code>!UpdateMeasure #CURRENTSECTION#</code> should generally be avoided.</code></p>
+</li>
+</ul>
 
 <h2>Example</h2>
 {% highlight ini %}
@@ -54,11 +80,11 @@ AccurateText=1
 
 [MeasureCPU]
 Measure=CPU
-IfCondition=(MeasureCPU < 10)
+IfCondition=MeasureCPU < 10
 IfTrueAction=[!SetOption MeterCPU Text "CPU usage is less than 10 percent"]
 IfCondition2=(MeasureCPU >= 10) && (MeasureCPU <= 90)
 IfTrueAction2=[!SetOption MeterCPU Text "CPU usage is between 10 and 90 percent"]
-IfCondition3=(MeasureCPU > 90)
+IfCondition3=MeasureCPU > 90
 IfTrueAction3=[!SetOption MeterCPU Text "CPU usage is more than 90 percent!"]
 OnUpdateAction=[!UpdateMeter MeterCPU][!Redraw]
 
