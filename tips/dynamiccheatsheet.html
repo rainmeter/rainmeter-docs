@@ -11,7 +11,7 @@ title: 'Dynamic Cheat Sheet'
 <p><b>Dynamic "Variables":</b></p>
 <p>If you want to reference the value of a <a href="http://docs.rainmeter.net/manual/variables#Section">#VarName# [Variable]</a> in a meter or measure, and that variable is dynamically set or changed with <a href="http://docs.rainmeter.net/manual/bangs#SetVariable">!SetVariable</a>, you must use DynamicVariables on the meter or measure using it for it to stay "current". If the variable is "static", then DynamicVariables is not needed.</p>
 
-<p>When using <a href="http://docs.rainmeter.net/manual/variables/built-in-variables">Built-in Variables</a>, most of them are of a "static" nature and do not require DynamicVariables.  Several of them, in particular <a href="http://docs.rainmeter.net/manual/variables/built-in-variables#CURRENTCONFIGXYWH">Current Config size and position</a> and <a href="http://docs.rainmeter.net/manual/variables/built-in-variables#MonitorVariables">Monitor Variables</a> always require DynamicVariables to use the current values.</p>
+<p>When using <a href="http://docs.rainmeter.net/manual/variables/built-in-variables">Built-in Variables</a>, most of them are of a "static" nature and do not require DynamicVariables.  However, several of them, in particular <a href="http://docs.rainmeter.net/manual/variables/built-in-variables#CURRENTCONFIGXYWH">Current Config size and position</a> and <a href="http://docs.rainmeter.net/manual/variables/built-in-variables#MonitorVariables">Monitor Variables</a>, always require DynamicVariables to use the values.</p>
 
 <p><b>Dynamic "Measures":</b></p>
 <p>If you want to reference the value of a measure in a meter or measure, then you must enclose the measure name in [] and have DyanmicVariables=1 on the meter or measure using it.  This uses the string value of the measure as a <a href="http://docs.rainmeter.net/manual/variables/section-variables">Section Variable</a>.</p>
@@ -23,9 +23,7 @@ title: 'Dynamic Cheat Sheet'
 <li>If you are "binding" a parent <a href="http://docs.rainmeter.net/manual/plugins/webparser">WebParser</a> measure to a child measure with the <a href="http://docs.rainmeter.net/manual/plugins/webparser#URL">URL option</a>, you need the [], but not DynamicVariables.</li>
 <li>If you reference measures other than the parent in the URL option of a WebParser measure, a special <a href="http://docs.rainmeter.net/manual/plugins/webparser#Dynamic">[&MeasureName]</a> Section Variable with [] and DynamicVariables must be used.<br><br></li>
 
-<li>The <a href="http://docs.rainmeter.net/manual/measures/calc#Formula">Formula option</a> in a Calc measure does not require either [] or DynamicVariables when referencing measures.</li>
-<li>Measures used in <a href="http://docs.rainmeter.net/manual-beta/measures/general-options/ifconditions#IfCondition">IfCondition</a> formulas are like the Formula option in a Calc measure, and do not require either [] or DynamicVariables. (Rainmeter 3.1 or later)<br><br>
-<b>Note</b> that the Calc measure and IfCondition option are the only exceptions concerning formulas, and a measure used in a (formula) anywhere else will require both [] and DynamicVariables.<br><br></li>
+<li>The <a href="http://docs.rainmeter.net/manual/measures/calc#Formula">Formula</a> option in a Calc measure and the <a href="http://docs.rainmeter.net/manual-beta/measures/general-options/ifconditions#IfCondition">IfCondition</a> measure option (Rainmeter 3.1 or later) do not require either [] or DynamicVariables when referencing measures. Section Variables, Variables and Built-in Variables follow the normal rules in these options.</li>
 </ul>
 
 <p><b>Dynamic "Bangs":</b></p>
