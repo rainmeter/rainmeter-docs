@@ -8,7 +8,7 @@ title: 'IfConditions'
 
 <p>There can be as many sets of IfCondition and IfTrueAction / IfFalseAction options as desired, by using IfCondition2, IfCondition3 and so on. For each IfCondition<i>N</i> option in the measure, there can be one instance of either IfTrueAction<i>N</i>, IfFalseAction<i>N</i> or both.</p>
 
-<p>The formula that is used in the IfCondition option can be any mathematical formula, using the same syntax, operators and constants available in the <a href="measures/calc">Calc measure</a>. The only Calc measure specific functions that can't be used are Counter and Random.</p>
+<p>The formula that is used in the IfCondition option can be any mathematical formula, using the same syntax, operators and constants available in the <a href="measures/calc">Calc measure</a>. The only Calc measure specific functions that can't be used are Counter and Random. Like Calc, measure names do not need [brackets] and are always dynamic when referenced inside the condition.</p>
 
 <p>Generally speaking, IfCondition will be used to create a test using the current numeric value of one or more measures, and take action when the formula either evaluates as "true" or "false". This is <i>similar</i> in concept to the <a href="http://docs.rainmeter.net/manual/measures/general-options/ifactions">IfActions</a> functionality, with a few important and powerful differences.</p>
 
