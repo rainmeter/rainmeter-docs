@@ -4,14 +4,14 @@ title: 'Dynamic Cheat Sheet'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>When you want to use the current value of a <a href="http://docs.rainmeter.net/manual/variables#Section">Variable</a>, <a href="http://docs.rainmeter.net/manual/variables/built-in-variables">Built-in Variable</a>, <a href="http://docs.rainmeter.net/manual/variables/section-variables">Section Variable</a>, or <a href="http://docs.rainmeter.net/manual/measures">Measure</a> name anywhere in a Measure or Meter or Bang in Rainmeter, It is important to know when that value is automatically "dynamic" (always reflects the current value) or needs to be made dynamic when used, with the <a href="http://docs.rainmeter.net/manual/variables#DynamicVariables">DynamicVariables=1</a> option.</p>
+<p>When you want to use the current value of a <a href="http://docs.rainmeter.net/manual/variables#Section">Variable</a>, <a href="http://docs.rainmeter.net/manual/variables/built-in-variables">Built-in Variable</a>, <a href="http://docs.rainmeter.net/manual/variables/section-variables">Section Variable</a>, or <a href="http://docs.rainmeter.net/manual/measures">Measure</a> name anywhere in a Measure or Meter or Bang in Rainmeter, It is important to know when that value is automatically treated as "dynamic" (always reflects the current value) or needs to be resolved dynamically when used, with the <a href="http://docs.rainmeter.net/manual/variables#DynamicVariables">DynamicVariables=1</a> option.</p>
 
 <p>The following is a "cheat sheet" for the rules that apply in different situations.</p>
 
 <p><b>Dynamic "Variables":</b></p>
 <p>If you want to reference the current value of a <a href="http://docs.rainmeter.net/manual/variables#Section">Variable</a> in a meter or measure, and that variable is dynamically set or changed with <a href="http://docs.rainmeter.net/manual/bangs#SetVariable">!SetVariable</a>, you must use DynamicVariables on the meter or measure using it.</p>
 
-<p>When using <a href="http://docs.rainmeter.net/manual/variables/built-in-variables">Built-in Variables</a>, most of them are of a static nature and do not require DynamicVariables.  However, several of them, in particular <a href="http://docs.rainmeter.net/manual/variables/built-in-variables#CURRENTCONFIGXYWH">Current Config size and position</a> and <a href="http://docs.rainmeter.net/manual/variables/built-in-variables#MonitorVariables">Monitor Variables</a>, always require DynamicVariables to use the values.</p>
+<p>When using <a href="http://docs.rainmeter.net/manual/variables/built-in-variables">Built-in Variables</a>, most of them are of a static nature and do not require DynamicVariables.  However, several of them, in particular <a href="http://docs.rainmeter.net/manual/variables/built-in-variables#CURRENTCONFIGXYWH">Current Config size and position</a> and <a href="http://docs.rainmeter.net/manual/variables/built-in-variables#MonitorVariables">Monitor Variables</a>, are dynamic, and always require DynamicVariables to use the values.</p>
 
 <p><b>Dynamic "Measures":</b></p>
 <p>If you want to reference the value of a measure in a meter or measure, then you must enclose the measure name in [] and have DyanmicVariables=1 on the meter or measure using it.  This uses the string value of the measure as a <a href="http://docs.rainmeter.net/manual/variables/section-variables">Section Variable</a>.</p>
@@ -28,6 +28,6 @@ title: 'Dynamic Cheat Sheet'
 
 <p><b>Dynamic "Bangs":</b></p>
 
-<p>Measures in a (formula), Section Variables, Variables, or Built-in Variables used in any <a href="http://docs.rainmeter.net/manual/bangs">Bang</a> do not require DynamicVariables. Things in Bangs are just always dynamic.</p>
+<p>Measures in a (formula), Section Variables, Variables, or Built-in Variables used in any <a href="http://docs.rainmeter.net/manual/bangs">Bang</a> do not require DynamicVariables. Things in Bangs are just always resolved dynamically.</p>
 
 <p>If the <a href="http://docs.rainmeter.net/manual/bangs#SetOption">!SetOption</a> bang is used with Any Measure in a (formula), Section Variable, Variable, or Built-in Variable, the meter or measure that is being changed is automatically made dynamic for one update. If the !SetOption is done on every update, then DynamicVariables is not needed on that target meter or measure.</p>
