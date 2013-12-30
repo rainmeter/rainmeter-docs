@@ -10,7 +10,7 @@ title: 'Add Commas'
 {% highlight lua %}
 function FormatCommas(numVar)
 
-	assert(tonumber(numVar), 'Argument '..numVar..' is invalid. FormatCommas() expects a number.')
+	assert(tonumber(numVar), 'Function FormatCommas() expects a number.')
 	local prefix, number, postfix = string.match(numVar, '^([^%d]*%d)(%d*)(.-)$')
 	
 	return prefix..(number:reverse():gsub('(%d%d%d)', '%1,'):reverse())..postfix
