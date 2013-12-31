@@ -93,7 +93,8 @@ to a specified number of decimal places. <em>precision</em> is optional.</li>
 <ul>
 <li><code>pi</code>: Mathematical constant Pi (~3.14159265...).</li>
 <li><code>e</code>: Mathematical constant e (~2.71828182...).</li>
-<li><code>random</code>: A random number. The number will be between and include the values set in <code>LowBound</code> and <code>HighBound</code>. Note that the size of <code>HighBound</code> is limted to a 32bit signed integer, or 2147483647.</li>
+<li><code>random</code>: A random number. The number will be between and include the values set in <code>LowBound</code> and <code>HighBound</code>.<br/><br/>
+<p><b>Note:</b> The size of <code>HighBound</code> is limited to a 32bit signed integer, or 2147483647. In addition, using <code>UniqueRandom</code> with a very large number in <code>HighBound</code> can allocate large amounts of physical RAM memory in Windows to keep track of what numbers have been used, and can tie up system resources to the point where Windows will struggle to operate.</p></li>
 <li><code>counter</code>: The number of update cycles from the time the skin is loaded. This number only resets when the skin is unloaded and then loaded again - not when the skin is refreshed.</li>
 </ul>
 
