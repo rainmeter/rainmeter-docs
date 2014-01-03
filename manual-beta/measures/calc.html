@@ -27,7 +27,10 @@ title: 'Calc measure'
 	
 	<dt id="UniqueRandom"><code>UniqueRandom</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, any measure using the <a href="#Constants">random</a> constant and <a href="#UpdateRandom">UpdateRandom</a> will not repeat until all values between and including <a href="#LowBound">LowBound</a> and <a href="#HighBound">HighBound</a> have been used. Note that any dynamic change to <a href="#LowBound">LowBound</a> or <a href="#HighBound">HighBound</a> will reset the tracking of values.
+		If set to <code>1</code>, any measure using the <a href="#Constants">random</a> constant and <a href="#UpdateRandom">UpdateRandom</a> will not repeat until all values between and including <a href="#LowBound">LowBound</a> and <a href="#HighBound">HighBound</a> have been used.<br/><br/>
+		Any dynamic change to <a href="#LowBound">LowBound</a> or <a href="#HighBound">HighBound</a> will reset the unique tracking of values.<br/><br/>
+		<b>Note:</b> UniqueRandom will only function if the difference between <code>LowBound</code> and <code>HighBound</code> is at most a 16bit unsigned integer, or 65535.
+
 	</dd>		
 
 	<dt id="LowBound"><code>LowBound</code> <small>Default: <code>0.0</code></small></dt>
@@ -37,7 +40,8 @@ title: 'Calc measure'
 
 	<dt id="HighBound"><code>HighBound</code> <small>Default: <code>100.0</code></small></dt>
 	<dd>
-		Upper bound of the <a href="#Constants">random</a> constant.
+		Upper bound of the <a href="#Constants">random</a> constant.<br/><br/>
+		<b>Note:</b> The maximum value of <code>HighBound</code> is a 32bit signed integer, or 2147483647.
 	</dd>
 </dl>
 
@@ -45,57 +49,56 @@ title: 'Calc measure'
 
 <h3 id="Operators">Operators</h3>
 <ul>
-<li><code>+</code>: addition</li>
-<li><code>-</code>: substraction</li>
-<li><code>*</code>: multiplication</li>
-<li><code>/</code>: division</li>
-<li><code>**</code>: power</li>
-<li><code>%</code>: remainder or modulus</li>
-<li><code>&amp;</code>: bitwise and</li>
-<li><code>|</code>: bitwise or</li>
-<li><code>^</code>: bitwise xor</li>
-<li><code>~</code>: bitwise not</li>
+<li><code>+</code>: Addition</li>
+<li><code>-</code>: Substraction</li>
+<li><code>*</code>: Multiplication</li>
+<li><code>/</code>: Division</li>
+<li><code>**</code>: Power</li>
+<li><code>%</code>: Remainder or modulus</li>
+<li><code>&amp;</code>: Bitwise and</li>
+<li><code>|</code>: Bitwise or</li>
+<li><code>^</code>: Bitwise xor</li>
+<li><code>~</code>: Bitwise not</li>
 </ul>
 
 <h3 id="Logical">Logical Operators</h3>
 <ul>
-<li><code>&lt;&gt;</code>: not equal</li>
-<li><code>=</code>: equal to</li>
-<li><code>&gt;</code>: greater than</li>
-<li><code>&lt;</code>: less than</li>
-<li><code>&lt;=</code>: less than or equal to</li>
-<li><code>&gt;=</code>: greater than or equal to</li>
-<li><code>&amp;&amp;</code>: logical and</li>
-<li><code>||</code>: logical or</li>
+<li><code>&lt;&gt;</code>: Not equal</li>
+<li><code>=</code>: Equal to</li>
+<li><code>&gt;</code>: Greater than</li>
+<li><code>&lt;</code>: Less than</li>
+<li><code>&lt;=</code>: Less than or equal to</li>
+<li><code>&gt;=</code>: Greater than or equal to</li>
+<li><code>&amp;&amp;</code>: Logical and</li>
+<li><code>||</code>: Logical or</li>
 </ul>
 
 <p><b>Note:</b> Conditional statements evaluate to 1 or 0 (true / false).</p>
 
 <h3 id="Functions">Functions</h3>
 <ul>
-<li><code>atan(<em>x</em>)</code>, <code>asin(<em>x</em>)</code>, <code>acos(<em>x</em>)</code>, <code>cos(<em>x</em>)</code>, <code>sin(<em>x</em>)</code>, <code>tan(<em>x</em>)</code>: Standard trigonometric functions. <em>x</em> is in radians.</li>
-<li><code>rad(<em>x</em>)</code> - Converts <em>x</em> degrees to radians.</li>
-<li><code>abs(<em>x</em>)</code> - Absolute value of <em>x</em>.</li>
-<li><code>exp(<em>x</em>)</code> - Returns <em>e</em><sup>x</sup>.</li>
-<li><code>log(<em>x</em>)</code> - Base 10 logarithm of <em>x</em>.</li>
-<li><code>ln(<em>x</em>)</code> - Natural logarithm of <em>x</em>.</li>
-<li><code>sqrt(<em>x</em>)</code> - Square root of <em>x</em>.</li>
-<li><code>sgn(<em>x</em>)</code> - Return 1 if x is positive, -1 if x is negative.</li>
-<li><code>frac(<em>x</em>)</code> - Fractional, or decimal, part (e.g. frac(1.234) = 0.234).</li>
-<li><code>trunc(<em>x</em>)</code> - Integer part (e.g. trunc(1.234) = 1).</li>
-<li><code>floor(<em>x</em>)</code> - Floor of <em>x</em>.</li>
-<li><code>ceil(<em>x</em>)</code> - Ceiling of <em>x</em>.</li>
-<li><code>round(<em>x</em>, <em>precision</em>)</code> - Rounds <em>x</em> to an integer, or
+<li><code>Atan(<em>x</em>)</code>, <code>Asin(<em>x</em>)</code>, <code>Acos(<em>x</em>)</code>, <code>Cos(<em>x</em>)</code>, <code>Sin(<em>x</em>)</code>, <code>Tan(<em>x</em>)</code>: Standard trigonometric functions. <em>x</em> is in radians.</li>
+<li><code>Rad(<em>x</em>)</code> - Converts <em>x</em> degrees to radians.</li>
+<li><code>Abs(<em>x</em>)</code> - Absolute value of <em>x</em>.</li>
+<li><code>Exp(<em>x</em>)</code> - Returns <em>e</em><sup>x</sup>.</li>
+<li><code>Log(<em>x</em>)</code> - Base 10 logarithm of <em>x</em>.</li>
+<li><code>Ln(<em>x</em>)</code> - Natural logarithm of <em>x</em>.</li>
+<li><code>Sqrt(<em>x</em>)</code> - Square root of <em>x</em>.</li>
+<li><code>Sgn(<em>x</em>)</code> - Return 1 if x is positive, -1 if x is negative.</li>
+<li><code>Frac(<em>x</em>)</code> - Fractional, or decimal, part (e.g. frac(1.234) = 0.234).</li>
+<li><code>Trunc(<em>x</em>)</code> - Integer part (e.g. trunc(1.234) = 1).</li>
+<li><code>Floor(<em>x</em>)</code> - Floor of <em>x</em>.</li>
+<li><code>Ceil(<em>x</em>)</code> - Ceiling of <em>x</em>.</li>
+<li><code>Round(<em>x</em>, <em>precision</em>)</code> - Rounds <em>x</em> to an integer, or
 to a specified number of decimal places. <em>precision</em> is optional.</li>
 </ul>
 
 <h3 id="Constants">Constants</h3>
 <ul>
-<li><code>pi</code>: Mathematical constant Pi (~3.14159265...).</li>
-<li><code>e</code>: Mathematical constant e (~2.71828182...).</li>
-<li><code>random</code>: A random number. The number will be between and include the values set in <code>LowBound</code> and <code>HighBound</code>.<br/><br/>
-<p><b>Note:</b> The size of <code>HighBound</code> is limited to a 32bit signed integer, or 2147483647. In addition, using <code>UniqueRandom</code> with a very large number in <code>HighBound</code> can allocate large amounts of physical RAM memory in Windows to keep track of what numbers have been used, and can tie up system resources to the point where Windows will struggle to operate.</p></li>
-<li><code>counter</code>: The number of update cycles from the time the skin is loaded. This number only resets when the skin is unloaded and then loaded again - not when the skin is refreshed.</li>
+<li><code>PI</code>: Mathematical constant Pi (~3.14159265...).</li>
+<li><code>E</code>: Mathematical constant e (~2.71828182...).</li>
+<li><code>Random</code>: A random number. The number will be between and include the values set in <a href="#LowBound">LowBound</a> and <a href="#HighBound">HighBound</a>.</li>
+<li><code>Counter</code>: The number of update cycles from the time the skin is loaded. This number only resets when the skin is unloaded and then loaded again - not when the skin is refreshed.</li>
 </ul>
 
 <h3 id="Conditional">Conditional Operations</h3>
