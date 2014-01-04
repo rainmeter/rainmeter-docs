@@ -8,6 +8,8 @@ title: 'IfMatchActions'
 
 <p>The full range of <a href="http://www.regular-expressions.info/tutorial.html">PCRE</a> regular expression functionality is supported, so the match can be made on all or part of the measure's string value, can test the order of sub-strings within the string, and can test for both the presence or absence of a sub-string within the string. Logical OR and AND testing can be done in the regular expression, using the <code>|</code> character to support OR and <a href="http://www.regular-expressions.info/lookaround.html">Lookahead assertions</a> <code>(?=..)</code> to support AND.</p>
 
+<p>Reserved characters in regular expression, which are <code>.</code><code>^</code><code>$</code><code>*</code><code>+</code><code>?</code><code>(</code><code>)</code><code>[</code><code>{</code><code>\</code><code>|</code> must be escaped with the <code>\</code> character when used in the <code>IfMatch</code> option.
+
 <p>There can be multiple sets of match and action options in the measure, by using IfMatch2 / IfMatchAction2 / IfNotMatchAction2 and so on.</p>
 
 <p><em>Capture groups <code>()</code> should not be used in the regular expression, as nothing is being captured and no indexes are being created.  The function is simply used to test if the string measure matches some regular expression pattern, and will either be "true" (IfMatchAction) or "false" (IfNotMatchAction).</em></p>
@@ -39,7 +41,7 @@ title: 'IfMatchActions'
 
 	<dt id="IfMatchMode"><code>IfMatchMode</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>If set to <code>1</code>, the evaluation of the condition will execute the appropriate actions in IfMatchAction or IfNotMatchAction on every update of the measure.</p>
+		<p>If set to <code>1</code>, the evaluation of the match will execute the appropriate actions in IfMatchAction or IfNotMatchAction on every update of the measure.</p>
 
 		<p><b>Note:</b> Care should be taken not to create an infinite loop in the actions.  In particular, <code>!Refresh</code>, <code>!Update</code> and <code>!UpdateMeasure #CURRENTSECTION#</code> should generally be avoided when <code>IfMatchMode=1</code>.</p>
 	</dd>
