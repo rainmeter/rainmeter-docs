@@ -15,6 +15,7 @@ title: 'Version History'
 <li><b>Added</b> Section Variables: New <a href="http://docs.rainmeter.net/manual-beta/variables/section-variables#EscapeRegExp">:EscapeRegExp</a> measure section variable parameter. This will return the string value of the measure with all regular expression <a href="http://www.regular-expressions.info/characters.html">reserved characters</a> escaped.</li>
 <li><b>Added</b> Section Variables: New <a href="http://docs.rainmeter.net/manual-beta/variables/section-variables#EncodeURL">:EncodeURL</a> measure section variable parameter. This will return the string value of the measure as a <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL-encoded</a> string.</li>
 <li><b>Fixed</b> WebParser: A problem in some cases with properly handling [&MeasureName] variables on the URL option.</li>
+<li><b>Changed</b> Calc: Due to possible impacts on system resources, <a href="http://docs.rainmeter.net/manual-beta/measures/calc#UniqueRandom">UniqueRandom</a> now has a limit of 65535, defined by the difference between LowBound and HighBound.</li>
 </ul>
 
 <p>December 23, 2013 - Revision 2218</p>
