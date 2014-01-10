@@ -48,9 +48,41 @@ UpdateDivider=-1
 
 <h2 id="Percentage">Percentage</h2>
 
-<p>Some meters require that a measure provide a value that can be used as a <b>percentage</b>. Measures that provide a actual maximum range value based on the resource being measured (or with the range of 0.0 to 1.0) are interpreted as a percentage by these meters. Measures which do not provide a range will require that the <a href="!measures/general-options/#MinValue">MinValue</a> and <a href="!measures/general-options/#MaxValue">MaxValue</a> options be set on the measure to define a low to high range. Setting these options does not effect the actual value of the measure, but only defines the high and low range used by meters.</p>
+<p>Some meters require that a measure provide a value that can be used as a <b>percentage</b>. These would include Bar, Histogram, Line, Rotator and Roundline meters.  In order for these meters to know that the current value of the measure is 27%, they need to know what value 100% represents. In addition, you may want to display the percentage of the total value a measure is currently at in a String meter, or use the percentage value of a measure in a formula.</p>
 
-<p><b>Note:</b> The range for a measure can be viewed in the <a href="!user-interface/about#SkinsTab">Skins tab</a> of the <a href="!user-interface/about">About window</a>.</p>
+<p>The percentage of the total that a measure's current value reflects is based on the "range" that the measure can be. This is defined as the <a href="!measures/general-options/#MinValue">MinValue</a> and <a href="!measures/general-options/#MaxValue">MaxValue</a> of the measure.</p>
+
+<p>Some measures, for example CPU, FreeDiskSpace and Memory, automatically set the minimum and maximum range that the measure can be. FreeDiskSpace for instance knows how big the drive you are measuring is, and will set the MinValue to zero, and the MaxValue to the actual size of the drive. Then you can just use the measure's value in a meter by binding the measure to it with <code>MeasureName=MyMeasure</code> and the percentage will be used in the display of the meter. There is nothing you need to do for this to work properly.</p>
+
+<p>Other measures do not know themselves what the maximum value the measure can be. Examples of this are the NetIn/NetOut/NetTotal measures, SpeedFan, any Calc measures, and any WebParser measures. What Rainmeter will do in this case is to set the MinValue and MaxValue of the measure dynamically, to the smallest and largest values the measure has been since the skin was loaded or refreshed. This may not always be the behavior you desire.</p>
+
+<p>To address this, you can manually define the range that the measure can be, by setting the <a href="!measures/general-options/#MinValue">MinValue</a> and <a href="!measures/general-options/#MaxValue">MaxValue</a> options on the measure.  Remember, you set this on the measure you are going to use as a percentage, not on the meter that is using it.</p>
+
+<p>For example:</p>
+
+{% highlight ini %}
+[MeasureCPUTemp]
+Measure=Plugin
+Plugin=SpeedFanPlugin
+SpeedFanType=TEMPERATURE
+SpeedFanScale=C
+SpeedFanNumber=2
+MinValue=30
+MaxValue=100
+
+[MeterCPUTempBar]
+Meter=Bar
+MeasureName=MeasureCPUTemp
+...
+{% endhighlight %}
+
+<p>While the <a href="!meters/string">String</a> meter does not require a percentage when displaying the number value of a measure, it can be told to use the value as a percentage, by using the <a href="!meters/string">Percentual</a> option on the meter.  The meter will then use the MinValue and MaxValue of the measure to calculate what percentage of that the current value is.</p> 
+
+<p>In addition, you can use the percentage value of a measure in a formula or String meter by using the measure as a <a href="!variables/section-variables">Section Variable</a>, with the <a href="http://docs.rainmeter.net/manual-beta/variables/section-variables#Percentual">percentage parameter</a>.</p>
+
+<p>Setting these options has no effect on the actual value of the measure, but only defines the low and high range, to used by meters.</p>
+
+<p><b>Note:</b> The current MinValue / MaxValue "range" for a measure can be viewed in the <a href="!user-interface/about#SkinsTab">Skins tab</a> of the <a href="!user-interface/about">About window</a>. This can be useful for debugging problems when you are not getting the meter output you expect.</p>
 
 <h2 id="Order">Order</h2>
 
@@ -68,4 +100,4 @@ Measure=Calc
 Formula=Counter
 {% endhighlight %}
 
-<p>The intent is for [MeasureCounterPlusOne] to add one to the value of [MeasureCounter], so that it is always greater than [MeasureCounter]. If the measures were in the opposite order, this would work. However, because [MeasureCounterPlusOne] is evaluated before [MeasureCounter], it will only add to the old, "outdated" value, and the two measures will remain equal.</p>	
+<p>The intent is for [MeasureCounterPlusOne] to add one to the value of [MeasureCounter], so that it is always greater than [MeasureCounter]. If the measures were in the opposite order, this would work. However, because [MeasureCounterPlusOne] is evaluated before [MeasureCounter], it will only add to the old, "outdated" value, and the two measures will remain equal.</p>
