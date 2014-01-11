@@ -1,0 +1,102 @@
+---
+layout: manual
+title: 'Formulas'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>Many options in Rainmeter use numbers, such as to position meters or to define color options. These numbers can also be expressed using formulas, allowing flexibility and advanced possibilities.</p>
+
+<p>For example <code>X=20</code> is the same as <code>X=(2*10)</code>. A more advanced example would be <code>SolidColor=255,0,0,255</code> being the same as <code>SolidColor=(200+55),0,0,255</code>.</p>
+
+<p>Anytime a formula is used it must be surrounded in parenthesis, alerting Rainmeter that a formula is being used. The one exception to this is the Formula option on the <a href="measures/calc">Calc Measure</a>.</p>
+
+<h2 id="Formulas">Formula Syntax</h2>
+
+<h3 id="Operators">Operators</h3>
+<ul>
+	<li><code>+</code>: Addition</li>
+	<li><code>-</code>: Substraction</li>
+	<li><code>*</code>: Multiplication</li>
+	<li><code>/</code>: Division</li>
+	<li><code>**</code>: Power</li>
+	<li><code>%</code>: Remainder or modulus</li>
+	<li><code>&amp;</code>: Bitwise and</li>
+	<li><code>|</code>: Bitwise or</li>
+	<li><code>^</code>: Bitwise xor</li>
+	<li><code>~</code>: Bitwise not</li>
+</ul>
+
+<h3 id="Logical">Logical Operators</h3>
+<ul>
+	<li><code>&lt;&gt;</code>: Not equal</li>
+	<li><code>=</code>: Equal to</li>
+	<li><code>&gt;</code>: Greater than</li>
+	<li><code>&lt;</code>: Less than</li>
+	<li><code>&lt;=</code>: Less than or equal to</li>
+	<li><code>&gt;=</code>: Greater than or equal to</li>
+	<li><code>&amp;&amp;</code>: Logical and</li>
+	<li><code>||</code>: Logical or</li>
+</ul>
+
+<p><b>Note:</b> Conditional statements evaluate to 1 or 0 (true / false).</p>
+
+<h3 id="Functions">Functions</h3>
+<ul>
+	<li><code>Atan(<em>x</em>)</code>, <codeMany options in Rainmeter use numbers such as the positioning of meters, the expression of colors or even certain Bangs. These numbers can also be expressed using formulas, allowing flexibility and advanced possibilities.>x</em>)</code>, <code>Acos(<em>x</em>)</code>, <code>Cos(<em>x</em>)</code>, <code>Sin(<em>x</em>)</code>, <code>Tan(<em>x</em>)</code>: Standard trigonometric functions. <em>x</em> is in radians.</li>
+	<li><code>Rad(<em>x</em>)</code> - Converts <em>x</em> degrees to radians.</li>
+	<li><code>Abs(<em>x</em>)</code> - Absolute value of <em>x</em>.</li>
+	<li><code>Exp(<em>x</em>)</code> - Returns <em>e</em><sup>x</sup>.</li>
+	<li><code>Log(<em>x</em>)</code> - Base 10 logarithm of <em>x</em>.</li>
+	<li><code>Ln(<em>x</em>)</code> - Natural logarithm of <em>x</em>.</li>
+	<li><code>Sqrt(<em>x</em>)</code> - Square root of <em>x</em>.</li>
+	<li><code>Sgn(<em>x</em>)</code> - Return 1 if x is positive, -1 if x is negative.</li>
+	<li><code>Frac(<em>x</em>)</code> - Fractional, or decimal, part (e.g. frac(1.234) = 0.234).</li>
+	<li><code>Trunc(<em>x</em>)</code> - Integer part (e.g. trunc(1.234) = 1).</li>
+	<li><code>Floor(<em>x</em>)</code> - Floor of <em>x</em>.</li>
+	<li><code>Ceil(<em>x</em>)</code> - Ceiling of <em>x</em>.</li>
+	<li><code>Round(<em>x</em>, <em>precision</em>)</code> - Rounds <em>x</em> to an integer, or
+	to a specified number of decimal places. <em>precision</em> is optional.</li>
+</ul>
+
+<h3 id="Constants">Constants</h3>
+<ul>
+	<li><code>PI</code>: Mathematical constant Pi (~3.14159265...).</li>
+	<li><code>E</code>: Mathematical constant e (~2.71828182...).</li>
+</ul>
+
+<h3 id="Conditional">Conditional Operations</h3>
+
+<p><code>&lt;condition&gt; ? &lt;expr. if true.&gt; : &lt;expr. if false.&gt;</code></p>
+<p>This will evaluate condition as being either true or false. If it is true, the expression to the left of the colon (:) is evaluated. If it is false, the expression to the right is evaluated. This is equivalent to the following if-then-else statement:</p>
+<pre>
+   if (condition)
+     then
+       expr. if true
+     else
+       expr. if false
+   end if
+</pre><br>
+
+{% highlight ini %}
+[Measure]
+Measure=Calc
+Formula=5
+
+[Meter]
+Meter=String
+X=([Measure] < 6 ? 0 : 10)
+DynamicVariables=1
+{% endhighlight %}
+<p>The meter would be positioned at <code>X=0</code> since the condition <code>[Measure] &lt; 6</code> evaluates to true.</p>
+<p>Conditional operators can be nested. It should be noted that there is a maximum of 30 nested operators.</p>
+{% highlight ini %}
+[Measure]
+Measure=Calc
+Formula=2
+
+[Meter]
+Meter=String
+X=([Measure] < 1 ? 99 : ([Measure] < 2 ? 98 : ([Measure] < 3 ? 97 : 96)))
+DynamicVariables=1
+{% endhighlight %}
+<p>The meter would be positioned at <code>X=97</code>. Since the first statement of <code>[Measure] &lt; 1</code> is false, the formula begins testing the nested formulas in order until the condition becomes true . If none of the conditions are met, the final false value of 96 would be set.</p>

@@ -6,8 +6,6 @@ title: 'Calc measure'
 
 <p><code>Measure=Calc</code> calculates mathematical formulas.</p>
 
-<p><b>Note:</b> The formula syntax and operators described for the Calc measure can also be used in formulas in other measure and meter options. Formulas used outside of a Calc measure must be enclosed in parentheses.</p>
-
 <h2>Options</h2>
 <dl>
 	<dt>General measure options</dt>
@@ -17,7 +15,7 @@ title: 'Calc measure'
 
 	<dt id="Formula"><code>Formula</code></dt>
 	<dd>
-		Formula to calculate. See below for syntax.
+		Formula to calculate. The syntax can be found on the <a href="!formulas">Formulas</a> page. The calc measure utilizes addition syntax as described below.
 	</dd>
 
 	<dt id="UpdateRandom"><code>UpdateRandom</code> <small>Default: <code>0</code></small></dt>
@@ -41,75 +39,26 @@ title: 'Calc measure'
 	</dd>
 </dl>
 
-<h2 id="Formulas">Formula Syntax</h2>
-
-<h3 id="Operators">Operators</h3>
-<ul>
-<li><code>+</code>: addition</li>
-<li><code>-</code>: substraction</li>
-<li><code>*</code>: multiplication</li>
-<li><code>/</code>: division</li>
-<li><code>**</code>: power</li>
-<li><code>%</code>: remainder or modulus</li>
-<li><code>&amp;</code>: bitwise and</li>
-<li><code>|</code>: bitwise or</li>
-<li><code>^</code>: bitwise xor</li>
-<li><code>~</code>: bitwise not</li>
-</ul>
-
-<h3 id="Logical">Logical Operators</h3>
-<ul>
-<li><code>&lt;&gt;</code>: not equal</li>
-<li><code>=</code>: equal to</li>
-<li><code>&gt;</code>: greater than</li>
-<li><code>&lt;</code>: less than</li>
-<li><code>&lt;=</code>: less than or equal to</li>
-<li><code>&gt;=</code>: greater than or equal to</li>
-<li><code>&amp;&amp;</code>: logical and</li>
-<li><code>||</code>: logical or</li>
-</ul>
-
-<p><b>Note:</b> Conditional statements evaluate to 1 or 0 (true / false).</p>
-
-<h3 id="Functions">Functions</h3>
-<ul>
-<li><code>atan(<em>x</em>)</code>, <code>asin(<em>x</em>)</code>, <code>acos(<em>x</em>)</code>, <code>cos(<em>x</em>)</code>, <code>sin(<em>x</em>)</code>, <code>tan(<em>x</em>)</code>: Standard trigonometric functions. <em>x</em> is in radians.</li>
-<li><code>rad(<em>x</em>)</code> - Converts <em>x</em> degrees to radians.</li>
-<li><code>abs(<em>x</em>)</code> - Absolute value of <em>x</em>.</li>
-<li><code>exp(<em>x</em>)</code> - Returns <em>e</em><sup>x</sup>.</li>
-<li><code>log(<em>x</em>)</code> - Base 10 logarithm of <em>x</em>.</li>
-<li><code>ln(<em>x</em>)</code> - Natural logarithm of <em>x</em>.</li>
-<li><code>sqrt(<em>x</em>)</code> - Square root of <em>x</em>.</li>
-<li><code>sgn(<em>x</em>)</code> - Return 1 if x is positive, -1 if x is negative.</li>
-<li><code>frac(<em>x</em>)</code> - Fractional, or decimal, part (e.g. frac(1.234) = 0.234).</li>
-<li><code>trunc(<em>x</em>)</code> - Integer part (e.g. trunc(1.234) = 1).</li>
-<li><code>floor(<em>x</em>)</code> - Floor of <em>x</em>.</li>
-<li><code>ceil(<em>x</em>)</code> - Ceiling of <em>x</em>.</li>
-<li><code>round(<em>x</em>, <em>precision</em>)</code> - Rounds <em>x</em> to an integer, or
-to a specified number of decimal places. <em>precision</em> is optional.</li>
-</ul>
+<h2 id="Formulas">Additional Formula Syntax</h2>
 
 <h3 id="Constants">Constants</h3>
 <ul>
-<li><code>pi</code>: Mathematical constant Pi (~3.14159265...).</li>
-<li><code>e</code>: Mathematical constant e (~2.71828182...).</li>
-<li><code>random</code>: A random number. The number will be between and include the values set in <code>LowBound</code> and <code>HighBound</code>.<br/><br/>
-<p><b>Note:</b> The size of <code>HighBound</code> is limited to a 32bit signed integer, or 2147483647. In addition, using <code>UniqueRandom</code> with a very large number in <code>HighBound</code> can allocate large amounts of physical RAM memory in Windows to keep track of what numbers have been used, and can tie up system resources to the point where Windows will struggle to operate.</p></li>
-<li><code>counter</code>: The number of update cycles from the time the skin is loaded. This number only resets when the skin is unloaded and then loaded again - not when the skin is refreshed.</li>
+	<li><code>Random</code>: A random number. The number will be between and include the values set in <a href="#LowBound">LowBound</a> and <a href="#HighBound">HighBound</a>.</li>
+	<li><code>Counter</code>: The number of update cycles from the time the skin is loaded. This number only resets when the skin is unloaded and then loaded again - not when the skin is refreshed.</li>
 </ul>
 
-<h3 id="Conditional">Conditional Operations</h3>
+<h3 id="Bases">Other Bases</h3>
 
-<p><code>&lt;condition&gt; ? &lt;expr. if true.&gt; : &lt;expr. if false.&gt;</code></p>
-<p>This will evaluate condition as being either true or false. If it is true, the expression to the left of the colon (:) is evaluated. If it is false, the expression to the right is evaluated. This is equivalent to the following if-then-else statement:</p>
-<pre>
-   if (condition)
-     then
-       expr. if true
-     else
-       expr. if false
-   end if
-</pre><br>
+<p>The Calc measure allows numbers to be represented numbering systems other than decimal. To use another base, prefix the number with a zero then the letter representing the system you wish to use. The following are accepted prefixes, which are case (lower) sensitive: </p>
+<ul>
+	<li><code>0b</code> - Binary number (base 2) (ex: 0b110110 - returns 54 in decimal)</li>
+	<li><code>0o</code> - Octal number (base 8) (ex: 0o123 - returns 83 in decimal)</li>
+	<li><code>0x</code> - Hexadecimal number (base 16) (ex: 0xF1 - returns 241 in decimal)</li>
+</ul>
+
+<h3 id="Values">Measure Values</h3>
+
+<p>The use of measure values in the Formula option of a Calc measure does not require the use of Dynamic Variables. Simply omit the [] and the number value of the measure will be retrieved. If the measure does not have a number value, 0 will be used. Section Variables, Variables and Built-in Variables follow the normal rules. For more information see the <a href="/tips/dynamiccheatsheet">Dynamic Cheat Sheet</a>.</p>
 
 {% highlight ini %}
 [MeasureOne]
@@ -118,26 +67,5 @@ Formula=5
 
 [MeasureTwo]
 Measure=Calc
-Formula=MeasureOne < 6 ? 1 : -1
+Formula=MeasureOne < 6 ? 0 : 10
 {% endhighlight %}
-<p>This measure would return the number 1 since the condition <code>MeasureOne &lt; 6</code> evaluates to true.</p>
-<p>Conditional operators can be nested. It should be noted that there is a maximum of 30 nested operators.</p>
-{% highlight ini %}
-[MeasureOne]
-Measure=Calc
-Formula=2
-
-[MeasureTwo]
-Measure=Calc
-Formula=MeasureOne < 1 ? 99 : (MeasureOne < 2 ? 98 : (MeasureOne < 3 ? 97 : 96))
-{% endhighlight %}
-<p>This measure would return 97. Since the first statement of <code>MeasureOne &lt; 1</code> is false, the formula begins testing the nested formulas in order until the condition becomes true . If none of the conditions are met, the final false value of 96 would be set.</p>
-
-<h3 id="Bases">Other Bases</h3>
-
-<p>The Calc measure allows numbers to be represented numbering systems other than decimal. To use another base, prefix the number with a zero then the letter representing the system you wish to use. The following are accepted prefixes, which are case (lower) sensitive: </p>
-<ul>
-<li><code>0b</code> - Binary number (base 2) (ex: 0b110110 - returns 54 in decimal)</li>
-<li><code>0o</code> - Octal number (base 8) (ex: 0o123 - returns 83 in decimal)</li>
-<li><code>0x</code> - Hexadecimal number (base 16) (ex: 0xF1 - returns 241 in decimal)</li>
-</ul>
