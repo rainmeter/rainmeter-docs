@@ -4,7 +4,56 @@ title: 'Options'
 ---
 <!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p>While Rainmeter has hundreds of options in total for all the measures, meters, and plugins, many of them can be categorized into types. For example, some options represent colors while others are used to specify a path.</p>
+<p>In the most basic sense, a skin in Rainmeter is controlled by a .ini file consisting of sections, options, and option values.</p>
+
+{% highlight ini %}
+[SectionName]
+OptionName=OptionValue
+{% endhighlight %}
+
+<p>The skin can have various kinds of sections. These include:</p>
+
+<ul>
+<li>[Rainmeter]</li>
+<li>[Metadata]</li>
+<li>[Variables]</li>
+<li>[MeasureName]</li>
+<li>[MeterName]</li>
+</ul>
+
+<p>These sections can have many options and option values.  Some of which are general in nature, and some of which are very specific to the type of section, for instance specific options for the various measure or meter types.</p>
+
+<p>While the options used can be general or specific, the options will fall into one of the following broad type categories:</p>
+
+<h2 id="String">String options</h2>
+<p>String options require a text value.</p>
+
+{% highlight ini %}
+Text=Hello World
+MyVar=Hello World
+{% endhighlight %}
+
+<h2 id="Number">Number options</h2>
+<p>Number options require either a number or a <a href="!formulas">formula</a>.</p>
+
+{% highlight ini %}
+; The following lines are equivalent:
+FontSize=42
+FontSize=(40 + 2)
+FontSize=(2 > 1 ? 42 : 666)
+{% endhighlight %}
+
+<h2 id="Path">Path options</h2>
+<p>Path options specify the relative or absolute path of either a file or a folder (depending on the option). For example, the path of an image file is expected with <code>ImageName</code>.</p>
+
+{% highlight ini %}
+; Relative paths (relative to current folder):
+ImageName=lolcat.png
+ImageName=..\lolcat.png
+
+; Absolute path:
+ImageName=C:\lolcats\lolcat.png
+{% endhighlight %}
 
 <h2 id="Color">Color options</h2>
 <p>Color options such as <code>SolidColor</code> and <code>FontColor</code> should use the RGBA (red-green-blue-alpha) notation in either the hexadecimal or decimal form. The color results from a mixing of the red, green and blue components of the option, with the transparency (alpha channel) of the element set by the fourth component.</p>
@@ -23,28 +72,6 @@ SolidColor=FF0000
 {% endhighlight %}
 
 <p>One of many ways to obtain a desired color code is <a href="http://rainmeter.net/color/">Rainmeter Online Color Picker</a>.</p>
-
-<h2 id="Path">Path options</h2>
-<p>Path options specify the relative or absolute path of either a file or a folder (depending on the option). For example, the path of an image file is expected with <code>ImageName</code>.</p>
-
-{% highlight ini %}
-; Relative paths (relative to current folder):
-ImageName=lolcat.png
-ImageName=..\lolcat.png
-
-; Absolute path:
-ImageName=C:\lolcats\lolcat.png
-{% endhighlight %}
-
-<h2 id="Number">Number options</h2>
-<p>Number options specify either a number or a <a href="!measures/calc#Formulas">formula</a> enclosed in parentheses.</p>
-
-{% highlight ini %}
-; The following lines are equivalent:
-FontSize=42
-FontSize=(40 + 2)
-FontSize=(2 > 1 ? 42 : 666)
-{% endhighlight %}
 
 <h2 id="Action">Action options</h2>
 <p>Options in a skin which cause Rainmeter to take some action. Actions may be triggered by user input such as <a href="!mouse-actions">mouse actions</a>, or system events and changing values within the skin, such as <a href="!measures/general-options/ifactions">if actions</a>.</p>
