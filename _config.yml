@@ -1,2 +1,5 @@
 pygments: true
 exclude: [/css, /js, README.md]
+
+css_version: 1
+js_version: 1
