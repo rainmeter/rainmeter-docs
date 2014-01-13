@@ -1,5 +1,7 @@
 pygments: true
 exclude: [/css, /js, README.md]
 
+# Increment this if you e.g. add new CSS to force the browser to fetch the
+# files again.
 css_version: 1
 js_version: 1
