@@ -34,32 +34,32 @@ title: '[Rainmeter] section'
 
 	<dt id="OnRefreshAction"><code>OnRefreshAction</code></dt>
 	<dd>
-		<p><a href="!options#Action">Action</a> to execute when the skin is loaded or refreshed.</p>
+		<p><a href="!skins/option-types#Action">Action</a> to execute when the skin is loaded or refreshed.</p>
 	</dd>
 
 	<dt id="OnUpdateAction"><code>OnUpdateAction</code></dt>
 	<dd>
-		<p><a href="!options#Action">Action</a> to execute on each <a href="#Update">Update</a> of the skin.</p>
+		<p><a href="!skins/option-types#Action">Action</a> to execute on each <a href="#Update">Update</a> of the skin.</p>
 	</dd>
 
 	<dt id="OnCloseAction"><code>OnCloseAction</code></dt>
 	<dd>
-		<p><a href="!options#Action">Action</a> to execute when the skin is unloaded or when Rainmeter is closed.</p>
+		<p><a href="!skins/option-types#Action">Action</a> to execute when the skin is unloaded or when Rainmeter is closed.</p>
 	</dd>
 
 	<dt id="OnFocusAction"><code>OnFocusAction</code></dt>
 	<dd>
-		<p><a href="!options#Action">Action</a> to execute when the skin recieves focus in Windows (set by clicking the mouse on the skin).</p>
+		<p><a href="!skins/option-types#Action">Action</a> to execute when the skin recieves focus in Windows (set by clicking the mouse on the skin).</p>
 	</dd>
 
 	<dt id="OnUnfocusAction"><code>OnUnfocusAction</code></dt>
 	<dd>
-		<p><a href="!options#Action">Action</a> to execute when the skin loses focus in Windows.</p>
+		<p><a href="!skins/option-types#Action">Action</a> to execute when the skin loses focus in Windows.</p>
 	</dd>
 	
 	<dt id="OnWakeAction"><code>OnWakeAction</code></dt>
 	<dd>
-		<p><a href="!options#Action">Action</a> to execute when Windows returns from the sleep or hibernate states.</p>
+		<p><a href="!skins/option-types#Action">Action</a> to execute when Windows returns from the sleep or hibernate states.</p>
 	</dd>	
 
 	<dt id="TransitionUpdate"><code>TransitionUpdate</code> <small>Default: <code>100</code></small></dt>
@@ -82,7 +82,7 @@ title: '[Rainmeter] section'
 
 	<dt id="Background"><code>Background</code></dt>
 	<dd>
-		<p><a href="!options#Path">Path</a> of a background image file.</p>
+		<p><a href="!skins/option-types#Path">Path</a> of a background image file.</p>
 	</dd>
 
 	<dt id="BackgroundMode"><code>BackgroundMode</code> <small>Default: <code>1</code></small></dt>
@@ -95,7 +95,7 @@ title: '[Rainmeter] section'
 		<li><code>3</code> : Fill by scaling image as defined by <code>Background</code></li>
 		<li><code>4</code> : Fill by tiling image as defined by <code>Background</code></li>
 		</ul></p>
-		<p><code>BackgroundMode=2</code> : The <a href="!options#Color">color</a> is set by adding a <a href="!meters/general-options#SolidColor">SolidColor</a> option.</p>
+		<p><code>BackgroundMode=2</code> : The <a href="!skins/option-types#Color">color</a> is set by adding a <a href="!meters/general-options#SolidColor">SolidColor</a> option.</p>
 	</dd>
 
 	<dt id="BackgroundMargins"><code>BackgroundMargins</code> <small>Default: <code>0,0,0,0</code></small></dt>
@@ -107,7 +107,7 @@ title: '[Rainmeter] section'
 
 	<dt id="SolidColor"><code>SolidColor</code>, <code>SolidColor2</code> <small>Default: <code>0,0,0,0</code></small></dt>
 	<dd>
-		<p>This option will specify the background <a href="!options#Color">color</a> when <code>BackgroundMode=2</code>. If <code>SolidColor2</code> is also specified, the background is a <a href="#GradientAngle">gradient</a> composed of <code>SolidColor</code> and <code>SolidColor2</code>.</p>
+		<p>This option will specify the background <a href="!skins/option-types#Color">color</a> when <code>BackgroundMode=2</code>. If <code>SolidColor2</code> is also specified, the background is a <a href="#GradientAngle">gradient</a> composed of <code>SolidColor</code> and <code>SolidColor2</code>.</p>
 
 		<p><b>Hint:</b> <code>SolidColor=0,0,0,1</code> can be used to make transparent areas of the background clickable.</p>
 	</dd>
@@ -140,7 +140,7 @@ title: '[Rainmeter] section'
 
 	<dt id="ContextAction"><code>ContextAction</code>, <code>ContextAction2</code>, <code>ContextAction3</code>... </dt>
 	<dd>
-		<p><a href="!options#Action">Action</a> triggered by clicking the corresponding <a href="#ContextTitle">ContextTitleN</a> item. <em>ContextActionN</em> is required for <em>ContextTitleN</em> to be valid, unless the item is a separator.</p>
+		<p><a href="!skins/option-types#Action">Action</a> triggered by clicking the corresponding <a href="#ContextTitle">ContextTitleN</a> item. <em>ContextActionN</em> is required for <em>ContextTitleN</em> to be valid, unless the item is a separator.</p>
 
 		<p><b>Note:</b> Variables in <code>ContextActionN</code> are always <a href="!variables#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu item is clicked.</p>
 	</dd>

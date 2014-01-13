@@ -156,7 +156,7 @@ end
 
 	<dt id="MakePathAbsolute"><code>MakePathAbsolute</code> <small>Parameter: <code><b>File/Folder</b></code></small></dt>
 	<dd>
-		<p>Converts a relative filepath into an absolute filepath, in the same manner as a <a href="!options#Path">path option</a>. </p>
+		<p>Converts a relative filepath into an absolute filepath, in the same manner as a <a href="!skins/option-types#Path">path option</a>. </p>
 		<p><b>Example:</b> <code>MyPath = SKIN:MakePathAbsolute('MyImage.png')</code></p>
 	</dd>
 
@@ -168,7 +168,7 @@ end
 
 	<dt id="ParseFormula"><code>ParseFormula</code> <small>Parameter: <code><b>FormulaString</b></code></small></dt>
 	<dd>
-		<p>If the given string is a valid <a href="!options#Number">formula</a>, evaluates the formula and returns the result as the number. Otherwise, returns <code>nil</code>.</p>
+		<p>If the given string is a valid <a href="!skins/option-types#Number">formula</a>, evaluates the formula and returns the result as the number. Otherwise, returns <code>nil</code>.</p>
 		<p><b>Example:</b> <code>MyNumber = SKIN:ParseFormula('2+2')</code></p>
 	</dd>
 </dl>
@@ -200,7 +200,7 @@ end
 
 	<dt id="GetNumberOption"><code>GetNumberOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
 	<dd>
-		<p>Returns the current value of the named option as a number. If the option does not exist, or is not a valid number or <a href="!options#Number">formula</a>, returns the given default value, or <code>0</code> if no default is given.</p>
+		<p>Returns the current value of the named option as a number. If the option does not exist, or is not a valid number or <a href="!skins/option-types#Number">formula</a>, returns the given default value, or <code>0</code> if no default is given.</p>
 		<p><b>Example:</b> <code>MyUpdateDivider = MyMeasure:GetNumberOption(UpdateDivider, 1)</code></p>
 	</dd>
 

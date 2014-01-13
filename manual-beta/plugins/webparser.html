@@ -6,7 +6,7 @@ title: 'WebParser plugin'
 
 <p><code>Plugin=WebParser</code> reads and parses information from web pages.</p>
 
-<p>The plugin uses <a href="!options#RegExp">Perl Compatible Regular Expressions</a> to extract information from any web page or <a href="#Local">local file</a>.</p>
+<p>The plugin uses <a href="!skins/option-types#RegExp">Perl Compatible Regular Expressions</a> to extract information from any web page or <a href="#Local">local file</a>.</p>
 
 <h2>Usage</h2>
 <p>WebParser measures take the form:</p>
@@ -58,12 +58,12 @@ StringIndex=2
 
 	<dt id="RegExp"><code>RegExp</code></dt>
 	<dd>
-		<p>The <a href="!options#RegExp">Perl compatible regular expression</a> used in parsing.</p>
+		<p>The <a href="!skins/option-types#RegExp">Perl compatible regular expression</a> used in parsing.</p>
 	</dd>
 
 	<dt id="FinishAction"><code>FinishAction</code></dt>
 	<dd>
-		<p>A <a href="!bangs">bang</a> or <a href="!options#Action">action</a> that is executed when the page has been downloaded and the parsing is done. This option is only valid on measures that connect to a site or file with <code>URL</code>, and not on <a href="#ParentChild">child</a> measures.</p>
+		<p>A <a href="!bangs">bang</a> or <a href="!skins/option-types#Action">action</a> that is executed when the page has been downloaded and the parsing is done. This option is only valid on measures that connect to a site or file with <code>URL</code>, and not on <a href="#ParentChild">child</a> measures.</p>
 	</dd>
 
 	<dt id="StringIndex"><code>StringIndex</code></dt>

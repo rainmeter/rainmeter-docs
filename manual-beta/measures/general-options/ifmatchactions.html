@@ -4,7 +4,7 @@ title: 'IfMatchActions'
 ---
 <!--{% comment %}--><base href="../../../"><script src="js/_local.js"></script><!--{% endcomment %}-->
 
-<p><b>IfMatch</b> options are used in any measure, of any type, to evaluate a <a href="http://docs.rainmeter.net/manual/options#RegExp">Perl Compatible Regular Expression</a>. The regular expression will be evaluated as "true" or "false" based on matching with the string value of the measure, and will execute <b>IfMatchAction</b> or <b>IfNotMatchAction</b> <a href="!options#Action">action options</a>, which will contain one or more <a href="!bangs">Bangs</a> or commands.</p>
+<p><b>IfMatch</b> options are used in any measure, of any type, to evaluate a <a href="http://docs.rainmeter.net/manual/options#RegExp">Perl Compatible Regular Expression</a>. The regular expression will be evaluated as "true" or "false" based on matching with the string value of the measure, and will execute <b>IfMatchAction</b> or <b>IfNotMatchAction</b> <a href="!skins/option-types#Action">action options</a>, which will contain one or more <a href="!bangs">Bangs</a> or commands.</p>
 
 <p>There can be multiple sets of match and action options in the measure, by using IfMatch2 / IfMatchAction2 / IfNotMatchAction2 and so on.</p>
 
@@ -31,12 +31,12 @@ title: 'IfMatchActions'
 
 	<dt id="IfMatchAction"><code>IfMatchAction</code>, <code>IfMatchAction2</code>, ..., <code>IfMatchAction<em>N</em></code></dt>
 	<dd>
-		<p>Optional <a href="!options#Action">action</a> to be executed when the regular expression in IfMatch results in "true". The action is executed only once when the condition becomes "true", so it needs to become "false" and again "true" to execute again.</p>
+		<p>Optional <a href="!skins/option-types#Action">action</a> to be executed when the regular expression in IfMatch results in "true". The action is executed only once when the condition becomes "true", so it needs to become "false" and again "true" to execute again.</p>
 	</dd>
 
 	<dt id="IfNotMatchAction"><code>IfNotMatchAction</code>, <code>IfMatchNotAction2</code>, ..., <code>IfNotMatchAction<em>N</em></code></dt>
 	<dd>
-		<p>Optional <a href="!options#Action">action</a> to be executed when the regular expression in IfMatch results in "false". The action is executed only once when the condition becomes "false", so it needs to become "false" and again "true" to execute again.</p>
+		<p>Optional <a href="!skins/option-types#Action">action</a> to be executed when the regular expression in IfMatch results in "false". The action is executed only once when the condition becomes "false", so it needs to become "false" and again "true" to execute again.</p>
 	</dd>
 
 	<dt id="IfMatchMode"><code>IfMatchMode</code> <small>Default: <code>0</code></small></dt>
