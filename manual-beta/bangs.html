@@ -474,14 +474,13 @@ title: 'Bangs'
 
 	<dt id="MoveMeter"><code>!MoveMeter</code> <small>Parameters: <code><b>X, Y, Meter</b><em>, Config</em></code></small></dt>
 	<dd>
-		Moves the given <a href="!meters">meter</a> (not the window) to the specified position. The new position is relative to the top left corner of the skin.
+		Moves the given <a href="!meters">meter</a> (not the window) to the specified position. The new position is relative to the top left corner of the skin. The size of the skin window is re-evaluated after the meter is moved. This would make the skin window become larger or smaller to incorporate all meters.
 		<ul>
 		<li><code>X</code> (required): New X position.</li>
 		<li><code>Y</code> (required): New Y position.</li>
 		<li><code>Meter</code> (required): Name of the meter to move.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
-		<br><b>Note:</b> The size of the skin window is re-evaluated after the meter is moved. This would make the skin window become larger or smaller to incorporate all meters.
 		<br><b>Example:</b> <code>!MoveMeter 15 10 "MyMeter"</code>
 	</dd>
 </dl>
