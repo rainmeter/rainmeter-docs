@@ -1,0 +1,33 @@
+---
+layout: snippets
+title: 'Write INI'
+---
+<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
+
+<p>WriteIni writes the contents of a given table to a file.</p>
+
+<p><code>WriteIni(inputtable, filename)</code></p>
+
+<p>The table must be in the format <code>Table[Section][Parameter] = Value</code></p>
+
+<div class="noscroll">
+{% highlight lua %}
+function WriteIni(inputtable, filename)
+	assert(type(inputtable) == 'table', ('WriteIni must receive a table. Received %s instead.'):format(type(inputtable)))
+
+	local file = assert(io.open(filename, 'w'), 'Unable to open ' .. filename)
+	local lines = {}
+
+	for section, contents in pairs(inputtable) do
+		table.insert(lines, ('\[%s\]'):format(section))
+		for key, value in pairs(contents) do
+			table.insert(lines, ('%s=%s'):format(key, value))
+		end
+		table.insert(lines, '')
+	end
+
+	file:write(table.concat(lines, '\r\n'))
+	file:close()
+end
+{% endhighlight %}
+</div>
