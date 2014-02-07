@@ -137,7 +137,7 @@ EndFunc
 
 <p>C/C++ code:</p>
 {% highlight text %}
-// Usage: SendBang(L"!Execute [!About]");
+// Usage: SendBang(L"[!About]");
 #include <Windows.h>
 
 void SendBang(const WCHAR* bang)
@@ -158,7 +158,7 @@ void SendBang(const WCHAR* bang)
 
 <p>AutoIT code:</p>
 {% highlight text %}
-#include &lt;SendMessage.au3&gt;
+#include <SendMessage.au3>
 
 Func SendBang($szBang)
    Local Const $hWnd = WinGetHandle("[CLASS:RainmeterMeterWindow]")
