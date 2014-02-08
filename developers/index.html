@@ -129,6 +129,59 @@ Func GetSkinWindow($szConfigName)
 EndFunc
 {% endhighlight %}
 
+<p>The following code demonstrates how to retrieve various important path and other configuration settings for Rainmeter from your external application.</p>
+
+<p>AutoIT code:<br/></p>
+{% highlight text %}
+#include <SendMessage.au3>
+#include <GUIConstantsEx.au3>
+#include <WindowsConstants.au3>
+#include <Array.au3>
+
+$RAINMETER_QUERY_WINDOW = WinGetHandle("[CLASS:RainmeterTrayClass]")
+$WM_QUERY_RAINMETER = $WM_APP + 1000
+$RAINMETER_QUERY_ID_SKINS_PATH = 4101
+$RAINMETER_QUERY_ID_SETTINGS_PATH = 4102
+$RAINMETER_QUERY_ID_PROGRAM_PATH = 4104
+$RAINMETER_QUERY_ID_CONFIG_EDITOR = 4106
+$WM_QUERY_RAINMETER_RETURN = ""
+
+Dim $PathsArray[4]
+
+$hGUI = GUICreate("", 1, 1, -1, -1)
+
+If Not ProcessExists("Rainmeter.exe") Then
+	MsgBox(16, "GetPath Error", "Rainmeter must be running to use GetPath.")
+	Exit
+EndIf
+
+GUIRegisterMsg($WM_COPYDATA, "_ReadMessage")
+
+ _SendMessage($RAINMETER_QUERY_WINDOW, $WM_QUERY_RAINMETER, $RAINMETER_QUERY_ID_PROGRAM_PATH, $hGUI)
+ $PathsArray[0] = $WM_QUERY_RAINMETER_RETURN
+
+ _SendMessage($RAINMETER_QUERY_WINDOW, $WM_QUERY_RAINMETER, $RAINMETER_QUERY_ID_SETTINGS_PATH, $hGUI)
+$PathsArray[1] = $WM_QUERY_RAINMETER_RETURN
+
+ _SendMessage($RAINMETER_QUERY_WINDOW, $WM_QUERY_RAINMETER, $RAINMETER_QUERY_ID_SKINS_PATH, $hGUI)
+ $PathsArray[2] = $WM_QUERY_RAINMETER_RETURN
+
+ _SendMessage($RAINMETER_QUERY_WINDOW, $WM_QUERY_RAINMETER, $RAINMETER_QUERY_ID_CONFIG_EDITOR, $hGUI)
+ $PathsArray[3] = $WM_QUERY_RAINMETER_RETURN
+
+_ArrayDisplay($PathsArray)
+
+
+Func _ReadMessage($hWnd, $uiMsg, $wParam, $lParam)
+
+	$pCds = DllStructCreate("dword;dword;ptr", $lParam)
+	$pData = DllStructGetData($pCds, 3)
+	$pMem = DllStructCreate("wchar[" & DllStructGetData($pCds, 2) & "]", DllStructGetData($pCds, 3))
+	$WM_QUERY_RAINMETER_RETURN = DllStructGetData($pMem, 1)
+
+EndFunc ;_ReadMessage
+{% endhighlight %}
+
 <h3>Bangs</h3>
 
 <p>The following samples demonstrate how 3rd party applications can send bangs to Rainmeter.</p>
