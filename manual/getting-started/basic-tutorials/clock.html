@@ -222,7 +222,7 @@ MouseOverAction=[!SetOption MeasureTime Format "%H:%M"][!UpdateMeasure MeasureTi
 MouseLeaveAction=[!SetOption MeasureTime Format "%#I:%M"][!UpdateMeasure MeasureTime][!UpdateMeter *][!Redraw]
 {% endhighlight %}
 
-<p>This is using a <a href="http://docs.rainmeter.net/manual/mouse-actions">Mouse action</a> and a handful of <a href="!bangs">Bangs</a>.</p>
+<p>This is using a <a href="!mouse-actions">Mouse action</a> and a handful of <a href="!bangs">Bangs</a>.</p>
 
 <p>What we are doing when we move the mouse over the meter is to use the <a href="!bangs#SetOption">!SetOption</a> bang to change the <code>Format</code> option of the <b>[MeasureTime]</b> measure to obtain the time from the system using the code for 24-hour time (%H) instead of 12-hour time (%I). Then we are using the <a href="!bangs#UpdateMeasure">!UpdateMeasure</a>, <a href="!bangs#UpdateMeter">!UpdateMeter</a>, and <a href="!bangs#Redraw">!Redraw</a> bangs to have the change take place as soon as we move the mouse over, and not wait for the next update of the skin.</p>
 
