@@ -6,7 +6,7 @@ title: 'System'
 
 <h2>Introduction</h2>
 
-<p>With this tutorial, we are going to cover several things. First, we are going to introduce two new measure and two new meter types, as well as some new options for controlling how they work. We will also touch on the use of <a href="http://docs.rainmeter.net/tips/update-guide">UpdateDivider</a> on measures to control the performance of a skin, and will explore using <a href="!variables">Variables</a> to set, use and change values shared by measures and meters.</p>
+<p>With this tutorial, we are going to cover several things. First, we are going to introduce two new measure and two new meter types, as well as some new options for controlling how they work. We will also touch on the use of <a href="/tips/update-guide">UpdateDivider</a> on measures to control the performance of a skin, and will explore using <a href="!variables">Variables</a> to set, use and change values shared by measures and meters.</p>
 
 <p>There is a lot going on in this skin, so let's explore the end-result a bit so you can get a sense of where we are going as we work through it. First, let's take a look at the final skin.</p>
 
@@ -102,7 +102,7 @@ AntiAlias=1
 
 <p>The <b>angles</b> in a <b>Roundline</b> meter are defined in <b>Radians</b>. Radians are a unit of measure used to define degrees of distance around a circle, starting with <b>0&deg;</b>, which is <b>the point directly to the right of the center of the circle</b>. This is important!  Do not picture a <b>compass</b> in your head, which has <b>0&deg;</b> (North) pointing "up". Radians are defined with <b>0&deg;</b> pointing to the <b>right</b>.</p>
 
-<p>I highly recommend taking a minute and reading through the explanation at <a href="http://docs.rainmeter.net/tips/radians-guide">Radians Guide</a>.</p>
+<p>I highly recommend taking a minute and reading through the explanation at <a href="/tips/radians-guide">Radians Guide</a>.</p>
 
 <p>So beginning with <a href="!meters/roundline#StartAngle">StartAngle</a>, we are telling the Roundline that the starting point of the meter is a <b>distance</b> of <b>270&deg; degrees</b> in radians from the 0&deg; position of directly right. That will move the starting point around clockwise to the "top" of the meter, which is what we want.</p>
 
@@ -355,7 +355,7 @@ By default, FreeDiskSpace will measure the free space on a drive. To measure the
 
 <p>The <code>UpdateDivider=5</code> option we are setting on these FreeDiskSpace measures tells Rainmeter to update these measures every 5 updates of the skin, or in our case every 5 seconds. UpdateDivider should be considered for any measures that don't need to be updated as often as the Update option alone, to reduce the amount of work that Rainmeter has to do. In the case of FreeDiskSpace, this is particularly useful as actually reading the drives once every second would be more resource hungry than is really needed.</p>
 
-<p>See the guide at <a href="http://docs.rainmeter.net/tips/update-guide">Update Guide</a> for a lot more detail and explanation.</p>
+<p>See the guide at <a href="/tips/update-guide">Update Guide</a> for a lot more detail and explanation.</p>
 
 <p>Ok, our measures are all set up, and providing the various kinds of space measurements for our drive in bytes. One thing that should be noted is that the FreeDiskSpace measure also automatically sets the <a href="!measures/general-options#MinValue">MinValue</a> and <a href="!measures/general-options#MaxValue">MaxValue</a> of the measure, so the value can be used in meters that require a <a href="!measures#Percentage">Percentage</a>, like the <b>Roundline</b> meter we are about to create.</p>
 
