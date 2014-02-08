@@ -236,7 +236,7 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 
 <h2 id="PluginCommands">Plugin Commands</h2>
 
-<h2>Parent measure commands</h2>
+<h3 id="ParentCommands">Parent measure commands</h3>
 <dl>
 
 	<dt id="Update"><code>Update</code></dt>
@@ -278,7 +278,7 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 	</dd>
 </dl>
 
-<h2>Child measure commands</h2>
+<h3 id="ChildCommands">Child measure commands</h3>
 <dl>
 	<dt id="FollowPath"><code>FollowPath</code></dt>
 	<dd>
@@ -292,6 +292,37 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 		<p>This will open the file or folder that the index represents. If it is a folder, the folder is opened in Windows Explorer. If it is a file, then it is opened with the default Windows associated application. In order to better simulate Windows behavior, it is recommended that this command be used with a double-click action.</p>
 
 		<p><b>Example:</b> <code>LeftMouseDoubleClickAction=!CommandMeasure "ChildMeasureName" "Open"</code></p>
+	</dd>
+</dl>
+
+<h3 id="OtherCommands">Other commands</h3>
+<dl>
+	<dt id="ContextMenu"><code>ContextMenu</code></dt>
+	<dd>
+		<p>Opens the context menu for the item represented by the measure. The context menu will appear at the current mouse location if the mouse is hovering over the skin, otherwise it will appear at the top left corner of the skin. This command can be used on a parent or child measure.</p>
+
+		<p><b>Example:</b> <code>!CommandMeasure "MeasureName" "ContextMenu"</code></p>
+
+		<br>
+
+		<p><b>Parent</b> measures have the extra ability to open the context menu for a manually defined file/folder. See the example below.</p>
+
+		<p><b>Example:</b> <code>!CommandMeasure "ParentMeasureName" "ContextMenu C:\Some Folder\Some File.exe"</code></p>
+		<p><b>Note:</b> Place quotes around the entire command <b>and</b> path. Extra quotes are not needed for paths that contain spaces.</p>
+	</dd>
+
+	<dt id="Properties"><code>Properties</code></dt>
+	<dd>
+		<p>Opens the property dialog for the item represented by the measure. This can be a parent or child measure.</p>
+
+		<p><b>Example:</b> <code>!CommandMeasure "MeasureName" "Properties"</code></p>
+
+		<br>
+
+		<p><b>Parent</b> measures have the extra ability to open the property dialog for a manually defined file/folder. See the example below.</p>
+
+		<p><b>Example:</b> <code>!CommandMeasure "ParentMeasureName" "Properties C:\Some Folder\Some File.exe"</code></p>
+		<p><b>Note:</b> Place quotes around the entire command <b>and</b> path. Extra quotes are not needed for paths that contain spaces.</p>
 	</dd>
 </dl>
 
