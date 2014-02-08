@@ -36,7 +36,7 @@ RegExp="(?siU)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name
 {% endhighlight %}
 Now the WebParser measure will return the two StringIndexes for "Larry" and "Curly", and will just return a null value for the third search item without failing.</p>
 <p>What <code>(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)</code> is saying is "Look ahead and see if there is a pattern of <code>.*&lt;Item&gt;</code> coming up, and if so, execute the expression <code>.*&lt;Name&gt;(.*)&lt;/Name&gt;</code>", or in shorthand: "(? [Do] (?= [If this is found] ) [stuff to Do] )". If not, just shrug and continue...</p>
-<p>Let's put it all together. I will use a [Variable] to define the search pattern, then just repeatedly use the variable in the <code>RegExp=</code> statement to save some typing, and set a <code>Substitute=</code> on the WebParser measures so we get something other than just a null value displayed.</br>
+<p>Let's put it all together. I will use a [Variable] to define the search pattern, then just repeatedly use the variable in the <code>RegExp=</code> statement to save some typing, and set a <code>Substitute=</code> on the WebParser measures so we get something other than just a null value displayed.<br>
 {% highlight ini %}
 [Rainmeter]
 DynamicWindowSize=1
