@@ -107,6 +107,7 @@ HWND GetSkinWindow(const WCHAR* configName)
 {% highlight text %}
 ; Usage: $Return = GetSkinWindow("ConfigName")
 ; Return value will be 0 if config not found
+#include <SendMessage.au3>
 
 Func GetSkinWindow($szConfigName)
    Local Const $hWnd = WinGetHandle("[CLASS:RainmeterTrayClass]")
