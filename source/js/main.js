@@ -2,15 +2,15 @@
 (function() {
 	var $nav = $('#tree');
 	if ($nav) {
-		var href = location.protocol + '//' + location.hostname + location.pathname;
+		var path = location.pathname.replace(/\/$/, '');
 		$('li', $nav).each(function() {
 			var $li = $(this);
 			$li.children('a').each(function() {
 				var $a = $(this);
-				if (href == this.href) {
+				if (path == this.pathname) {
 					$a.addClass('active');
 					return false;
-				} else if (href.indexOf(this.href) == -1) {
+				} else if (path.indexOf(this.pathname) == -1) {
 					$a.next().addClass('hide');
 				}
 			});
