@@ -85,7 +85,7 @@ An example plugin demonstrating how to do "parent-child" functions in your plugi
 <p>The following sample demonstrates how to retrieve a running skin's window handle based on the skin config name. Note that the returned handle should only be used to check if the skin is active or not -- do not abuse the handle.</p>
 
 <p>C/C++ code:</p>
-``` plain
+``` cpp
 // Usage: GetSkinWindow(L"illustro\\Clock");
 // Return value will be NULL if config not found or a valid HWND otherwise
 #include <Windows.h>
@@ -191,7 +191,7 @@ EndFunc ;_ReadMessage
 <p>The following samples demonstrate how external applications can send bangs to Rainmeter.</p>
 
 <p>C/C++ code:</p>
-``` plain
+``` cpp
 // Usage: SendBang(L"[!About]");
 #include <Windows.h>
 
