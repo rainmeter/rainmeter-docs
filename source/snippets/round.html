@@ -7,7 +7,7 @@ title: 'Round'
 <p><code>Round(num, idp)</code></p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function Round(num, idp)
 	assert(tonumber(num), 'Round expects a number.')
 	local mult = 10 ^ (idp or 0)
@@ -17,5 +17,5 @@ function Round(num, idp)
 		return math.ceil(num * mult - 0.5) / mult
 	end
 end
-{% endhighlight %}
+```
 </div>	

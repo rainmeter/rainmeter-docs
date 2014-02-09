@@ -7,42 +7,42 @@ title: '!SetOption Guide'
 <h3>Changing or adding an option</h3>
 
 <p>Change the color of the string meter from red to green and the style to bold when you hover over the meter.</p>
-{% highlight ini %}
+``` ini
 [MeterOne]
 Meter=String
 FontColor=255,0,0,255
 Text="Hello World"
 MouseOverAction=[!SetOption MeterOne FontColor 0,255,0,255][!SetOption MeterOne StringStyle Bold]
-{% endhighlight %}
+```
 
 <h3>Removing or restoring an option</h3>
 
 <p>You can remove a change you made using !SetOption by using the bang again, with "" (an empty string) as the value you set the option to. It should be noted that this <b>removes</b> the entire option from the meter or measure.</p>
-{% highlight ini %}
+``` ini
 [MeterOne]
 Meter=String
 FontColor=255,0,0,255
 Text="Hello World"
 MouseOverAction=[!SetOption MeterOne FontColor 0,255,0,255][!SetOption MeterOne StringStyle Bold]
 MouseLeaveAction=[!SetOption MeterOne FontColor ""][!SetOption MeterOne StringStyle ""]
-{% endhighlight %}
+```
 
 <p>This will remove the options FontColor and StringStyle from the meter. For the FontColor option, this is going to cause a problem. Now the meter has no FontColor settting at all, and will default to 0,0,0,255 (black) instead of changing back to 255,0,0,255 (red) as you might want.</p>
 
 <p>This can be solved in two ways:</p>
 
 <p>Specifically set the option back to what it originally was.</p>
-{% highlight ini %}
+``` ini
 [MeterOne]
 Meter=String
 FontColor=255,0,0,255
 Text="Hello World"
 MouseOverAction=[!SetOption MeterOne FontColor 0,255,0,255][!SetOption MeterOne StringStyle Bold]
 MouseLeaveAction=[!SetOption MeterOne FontColor 255,0,0,255][!SetOption MeterOne StringStyle ""]
-{% endhighlight %}
+```
 
 <p>Use a MeterStyle. This will work as the first !SetOption adds a specific FontColor, and the second one removes it, thus allowing the MeterStyle setting on the meter to again control this option.</p>
-{% highlight ini %}
+``` ini
 [TextStyle]
 FontColor=255,0,0,255
 
@@ -52,12 +52,12 @@ MeterStyle=TextStyle
 Text="Hello World"
 MouseOverAction=[!SetOption MeterOne FontColor 0,255,0,255][!SetOption MeterOne StringStyle Bold]
 MouseLeaveAction=[!SetOption MeterOne FontColor ""][!SetOption MeterOne StringStyle ""]
-{% endhighlight %}
+```
 
 <h3>Variables and !SetOption</h3>
 
 <p>!SetOption, like any other bang, will resolve any #Variables# before setting the option.</p>
-{% highlight ini %}
+``` ini
 [Variables]
 MyColor=255,255,255,255
 
@@ -66,23 +66,23 @@ Meter=String
 Text="Hello World"
 MouseOverAction=!SetOption MeterOne FontColor #MyColor#
 DynamicVariables=1
-{% endhighlight %}
+```
 
 <p>This sets the meter with FontColor=255,255,255,255, not FontColor=#MyColor#. You can however set the option with the literal "#MyColor#" if you wish. You will need to "escape" the variable, with the "*" character.</p>
-{% highlight ini %}
+``` ini
 [MeterOne]
 Meter=String
 Text="Hello World"
 MouseOverAction=!SetOption MeterOne FontColor #*MyColor*#
 DynamicVariables=1
-{% endhighlight %}
+```
 
 <p>Now the meter will be set to FontColor=#MyColor# and will obey any changes made to that variable elsewhere in the skin, due to DynamicVariables=1 being set.</p>
 
 <h3>[Measures] and !SetOption</h3>
 
 <p>!SetOption will use the current value of a [Measure] if it is used in the option.</p>
-{% highlight ini %}
+``` ini
 [MeasureTime1]
 Measure=Time
 Format=%S
@@ -96,10 +96,10 @@ Meter=String
 Text=[MeasureTime1]
 DynamicVariables=1
 LeftMouseUpAction=!SetOption MeterOne Text [MeasureTime2]
-{% endhighlight %}
+```
 
 <p>This sets the meter with the Text= as the current number of minutes, not Text=[MeasureTime2]. You can however set the option with the literal "[MeasureTime2]" if you wish. You will need to "escape" the measure, with the "*" character.</p>
-{% highlight ini %}
+``` ini
 [MeasureTime1]
 Measure=Time
 Format=%S
@@ -113,7 +113,7 @@ Meter=String
 Text=[MeasureTime1]
 DynamicVariables=1
 LeftMouseUpAction=!SetOption MeterOne Text [*MeasureTime2*]
-{% endhighlight %}
+```
 
 <p>Now the meter will be set to Text=[MeasureTime2] and will stay current with the value of that measure, due to DynamicVariables=1 being set.</p>
 

@@ -4,10 +4,10 @@ title: 'Option Types'
 ---
 <p>In the most basic sense, a skin in Rainmeter is controlled by a .ini file consisting of sections, options, and option values.</p>
 
-{% highlight ini %}
+``` ini
 [SectionName]
 OptionName=OptionValue
-{% endhighlight %}
+```
 
 <p>The skin can have various kinds of sections. These include:</p>
 
@@ -26,32 +26,32 @@ OptionName=OptionValue
 <h2 id="String">String options</h2>
 <p>String options require a text value.</p>
 
-{% highlight ini %}
+``` ini
 Text=Hello World
 MyVar=Hello World
-{% endhighlight %}
+```
 
 <h2 id="Number">Number options</h2>
 <p>Number options require either a number or a <a href="!formulas">formula</a>.</p>
 
-{% highlight ini %}
+``` ini
 ; The following lines are equivalent:
 FontSize=42
 FontSize=(40 + 2)
 FontSize=(2 > 1 ? 42 : 666)
-{% endhighlight %}
+```
 
 <h2 id="Path">Path options</h2>
 <p>Path options specify the relative or absolute path of either a file or a folder (depending on the option). For example, the path of an image file is expected with <code>ImageName</code>.</p>
 
-{% highlight ini %}
+``` ini
 ; Relative paths (relative to current folder):
 ImageName=lolcat.png
 ImageName=..\lolcat.png
 
 ; Absolute path:
 ImageName=C:\lolcats\lolcat.png
-{% endhighlight %}
+```
 
 <h2 id="Color">Color options</h2>
 <p>Color options such as <code>SolidColor</code> and <code>FontColor</code> should use the RGBA (red-green-blue-alpha) notation in either the hexadecimal or decimal form. The color results from a mixing of the red, green and blue components of the option, with the transparency (alpha channel) of the element set by the fourth component.</p>
@@ -60,14 +60,14 @@ ImageName=C:\lolcats\lolcat.png
 
 <p><b>Note:</b> The alpha component is optional. As with the other components it is a value from 0 to 255 (00 to FF), with 0 being completely invisible (and the meter will not react to the mouse) to 255, which is completely opaque. The default is 255 (or FF).</p>
 
-{% highlight ini %}
+``` ini
 ; The following lines are equivalent to solid opaque red:
 SolidColor=255,0,0,255
 SolidColor=255,0,0
 SolidColor=(200 + 55),(2 - 2),0
 SolidColor=FF0000FF
 SolidColor=FF0000
-{% endhighlight %}
+```
 
 <p>One of many ways to obtain a desired color code is <a href="http://rainmeter.net/color/">Rainmeter Online Color Picker</a>.</p>
 
@@ -75,17 +75,17 @@ SolidColor=FF0000
 <p>Options in a skin which cause Rainmeter to take some action. Actions may be triggered by user input such as <a href="!mouse-actions">mouse actions</a>, or system events and changing values within the skin, such as <a href="!measures/general-options/ifactions">if actions</a>.</p>
 <p>Normally the value of an action option is going to be one or more <a href="!bangs">bangs</a>, or the execution of external commmands in Windows.</p>
 
-{% highlight ini %}
+``` ini
 ; Single bang:
 LeftMouseUpAction=!HideMeter SomeMeter
 LeftMouseUpAction=[!HideMeter SomeMeter]
 
 ; Multiple bangs:
 LeftMouseUpAction=[!HideMeter SomeMeter][!HideMeter SomeOtherMeter]
-{% endhighlight %}
+```
 
 <p>For bangs that take parameters, the arguments should be separated by a space. Parameters that contain spaces must use quotes around the parameter.</p>
-{% highlight ini %}
+``` ini
 ; These two lines are equivalent:
 LeftMouseUpAction=[!HideMeter SomeMeter]
 LeftMouseUpAction=[!HideMeter "SomeMeter"]
@@ -101,33 +101,33 @@ LeftMouseUpAction=[!SetVariable SomeVariable "I think, therefore I am"]
 ; cases, it is always best to use quotes as in the second line.
 LeftMouseUpAction=[!SetWallpaper #ImageFile#]
 LeftMouseUpAction=[!SetWallpaper "#ImageFile#"]
-{% endhighlight %}
+```
 
 <p>External Windows commands can be executed by specifying the path to the executable and any parameters. Enclose any values with spaces in quotes.</p>
-{% highlight ini %}
+``` ini
 LeftMouseUpAction=["C:\Windows\Notepad.exe" MyFile.txt]
 ; Runs Notepad.exe and loads the file MyFile.txt.
 
 LeftMouseUpAction=["http://rainmeter.net/forums"]
 ; Opens the URL in the default web browser.
-{% endhighlight %}
+```
 
 <p>A parameter containing quotes should be surrounded by a pair of triple quotes.</p>
-{% highlight ini %}
+``` ini
 ; The first line will fail due to extra quotes. The second line will properly log
 ; the string: Quotes are "fun"!
 LeftMouseUpAction=[!Log "Quotes are "fun"!"]
 LeftMouseUpAction=[!Log """Quotes are "fun"!"""]
-{% endhighlight %}
+```
 
 <p>When using <code>#VarName#</code> or <code>[MeasureName]</code> in an action option, the current value of the variable or measure will be used. To have the literal string "#VarName#" or "[MeasureName]" used, in a !SetOption value for instance, use the "*" char as in <code>#*VarName*#</code> or <code>[*MeasureName*]</code> to tell Rainmeter you do not want the value resolved, but rather used as a literal string.</p>
-{% highlight ini %}
+``` ini
 LeftMouseUpAction=!SetOption SomeMeter FontSize #VarName#
 ; The FontSize option for SomeMeter will be set to the current value of the variable.
 
 LeftMouseUpAction=!SetOption SomeMeter FontSize #*VarName*#
 ; The FontSize option for SomeMeter will be set to the the string "#VarName#"
-{% endhighlight %}
+```
 
 <h2 id="RegExp">Regular expression options</h2>
 

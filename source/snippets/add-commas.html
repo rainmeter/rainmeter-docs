@@ -5,7 +5,7 @@ title: 'Add Commas'
 <p>Returns an input number as an output string formatted with commas.</p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function FormatCommas(numVar)
 
 	assert(tonumber(numVar), 'Function FormatCommas() expects a number.')
@@ -14,5 +14,5 @@ function FormatCommas(numVar)
 	return prefix..(number:reverse():gsub('(%d%d%d)', '%1,'):reverse())..postfix
 	
 end
-{% endhighlight %}
+```
 </div>	

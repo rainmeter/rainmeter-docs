@@ -5,7 +5,7 @@ title: 'Change Case'
 <p>These functions can be used to change a string to either Sentence Case (first word capitalized) or Title Case. (each word capitalized)</p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function SentenceCase(input)
 	assert(type(input) == 'string', ('SentenceCase must receive a string. Received %s instead.'):format(type(input)))
 
@@ -15,15 +15,15 @@ function SentenceCase(input)
 			return space .. first:upper() .. rest:lower():gsub("%si([%s'])", ' I%1')
 		end))
 end
-{% endhighlight %}
+```
 </div>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function TitleCase(input)
 	assert(type(input) == 'string', ('TitleCase must receive a string. Received %s instead.'):format(type(input)))
 
 	return (input:gsub('(%S)(%S*)', function(first, rest) return first:upper() .. rest:lower() end))
 end
-{% endhighlight %}
+```
 </div>

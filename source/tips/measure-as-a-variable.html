@@ -4,31 +4,31 @@ title: 'Using a Measure as a Variable'
 ---
 <p>In Rainmeter, <a href="/manual/variables/#DynamicVariables">dynamic variables</a> (DVs) let you use measure values almost anywhere you want. When you use a measure value in a <a href="/manual/measures/calc">Calc</a> formula, there are special rules to consider. A Calc formula is the only place where you do not need DVs to use another measure's value. For example:</p>
 
-{% highlight ini %}
+``` ini
 [MeasureA]
 Measure=...
 
 [MeasureB]
 Measure=Calc
 Formula=MeasureA+3
-{% endhighlight %}
+```
 
 <p>Sometimes, however, you may still want to use DVs to get a measure value into a Calc formula. Why? Because in fact, every measure has two values: a <b>number value</b> and a <b>string value</b>. Normally, Calc formulas use the number value. But using DVs (with brackets around the measure name) forces Rainmeter to use the string value. Which means that this...</p>
 
-{% highlight ini %}
+``` ini
 [MeasureB]
 Measure=Calc
 Formula=MeasureA+3
-{% endhighlight %}
+```
 
 <p>...does not always mean the same thing as this:</p>
 
-{% highlight ini %}
+``` ini
 [MeasureB]
 Measure=Calc
 Formula=[MeasureA]+3
 DynamicVariables=1
-{% endhighlight %}
+```
 
 <h3>When should I use brackets?</h3>
 
@@ -67,7 +67,7 @@ DynamicVariables=1
 	<li>
 	<p><b>Substitution.</b> Measure <a href="/manual/measures/general-options/substitute">substitution</a> is applied only to the string value, not the number value. For example:</p>
 
-{% highlight ini %}
+``` ini
 [MeasureA]
 Measure=Calc
 Formula=1
@@ -81,13 +81,13 @@ Formula=MeasureA+3
 Measure=Calc
 Formula=[MeasureA]+3
 DynamicVariables=1
-{% endhighlight %}
+```
 
 	<p>MeasureB uses the number value of MeasureA. It ignores the Substitute string on Measure A. Therefore, MeasureB returns a value of <em>4</em>. In MeasureC, we use DVs to get the string value of MeasureA. This value has substituted the original value, "1", with "2". So MeasureC returns a value of <em>5</em>.</p>
 
 	<p>This means that if you need the substituted value of a measure, you will need to use DVs and brackets. This can be useful when the original value of a measure is not a number at all (as in case #1), but a Substitute is used to change it into one:</p>
 
-{% highlight ini %}
+``` ini
 [MeasureGetStatus]
 Measure=Plugin
 Plugin=Plugins\WebParser.dll
@@ -104,7 +104,7 @@ IfEqualAction=[!SetOption Light MeterStyle "Green"]
 IfBelowValue=1
 IfBelowAction=[!SetOption Light MeterStyle "Red"]
 DynamicVariables=1
-{% endhighlight %}
+```
 
 	<p>In this case, we have a web feed that returns either "Running" or "Offline". But we can't do math on a word&mdash;since neither of those values is a number or mathematical formula, the number value for both would be zero. Instead, we use a Substitute to transform the string value into "1" or "0", respectively. That way, our Calc measure can compare it to our IfEqualValue and IfBelowValue, and take the right action. If 1 ("Running"), then the light turns green; if 0 ("Offline"), the light turns red.</p>
 
@@ -117,14 +117,14 @@ DynamicVariables=1
 
 <p>You can use measures as number values if you are using DVs elsewhere in the Calc measure. You can even mix types of measure values within the same formula:</p>
 
-{% highlight ini %}
+``` ini
 [MeasureD]
 Measure=Calc
 Formula=MeasureA+[MeasureA]+MeasureB+3
 IfAboveValue=[MeasureC]
 IfAboveAction=!HideMeter MeterE
 DynamicVariables=1
-{% endhighlight %}
+```
 
 <h3>A quick reference to using measure values</h3>
 

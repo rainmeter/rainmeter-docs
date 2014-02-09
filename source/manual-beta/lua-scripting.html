@@ -24,11 +24,11 @@ title: 'Lua Scripting'
 
 <p>Much like <a href="!measures/plugin">plugin measures</a>, each script measure creates a separate <b>instance</b> of its script. This means that a skin can have any number of scripts loaded simultaneously&mdash;even from the same script file. (The order in which scripts are executed is determined by the <a href="!measures/#Order">measure order</a>.) "Global" variables are not shared between instances.</p>
 
-{% highlight ini %}
+``` ini
 [MeasureName]
 Measure=Script
 ScriptFile=MyScript.lua
-{% endhighlight %}
+```
 
 
 
@@ -36,12 +36,12 @@ ScriptFile=MyScript.lua
 
 <p>In addition to <a href="!measures/general-options">general measure options</a> and <a href="!measures/script#ScriptFile">ScriptFile</a>, scripts also allow <a href="!measures/script#UserDefined">user-defined options</a>. These options may have any name and value, and may be changed with <a href="!bangs#SetOption">!SetOption</a>. The script can read and use its own option values using the <a href="#SelfObject">SELF object functions</a>. This allows the same script file to be used with different parameters depending on the context.</p>
 
-{% highlight ini %}
+``` ini
 [MeasureName]
 Measure=Script
 ScriptFile=MyScript.lua
 MyOption=Hello, world!
-{% endhighlight %}
+```
 
 
 
@@ -66,11 +66,11 @@ MyOption=Hello, world!
 
 <p>If the <b>Initialize</b> function is defined in any script, the function is called one time (without parameters) when the skin is activated or <a href="!skins/#Refresh">refreshed</a>. This happens even if the script measure is <a href="!measures/general-options/#Disabled">disabled</a>. If the script file is changed by a <a href="!bangs#SetOption">!SetOption</a> bang, the new script's Initialize function is called as well.</p>
 
-{% highlight lua %}
+``` lua
 function Initialize()
 	MyVariable = 'Hello, world!'
 end
-{% endhighlight %}
+```
 
 <p>Actions that are needed to "set up" the script, such as declaring global variables, should be done in the Initialize function.</p>
 
@@ -80,12 +80,12 @@ end
 
 <p>If the <b>Update</b> function is defined in any script, the function is called (without parameters) whenever the script measure <a href="!skins/#Update">updates</a>. The script measure responds normally to the <a href="!measures/general-options/#Disabled">Disabled</a> option, the <a href="!measures/general-options/#UpdateDivider">UpdateDivider</a> option, and all <a href="!bangs#Measure">measure bangs</a>.</p>
 
-{% highlight lua %}
+``` lua
 function Update()
 	MyVariable = 'Hello, world!'
 	return MyVariable
 end
-{% endhighlight %}
+```
 
 <p>The Update function's <b>return value</b> determines what <a href="!measures#Values">values</a> are provided by the script measure. Strings and numbers in Lua are analogous to string values and number values in Rainmeter measures. Examples:</p>
 

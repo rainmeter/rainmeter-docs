@@ -4,33 +4,33 @@ title: 'WebParser: Weather Skin Translations'
 ---
 <p>One of the things that is often asked is "How can I translate the weather conditions text, returned by WebParser when creating or editing a weather skin, to my own language?"</p>
 <p>This actually pretty simple to do. First find the measure or measures (often in a weather skin there will be 3 - 5 of them) which are returning the "weather conditions" text. It will look something like this:</p>
-{% highlight ini %}
+``` ini
 [MeasureCurrentWeatherConditions]
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureYahooWeather]
 StringIndex=34
-{% endhighlight %}
+```
 
 <p><em>Note that a weather skin normally works by having a first, primary measure that retrieves all the information from the weather RSS feed in one shot. Then there will be subsequent measures which will extract the individual bits of information from the large array of values returned by this first measure. So you will often see something like:</em></p>
 
-{% highlight ini %}
+``` ini
 [MeasureYahooWeather]
 Measure=Plugin
 Plugin=WebParser
 UpdateRate=600
 URL=http://weather.yahooapis.com/forecastrss?p=#Location#&u=#Unit#
 RegExp="(?siU)<title>.*- (.*)</title>.*<link>(.*)/\*(.*)</link>.*<description>(.*)</description>.*<language>(.*)</language>.*<lastBuildDate>(.*)</lastBuildDate>.*<yweather:location city="(.*)".*region="(.*)".*country="(.*)".*<yweather:units temperature="(.*)".*distance="(.*)".* pressure="(.*)".*speed="(.*)".*<yweather:wind chill="(.*)".*direction="(.*)".*speed="(.*)".*<yweather:atmosphere humidity="(.*)".* visibility="(.*)".*pressure="(.*)".* rising="(.*)".*<yweather:astronomy sunrise="(.*)".*sunset="(.*)".*<title>(.*)</title>.*<width>(.*)</width>.*<height>(.*)</height>.*<link>(.*)</link>.*<url>(.*)</url>.*<title>(.*)</title>.*<geo:lat>(.*)</geo:lat>.*<geo:long>(.*)</geo:long>.*<link>(.*)/\*(.*)</link>.*<pubDate>(.*)</pubDate>.*<yweather:condition text="(.*)".*code="(.*)".*temp="(.*)".*date="(.*)".*<img src="(.*)".*Current Conditions:</b><br />(.*)<BR />.*Forecast:</b><BR />(.*)<br />.*(.*)<br />.*<a href="(.*)/\*(.*)">.*provided by <a href="(.*)" >(.*)</a>.*<yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*<yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*"
-{% endhighlight %}
+```
 
 <p><em>Followed by something like this later on in the skin:</em></p>
-{% highlight ini %}
+``` ini
 [MeasureCurrentWeatherConditions]
 Measure=Plugin
 Plugin=WebParser
 Url=[MeasureYahooWeather]
 StringIndex=34
-{% endhighlight %}
+```
 
 <p><em>As you can see, the measure [MeasureCurrentWeatherConditions] is using as its "Url=" the result of [MeasureYahooWeather] (our first main RSS measure) and specifically asking for StringIndex 34, the index in the array of returned values which holds the first of the "Weather Condition" values, in this case the "Current Conditions".</em></p>
 <p>Since Weather.com / Yahoo Weather return these values in English, you may want to translate them to your native language. To do so, add a line at the end of each of the measures that specifically return "Weather Conditions" text. In our current example, after the line "StringIndex=34".</p>

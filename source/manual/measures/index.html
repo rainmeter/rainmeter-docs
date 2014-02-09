@@ -23,12 +23,12 @@ subtitle: 'Measures gather information.'
 
 <p>Below is an example of a complete working measure:</p>
 
-{% highlight ini %}
+``` ini
 [MeasureFour]
 Measure=Calc
 Formula=2+2
 UpdateDivider=-1
-{% endhighlight %}
+```
 
 <h2 id="Values">Values</h2>
 
@@ -58,7 +58,7 @@ UpdateDivider=-1
 
 <p>For example:</p>
 
-{% highlight ini %}
+``` ini
 [MeasureCPUTemp]
 Measure=Plugin
 Plugin=SpeedFanPlugin
@@ -72,7 +72,7 @@ MaxValue=100
 Meter=Bar
 MeasureName=MeasureCPUTemp
 ...
-{% endhighlight %}
+```
 
 <p>While the <a href="!meters/string">String</a> meter does not require a percentage when displaying the number value of a measure, it can be told to use the value as a percentage, by using the <a href="!meters/string">Percentual</a> option on the meter.  The meter will then use the MinValue and MaxValue of the measure to calculate what percentage of that the current value is.</p> 
 
@@ -88,7 +88,7 @@ MeasureName=MeasureCPUTemp
 
 <p>For example:</p>
 
-{% highlight ini %}
+``` ini
 [MeasureCounterPlusOne]
 Measure=Calc
 Formula=MeasureCounter + 1
@@ -96,6 +96,6 @@ Formula=MeasureCounter + 1
 [MeasureCounter]
 Measure=Calc
 Formula=Counter
-{% endhighlight %}
+```
 
 <p>The intent is for [MeasureCounterPlusOne] to add one to the value of [MeasureCounter], so that it is always greater than [MeasureCounter]. If the measures were in the opposite order, this would work. However, because [MeasureCounterPlusOne] is evaluated before [MeasureCounter], it will only add to the old, "outdated" value, and the two measures will remain equal.</p>

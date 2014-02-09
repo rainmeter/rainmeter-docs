@@ -82,14 +82,14 @@ title: 'WebParser Tutorial'
 
 <p>So let's start building our measures, and a sample meter showing the output.</p>
 <p><b>First, we build the "parent" measure, containing the StringIndexes:</b><br>
-{% highlight ini %}
+``` ini
 [MeasureWebSite]
 Measure=Plugin
 Plugin=WebParser
 UpdateRate=1800
 Url="http://www.geobytes.com/IpLocator.htm?GetLocation"
 RegExp="(?siU)<h2>IP Address to locate:<input type="text" name="ipaddress" size="15" value="(.*)">.*"
-{% endhighlight %}
+```
 
 <p>What we are telling WebParser is:</p>
 <p><b>UpdateRate=1800</b> - We want to check the website at a rate 1800 times the value in the "Update=" parameter in the "Rainmeter" section. As this defaults to "1000" or once every 1000 milliseconds (1 second) we will be running WebParser every 1800 seconds or 30 minutes. This is plenty often, you could even check every hour or more as your IP information doesn't change much and you don't want to "spam" the website with requests. You may well find yourself blocked...</p>
@@ -112,29 +112,29 @@ RegExp="(?siU)<h2>IP Address to locate:<input type="text" name="ipaddress" size=
 <p>You can see that we will return 72.205.26.142 in StringIndex 1</p>
 
 <p><b>Second, we build a "child" measure, to grab that information from StringIndex 1 of the "parent" measure.</b><br>
-{% highlight ini %}
+``` ini
 [MeasureIPAddress]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureWebSite]
 StringIndex=1
-{% endhighlight %}
+```
 
 <p><b>Now let's display the value of our first child measure in a meter:</b></p>
-{% highlight ini %}
+``` ini
 [MeterIPAddress]
 MeasureName=MeasureIPAddress
 Meter=String
 MeterStyle=TextStyle
 Y=2
 Text=IP Address: %1
-{% endhighlight %}
+```
 <p>So this will display "IP Address: 72.205.26.142" on your skin as below:</p>
 <div class="exampleprev">
 <img src="/tips/img/webparser-guide/WebParserGuideImage02.jpg" width="300"/>
 </div><br><br>
 <p>Note that I kept the meters simple in the skin by using a MeterStyle section:</p>
-{% highlight ini %}
+``` ini
 [TextStyle]
 X=2
 Y=17r
@@ -143,7 +143,7 @@ FontSize=12
 FontColor=230,250,247,255
 StringStyle=Bold
 Antialias=1
-{% endhighlight %}
+```
 
 <p><b>Now let's get the next bit of information we want from the website.</b> (Remember, the RegExp reads the website in order from top to bottom, so you need to use the correct order in the "RegExp=" statement. You can display the information in any order you want on your skin however.)</p>
 <p>The next bit in the Webpage.txt file is the "Country Code".</p>
@@ -154,36 +154,36 @@ Antialias=1
 </pre><br>
 
 <p>So we want to add to our "RegExp=" statement, search for the Country Code and return the result in the next StringIndex on the parent measure:</p>
-{% highlight ini %}
+``` ini
 RegExp="(?siU)<h2>IP Address to locate:<input type="text" name="ipaddress" size="15" value="(.*)">.*ro-no_bots_pls12" value="(.*)" size="20".*"
-{% endhighlight %}
+```
 <p>So after the first pair of start/stop searches, we are adding:</p>
 <code>.*ro-no_bots_pls12" value="(.*)" size="20".*</code>
 <p>This will tell RegExp to skip everything until it finds ro-no_bots_pls12" value=" and then return everything until it sees " size="20" and put it in StringIndex 2. The result in my example will be "US".</p>
 <p><b>We will need another child measure to retrieve the data to display in our next meter:</b></p>
-{% highlight ini %}
+``` ini
 [MeasureCountryCode]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureWebSite]
 StringIndex=2
-{% endhighlight %}
+```
 
 <p><b>And another meter to display the information:</b></p>
-{% highlight ini %}
+``` ini
 [MeterCountryCode]
 MeasureName=MeasureCountryCode
 Meter=String
 MeterStyle=TextStyle
 Text=Country Code: %1
-{% endhighlight %}
+```
 
 <h3>And so on...</h3>
 <p>Ok, so you just carry on like that until you have retrieved all the data you want from the website. I won't lay it all out here, but you can go through the sample WebParserGuide.ini file installed by the .rmskin.</p>
 
 <h3>Using "DEBUG" to make things easier</h3>
 <p>Using The "<b>Debug=1</b>" statement in WebParser will cause your skin to output the index numbers and associated information into Rainmeter's log. Turn this on by putting "Debug=1" on your Measure:</p>
-{% highlight ini %}
+``` ini
 [MeasureWebsite]
 Measure=Plugin
 Plugin=Plugins\WebParser.dll
@@ -191,7 +191,7 @@ UpdateRate=1800
 Url=#URL#
 RegExp=(?siU)<h2>IP Address to locate:<input type="text" name="ipaddress" size="15" value="(.*)">.*ro-no_bots_pls12" value="(.*)" size="20".*ro-no_bots_pls13" value="(.*)" size="20".*ro-no_bots_pls14" value="(.*)" size="20".*ro-no_bots_pls15" value="(.*)" size="20".*ro-no_bots_pls16" value="(.*)" size="20".*ro-no_bots_pls17" value="(.*)" size="20".*ro-no_bots_pls10" value="(.*)" size="20".*ro-no_bots_pls19" value="(.*)" size="20".*ro-no_bots_pls9" value="(.*)" size="20".*ro-no_bots_pls4" value="(.*)" size="20"
 Debug=1
-{% endhighlight %}
+```
 
 <p>Then in Manage/Settings, check "Debug mode" and "Log to file". Refresh your skin and the log under Manage/Log will contain:</p>
 <pre>

@@ -10,7 +10,7 @@ title: 'FileView plugin'
 
 <h2>Usage</h2>
 <p>FileView measures take the form:</p>
-{% highlight ini %}
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -22,9 +22,9 @@ Path="C:\Program Files\Rainmeter"
 ShowDotDot=0
 ShowFolder=0
 Count=3
-{% endhighlight %}
+```
 <p id="ParentChild">In this example, this "parent" measure will obtain name, size, date and icon information about all files in the selected folder, then create three <a href="#Index">Index</a> values for the first three files. The information is used in subsequent "child" FileView measures:</p>
-{% highlight ini %}
+``` ini
 [MeasureChild1]
 Measure=Plugin
 Plugin=FileView
@@ -45,11 +45,11 @@ Plugin=FileView
 Path=[MeasureFolder]
 Type=FileName
 Index=3
-{% endhighlight %}
+```
 <p>The values of the three <a href="#ParentChild">child</a> measures are now the FileName information parsed into Indexes 1 through 3 by the <a href="#ParentChild">parent</a> measure. These can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="!meters">meters</a>.</p>
 
 <p>Another way to use the information in child measures is:</p>
-{% highlight ini %}
+``` ini
 [MeasureChild1]
 Measure=Plugin
 Plugin=FileView
@@ -70,14 +70,14 @@ Plugin=FileView
 Path=[MeasureFolder]
 Type=FileDate
 Index=1
-{% endhighlight %}
+```
 <p>The values of the three child measures are now the FileName, FileSize and FileDate information from the first file (Index 1) of the parent measure.</p>
 
 <p>In these examples, three indexes are created due to the <code>Count=3</code> option on the parent measure. However, the information for all files and / or folders are obtained by the plugin, and subsequent or previous entries can be assigned to the three indexes by using !CommandMeasure statements described below. This will allow a skin to "scroll" through the files and / or folders in a dynamic way.</p>
 
 <p><b>Important Note:</b> A FileView measure will not re-read the disk information on a normal update cycle or using <a href="/tips/update-guide">UpdateDivider</a> on the measure, nor when the <a href="!bangs#Update">!Update</a> / <a href="!bangs#UpdateMeasure">!UpdateMeasure</a> bangs are used. If the options on the parent measure are changed dynamically with <a href="!bangs#SetVariable">!SetVariable</a> or <a href="!bangs#SetOption">!SetOption</a>, the <a href="#Update">Update plugin command</a> will need to be used to update the values.<p>
 
-{% highlight ini %}
+``` ini
 [MeasureFolder]
 Measure=Plugin
 Plugin=FileView
@@ -90,11 +90,11 @@ W=26
 H=25
 SolidColor=0,0,0,255
 LeftMouseUpAction=[!SetOption MeasureFolder Path "C:\VideoFolder"][!CommandMeasure MeasureFolder Update]
-{% endhighlight %}
+```
 
 <p>If it is desired that a folder be monitored for new or changed files, the <a href="#Update">Update plugin command</a> should be used in conjunction with an <a href="!measures/general-options#OnUpdateAction">OnUpdateAction</a> statement to keep the measure current with changing disk information. Be aware that having the plugin physically access the disk has a performance cost, and care should be taken to use an approriate <a href="/tips/update-guide">UpdateDivider</a>.</p> 
 
-{% highlight ini %}
+``` ini
 [MeasureFolder]
 Measure=Plugin
 Plugin=FileView
@@ -102,7 +102,7 @@ Path="C:\ImageFolder"
 Count=3
 UpdateDivider=5
 OnUpdateAction=!CommandMeasure MeasureFolder Update
-{% endhighlight %}
+```
 
 <h2>Options</h2>
 <dl>
@@ -295,7 +295,7 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 
 <h2>Example</h2>
 
-{% highlight ini %}
+``` ini
 [Rainmeter]
 Update=1000
 MouseScrollUpAction=[!CommandMeasure mPath "IndexUp"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
@@ -889,4 +889,4 @@ Text=Previous Folder
 LeftMouseDoubleClickAction=[!CommandMeasure mPath "PreviousFolder"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
 MouseOverAction=[!SetOption #CURRENTSECTION# SolidColor "50,50,255,150"][!UpdateMeter #CURRENTSECTION#][!Redraw]
 MouseLeaveAction=[!SetOption #CURRENTSECTION# SolidColor ""][!UpdateMeter #CURRENTSECTION#][!Redraw]
-{% endhighlight %}
+```

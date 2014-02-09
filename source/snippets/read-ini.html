@@ -9,7 +9,7 @@ title: 'Read INI'
 <p>The returned table is in the format <code>Table[Section][Parameter] = Value</code></p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function ReadIni(inputfile)
 	local file = assert(io.open(inputfile, 'r'), 'Unable to open ' .. inputfile)
 	local tbl, section = {}
@@ -32,5 +32,5 @@ function ReadIni(inputfile)
 	file:close()
 	return tbl
 end
-{% endhighlight %}
+```
 </div>

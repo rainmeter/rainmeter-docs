@@ -7,20 +7,20 @@ title: 'NetIn/NetOut Alternative'
 <p>An alternative is to use the <b>Perfmon Plugin</b>. This uses the actual text name of your NIC instead of the number assigned by Windows, and seems to be more reliable for some users.</p>
 <p>Using Measure=Plugin with the "Perfmon" plugin as in the examples below, set "PerfMonInstance" to the <em>name</em> of your NIC. To find the name, you can run Perfmon.exe in Windows and press the "Add" button. (the green plus sign above the graph on the right) Select "Network Interface" under "Available Counters" and find your NIC under "Instances of selected objects". Then use the name of your NIC card, EXACTLY as it appears in Perfmon.exe, in the "PerfMonInstance=" setting for the PerfMon plugin in your measure.</p>
 
-{% highlight ini %}
+``` ini
 [MeasureNetIn]
 Measure=Plugin
 Plugin=PerfMon
 PerfMonObject="Network Interface"
 PerfMonCounter="Bytes Received/sec"
 PerfMonInstance=D-Link DWA-140 RangeBooster N USB Adapter
-{% endhighlight %}
+```
 
-{% highlight ini %}
+``` ini
 [MeasureNetOut]
 Measure=Plugin
 Plugin=PerfMon
 PerfMonObject="Network Interface"
 PerfMonCounter="Bytes Sent/sec"
 PerfMonInstance=D-Link DWA-140 RangeBooster N USB Adapter
-{% endhighlight %}
+```

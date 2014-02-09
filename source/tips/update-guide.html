@@ -16,7 +16,7 @@ title: 'Update Guide'
 
 <p>[MeasureTotalC] has <code>UpdateDivider=-1</code> set. When UpdateDivider is a negative number, the measure will update only once (when the skin is loaded or refreshed). Because [MeasureTotalC] measures the total space of the drive (which will not change), the it is safe to measure it only once.</p>
 
-{% highlight ini %}
+``` ini
 [Rainmeter]
 Update=1000
 
@@ -34,7 +34,7 @@ Measure=FreeDiskSpace
 Drive=C:
 Total=1
 UpdateDivider=-1
-{% endhighlight %}
+```
 
 <h3>What about UpdateRate?</h3>
 
@@ -46,7 +46,7 @@ UpdateDivider=-1
 
 <p>Since [MeasureMailCount] has <code>UpdateRate=1200</code> set, we can calculate that WebParser will download the page every 1200 seconds (or every 20 minutes).</p>
 
-{% highlight ini %}
+``` ini
 [MeasureMailCount]
 Measure=Plugin
 Plugin=WebParser
@@ -54,6 +54,6 @@ URL=https://username:pasword@gmail.google.com/gmail/feed/atom
 RegExp="(?siU)<fullcount>(.*)</fullcount>"
 StringIndex=1
 UpdateRate=1200
-{% endhighlight %}
+```
 
 <p>Since WebParser connects to the internet, it is important to have a high enough "download interval". If you try to download a page too often (e.g. every second), you may end up causing a high load on the target site, which ultimately may cause the site to block all access from your computer.</p>

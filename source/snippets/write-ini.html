@@ -9,7 +9,7 @@ title: 'Write INI'
 <p>The table must be in the format <code>Table[Section][Parameter] = Value</code></p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function WriteIni(inputtable, filename)
 	assert(type(inputtable) == 'table', ('WriteIni must receive a table. Received %s instead.'):format(type(inputtable)))
 
@@ -27,5 +27,5 @@ function WriteIni(inputtable, filename)
 	file:write(table.concat(lines, '\r\n'))
 	file:close()
 end
-{% endhighlight %}
+```
 </div>

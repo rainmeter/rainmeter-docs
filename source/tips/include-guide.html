@@ -7,16 +7,16 @@ title: '@Include Guide'
 <p>While <a href="/manual/skins/include-option">@include</a> is a simple tool it is powerful as well. It can be used to make skin code shorter by stripping out longer code into shorter files. Repetitive code used in multiple skins can be managed with one file. It can even be used to load different code when you open a skin.</p>
 <h3>Using @include</h3>
 <p>There are several rules to using @include. The first is the @include call.<br>
-{% highlight ini %}
+``` ini
 [Section]
 @include=SomeFile.inc
-{% endhighlight %}
+```
 <p><b>Note:</b> The @include call must be made within a section. Authors have generally used the <code>[Rainmeter]</code> or <code>[Variables]</code> sections when appropriate.</p>
 <p>The second being the file that you're including.<br>
-{% highlight ini %}
+``` ini
 [Variables]
 SomeVariable=AValue
-{% endhighlight %}
+```
 <p>The file being used with @include must be formatted in the INI format, meaning that it has all the appropriate [sections] followed by Key=Value pairs. This includes using the [Variables] section.</p>
 <p>If you want to include more than one file, they need to be listed with unique identifiers.</p>
 <pre>@include=SomeFile.inc
@@ -26,17 +26,17 @@ SomeVariable=AValue
 
 <p>While it is not required to use the .inc extension it is highly recommended. This prevents the file from appearing in Rainmeters list as a skin.</p>
 <p>We can also use a variable to define an @include. The only caveat is that variable cannot be dynamic.</p>
-{% highlight ini %}
+``` ini
 [Variables]
 Theme=SomeTheme
 @include=#Theme#/SomeFile.inc
-{% endhighlight %}
+```
 
 <h3>Understanding @include</h3>
 <p>When Rainmeter reaches an @include line, it reads the given file, placing all unique options into any existing sections, then places the remainder of the included file after the section in which it was called.</p>
 
 <p>SomeFile.inc<br>
-{% highlight ini %}
+``` ini
 [Background]
 Meter=Image
 H=30
@@ -44,10 +44,10 @@ W=40
 
 [String]
 Text=This Won't Work
-{% endhighlight %}</p>
+```</p>
 
 <p>YourSkin.ini<br>
-{% highlight ini %}
+``` ini
 [Variables]
 @include=SomeFile.inc
 
@@ -60,7 +60,7 @@ X=5r
 [String]
 Meter=String
 Text=This line will remain.
-{% endhighlight %}</p>
+```</p>
 
 <p>This would place the Background section before the Foreground section. Since the String section already exists in the main file, then any existing options won't be changed. In this case, the Text line will still read "This line will remain."</p>
 
@@ -68,32 +68,32 @@ Text=This line will remain.
 <p>The most common use of @include is to allow users to change the settings used by a skin in a separate file.</p>
 
 <p>Settings.inc<br>
-{% highlight ini %}
+``` ini
 [Variables]
 BackgroundImage=SomeImage.png
 HideBackground=0
-{% endhighlight %}</p>
+```</p>
 
 <p>Skin.ini<br>
-{% highlight ini %}
+``` ini
 @include=Settings.inc
 
 [Background]
 Meter=Image
 ImageName=#BackgroundImage#
 Hidden=#HideBackground#
-{% endhighlight %}</p>
+```</p>
 
 <h3>Practical Use: Pages and Stylesheets</h3>
 
 <p>Two of the other major uses of @include are easily switching between different pages of a skin and creating Stylesheets for your skins. Both of these uses take advantage of the fact that we can use Variables to define an @include.</p>
 
 <p>Creating different pages is as easy as putting each page in it's own file and naming them in a sequence. Then in the Parent skin we need to define a variable that we will use to change the page.</p>
-{% highlight ini %}
+``` ini
 [Variables]
 Page=1
 @include=Pages\PageNum#Page#.inc
-{% endhighlight %}
+```
 
 <p>In the parent skin we can change the page using the <a href="/manual/bangs#WriteKeyValue">!WriteKeyValue</a> bang. Just remember that after changing the Page variable we need to refresh the skin so that the new page will be loaded.</p>
 

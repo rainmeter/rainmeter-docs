@@ -77,7 +77,7 @@ title: 'Formulas'
    end if
 </pre><br>
 
-{% highlight ini %}
+``` ini
 [Measure]
 Measure=Calc
 Formula=5
@@ -86,10 +86,10 @@ Formula=5
 Meter=String
 X=([Measure] < 6 ? 0 : 10)
 DynamicVariables=1
-{% endhighlight %}
+```
 <p>The meter would be positioned at <code>X=0</code> since the condition <code>[Measure] &lt; 6</code> evaluates to true.</p>
 <p>Conditional operators can be nested. It should be noted that there is a maximum of 30 nested operators.</p>
-{% highlight ini %}
+``` ini
 [Measure]
 Measure=Calc
 Formula=2
@@ -98,5 +98,5 @@ Formula=2
 Meter=String
 X=([Measure] < 1 ? 99 : ([Measure] < 2 ? 98 : ([Measure] < 3 ? 97 : 96)))
 DynamicVariables=1
-{% endhighlight %}
+```
 <p>The meter would be positioned at <code>X=97</code>. Since the first statement of <code>[Measure] &lt; 1</code> is false, the formula begins testing the nested formulas in order until the condition becomes true . If none of the conditions are met, the final false value of 96 would be set.</p>

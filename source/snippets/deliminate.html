@@ -4,7 +4,7 @@ title: 'Deliminate'
 ---
 <p>Deliminates a given string into a table using the specified delimiter.</p>
 
-<div class="noscroll">{% highlight lua %}
+<div class="noscroll">``` lua
 function Delim(line, delimiter) -- Separate String by single character delimiter
 	assert(delimiter:len() == 1, 'Delim: Delimiter may only be a single character')
 
@@ -16,5 +16,5 @@ function Delim(line, delimiter) -- Separate String by single character delimiter
 
 	return tbl
 end
-{% endhighlight %}
+```
 </div>

@@ -62,7 +62,7 @@ title: 'Calc measure'
 
 <p>The use of measure values in the Formula option of a Calc measure does not require the use of Dynamic Variables. Simply omit the [] and the number value of the measure will be retrieved. If the measure does not have a number value, 0 will be used. Section Variables, Variables and Built-in Variables follow the normal rules. For more information see the <a href="/tips/dynamiccheatsheet">Dynamic Cheat Sheet</a>.</p>
 
-{% highlight ini %}
+``` ini
 [MeasureOne]
 Measure=Calc
 Formula=5
@@ -70,4 +70,4 @@ Formula=5
 [MeasureTwo]
 Measure=Calc
 Formula=MeasureOne < 6 ? 0 : 10
-{% endhighlight %}
+```

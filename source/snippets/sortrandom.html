@@ -4,7 +4,7 @@ title: 'SortRandom'
 ---
 <p>Sorts a given table into a random order.</p>
 
-<div class="noscroll">{% highlight lua %}
+<div class="noscroll">``` lua
 function SortRandom(input)
 	assert(type(input) == 'table', ('SortRandom must receive a table. Received %s instead.'):format(type(input)))
 	math.randomseed(tonumber(tostring(os.time()):reverse():sub(1,6)))
@@ -21,7 +21,7 @@ function SortRandom(input)
 
 	return temp
 end
-{% endhighlight %}
+```
 </div>
 
 <p><b>Note:</b> Unlike table.sort this function does not directly manipulate the original table. The sorted table is returned as a result of the function.</p>

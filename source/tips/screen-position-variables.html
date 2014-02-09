@@ -14,13 +14,13 @@ The dimensions of the "work area" - the desktop as constrained by the taskbar an
 <b>#WORKAREAY#</b><br>
 The absolute X and Y position of the work area's top-left corner.</p>
 <p>In the past, if your users wanted to change the width of something, they had to open a window full of scary code and find the appropriate line. We shall hereafter refer to these as the Dark Ages of Rainmeter. Now my Taskbar skin, for example, is nothing more than this:</p>
-{% highlight ini %}
+``` ini
 [Taskbar]
 Meter=IMAGE
 ImageName=Taskbar.jpg
 W=#WORKAREAWIDTH#
 H=33
-{% endhighlight %}
+```
 <p>These variables support mathematical transformations, too. If I wanted a bar that filled up a third of the screen, for instance, I'd write:</p>
 <code>W=(#WORKAREAWIDTH# / 3)</code>
 <p>Even more powerful, however, is that you can use these variables to set the initial positions of whole skins in a .thm file for RainThemes.</p>
@@ -30,7 +30,7 @@ H=33
 <p>Centering a skin is just as easy. It's a tad more complicated in that you can't just make X and Y the center of the screen - the skin has its own height and width, remember. With Enigma, I've kept a consistent format for all of my "Taskbar" skins, in which the text is center-aligned at X=60. So if I wanted to center the whole skin as part of a theme, I'd use this format:</p>
 <code>WindowX=((#SCREENAREAWIDTH# / 2) - 60)</code>
 <p>It depends on the number of skins you've got, but in general, it's pretty easy to construct an entire theme that automatically adjusts to the user's resolution when it loads. As an example, I've copied the whole of Enigma's new default state below. It's easy for me to imagine most skins being packaged with themes like this, now that you can guarantee a proper and instantaneous presentation on any screen, large or small.</p>
-{% highlight ini %}
+``` ini
 [Enigma\_Home]
 Active=1
 WindowX=(#WORKAREAX# + (#WORKAREAWIDTH# - 900) / 2)
@@ -119,4 +119,4 @@ SavePosition=1
 SnapEdges=0
 KeepOnScreen=1
 AlwaysOnTop=0
-{% endhighlight %}
+```

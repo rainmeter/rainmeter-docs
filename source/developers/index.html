@@ -44,10 +44,10 @@ title: 'Developers'
 
 <p>To digitally sign the installer and the Rainmeter executables, obtain a certificate from a <a href="http://www.certum.pl/certum/main.xml">service</a> that provides them, and create a Certificate.bat file alongside Build.bat with the following contents:</p>
 
-{% highlight text %}
+``` plain
 set CERTFILE=/path/to/PFXcert.p12
 set CERTKEY=certpassword
-{% endhighlight %}
+```
 
 <h2 id="CreatePlugin">Creating Rainmeter Plugins</h2>
 
@@ -84,7 +84,7 @@ An example plugin demonstrating how to do "parent-child" functions in your plugi
 <p>The following sample demonstrates how to retrieve a running skin's window handle based on the skin config name. Note that the returned handle should only be used to check if the skin is active or not -- do not abuse the handle.</p>
 
 <p>C/C++ code:</p>
-{% highlight text %}
+``` plain
 // Usage: GetSkinWindow(L"illustro\\Clock");
 // Return value will be NULL if config not found or a valid HWND otherwise
 #include <Windows.h>
@@ -103,10 +103,10 @@ HWND GetSkinWindow(const WCHAR* configName)
 
 	return NULL;
 }
-{% endhighlight %}
+```
 
 <p>AutoIT code:<br/></p>
-{% highlight text %}
+``` plain
 ; Usage: $Return = GetSkinWindow("ConfigName")
 ; Return value will be 0 if config not found
 #include <SendMessage.au3>
@@ -130,12 +130,12 @@ Func GetSkinWindow($szConfigName)
 
    Return 0
 EndFunc
-{% endhighlight %}
+```
 
 <p>The following code demonstrates how to retrieve important application path information for Rainmeter from your external application.</p>
 
 <p>AutoIT code:<br/></p>
-{% highlight text %}
+``` plain
 #include <SendMessage.au3>
 #include <GUIConstantsEx.au3>
 #include <WindowsConstants.au3>
@@ -183,14 +183,14 @@ Func _ReadMessage($hWnd, $uiMsg, $wParam, $lParam)
 	$WM_QUERY_RAINMETER_RETURN = DllStructGetData($pMem, 1)
 
 EndFunc ;_ReadMessage
-{% endhighlight %}
+```
 
 <h3>Bangs</h3>
 
 <p>The following samples demonstrate how external applications can send bangs to Rainmeter.</p>
 
 <p>C/C++ code:</p>
-{% highlight text %}
+``` plain
 // Usage: SendBang(L"[!About]");
 #include <Windows.h>
 
@@ -208,10 +208,10 @@ void SendBang(const WCHAR* bang)
 		SendMessage(rmWnd, WM_COPYDATA, 0, (LPARAM)&cds);
 	}
 }
-{% endhighlight %}
+```
 
 <p>AutoIT code:</p>
-{% highlight text %}
+``` plain
 ; Usage: SendBang("[!About]")
 #include <SendMessage.au3>
 
@@ -232,4 +232,4 @@ Func SendBang($szBang)
       _SendMessage($hWnd, $WM_COPYDATA, 0, DllStructGetPtr($pCds))
    EndIf
 EndFunc
-{% endhighlight %}
+```

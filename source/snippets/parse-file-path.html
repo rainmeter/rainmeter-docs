@@ -5,7 +5,7 @@ title: 'Parse File Path'
 <p>A function that breaks down a file or folder path and returns the components as a table.</p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function ParseFilePath(s)
    assert(type(s) == 'string', 'ParseFilePath: string expected, got ' .. type(s) .. '.')
    local t = {}
@@ -39,5 +39,5 @@ function ParseFilePath(s)
 
    return t
 end
-{% endhighlight %}
+```
 </div>

@@ -4,7 +4,7 @@ title: 'Substituted Values in a Calc'
 ---
 <p>Calc measures are a useful tool that let you perform any number of operations on the values you get from measures. However, sometimes you need to get the substituted value from that measure. The Calc measure has two ways to get the values of the measure. The first way is to use that measure's name directly. This use the number value of the measure in your Calc formula. The second way is to use section variables. Here, the other measure's name is encased in square brackets and the line <code>DynamicVariables=1</code> is added to the Calc measure. The this will use the string value of the measure, and if the measure has a substitution string, it will perform the substitutions before using it. Here is a quick example demonstrating this effect:</p>
 
-{% highlight ini %}
+``` ini
 [InitialValue]
 Measure=Calc
 Formula=12345
@@ -18,13 +18,13 @@ Formula=InitialValue
 Measure=Calc
 Formula=[InitialValue]
 DynamicVariables=1
-{% endhighlight %}
+```
 
 <p>In this case, the value of [GetDirectValue] would be "12345", whereas the value of [GetSubstitutedValue] would have the "2" replaced with "22" and the "4" replaced with "7". As a result, its value would instead be "122375". </p>
 
 <p>There are many uses for this, particularly when reading the direct value of the measure is impossible. Let's say you have a log file somewhere that returns whether or not some system is running. You already know that the only possible values are "Running" and "Offline" and you want to show a green light for "Running" and and red light for "Offline". The simplest method to check for a specific value is to use the "IfEqualValue" and "IfEqualAction". Unfortunately, this will not work because they require a number to compare and your results are strings. Instead, we can add a substitute string that will convert these strings into numbers, then use a Calc measure to do the comparison. Here is some example code showing how to do this:</p>
 
-{% highlight ini %}
+``` ini
 [MeasureGetStatus]
 Measure=Plugin
 Plugin=WebParser
@@ -51,6 +51,6 @@ Hidden=1
 Meter=Image
 ImageName=RedLight.png
 Hidden=1
-{% endhighlight %}
+```
 
 <p>The Calc measure would receive the value as either "1" or "0" instead of the strings "Running" and "Offline", which lets it perform the comparisons to activate the proper lights.</p>

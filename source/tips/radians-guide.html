@@ -60,7 +60,7 @@ title: 'Radians Guide'
 
 <p>We can use a CPU meausre, which returns the amount of CPU usage as a percentage from 0% to 100%. Then we want to have a <a href="/manual-beta/meters/roundline">Roundline</a> meter that displays the current value as filling a circle. We want the starting point at the top of the circle, and 100% defined as coming all the way back around to the top.</p>
 
-{% highlight ini %}
+``` ini
 [MeasureCPU]
 Measure=CPU
 
@@ -77,7 +77,7 @@ LineLength=20
 LineColor=255,255,255,255
 Solid=1
 AntiAlias=1
-{% endhighlight %}
+```
 
 <p>The important bits here are the two options <a href="/manual-beta/meters/rotator#StartAngle">StartAngle</a> and <a href="/manual-beta/meters/rotator#RotationAngle">RotationAngle</a>. StartAngle is defined as <b>((3*PI)/2)</b>, which is to say <b>270&deg;</b>. This means that if you start directly from the right of center at <b>0&deg; / 360&deg;</b> it will take <b>270&deg;</b> degrees in <b>radians</b> to define the distance to the top of the circle moving clockwise. That will be the starting point for the meter. RotationAngle is defined as <b>(2*PI)</b>, which is telling Rainmeter that the distance defined as <b>100%</b> is all the way around <b>360&deg;</b>, or the full circle.</p>
 
@@ -85,10 +85,10 @@ AntiAlias=1
 
 <p>In another example, if you wanted to do a "VU Meter" type of approach, with the starting point on the left and 100% defined on the right, you would use:</p>
 
-{% highlight ini %}
+``` ini
 StartAngle=(PI)
 RotationAngle=(PI)
-{% endhighlight %}
+```
 
 <p>If you look at the cheat-sheet above, you will see that this is saying start <b>180&deg;</b> clockwise from <b>0&deg; / 360&deg;</b> (remember, starting directly right of center), and travel a total distance of <b>180&deg;</b> from there to define <b>100%</b>. 
 
@@ -98,8 +98,8 @@ RotationAngle=(PI)
 
 <p>So in our first example above, we could also use:</p>
 <p>
-{% highlight ini %}
+``` ini
 StartAngle=(Rad(270))
 RotationAngle=(Rad(360))
-{% endhighlight %}
+```
 </p>

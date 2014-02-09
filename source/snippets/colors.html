@@ -5,7 +5,7 @@ title: 'Convert Colors'
 <p>These functions can be used to convert Rainmeter <a href="/manual/options#Color">color code</a> formats from RGB to hexadecimal, and vice versa.</p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function ConvertToHex(color) -- Converts RGB colors to HEX
 	local hex = {}
 
@@ -15,11 +15,11 @@ function ConvertToHex(color) -- Converts RGB colors to HEX
 
 	return table.concat(hex)
 end
-{% endhighlight %}
+```
 </div>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function ConvertToRGB(color) -- Converts HEX colors to RGB
 	local rgb = {}
 
@@ -29,5 +29,5 @@ function ConvertToRGB(color) -- Converts HEX colors to RGB
 
 	return table.concat(rgb, ',')
 end
-{% endhighlight %}
+```
 </div>

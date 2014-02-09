@@ -5,7 +5,7 @@ title: 'Convert Temperatures'
 <p>Converts temperatures between Celsius and Fahrenheit. Use 'c' or 'f' as the scale you want to convert to.</p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function ConvertTemp(num, toScale)
 	assert(tonumber(num), 'ConvertTemp expects a number.')
 	assert((toScale == 'c') or (toScale == 'f'),
@@ -31,5 +31,5 @@ function Round(num, idp)
 		return math.ceil(num * mult - 0.5) / mult
 	end
 end
-{% endhighlight %}
+```
 </div>

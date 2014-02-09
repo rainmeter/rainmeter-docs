@@ -6,7 +6,7 @@ title: 'Wrapping Text'
 
 <p>Set the W= to more or less the amount of pixels you want for the first "line" of the text, and the H= to be high enough to hold two or more lines of text at your current font size. Then be sure to add "ClipString=1" and Rainmeter will "wrap" the text on two lines. If it doesn't, and you get "this is a long line of..." instead, then you heed to bump up the H= a bit. There must be enough "height" for the text to wrap, or ClipString will truncate the text and put an ellipse at the end instead.</p>
 
-{% highlight ini %}
+``` ini
 [MeasureCPUName]
 Measure=Registry
 RegHKey=HKEY_LOCAL_MACHINE
@@ -26,6 +26,6 @@ FontSize=8
 FontFace=Tahoma
 Clipstring=1
 AntiAlias=1
-{% endhighlight %}
+```
 
 <p>You might have to move meters below this one down some to compensate for it taking up more room, unless you used "Y=2R" (the "R" means "relative" to the previous meter) on all following meters.</p>

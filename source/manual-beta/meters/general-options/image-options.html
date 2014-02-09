@@ -61,13 +61,13 @@ title: 'General Image Options'
 	<dd>
 		<p>Defines a 5x5 matrix used to manipulate the color values of the image. It is divided into five separate options, one for each row, each numbered. The default matrix is as follows:</p>
 		
-{% highlight ini %}
+``` ini
 ColorMatrix1=1; 0; 0; 0; 0
 ColorMatrix2=0; 1; 0; 0; 0
 ColorMatrix3=0; 0; 1; 0; 0
 ColorMatrix4=0; 0; 0; 1; 0
 ColorMatrix5=0; 0; 0; 0; 1
-{% endhighlight %}
+```
 
 		<p>The values on the main diagonal are, from top-left to bottom-right: Red, Green, Blue, Alpha and a placeholder. The values represent the percentage of the particular value present in the image, where 0.0 is none and 1.0 is normal. The remaining entries in the matrix allow a color to have its value modified in terms of another color (e.g. the value of Red might have half of the Blue value added), with the entries in the final row (ColorMatrix5) determining offset values that are added directly to the color (e.g. <code>ColorMatrix5=0.5; 0; 0; 0; 1</code> adds 50% to the red value).</p>
 

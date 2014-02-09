@@ -8,15 +8,15 @@ title: 'WebParser plugin'
 
 <h2>Usage</h2>
 <p>WebParser measures take the form:</p>
-{% highlight ini %}
+``` ini
 [MeasureParent]
 Measure=Plugin
 Plugin=WebParser
 URL=http://SomeSite.com
 RegExp="(?siU)<Item>(.*)</Item>.*<Item>(.*)</Item>"
-{% endhighlight %}
+```
 <p id="ParentChild">This example creates two <a href="#StringIndex">StringIndex</a> values in what is referred to as the "parent" WebParser measure. The information is generally used in subsequent "child" WebParser measures:</p>
-{% highlight ini %}
+``` ini
 [MeasureChild1]
 Measure=Plugin
 Plugin=WebParser
@@ -28,7 +28,7 @@ Measure=Plugin
 Plugin=WebParser
 URL=[MeasureParent]
 StringIndex=2
-{% endhighlight %}
+```
 <p>The values of the two <a href="#ParentChild">child</a> measures are now the information parsed into StringIndexes 1 and 2 by the <a href="#ParentChild">parent</a> measure. These can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="!meters">meters</a>.
 
 
@@ -207,7 +207,7 @@ StringIndex=2
 
 <p>Retrieve the site title, first item and link from Slashdot's RSS feed.</p>
 
-{% highlight ini %}
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -256,11 +256,11 @@ StringStyle=Bold
 AntiAlias=1
 LeftMouseUpAction=["[MeasureRSSItemLink]"]
 DynamicVariables=1
-{% endhighlight %}
+```
 
 <p>Retrieve the title, download and display an image for the first item in the Customize.org RSS feed.</p>
 
-{% highlight ini %}
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -307,4 +307,4 @@ H=60
 PreserveAspectRatio=2
 LeftMouseUpAction=["[MeasureLink]"]
 DynamicVariables=1
-{% endhighlight %}
+```

@@ -15,7 +15,7 @@ title: 'WebParser: Relative Paths'
 <p><b>Solution</b></p>
 <p>A WebParser Measure can append the RESULTS of another WebParser Measure in the "URL" line by referencing the Measure in square brackets. This means you can use the first measure to return the name and location of the image you want, and use this information in a second Measure where you hard code the URL and then pass the result of the search for the image to the second Measure.</p>
 
-{% highlight ini %}
+``` ini
 [MeasureImageLocation]
 Measure=Plugin
 Plugin=WebParser
@@ -36,7 +36,7 @@ Meter=IMAGE
 MeasureName=MeasureImageDownload
 H=60
 W=70
-{% endhighlight %}
+```
 
 <p>Here we are using the first Measure [MeasureImageLocation] to get the relative path and filename of the image.</p>
 <p>Then we use the second Measure [MeasureImageDownload] to combine the known URL and the information from [MeasureImageLocation] to create a fully loaded Measure which will succeed in downloading the image... Then we just display it.</p>

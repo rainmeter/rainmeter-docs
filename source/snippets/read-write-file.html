@@ -7,7 +7,7 @@ title: 'Read &amp; Write a File'
 <h3 id="ReadFile">ReadFile</h3>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function ReadFile(FilePath)
 	-- HANDLE RELATIVE PATH OPTIONS.
 	FilePath = SKIN:MakePathAbsolute(FilePath)
@@ -27,7 +27,7 @@ function ReadFile(FilePath)
 
 	return Contents
 end
-{% endhighlight %}
+```
 </div>
 
 <h3 id="ReadFileLines">ReadFileLines</h3>
@@ -35,7 +35,7 @@ end
 <p>Alternatively, instead of getting the entire file as a single string, you may instead want to break it down into its individual lines.</p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function ReadFileLines(FilePath)
 	-- HANDLE RELATIVE PATH OPTIONS.
 	FilePath = SKIN:MakePathAbsolute(FilePath)
@@ -59,13 +59,13 @@ function ReadFileLines(FilePath)
 
 	return Contents
 end
-{% endhighlight %}
+```
 </div>
 
 <h3 id="WriteFile">WriteFile</h3>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function WriteFile(FilePath, Contents)
 	-- HANDLE RELATIVE PATH OPTIONS.
 	FilePath = SKIN:MakePathAbsolute(FilePath)
@@ -85,7 +85,7 @@ function WriteFile(FilePath, Contents)
 
 	return true
 end
-{% endhighlight %}
+```
 </div>
 
 <p>To merge a table of "lines" into a single string with each value on a separate line, use <code>String = table.concat(Table, '\n')</code> </p>

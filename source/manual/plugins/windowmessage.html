@@ -34,27 +34,27 @@ title: 'WindowMessage plugin'
 
 <p>The following example returns the name of the song that is playing in WinAmp.</p>
 
-{% highlight ini %}
+``` ini
 [MeasureWinamp]
 Measure=Plugin
 Plugin=WindowMessagePlugin
 WindowClass=Winamp v1.x
 Substitute="[Paused]":""," - Winamp":""
-{% endhighlight %}
+```
 
 <p>Check if Winamp is playing, or not. The following example returns <code>0</code> if it's not playing, <code>1</code> if it is playing, and <code>3</code> if it's paused.</p>
 
-{% highlight ini %}
+``` ini
 [MeasureWinampPlaying]
 Measure=Plugin
 Plugin=WindowMessagePlugin
 WindowClass=Winamp v1.x
 WindowMessage=1024 0 104
-{% endhighlight %}
+```
 
 <p>Show song progress. In the following example, the <code>[MeasureWinampDuration]</code> will return the current song position as a value between <code>0</code> and <code>1</code>. Then you can use the <a href="!meters/bar">Bar</a> meter to display the value.</p>
 
-{% highlight ini %}
+``` ini
 [MeasureWinampFull]
 Measure=Plugin
 Plugin=WindowMessagePlugin
@@ -70,4 +70,4 @@ WindowMessage=1024 0 105
 [MeasureWinampDuration]
 Measure=Calc
 Formula=(MeasureWinampCurr<=0)?0:(MeasureWinampCurr/(MeasureWinampFull*1000+1))
-{% endhighlight %}
+```

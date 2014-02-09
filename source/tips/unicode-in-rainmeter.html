@@ -119,7 +119,7 @@ A variant of the UTF-8 standard with a <a href="http://en.wikipedia.org/wiki/Byt
 <h3>Reading and writing in Lua example:</h3>
 
 <p>LuaUTF8.ini (not encoded in anything special, just ANSI):<br/>
-{% highlight ini %}
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -148,11 +148,11 @@ FontColor=255,255,255,255
 SolidColor=60,60,60,255
 Padding=10,10,10,10
 AntiAlias=1
-{% endhighlight %}
+```
 </p>
 
 <p>LuaUTF8.lua (encoded in UTF-16 LE):<br/>
-{% highlight lua %}
+``` lua
 function Initialize()
 
 end
@@ -198,13 +198,13 @@ function Write()
 	File:close()
 
 end
-{% endhighlight %}
+```
 </p>
 
 <p>TestIn.txt (encoded in UTF-8 with BOM):<br/>
-{% highlight text %}
+``` plain
 Испытание некоторых русский текст
-{% endhighlight %}
+```
 </p>
 
 

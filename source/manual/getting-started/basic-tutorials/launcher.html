@@ -15,13 +15,13 @@ title: 'Launcher'
 <h2>Building the Launcher skin</h2>
 
 <p>First, as we did in our earlier "hello world" skin, let's add the [Rainmeter] section to control the Update speed of the skin.</p>
-{% highlight ini %}
+``` ini
 [Rainmeter]
 Update=1000
-{% endhighlight %}
+```
 
 <p>Then, we can add our first <a href="!meters">meter</a> to the skin.</p>
-{% highlight ini %}
+``` ini
 [MeterLaunch1]
 Meter=String
 X=5
@@ -34,13 +34,13 @@ AntiAlias=1
 Text=Notepad
 SolidColor=0,0,0,1
 LeftMouseUpAction=["C:\Windows\System32\Notepad.exe"]
-{% endhighlight %}
+```
 
 <p>Note that the first two things we must do is create a <a href="!skins#Format">[SectionName]</a> for the meter, and tell Rainmeter what type of meter this is.</p>
-{% highlight ini %}
+``` ini
 [MeterLaunch1]
 Meter=String
-{% endhighlight %}
+```
 
 <p>This is a <a href="!meters/string">String meter</a>, one of the most commonly used meters. It is used to display some text on the screen. Formatting control, like the position, size, color and font face can all be set with a combination of <a href="!meters/general-options">General meter options</a> and the options specific to the <a href="!meters/string">String meter</a>. Let's look at some we have used here.</p>
 
@@ -77,7 +77,7 @@ Meter=String
 
 <p>Next, let's add another meter to launch another application. The format of the meter will be much the same as the earlier one, but we need to do some things to make sure the <b>position</b> of the meter is appropriate.</p>
 
-{% highlight ini %}
+``` ini
 [MeterLaunch2]
 Meter=String
 X=0r
@@ -90,7 +90,7 @@ SolidColor=0,0,0,1
 AntiAlias=1
 Text=Paint
 LeftMouseUpAction=["MSPaint.exe"]
-{% endhighlight %}
+```
 
 <p>The important changes here are in the <a href="!meters/general-options#XY">X and Y</a> options for the meter. Remember that <b>X</b> and <b>Y</b> set the position of a meter in the context of the overall skin. Note that we are using <b>relative positioning</b> to set the <b>X</b> option zero pixels relative to the left of the <b>previous meter</b>, (in effect the same <b>X</b> as before) and the <b>Y</b> option two pixels relative to the botton of the previous meter. We could also have specifically set the value of <b>X</b> and <b>Y</b> to some hard-coded value, but using relative positioning is often much easier when laying out a skin's meters.</p>
 
@@ -104,7 +104,7 @@ LeftMouseUpAction=["MSPaint.exe"]
 
 <p>Now we are going to shift gears a bit, and introduce a new meter type. What we want to do with the next meter is display an image, which we can click on to launch the application.</p>
 
-{% highlight ini %}
+``` ini
 [MeterLaunch3Image]
 Meter=Image
 ImageName=#@#Images\Calc.png
@@ -113,7 +113,7 @@ H=32
 X=0r
 Y=2R
 LeftMouseUpAction=["Calc.exe"]
-{% endhighlight %}
+```
 
 <p>We have created a new section that has the <a href="!meters">Meter</a> option set to <code>Meter=<a href="!meters/image">Image</a></code>. We are going to use an image file we will include with our skin, so we have a couple of things to do to set that up correctly.</p>
 
@@ -133,13 +133,13 @@ In Windows Explorer, create a new folder under <b>Skins\Tutorials\</b> called <b
 
 <p>Just as you did with the second String meter above, use relative positioning and the <a href="!meters/general-options#XY">X and Y</a> options to position the image below the previous meter.</p>
 
-{% highlight ini %}
+``` ini
 ImageName=#@#Images\Calc.png
 W=32
 H=32
 X=0r
 Y=2R
-{% endhighlight %}
+```
 
 <p>Then, just as with the String meters above, set the <b>LeftMouseUpAction</b> option to <code>LeftMouseUpAction=["Calc.exe"]</code> so that the Windows Calculator is launched when the image is clicked.</p>
 
@@ -151,7 +151,7 @@ Y=2R
 
 <p style="clear: both;">You could just use the image as is, but let's add a string label next to the image. For that, create a new String meter, much like the ones above.</p>
 
-{% highlight ini %}
+``` ini
 [MeterLaunch3Text]
 Meter=String
 X=0R
@@ -164,7 +164,7 @@ SolidColor=0,0,0,1
 AntiAlias=1
 Text=Calculator
 LeftMouseUpAction=["Calc.exe"]
-{% endhighlight %}
+```
 
 <p>Notice that we have used the <a href="!meters/general-options#XY">X and Y</a> options to set the position of the meter lined up just to the right of the previous meter (the Image meter), and six pixels below the top of it. That will align the meter more or less centered to the right of the image of the calculator. We add the same <b>LeftMouseAction</b> that the Image meter has, so you can click on either to launch the application. Just for fun, we also changed the <b>FontColor</b> of the string.</p>
 
@@ -180,7 +180,7 @@ LeftMouseUpAction=["Calc.exe"]
 
 <p>So, let's go back up to the top of the skin, just below the <b>[Rainmeter]</b> section, but before the first String meter <b>[MeterLaunch1]</b> and put in our new background Image meter.</p>
 
-{% highlight ini %}
+``` ini
 [Rainmeter]
 Update=1000
 
@@ -202,7 +202,7 @@ SolidColor=0,0,0,1
 AntiAlias=1
 Text=Notepad
 LeftMouseUpAction=["C:\Windows\System32\Notepad.exe"]
-{% endhighlight %}
+```
 
 <p>We have set a specific <a href="!meters/general-options#WH">W and H</a> (width and height) so the meter is large enough to hold all the others, and no <a href="!meters/general-options#XY">X and Y</a> options. This is so the meter will be at the far left and top of the overall skin. We then set <code>SolidColor=60,60,60,255</code>, which in the absence of any <code>ImageName</code> on an Image meter will simply draw a square or rectangle based on the size of the <b>W</b> and <b>H</b> options.</p>
 

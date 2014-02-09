@@ -8,7 +8,7 @@ title: 'Switch'
 
 <p>In normal Lua syntax comparing a single value several times is repetitive and long.</p>
 
-{% highlight lua %}
+``` lua
 Variable = 'Match1'
 
 if Variable:lower() == 'match1' then
@@ -18,11 +18,11 @@ elseif Variable:lower() == 'match2' then
 else
 	result = 'No match found.'
 end
-{% endhighlight %}
+```
 
 <p>Switch statements can make the code much shorter.</p>
 
-{% highlight lua %}
+``` lua
 Variable = 'Match1'
 
 Table = switch{
@@ -32,10 +32,10 @@ Table = switch{
 }
 
 result = Table:case(Variable:lower(), 'Example text.')
-{% endhighlight %}
+```
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 -- Emulates a switch statement.
 -- The functions in the switch table receive a table as a parameter.
 -- The first index of the table is the match itself.
@@ -54,5 +54,5 @@ function switch(tbl) -- Used to emulate a switch statement
 	end
 	return tbl
 end
-{% endhighlight %}
+```
 </div>

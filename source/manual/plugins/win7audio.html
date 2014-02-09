@@ -16,11 +16,11 @@ title: 'Win7Audio plugin'
 
 <h2>Usage:</h2>
 
-{% highlight ini %}
+``` ini
 [MeasureWin7Audio]
 Measure=Plugin
 Plugin=Win7AudioPlugin
-{% endhighlight %}
+```
 
 <h2>Bangs</h2>
 <p>To control the sound device or volume, use the <a href="!bangs#CommandMeasure">!CommandMeasure</a> bang. In the examples below <code>MeasureWin7Audio</code> is the section name for the Win7Audio measure. Your <a href="!skins#Format">section name</a> may differ.</p>
@@ -58,7 +58,7 @@ Plugin=Win7AudioPlugin
 
 <h2>Example</h2>
 
-{% highlight ini %}
+``` ini
 [Rainmeter]
 BackgroundMode=2
 SolidColor=0,0,0,150
@@ -187,4 +187,4 @@ StringAlign=Left
 AntiAlias=1
 Text=50%
 LeftMouseUpAction=!CommandMeasure "MeasureWin7Audio" "SetVolume 50"
-{% endhighlight %}
+```

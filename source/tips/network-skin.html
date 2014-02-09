@@ -31,11 +31,11 @@ To find the correct <code>Interface</code> option for your system, you should do
 </ul>
 
 <p>That debug version of the log file will include a list of all network interfaces with the number Rainmeter will use. In my case, my physical (Hardware=Yes) NIC interface is at:<br/>
-{% highlight text %}
+``` plain
 DBUG (00:00:00.031) : 8: Realtek PCIe GBE Family Controller
 DBUG (00:00:00.031) :   Alias: Ethernet
 DBUG (00:00:00.031) :   Type=Ethernet(6), Hardware=Yes, Filter=No
-{% endhighlight %}
+```
 </p>
 
 <p>So I use "8" in Interface. The key is generally using the one that is <b>Hardware=Yes</b>.</p>
@@ -97,7 +97,7 @@ When done:
 
 <p>I discovered that my Interface should be set to "8", my maximum download speed from SpeedTest is "33.12" and my maximum upload speed is "11.71"  I want to smooth out the traffic by averaging the results every "5" skin updates:</p>
 
-{% highlight ini %}
+``` ini
 [MeasureNetIn]
 Measure=NetIn
 Interface=8
@@ -111,7 +111,7 @@ Interface=8
 MinValue=0
 MaxValue=(11.71 * 1048576)
 AverageSize=5
-{% endhighlight %}
+```
 
 <h3>Sample Skin:</h3>
 
@@ -127,7 +127,7 @@ AverageSize=5
 <p>I have put some things in <code>[Variables]</code> to make them easy to change. Be SURE to change the values for your maximum download and upload bandwidth. Feel free to either use this skin as is, or tear it apart to make it your own.</p>
 
 <a href="!img/network-skin/NetTraffic.rmskin" class="download"></a>
-{% highlight ini %}
+``` ini
 [Rainmeter]
 Update=1000
 AccurateText=1
@@ -332,7 +332,7 @@ H=2
 BarColor=104,199,128,255
 SolidColor=60,60,60,255
 BarOrientation=Horizontal
-{% endhighlight %}
+```
 
 <div class="exampleprev">
 	<a rel="lightbox" href="!img/network-skin/NetTraffic.png"><img src="!img/network-skin/NetTraffic.png"/></a>

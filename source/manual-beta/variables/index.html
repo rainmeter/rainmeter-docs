@@ -10,17 +10,17 @@ title: 'Variables'
 
 <p>Each skin may have a special <a href="!skins#Format">section</a> called <b>[Variables]</b>. Each option in [Variables] defines a variable name. Unlike most other <a href="!skins/option-types">option names</a> in Rainmeter, variable names are not limited to a specific list. They can have any valid name, as long as they do not conflict with Rainmeter's <a href="#BuiltInVariables">built-in variables</a>.</p>
 
-{% highlight ini %}
+``` ini
 [Variables]
 Foo=This is a string!
 Bar=So is this!
-{% endhighlight %}
+```
 
 <h3 id="Using">Using Variables</h3>
 
 <p>Variable names are referenced in other options by surrounding the name with pound signs (<code>#</code>), as in <code>#Foo#</code>. When the skin is loaded, Rainmeter replaces the variable reference with the corresponding string. Variables are inserted "literally," which means they can be mixed with other variables or regular text.</p>
 
-{% highlight ini %}
+``` ini
 [MeterFoo]
 Meter=String
 Text=The value of my "Foo" variable is: #Foo#
@@ -30,15 +30,15 @@ FontColor=#Red#,#Green#,#Blue#,#Alpha#
 Meter=String
 Text=The value of my "Bar" variable is: #Bar#
 FontColor=#Red#,#Green#,#Blue#,#Alpha#
-{% endhighlight %}
+```
 
 <p>Variables can also be used to define other variables:</p>
 
-{% highlight ini %}
+``` ini
 [Variables]
 Foo=rainmeter
 Bar=http://www.#Foo#.net/
-{% endhighlight %}
+```
 
 <h3 id="Changing">Changing Variables</h3>
 

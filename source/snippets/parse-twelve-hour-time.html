@@ -7,7 +7,7 @@ title: 'Parse 12-Hour Time'
 <p><code>ParseTwelveHourTime(Hour, Meridiem)</code></p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function ParseTwelveHourTime(Hour, Meridiem)
 	if (Meridiem == 'AM') and (Hour == 12) then
 		Hour = 0
@@ -16,5 +16,5 @@ function ParseTwelveHourTime(Hour, Meridiem)
 	end
 	return Hour
 end
-{% endhighlight %}
+```
 </div>

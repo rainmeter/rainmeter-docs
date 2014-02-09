@@ -23,7 +23,7 @@ Use this utility to convert your .gif file to individual images. The images can 
 <p><b>Step 2: Create a skin like this to display the images one after the other to create an animation.</b></p>
 
 <a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleAnimatedGif_1.0.rmskin" class="download"></a>
-{% highlight ini %}
+``` ini
 ;=================================================
 ; Rainmeter configuration file
 ; Updated October 4, 2012
@@ -52,7 +52,7 @@ Formula=Counter % 12
 Meter=Image
 ImageName=#@#ImagesFrames\Frame[ImageNumberCalc].png
 DynamicVariables=1
-{% endhighlight %}
+```
 
 <h3>Method Two: Converting a .GIF to a Multiple Frame "Bitmap" Image</h3>
 <p><em>Advantages: Less hard drive space, a bit less CPU intensive<br>
@@ -69,7 +69,7 @@ You should probably get the latest "Portable" "Static" version on the list at th
 <p><b>Step 2: Create a skin like this to display the bitmap frames one after the other to create an animation.</b></p>
 
 <a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleAnimatedGif_1.0.rmskin" class="download"></a>
-{% highlight ini %}
+``` ini
 ;=================================================
 ; Rainmeter configuration file
 ; Updated October 4, 2012
@@ -102,4 +102,4 @@ MeasureName=MeasureAnimation
 BitmapImage=#@#ImagesBitmap\shark_bitmap.png
 BitmapFrames=12
 BitmapExtend=1
-{% endhighlight %}
+```

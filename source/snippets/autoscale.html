@@ -5,7 +5,7 @@ title: 'AutoScale'
 <p>Automatically scales a number of bytes with an optional number of decimal places. Returns a second string value of the scale suffix. <a href="http://www.t1shopper.com/tools/calculate/">More information</a>.</p>
 
 <div class="noscroll">
-{% highlight lua %}
+``` lua
 function AutoScale(num, idp)
 	assert(tonumber(num), 'AutoScale expects a number.')
 	local scales = {'B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'}
@@ -33,5 +33,5 @@ function Round(num, idp)
 		return math.ceil(num * mult - 0.5) / mult
 	end
 end
-{% endhighlight %}
+```
 </div>	

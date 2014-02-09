@@ -6,7 +6,7 @@ title: 'Launching Windows Special Folders'
 <p>Windows has many "special folders" like "My Computer" and "Recycle Bin" that are not part of the normal folder system you can specify with a "path" on an !Execute statement in Rainmeter, or launch differently then they appear in Explorer. </p>
 <p>These folders can be accessed by using the Windows Shell command and the CLSID identifier codes that Windows assigns to these folders in the Windows Registry. If you know the codes, you can launch these with ease.</p>
 
-{% highlight text %}
+``` plain
 Action Center								Shell:::{BB64F8A7-BEE7-4E1A-AB8D-7D8273F7FDB6}
 Add Network Location						Shell:::{D4480A50-BA28-11d1-8E75-00C04FA31A86}
 Administrative Tools						Shell:::{D20EA4E1-3957-11d2-A40B-0C5020524153}
@@ -114,9 +114,9 @@ Windows Mobility Center						Shell:::{5ea4f148-308c-46d7-98a9-49041b1dd468}
 Windows SideShow							Shell:::{E95A4861-D57A-4be1-AD0F-35267E261739}
 Windows To Go								Shell:::{8E0C279D-0BD1-43C3-9EBD-31C3DC5B8A77}
 Windows Update								Shell:::{36eef7db-88ad-4e81-ad49-0e313f0c35f8}
-{% endhighlight %}
+```
 
-{% highlight ini %}
+``` ini
 [MeterMyComputer]
 Meter=IMAGE
 ImageName=MyComputer.png
@@ -125,7 +125,7 @@ Y=0
 W=38
 H=38
 LeftMouseDownAction=[Shell:::{20D04FE0-3AEA-1069-A2D8-08002B30309D}]
-{% endhighlight %}
+```
 
 <p>Another way to access certain special Windows folders and functions is by knowing and using some commands Windows supports:</p>
 <p><b>General Shortcut Commands:</b></p>
