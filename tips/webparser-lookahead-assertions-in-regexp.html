@@ -2,8 +2,6 @@
 layout: tips
 title: 'WebParser: Lookahead Assertions in RegExp'
 ---
-<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
-
 <p>Many times you need to parse an RSS feed or other web site, and can't be sure beforehand how many results for a particular search might be there. You might search for five occurrences of something when there are only four, and the entire regular expression will fail and no results will be returned to the WebParser measure(s).</p>
 <p>This can be solved by using what is known in regular expressions as a "Lookahead Assertion". What this does is evaluate an expression you define that says in effect "do this search if some pattern is found, otherwise continue the regular expression without failing".</p>
 <p>The best way to explain this is probably to give an example with an explanation of what it is doing.</p>

@@ -2,8 +2,6 @@
 layout: tips
 title: 'WebParser: Relative Paths'
 ---
-<!--{% comment %}--><base href="../"><script src="js/_local.js"></script><!--{% endcomment %}-->
-
 <p>There is an issue with retrieving and displaying images from web sites when the source HTML has them referred to as a "relative path" to the image.</p>
 <p>WebParser can download and display images by doing a WebParser Measure which gets the full URL and name of the image, and setting "Download=1" on the Measure. Then a Meter using Meter=Image with a MeasureName=xxxx referring to the Measure which downloaded the image will display the downloaded image.</p>
 
