@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>{% if page.title %}{{ page.title }} - {% endif %}Rainmeter {{ page.base_title }}</title>
-	<link href="/css/main.css?{{ site.css_version }}" rel="stylesheet">
-	<link rel="shortcut icon" href="http://rainmeter.net/favicon.ico">
+	<title><% if (page.title) { %><%= page.title %> - <% } %>Rainmeter <%= base_title %></title>
+	<link href="<%= rel(url, '/css/main.css') %>" rel="stylesheet">
+	<link rel="shortcut icon" href="//rainmeter.net/favicon.ico">
 	<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script><![endif]-->
 </head>
 <body>
 	<div id="wrapper">
 		<div id="top">
 			<div class="container">
-				<a id="logo" href="http://rainmeter.net/"></a>
+				<a id="logo" href="//rainmeter.net/"></a>
 				<nav id="nav">
 					<ul>
 					<li><a href="//rainmeter.net">Home</a>
@@ -26,11 +26,11 @@
 
 		<div class="container">
 			<div class="row">
-				{% if page.index %}
+				<% if (page.index) { %>
 				<div id="content" class="index">
-				{% else %}
+				<% } else { %>
 				<div id="side-content">
-					<h1 id="category"><a href="/{{ page.base_name }}">{{ page.base_title }}</a></h1>
+					<h1 id="category"><a href="/<%= base_name %>"><%= base_title %></a></h1>
 
 					<form id="search-form" method="get" action="http://www.google.com/search">
 						<input name="sitesearch" value="docs.rainmeter.net" type="hidden">
@@ -38,13 +38,13 @@
 					</form>
 
 					<nav id="tree">
-						{{ page.base_nav }}
+						<%- base_nav.replace(/<(.*?)(href|src)="!(.*?)"/g, '<$1$2="/' + base_name + '/$3"') %>
 					</nav>
 				</div>
 
 				<div id="content">
-				{% endif %}
-					{{ content }}
+				<% } %>
+					<%- body.replace(/<(.*?)(href|src)="!(.*?)"/g, '<$1$2="/' + base_name + '/$3"') %>
 				</div>
 			</div>
 		</div>
@@ -57,7 +57,7 @@
 		</footer>
 	</div>
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	<script src="/js/main.js?{{ site.js_version }}"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="<%= rel(url, '/js/main.js') %>"></script>
 </body>
 </html>

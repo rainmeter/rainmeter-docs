@@ -1,7 +1,73 @@
-pygments: true
-exclude: [/css, /js, README.md]
+# Hexo Configuration
+## Docs: http://zespia.tw/hexo/docs/configuration.html
 
-# Increment this if you e.g. add new CSS to force the browser to fetch the
-# files again.
-css_version: 1
-js_version: 1
+# Site
+title: Rainmeter Docs
+
+# URL
+url: ''
+root: /
+permalink: :year/:month/:day/:title/
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+
+# Directory
+source_dir: source
+public_dir: www
+
+# Writing
+new_post_name: :title.md
+default_layout: post
+auto_spacing: false
+titlecase: false
+external_link: false
+max_open_file: 100
+multi_thread: true
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+highlight:
+  enable: true
+  line_number: false
+  tab_replace:
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Archives
+## 2: Enable pagination
+## 1: Disable pagination
+## 0: Fully Disable
+archive: 0
+category: 0
+tag: 0
+
+# Server
+## Hexo uses Connect as a server
+## You can customize the logger format as defined in
+## http://www.senchalabs.org/connect/logger.html
+port: 4000
+logger: false
+logger_format:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: MMM D YYYY
+time_format: H:mm:ss
+
+# Extensions
+## Plugins: https://github.com/tommy351/hexo/wiki/Plugins
+## Themes: https://github.com/tommy351/hexo/wiki/Themes
+theme: rainmeter-docs
+exclude_generator:
+
+# Deployment
+## Docs: http://zespia.tw/hexo/docs/deployment.html
+deploy:
+  type:

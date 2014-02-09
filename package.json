@@ -1,0 +1,10 @@
+{
+  "name": "hexo-rainmeter-docs",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "uglify-js": "2.3.x",
+    "css-condense": "0.0.6",
+    "async": "0.2.x"
+  }
+}

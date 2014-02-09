@@ -1,5 +1,4 @@
 ---
-layout: base
 base_name: 'developers'
 base_title: 'Developers'
 base_nav: |
@@ -19,8 +18,4 @@ base_nav: |
   <li><a href="/history">Version History</a>
   </ul>
 ---
-
-<header>
-	<h1>{{ page.title }}</h1>
-</header>
-<article>{{ content }}</article>
+<%- partial('_partial/article') %>
