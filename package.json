@@ -1,6 +1,6 @@
 {
-  "name": "rainmeter-docs",
-  "version": "1.0.0",
+  "name": "hexo-rainmeter-docs",
+  "version": "2.4.5",
   "private": true,
   "dependencies": {
     "uglify-js": "2.3.x",
