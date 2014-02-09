@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "hexo": "2.4.5",
     "uglify-js": "2.3.x",
     "css-condense": "0.0.6",
     "async": "0.2.x"
