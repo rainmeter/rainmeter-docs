@@ -14,7 +14,7 @@ title: 'IfConditions'
 <ul>
 	<li>The formula is not based on the value of the measure the IfCondition is in, but can reference any measures, variables or section variables.</li>
 	<li>There can be an IfTrueAction, IfFalseAction or both for each IfCondition, so you can take appropriate actions not only when the result is "true", but also when it is "false".</li> 
-	<li>The syntax allows for a single IfCondition to embed logical AND <code>&&</code> and OR <code>||</code> comparisons in the formula.  Unlike IfEqualValue for instance, which allows for a single comparison, you could use <code>IfCondition=(MeasureName = 5) || (MeasureName = 10)</code>, to check if the value of MeasureName is "5" OR "10".  You can also use the full range of logical operators, so rather than being limited to "equal", "above" or "below", you can use any of <code><></code> <code>=</code> <code><</code> <code>></code> <code><=</code> <code>>=</code> <code>&&</code> <code>||</code>.</li>
+	<li>The syntax allows for a single IfCondition to embed logical AND <code>&&</code> and OR <code>||</code> comparisons in the formula.  Unlike IfEqualValue for instance, which allows for a single comparison, you could use <code>IfCondition=(MeasureName = 5) || (MeasureName = 10)</code>, to check if the value of MeasureName is "5" OR "10".  You can also use the full range of logical operators, so rather than being limited to "equal", "above" or "below", you can use any of <code>&lt;&gt;</code> <code>=</code> <code>&lt;</code> <code>&gt;</code> <code>&lt;=</code> <code>&gt;=</code> <code>&&</code> <code>||</code>.</li>
 </ul>
 
 <h2>Options</h2>
@@ -23,9 +23,9 @@ title: 'IfConditions'
 	<dd>
 		<p>A mathematical formula, which when evaluated will result in "true" or "false".</p>
 		<p><b>Examples:</b></p>
-		<p><code>IfCondition=MeasureName >= 10</code></p>
+		<p><code>IfCondition=MeasureName &gt;= 10</code></p>
 		<p><code>IfCondition=MeasureOne = (MeasureTwo + #VarName#) / 2</code></p>
-		<p><code>IfCondition=(MeasureName > 5) && (MeasureName < 10)</code></p>
+		<p><code>IfCondition=(MeasureName &gt; 5) && (MeasureName &lt; 10)</code></p>
 		<p><code>IfCondition=(MeasureName = 25) || (MeasureName = 50) || (MeasureName = 75)</code></p>
 		<p><b>Note:</b> The comparison on either side of logical AND <code>&&</code> and OR <code>||</code> operators must be enclosed in (parentheses).</p>
 	</dd>
