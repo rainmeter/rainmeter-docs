@@ -1,34 +1,64 @@
+// Helpers based on https://github.com/cferdinandi/buoy.
+function hasClass(elem, className) {
+    return new RegExp('(^|\\s)' + className + '(\\s|$)').test(elem.className);
+}
+
+function addClass(elem, className) {
+    if (!hasClass(elem, className)) {
+        elem.className += (elem.className ? ' ' : '') + className;
+    }
+}
+
+function removeClass(elem, className) {
+    if (hasClass(elem, className)) {
+        elem.className = elem.className.replace(new RegExp('(^|\\s)*' + className + '(\\s|$)*', 'g'), '');
+    }
+}
+
+function toggleClass(elem, className) {
+    if (hasClass(elem, className)) {
+        removeClass(elem, className);
+    } else {
+        addClass(elem, className);
+    }
+}
+
 // Spice up the side nav.
 (function() {
-	var $nav = $('#tree');
-	if ($nav) {
+	var nav = document.getElementById('tree');
+	if (nav) {
 		var path = location.pathname.replace(/\/$/, '');
-		$('li', $nav).each(function() {
-			var $li = $(this);
-			$li.children('a').each(function() {
-				var $a = $(this);
-				if (path == this.pathname) {
-					$a.addClass('active');
-					return false;
-				} else if (path.indexOf(this.pathname) == -1) {
-					$a.next().addClass('hide');
+		var lis = nav.getElementsByTagName('li');
+		for (var i = 0, li; li = lis[i]; ++i) {
+			var a = li.firstChild;
+			if (!a) continue;
+
+			var ul = li.children[1];
+			if (path == a.pathname) {
+				addClass(a, 'active');
+			} else if (path.indexOf(a.pathname) != 0) {
+				if (ul) {
+					addClass(ul, 'hide');
 				}
-			});
+			}
 
-			$li.children('ul').after(function() {
-				var $ul = $(this);
-				var $span = $(document.createElement('span')).addClass('expander');
-
-				if ($ul.hasClass('hide')) {
-					$span.addClass('open');
+			if (ul) {
+				var span = document.createElement('span');
+				addClass(span, 'expander');
+				if (hasClass(ul, 'hide')) {
+					addClass(span, 'open');
 				}
 
-				return $span.click(function() {
-					$ul.toggleClass('hide');
-					$(this).toggleClass('open');
-				});
-			});
-		});
+				span.onclick = (function(ul) {
+					return function() {
+						toggleClass(ul, 'hide');
+						toggleClass(this, 'open');
+					};
+				})(ul);
+
+				ul.parentNode.appendChild(span);
+			}
+		}
 	}
 })();
 
@@ -36,15 +66,16 @@
 (function() {
 	var tags = ['dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 	for (i = 0; tag = tags[i]; ++i) {
-		$(tag).each(function() {
-			if (this.id) {
-				$(this).click(function(e) {
+		var elems = document.getElementsByTagName(tag);
+		for (var j = 0, elem; elem = elems[j]; ++j) {
+			if (elem.id) {
+				elem.onclick = function(e) {
 					if (e.ctrlKey) {
 						window.location.hash = this.id;
 					}
-				});
+				};
 			}
-		});
+		}
 	}
 })();
 
