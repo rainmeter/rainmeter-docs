@@ -823,30 +823,40 @@ pre .chunk {
 }
 
 /*
-** Slimbox
+** Lightbox
 */
-#lbOverlay {
-	position:fixed;
-	z-index:9999;
-	left:0;
-	top:0;
-	width:100%;
-	height:100%;
-	background-color:#000;
+
+.lightbox {
 	cursor:pointer;
 }
 
-#lbCenter {
-	position:absolute;
-	z-index:9999;
-	overflow:hidden;
-	background-color:#fff;
+@keyframes kf-fade-in {
+	from { opacity:0; }
+	to { opacity:1; }
 }
 
-#lbImage {
-	position:absolute;
-	left:0;
-	top:0;
-	border:10px solid #fff;
-	background-repeat:no-repeat;
+@-webkit-keyframes kf-fade-in {
+	from { opacity:0; }
+	to { opacity:1; }
+}
+
+#lightbox-wrap {
+  display:none;
+  position:fixed;
+  z-index:10000;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background:black;
+  background:rgba(0, 0, 0, 0.5);
+}
+
+#lightbox-wrap > div {
+	min-height:200px;
+}
+
+#lightbox-wrap > img {
+	border:8px solid #eee;
+	box-shadow:0 3px 3px rgba(0, 0, 0, 0.5);
 }

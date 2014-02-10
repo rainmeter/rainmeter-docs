@@ -103,181 +103,47 @@
 	}
 })();
 
-// Based on Slimbox v2.04, (c) 2007-2010 Christophe Beyls <http://www.digitalia.be>, MIT-style license
 (function() {
-	// Global variables, accessible to Slimbox only
-	var win = $(window), options, images, activeImage = -1, activeURL, compatibleOverlay, middle, centerWidth, centerHeight,
-		ie6 = !window.XMLHttpRequest, hiddenElements = [], documentElement = document.documentElement,
-
-	// Preload image
-	preload = {},
-
-	// DOM elements
-	overlay, center, image, sizer;
-
-	$(function() {
-		// Append the Slimbox HTML code at the bottom of the document
-		$("body").append(
-			$([
-				overlay = $('<div id="lbOverlay" />')[0],
-				center = $('<div id="lbCenter" />')[0]
-			]).click(close).css("display", "none")
-		);
-
-		image = $('<div id="lbImage" />').appendTo(center).append(
-			sizer = $('<div style="position: relative;" />')[0]
-		)[0];
-	});
-
-	// Open Slimbox with the specified parameters
-	$.slimbox = function(_images, startImage, _options) {
-		options = $.extend({
-			overlayOpacity: 0.6,
-			overlayFadeDuration: 200,
-			resizeDuration: 200,
-			resizeEasing: "swing",
-			initialWidth: 250,
-			initialHeight: 250,
-			imageFadeDuration: 200,	
-			closeKeys: [27 /* ESC */, 88 /* x */, 67 /* c */],
-		}, _options);
-
-		// The function is called for a single image, with URL and Title as first two arguments
-		if (typeof _images == "string") {
-			_images = [[_images, startImage]];
-			startImage = 0;
-		}
-
-		middle = win.scrollTop() + (win.height() / 2);
-		centerWidth = options.initialWidth;
-		centerHeight = options.initialHeight;
-		$(center).css({top: Math.max(0, middle - (centerHeight / 2)), width: centerWidth, height: centerHeight, marginLeft: -centerWidth/2}).show();
-		compatibleOverlay = ie6 || (overlay.currentStyle && (overlay.currentStyle.position != "fixed"));
-		if (compatibleOverlay) overlay.style.position = "absolute";
-		$(overlay).css("opacity", options.overlayOpacity).fadeIn(options.overlayFadeDuration);
-		position();
-		setup(1);
-
-		images = _images;
-		return changeImage(startImage);
-	};
-
-	$.fn.slimbox = function(_options, linkMapper, linksFilter) {
-		linkMapper = linkMapper || function(el) {
-			return [el.href, el.title];
+	var elems = document.getElementsByClassName('lightbox');
+	if (elems.length > 0) {
+		document.body.innerHTML += '<div id="lightbox-wrap"></div>'
+		var wrap = document.body.lastChild;
+		wrap.onclick = function() {
+			wrap.style.animation = '';
+			wrap.style.display = 'none';
 		};
 
-		linksFilter = linksFilter || function() {
-			return true;
-		};
+		for (var i = 0, elem; elem = elems[i]; ++i) {
+			elem.onclick = function() {
+				// Switch to the image in unsupported browsers.
+				if (wrap.style.animation === undefined &&
+					wrap.style.webkitAnimation === undefined) {
+					location = this.src;
+					return;
+				}
 
-		var links = this;
+				var img = new Image();
+				if (wrap.firstChild) wrap.removeChild(wrap.firstChild);
+				wrap.appendChild(img);
 
-		return links.unbind("click").click(function() {
-			// Build the list of images that will be displayed
-			var link = this, startIndex = 0, filteredLinks, i = 0, length;
-			filteredLinks = $.grep(links, function(el, i) {
-				return linksFilter.call(link, el, i);
-			});
+				img.onload = function() {
+					// Switch to the image if it's too large.
+					if (this.width > window.innerWidth || this.height > window.innerHeight) {
+						location = this.src;
+						return;
+					}
 
-			// We cannot use jQuery.map() because it flattens the returned array
-			for (length = filteredLinks.length; i < length; ++i) {
-				if (filteredLinks[i] == link) startIndex = i;
-				filteredLinks[i] = linkMapper(filteredLinks[i], i);
-			}
+					// Center image.
+					img.width = this.width;
+					img.height = this.height;
+					img.style.marginTop = ((window.innerHeight / 2) - (this.height / 2)) + 'px';
 
-			return $.slimbox(filteredLinks, startIndex, _options);
-		});
-	};
-
-	function position() {
-		var l = win.scrollLeft(), w = win.width();
-		$(center).css("left", l + (w / 2));
-		if (compatibleOverlay) $(overlay).css({left: l, top: win.scrollTop(), width: w, height: win.height()});
-	}
-
-	function setup(open) {
-		if (open) {
-			$("object").add(ie6 ? "select" : "embed").each(function(index, el) {
-				hiddenElements[index] = [el, el.style.visibility];
-				el.style.visibility = "hidden";
-			});
-		} else {
-			$.each(hiddenElements, function(index, el) {
-				el[0].style.visibility = el[1];
-			});
-			hiddenElements = [];
+					wrap.style.display = 'block';
+					wrap.style.outline = 'none';
+					wrap.style.webkitAnimation = wrap.style.animation = 'kf-fade-in 0.4s';
+				};
+				img.src = this.src;
+			};
 		}
-		var fn = open ? "bind" : "unbind";
-		win[fn]("scroll resize", position);
-		$(document)[fn]("keydown", keyDown);
-	}
-
-	function keyDown(event) {
-		var code = event.keyCode, fn = $.inArray;
-		// Prevent default keyboard action (like navigating inside the page)
-		return (fn(code, options.closeKeys) >= 0) ? close() : false;
-	}
-
-	function changeImage(imageIndex) {
-		if (imageIndex >= 0) {
-			activeImage = imageIndex;
-			activeURL = images[activeImage][0];
-
-			stop();
-
-			preload = new Image();
-			preload.onload = animateBox;
-			preload.src = activeURL;
-		}
-
-		return false;
-	}
-
-	function animateBox() {
-		$(image).css({backgroundImage: "url(" + activeURL + ")", visibility: "hidden", display: ""});
-		$(sizer).width(preload.width);
-		$(sizer).height(preload.height);
-
-		centerWidth = image.offsetWidth;
-		centerHeight = image.offsetHeight;
-		var top = Math.max(0, middle - (centerHeight / 2));
-		if (center.offsetHeight != centerHeight) {
-			$(center).animate({height: centerHeight, top: top}, options.resizeDuration, options.resizeEasing);
-		}
-		if (center.offsetWidth != centerWidth) {
-			$(center).animate({width: centerWidth, marginLeft: -centerWidth/2}, options.resizeDuration, options.resizeEasing);
-		}
-		$(center).queue(function() {
-			$(image).css({display: "none", visibility: "", opacity: ""}).fadeIn(options.imageFadeDuration);
-		});
-	}
-
-	function stop() {
-		preload.onload = null;
-		preload.src = activeURL;
-		$([center, image]).stop(true);
-		$(image).hide();
-	}
-
-	function close() {
-		if (activeImage >= 0) {
-			stop();
-			activeImage = -1;
-			$(center).hide();
-			$(overlay).stop().fadeOut(options.overlayFadeDuration, setup);
-		}
-
-		return false;
-	}
-})();
-
-(function() {
-	if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
-		jQuery(function($) {
-			$("a[rel^='lightbox']").slimbox({}, null, function(el) {
-				return (this == el) || ((this.rel.length > 8) && (this.rel == el.rel));
-			});
-		});
 	}
 })();
