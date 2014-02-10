@@ -34,7 +34,7 @@ function toggleClass(elem, className) {
 			if (!a) continue;
 
 			var ul = li.children[1];
-			if (path == a.pathname) {
+			if (path == a.pathname && !a.hash) {
 				addClass(a, 'active');
 			} else if (path.indexOf(a.pathname) != 0) {
 				if (ul) {
