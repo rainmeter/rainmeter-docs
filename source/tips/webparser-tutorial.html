@@ -94,7 +94,7 @@ RegExp="(?siU)<h2>IP Address to locate:<input type="text" name="ipaddress" size=
 
 <p>What we are telling WebParser is:</p>
 <p><b>UpdateRate=1800</b> - We want to check the website at a rate 1800 times the value in the "Update=" parameter in the "Rainmeter" section. As this defaults to "1000" or once every 1000 milliseconds (1 second) we will be running WebParser every 1800 seconds or 30 minutes. This is plenty often, you could even check every hour or more as your IP information doesn't change much and you don't want to "spam" the website with requests. You may well find yourself blocked...</p>
-<p><b>Url="http://www.geobytes.com/IpLocator.htm?GetLocation"</b> - The URL to the website. It can be set as a variable in the "VARIABLES" section to make it easier to find and change if you want.>/p>
+<p><b>Url="http://www.geobytes.com/IpLocator.htm?GetLocation"</b> - The URL to the website. It can be set as a variable in the "VARIABLES" section to make it easier to find and change if you want.</p>
 <p><b>RegExp="(?siU)&lt;h2&gt;IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value="(.*)"&gt;"</b> - Ah, the meat and potatoes...</p>
 <p>You are telling RegExp to:</p>
 <p>Use the (?siU) command parameters, (described earlier) search for IP Address to locate:&lt;input type="text" name="ipaddress" size="15" value=" and capture to a StringIndex everything until it sees "&gt; where it will stop.</p>
