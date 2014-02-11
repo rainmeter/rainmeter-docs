@@ -7,7 +7,7 @@ title: 'RSS Feed Tutorial'
 
 <p>RSS and Atom feeds follow certain patterns that make them fairly easy to parse. While there are differences between the RSS and Atom standards, which we will touch on a bit later, let's use a simple RSS output to outline how they are laid out.</p>
 
-``` plain
+``` html
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
 <channel>
@@ -35,7 +35,7 @@ title: 'RSS Feed Tutorial'
 
 <p>For our example of an RSS feed, let's use the feed from the site <a href="http://www.bbc.co.uk/news/">http://www.bbc.co.uk/news/</a>. The RSS feed is found at the URL <a href="http://feeds.bbci.co.uk/news/rss.xml">http://feeds.bbci.co.uk/news/rss.xml</a>. If we go to that URL in our web browser, we get HTML output that looks like this:</p>
 
-``` plain
+``` html
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet title="XSL_formatting" type="text/xsl" href="/shared/bsp/xsl/rss/nolsol.xsl"?>
 <rss xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">  
@@ -346,7 +346,7 @@ StringIndex=6
 
 <p>Adding another item is as simple as extending our <code>RegExp</code> option to get the next &lt;item&gt; into the next three StringIndex numbers.</p>
 
-``` plain
+```
 (?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 ```
 
@@ -374,7 +374,7 @@ StringIndex=9
 
 <p>Adding a third item is just more of the same.</p>
 
-``` plain
+```
 (?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 ```
 
@@ -448,7 +448,7 @@ Substitute="<![CDATA[":"","]]>":"","![CDATA[":"","]]":""
 
 <p>Sometimes a feed will be formatted in such a way that there are leading spaces or tabs in front of a value. An example would be:</p>
 
-``` plain
+``` html
 <item>
 	<title>
 		This is an item title
@@ -728,7 +728,7 @@ DynamicVariables=1
 
 <p>The instructions and examples above should work for virtually any RSS feed site. However, if the site you are parsing is based on the Atom feed standard, there are some differences we need to take into account. Here is a sample of an Atom feed:</p>
 
-``` plain
+``` html
 <?xml version="1.0" encoding="utf-8"?>
  
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -761,7 +761,7 @@ DynamicVariables=1
 <p>As you can see, there are differences in both the names of the "tags" used to identify data values, and some differences in formatting within the tags themselves.</p>
 
 <p>RSS</p>
-``` plain
+``` html
 <item>
 <title>
 <link>
@@ -769,7 +769,7 @@ DynamicVariables=1
 ```
 
 <p>Atom</p>
-``` plain
+``` html
 <entry>
 <title type="SomeValue">
 <link href="SomeSite.com"/>
@@ -780,7 +780,7 @@ DynamicVariables=1
 
 <p>Here is an example output from the Atom feed on the Rainmeter forums:</p>
 
-``` plain
+``` html
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-gb">
 <link rel="self" type="application/atom+xml" href="http://rainmeter.net/forum/feed.php" />
