@@ -148,13 +148,6 @@ function toggleClass(elem, className) {
 
 		for (var i = 0, elem; elem = elems[i]; ++i) {
 			elem.onclick = function() {
-				// Switch to the image in unsupported browsers.
-				if (wrap.style.animation === undefined &&
-					wrap.style.webkitAnimation === undefined) {
-					location = this.src;
-					return;
-				}
-
 				var img = new Image();
 				if (wrap.firstChild) wrap.removeChild(wrap.firstChild);
 				wrap.appendChild(img);
