@@ -28,7 +28,6 @@ function toggleClass(elem, className) {
 	var nav = document.getElementById('tree');
 	if (nav) {
 		var path = location.pathname.replace(/\/$/, '').replace(/^\//, '');
-		console.log('path1:' + path);
 		var lis = nav.getElementsByTagName('li');
 		for (var i = 0, li; li = lis[i]; ++i) {
 			var a = li.firstChild;
