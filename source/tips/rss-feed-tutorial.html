@@ -346,8 +346,8 @@ StringIndex=6
 
 <p>Adding another item is as simple as extending our <code>RegExp</code> option to get the next &lt;item&gt; into the next three StringIndex numbers.</p>
 
-```
-(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
+``` ini
+RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 ```
 
 <p>And create some more child WebParser measures for those values.</p>
@@ -374,8 +374,8 @@ StringIndex=9
 
 <p>Adding a third item is just more of the same.</p>
 
-```
-(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
+``` ini
+RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 ```
 
 <h3>That RegExp is getting pretty long...</h3>
