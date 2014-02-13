@@ -27,16 +27,18 @@ function toggleClass(elem, className) {
 (function() {
 	var nav = document.getElementById('tree');
 	if (nav) {
-		var path = location.pathname.replace(/\/$/, '');
+		var path = location.pathname.replace(/\/$/, '').replace(/^\//, '');
+		console.log('path1:' + path);
 		var lis = nav.getElementsByTagName('li');
 		for (var i = 0, li; li = lis[i]; ++i) {
 			var a = li.firstChild;
 			if (!a) continue;
 
 			var ul = li.children[1];
-			if (path == a.pathname && !a.hash) {
+			var aPath = a.pathname.replace(/^\//, '');
+			if (path == aPath && !a.hash) {
 				addClass(a, 'active');
-			} else if (path.indexOf(a.pathname) != 0) {
+			} else if (path.indexOf(aPath) != 0) {
 				if (ul) {
 					addClass(ul, 'hide');
 				}
