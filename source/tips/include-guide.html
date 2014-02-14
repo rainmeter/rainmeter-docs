@@ -36,7 +36,7 @@ Theme=SomeTheme
 <h3>Understanding @include</h3>
 <p>When Rainmeter reaches an @include line, it reads the given file, placing all unique options into any existing sections, then places the remainder of the included file after the section in which it was called.</p>
 
-<p>SomeFile.inc<br>
+<p>SomeFile.inc</p>
 ``` ini
 [Background]
 Meter=Image
@@ -46,9 +46,8 @@ W=40
 [String]
 Text=This Won't Work
 ```
-</p>
 
-<p>YourSkin.ini<br>
+<p>YourSkin.ini</p>
 ``` ini
 [Variables]
 @include=SomeFile.inc
@@ -63,22 +62,19 @@ X=5r
 Meter=String
 Text=This line will remain.
 ```
-</p>
-
 <p>This would place the Background section before the Foreground section. Since the String section already exists in the main file, then any existing options won't be changed. In this case, the Text line will still read "This line will remain."</p>
 
 <h3>Practical Use: Skin Settings</h3>
 <p>The most common use of @include is to allow users to change the settings used by a skin in a separate file.</p>
 
-<p>Settings.inc<br>
+<p>Settings.inc</p>
 ``` ini
 [Variables]
 BackgroundImage=SomeImage.png
 HideBackground=0
 ```
-</p>
 
-<p>Skin.ini<br>
+<p>Skin.ini</p>
 ``` ini
 @include=Settings.inc
 
@@ -87,7 +83,6 @@ Meter=Image
 ImageName=#BackgroundImage#
 Hidden=#HideBackground#
 ```
-</p>
 
 <h3>Practical Use: Pages and Stylesheets</h3>
 
