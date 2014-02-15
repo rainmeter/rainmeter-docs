@@ -1,0 +1,199 @@
+---
+layout: snippets
+permalink: snippets/nested-expressions
+title: 'Nested Expressions'
+---
+<p>Lua can get pretty complicated, especially when you want to create strings using values based on other values. This usually also includes a lot of concatenation.</p>
+
+<div class="noscroll">
+``` lua
+'On ' .. os.date('&#37;A') .. ' Jane goes to ' .. Locations[os.date('&#37;a')] .. '.'
+```
+</div>
+
+<p>Using a little ingenuity this task could get a lot simpler.</p>
+
+<div class="noscroll">
+``` lua
+'On {LongDay} Jane goes to {&#123;ShortDay&#125;Location}.'
+```
+</div>
+
+<p>This is something called Nested Expressions. This could be an insurmountable task, but thankfully it's not. As long as we follow some rules we can use one of Lua's built in functions for this.</p>
+
+<p>The most important rule we need to follow is that our expression must begin and end with different characters. For example, let's use the curly brackets (i.e. <code>'{Expression}'</code>). If both characters were the same Lua wouldn't be able to tell the difference between the beginning and the end.</p>
+
+<p>Now we need to define a function for our needs. Yes, we really do need a function for this. Since we need to follow the same steps for each nested expression we will need to call the function inside itself.</p>
+
+<div class="noscroll">
+``` lua
+function nested(line)
+	-- Do Something Here
+end
+```
+</div>
+
+<p>Now we need to start adding the bits that do all the work. What makes this all possible is the balanced expression matching capability of Lua. This would be the <code>&#37;b</code> pattern matching class. We use it by placing the beginning and ending characters after it. More detail can be found <a href="http://www.lua.org/pil/20.2.html">here</a>.</p>
+
+<div class="noscroll">
+``` lua
+function nested(line)
+	return (string.gsub(line, '&#37;b{}', function(input)
+		-- Do Something Here
+	end))
+end
+```
+</div>
+
+<p>Now that we have our expression we need to do something with it. The first thing is to call our function again so we can deal with the nested expressions first. We'll have to strip off the beginning and ending characters or we'll just create an infinite loop.</p>
+
+<div class="noscroll">
+``` lua
+function nested(line)
+	return (string.gsub(line, '&#37;b{}', function(input)
+		local newline = nested(string.match(input, '^{(.-)}$'))
+		-- Do Something Here
+	end))
+end
+```
+</div>
+
+<p>Now we need to start doing something with our expression. This requires some testing. The first thing is to make sure that what we have indeed received is a valid expression and act accordingly. If it's not a valid expression we need to return exactly what we received, including the beginning and ending characters.</p>
+
+<p>You can do whatever you want to your expression, just be sure you return something. It is important to remember to use the <code>newline</code> variable in whatever you do from this point on. This is the variable that has all of the nested expressions already evaluated.</p>
+
+<div class="noscroll">
+``` lua
+function nested(line)
+	return (string.gsub(line, '&#37;b{}', function(input)
+		local newline = nested(string.match(input, '^{(.-)}$'))
+		if newline ~= '' then
+			return --Do Something Here
+		else
+			return string.format('{&#37;s}', newline)
+		end
+	end))
+end
+```
+</div>
+
+<p>There is one very important thing to note. Our function as written must be a global function. If you want it to be local there is a way to fix this. We must pass the function to itself. It's best not to think about this too hard.</p>
+
+<div class="noscroll">
+``` lua
+local nested = function(line, self)
+	return (string.gsub(line, '&#37;b{}', function(input)
+		local newline = self(string.match(input, '^{(.-)}$'), self)
+		if newline ~= '' then
+			return -- Do Something Here
+		else
+			return string.format('{&#37;s}', newline)
+		end
+	end))
+end
+
+SomeString = nested('{Variable{AnotherVariable}}', nested)
+```
+</div>
+
+<h2 id="Examples">Examples</h2>
+
+<p>Here's something extremely simple. We're just going to see what Jane is doing today.</p>
+
+``` lua
+Variables = {
+	LongDay = os.date('&#37;A'),
+	ShortDay = os.date('&#37;a'),
+	SunLocation = 'Church',
+	MonLocation = 'the Grocery Store',
+	TueLocation = 'the Salon',
+	WedLocation = 'a PTA meeting',
+	ThuLocation = 'a concert',
+	FriLocation = 'the bar',
+	SatLocation = 'the beach',
+}
+
+function nested(line)
+	return (string.gsub(line, '&#37;b{}', function(input)
+		local newline = nested(string.match(input, '^{(.-)}$'))
+		if Variables[newline] then
+			return Variables[newline]
+		else
+			return string.format('{&#37;s}', newline)
+		end
+	end))
+end
+
+SomeString = nested('On {LongDay} Jane goes to {{ShortDay}Location}.')
+```
+
+<p>This one is much more complicated. It's used to replace nested Rainmeter measures and variables.</p>
+
+``` lua
+function Replace(input)
+	return (string.gsub(input, '(&#37;b[])', function(line)
+		local newline = Replace(string.match(line, '^&#37;[(.-)]$'))
+		local typ, name = string.match(newline, '(.)(.+)')
+		-- Establish an string to return in case we encounter an error
+		local ErrorString = string.format('[&#37;s]', newline)
+		-- Make allowance for escaped expression
+		if string.match(newline, '^&#37;*(.-)&#37;*$') then
+			return string.gsub(newline, '^&#37;*(.-)&#37;*$', '[&#37;1]')
+		-- Measures / Meters
+		elseif typ == '&' then
+			-- Make allowance for section variables
+			local section = string.match(name, '([^:]+)')
+			-- Check if Measure / Meter exists
+			if SKIN:GetMeasure(section) or SKIN:GetMeter(section) then
+				-- Use existing function for maximum flexibility
+				return SKIN:ReplaceVariables(string.format('[&#37;s]', name))
+			-- Measure / Meter does not exist
+			else
+				return ErrorString
+			end
+		-- Variable
+		elseif typ == '#' then
+			return SKIN:GetVariable(name) or ErrorString
+		-- Did not define anything we are looking for
+		else
+			return ErrorString
+		end
+	end
+	))
+end
+
+SomeLine = Replace('[&SomeMeasure[#SomeVariable[&SomeMeter:X]]]')
+```
+
+<p>Here's an example that uses a rapper function so that we can specify a table of variables when we call the function.</p>
+
+``` lua
+function SomeFunction(InputExpression, FuncTbl)
+	local nested = function(line, self)
+		return (string.gsub(line, '&#37;b{}', function(input)
+			local newline = self(string.match(input, '^{(.-)}$'), self)
+			if FuncTbl[newline] then
+				return FuncTbl[newline]
+			else
+				return string.format('{&#37;s}', newline)
+			end
+		end))
+	end
+	
+	return nested(InputExpression, nested)
+end
+
+Variables = {
+	LongDay = os.date('&#37;A'),
+	ShortDay = os.date('&#37;a'),
+	SunLocation = 'Church',
+	MonLocation = 'the Grocery Store',
+	TueLocation = 'the Salon',
+	WedLocation = 'a PTA meeting',
+	ThuLocation = 'a concert',
+	FriLocation = 'the bar',
+	SatLocation = 'the beach',
+}
+
+SomeString = SomeFunction('On {LongDay} Jane goes to {{ShortDay}Location}.', Variables)
+```
