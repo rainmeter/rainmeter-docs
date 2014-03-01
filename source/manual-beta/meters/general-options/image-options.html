@@ -3,7 +3,7 @@ layout: manual-beta
 permalink: manual-beta/meters/general-options/image-options
 title: 'General Image Options'
 ---
-<p>Options available for use with all images. These options are to modify the display of an image file, and do not work with square/rectangle Image meters created entirely with SolidColor.</p>
+<p>Options available for use with all images. These options are to modify the display of an image file, and do not work with square/rectangle Image meters created entirely with SolidColor / SolidColor2.</p>
 
 <p><b>Note:</b> Valid image file types in Rainmeter are <b>.png</b>, <b>.jpg</b>, <b>.bmp</b>, <b>.gif</b>, <b>.tif</b> and <b>.ico</b>. If no extension is provided on an image file name, <b>.png</b> is assumed.</p>
 
@@ -11,7 +11,7 @@ title: 'General Image Options'
 <dl>
 	<dt id="ImagePath"><code>ImagePath</code></dt>
 	<dd>
-		<p>Path of the image location.</p>
+		<p>Folder path where an image is located. (e.g. <code>ImagePath=#@#Images\</code>)</p>
 	</dd>
 	
 	<dt id="ImageCrop"><code>ImageCrop</code></dt>
@@ -28,19 +28,19 @@ title: 'General Image Options'
 
 	<dt id="Greyscale"><code>Greyscale</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>If set to <code>1</code>, the image is greyscaled.</p>
+		<p>If set to <code>1</code>, the image is greyscaled. (color desaturated)</p>
 	</dd>
 
 	<dt id="ImageTint"><code>ImageTint</code> <small>Default: <code>255,255,255,255</code></small></dt>
 	<dd>
 		<p><a href="!skins/option-types#Color">Color</a> to tint the image with. If the alpha value is specified, the image can be made semi-transparent (0 means invisible, 255 mean fully opaque). The default value (<code>255,255,255,255</code> for opaque white) and leaves the image unaltered.</p>
 
-		<p><b>Note:</b> Combining <code>Greyscale</code> and <code>ImageTint</code> recolors the image to the specified color. Without <code>Greyscale</code>, the specified color is added to the image (i.e. the image is tinted).</p>
+		<p><b>Note:</b> Combining <code>Greyscale</code> and <code>ImageTint</code> recolors the image to the specified color. Without <code>Greyscale</code>, the specified color is added to the image (i.e. the original image color is tinted).</p>
 	</dd>
 
 	<dt id="ImageAlpha"><code>ImageAlpha</code> <small>Default: <code>255</code></small></dt>
 	<dd>
-		<p>Opacity of the image ranging from <code>0</code> (invisible) to <code>255</code> (opaque). If set, overrides the alpha component specified in <code>ImageTint</code>.</p>
+		<p>Opacity of the image ranging from <code>0</code> (invisible) to <code>255</code> (opaque). If set, this overrides the alpha component specified in <code>ImageTint</code>.</p>
 	</dd>
 
 	<dt id="ImageFlip"><code>ImageFlip</code> <small>Default: <code>None</code></small></dt>
