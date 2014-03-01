@@ -9,19 +9,23 @@ title: 'General Measure Options'
 <dl>
 	<dt id="Measure"><code>Measure</code></dt>
 	<dd>
-		Type of the measure (e.g. <code>CPU</code> or <code>FreeDiskSpace</code>).
+		<p>Type of the measure (e.g. <code>CPU</code>, <code>FreeDiskSpace</code> or <code>Plugin</code>). This option is required, and cannot not be changed dynamically.</p>
 	</dd>
 
 	<dt id="UpdateDivider"><code>UpdateDivider</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		Frequency at which the measure value is updated. If set to <code>-1</code>, the measure will be updated only once on load or on refresh. Otherwise, the global <a href="!skins/rainmeter-section#Update"><code>Update</code></a> option is multiplied by the specified value to determine the update frequency.
+		<p>Frequency at which the measure value is updated. The <a href="!skins/rainmeter-section#Update"><code>Update</code></a> option in the [Rainmeter] section of the skin is multiplied by the specified value to determine how often the measure is updated.</p>
 
-		<br><br><b>Example:</b> If <code>Update=1000</code> (in the [Rainmeter] section) and <code>UpdateDivider=30</code>, the measure is updated every 30 seconds.
+		<p><b>Example:</b> If <code>Update=1000</code> (in the [Rainmeter] section) and <code>UpdateDivider=30</code>, the measure is updated every 30 seconds.</p>
+		
+		<p>If <code>UpdateDivider=-1</code> or any negative number, then the measure is only updated once when the skin is loaded or refreshed.</p>
 	</dd>
 
 	<dt id="OnUpdateAction"><code>OnUpdateAction</code></dt>
 	<dd>
-		<p><a href="!skins/option-types#Action">Action</a> to execute on each <a href="!skins/rainmeter-section#Update">Update</a> of the measure. This option obeys any <a href="#UpdateDivider">UpdateDivider</a> on the measure.</p>
+		<p><a href="!skins/option-types#Action">Action</a> to execute each time the measure is updated.</p>
+		
+		<p><b>Note:</b> This may be based on the values in <a href="!skins/rainmeter-section#Update">Update</a> in the [Rainmeter] section and any <a href="#UpdateDivider">UpdateDivider</a> on the measure, or if the measure is updated with a <a href="!bangs#Measure">Measure Bang</a>.</p>
 	</dd>
 
 	<dt id="OnChangeAction"><code>OnChangeAction</code></dt>
@@ -33,24 +37,24 @@ title: 'General Measure Options'
 
 	<dt id="InvertMeasure"><code>InvertMeasure</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the measure value is inverted.
+		<p>If set to <code>1</code>, the measure value is inverted.</p>
 
-		<br><br><b>Example:</b> With the <a href="!measures/freediskspace">FreeDiskSpace</a> measure, this option can be used to measure the used disk space instead of the free disk space.
+		<p><b>Example:</b> With the <a href="!measures/freediskspace">FreeDiskSpace</a> measure, this option can be used to measure the used disk space instead of the free disk space.</p>
 	</dd>
 
 	<dt id="MaxValue"><code>MaxValue</code> <small>Default: <code>1.0</code></small></dt>
 	<dd>
-		The maximum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.
+		<p>The maximum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.</p>
 	</dd>
 
 	<dt id="MinValue"><code>MinValue</code> <small>Default: <code>0.0</code></small></dt>
 	<dd>
-		The minimum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.
+		<p>The minimum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.</p>
 	</dd>
 
 	<dt id="AverageSize"><code>AverageSize</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		If set, the measure value will be an average of the specified number of past actual values. This can be useful to create a smoother transition on some graphical meters.
+		<p>If set, the measure value will be an average of the specified number of past actual values. This can be useful to create a smoother transition on some graphical meters.</p>
 	</dd>
 
 	<dt id="DynamicVariables"><code>DynamicVariables</code> <small>Default: <code>0</code></small></dt>
@@ -62,12 +66,12 @@ title: 'General Measure Options'
 
 	<dt id="Disabled"><code>Disabled</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the measure value is never updated. A disabled measure always returns 0 as its value in numerical contexts (e.g. when used in a Calc formula or with IfActions), but may still return a textual value (e.g. when used in String meters).
+		<p>If set to <code>1</code>, the measure value is never updated. A disabled measure always returns 0 as its value in numerical contexts (e.g. when used in a Calc formula or with IfActions), but may still return a previously obtained string value (e.g. when used in String meters).</p>
 	</dd>
 	
 	<dt id="Paused"><code>Paused</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the measure value is never updated. A paused measure will return its most recent value.
+		<p>If set to <code>1</code>, the measure value is never updated. A paused measure will return its most recent number and/or string value.</p>
 	</dd>	
 	
 	<dt id="Group"><code>Group</code></dt>
