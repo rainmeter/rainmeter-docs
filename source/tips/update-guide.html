@@ -57,4 +57,4 @@ StringIndex=1
 UpdateRate=1200
 ```
 
-<p>Since WebParser connects to the internet, it is important to have a high enough "download interval". If you try to download a page too often (e.g. every second), you may end up causing a high load on the target site, which ultimately may cause the site to block all access from your computer.</p>
+<p>Since WebParser connects to the internet, it is important to have a high enough "download interval". If you try to download a page too often (e.g. every second), you may end up causing a high load on the target site, which ultimately may cause the site to block all access from your computer. As a safety measure, UpdateRate has a default value of 600, or 10 minutes when <code>Update=1000</code> and UpdateDivider is not set.</p>
