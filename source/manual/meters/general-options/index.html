@@ -9,7 +9,7 @@ title: 'General Meter Options'
 <dl>
 	<dt id="Meter"><code>Meter</code></dt>
 	<dd>
-		Type of the meter (e.g. <code>Bar</code> or <code>String</code>).
+		<p>Type of the meter (e.g. <code>Bar</code> or <code>String</code>). This option is required and may not be changed dynamically.</p>
 	</dd>
 
 	<dt id="MeterStyle"><code>MeterStyle</code></dt>
@@ -19,34 +19,52 @@ title: 'General Meter Options'
 
 	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, <code>MeasureName3</code>... </dt>
 	<dd>
-		"Binds" the meter to one or more measures. This means that the meter displays the values of these measures in some way. The exact form of the display depends on the type of meter. See each meter type's page for details about what kind of values are valid for that type, and how the values are displayed.
+		<p>"Binds" the meter to one or more measures. This means that the meter displays the values of these measures in some way. The exact form of the display depends on the type of meter. See each meter type's page for details about what kind of values are valid for that type, and how the values are displayed.</p>
 	</dd>
 
 	<dt id="XY"><code>X</code>, <code>Y</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		Specify the x and y position of the meter relative to the top-left edge of the skin. If the value is appended with <code>r</code>, the position is relative to the previous meter x or y position (e.g. <code>5r</code> or <code>(5 * 2)r</code>). If the value is appended with <code>R</code>, the position is relative to the bottom-right edge of the previous meter.
+		<p>Specifies the x (horizontal) and y (vertical) position of the meter in pixels relative to the top-left edge of the skin.<p>
+
+		<p><em>Relative positioning:</em> If the value is appended with <code>r</code>, the position is relative to the top/left edge of the previous meter. If the value is appended with <code>R</code>, the position is relative to the bottom/right edge of the previous meter.</p>
+		
+		<p><b>Examples:</b><br/>
+		<code>X=150</code> : Meter begins 150 horizontal pixels from the right edge of the skin window.<br/>
+		<code>Y=75</code> : Meter begins 75 vertical pixels from the top edge of the skin window.<br/><br/>
+		<code>X=10R</code> : Meter begins 10 horizontal pixels to the right of the previous meter.<br/>
+		<code>Y=0r</code> : Meter begins at the same vertical position as the previous meter.</p>
 	</dd>
 
 	<dt id="WH"><code>W</code>, <code>H</code></dt>
 	<dd>
-		The width and height of the meter. String meters and Image meters (with an image) can automatically determine width and height. For all other cases, <code>W</code> and <code>H</code> must be defined.
+		<p>Specifies the width and height of the meter in pixels. String meters and meters which display an image file can automatically determine the width and height. For all other cases, <code>W</code> and <code>H</code> must be defined.</p>
 	</dd>
-
+	
+	<dt id="Padding"><code>Padding</code> <small>Format: <code>Left,Top,Right,Bottom</code></small></dt>
+	<dd>
+		<p>Allows adding padding in pixels around any or all sides a meter. The width and height of the meter will dynamically be adjusted to the new size. The padding will be drawn using the <a href="!skins/option-types#Color">Color</a> defined with <a href="#SolidColor">SolidColor / SolidColor2</a>.</p>
+		<p><b>Example:</b> <code>Padding=5,10,5,10</code></p>
+	</dd>	
+	
 	<dt id="Hidden"><code>Hidden</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the meter is hidden. The visibility can also be changed with the <a href="!bangs#ShowHideToggleMeter">!ShowMeter and !HideMeter bangs</a>.
+		<p>If set to <code>1</code>, the meter is hidden. The visibility can also be changed with the <a href="!bangs#ShowHideToggleMeter">!ShowMeter and !HideMeter bangs</a>.</p>
 	</dd>
 
 	<dt id="UpdateDivider"><code>UpdateDivider</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		<p>Sets the update frequency of the meter.</p>
+		<p>Frequency at which the meter is updated. The <a href="!skins/rainmeter-section#Update"><code>Update</code></a> option in the [Rainmeter] section of the skin is multiplied by the specified value to determine how often the meter is updated.</p>
 
-		<p><b>Example:</b> If set to <code>1</code>, the meter is updated on every <a href="!skins/rainmeter-section#Update">update</a> cycle. If set to <code>5</code>, the meter is updated on every fifth update cycle and so forth.</p>
+		<p><b>Example:</b> If <code>Update=1000</code> (in the [Rainmeter] section) and <code>UpdateDivider=30</code>, the meter is updated every 30 seconds.</p>
+		
+		<p>If <code>UpdateDivider=-1</code> or any negative number, then the meter is only updated once when the skin is loaded or refreshed.</p>
 	</dd>
 
 	<dt id="OnUpdateAction"><code>OnUpdateAction</code></dt>
 	<dd>
-		<p><a href="!skins/option-types#Action">Action</a> to execute on each <a href="!skins/rainmeter-section#Update">Update</a> of the meter. This option obeys any <a href="#UpdateDivider">UpdateDivider</a> on the meter.</p>
+		<p><a href="!skins/option-types#Action">Action</a> to execute each time the meter is updated.</p>
+		
+		<p><b>Note:</b> This may be based on the values in <a href="!skins/rainmeter-section#Update">Update</a> in the [Rainmeter] section and any <a href="#UpdateDivider">UpdateDivider</a> on the meter, or if the meter is updated with a <a href="!bangs#Meter">Meter Bang</a> or other relevant bang.</p>
 	</dd>
 
 	<dt id="SolidColor"><code>SolidColor</code>, <code>SolidColor2</code> <small>Default: <code>0,0,0,0</code></small></dt>
@@ -56,20 +74,14 @@ title: 'General Meter Options'
 		<p><b>Hint:</b> <code>SolidColor=0,0,0,1</code> can be used to make transparent areas of the meter clickable.</p>
 	</dd>
 	
-	<dt id="Padding"><code>Padding</code> <small>Format: <code>Left,Top,Right,Bottom</code></small></dt>
-	<dd>
-		<p>Allows adding padding in pixels around any or all sides a meter. The width and height of the meter will dynamically be adjusted to the new size.</p>
-		<p><b>Example:</b> <code>Padding=5,10,5,10</code></p>
-	</dd>	
-
 	<dt id="GradientAngle"><code>GradientAngle</code></dt>
 	<dd>
-		Angle of the gradient in degrees (for <code>SolidColor</code> and <code>SolidColor2</code>).
+		<p>Angle of the gradient in degrees when both <code>SolidColor</code> and <code>SolidColor2</code> are defined.</p>
 	</dd>
 
 	<dt id="BevelType"><code>BevelType</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If enabled, draws a bevel around the edges of the rectangle specified by <code>H</code> and <code>W</code>. Valid values are:
+		<p>If enabled, draws a bevel around the edges of the rectangle specified by <code>H</code> and <code>W</code>. Valid values are:</p>
 		<ul>
 		<li><code>0</code>: No bevel</li>
 		<li><code>1</code>: Raised</li>
@@ -79,7 +91,7 @@ title: 'General Meter Options'
 
 	<dt id="AntiAlias"><code>AntiAlias</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, antialising is used to display the meter.
+		<p>If set to <code>1</code>, antialising (edge smoothing) is used when the meter is drawn.</p>
 	</dd>
 
 	<dt id="DynamicVariables"><code>DynamicVariables</code> <small>Default: <code>0</code></small></dt>
