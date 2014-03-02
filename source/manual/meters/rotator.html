@@ -46,7 +46,14 @@ title: 'Rotator meter'
 
 	<dt id="ValueRemainder"><code>ValueRemainder</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		Use remainder instead of the actual measured value. This can be used to create an analog clock.
+		<p>Use a remainder instead of the actual measured value.</p>
+		
+		<p>This is primarily used to draw an analog clock. When used with the value of a <a href="!measures/time">Time</a> measure in <a href="#MeasureName">MeasureName</a> the meter will internally use the <code>%</code> modulo mathematical <a href="!formulas#Operators">operator</a>, and calculate the meter based on the remainder when the number of seconds in the Time measure is divided by the following values:</p>
+		<ul>
+		<li>Hours Hand: <code>ValueRemainder=43200</code> Seconds in a 12-hour analog clock face.</li>
+		<li>Minutes Hand: <code>ValueRemainder=3600</code> Seconds in an hour.</li>
+		<li>Seconds Hand: <code>ValueRemainder=60</code> Seconds in a minute.</li>
+		</ul>
 	</dd>
 </dl>
 
