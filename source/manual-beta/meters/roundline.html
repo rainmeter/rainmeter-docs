@@ -3,9 +3,9 @@ layout: manual-beta
 permalink: manual-beta/meters/roundline
 title: 'Roundline meter'
 ---
-<p><code>Meter=Roundline</code> displays a single circular line that rotates around a point based on a measure.</p>
+<p><code>Meter=Roundline</code> displays a line or solid fill that rotates in a circle around a point, based on a measure value.</p>
 
-<p>The values for <a href="#StartAngle">StartAngle</a> and <a href="#ControlAngle">ControlAngle / RotationAngle</a> are defined in <a href="/tips/radians-guide">Radians</a></p>
+<p>The values for <a href="#StartAngle">StartAngle</a> and <a href="#RotationAngle">RotationAngle</a> are defined in <a href="/tips/radians-guide">Radians</a></p>
 
 <h2>Options</h2>
 <dl>
@@ -16,44 +16,59 @@ title: 'Roundline meter'
 
 	<dt id="MeasureName"><code>MeasureName</code></dt>
 	<dd>
-		<p>Name of the measure whose percentual value controls the angle of rotation. The measure must be able to return <a href="!measures#Percentage">percentual values</a>.</p>
-		<p><b>Note:</b> If MeasureName is not specified, then a number value of <code>1.0</code> is used by the meter.</p>
+		<p>Name of the measure whose percentual value controls the amount of rotation. The measure must be able to return <a href="!measures#Percentage">percentual values</a>.</p>
+		<p><b>Note:</b> If MeasureName is not specified, then a number value of <code>1.0</code> is used by the meter, and is in effect always 100%.  This can be used for instance to draw a circle or other curved solid.</p>
+	</dd>
+
+	<dt id="StartAngle"><code>StartAngle</code></dt>
+	<dd>
+		<p>The starting angle in <a href="/tips/radians-guide">radians</a> for the line. This defines the starting point on the circle that will be treated as zero percent. The zero angle is to the right of the center.</p>
+	</dd>
+	
+	<dt id="RotationAngle"><code>RotationAngle</code></dt>
+	<dd>
+		<p>The size of the rotation angle in <a href="/tips/radians-guide">radians</a> for the line. This defines the distance in radians from <code>StartAngle</code> that the meter will travel around the circle when the measure value is 100%. Use a negative value for counter-clockwise rotation.</p>
+	</dd>
+	
+	<dt id="LineStart"><code>LineStart</code></dt>
+	<dd>
+		<p>Defines the distance in pixels from the center of rotation at which the line starts.</p>
+	</dd>
+	
+	<dt id="LineLength"><code>LineLength</code></dt>
+	<dd>
+		<p>Length in pixels of the line. The length is always measured from the center of rotation, regardless of the <code>LineStart</code> option.</p>
 	</dd>
 
 	<dt id="LineWidth"><code>LineWidth</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		<p>Width of the line.</p>
+		<p>Width in pixels of the line when <code>Solid</code> is 0.</p>
 	</dd>
 
-	<dt id="LineLength"><code>LineLength</code></dt>
+	<dt id="LineColor"><code>LineColor</code> <small>Default: <code>255,255,255,255</code></small></dt></dt></dt>
 	<dd>
-		<p>Length of the line. The length is always measured from the center of rotation (regardless of the <code>LineStart</code> option).</p>
+		<p>The <a href="!skins/option-types#Color">Color</a> of the line.</p>
 	</dd>
 
-	<dt id="LengthShift"><code>ControlLength, LengthShift</code></dt>
+	<dt id="Solid"><code>Solid</code> <small>Default: <code>0</code></small></dt></dt>
 	<dd>
-		<p>If ControlLength is set to 1, the measure value controls the <code>LineLength</code> from <code>LineLength</code> to <code>LineLength + LengthShift</code>.</p>
+		<p>If set to 1, meter will fill the meter with <code>LineColor</code> from <code>StartAngle</code> to the current <code>MeasureName</code> percentage value. <code>LineWidth</code> is ignored.</p>
 	</dd>
-
-	<dt id="LineStart"><code>LineStart</code></dt>
-	<dd>
-		<p>Defines the distance from the center at which the line starts.</p>
-	</dd>
-
+	
 	<dt id="ControlStart"><code>ControlStart, StartShift</code></dt>
 	<dd>
 		<p>If <code>ControlStart</code> is set to 1, the measure controls the <code>LineStart</code> from <code>LineStart</code> to <code>LineStart + StartShift</code>.</p>
 	</dd>
 
-	<dt id="StartAngle"><code>StartAngle</code></dt>
+	<dt id="ControlLength"><code>ControlLength, LengthShift</code></dt>
 	<dd>
-		<p>The starting angle for the line. This is in <a href="/tips/radians-guide">radians</a> and the zero angle is at the right. The default rotation direction is clockwise.</p>
+		<p>If ControlLength is set to 1, the measure value controls the <code>LineLength</code> from <code>LineLength</code> to <code>LineLength + LengthShift</code>.</p>
 	</dd>
-
-	<dt id="ControlAngle"><code>ControlAngle, RotationAngle</code></dt>
+	
+	<dt id="ControlAngle"><code>ControlAngle</code></dt>
 	<dd>
-		<p>Unless <code>ControlAngle</code> is set to 0, the measure controls the <code>RotationAngle</code> from 0 to <code>RotationAngle</code>. The size of the rotation angle in <a href="/tips/radians-guide">radians</a> for the line. Use a negative value for counter-clockwise rotation.</p>
-	</dd>
+		<p>If set to 1, the measure controls the <code>RotationAngle</code> from 0 to <code>RotationAngle</code>.</p>
+	</dd>	
 
 	<dt id="ValueRemainder"><code>ValueRemainder</code></dt>
 	<dd>
@@ -67,25 +82,9 @@ title: 'Roundline meter'
 		</ul>
 		<p>See the <a href="!meters/rotator">Rotator</a> meter for an example.</p>
 	</dd>
-
-	<dt id="LineColor"><code>LineColor</code></dt>
-	<dd>
-		<p>The <a href="!skins/option-types#Color">Color</a> of the line.</p>
-	</dd>
-
-	<dt id="Solid"><code>Solid</code></dt>
-	<dd>
-		<p>Set to 1 and the meter will draw a pie-chart instead.</p>
-	</dd>
-
 </dl>
 
-<h2>Remarks</h2>
-<p>The angle of the line is determined by the measure. By default, the minimum position is pointing to the right, the line then moves clockwise until it is pointing to the right again.</p>
-
-<p>If the width and height are not defined, the center point is at the X and Y position of the meter and any part of the meter that intersects with the edges of the skin window will be cut off. If width and height are specified, the center point will be in the middle of the bounding box and the skin window will include the meter.</p>
-
-<p>If <code>MeasureName</code> is not specified, then a circle may be drawn without requiring any measure in the skin to create a value.</p>
+<p><b>Note:</b> If the width and height are not defined, the center point is at the X and Y position of the meter and any part of the meter that intersects with the edges of the skin window will be cut off. If width and height are specified, the center point will be in the middle of the bounding box and the skin window will include the meter.</p>
 
 <h2>Example</h2>
 <a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterRoundline_1.0.rmskin" class="download"></a>
