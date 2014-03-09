@@ -84,3 +84,22 @@ FontColor=255,255,255,255
 AutoScale=1
 Text=Disk access: %1B/sec
 ```
+
+<p><b>Note:</b></p>
+
+<p>While rare, it is possible for the database of "counters" that is maintained by Performance Monitor in Windows to become damaged, which will cause the Perfmon plugin to stop functioning correctly.</p>
+
+<p>In many cases, this can be corrected by "rebuilding" the database from the Windows command line.</p>
+
+<p>Run cmd.exe, being sure to run "As administrator". At the command line, enter the following commands in order:</p>
+
+``` plain
+cd c:\windows\system32
+lodctr /R
+cd c:\windows\sysWOW64
+lodctr /R
+```
+
+<p>You should see the following results:</p>
+
+<p><code>Info: Successfully rebuilt performance counter setting from system backup store</code></p>

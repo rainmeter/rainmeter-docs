@@ -40,8 +40,8 @@ title: 'Uptime measure'
 ``` ini
 [Rainmeter]
 Update=1000
-BackgroundMode=2
-SolidColor=0,0,0,255
+AccurateText=1
+DynamicWindowSize=1
 
 [MeasureUptime]
 Measure=Uptime
@@ -54,6 +54,24 @@ X=5
 Y=5
 W=200
 H=25
+FontSize=12
 FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
 Text="Uptime: %1"
 ```
+
+<p><b>Note for Windows 8 or later:</b></p>
+
+<p>Starting with Windows 8, the standard "shut down" functionality now does a "hybrid shut down", in order to make the system start much faster when you start it up again. What this does is "hibernate" the <em>system / kernel</em> part of Windows, and shut down the <em>user</em> part. When Windows restarts, the underlying boot up of the system much is faster, followed by loading your profile and applications normally.</p>
+
+<p>Windows (and thus Uptime) does not see this as a full shutdown of your system. So the system uptime value will not be reset to zero. If you want more control over this, you can create two shortcuts, and use the one you want depending on whether you wish a "full" shut down, or the normal "hybrid" one.</p>
+
+<p>Normal / Hybrid Shut Down:<br/>
+<code>%windir%\System32\shutdown.exe /s /hybrid /f /t 00</code></p>
+
+<p>Full Shut Down:<br/>
+<code>%windir%\System32\shutdown.exe /s /f /t 00</code></p>
+
+<p>You can create these shortcuts, and put them on your desktop or pin them to your Windows 8 Start screen. <em>"Restart" always does a full system restart and is not effected.</em></p>
