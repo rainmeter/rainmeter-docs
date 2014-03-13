@@ -533,6 +533,7 @@ body {
 	width:15px;
 	height:15px;
 	background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAQCAYAAADAvYV+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAADBJREFUKFNjuHHjxn9iMVgxMWCwKg4NDcXAMECZyfgAHRQTixmwAZwS2MCgVszAAACZcNeRnmtEbQAAAABJRU5ErkJggg%3D%3D') no-repeat 0 0;
+	cursor:pointer;
 }
 
 #tree li .expander.open {
