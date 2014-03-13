@@ -138,12 +138,14 @@ function toggleClass(elem, className) {
 (function() {
 	var elems = document.getElementsByClassName('lightbox');
 	if (elems.length > 0) {
-		document.body.innerHTML += '<div id="lightbox-wrap"></div>'
-		var wrap = document.body.lastChild;
+		var wrap = document.createElement('div');
+		wrap.id = 'lightbox-wrap';
 		wrap.onclick = function() {
 			wrap.style.animation = '';
 			wrap.style.display = 'none';
 		};
+
+		document.body.appendChild(wrap);
 
 		for (var i = 0, elem; elem = elems[i]; ++i) {
 			elem.onclick = function() {
