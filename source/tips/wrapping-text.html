@@ -3,30 +3,97 @@ layout: tips
 permalink: tips/wrapping-text
 title: 'Wrapping Text'
 ---
-<p>You wrap text on a <a href="/manual/meters/string">string</a> meter by using the <a href="/manual/meters/general-options#WH">W and H</a> options along with the <a href="/manual/meters/string#ClipString">ClipString</a> option.</p>
+<p>You wrap text on a <a href="/manual/meters/string">String</a> meter by using the <b><a href="/manual/meters/general-options#WH">W</a></b> and <b><a href="/manual/meters/general-options#WH">H</a></b> options along with the <b><a href="/manual/meters/string#ClipString">ClipString</a></b> option.</p>
 
-<p>Set the W= to more or less the amount of pixels you want for the first "line" of the text, and the H= to be high enough to hold two or more lines of text at your current font size. Then be sure to add "ClipString=1" and Rainmeter will "wrap" the text on two lines. If it doesn't, and you get "this is a long line of..." instead, then you heed to bump up the H= a bit. There must be enough "height" for the text to wrap, or ClipString will truncate the text and put an ellipse at the end instead.</p>
+<p><b>ClipString</b> controls how strings are truncated (clipped) or wrapped to fit in or expand the containing meter.  If ClipString is set to <code>0</code> or not used (default), then the String meter will just expand in width to contain the entire string on one line.</p>
+
+<p><b>Example:</b></p>
 
 ``` ini
-[MeasureCPUName]
-Measure=Registry
-RegHKey=HKEY_LOCAL_MACHINE
-RegKey=HARDWARE\DESCRIPTION\System\CentralProcessor\0
-RegValue=ProcessorNameString
-UpdateDivider=3600
+[Rainmeter]
+Update=1000
+AccurateText=1
+DynamicWindowSize=1
 
-[MeterCPUName]
+[MeasureSomeString]
+Measure=Time
+Format=This is a long line of text used to demonstrate wrapping in a string meter.
+UpdateDivider=-1
+
+[MeterString1]
 Meter=STRING
-MeasureName=MeasureCPUName
-H=30
-W=150
+MeasureName=MeasureSomeString
+W=160
+H=18
 X=0
 Y=0
-FontColor=255,255,255
-FontSize=8
+FontSize=11
 FontFace=Tahoma
-Clipstring=1
+FontColor=255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
 AntiAlias=1
+ClipString=1
+
+[MeterString2]
+Meter=STRING
+MeasureName=MeasureSomeString
+W=160
+H=70
+X=0
+Y=5R
+FontSize=11
+FontFace=Tahoma
+FontColor=255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+ClipString=1
+
+[MeterString3]
+Meter=STRING
+MeasureName=MeasureSomeString
+W=160
+H=35
+X=0
+Y=5R
+FontSize=11
+FontFace=Tahoma
+FontColor=255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+ClipString=1
+
+[MeterString4]
+Meter=STRING
+MeasureName=MeasureSomeString
+W=160
+X=0
+Y=5R
+FontSize=11
+FontFace=Tahoma
+FontColor=255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+ClipString=2
 ```
 
-<p>You might have to move meters below this one down some to compensate for it taking up more room, unless you used "Y=2R" (the "R" means "relative" to the previous meter) on all following meters.</p>
+<div class="exampleprev">
+	<img src="!img/wrapping-text\wrapping-text.jpg" class="lightbox">
+</div>
+
+<p><b>MeterString1:</b> If <code>ClipString=1</code> is used, then the <code>W</code> (width) setting is followed, and the string will be truncated or "clipped" at the width defined in <code>W</code>. An ellipse, or <code>...</code> will be added to the end of the string to indicate clipping has taken place.</p>
+
+<p><b>MeterString2:</b> If <code>ClipString=1</code> is used, wrapping will take place if the <code>H</code> (height) setting is large enough to hold more than one line of text at your current <a href="!meters/string#FontSize">FontSize</a> setting. The string will wrap on as many lines as the <code>H</code> setting allows, in this example the entire string will fit in the width and height defined.</p>
+
+<p><b>MeterString3:</b> If <code>ClipString=1</code> is used and the <code>H</code> setting is not large enough to contain the entire string, the text will wrap on as many lines as he <code>H</code> supports, and then will clip with the <code>...</code> ellipse.</p>
+
+<p><b>MeterString4:</b> If <code>ClipString=2</code> is used, then the meter will expand in height automatically, to allow the entire string to display while wrapping to follow the defined width. <a href="!meters/string#ClipStringW">ClipStringW</a> and <a href="!meters/string#ClipStringH">ClipStringH</a> can be used to define some maximum values for width and height.  If it exceeds these boundaries, the string will be clipped with the <code>...</code> ellipse.</p>
+
+<p><b>Notes:</b></p>
+
+<p>Both <code>W</code> and <code>H</code> are required when <code>ClipString=1</code> is used. At least one of <em>either</em> <code>W</code>/<code>ClipStringW</code> or <code>H</code>/<code>ClipStringH</code> is required when <code>ClipString=2</code> is used.</p>
+
+<p>The <a href="!meters/general-options#Padding">Padding</a> option used to format the display of the backgrounds for the meters in the example above is added <em>after</em> all clipping or wrapping is determined, and has no impact on ClipString functionality, which is based on the original <code>W</code> and <code>H</code> settings on the meter.</p>
