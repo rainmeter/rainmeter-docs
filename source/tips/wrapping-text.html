@@ -90,10 +90,14 @@ ClipString=2
 
 <p><b>MeterString3:</b> If <code>ClipString=1</code> is used and the <code>H</code> setting is not large enough to contain the entire string, the text will wrap on as many lines as he <code>H</code> supports, and then will clip with the <code>...</code> ellipse.</p>
 
-<p><b>MeterString4:</b> If <code>ClipString=2</code> is used, then the meter will expand in height automatically, to allow the entire string to display while wrapping to follow the defined width. <a href="!meters/string#ClipStringW">ClipStringW</a> and <a href="!meters/string#ClipStringH">ClipStringH</a> can be used to define some maximum values for width and height.  If it exceeds these boundaries, the string will be clipped with the <code>...</code> ellipse.</p>
+<p><b>MeterString4:</b> If <code>ClipString=2</code> is used and <code>W</code> is defined, then the meter will expand in height automatically, to allow the entire string to display while wrapping to follow the defined width.</p>
 
-<p><b>Notes:</b></p>
+<p>If <code>ClipString=2</code> is used and <code>H</code> is defined, then the meter will expand in width automatically, to allow the entire string to display while wrapping to follow the defined height.</p>
+
+<p><a href="!meters/string#ClipStringW">ClipStringW</a> and <a href="!meters/string#ClipStringH">ClipStringH</a> can be used to define maximum values for width or height.  If it exceeds this boundary, the string will be clipped with the <code>...</code> ellipse.</p>
 
 <p>Both <code>W</code> and <code>H</code> are required when <code>ClipString=1</code> is used. At least one of <em>either</em> <code>W</code>/<code>ClipStringW</code> or <code>H</code>/<code>ClipStringH</code> is required when <code>ClipString=2</code> is used.</p>
 
-<p>The <a href="!meters/general-options#Padding">Padding</a> option used to format the display of the backgrounds for the meters in the example above is added <em>after</em> all clipping or wrapping is determined, and has no impact on ClipString functionality, which is based on the original <code>W</code> and <code>H</code> settings on the meter.</p>
+<p><b>Notes:</b></p>
+
+<p><b>Note:</b> The <a href="!meters/general-options#Padding">Padding</a> option used to format the display of the backgrounds for the meters in the example above is added <em>after</em> all clipping or wrapping is determined, and has no impact on ClipString functionality, which is based on the original <code>W</code> and <code>H</code> settings on the meter.</p>
