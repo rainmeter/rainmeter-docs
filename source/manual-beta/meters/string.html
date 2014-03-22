@@ -166,10 +166,19 @@ Text=This is text containing %1 and %2.
 <p><b>Note:</b> Using the <a href="!meters/general-options#SolidColor">SolidColor</a> option, with a value of <code>SolidColor=0,0,0,1</code>, will give a string meter a solid but virtually transparent background. This can make executing <a href="!mouse-actions">mouse actions</a> on the text easier and more reliable.</p>
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterString_1.0.rmskin" class="download"></a>
+<a href="!examples/ExampleMeterString.rmskin" class="download"></a>
 ``` ini
 [Rainmeter]
 Update=1000
+AccurateText=1
+DynamicWindowSize=1
+
+[Metadata]
+Name=ExampleMeterString
+Author=The Rainmeter Team
+Information=Example of the String meter
+License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
+Version=1.0
 
 [MeasureDate]
 Measure=Time
@@ -182,7 +191,7 @@ X=0
 Y=0
 FontColor=255,255,255,255
 FontFace=Segoe UI
-FontSize=14
+FontSize=17
 StringEffect=Shadow
 FontEffectColor=0,0,0,255
 AntiAlias=1
@@ -193,7 +202,6 @@ Meter=String
 X=0
 Y=0R
 FontColor=197,239,252,255
-FontFace=Segoe UI
 FontSize=12
 AntiAlias=1
 Text=Relative to bottom of previous meter
@@ -206,7 +214,6 @@ W=300
 H=20
 StringAlign=Right
 FontColor=255,255,255,255
-FontFace=Segoe UI
 StringStyle=Italic
 FontSize=14
 AntiAlias=1
@@ -220,7 +227,6 @@ W=300
 H=20
 StringAlign=Center
 FontColor=252,245,197,255
-FontFace=Segoe UI
 StringStyle=Bold
 FontSize=14
 AntiAlias=1
@@ -234,7 +240,6 @@ W=200
 H=50
 ClipString=1
 FontColor=197,252,223,255
-FontFace=Segoe UI
 StringStyle=Bold
 FontSize=14
 AntiAlias=1
