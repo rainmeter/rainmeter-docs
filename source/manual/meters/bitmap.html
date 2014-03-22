@@ -74,35 +74,69 @@ title: 'Bitmap meter'
 </dl>
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterBitmap_1.0.rmskin" class="download"></a>
+<a href="!examples/ExampleMeterBitmap.rmskin" class="download"></a>
 ``` ini
 [Rainmeter]
 Update=1000
+AccurateText=1
+DynamicWindowSize=1
+
+[Metadata]
+Name=ExampleMeterBitmap
+Author=The Rainmeter Team
+Information=Example of the Bitmap meter
+License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
+Version=1.0
 
 [MeasureCPU]
 Measure=CPU
 
-[MeterLabel]
+[MeterCellBack1]
 Meter=Image
-ImageName=#@#Images\CPULabel.png
+ImageName=#@#Images\CellBack.png
 X=0
 Y=0
+
+[MeterCellBack2]
+Meter=Image
+ImageName=#@#Images\CellBack.png
+X=3R
+Y=0r
+
+[MeterCellBack3]
+Meter=Image
+ImageName=#@#Images\CellBack.png
+X=3R
+Y=0r
 
 [MeterCPU]
 Meter=Bitmap
 MeasureName=MeasureCPU
-X=0
-Y=5R
-BitmapImage=#@#Images\nums.png
+X=8
+Y=8
+BitmapImage=#@#Images\Numbers.png
 BitmapFrames=10
 BitmapExtend=1
-BitmapDigits=2
+BitmapDigits=3
+BitmapSeparation=12
 
-[MeterPercentSign]
+[MeterCellFore1]
 Meter=Image
-ImageName=#@#Images\percent.png
-X=70R
-Y=r
+ImageName=#@#Images\CellFore.png
+X=0
+Y=0
+
+[MeterCellFore2]
+Meter=Image
+ImageName=#@#Images\CellFore.png
+X=3R
+Y=0r
+
+[MeterCellFore3]
+Meter=Image
+ImageName=#@#Images\CellFore.png
+X=3R
+Y=0r
 ```
 
 <div class="exampleprev">
