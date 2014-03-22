@@ -11,79 +11,97 @@ title: 'InputText plugin'
 <dl>
 	<dt id="Command"><code>Command1</code>, <code>Command2</code>, ..., <code>Command<em>N</em></code></dt>
 	<dd>
-		<a href="!skins/option-types#Action">Actions</a> to execute when the plugin is triggered. The string <code>$UserInput$</code> will be replaced by whatever the user types into it. This string can be repeated, in which case, multiple input boxes will be created in sequence. In addition, a command can override the values of other keys in this measure when an input box is called on that command.
+		<p><a href="!skins/option-types#Action">Actions</a> to execute when the plugin is triggered. The macro string <code>$UserInput$</code> will be replaced by whatever the user types into it.</p>
+		
+		<p><code>Command1=[!SetVariable SomeVar "$UserInput$"]</code></p>
+		
+		<p>If the macro string <code>$UserInput$</code> is repeated in a command series, multiple input boxes will be created in sequence. However, a single value input by the user can be used multiple times in different bangs in the same command series by using the string value of the InputText [MeasureName] as a <a href="!variables/section-variables#MeasureParameters">section variable</a>.</p>
+		
+		<p><code>Command1=[!WriteKeyValue Variables SomeVar "$UserInput$"]</code><br/>
+		<code>Command2=[!SetVariable SomeVar "[MeasureName]"]</code></p>
+		
+		<p>In addition, a command can override the values of options in this measure when an option="value" pair is added as a parameter to a <code>Command</code> option.</p>
 
-		<b>Note:</b> The value must be placed in quotation marks if it contains spaces.
+		<p><code>Command1=[!SetVariable SomeVar "[MeasureName]"] FontColor="255,0,0,255"</code></p>
+		
+		<p><b>Note:</b> The macro string <code>$UserInput$</code> and the section variable [MeasureName] must be enclosed in quotes in the <code>Command</code> option if the user input may contain spaces.</p>
 	</dd>
 
 	<dt id="DefaultValue"><code>DefaultValue</code></dt>
 	<dd>
-		Default text that will appear in the input box.
+		<p>Default text that will appear in the input box.</p>
 	</dd>
 
 	<dt id="Password"><code>Password</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, input will be displayed as asterisks.
+		<p>If set to <code>1</code>, the input will be displayed as asterisks.</p>
 	</dd>
 
 	<dt id="XY"><code>X</code>, <code>Y</code></dt>
 	<dd>
-		Position of the input box.
+		<p>Position of the input box.</p>
 
-		<br><br><b>Note:</b> Relative positioning is not supported.
+		<p><b>Note:</b> Relative positioning with "r" and "R" is not supported.</p>
 	</dd>
 
 	<dt id="WH"><code>W</code>, <code>H</code></dt>
 	<dd>
-		Size of the input box.
+		<p>Size of the input box.</p>
 
-		<br><br><b>Note:</b> <code>H</code> should be large enough to accomodate the font.
+		<p><b>Note:</b> <code>H</code> should be large enough to accommodate the font.</p>
 	</dd>
 
-	<dt id="SolidColor"><code>SolidColor</code></dt>
+	<dt id="SolidColor"><code>SolidColor</code> <small>Default: <code>255,255,255,255</code></small></dt>
 	<dd>
-		<a href="!skins/option-types#Color">Color</a> of the background.
+		<p><a href="!skins/option-types#Color">Color</a> of the input field background.</p>
 
-		<br><br><b>Note:</b> The alpha channel changes the opacity of the entire input box, not just its background.
+		<p><b>Note:</b> The alpha channel changes the opacity of the entire input box including the text, not just the background.</p>
 	</dd>
 
-	<dt id="FontColor"><code>FontColor</code></dt>
+	<dt id="FontColor"><code>FontColor</code> <small>Default: <code>0,0,0,255</code></small></dt>
 	<dd>
-		<a href="!skins/option-types#Color">Color</a> of the input text.
+		<p><a href="!skins/option-types#Color">Color</a> of the input text.</p>
 	</dd>
 
 	<dt id="FontFace"><code>FontFace</code></dt>
 	<dd>
-		Family name of the input text font.
+		<p>Family name of the input text font.</p>
 
-		<br><br><b>Note:</b> Only fonts installed directly in Windows can be used.
+		<p><b>Note:</b> Only fonts actually installed in Windows can be used.</p>
 	</dd>
 
 	<dt id="FontSize"><code>FontSize</code></dt>
 	<dd>
-		Size of the input text font.
+		<p>Size of the input text font.</p>
 	</dd>
 
 	<dt id="StringStyle"><code>StringStyle</code></dt>
 	<dd>
-		Style of the input text. Valid values are <code>Normal</code>, <code>Bold</code>, <code>Italic</code>, and <code>BoldItalic</code>.
+		<p>Style of the input text. Valid values are <code>Normal</code>, <code>Bold</code>, <code>Italic</code>, and <code>BoldItalic</code>.</p>
 	</dd>
 
 	<dt id="StringAlign"><code>StringAlign</code> <small>Default: <code>Left</code></small></dt>
 	<dd>
-		Alignment of the input text. Valid values are <code>Left</code>, <code>Right</code>, <code>Center</code>.
+		<p>Alignment of the input text. Valid values are <code>Left</code>, <code>Right</code>, <code>Center</code>.</p>
 
-		<br><br><b>Note:</b> With right-aligned text, the cursor will move from left to right as text is typed. This is advised for skins using languages such as Arabic, which read right-to-left.
+		<p><b>Note:</b> With right-aligned text, the cursor will move from left to right as text is typed. This is advised for skins using languages such as Arabic, which read right-to-left.</p>
 	</dd>
-
-	<dt id="FocusDismiss"><code>FocusDismiss</code> <small>Default: <code>0</code></small></dt>
+	
+	<dt id="TopMost"><code>TopMost</code></dt>
 	<dd>
-		If set to <code>1</code>, clicking anywhere other than on the input field will close the input without taking action. Otherwise, the mouse is disabled until Enter or Esc is pressed.
+		<p>Sets the Z-position of the input field. If set to <code>1</code> then the input field will stay on top of all windows while active. If set to <code>0</code> then other windows can be dragged in front of the input field while it is active. If not set at all (default) then the Z-position of the input field will follow the <a href="!settings/skin-sections#AlwaysOnTop">TopMost</a> setting of the overall skin.</p>
+
+		<p><b>Note:</b> This option should not be used when <code>FocusDismiss=1</code> is set.</p>
+	</dd>	
+
+	<dt id="FocusDismiss"><code>FocusDismiss</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>If set to <code>1</code> (default), clicking anywhere other than on the input field will dismiss the input without taking action. If set to <code>0</code>, the mouse is disabled until Enter or Escape is pressed.</p>
 	</dd>
 	
 	<dt id="OnDismissAction"><code>OnDismissAction</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>A <a href="!bangs">bang</a> or <a href="!skins/option-types#Action">action</a> that is executed when an open InputText field is dismissed without hitting Enter to execute the plugin commmands.</p>
+		<p>A <a href="!bangs">bang</a> or <a href="!skins/option-types#Action">action</a> that is executed when an active InputText field is dismissed without hitting Enter to execute the plugin commands.</p>
 	</dd>	
 </dl>
 
@@ -93,12 +111,6 @@ LeftMouseUpAction=!CommandMeasure "MeasureInputTextPlugin" "ExecuteBatch ALL"
 IfAboveAction=!CommandMeasure "MeasureInputTextPlugin" "ExecuteBatch 3"
 Command4=!CommandMeasure "MeasureInputTextPlugin" "ExecuteBatch 2-4"
 ```
-
-<h3>Notes</h3>
-<ul>
-<li>Press Enter to submit user input. Press Escape to dismiss the input box without executing the script.</li>
-<li>Although the bang <code>!Refresh</code> would normally only refresh the current skin, InputText bangs are passed through Rainmeter itself, which means that the bang will perform a global refresh instead. To only refresh the skin, use <code>!Refresh #CURRENTCONFIG#</code>.</li>
-</ul>
 
 <h2>Example</h2>
 ``` ini
