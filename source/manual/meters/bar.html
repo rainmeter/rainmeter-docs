@@ -51,11 +51,19 @@ title: 'Bar meter'
 </dl>
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterBar_1.0.rmskin" class="download"></a>
+<a href="!examples/ExampleMeterBar.rmskin" class="download"></a>
 ``` ini
 [Rainmeter]
 Update=1000
-Author=RainmeterTeam
+AccurateText=1
+DynamicWindowSize=1
+
+[Metadata]
+Name=ExampleMeterBar
+Author=The Rainmeter Team
+Information=Example of the Bar meter
+License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
+Version=1.0
 
 [MeasureUsedMemory]
 Measure=PhysicalMemory
@@ -67,10 +75,8 @@ Drive=C:
 [MeterMemoryText]
 Meter=String
 MeasureName=MeasureUsedMemory
-FontFace=Segoe UI
-FontSize=10
+FontSize=11
 FontColor=255,255,255,255
-StringStyle=Bold
 AutoScale=1
 AntiAlias=1
 Text=Used RAM: %1
@@ -89,10 +95,8 @@ BarOrientation=Horizontal
 Meter=String
 MeasureName=MeasureUsedDrive
 Y=10R
-FontFace=Segoe UI
-FontSize=10
+FontSize=11
 FontColor=255,255,255,255
-StringStyle=Bold
 AutoScale=1
 AntiAlias=1
 Text=Free Drive C: %1
