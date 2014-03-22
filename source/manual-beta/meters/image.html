@@ -70,10 +70,19 @@ ImageName=%1-%2.png
 </ul>	
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterImage_1.0.rmskin" class="download"></a>
+<a href="!examples/ExampleMeterImage.rmskin" class="download"></a>
 ``` ini
 [Rainmeter]
 Update=1000
+AccurateText=1
+DynamicWindowSize=1
+
+[Metadata]
+Name=ExampleMeterImage
+Author=The Rainmeter Team
+Information=Example of the Image meter
+License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
+Version=1.0
 
 [MeterBackground]
 Meter=Image
@@ -99,7 +108,7 @@ Y=25
 W=150
 H=150
 PreserveAspectRatio=1
-LeftMouseUpAction=!Refresh
+LeftMouseUpAction=[!Refresh]
 ```
 
 <div class="exampleprev">
