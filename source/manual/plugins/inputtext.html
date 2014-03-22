@@ -106,11 +106,19 @@ title: 'InputText plugin'
 </dl>
 
 <h2 id="Bangs">Bangs</h2>
+
 ``` ini
-LeftMouseUpAction=!CommandMeasure "MeasureInputTextPlugin" "ExecuteBatch ALL"
-IfAboveAction=!CommandMeasure "MeasureInputTextPlugin" "ExecuteBatch 3"
-Command4=!CommandMeasure "MeasureInputTextPlugin" "ExecuteBatch 2-4"
+LeftMouseUpAction=[!CommandMeasure MeasureInputText "ExecuteBatch ALL"]
+IfAboveAction=[!CommandMeasure MeasureInputText "ExecuteBatch 3"]
+OnRefreshAction=[!CommandMeasure MeasureInputText "ExecuteBatch 1-4"]
 ```
+
+<p>The <code>ExecuteBatch</code> parameter supports the following syntax: <code>"ExecuteBatch All / # / #-#"</code></p>
+<ul>
+<li><b>All</b> : All commands in the measure</li>
+<li><b>#</b> : Only a single command in the measure</li>
+<li><b>#-#</b> : A specific range of commands in the measure</li>
+</ul>
 
 <h2>Example</h2>
 ``` ini
