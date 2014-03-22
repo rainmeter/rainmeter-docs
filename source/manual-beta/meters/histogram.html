@@ -98,17 +98,22 @@ title: 'Histogram meter'
 </ul>	
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterHistogram_1.0.rmskin" class="download"></a>
+<a href="!examples/ExampleMeterHistogram.rmskin" class="download"></a>
 ``` ini
 [Rainmeter]
+Update=1000
+AccurateText=1
 DynamicWindowSize=1
-Update=500
+
+[Metadata]
+Name=ExampleMeterHistogram
+Author=The Rainmeter Team
+Information=Example of the Histogram meter
+License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
+Version=1.0
 
 [MeasureCPU]
 Measure=CPU
-Processor=0
-MinValue=0
-MaxValue=100
 
 [MeterCPUBackgroundImage]
 Meter=Image
@@ -129,15 +134,13 @@ PrimaryColor=255,255,255,255
 SolidColor=0,0,0,100
 AntiAlias=1
 
-[MeterText]
+[MeterCPUText]
 Meter=String
 MeasureName=MeasureCPU
 X=110
 Y=10R
-FontFace=Segoe UI
 FontSize=13
 FontColor=255,255,255,255
-StringStyle=Bold
 StringAlign=Center
 AntiAlias=1
 Text=CPU Usage: %1%
