@@ -87,14 +87,24 @@ title: 'Roundline meter'
 <p><b>Note:</b> If the width and height are not defined, the center point is at the X and Y position of the meter and any part of the meter that intersects with the edges of the skin window will be cut off. If width and height are specified, the center point will be in the middle of the bounding box and the skin window will include the meter.</p>
 
 <h2>Example</h2>
-<a href="https://github.com/downloads/rainmeter/rainmeter-docs/ExampleMeterRoundline_1.0.rmskin" class="download"></a>
+<a href="!examples/ExampleMeterRoundline.rmskin" class="download"></a>
 ``` ini
 [Rainmeter]
 Update=1000
+AccurateText=1
+DynamicWindowSize=1
+
+[Metadata]
+Name=ExampleMeterRoundline
+Author=The Rainmeter Team
+Information=Example of the Roundline meter
+License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
+Version=1.0
 
 [MeasureFreeDisk]
 Measure=FreeDiskSpace
 Drive=C:
+InvertMeasure=1
 
 [MeasureTotalDisk]
 Measure=FreeDiskSpace
@@ -111,7 +121,7 @@ H=120
 StartAngle=4.712
 RotationAngle=6.283
 LineLength=60
-LineColor=62,140,132,255
+LineColor=40,92,87,255
 Solid=1
 AntiAlias=1
 
@@ -134,28 +144,24 @@ Meter=String
 MeasureName=MeasureTotalDisk
 X=60
 Y=130
-FontFace=Segoe UI
-FontSize=12
-FontColor=62,140,132,255
-StringStyle=Bold
+FontSize=11
+FontColor=36,82,77,255
 StringAlign=Center
 AntiAlias=1
 AutoScale=1
-Text=Total: %1
+Text=Total Disk: %1
 
 [MeterFreeText]
 Meter=String
 MeasureName=MeasureFreeDisk
 X=60
-Y=R
-FontFace=Segoe UI
-FontSize=12
+Y=6R
+FontSize=11
 FontColor=216,242,240,255
-StringStyle=Bold
 StringAlign=Center
 AntiAlias=1
 AutoScale=1
-Text=Free: %1
+Text=Free Disk: %1
 ```
 
 <div class="exampleprev">
