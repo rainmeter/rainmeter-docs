@@ -113,7 +113,7 @@ LeftMouseUpAction=["http://rainmeter.net/forums"]
 ; Opens the URL in the default web browser.
 ```
 
-<p>A parameter containing quotes should be surrounded by a pair of triple quotes.</p>
+<p>A parameter containing embedded quotes should be surrounded by a what we call the """Magic Quotes""". A pair of triple quotes.</p>
 ``` ini
 ; The first line will fail due to extra quotes. The second line will properly log
 ; the string: Quotes are "fun"!
@@ -121,7 +121,7 @@ LeftMouseUpAction=[!Log "Quotes are "fun"!"]
 LeftMouseUpAction=[!Log """Quotes are "fun"!"""]
 ```
 
-<p>When using <code>#VarName#</code> or <code>[MeasureName]</code> in an action option, the current value of the variable or measure will be used. To have the literal string "#VarName#" or "[MeasureName]" used, in a !SetOption value for instance, use the "*" char as in <code>#*VarName*#</code> or <code>[*MeasureName*]</code> to tell Rainmeter you do not want the value resolved, but rather used as a literal string.</p>
+<p>When using <code>#VarName#</code> or <code>[MeasureName]</code> in an action option, the current value of the variable or measure will be used. To have the literal string "#VarName#" or "[MeasureName]" used, in a !SetOption value for instance, use the "*" char as an escape character. For example, use <code>#*VarName*#</code> or <code>[*MeasureName*]</code> to tell Rainmeter you do not want the value resolved, but rather used as a literal string.</p>
 ``` ini
 LeftMouseUpAction=!SetOption SomeMeter FontSize #VarName#
 ; The FontSize option for SomeMeter will be set to the current value of the variable.
