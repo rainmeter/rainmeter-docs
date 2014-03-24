@@ -43,15 +43,26 @@ FontSize=(2 > 1 ? 42 : 666)
 ```
 
 <h2 id="Path">Path options</h2>
-<p>Path options specify the relative or absolute path of either a file or a folder (depending on the option). For example, the path of an image file is expected with <code>ImageName</code>.</p>
+<p>Path options specify the relative or absolute path of either a file or a folder (depending on the option). For example, the path and name of an image file is expected with <code>ImageName</code>.</p>
+
+<p>There are built-in variables provided that automatically resolve to paths for the Rainmeter application or individual skins. These are described at <a href="!variables/built-in-variables#PathVariables">Path Variables</a> and <a href="!variables/built-in-variables#SkinVariables">Skin Variables</a>.
+
+<p>In addition, there is a built-in variable <code>#@#</code> that resolves to the <a href="!skins/resources-folder">@Resources</a> folder in the <a href="!skins/#Root">root config</a> folder of the current skin.
 
 ``` ini
-; Relative paths (relative to current folder):
+; Paths relative to the current skin folder:
 ImageName=lolcat.png
 ImageName=..\lolcat.png
 
 ; Absolute path:
 ImageName=C:\lolcats\lolcat.png
+
+; Path to the current skin folder:
+ImageName=#CURRENTPATH#lolcat.png
+
+; Path to the @Resources\Images folder under the root config of the current skin:
+ImageName=#@#Images\lolcat.png
+
 ```
 
 <h2 id="Color">Color options</h2>
@@ -59,7 +70,7 @@ ImageName=C:\lolcats\lolcat.png
 <p><b>Decimal colors</b> are specified as <code>RRR,GGG,BBB<em>,AAA</em></code>, where <code>RRR</code>, <code>GGG</code>, <code>BBB</code>, and <code><em>AAA</em></code> are decimal numbers from 0 to 255. Formulas can also be used in place of the numbers.</p>
 <p><b>Hexadecimal colors</b> are specified as <code>RRGGBB<em>AA</em></code>, where <code>RR</code>, <code>GG</code>, <code>BB</code>, and <code><em>AA</em></code> are hexadecimal numbers from 00 to FF.</p>
 
-<p><b>Note:</b> The alpha component is optional. As with the other components it is a value from 0 to 255 (00 to FF), with 0 being completely invisible (and the meter will not react to the mouse) to 255, which is completely opaque. The default is 255 (or FF).</p>
+<p><b>Note:</b> The alpha component is optional. As with the other components it is a value from 0 to 255 (00 to FF), with 0 being completely invisible (and the meter will not react to the mouse) to 255, which is completely opaque. The default is 255 (or FF).  To have a element be "invisible" while still reacting to the mouse, use an alpha value of 1.</p>
 
 ``` ini
 ; The following lines are equivalent to solid opaque red:
@@ -73,8 +84,9 @@ SolidColor=FF0000
 <p>One of many ways to obtain a desired color code is <a href="http://rainmeter.net/color/">Rainmeter Online Color Picker</a>.</p>
 
 <h2 id="Action">Action options</h2>
-<p>Options in a skin which cause Rainmeter to take some action. Actions may be triggered by user input such as <a href="!mouse-actions">mouse actions</a>, or system events and changing values within the skin, such as <a href="!measures/general-options/ifactions">if actions</a>.</p>
-<p>Normally the value of an action option is going to be one or more <a href="!bangs">bangs</a>, or the execution of external commmands in Windows.</p>
+<p>Options in a skin which cause Rainmeter to take some action. Actions may be triggered by user input such as <a href="!mouse-actions">mouse actions</a> or changing values and system events within the skin, such as <a href="!measures/general-options/ifactions">IfActions</a> or <a href="!measures/general-options#OnUpdateAction">OnUpdateAction</a>.</p>
+
+<p>Normally the value of an action option is going to be one or more <a href="!bangs">bangs</a>, or the execution of external commands in Windows. When multiple bangs are defined on the same action option, enclose them in square brackets <code>[]</code>.</p>
 
 ``` ini
 ; Single bang:
@@ -104,7 +116,8 @@ LeftMouseUpAction=[!SetWallpaper #ImageFile#]
 LeftMouseUpAction=[!SetWallpaper "#ImageFile#"]
 ```
 
-<p>External Windows commands can be executed by specifying the path to the executable and any parameters. Enclose any values with spaces in quotes.</p>
+<p>External Windows commands can be executed by specifying the path to the executable and any parameters. Enclose the command in square brackets <code>[]</code>, and enclose any values with spaces in quotes.</p>
+
 ``` ini
 LeftMouseUpAction=["C:\Windows\Notepad.exe" MyFile.txt]
 ; Runs Notepad.exe and loads the file MyFile.txt.
@@ -113,28 +126,42 @@ LeftMouseUpAction=["http://rainmeter.net/forums"]
 ; Opens the URL in the default web browser.
 ```
 
-<p>A parameter containing embedded quotes should be surrounded by a what we call """magic quotes""". A pair of triple quotes.</p>
+<h3 id="MagicQuotes"><b>Magic Quotes</b></h3>
+
+<p>A parameter to a bang that contains embedded quotes should be surrounded by a what we call """magic quotes""". A pair of triple quotes.</p>
+
 ``` ini
 ; The first line will fail due to extra quotes. The second line will properly log
-; the string: Quotes are "fun"!
-LeftMouseUpAction=[!Log "Quotes are "fun"!"]
-LeftMouseUpAction=[!Log """Quotes are "fun"!"""]
+; Example string: Bob said "hello" to Susan
+LeftMouseUpAction=[!Log "Bob said "hello" to Susan"]
+LeftMouseUpAction=[!Log """Bob said "hello" to Susan"""]
 ```
 
-<p>When using <code>#VarName#</code> or <code>[MeasureName]</code> in an action option, the current value of the variable or measure will be used. To have the literal string "#VarName#" or "[MeasureName]" used, in a !SetOption value for instance, use the "*" char as an escape character. For example, use <code>#*VarName*#</code> or <code>[*MeasureName*]</code> to tell Rainmeter you do not want the value resolved, but rather used as a literal string.</p>
+<h3 id="AsteriskEscape"><b>Escaping a #Variable# or [MeasureName]</b></h3>
+
+<p>When using <code>#VarName#</code> or <code>[MeasureName]</code> in an action option, the current value of the variable or measure will be used. To have the literal string "#VarName#" or "[MeasureName]" used, in a !SetOption value for instance, surround the variable or measure name with asterisk <code>*</code> characters.</p>
+
+</p>For example, use <code>#*VarName*#</code> or <code>[*MeasureName*]</code> to tell Rainmeter to "escape" the variable or measure name. You do not want the value resolved, but rather used as a literal string.</p>
+
 ``` ini
 LeftMouseUpAction=!SetOption SomeMeter FontSize #VarName#
 ; The FontSize option for SomeMeter will be set to the current value of the variable.
 
 LeftMouseUpAction=!SetOption SomeMeter FontSize #*VarName*#
 ; The FontSize option for SomeMeter will be set to the the string "#VarName#"
+
+LeftMouseUpAction=!SetOption SomeMeter FontSize [MeasureName]
+; The FontSize option for SomeMeter will be set to the current value of the measure.
+
+LeftMouseUpAction=!SetOption SomeMeter FontSize [*MeasureName*]
+; The FontSize option for SomeMeter will be set to the string "[MeasureName]".
 ```
 
 <h2 id="RegExp">Regular expression options</h2>
 
 <p>These options use <a href="http://www.pcre.org/">Perl Compatible Regular Expressions</a> (PCRE) to match specific parts of a plaintext string. Regular expressions are used when the structure of a piece of data is known, but the content is not.</p>
 
-<p>In Rainmeter, regular expressions are most prominently used by the <a href="!plugins/webparser">WebParser plugin</a> to interpret (or "parse") web-based data sources, but they can also be used to modify the value of any measure using <a href="!measures/general-options/substitute#RegExpSubsitute">Substitute options</a>.</p>
+<p>In Rainmeter, regular expressions are most prominently used by the <a href="!plugins/webparser">WebParser plugin</a> to interpret (or "parse") web-based data sources, but they can also be used to modify the string value of a measure using <a href="!measures/general-options/substitute#RegExpSubsitute">Substitute options</a>.</p>
 
 <p>The PCRE library is maintained and documented by its own creators, not by any members of the Rainmeter development team. For more about using regular expressions, see the following resources:</p>
 
