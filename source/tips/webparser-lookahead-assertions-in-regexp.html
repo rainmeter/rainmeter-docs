@@ -42,9 +42,21 @@ RegExp="(?siU)<Item>.*<Name>(.*)</Name>.*<Item>.*<Name>(.*)</Name>.*<Item>.*<Nam
 ;RegExp with look-ahead assertions
 RegExp="(?siU)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name>)"
 ```
-<p>Now the WebParser measure will return the two StringIndexes for "Larry" and "Curly", and will just return a null value for the third search item without failing.</p>
+<p>Now the WebParser measure will return the two StringIndexes for "Larry" and "Curly", and will just return a null value for the third search item (the third StringIndex) without failing.</p>
 
-<p>What <code>(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)</code> is saying is "Look ahead and see if there is a pattern of <code>.*&lt;Item&gt;</code> coming up, and if so, execute the expression <code>.*&lt;Name&gt;(.*)&lt;/Name&gt;</code>", or in shorthand: "(? [Do] (?= [If this is found] ) [stuff to Do] )". If not, just shrug and continue...</p>
+<p><b>How does this work?</b></p>
+
+<p><code>(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)</code></p>
+
+<p>The <code>(?</code> at the beginning, paired with the <code>)</code> at the very end, is a <em>IF conditional</em> directive, basically saying "If the following succeeds, then..."</code></p>
+
+<p>The <code>(?=.*&lt;Item&gt;)</code> next is the <em>lookahead assertion</em>. It is asking "If I look ahead from here, does the text <code>.*&lt;Item&gt;</code> exist?"</p>
+
+<p>If "true", what comes outside the lookahead assertion, <code>.*&lt;Name&gt;(.*)&lt;/Name&gt;</code> is searched for and the capture is made. The trailing <code>)</code> ends that starting <code>(?</code> IF conditional.</p>
+
+<p>The point of that overall outside <code>(? ... )</code> IF conditional is to keep the RegExp from failing if the lookahead assertion is "false". If the test in the lookahead is "true", fine. If not, it just shrugs and continues to the next part of the RegExp or exits gracefully at the end of the expression.<p>
+
+<p><b>Example skin</b></p>
 
 <p>Let's put it all together. I will use a [Variable] to define the search pattern, then just repeatedly use the variable in the <code>RegExp=</code> statement to save some typing, and set a <code>Substitute=</code> on the WebParser measures so we get something other than just a null value displayed.</p>
 
