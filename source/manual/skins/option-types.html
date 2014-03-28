@@ -159,16 +159,38 @@ LeftMouseUpAction=!SetOption SomeMeter FontSize [*MeasureName*]
 
 <h2 id="RegExp">Regular expression options</h2>
 
-<p>These options use <a href="http://www.pcre.org/">Perl Compatible Regular Expressions</a> (PCRE) to match specific parts of a plaintext string. Regular expressions are used when the structure of a piece of data is known, but the content is not.</p>
+<p>These options use <a href="http://www.pcre.org/">Perl Compatible Regular Expressions</a> (PCRE) to match specific parts of a text string. Regular expressions are used when the structure of a piece of data is known, but the content is not.</p>
 
 <p>In Rainmeter, regular expressions are most prominently used by the <a href="!plugins/webparser">WebParser plugin</a> to interpret (or "parse") web-based data sources, but they can also be used to modify the string value of a measure using <a href="!measures/general-options/substitute#RegExpSubsitute">Substitute options</a>.</p>
 
-<p>The PCRE library is maintained and documented by its own creators, not by any members of the Rainmeter development team. For more about using regular expressions, see the following resources:</p>
+<h2 id="Resources">Resources for regular expressions</h2>
 
+<p><b>Full online manuals for PCRE</b></p>
 <ul>
-	<li><p><a href="http://www.perl.com/doc/manual/html/pod/perlre.html">Documentation</a>.</p></li>
-	<li><p><a href="http://www.regular-expressions.info/tutorial.html">Tutorial</a>.</p></li>
-	<li><p><a href="http://www.cheatography.com/davechild/cheat-sheets/regular-expressions/">Cheat sheet</a>.</p></li>
+<li><a href="http://perlcity.com/perl-regular-expressions.html">Official manual for PCRE - Perl Compatible Regular Expressions library</a></li>
+<li><a href="http://www.perl.com/doc/manual/html/pod/perlre.html">Official manual for regular expressions in the Perl language</a></li>
 </ul>
 
-<p>Formats that are commonly parsed with regular expressions include <a href="http://en.wikipedia.org/wiki/Html">HTML</a>, <a href="http://en.wikipedia.org/wiki/Xml">XML</a>, <a href="http://en.wikipedia.org/wiki/Rss">RSS</a>, <a href="http://en.wikipedia.org/wiki/Atom_(standard)">Atom</a>, <a href="http://en.wikipedia.org/wiki/Json">JSON</a> and <a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a>.</p>
+<p><b>Tutorials and guides for regular expressions</b></p>
+<ul>
+<li><a href="http://www.rexegg.com/">Beginners tutorial for regular expressions</a></li>
+<li><a href="http://www.regular-expressions.info/tutorial.html">Advanced tutorial for regular expressions</a></li>
+<li><a href="http://www.cheatography.com/davechild/cheat-sheets/regular-expressions/">Cheat sheet for regular expressions</a></li>
+<li><a href="http://regex101.com/">Online tool for testing PCRE regular expressions</a></li>
+</ul>
+
+<p><b>Help with regular expressions in WebParser</b></p>
+<ul>
+<li><a href="!plugins/webparser">Manual entry for WebParser</a></li>
+<li><a href="/tips/webparser-tutorial">WebParser Tutorial</a></li>
+<li><a href="/tips/webparser-lookahead-assertions-in-regexp">Using lookahead assertions in WebParser</a>
+<li><a href="/tips/webparser-debugging-regexp">Guide for debugging regular expressions in WebParser</a></li>
+<li><a href="/tips/webparser-debugging-regexp#RainRegExp">RainRegExp addon for testing WebParser RegExp options.</a></li>
+</ul>
+
+<p><b>Information on the RSS and ATOM feed standards</b></p>
+<ul>
+<li><a href="/tips/rss-feed-tutorial">Tutorial for parsing RSS / ATOM feeds in WebParser</a></li>
+<li><a href="http://en.wikipedia.org/wiki/RSS">Wikipedia entry for the RSS standard</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Atom_(standard)">Wikipedia entry for the ATOM standard</a></li>
+</ul>
