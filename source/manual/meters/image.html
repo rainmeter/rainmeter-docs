@@ -9,35 +9,37 @@ title: 'Image Meter'
 <dl>
 	<dt>General meter options</dt>
 	<dd>
-		All <a href="!meters/general-options">general meter options</a> are valid.
+		<p>All <a href="!meters/general-options">general meter options</a> are valid.</p>
 	</dd>
 
 	<dt>General image options</dt>
 	<dd>
-		All <a href="!meters/general-options/image-options">general image options</a> are valid for <code>ImageName</code>.
+		<p>All <a href="!meters/general-options/image-options">general image options</a> are valid for <code>ImageName</code>.</p>
 	</dd>
 
 	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<em>N</em></code></dt>
 	<dd>
-		Name(s) of the measure(s) to use in <code>ImageName</code> with the <code>%<em>N</em></code> syntax. This option does not need to be specified if not needed.
+		<p>Name(s) of the measure(s) to use in <code>ImageName</code> with the <code>%<em>N</em></code> syntax. This option does not need to be specified if not needed.</p>
 	</dd>
 
 	<dt id="ImageName"><code>ImageName</code> <small>Default: <code>%1.png</code></small></dt>
 	<dd>
-		Name of the image file. The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:
-		``` ini
+		<p>Name of the image file. The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:</p>
+
+``` ini
 MeasureName=SomeMeasure
 MeasureName2=SomeMeasure2
 ImageName=%1-%2.png
 ; %1 and %2 will be replaced by the string values of SomeMeasure and
 ; SomeMeasure2, respectively.
 ```
-		<b>Note:</b> If an extension is not provided for the image file, .png is assumed.
+
+		<p><b>Note:</b> If an extension is not provided for the image file, .png is assumed.</p>
 	</dd>
 
 	<dt id="PreserveAspectRatio"><code>PreserveAspectRatio</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		Controls how <code>W</code> and <code>H</code> scale the image when <code>Tile=0</code>. Valid values are:
+		<p>Controls how <code>W</code> and <code>H</code> scale the image when <code>Tile=0</code>. Valid values are:</p>
 		<ul>
 		<li><code>0</code>: The image is scaled to exactly fit the bounds specified by <code>W</code> and <code>H</code> without regard to aspect ratio.</li>
 		<li><code>1</code>: The image is scaled to fit within the bounds specified by <code>W</code> and/or <code>H</code> while preserving the aspect ratio.</li>
@@ -53,7 +55,7 @@ ImageName=%1-%2.png
 	
 	<dt id="Tile"><code>Tile</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the image is tiled (repeated) within the bounds defined by <code>W</code> and <code>H</code>.
+		<p>If set to <code>1</code>, the image is tiled (repeated) within the bounds defined by <code>W</code> and <code>H</code>.</p>
 	</dd>
 </dl>
 
@@ -64,12 +66,13 @@ ImageName=%1-%2.png
 <p>The following options have been deprecated and should not be used. They are still supported, but may be removed in future versions.</p>
 
 <ul>
-	<li><p><code>Path</code><br>
+	<li><code>Path</code><br>
 		The Path option to define the location of images is replaced by the <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> option in <a href="!meters/general-options/image-options">general image options</a>.
 	</li>
 </ul>	
 
 <h2>Example</h2>
+
 <a href="!examples/ExampleMeterImage.rmskin" class="download"></a>
 ``` ini
 [Rainmeter]
