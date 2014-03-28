@@ -48,13 +48,15 @@ RegExp="(?siU)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name
 
 <p><code>(?(?=.*&lt;Item&gt;).*&lt;Name&gt;(.*)&lt;/Name&gt;)</code></p>
 
-<p>The <code>(?</code> at the beginning, paired with the <code>)</code> at the very end, is a <em>IF conditional</em> directive, basically saying "If the following succeeds, then..."</code></p>
+<p>The <code>(?</code> at the beginning, paired with the <code>)</code> at the very end, is an <em>IF conditional</em> directive, basically saying "If the following succeeds, then..."</code></p>
 
 <p>The <code>(?=.*&lt;Item&gt;)</code> next is the <em>lookahead assertion</em>. It is asking "If I look ahead from here, does the text <code>.*&lt;Item&gt;</code> exist?"</p>
 
 <p>If "true", what comes outside the lookahead assertion, <code>.*&lt;Name&gt;(.*)&lt;/Name&gt;</code> is searched for and the capture is made. The trailing <code>)</code> ends that starting <code>(?</code> IF conditional.</p>
 
 <p>The point of that overall outside <code>(? ... )</code> IF conditional is to keep the RegExp from failing if the lookahead assertion is "false". If the test in the lookahead is "true", fine. If not, it just shrugs and continues to the next part of the RegExp or exits gracefully at the end of the expression.<p>
+
+<p><em>A second benefit of that IF conditional is that it causes the expression to move the internal "pointer" in the text along. Lookaround assertions do not "consume" any text when they search, and so without the IF conditional, the RegExp would never fail in our example, as it would just sit in one place in the text, ask three times "If I look ahead from here, does the text <code>.*&lt;Item&gt;</code> exist?". It would then happily just return "Larry" three times.</em></p>
 
 <p><b>Example skin</b></p>
 
