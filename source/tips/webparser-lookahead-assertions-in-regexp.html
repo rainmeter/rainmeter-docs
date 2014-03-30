@@ -56,8 +56,6 @@ RegExp="(?siU)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name
 
 <p>The point of that overall outside <code>(? ... )</code> IF conditional is to keep the RegExp from failing if the lookahead assertion is "false". If the test in the lookahead is "true", fine. If not, it just shrugs and continues to the next part of the RegExp or exits gracefully at the end of the expression.<p>
 
-<p><em>A second benefit of that IF conditional is that it causes the expression to move the internal "pointer" in the text along. Lookaround assertions do not "consume" any text when they search, and so without the IF conditional, the RegExp would never fail in our example, as it would just sit in one place in the text, ask three times "If I look ahead from here, does the text <code>.*&lt;Item&gt;</code> exist?". It would then happily just return "Larry" three times.</em></p>
-
 <p><b>Example skin</b></p>
 
 <p>Let's put it all together. I will use a [Variable] to define the search pattern, then just repeatedly use the variable in the <code>RegExp=</code> statement to save some typing, and set a <code>Substitute=</code> on the WebParser measures so we get something other than just a null value displayed.</p>
@@ -130,11 +128,6 @@ Item 3: No Moe!
 </pre>
 </p><br>
 
-<p>Details on how "Lookaround" functionality works in regular expressions can be found here: <a href="http://www.regular-expressions.info/lookaround.html">RegExp Tutorial</a></p>
+<p>Details on how "Lookaround" functionality works in regular expressions can be found at <a href="http://www.regular-expressions.info/lookaround.html">RegExp Tutorial</a>.</p>
 
-
-
-
-
-
-
+<p>Guides, tutorials and tools for regular expressions can be found at <a href="/manual/skins/option-types#RegExp">Resources for regular expressions</a>.</p>
