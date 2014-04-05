@@ -3,7 +3,9 @@ layout: tips
 permalink: tips/rss-feed-tutorial
 title: 'RSS Feed Tutorial'
 ---
-<p>One of the most common uses of the <a href="/manual/plugins/webparser">WebParser plugin</a> in Rainmeter is to create a skin to parse and display information from an RSS or Atom feed. While this guide is not intended as a <a href="!tips/webparser-tutorial">tutorial for the WebParser plugin</a>, it should help you get started with creating your own feed reader skins. Due to the standard nature of RSS and Atom feeds, this is really one of the easier things to do with WebParser, and what you learn from doing this can be a lot of help with other, more complicated parsing of web sites.</p>
+<p>One of the most common uses of the <a href="/manual/plugins/webparser">WebParser plugin</a> in Rainmeter is to create a skin to parse and display information from an RSS or Atom feed.<p>
+
+<p>This guide is not intended as a general purpose <a href="!tips/webparser-tutorial">tutorial for the WebParser plugin</a>, nor does it attempt to explore all that regular expressions can do.  A great deal of additional help is available at <a href="/manual/skins/option-types#RegExp">Regular Expression Options</a>.</p>
 
 <p>RSS and Atom feeds follow certain patterns that make them fairly easy to parse. While there are differences between the RSS and Atom standards, which we will touch on a bit later, let's use a simple RSS output to outline how they are laid out.</p>
 
@@ -917,15 +919,3 @@ Plugin=WebParser
 URL=http://rainmeter.net/forum/feed.php
 RegExp=(?siU)<title>(.*)</title>.*<link.*"(.*)".*<updated>(.*)</updated>#Item##Item##Item##Item##Item#
 ```
-
-<h3>Important links</h3>
-
-<ul>
-<li><a href="/manual/plugins/webparser">WebParser manual entry.</a></li>
-<li><a href="/manual/options#RegExp">Regular Expressions in Rainmeter.</a></li>
-<li><a href="http://en.wikipedia.org/wiki/RSS">The RSS standard on Wikipedia.</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Atom_(standard)">The Atom standard on Wikipedia.</a></li>
-<li><a href="http://rainmeter.net/forum/viewtopic.php?p=5635#p5635">RainRegExp tool for Rainmeter.</a></li>
-<li><a href="http://rainmeter.net/forum/viewtopic.php?p=89073#p89073">Alternatives to Google Reader and Rainmeter.</a></li>
-</ul>
-<br>
