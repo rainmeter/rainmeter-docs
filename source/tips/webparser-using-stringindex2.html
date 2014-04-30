@@ -24,7 +24,7 @@ Sub="<![CDATA[":"","]]>":""
 Measure=Plugin
 Plugin=WebParser
 Url=http://feeds.gawker.com/lifehacker/full
-RegExp="(?siU)<channel>.*<image>.*<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
+RegExp="(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
 
 [MeasureMainTitle]
 Measure=Plugin
@@ -163,7 +163,7 @@ Item=.*<item>(.*)</item>
 Measure=Plugin
 Plugin=WebParser
 Url=http://feeds.gawker.com/lifehacker/full
-RegExp="(?siU)<channel>.*<image>.*<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
+RegExp="(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
 ```
 
 <p>Notice we are doing something a bit different here. Instead of fully parsing the site into many, many StringIndexes on the main measure, we are just getting the main title and link for the site into StringIndexes 1 and 2, then getting the <em>entire</em> contents of each &lt;item&gt; into StringIndexes 3, 4 and 5.</p>
