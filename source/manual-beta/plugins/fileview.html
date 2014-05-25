@@ -115,6 +115,8 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 	<dt id="Path"><code>Path</code></dt>
 	<dd>
 		<p>In a <b>parent measure</b>, defines the path of the folder to read. By default, the <b>My Computer</b> folder is used.</p>
+		
+		<p><b>Note:</b> While #Variables# can be used in the parent Path option, [SectionVariables] cannot, as this is ambiguous with the parent definition in a child measure.</p>
 
 		<p>In a <b>child measure</b>, defines the parent measure <code>[MeasureName]</code> to read values from.</p>
 	</dd>
