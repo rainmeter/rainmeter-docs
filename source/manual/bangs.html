@@ -203,7 +203,7 @@ title: 'Bangs'
 		Shows or hides an active skin with a fade effect.
 		<ul>
 		<li><code>Config</code> (optional)</li>
-		</ul></code>
+		</ul>
 	</dd>
 
 	<dt id="ShowHideToggleBlur"><code>!ShowBlur</code>, <code>!HideBlur</code>, <code>!ToggleBlur</code> <small>Parameter: <code><em>Config</em></code></small></dt>
@@ -260,7 +260,7 @@ title: 'Bangs'
 		<li><code>Config</code> (required): The config to be activated or deactivated.</li>
 		<li><code>File</code> (required): The .ini file to be activated or deactivated.</li>
 		</ul>
-		<br><b>Example:</b> <code>!ToggleConfig "illustro\Clock" "Clock.ini"</code>		
+		<br><b>Example:</b> <code>!ToggleConfig "illustro\Clock" "Clock.ini"</code>
 	</dd>
 
 	<dt id="Update"><code>!Update</code> <small>Parameter: <code><em>Config</em></code></small></dt>
@@ -294,6 +294,14 @@ title: 'Bangs'
 		<li><code>Config</code> (optional)</li>
 		</ul>
 	</dd>
+	
+	<dt id="SkinCustomMenu"><code>!SkinCustomMenu</code> <small>Parameter: <code><em>Config</em></code></small></dt>
+	<dd>
+		Opens any defined <a href="!skins/rainmeter-section#Context">custom skin context menu</a> at the current mouse position.
+		<ul>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	</dd>	
 
 	<dt id="SetTransparency"><code>!SetTransparency</code> <small>Parameters: <code><b>Alpha</b><em>, Config</em></code></small></dt>
 	<dd>
@@ -474,7 +482,7 @@ title: 'Bangs'
 
 	<dt id="MoveMeter"><code>!MoveMeter</code> <small>Parameters: <code><b>X, Y, Meter</b><em>, Config</em></code></small></dt>
 	<dd>
-		Moves the given <a href="!meters">meter</a> (not the window) to the specified position. The new position is relative to the top left corner of the skin.
+		Moves the given <a href="!meters">meter</a> (not the window) to the specified position. The new position is relative to the top left corner of the skin. The size of the skin window is re-evaluated after the meter is moved. This would make the skin window become larger or smaller to incorporate all meters.
 		<ul>
 		<li><code>X</code> (required): New X position.</li>
 		<li><code>Y</code> (required): New Y position.</li>

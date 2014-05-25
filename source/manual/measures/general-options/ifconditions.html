@@ -1,0 +1,75 @@
+---
+layout: manual
+permalink: manual/measures/general-options/ifconditions
+title: 'IfConditions'
+---
+<p><b>IfCondition</b> options are used in any measure, of any type, to evaluate a mathematical formula. The formula will be evaluated as "true" or "false", and will execute <b>IfTrueAction</b> or <b>IfFalseAction</b> <a href="!skins/option-types#Action">action options</a>, which will contain one or more <a href="!bangs">Bangs</a> or commands.</p>
+
+<p>The formula uses the same syntax as described on the <a href="!formulas">Formulas page</a> but does not need to be surrounded in parenthesis. Like the <a href="!measures/calc">Calc measure</a>, measure names do not need [brackets] and are always <a href="/tips/dynamiccheatsheet">dynamic</a> when referenced inside the IfCondition.</p>
+
+<p>There can be multiple sets of condition and action options in the measure, by using IfCondition2 / IfTrueAction2 / IfFalseAction2 and so on.</p>
+
+<p>IfConditions are similar in functionality to <a href="!measures/general-options/ifactions">IfActions</a>, with a few important and powerful differences.</p>
+
+<ul>
+	<li>The formula is not based on the value of the measure the IfCondition is in, but can reference any measures, variables or section variables.</li>
+	<li>There can be an IfTrueAction, IfFalseAction or both for each IfCondition, so you can take appropriate actions not only when the result is "true", but also when it is "false".</li> 
+	<li>The syntax allows for a single IfCondition to embed logical AND <code>&&</code> and OR <code>||</code> comparisons in the formula.  Unlike IfEqualValue for instance, which allows for a single comparison, you could use <code>IfCondition=(MeasureName = 5) || (MeasureName = 10)</code>, to check if the value of MeasureName is "5" OR "10".  You can also use the full range of logical operators, so rather than being limited to "equal", "above" or "below", you can use any of <code>&lt;&gt;</code> <code>=</code> <code>&lt;</code> <code>&gt;</code> <code>&lt;=</code> <code>&gt;=</code> <code>&&</code> <code>||</code>.</li>
+</ul>
+
+<h2>Options</h2>
+<dl>
+	<dt id="IfCondition"><code>IfCondition</code>, <code>IfCondition2</code>, ..., <code>IfCondition<em>N</em></code></dt>
+	<dd>
+		<p>A mathematical formula, which when evaluated will result in "true" or "false".</p>
+		<p><b>Examples:</b></p>
+		<p><code>IfCondition=MeasureName &gt;= 10</code></p>
+		<p><code>IfCondition=MeasureOne = (MeasureTwo + #VarName#) / 2</code></p>
+		<p><code>IfCondition=(MeasureName &gt; 5) && (MeasureName &lt; 10)</code></p>
+		<p><code>IfCondition=(MeasureName = 25) || (MeasureName = 50) || (MeasureName = 75)</code></p>
+		<p><b>Note:</b> The comparison on either side of logical AND <code>&&</code> and OR <code>||</code> operators must be enclosed in (parentheses).</p>
+	</dd>
+
+	<dt id="IfTrueAction"><code>IfTrueAction</code>, <code>IfTrueAction2</code>, ..., <code>IfTrueAction<em>N</em></code></dt>
+	<dd>
+		<p>Optional <a href="!skins/option-types#Action">action</a> to be executed when the formula expressed in IfCondition results in "true". The action is executed only once when the condition becomes "true", so it needs to become "false" and again "true" to execute again.</p>
+	</dd>
+
+	<dt id="IfFalseAction"><code>IfFalseAction</code>, <code>IfFalseAction2</code>, ..., <code>IfFalseAction<em>N</em></code></dt>
+	<dd>
+		<p>Optional <a href="!skins/option-types#Action">action</a> to be executed when the formula expressed in IfCondition results in "false". The action is executed only once when the condition becomes "false", so it needs to become "true" and again "false" to execute again.</p>
+	</dd>
+
+	<dt id="IfConditionMode"><code>IfConditionMode</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>If set to <code>1</code>, the evaluation of the condition will execute the appropriate actions in IfTrueAction or IfFalseAction on every update of the measure.</p>
+
+		<p><b>Note:</b> Care should be taken not to create an infinite loop in the actions.  In particular, <code>!Refresh</code>, <code>!Update</code> and <code>!UpdateMeasure #CURRENTSECTION#</code> should generally be avoided when <code>IfConditionMode=1</code>.</p>
+	</dd>
+</dl>
+
+<h2>Example</h2>
+``` ini
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+
+[MeasureCPU]
+Measure=CPU
+IfCondition=MeasureCPU < 10
+IfTrueAction=[!SetOption MeterCPU Text "CPU usage is less than 10 percent"]
+IfCondition2=(MeasureCPU >= 10) && (MeasureCPU <= 90)
+IfTrueAction2=[!SetOption MeterCPU Text "CPU usage is between 10 and 90 percent"]
+IfCondition3=MeasureCPU > 90
+IfTrueAction3=[!SetOption MeterCPU Text "CPU usage is more than 90 percent!"]
+OnUpdateAction=[!UpdateMeter MeterCPU][!Redraw]
+
+[MeterCPU]
+Meter=String
+FontSize=12
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+```

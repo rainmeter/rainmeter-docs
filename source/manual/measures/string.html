@@ -1,0 +1,42 @@
+---
+layout: manual
+permalink: manual/measures/string
+title: 'String measure'
+---
+<p><code>Measure=String</code> A measure which can be used to create or manipulate a string.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		<p>All <a href="!measures/general-options">general measure options</a> <b>except</b> <code>InvertMeasure</code> are valid.</p>
+	</dd>
+
+	<dt id="String"><code>String</code></dt>
+	<dd>
+		<p>The string value of the measure.</p>
+		<p><b>Note:</b> Any combination of hard-coded text, variables, dynamic variables, or section variables can be used. Formulas are not evaluated in this option.</p>
+	</dd>
+</dl>
+
+<h2>Example</h2>
+``` ini
+[Rainmeter]
+Update=1000
+AccurateText=1
+DynamicWindowSize=1
+
+[MeasureMyString]
+Measure=String
+String=Red, Green, Blue
+RegExpSubstitute=1
+Substitute="Green":"Yellow"
+
+[MeterMyString]
+Meter=String
+MeasureName=MeasureMyString
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+Text=The colors are %1
+```

@@ -77,4 +77,14 @@ title: 'Section Variables'
 		<p><b>Multiple Parameters:</b> This parameter may be combined with <a href="#Decimals">Decimals</a> and <a href="#Scale">Scale</a>.</p>
 	</dd>
 
+	<dt id="EscapeRegExp"><code>:EscapeRegExp</code><small>Example: <code>[MeasureName:EscapeRegExp]</code></small></dt>
+	<dd>
+		<p>The measure's string value will be treated as a <a href="!skins/option-types#RegExp">PCRE Regular Expression</a> pattern, and all regular expression <a href="http://www.regular-expressions.info/characters.html">reserved characters</a>, which are <code>.</code><code>^</code><code>$</code><code>*</code><code>+</code><code>?</code><code>(</code><code>)</code><code>[</code><code>{</code><code>\</code><code>|</code>, will be "escaped" with <code>\</code></a>.</p>
+	</dd>
+	
+	<dt id="EncodeURL"><code>:EncodeURL</code><small>Example: <code>[MeasureName:EncodeURL]</code></small></dt>
+	<dd>
+		<p>The measure's string value will be <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL-Encoded</a>.</p>
+	</dd>	
+	
 </dl>
