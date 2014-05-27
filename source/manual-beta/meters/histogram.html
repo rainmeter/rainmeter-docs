@@ -48,17 +48,23 @@ title: 'Histogram meter'
 		<p><code>BothColor</code> is the color used where the histogram elements overlap. Default is yellow <code>255,255,0</code>.</p>
 	</dd>
 
+	<dt id="PrimaryImage"><code>PrimaryImage</code>, <code>SecondaryImage</code>, <code>BothImage</code></dt>
+	<dd>
+		<p>Optional images used for the histogram instead of <code>PrimaryColor</code>, <code>SecondaryColor</code>, <code>BothColor</code>.</p>
+		
+		<p><code>PrimaryImage</code> is the image used for the primary histogram.</p>
+		<p><code>SecondaryImage</code> is the image used for the secondary histogram.</p>
+		<p><code>BothImage</code> is the image used where the histogram elements overlap.</p>
+		
+		<p>The image is "revealed" to the <a href="!measures#Percentage">percentage</a> defined by the current value of the <a href="#MeasureName">MeasureName</a> bound to the meter.</p>
+		
+		<p><b>Note: </b>The image size cannot be modified with the <a href="!meters/general-options#WH">W</a> or <a href="!meters/general-options#WH">H</a> general meter options, and will be displayed in the original image size. The histogram will be constrained to the size of the image.</p>
+	</dd>
+	
 	<dt id="PrimaryImagePath"><code>PrimaryImagePath</code>, <code>SecondaryImagePath</code>, <code>BothImagePath</code></dt>
 	<dd>
 		<p><a href="!skins/option-types#Path">Path</a> to the location of optional image used as the primary, secondary or both histograms.</p>
-	</dd>
-	
-	<dt id="PrimaryImage"><code>PrimaryImage</code>, <code>SecondaryImage</code>, <code>BothImage</code></dt>
-	<dd>
-		<p>Optional images used as the primary, secondary or both (where they overlap) histograms instead of <code>PrimaryColor</code>, <code>SecondaryColor</code>, <code>BothColor</code>.</p>
-		<p>The image is "revealed" to the <a href="!measures#Percentage">percentage</a> defined by the current value of the <a href="#MeasureName">MeasureName</a> bound to the meter.</p>
-		<p><b>Note: </b>The image size cannot be modified with the <a href="!meters/general-options#WH">W</a> or <a href="!meters/general-options#WH">H</a> general meter options, and will be displayed in the original image size. The histogram will be constrained to the size of the image.</p>
-	</dd>
+	</dd>	
 
 	<dt id="ImageCrop"><code>PrimaryImageCrop</code>, <code>SecondaryImageCrop</code>, <code>BothImageCrop</code></dt>
 	<dd>
