@@ -39,9 +39,13 @@ title: 'Histogram meter'
 		<p>If set to <code>1</code>, the meter is flipped vertically.</p>
 	</dd>
 
-	<dt id="PrimaryColor"><code>PrimaryColor</code>, <code>SecondaryColor</code>, <code>BothColor</code> <small>Default: <code>008000</code></small></dt>
+	<dt id="PrimaryColor"><code>PrimaryColor</code>, <code>SecondaryColor</code>, <code>BothColor</code></dt>
 	<dd>
-		<p><a href="!skins/option-types#Color">Color</a> for the primary, secondary or both histograms.</p>
+		<p>Sets the <a href="!skins/option-types#Color">Colors</a> for the histogram.</p>
+		
+		<p><code>PrimaryColor</code> is the color for the primary histogram. Default is dark green  <code>0,128,0</code>.</p>
+		<p><code>SecondaryColor</code> is the color for the secondary histogram. Default is red <code>255,0,0</code>.</p>
+		<p><code>BothColor</code> is the color used where the histogram elements overlap. Default is yellow <code>255,255,0</code>.</p>
 	</dd>
 
 	<dt id="PrimaryImagePath"><code>PrimaryImagePath</code>, <code>SecondaryImagePath</code>, <code>BothImagePath</code></dt>
@@ -51,7 +55,7 @@ title: 'Histogram meter'
 	
 	<dt id="PrimaryImage"><code>PrimaryImage</code>, <code>SecondaryImage</code>, <code>BothImage</code></dt>
 	<dd>
-		<p>Optional image used as the primary, secondary or both histograms instead of <code>PrimaryColor</code>, <code>SecondaryColor</code>, <code>BothColor</code>.</p>
+		<p>Optional images used as the primary, secondary or both (where they overlap) histograms instead of <code>PrimaryColor</code>, <code>SecondaryColor</code>, <code>BothColor</code>.</p>
 		<p>The image is "revealed" to the <a href="!measures#Percentage">percentage</a> defined by the current value of the <a href="#MeasureName">MeasureName</a> bound to the meter.</p>
 		<p><b>Note: </b>The image size cannot be modified with the <a href="!meters/general-options#WH">W</a> or <a href="!meters/general-options#WH">H</a> general meter options, and will be displayed in the original image size. The histogram will be constrained to the size of the image.</p>
 	</dd>
