@@ -55,21 +55,23 @@ title: 'Roundline meter'
 		<p>If set to 1, meter will fill the meter with <code>LineColor</code> from <code>StartAngle</code> to the current <code>MeasureName</code> percentage value. <code>LineWidth</code> is ignored.</p>
 	</dd>
 	
+	<dt id="ControlAngle"><code>ControlAngle</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>If ControlAngle is left as the default "1", then the percentage value of the measure that is bound to the meter controls the angle of the line (or the fill rotation if Solid=1) from StartAngle to RotationAngle. This is the normal default behavior of the Roundline meter.</p>
+		
+		<p>If ControlAngle is set to "0", then the measure does not control the angle of the line, and only any settings related to <code>ControlStart</code> and / or <code>ControlLength</code> are controlled by the percentage value of the measure bound to the meter.</p>		
+	</dd>	
+
 	<dt id="ControlStart"><code>ControlStart, StartShift</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>If <code>ControlStart</code> is set to 1, the measure controls the <code>LineStart</code> from <code>LineStart</code> to <code>LineStart + StartShift</code>.</p>
+		<p>If ControlStart is set to "1", then the percentage value of the measure that is bound to the meter controls the starting position of the line. This is in pixels, relative to the center of rotation, from <code>LineStart</code> to (<code>LineStart</code> + <code>StartShift</code>).</p>
 	</dd>
 
 	<dt id="ControlLength"><code>ControlLength, LengthShift</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>If ControlLength is set to 1, the measure value controls the <code>LineLength</code> from <code>LineLength</code> to <code>LineLength + LengthShift</code>.</p>
+		<p>If ControlLength is set to "1", then the percentage value of the measure that is bound to the meter controls the length of the line. This is in pixels, relative to the center of rotation, from <code>LineLength</code> to (<code>LineLength</code> + <code>LengthShift</code>).</p>
 	</dd>
 	
-	<dt id="ControlAngle"><code>ControlAngle</code> <small>Default: <code>1</code></small></dt>
-	<dd>
-		<p>When set to 1, (default) the measure controls the <code>RotationAngle</code> from 0 to <code>RotationAngle</code>.</p>
-	</dd>	
-
 	<dt id="ValueRemainder"><code>ValueRemainder</code></dt>
 	<dd>
 		<p>Use a remainder instead of the actual measured value.</p>
