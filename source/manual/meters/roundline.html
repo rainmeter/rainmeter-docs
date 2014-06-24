@@ -17,7 +17,7 @@ title: 'Roundline meter'
 	<dt id="MeasureName"><code>MeasureName</code></dt>
 	<dd>
 		<p>Name of the measure whose percentual value controls the amount of rotation. The measure must be able to return <a href="!measures#Percentage">percentual values</a>.</p>
-		<p><b>Note:</b> If MeasureName is not specified, then a number value of <code>1.0</code> is used by the meter, and is in effect always 100%.  This can be used for instance to draw a circle or other curved solid.</p>
+		<p><b>Note:</b> If MeasureName is not specified, then the value is in effect always 100%, which can be used for instance to draw a circle or other curved solid.</p>
 	</dd>
 
 	<dt id="StartAngle"><code>StartAngle</code></dt>
@@ -57,19 +57,19 @@ title: 'Roundline meter'
 	
 	<dt id="ControlAngle"><code>ControlAngle</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		<p>If ControlAngle is left as the default "1", then the percentage value of the measure that is bound to the meter controls the angle of the line (or the fill rotation if Solid=1) from <code>StartAngle</code> to <code>RotationAngle</code>. This is the normal default behavior of the Roundline meter.</p>
+		<p>If ControlAngle is 1 (default), then the percentage value of the measure that is bound to the meter controls the angle of the line (or the fill rotation if Solid=1) starting at <code>StartAngle</code> for <code>RotationAngle</code> radians.</p>
 		
-		<p>If ControlAngle is set to "0", then the measure does not control the angle of the line, and only any settings related to <code>ControlStart</code> and / or <code>ControlLength</code> are controlled by the percentage value of the measure bound to the meter.</p>		
+		<p>If ControlAngle is set to 0, then the measure does not control the angle of the line, which will be static at the value in <code>StartAngle</code>. <code>RotationAngle</code> is ignored.</p>		
 	</dd>	
 
 	<dt id="ControlStart"><code>ControlStart, StartShift</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>If ControlStart is set to "1", then the percentage value of the measure that is bound to the meter controls the starting position of the line. This is in pixels, relative to the center of rotation, from <code>LineStart</code> to (<code>LineStart</code> + <code>StartShift</code>).</p>
+		<p>If ControlStart is set to 1, then the percentage value of the measure that is bound to the meter controls the starting position of the line. This is defined by <code>StartShift</code>, and will range from <code>LineStart</code> to (<code>LineStart</code> + <code>StartShift</code>) pixels from the center of rotation.</p>
 	</dd>
 
 	<dt id="ControlLength"><code>ControlLength, LengthShift</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>If ControlLength is set to "1", then the percentage value of the measure that is bound to the meter controls the length of the line. This is in pixels, relative to the center of rotation, from <code>LineLength</code> to (<code>LineLength</code> + <code>LengthShift</code>).</p>
+		<p>If ControlLength is set to 1, then the percentage value of the measure that is bound to the meter controls the length of the line. This is defined by <code>LengthShift</code>, and will range from <code>LineLength</code> to (<code>LineLength</code> + <code>LengthShift</code>) pixels from the center of rotation.</p>
 	</dd>
 	
 	<dt id="ValueRemainder"><code>ValueRemainder</code></dt>
