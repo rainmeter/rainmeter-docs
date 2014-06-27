@@ -26,7 +26,7 @@ title: 'Rotator meter'
 
 	<dt id="MeasureName"><code>MeasureName</code></dt>
 	<dd>
-		Name of the measure whose percentual value controls the angle of rotation. The measure must be able to return <a href="!measures#Percentage">percentual values</a>.
+		Name of the measure whose percentual value controls the angle of rotation. The measure must be a <a href="!measures#Percentage">percentual value</a> or have <a href="!measures/general-options#MinValue">MinValue</a> and <a href="!measures/general-options#MaxValue">MaxValue</a> set.
 	</dd>
 
 	<dt id="OffsetX"><code>OffsetX</code>, <code>OffsetY</code> <small>Default: <code>0.0</code></small></dt>
@@ -36,12 +36,12 @@ title: 'Rotator meter'
 
 	<dt id="StartAngle"><code>StartAngle</code> <small>Default: <code>0.0</code></small></dt>
 	<dd>
-		Start angle for the line in <a href="/tips/radians-guide">radians</a>.
+		<p>The starting angle in <a href="/tips/radians-guide">radians</a> for the image. This defines the starting point on the circle that will be treated as zero percent. The zero angle is to the right of the center.</p>
 	</dd>
 
 	<dt id="RotationAngle"><code>RotationAngle</code> <small>Default: <code>(2 * pi)</code></small></dt>
 	<dd>
-		The size of the rotation angle for the line in <a href="/tips/radians-guide">radians</a>. Positive values result in clockwise rotation while negative values result in counter-clockwise rotation.
+		<p>The size of the rotation angle in <a href="/tips/radians-guide">radians</a> for the image. This defines the distance in radians from <code>StartAngle</code> that the meter will travel around the circle when the measure value is 100%. Use a negative value for counter-clockwise rotation.</p>
 	</dd>
 
 	<dt id="ValueRemainder"><code>ValueRemainder</code> <small>Default: <code>0</code></small></dt>
@@ -58,7 +58,6 @@ title: 'Rotator meter'
 </dl>
 
 <h2>Remarks</h2>
-<p>The Rotator meter displays an image that rotates around a point where the angle of rotation is determined by the measure it is attached to. Rotator meters require that the measure being used is from 0.0 to 1.0 or has both MaxValue and MinValue set.</p>
 
 <p>The center of rotation will be located at the center of the height and width specified for the meter. If height and width are not specified, the center of rotation will be located at the X and Y coordinates provided for the meter. It is also important to remember that if the height and width are not specified, any portion of the meter that lies outside of the skin window will be cut off.</p>
 
