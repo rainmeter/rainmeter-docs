@@ -297,7 +297,19 @@ StringIndex=3
 
 <h3>And so on...</h3>
 
-<p>Carry on like that until you have retrieved all the data you want from the website. Here are the rest of the child measures:</p>
+<p>Carry on like that until you have retrieved all the data you want from the website. Here is the final parent measure with the completed RegExp:</p>
+
+```ini
+[MeasureSite]
+Measure=Plugin
+Plugin=WebParser
+URL=http://www.tell-my-ip.com/index.html
+RegExp=(?siU)<td.*>Your IP Address:</td><td>(.*)</td>.*<td>Country:</td>.*<img src="(.*)"> (.*)</td>.*<td>Region:</td><td>(.*)</td>.*<td>City:</td><td>(.*)</td>.*<td>Latitude:</td><td>(.*)</td>.*<td>Longitude:</td><td>(.*)</td>
+UpdateRate=3600
+```
+
+<p>and the rest of the child measures:</p>
+
 
 ```ini
 [MeasureRegion]
