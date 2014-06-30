@@ -100,10 +100,11 @@ title: 'Bangs'
 
 	<dt id="Play"><code>Play</code> <small>Parameter: <code><b>SoundFile</b></code></small></dt>
 	<dd>
-		Plays the given sound file <b>once</b>.
+		Plays the given sound file once.
 		<ul>
-		<li><code>SoundFile</code> (required): File to be played. Must be a .wav file.</li>
+		<li><code>SoundFile</code> (required): Path and file to be played. Must be a .wav file.</li>
 		</ul>
+		<br><b>Note:</b> While listed in this section for simplicity, the Play commands are not bangs, and do not require or allow the <code>!</code> character at the beginning. Rainmeter uses a single-threaded call to embedded Windows functionality to play the sound, and only one sound at a time can be managed, Rainmeter-wide. Playing a sound in any skin will stop any other currently playing sounds. 
 		<br><b>Example:</b> <code>Play "SomeFile.wav"</code>
 	</dd>
 
@@ -118,7 +119,7 @@ title: 'Bangs'
 
 	<dt id="PlayStop"><code>PlayStop</code></dt>
 	<dd>
-		Stops the currently playing sound.
+		Stops any currently playing sound started by Rainmeter.
 	</dd>
 </dl>
 
