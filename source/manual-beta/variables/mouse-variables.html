@@ -4,7 +4,7 @@ permalink: manual-beta/variables/mouse-variables
 title: 'Mouse Variables'
 ---
 <p>Mouse variables are a special function to return the X and Y position of the mouse cursor when a mouse action takes place.</p>
-<p>The position is relative to the meter that has the mouse click action, or the skin if used in the [Rainmeter] section.</p>
+<p>The position is relative to the meter that has the mouse click or scroll action, or the skin if used in the [Rainmeter] section.</p>
 
 <p>There are two variants of the function.</p>
 <ul>
@@ -16,7 +16,7 @@ Contains the current X and Y position of the mouse as a percentage relative to t
 
 <h2>Usage</h2>
 
-<p>The variables are only created and used in the context of a mouse click action. Primarily, they will be used as a parameter to a <a href="!bangs">Bang</a>. For instance:</p>
+<p>The variables are only created and used in the context of a mouse click or scroll action. Primarily, they will be used as a parameter to a <a href="!bangs">Bang</a>. For instance:</p>
 
 <p><code>LeftMouseUpAction=[!SetOption SomeMeter X $MouseX$][!UpdateMeter *][!Redraw]</code></p>
 <p><code>LeftMouseUpAction=!CommandMeasure ScriptMeasure GetRGB($MouseX$,$MouseY$)</code></p>
@@ -86,4 +86,3 @@ H=25
 LeftMouseUpAction=[!SetOption CoordinateB Text "X = $MouseX:%$%, Y = $MouseY:%$%"][!UpdateMeter CoordinateB][!Redraw]
 MouseActionCursorName=Cross
 ```
-	
