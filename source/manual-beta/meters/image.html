@@ -3,9 +3,11 @@ layout: manual-beta
 permalink: manual-beta/meters/image
 title: 'Image Meter'
 ---
-<p><code>Meter=Image</code> displays either a static image or an image dependent on a measure value(s).</p>
+<p><code>Meter=Image</code> displays either an image defined by a measure value, or any named image. If <code>W</code> and/or <code>H</code> are included in the meter options, the image will be scaled to fit the meter size.</p>
 
-<p>Supported formats are .png, .jpg, .bmp, .gif (no animation supported), .tif, .ico</p>
+<p>Supported image formats are .png, .jpg, .bmp, .gif (no <a href="http://docs.rainmeter.net/tips/animated-gif-files">animation</a> supported), .tif, and .ico.</p>
+
+<p><b>Note:</b> If no file extension is included, .png is assumed.</p>
 
 <h2>Options</h2>
 <dl>
@@ -21,14 +23,16 @@ title: 'Image Meter'
 
 	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<em>N</em></code></dt>
 	<dd>
-		<p>Name(s) of the measure(s) to use to define the name of the image for the meter. This option does not need to be specified if not needed, for instance when specifying a static image name in the <code>ImageName</code> option.</p>
+		<p>Name(s) of the measure(s) bound to the meter. The value of a measure or measures will define the image file to be used in the meter. The value can define a full path and name of any supported image file, or just the name if the <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> option is used or the image file is in the current skin folder.</p>
 	</dd>
 
 	<dt id="ImageName"><code>ImageName</code> <small>Default: <code>%1.png</code></small></dt>
 	<dd>
-		<p>Name of the image file. This can be a full path and name to any supported image file, or just the name of the file if used with the <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> option.</p>
+		<p>Name of an image file. This can be a full path and name of any supported image file, or just the name of the file if the <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> option is used or the image file is in the current skin folder.</p>
 
-		<p>If the <code>MeasureName</code> option is defined, it will override any <code>ImageName</code> option, unless <code>ImageName</code> is being used to define an image based on the value of the measure(s) in <code>MeasureName</code> and uses the <code>%<em>N</em></code> syntax as follows:</p>
+		<p><b>Note:</b> If a <code>MeasureName<em>N</em></code> option is defined, it will override any <code>ImageName</code> option. Generally, <code>MeasureName<em>N</em></code> and <code>ImageName</code> will not be used together in the same meter.</p>
+		
+		The exception is when <code>ImageName</code> is being used to define an image based on the combined values of the measures in <code>MeasureName<em>N</em></code> and uses the <code>%<em>N</em></code> syntax as follows:</p>
 
 ``` ini
 MeasureName=SomeMeasure
@@ -37,7 +41,6 @@ ImageName=%1-%2.png
 ; %1 and %2 will be replaced by the string values of SomeMeasure and
 ; SomeMeasure2, respectively.
 ```
-		<p><b>Note:</b> If an extension is not provided for the image file, .png is assumed.</p>
 	</dd>
 
 	<dt id="PreserveAspectRatio"><code>PreserveAspectRatio</code> <small>Default: <code>0</code></small></dt>
@@ -62,7 +65,7 @@ ImageName=%1-%2.png
 	</dd>
 </dl>
 
-<p><b>Note:</b> Using the <a href="!meters/general-options#SolidColor">SolidColor</a> option, along with <a href="!meters/general-options#WH">W</a> and <a href="!meters/general-options#WH">H</a> options, an image meter may be used to draw squares, rectangles or lines without needing any <code>ImageName</code> or <code>MeasureName</code>.</p>
+<p><b>Hint:</b> Using the <a href="!meters/general-options#SolidColor">SolidColor</a> option, along with <a href="!meters/general-options#WH">W</a> and <a href="!meters/general-options#WH">H</a> options, an image meter may be used to draw squares, rectangles or lines without needing any <code>ImageName</code> or <code>MeasureName</code>.</p>
 
 <h3 id="Deprecated">Deprecated Features</h3>
 
