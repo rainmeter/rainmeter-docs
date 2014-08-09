@@ -3,7 +3,9 @@ layout: manual
 permalink: manual/meters/image
 title: 'Image Meter'
 ---
-<p><code>Meter=Image</code> displays either a static image or an image dependant on a measure value(s).</p>
+<p><code>Meter=Image</code> displays either a static image or an image dependent on a measure value(s).</p>
+
+<p>Supported formats are .png, .jpg, .bmp, .gif (no animation supported), .tif, .ico</p>
 
 <h2>Options</h2>
 <dl>
@@ -19,12 +21,14 @@ title: 'Image Meter'
 
 	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<em>N</em></code></dt>
 	<dd>
-		<p>Name(s) of the measure(s) to use in <code>ImageName</code> with the <code>%<em>N</em></code> syntax. This option does not need to be specified if not needed.</p>
+		<p>Name(s) of the measure(s) to use to define the name of the image for the meter. This option does not need to be specified if not needed, for instance when specifying a static image name in the <code>ImageName</code> option.</p>
 	</dd>
 
 	<dt id="ImageName"><code>ImageName</code> <small>Default: <code>%1.png</code></small></dt>
 	<dd>
-		<p>Name of the image file. The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:</p>
+		<p>Name of the image file. This can be a full path and name to any supported image file, or just the name of the file if used with the <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> option.</p>
+
+		<p>If the <code>MeasureName</code> option is defined, it will override any <code>ImageName</code> option, unless <code>ImageName</code> is being used to define an image based on the value of the measure(s) in <code>MeasureName</code> and uses the <code>%<em>N</em></code> syntax as follows:</p>
 
 ``` ini
 MeasureName=SomeMeasure
@@ -33,7 +37,6 @@ ImageName=%1-%2.png
 ; %1 and %2 will be replaced by the string values of SomeMeasure and
 ; SomeMeasure2, respectively.
 ```
-
 		<p><b>Note:</b> If an extension is not provided for the image file, .png is assumed.</p>
 	</dd>
 
