@@ -47,7 +47,7 @@ title: 'Bitmap meter'
 
 	<dt id="BitmapZeroFrame"><code>BitmapZeroFrame</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the first frame is used only when the measured value is zero. Otherwise the frames are linearly determined by the measured value.
+		If set to <code>1</code>, a measured <em>percentual</em> value of zero is included in the calculation of the first frame. Since there are 100 percentage "points" from 0-99%, and 101 from 0-100%, BitmapZeroFrame should be used when measuring from 0-100%, or the meter will overrun the bitmap when the value is at 100%.
 	</dd>
 
 	<dt id="BitmapExtend"><code>BitmapExtend</code> <small>Default: <code>0</code></small></dt>
