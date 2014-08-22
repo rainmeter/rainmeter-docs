@@ -65,6 +65,36 @@ ImageName=%1-%2.png
 	</dd>
 </dl>
 
+<h2>Mask Image</h2>
+
+<dl>
+	<dt id="MaskImageName"><code>MaskImageName</code> <small>Default: <code>None</code></small></dt>
+	<dd>
+		<p>Name of an image file to use as a mask for the primary image defined with MeasureName or ImageName. If defined, the size and shape of MaskImageName will be used to mask and define the size and shape of the primary image.</p>
+		
+		<p>MaskImage can be a full path and name of any supported image file, or just the name of the file if the <a href="#MaskImagePath">MaskImagePath</a> or <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> option is used or the image file is in the current skin folder.</p>
+
+		<p>If MaskImage is defined, then <code>W</code> and <code>H</code> define the size of the mask image, and the size of the meter. Whatever is defined as the primary image with ImageName or MeasureName<em>N</em> is then masked into MaskImage, displaying in any non-transparent areas of MaskImageName, using a "fill" method that sizes and crops the image to fit, while preserving the aspect ratio.</p>
+		
+		<p><b>Note:</b> MaskImageName cannot be bound to the meter from a measure with MeasureName<em>N</em> and %1, %2 etc.</p>		
+	</dd>
+	
+	<dt id="MaskImagePath"><code>MaskImagePath</code> <small>Default: <code>None</code></small></dt>
+	<dd>
+		<p>Folder path where an image is located. (e.g. <code>MaskImagePath=#@#Images\</code>). Note that <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> is also supported.</p>
+	</dd>
+	
+	<dt id="MaskImageFlip"><code>MaskImageFlip</code> <small>Default: <code>None</code></small></dt>
+	<dd>
+		<p>Flips the image. Valid values are <code>None</code>, <code>Horizontal</code>, <code>Vertical</code> or <code>Both</code>.</p>
+	</dd>
+
+	<dt id="MaskImageRotate"><code>MaskImageRotate</code> <small>Default: <code>0.0</code></small></dt>
+	<dd>
+		<p>Rotates the image by the specified angle in degrees. Negative angles can be used for counter-clockwise rotation.</p>
+	</dd>
+</dl>
+
 <p><b>Hint:</b> Using the <a href="!meters/general-options#SolidColor">SolidColor</a> option, along with <a href="!meters/general-options#WH">W</a> and <a href="!meters/general-options#WH">H</a> options, an image meter may be used to draw squares, rectangles or lines without needing any <code>ImageName</code> or <code>MeasureName</code>.</p>
 
 <p>However, no manipulations can be done to the resulting square, rectangle or line with any <a href="!meters/general-options/image-options">general image options</a>. Only actual images loaded from a file can be manipulated. (e.g. ImageRotate)</p>
