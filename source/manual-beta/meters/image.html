@@ -76,7 +76,12 @@ ImageName=%1-%2.png
 
 		<p>If MaskImage is defined, then <code>W</code> and <code>H</code> define the size of the mask image, and the size of the meter. Whatever is defined as the primary image with ImageName or MeasureName<em>N</em> is then masked into MaskImage, displaying in any non-transparent areas of MaskImageName, using a "fill" method that sizes and crops the image to fit, while preserving the aspect ratio.</p>
 		
-		<p><b>Note:</b> MaskImageName cannot be bound to the meter from a measure with MeasureName<em>N</em> and %1, %2 etc.</p>		
+		<p><b>Notes:</b></p>
+		
+		<p>The Mask Image functionality is only available on systems supporting D2D. It will not work on Windows XP, or if D2D is turned off in the Rainmeter settings.</p>
+		
+		<p>MaskImageName cannot be bound to the meter from a measure with MeasureName<em>N</em> and %1, %2 etc.</p>
+		
 	</dd>
 	
 	<dt id="MaskImagePath"><code>MaskImagePath</code> <small>Default: <code>None</code></small></dt>
