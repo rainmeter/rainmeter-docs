@@ -72,7 +72,7 @@ ImageName=%1-%2.png
 	<dd>
 		<p>Name of an image file to use as a mask for the primary image defined with MeasureName or ImageName. The size and shape of MaskImageName will be used to mask and define the size and shape of the primary image.</p>
 		
-		<p>MaskImageName can be a full path and name of any supported image file, or just the name of the file if the <a href="#MaskImagePath">MaskImagePath</a> or <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> option is used or the image file is in the current skin folder.</p>
+		<p>MaskImageName can be a full path and name of any supported image file, or just the name of the file if the <a href="#MaskImagePath">MaskImagePath</a> option is used, or the image file is in the current skin folder.</p>
 
 		<p>If MaskImageName is defined, then <code>W</code> and <code>H</code> define the size of the mask image, and the size of the meter. Whatever is defined as the primary image with ImageName or MeasureName is then masked into MaskImage, displaying in any non-transparent areas of MaskImageName, using a "fill" method that sizes and crops the image to fit while preserving the aspect ratio.</p>
 		
@@ -90,7 +90,7 @@ ImageName=%1-%2.png
 	
 	<dt id="MaskImagePath"><code>MaskImagePath</code> <small>Default: <code>None</code></small></dt>
 	<dd>
-		<p>Folder path where an image is located. (e.g. <code>MaskImagePath=#@#Images\</code>). Note that <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> is also supported if MaskImagePath is not defined.</p>
+		<p>Folder path where an image is located. (e.g. <code>MaskImagePath=#@#Images\</code>).</p>
 	</dd>
 	
 	<dt id="MaskImageFlip"><code>MaskImageFlip</code> <small>Default: <code>None</code></small></dt>
