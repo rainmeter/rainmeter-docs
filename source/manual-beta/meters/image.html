@@ -70,11 +70,13 @@ ImageName=%1-%2.png
 <dl>
 	<dt id="MaskImageName"><code>MaskImageName</code> <small>Default: <code>None</code></small></dt>
 	<dd>
-		<p>Name of an image file to use as a mask for the primary image defined with MeasureName or ImageName. If defined, the size and shape of MaskImageName will be used to mask and define the size and shape of the primary image.</p>
+		<p>Name of an image file to use as a mask for the primary image defined with MeasureName or ImageName. The size and shape of MaskImageName will be used to mask and define the size and shape of the primary image.</p>
 		
-		<p>MaskImage can be a full path and name of any supported image file, or just the name of the file if the <a href="#MaskImagePath">MaskImagePath</a> or <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> option is used or the image file is in the current skin folder.</p>
+		<p>MaskImageName can be a full path and name of any supported image file, or just the name of the file if the <a href="#MaskImagePath">MaskImagePath</a> or <a href="!meters/general-options/image-options#ImagePath">ImagePath</a> option is used or the image file is in the current skin folder.</p>
 
-		<p>If MaskImage is defined, then <code>W</code> and <code>H</code> define the size of the mask image, and the size of the meter. Whatever is defined as the primary image with ImageName or MeasureName<em>N</em> is then masked into MaskImage, displaying in any non-transparent areas of MaskImageName, using a "fill" method that sizes and crops the image to fit, while preserving the aspect ratio.</p>
+		<p>If MaskImageName is defined, then <code>W</code> and <code>H</code> define the size of the mask image, and the size of the meter. Whatever is defined as the primary image with ImageName or MeasureName is then masked into MaskImage, displaying in any non-transparent areas of MaskImageName, using a "fill" method that sizes and crops the image to fit while preserving the aspect ratio.</p>
+		
+		<p>If <em>either</em> the primary image or mask image has areas of transparency or partial transparency, those "alpha channel" values are applied to the final image. When both images have a shared area with full or partial transparency, the "most transparent" value is applied.</p> 
 		
 		<p><b>Notes:</b></p>
 		
