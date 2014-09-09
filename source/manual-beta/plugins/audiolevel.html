@@ -1,0 +1,316 @@
+---
+layout: manual-beta
+permalink: manual-beta/plugins/audiolevel
+title: 'AudioLevel plugin'
+---
+<p><code>Plugin=AudioLevel</code> retrieves information about system sound output.</p>
+
+<p>The plugin will monitor and filter the amplitude (volume level) of sound input or output on the default or defined device and channels. The value returned will be a number from 0.0 to 1.0, which will be treated as a <a href="http://docs.rainmeter.net/manual/measures#Percentage">percentage</a> for use in meters.</p>
+
+<p>This can be used to create a volume level <a href="http://en.wikipedia.org/wiki/VU_meter">VU Meter</a> for defined channels, or optionally can filter the audio stream into distinct frequencies to create a <a href="http://en.wikipedia.org/wiki/Spectrum_analyzer">Spectrum Analyzer</a>.</p>
+
+<p><em>The plugin monitors the amplitude of the post-mixer signal at a Windows audio endpoint. (i.e. sound card speaker output, USB audio interface, headphone port, microphone input) It does this by creating a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd371455(v=vs.85).aspx">WASAPI</a> capture client in <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd316551%28v=vs.85%29.aspx">loopback mode</a>. The capture client streams audio data to the plugin where it can be filtered and measured. The resulting volume level is returned by the plugin for use in Rainmeter measures and meters.</em></p>
+
+<p><b>Note:</b> Creating meters that display sound levels in real-time will require that the skin be set with a fairly low <a href="!skins/rainmeter-section#Update">Update</a> rate in the [Rainmeter] section of the skin. While the plugin is quite resource friendly and efficient, some care should be taken when deciding how much analysis should be done on the signal, and it is recommended that this plugin be used in a skin dedicated to it, and not as a part of a larger skin where the low update rate may cause higher CPU usage.</p>
+
+<h2>Usage</h2>
+
+<p>AudioLevel operates with a "parent / child" approach. A main "parent" AudioLevel measure is used to obtain and analyze the audio stream, and then "child" measures request data from the parent so that you can get individual values to display in meters. Example:</p>
+
+``` ini
+; This parent measure processes the default audio output.
+[MeasureAudioRaw]
+Measure=Plugin
+Plugin=AudioLevel
+
+; This child measure gets the current approx RMS value of the left channel (0.0 to 1.0).
+[MeasureAudioRMS_L]
+Measure=Plugin
+Plugin=AudioLevel
+Parent=MeasureAudioRaw
+Channel=L
+Type=RMS
+```
+
+<h2>Options</h2>
+
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
+	</dd>
+
+</dl>
+
+<h2>Parent measure options</h2>
+<dl>
+
+	<dt id="Port"><code>Port</code> <small>Default: <code>Output</code></small></dt>
+	<dd>
+		<p>Specifies whether you want to measure the input or output levels for the given device.</p>
+		<ul>
+		<li><code>Output</code> (default)</li>
+		<li><code>Input</code></li>
+		</ul>
+	</dd>
+
+	<dt id="ID"><code>ID</code> <small>Default: <code>None</code></small></dt>
+	<dd>
+		<p>Specifies the audio device to measure.</p>
+		
+		<p>If not set, it will use the default device for the specified <a href="#Port">Port</a>. If you specify <code>Port=Output</code> and no <code>ID</code>, the plugin will connect to the default audio output device defined in Windows.</p>
+		
+		<p>To specify a device other than the default, you will need to find the Windows device ID. See the DeviceList option for more info.</p>
+		
+		<p><b>Note:</b> The default audio device in Windows can be changed by using "Manage Audio Devices" from the Windows Start menu.</p>
+	</dd>
+
+	<dt id="RMSOptions"><b>RMS Options</b></dt>
+
+	<dd>
+		<p>The square root of the mean of the square. With audio, RMS is a meaningful way of calculating the average of values over a period of time. The signal value (amplitude) is squared, averaged over a period of time, then the square root of the result is calculated. The result is a value, that when squared, is related (proportional) to the effective power of the signal.</p>
+		
+		<p>This will be the most common way of measuring volume levels for defined channels in a skin, while smoothing out tiny spikes in values as the levels change.</p>
+		
+		<p><b>Note:</b> To disable all RMS filtering, set both <a href="#RMSAttack">RMSAttack</a> and <a href="#RMSDecay">RMSDecay</a> to <code>0</code>, and <a href="#RMSGain">RMSGain</a> as the default <code>1.0</code>.</p>
+		
+		<p>The following parent options will be used by child measures with an option of <code>RMS</code> set.</p>
+	</dd>
+	
+	<dt id="RMSAttack"><code>RMSAttack</code> <small>Default: <code>300</code></small></dt>
+	<dd>
+		<p>Specifies the time in milliseconds over which to interpolate as the signal level increases. For example, how quickly a needle jumps up as the sound level increases.</p>
+	</dd>
+	
+	<dt id="RMSDecay"><code>RMSDecay</code> <small>Default: <code>300</code></small></dt>
+	<dd>
+		<p>Specifies the time in milliseconds over which to interpolate as the signal level decreases. For example, how quickly a needle subsides as the sound level decreases.</p>
+	</dd>	
+
+	<dt id="RMSGain"><code>RMSGain</code> <small>Default: <code>1.0</code></small></dt>
+	<dd>
+		<p>A multiplication factor that will be applied to the RMS analysis.</p>
+	</dd>	
+
+	<dt id="PeakOptions"><b>Peak Options</b></dt>
+
+	<dd>
+		<p>Peak options are similar to <a href="RMSOptions">RMS options</a>, but measure the peak (high) values rather than squaring to obtain an average over a period of time.</p>
+		
+		<p><b>Note:</b> To disable all Peak filtering, set both <a href="#PeakAttack">PeakAttack</a> and <a href="#PeakDecay">PeakDecay</a> to <code>0</code>, and <a href="#PeakGain">PeakGain</a> as the default <code>1.0</code>.</p>
+		
+		<p>The following parent options will be used by child measures with an option of <code>Peak</code> set.</p>
+	</dd>
+	
+	<dt id="PeakAttack"><code>PeakAttack</code> <small>Default: <code>50</code></small></dt>
+	<dd>
+		<p>Specifies the time in milliseconds over which to interpolate as the signal level increases. For example, how quickly a needle jumps up for a higher peak.</p>
+	</dd>
+	
+	<dt id="PeakDecay"><code>PeakDecay</code> <small>Default: <code>2500</code></small></dt>
+	<dd>
+		<p>Specifies the time in milliseconds over which to interpolate as the signal level decreases. For example, how quickly a needle subsides to a lower peak.</p>
+	</dd>	
+
+	<dt id="PeakGain"><code>PeakGain</code> <small>Default: <code>1.0</code></small></dt>
+	<dd>
+		<p>A multiplication factor that will be applied to the Peak analysis.</p>
+	</dd>	
+
+	<dt id="FFTOptions"><b>FFT Options</b></dt>
+	
+	<dd>
+		<p>FFT options enable you to analyze the spectrum content of the audio by measuring the frequencies that make up the audio stream, using the mathematical algorithm <a href="http://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform</a>.</p>
+
+		<p>This spectrum information can then optionally be separated into <code>Bands</code> to distinctly measure the level of individual frequencies in the audio stream. In order to use Bands, both <code>FFTSize</code> and <code>Bands</code> must be set on the parent measure.</p>
+		
+		<p>The following parent options will be used by child measures with options of <code>FFTIdx</code> or <code>BandIdx</code> set.</p>		
+	</dd>	
+
+	<dt id="FFTSize"><code>FFTSize</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>A number value for the frequency resolution of the output data.</p>
+		
+		<p>This will be an even integer greater than or equal to 0, usually a power of 2. Typical values are 256, 512, or 1024, with the higher the number the greater the frequency resolution.<p>
+		
+		<p><b>Note:</b> It should be kept in mind that as this number increases, more CPU resources and time will be needed to analyze the audio stream. A very high number here can both impact CPU usage and potentially cause some "lag" between the sound generation and the measurement by the plugin.</p>
+	</dd>
+	
+	<dt id="FFTOverlap"><code>FFTOverlap</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>Optionally, the FFT can be windowed to overlap successive sections. A <a href="http://en.wikipedia.org/wiki/Hann_function">Hann</a> function is used to shape the data before the FFT is applied. Typical values are half the FFTSize. Increasing this value will lower the latency between the audio and the measure's response, at the cost of extra CPU.</p>
+	</dd>
+
+	<dt id="Bands"><code>Bands</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>An integer, specifying the number of frequency bands to generate.</p>
+		
+		<p>The FFT data can be smoothed into a number of log-spaced frequency bands, similar to a typical spectrum analyzer. This option specifies the number of bands.</p>
+	</dd>
+
+	<dt id="FreqMin"><code>FreqMin</code> <small>Default: <code>20</code></small></dt>
+	<dd>
+		<p>A number in Hz, specifying the minimum frequency band calculation.</p>
+	</dd>	
+	
+	<dt id="FreqMax"><code>FreqMax</code> <small>Default: <code>20000</code></small></dt>
+	<dd>
+		<p>A number in Hz, specifying the maximum frequency band calculation.</p>
+	</dd>
+
+	<dt id="Sensitivity"><code>Sensitivity</code> <small>Default: <code>35.0</code></small></dt>
+	<dd>
+		<p>A number specifying in what dB range the measure will return <code>FFT</code> and <code>Band</code> data. Increasing this value will cause the measure to respond to quieter sounds, decreasing it will only trigger the measure on louder sounds.</p>
+	</dd>
+	
+</dl>
+
+<h2>Child measure options</h2>
+<dl>
+
+	<dt id="Parent"><code>Parent</code> <small><code>Required</code></small></dt>
+	<dd>
+		<p>Defines the parent AudioLevel plugin measure to read values from.</p>
+		
+		<p>Example: <code>Parent=SomeMeasureName</code></p>
+	</dd>
+
+	<dt id="Channel"><code>Channel</code> <small>Default: <code>Sum</code></small></dt>
+	<dd>
+		<p>This specifies which audio channel level to read from the parent. Channels can be identified by name or number, e.g. <code>Channel=0</code> is the same as <code>Channel=L</code> or <code>Channel=FL</code>.</p>
+		
+		<ul>
+		<li><code>L</code> or <code>FL</code> or <code>0</code></li>
+		<li><code>R</code> or <code>FR</code> or <code>1</code></li>
+		<li><code>C</code> or <code>2</code></li>
+		<li><code>LFE</code> or <code>Sub</code> or <code>3</code></li>
+		<li><code>BL</code> or <code>4</code></li>
+		<li><code>BR</code> or <code>5</code></li>
+		<li><code>SL</code> or <code>6</code></li>
+		<li><code>SR</code> or <code>7</code></li>
+		<li><code>Sum</code> or <code>Avg</code></li>
+		</ul>
+
+	</dd>
+	
+	<dt id="Type"><code>Type</code> <small><code>Required</code></small></dt>
+	<dd>
+		<p>Specifies the type of data to retrieve from the parent measure.</p>
+		
+		<ul>
+		<li><code>RMS</code> : The current RMS level for the specified <code>Channel</code> as a numerical value.</li>
+		<li><code>Peak</code> : The current Peak level for the specified <code>Channel</code> as a numerical value.</li>
+		<li><code>FFT</code> : The raw FFT bin value corresponding to the specified <code>FFTIdx</code> option.</li>
+		<li><code>FFTFreq</code> : The frequency corresponding to the specified <code>FFTIdx</code> option.</li>		
+		<li><code>Band</code> : The frequency band value specified by the <code>BandIdx</code> option.</li>
+		<li><code>BandFreq</code> : The frequency value corresponding to the specified <code>BandIdx</code> option.</li>
+		<li><code>Format</code> : A string describing the audio format of the device connected to with the parent <code>ID</code> option.</li>
+		<li><code>DeviceStatus</code> : Status (0 or 1) of the device connected to with the parent <code>ID</code> option.</li>
+		<li><code>DeviceName</code> : A string with the name of the device connected to with the parent <code>ID</code> option.</li>
+		<li><code>DeviceID</code> : A string with the Windows ID of the device connected to with the parent <code>ID</code> option.</li>
+		<li><code>DeviceList</code> : A string with a list of all available device ID's for the specified <code>Port</code> This can be used to identify a desired device ID for use in the parent <code>ID</code> option.</li>
+		</ul>
+		
+		<p>Example: <code>Type=RMS</code></p>		
+	</dd>
+
+	<dt id="FFTIdx"><code>FFTIdx</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>Specifies which FFT bin you want to extract from the parent. <code>FFTSize</code> must be enabled on the parent measure to use this option.</p>
+		
+		<p>Valid values range from 0 to (FFTSize/2).</p>
+	</dd>
+
+	<dt id="BandIdx"><code>BandIdx</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>Specifies which frequency band number you want to extract from the parent. <code>FFTSize</code> and <code>Bands</code> must be enabled on the parent measure to use this option.</p>
+		
+		<p>Valid values range from 0 to (Bands-1).</p>
+	</dd>
+
+</dl>
+
+
+<h2>Examples</h2>
+
+<p>Simple Left/Right volume levels using Bitmap meters:</p>
+<a href="!examples/ExampleAudioLevelBar.rmskin" class="download"></a>
+``` ini
+[Rainmeter]
+Update=15
+DynamicWindowSize=1
+AccurateText=1
+
+[MeasureAudio]
+Measure=Plugin
+Plugin=AudioLevel
+Port=Output
+RMSAttack=100
+RMSDecay=300
+RMSGain=2.5
+
+[MeasureL]
+Measure=Plugin
+Plugin=AudioLevel
+Parent=MeasureAudio
+Channel=L
+Type=RMS
+
+[MeasureR]
+Measure=Plugin
+Plugin=AudioLevel
+Parent=MeasureAudio
+Channel=R
+Type=RMS
+
+[MeterBack]
+Meter=Image
+W=52
+H=77
+SolidColor=47,47,47,255
+UpdateDivider=-1
+LeftMouseUpAction=[Play "#@#Sounds\AudioTest.wav"]
+
+[MeterL]
+Meter=BitMap
+MeasureName=MeasureL
+X=5
+Y=5
+BitMapImage=#@#Images\LevelBitmap.png
+BitMapFrames=15
+BitmapZeroFrame=1
+
+[MeterR]
+Meter=BitMap
+MeasureName=MeasureR
+X=3R
+Y=5
+BitMapImage=#@#Images\LevelBitmap.png
+BitMapFrames=15
+BitmapZeroFrame=1
+
+[MeterLText]
+Meter=String
+X=12
+Y=1R
+FontFace=Trebuchet MS
+FontSize=8
+FontColor=200,200,200,255
+AntiAlias=1
+Text=L
+UpdateDivider=-1
+
+[MeterRText]
+Meter=String
+X=35
+Y=0r
+FontFace=Trebuchet MS
+FontSize=8
+FontColor=200,200,200,255
+AntiAlias=1
+Text=R
+UpdateDivider=-1
+```
+<div class="exampleprev">
+	<p><img src="!img/example-plugins/ExampleAudioLevelBar.png"/></p>
+</div>
