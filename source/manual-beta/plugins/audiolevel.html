@@ -141,12 +141,12 @@ Type=RMS
 		<p>Optionally, the FFT can be windowed to overlap successive sections. A <a href="http://en.wikipedia.org/wiki/Hann_function">Hann</a> function is used to shape the data before the FFT is applied. Typical values are half the FFTSize. Increasing this value will lower the latency between the audio and the measure's response, at the cost of extra CPU.</p>
 	</dd>
 	
-	<dt id="FFTAttack"><code>FFTAttack</code> <small>Default: <code>50</code></small></dt>
+	<dt id="FFTAttack"><code>FFTAttack</code> <small>Default: <code>300</code></small></dt>
 	<dd>
 		<p>Specifies the time in milliseconds over which to interpolate as the signal level increases. For example, how quickly a needle jumps up for a higher level.</p>
 	</dd>
 	
-	<dt id="FFTDecay"><code>FFTDecay</code> <small>Default: <code>2500</code></small></dt>
+	<dt id="FFTDecay"><code>FFTDecay</code> <small>Default: <code>300</code></small></dt>
 	<dd>
 		<p>Specifies the time in milliseconds over which to interpolate as the signal level decreases. For example, how quickly a needle subsides to a lower level.</p>
 	</dd>	
