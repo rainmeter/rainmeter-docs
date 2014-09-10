@@ -9,7 +9,7 @@ title: 'AudioLevel plugin'
 
 <p>AudioLevel will monitor, filter and analyze the amplitude (volume level) of sound input or output on the default or defined device and channels. The value returned will be a number from 0.0 to 1.0, which will be treated as a <a href="http://docs.rainmeter.net/manual/measures#Percentage">percentage</a> for use in meters.</p>
 
-<p>This can be used to create a volume level <a href="http://en.wikipedia.org/wiki/VU_meter">VU Meter</a> for defined channels, or optionally can filter the audio stream into distinct frequency bands to create a <a href="http://en.wikipedia.org/wiki/Spectrum_analyzer">Spectrum Analyzer</a>.</p>
+<p>This can be used to create a volume level <a href="http://en.wikipedia.org/wiki/VU_meter">VU Meter</a> for defined channels, or optionally can filter the audio stream into distinct <a href="http://en.wikipedia.org/wiki/Audio_frequency">frequency</a> bands to create a <a href="http://en.wikipedia.org/wiki/Spectrum_analyzer">Spectrum Analyzer</a>.</p>
 
 <p><em>The plugin monitors the amplitude of the post-mixer signal at a Windows audio endpoint. (i.e. sound card speaker output, USB audio interface, headphone port, microphone input) It does this by creating a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd371455(v=vs.85).aspx">WASAPI</a> capture client in <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd316551%28v=vs.85%29.aspx">loopback mode</a>. The capture client streams audio data to the plugin where it can be filtered and measured. The resulting volume level is returned by the plugin for use in Rainmeter measures and meters.</em></p>
 
