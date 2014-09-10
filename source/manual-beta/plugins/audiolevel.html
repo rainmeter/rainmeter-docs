@@ -3,9 +3,11 @@ layout: manual-beta
 permalink: manual-beta/plugins/audiolevel
 title: 'AudioLevel plugin'
 ---
-<p><code>Plugin=AudioLevel</code> retrieves information about system sound levels for Windows Vista and newer. Previous versions of Windows are not supported.</p>
+<p><code>Plugin=AudioLevel</code> monitors and analyzes streams of audio sound to or from an audio endpoint.</p>
 
-<p>The plugin will monitor and filter the amplitude (volume level) of sound input or output on the default or defined device and channels. The value returned will be a number from 0.0 to 1.0, which will be treated as a <a href="http://docs.rainmeter.net/manual/measures#Percentage">percentage</a> for use in meters.</p>
+<p>The plugin is supported on Windows Vista or newer. The plugin will not function on Windows XP.</p>
+
+<p>AudioLevel will monitor, filter and analyze the amplitude (volume level) of sound input or output on the default or defined device and channels. The value returned will be a number from 0.0 to 1.0, which will be treated as a <a href="http://docs.rainmeter.net/manual/measures#Percentage">percentage</a> for use in meters.</p>
 
 <p>This can be used to create a volume level <a href="http://en.wikipedia.org/wiki/VU_meter">VU Meter</a> for defined channels, or optionally can filter the audio stream into distinct frequency bands to create a <a href="http://en.wikipedia.org/wiki/Spectrum_analyzer">Spectrum Analyzer</a>.</p>
 
@@ -15,7 +17,7 @@ title: 'AudioLevel plugin'
 
 <h2>Usage</h2>
 
-<p>AudioLevel operates with a "parent / child" approach. A main "parent" AudioLevel measure is used to obtain and analyze the audio stream, and then "child" measures request data from the parent so that you can get individual values to display in meters. Example:</p>
+<p>AudioLevel operates with a "parent / child" approach. A single "parent" AudioLevel measure is used to obtain and analyze the audio stream, and then as many "child" measures as desired request data from the parent to get individual values to display in meters. Example:</p>
 
 ``` ini
 ; This parent measure processes the default audio output.
@@ -23,12 +25,20 @@ title: 'AudioLevel plugin'
 Measure=Plugin
 Plugin=AudioLevel
 
-; This child measure gets the current approx RMS value of the left channel (0.0 to 1.0).
+; This child measure gets the current RMS value of the left channel (0.0 to 1.0).
 [MeasureAudioRMS_L]
 Measure=Plugin
 Plugin=AudioLevel
 Parent=MeasureAudioRaw
 Channel=L
+Type=RMS
+
+; This child measure gets the current RMS value of the right channel (0.0 to 1.0).
+[MeasureAudioRMS_R]
+Measure=Plugin
+Plugin=AudioLevel
+Parent=MeasureAudioRaw
+Channel=R
 Type=RMS
 ```
 
@@ -60,22 +70,22 @@ Type=RMS
 		
 		<p>If not set, it will use the default device for the specified <a href="#Port">Port</a>. If you specify <code>Port=Output</code> and no <code>ID</code>, the plugin will connect to the default audio output device defined in Windows.</p>
 		
-		<p>To specify a device other than the default, you will need to find the Windows device ID. See the DeviceList option for more info.</p>
+		<p>To specify a device other than the default, you will need to find the Windows device ID. See the <code>DeviceList</code> child measure option for more info.</p>
+		
+		<p><em>Device ID's will be in the form: <code>{0.0.0.00000000}.{5c106e65-26b4-4d05-a9bf-b207a71e9eaa}</code></em></p>
 		
 		<p><b>Note:</b> The default audio device in Windows can be changed by using "Manage Audio Devices" from the Windows Start menu.</p>
 	</dd>
 
-	<dt id="RMSOptions"><b>RMS Options</b></dt>
-
-	<dd>
-		<p>The square root of the mean of the square. With audio, RMS is a meaningful way of calculating the average of values over a period of time. The signal value (amplitude) is squared, averaged over a period of time, then the square root of the result is calculated. The result is a value, that when squared, is related (proportional) to the effective power of the signal.</p>
+	<h3 id="RMSOptions">RMS Options</h3>
+	
+	<p>The square root of the mean of the square. With audio, RMS is a meaningful way of calculating the average of values over a period of time. The signal value (amplitude) is squared, averaged over a period of time, then the square root of the result is calculated. The result is a value, that when squared, is related (proportional) to the effective power of the signal.</p>
 		
-		<p>This will be the most common way of measuring volume levels for defined channels in a skin, while smoothing out tiny spikes in values as the levels change.</p>
+	<p>This will be the most common way of measuring volume levels for defined channels in a skin, while smoothing out tiny spikes in values as the levels change.</p>
 		
-		<p><b>Note:</b> To disable all RMS filtering, set both <a href="#RMSAttack">RMSAttack</a> and <a href="#RMSDecay">RMSDecay</a> to <code>0</code>, and <a href="#RMSGain">RMSGain</a> as the default <code>1.0</code>.</p>
+	<p><b>Note:</b> To disable all RMS filtering, set both <a href="#RMSAttack">RMSAttack</a> and <a href="#RMSDecay">RMSDecay</a> to <code>0</code>, and <a href="#RMSGain">RMSGain</a> as the default <code>1.0</code>.</p>
 		
-		<p>The following parent options will be used by child measures with an option of <code>RMS</code> set.</p>
-	</dd>
+	<p>The following parent options are used in combination with child measures having the <code>Type=RMS</code> option set.</p>
 	
 	<dt id="RMSAttack"><code>RMSAttack</code> <small>Default: <code>300</code></small></dt>
 	<dd>
@@ -92,15 +102,13 @@ Type=RMS
 		<p>A multiplication factor that will be applied to the RMS analysis.</p>
 	</dd>	
 
-	<dt id="PeakOptions"><b>Peak Options</b></dt>
+	<h3 id="PeakOptions">Peak Options</h3>
 
-	<dd>
-		<p>Peak options are similar to <a href="RMSOptions">RMS options</a>, but measure the peak (high) values rather than squaring to obtain an average over a period of time.</p>
+	<p>Peak options are similar to <a href="RMSOptions">RMS options</a>, but measure the peak (high) values rather than squaring to obtain an average over a period of time.</p>
 		
-		<p><b>Note:</b> To disable all Peak filtering, set both <a href="#PeakAttack">PeakAttack</a> and <a href="#PeakDecay">PeakDecay</a> to <code>0</code>, and <a href="#PeakGain">PeakGain</a> as the default <code>1.0</code>.</p>
+	<p><b>Note:</b> To disable all Peak filtering, set both <a href="#PeakAttack">PeakAttack</a> and <a href="#PeakDecay">PeakDecay</a> to <code>0</code>, and <a href="#PeakGain">PeakGain</a> as the default <code>1.0</code>.</p>
 		
-		<p>The following parent options will be used by child measures with an option of <code>Peak</code> set.</p>
-	</dd>
+	<p>The following parent options are used in combination with child measures having the <code>Type=Peak</code> option set.</p>
 	
 	<dt id="PeakAttack"><code>PeakAttack</code> <small>Default: <code>50</code></small></dt>
 	<dd>
@@ -117,15 +125,13 @@ Type=RMS
 		<p>A multiplication factor that will be applied to the Peak analysis.</p>
 	</dd>	
 
-	<dt id="FFTOptions"><b>FFT Options</b></dt>
+	<h3 id="FFTOptions">FFT Options</h3>
 	
-	<dd>
-		<p>FFT options enable you to analyze the spectrum content of the audio by measuring the frequencies that make up the audio stream, using the mathematical algorithm <a href="http://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform</a>.</p>
+	<p>FFT options enable you to analyze the spectrum content of the audio by measuring the frequencies that make up the audio stream, using the mathematical algorithm <a href="http://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform</a>.</p>
 
-		<p>This spectrum information can then optionally be separated into <code>Bands</code> to distinctly measure the level of individual frequencies in the audio stream. In order to use Bands, both <code>FFTSize</code> and <code>Bands</code> must be set on the parent measure.</p>
-		
-		<p>The following parent options will be used by child measures with options of <code>FFTIdx</code> or <code>BandIdx</code> set.</p>		
-	</dd>	
+	<p>This spectrum information can then optionally be separated into <code>Bands</code> to distinctly measure the level of individual frequencies in the audio stream. In order to use Bands, both <code>FFTSize</code> and <code>Bands</code> must be set on the parent measure.</p>
+	
+	<p>The following parent options are used in combination with child measures having the <code>Type=FFT</code>and <code>FFTIdx</code> or <code>Type=Band</code> and <code>BandIdx</code> options set.</p>	
 
 	<dt id="FFTSize"><code>FFTSize</code> <small>Default: <code>0</code></small></dt>
 	<dd>
@@ -211,9 +217,9 @@ Type=RMS
 		<li><code>RMS</code> : The current RMS level (0.0 to 1.0) corresponding to the specified <code>Channel</code>.</li>
 		<li><code>Peak</code> : The current Peak level (0.0 to 1.0) corresponding to the specified <code>Channel</code>.</li>
 		<li><code>FFT</code> : The current FFT level (0.0 to 1.0) corresponding to the specified <code>FFTIdx</code> option.</li>
-		<li><code>FFTFreq</code> : The frequency corresponding to the specified <code>FFTIdx</code> option.</li>		
+		<li><code>FFTFreq</code> : The frequency in Hz corresponding to the specified <code>FFTIdx</code> option.</li>		
 		<li><code>Band</code> : The current FFT level (0.0 to 1.0) value corresponding to the specified  <code>BandIdx</code> option.</li>
-		<li><code>BandFreq</code> : The frequency corresponding to the specified <code>BandIdx</code> option.</li>
+		<li><code>BandFreq</code> : The frequency in Hz corresponding to the specified <code>BandIdx</code> option.</li>
 		<li><code>Format</code> : A string describing the audio format of the device connected to with the parent <code>ID</code> option.</li>
 		<li><code>DeviceStatus</code> : Status (0 or 1) of the device connected to with the parent <code>ID</code> option.</li>
 		<li><code>DeviceName</code> : A string with the name of the device connected to with the parent <code>ID</code> option.</li>
@@ -233,7 +239,7 @@ Type=RMS
 
 	<dt id="BandIdx"><code>BandIdx</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>Specifies which frequency band number you want to extract from the parent. <code>FFTSize</code> and <code>Bands</code> must be enabled on the parent measure to use this option.</p>
+		<p>Specifies which frequency band number, starting with 0, you want to extract from the parent. <code>FFTSize</code> and <code>Bands</code> must be enabled on the parent measure to use this option.</p>
 		
 		<p>Valid values range from 0 to (Bands-1).</p>
 	</dd>
@@ -243,7 +249,7 @@ Type=RMS
 
 <h2>Examples</h2>
 
-<p>Simple Left/Right volume levels using Bitmap meters:</p>
+<p>Simple Left/Right volume levels using RMS and Bitmap meters:</p>
 <a href="!examples/ExampleAudioLevelBar.rmskin" class="download"></a>
 ``` ini
 [Rainmeter]
@@ -325,7 +331,7 @@ UpdateDivider=-1
 	<p><img src="!img/example-plugins/ExampleAudioLevelBitmap.gif"/></p>
 </div>
 
-<p>Simple spectrum visualization using Bar meters:</p>
+<p>Simple spectrum visualization using FFT/Bands and Bar meters:</p>
 <a href="!examples/ExampleAudioLevelBar.rmskin" class="download"></a>
 ``` ini
 [Rainmeter]
