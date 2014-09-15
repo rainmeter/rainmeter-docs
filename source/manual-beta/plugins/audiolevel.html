@@ -53,6 +53,7 @@ Type=RMS
 </dl>
 
 <h2>Parent measure options</h2>
+
 <dl>
 
 	<dt id="Port"><code>Port</code> <small>Default: <code>Output</code></small></dt>
@@ -127,9 +128,11 @@ Type=RMS
 
 	<h3 id="FFTOptions">FFT options</h3>
 	
-	<p>FFT options enable you to analyze the spectrum content of the audio by measuring the frequencies that make up the audio stream, using the mathematical algorithm <a href="http://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform</a>.</p>
-
-	<p>This spectrum information can then optionally be separated into <code>Bands</code> to distinctly measure the level of individual frequencies in the audio stream. In order to use Bands, both <code>FFTSize</code> and <code>Bands</code> must be set on the parent measure.</p>
+	<p>FFT options transform the signal from the time domain to the frequency domain, with <code>FTTSize</code> determining how many points you get back in the frequency domain. This is done by analyzing the audio stream into a linear-based number of points using the mathematical algorithm <a href="http://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform</a>.</p>
+	
+	<p>This frequency information can then optionally be extrapolated into logarithm-based <code>Bands</code> to distinctly measure by frequency in the ranges that are the most useful for spectrum display, based on the way humans detect changes in sound.</p>
+	
+	<p>In order to use <code>Bands</code>, both <code>FFTSize</code> and <code>Bands</code> must be set on the parent measure.</p>
 	
 	<p>The following parent options are used in combination with child measures having the <code>Type=FFT</code>and <code>FFTIdx</code> or <code>Type=Band</code> and <code>BandIdx</code> options set.</p>	
 
@@ -161,7 +164,7 @@ Type=RMS
 	<dd>
 		<p>An integer, specifying the number of frequency bands to generate.</p>
 		
-		<p>The FFT data can be smoothed into a number of log-spaced frequency bands, similar to a typical spectrum analyzer. This option specifies the number of bands to create.</p>
+		<p>The FFT data can be extrapolated into a number of log-spaced frequency bands, similar to a typical spectrum analyzer. This option specifies the number of bands to create.</p>
 	</dd>
 
 	<dt id="FreqMin"><code>FreqMin</code> <small>Default: <code>20</code></small></dt>
@@ -232,7 +235,7 @@ Type=RMS
 
 	<dt id="FFTIdx"><code>FFTIdx</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>Specifies which FFT bin you want to extract from the parent. <code>FFTSize</code> must be enabled on the parent measure to use this option.</p>
+		<p>Specifies which FFT point you want to extract from the parent. <code>FFTSize</code> must be enabled on the parent measure to use this option.</p>
 		
 		<p>Valid values range from 0 to (FFTSize/2).</p>
 	</dd>
