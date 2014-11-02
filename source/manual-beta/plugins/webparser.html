@@ -14,7 +14,7 @@ title: 'WebParser plugin'
 Measure=Plugin
 Plugin=WebParser
 URL=http://SomeSite.com
-RegExp="(?siU)<Item>(.*)</Item>.*<Item>(.*)</Item>"
+RegExp=(?siU)<Item>(.*)</Item>.*<Item>(.*)</Item>
 ```
 <p id="ParentChild">This example creates two <a href="#StringIndex">StringIndex</a> values in what is referred to as the "parent" WebParser measure. The information is generally used in subsequent "child" WebParser measures:</p>
 ``` ini
@@ -219,7 +219,7 @@ SolidColor=0,0,0,255
 Measure=Plugin
 Plugin=WebParser
 URL=http://slashdot.org/slashdot.rdf
-RegExp="(?siU)<title>(.*)</title>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>"
+RegExp=(?siU)<title>(.*)</title>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>
 
 [MeasureRSSTitle]
 Measure=Plugin
@@ -270,7 +270,7 @@ DynamicWindowSize=1
 Measure=Plugin
 Plugin=WebParser.dll
 URL=http://customize.org/feeds/submissions
-RegExp="(?siU).*<item>.*<title>(.*)</title>.*<description>.*src="(.*)".*</description>.*<link>(.*)</link>"
+RegExp=(?siU).*<item>.*<title>(.*)</title>.*<description>.*src="(.*)".*</description>.*<link>(.*)</link>
 
 [MeasureTitle]
 Measure=Plugin
