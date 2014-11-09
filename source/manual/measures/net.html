@@ -9,7 +9,7 @@ title: 'Net measures'
 
 <p>The bandwidth is measured in bytes.</p>
 
-<p><b>Notes:</b> The measured value is the number of bytes per second, times the total <a href="!skins#Update">update rate</a> of the measure, as defined by the <code>Update</code> option for the skin and any <code>UpdateDivider</code> option on the measure.
+<p><b>Notes:</b> The measured value is the number of bytes per second, factored by the total <a href="!skins#Update">update rate</a> of the measure, as defined by the <code>Update</code> option for the skin and any <code>UpdateDivider</code> option on the measure. Since the usual display of network traffic is in bytes per <em>second</em>, it is best to either set <code>Update=1000</code> in the [Rainmeter] section of the skin, or add UpdateDivider options to NetIn / NetOut measures so they are updated once a second.</p>
 
 <p>The measured value is the network traffic in and out of the network interface controller (NIC) of the computer running the skin. If the computer is on a network connected to a router (LAN), the traffic will include all interaction between the computer and both the router and any other devices on the LAN. It will not include traffic directly to and from other devices and the internet (WAN), and cannot be used to determine the amount of internet traffic.</p>
 
