@@ -197,7 +197,7 @@ EndFunc ;_ReadMessage
 
 void SendBang(const WCHAR* bang)
 {
-	HWND rmWnd = FindWindow(L"RainmeterMeterWindow", NULL);
+	HWND rmWnd = FindWindow(L"DummyRainWClass", NULL);
 	if (rmWnd)
 	{
 		COPYDATASTRUCT cds;
@@ -217,7 +217,7 @@ void SendBang(const WCHAR* bang)
 #include <SendMessage.au3>
 
 Func SendBang($szBang)
-   Local Const $hWnd = WinGetHandle("[CLASS:RainmeterMeterWindow]")
+   Local Const $hWnd = WinGetHandle("[CLASS:DummyRainWClass]")
    If $hWnd <> 0 Then
       Local Const $iSize = StringLen($szBang) + 1
 
