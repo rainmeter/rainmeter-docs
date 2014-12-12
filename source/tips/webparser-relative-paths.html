@@ -16,6 +16,8 @@ title: 'WebParser: Relative Paths'
 <p><b>Solution</b></p>
 <p>A WebParser Measure can append the RESULTS of another WebParser Measure in the "URL" line by referencing the Measure in square brackets. This means you can use the first measure to return the name and location of the image you want, and use this information in a second Measure where you hard code the URL and then pass the result of the search for the image to the second Measure.</p>
 
+<p>In order to have the two measures work in the correct "order", so the second one isn't looking for the relative URL before the first one is done getting it, you should make the second measure "dynamic", and use [!CommandMeasure SecondMeasure "Update"] as a FinishAction on the first measure. That way the first measure will "drive" the second one.</p>
+
 ``` ini
 [MeasureImageLocation]
 Measure=Plugin
@@ -23,13 +25,15 @@ Plugin=WebParser
 UpdateRate=1800
 Url=http://www.rainmeter.net/forum/
 RegExp="(?siU)<img src="(.*)"/>"
+FinishAction=[!CommandMeasure MeasureImageDownload "Update"] 
 
 [MeasureImageDownload]
 Measure=Plugin
 Plugin=WebParser
 UpdateRate=1800
-Url=http://www.rainmeter.net/forum/[MeasureImageLocation]
+Url=http://www.rainmeter.net/forum/[&MeasureImageLocation]
 StringIndex=1
+DynamicVariables=1
 Download=1
 
 [MeterDisplayImage]
@@ -40,4 +44,4 @@ W=70
 ```
 
 <p>Here we are using the first Measure [MeasureImageLocation] to get the relative path and filename of the image.</p>
-<p>Then we use the second Measure [MeasureImageDownload] to combine the known URL and the information from [MeasureImageLocation] to create a fully loaded Measure which will succeed in downloading the image... Then we just display it.</p>
+<p>Then we use the second Measure in a dynamic way [MeasureImageDownload] to combine the known URL and the information in a dynamic way [&MeasureImageLocation] to create a fully loaded Measure which will succeed in downloading the image... Then we just display it.</p>
