@@ -7,39 +7,8 @@ title: 'Format Seconds Into Time Intervals'
 
 <div class="noscroll">
 ``` lua
-function Initialize()
 
-	startTime = os.time()
-	
-end
-
-function Update()
-
-	local currentTime = os.time()
-	local elapsedSeconds = (currentTime - startTime)
-	
-	local weeks, days, hours, minutes, seconds = FormatSeconds(elapsedSeconds)
-	
-	local weeksTxt, daysTxt, hoursTxt, minutesTxt, secondsTxt = ""
-	if weeks == 1 then weeksTxt = 'week' else weeksTxt = 'weeks' end
-	if days == 1 then daysTxt = 'day' else daysTxt = 'days' end
-	if hours == 1 then hoursTxt = 'hour' else hoursTxt = 'hours' end
-	if minutes == 1 then minutesTxt = 'minute' else minutesTxt = 'minutes' end
-	if seconds == 1 then secondsTxt = 'second' else secondsTxt = 'seconds' end
-	
-	if elapsedSeconds >= 604800 then
-		return weeks..' '..weeksTxt..', '..days..' '..daysTxt..', '..hours..' '..hoursTxt..', '..minutes..' '..minutesTxt..', '..seconds..' '..secondsTxt
-	elseif elapsedSeconds >= 86400 then
-		return days..' '..daysTxt..', '..hours..' '..hoursTxt..', '..minutes..' '..minutesTxt..', '..seconds..' '..secondsTxt
-	elseif elapsedSeconds >= 3600 then
-		return hours..' '..hoursTxt..', '..minutes..' '..minutesTxt..', '..seconds..' '..secondsTxt
-	elseif elapsedSeconds >= 60 then
-		return minutes..' '..minutesTxt..', '..seconds..' '..secondsTxt
-	else
-		return seconds..' '..secondsTxt
-	end
-
-end
+local weeks, days, hours, minutes, seconds = FormatSeconds(secondsValue)
 
 function FormatSeconds(secondsArg)
 
