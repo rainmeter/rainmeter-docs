@@ -1,0 +1,59 @@
+---
+layout: snippets
+permalink: snippets/format-time
+title: 'Format Seconds Into Time Intervals'
+---
+<p>Demonstrates a function that takes a number of seconds, and returns values for weeks, days, hours, minutes, and seconds.</p>
+
+<div class="noscroll">
+``` lua
+function Initialize()
+
+	startTime = os.time()
+	
+end
+
+function Update()
+
+	local currentTime = os.time()
+	local elapsedSeconds = (currentTime - startTime)
+	
+	local weeks, days, hours, minutes, seconds = FormatSeconds(elapsedSeconds)
+	
+	local weeksTxt, daysTxt, hoursTxt, minutesTxt, secondsTxt = ""
+	if weeks == 1 then weeksTxt = 'week' else weeksTxt = 'weeks' end
+	if days == 1 then daysTxt = 'day' else daysTxt = 'days' end
+	if hours == 1 then hoursTxt = 'hour' else hoursTxt = 'hours' end
+	if minutes == 1 then minutesTxt = 'minute' else minutesTxt = 'minutes' end
+	if seconds == 1 then secondsTxt = 'second' else secondsTxt = 'seconds' end
+	
+	if elapsedSeconds >= 604800 then
+		return weeks..' '..weeksTxt..', '..days..' '..daysTxt..', '..hours..' '..hoursTxt..', '..minutes..' '..minutesTxt..', '..seconds..' '..secondsTxt
+	elseif elapsedSeconds >= 86400 then
+		return days..' '..daysTxt..', '..hours..' '..hoursTxt..', '..minutes..' '..minutesTxt..', '..seconds..' '..secondsTxt
+	elseif elapsedSeconds >= 3600 then
+		return hours..' '..hoursTxt..', '..minutes..' '..minutesTxt..', '..seconds..' '..secondsTxt
+	elseif elapsedSeconds >= 60 then
+		return minutes..' '..minutesTxt..', '..seconds..' '..secondsTxt
+	else
+		return seconds..' '..secondsTxt
+	end
+
+end
+
+function FormatSeconds(secondsArg)
+
+	local weeks = math.floor(secondsArg / 604800)
+	local remainder = secondsArg % 604800
+	local days = math.floor(remainder / 86400)
+	local remainder = remainder % 86400
+	local hours = math.floor(remainder / 3600)
+	local	remainder = remainder % 3600
+	local minutes = math.floor(remainder / 60)
+	local seconds = remainder % 60
+	
+	return weeks, days, hours, minutes, seconds
+	
+end
+```
+</div>
