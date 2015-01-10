@@ -11,10 +11,25 @@ title: '[Rainmeter] section'
 <dl>
 	<dt id="Update"><code>Update</code> <small>Default: <code>1000</code></small></dt>
 	<dd>
-		<p>Defines the update interval of the skin in milliseconds. On each update, meters and measures are updated.</p>
+		<p>Defines the update interval of the skin in milliseconds. On each update, meters and measures are updated, and the skin is redrawn.</p>
+		
+		<p>The lowest possible effective value for Update is "16". Some care should be taken to only use very low update rates (less than 100) when really needed, and to balance a low Update <a href="!measures/general-options#UpdateDivider">UpdateDivider</a> on individual measures and meters, in order to keep the CPU usage by Rainmeter as low as possible.</p>
+		
 		<p>Using <code>-1</code> will update the skin only once on load (or on refresh). The skin can then be manually updated using the <a href="!bangs#Update">!Update bang</a>.</p>
-		<p><b>Note:</b> Update is not related to the system clock, and if a computer is busy or a complicated skin takes longer than the interval to complete a full update of the skin, updates can be unreliable in relation to elapsed time. Do not use the Update value to drive clocks or other timing sensitive functions.</p>		
+		
+		<p><b>Note:</b> While <code>Update=1000</code> will update the skin "once a second",  Update is not related to the system clock, and if a computer is busy or a complicated skin takes longer than the interval to complete a full update of the skin, updates can be unreliable in relation to elapsed time. Do not use the Update value to control clocks or other timing sensitive functions.</p>		
 	</dd>
+	
+	<dt id="DefaultUpdateDivider"><code>DefaultUpdateDivider</code> <small>Default: <code>1</code></small></dt>
+	<dd>
+		<p>Default number of updates at which skin measure and meter values are updated. The <a href="#Update">Update</a> option is multiplied by the specified value to determine how often measures and meters are updated.
+
+		<p>Example: If <code>Update=1000</code> and <code>DefaultUpdateDivider=30</code>, then by default all measures and meters are updated every 30 seconds.</p>
+
+		<p>If DefaultUpdateDivider=-1 or any negative number, then by default all measures and meter are only updated once when the skin is loaded or refreshed.</p>
+		
+		<p><b>Note:</b> This option is designed to set a default UpdateDivider for all measures and meters in the skin. It can be overridden by setting <code>UpdateDivider</code> on individual measures or meters. This option should be used when a low <code>Update</code> is desired to support animations or other skin elements requiring rapid update, while avoiding having to manually set an UpdateDivider on a great many other measures and meters that do not need to be updated as quickly.</p>
+	</dd>	
 
 	<dt id="AccurateText"><code>AccurateText</code> <small>Default: <code>0</code></small></dt>
 	<dd>
