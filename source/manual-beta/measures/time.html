@@ -22,7 +22,7 @@ title: 'Time measure'
 	<dt id="TimeStamp"><code>TimeStamp</code></dt>
 	<dd>
 		<p><a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a> or <a href="!formulas">formula</a> defining a timestamp. If defined, the measure will use this date/time instead of the current system values.</p>
-		<p>There are some special TimeStamp values that involve <b>Daylight Savings Time</b>. Also see <a href="!plugins/sysinfo/#TimeZoneValues">SysInfoType</a> Time Zone values on <a href="!plugins/sysinfo">SysInfo plugin</a> measures.</p>
+		<p>There are some special TimeStamp values that involve <b>Daylight Savings Time</b>.</p>
 		<ul>
 		<li>TimeStamp=<code>DSTNextStart</code><br/>
 		Returns the local date and time of the <em>next</em> start of Daylight Savings Time.</li>
@@ -38,7 +38,8 @@ title: 'Time measure'
 		<li>TimeStamp=<code>DSTEndYYYY</code><br/>
 		Returns the local date and time of the end of Daylight Savings Time for a <em>defined</em> year.<br/>
 		Example: <code>TimeStamp=DSTEnd2016</code><br/><br/>
-		<b>Note:</b> These values cannot be modified with the <a href="#TimeZone">TimeZone</a> option to obtain valid Daylight Savings Time information for another location. These are always based on the information for the local computer.</li>
+		These values cannot be modified with the <a href="#TimeZone">TimeZone</a> option to obtain valid Daylight Savings Time information for another location. These are always based on the information for the local computer.<br/><br/>
+		<b>Note:</b> Also see <a href="!plugins/sysinfo/#TimeZoneValues">SysInfoType</a> Time Zone values on <a href="!plugins/sysinfo">SysInfo plugin</a> measures.</li>
 		</ul>
 	</dd>
 
