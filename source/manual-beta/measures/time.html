@@ -3,7 +3,8 @@ layout: manual-beta
 permalink: manual-beta/measures/time
 title: 'Time measure'
 ---
-<p><code>Measure=Time</code> measures the current date and time.</p>
+<p><code>Measure=Time</code> measures a date and time.</p>
+<p>By default this is simply the current system date and time.</p>
 
 <h2>Options</h2>
 <dl>
@@ -12,17 +13,19 @@ title: 'Time measure'
 		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
 	</dd>
 
-	<dt id="Format"><code>Format</code> <small>Default: <code>%H:%M:%S</code></small></dt>
-	<dd>
-		<p>Format for the measure value. This can be a combination of text and <a href="#FormatCodes">Format codes</a>.</p>
-
-		<p><b>Note:</b> If a <code>Format</code> is not given, the <a href="!measures#Values">string value</a> returned is in the format <code>%H:%M:%S</code>, however the <a href="!measures#Values">number value</a> will be a <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>. If a <code>Format</code> is given, the number value will be the value defined by the format, or zero if the format does not define a numeric value.</p>
-	</dd>
-
 	<dt id="TimeStamp"><code>TimeStamp</code></dt>
 	<dd>
-		<p><a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a> or <a href="!formulas">formula</a> defining a timestamp. If defined, the measure will use this date/time instead of the current system values.</p>
-		<p>There are some special TimeStamp values that involve <b>Daylight Savings Time</b>.</p>
+		<p>The TimeStamp option is used to define an alternative to the default current system date and time used by the measure.</p>
+		
+		<p>This option can take one of several forms:</p>
+		
+		<h4 id="TimeStampValue">A numeric Windows timestamp.</h4>
+		
+		<p>If TimeStamp is a numeric <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a> or a <a href="!formulas">formula</a> defining a Windows timestamp, then this number, in seconds since January 1, 1601, will be used as the basis for measuring the date and time.</p>
+		
+		<h4 id="TimeStampDST">Daylight Savings Time codes</h4>
+		
+		<p>This can be one of several TimeStamp codes that represent various Daylight Savings Time values.</p>
 		<ul>
 		<li>TimeStamp=<code>DSTNextStart</code><br/>
 		Returns the local date and time of the <em>next</em> start of Daylight Savings Time.</li>
@@ -37,11 +40,109 @@ title: 'Time measure'
 		Example: <code>TimeStamp=DSTStart2016</code></li>
 		<li>TimeStamp=<code>DSTEndYYYY</code><br/>
 		Returns the local date and time of the end of Daylight Savings Time for a <em>defined</em> year.<br/>
-		Example: <code>TimeStamp=DSTEnd2016</code><br/><br/>
-		These values cannot be modified with the <a href="#TimeZone">TimeZone</a> option to obtain valid Daylight Savings Time information for another location. These are always based on the information for the local computer.<br/><br/>
-		<b>Note:</b> Also see <a href="!plugins/sysinfo/#TimeZoneValues">SysInfoType</a> Time Zone values on <a href="!plugins/sysinfo">SysInfo plugin</a> measures.</li>
+		Example: <code>TimeStamp=DSTEnd2016</code></li>
+		</ul>
+		<p><b>Notes:</b>These values cannot be modified with the <a href="#TimeZone">TimeZone</a> option to obtain valid Daylight Savings Time information for another location. These are always based on the information for the local computer.</p>
+		<p>Also see <a href="!plugins/sysinfo/#TimeZoneValues">SysInfoType</a> Time Zone values on <a href="!plugins/sysinfo">SysInfo plugin</a> measures.</p>
+	
+		<h4 id="TimeStampString">A formatted date and time string.</h4>
+		
+		<p>TimeStamp can be any formatted date and/or time string. This might be a string the skin retrieves from a website with the WebParser plugin, or any string value that represents a date and/or time defined for the option.</p>
+		<p>Some examples might be:</p>
+		<ul>
+		<li><code>TimeStamp=2015-01-27T15:22:30Z</code></li>
+		<li><code>TimeStamp=Tue, 27 Jan 2015 15:22:30</code></li>
+		<li><code>TimeStamp=1/27/2105 15:22:30</code></li>
+		<li><code>TimeStamp=Tuesday, January 27, 2015 at 15:22:30</code></li>
+		</ul>
+		<p>Any date and time format can be used, as long as the constituent values can be expressed with any combination of the the Time <a href="#FormatCodes">Format codes</a> and text. This form of the TimeStamp option MUST be used in conjunction with a matching <a href="#TimeStampFormat">TimeStampFormat</a> option, which will be used to create a <em>mask</em> that will define the structure and values of the date and time string.</p>
+	</dd>
+	
+	<dt id="TimeStampFormat"><code>TimeStampFormat</code></dt>
+	<dd>
+		<p>The TimeStampFormat option creates a <em>mask</em> that defines the structure and values used in a matching <a href="#TimeStampString">TimeStamp</a> formatted date and/or time string. If the TimeStamp option is not defined, or if the TimeStampFormat mask does not match the format of the TimeStamp option, an error will be produced.</p>
+		
+		<p>The TimeStampFormat is created with any combination of the the Time <a href="#FormatCodes">Format codes</a> and text, to create a mask of the TimeStamp option's formatted date and/or time string.<p>
+		
+		<p>Some examples might be:</p>
+		<ul>
+		<li><code>TimeStamp=2015-01-27T15:22:30Z</code><br>
+		<code>TimeStampFormat=%Y-%m-%dT%H:%M:%S</code></li>
+		<li><code>TimeStamp=Tue, 27 Jan 2015 15:22:30</code><br>
+		<code>TimeStampFormat=%a, %#d %b %Y %H:%M:%S</code></li>
+		<li><code>TimeStamp=1/27/2105 15:22:30</code><br>
+		<code>TimeStampFormat=%#m/%#d/%Y %H:%M:%S</code></li>
+		<li><code>TimeStamp=Tuesday, January 27, 2015 at 15:22:30</code><br>
+		<code>TimeStampFormat=%A, %B %#d, %Y at %H:%M:%S</code></li>
+		</ul>
+
+		<p>In this usage, the TimeStamp and TimeStampFormat options are used together to turn a formatted string into a valid Windows timestamp. That timestamp value can be used for mathematical comparisons or formulas, or the <a href="#Format">Format</a> and <a href="#FormatLocale">FormatLocale</a> options can be used to format the timestamp any way desired for display.</p>
+		
+		<p><b>Note:</b> These values cannot evaluate any time zone information in the string and cannot be modified with the <a href="#TimeZone">TimeZone</a> option. What is internally arrived at by the measure is a resolution of the date and/or time string to a Windows timestamp, which is a number of seconds since January 1, 1601, and independent of any time zone.</p>
+	</dd>
+
+	<dt id="TimeStampLocale"><code>TimeStampLocale</code></dt>
+	<dd>
+		<p>An optional value that defines the "language / locale" that the formatted date / time string defined in TimeStamp is in.</p>
+		
+		<p>This will allow a TimeStamp formatted string that is in a particular language / locale to be properly resolved when TimeStampFormat is defined. The TimeStamp and TimeStampFormat options are required to use this option.</p>
+		
+		<p>An example might be:<p>
+		<p><code>TimeStamp=Montag, 16. Februar 2015 13:10:45</code><br/>
+		<code>TimeStampFormat=%A, %d. %b %Y %H:%M:%S</code><br/>
+		<code>TimeStampLocale=de-DE</code></p>
+		
+		<p>The values for this option can be found at <a href="http://www.microsoft.com/resources/msdn/goglobal/default.mspx">NLS Language / Locale Identifiers</a>. The values in the columns "Culture Name" or "Language Name Abbreviation" or "Language" can be used. Be sure to select your Windows version from the pull-down on the top left to get the most accurate information.<p>
+
+		<p><b>Note:</b> In addition, a combination of "Language", an "_" underscore, "Country" (from inside the parentheses in the "Locale" column) a "." dot and the value of the "ANSI Codepage" column can be used to be <em>very</em> specific.<p>
+		
+		<p>Some examples might be:</p>
+		<ul>
+		<li><code>TimeStampLocale=de-DE</code><br/>
+		<em>The "Culture Name" value for German - Germany</em></li>
+		<li><code>TimeStampLocale=FRA</code><br/>
+		<em>The "Language Name Abbreviation" for French</em></li>
+		<li><code>TimeStampLocale=Russian_Russia.1251</code><br/>
+		<em>The "Language"_"Country"."ANSI Codepage" for Russian - Russia using codepage 1251</em></li>
 		</ul>
 	</dd>
+
+	<dt id="Format"><code>Format</code> <small>Default: <code>%H:%M:%S</code></small></dt>
+	<dd>
+		<p>Display format for the string value of the measure. This can be any combination of text and Time <a href="#FormatCodes">Format codes</a>.</p>
+		
+		<p>An example might be:</p>
+		<ul>
+		<li>Format=%A, %B %#d, %Y %#I:%M %p<br/>
+		<em>Tuesday, January 27, 2015 3:22:30 PM</em></li>
+		</ul>
+
+		<p>If Format is not defined, the <a href="!measures#Values">string value</a> returned is in the default format <code>%H:%M:%S</code>, however the <a href="!measures#Values">number value</a> will be a <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>. If a <code>Format</code> is given, the number value will be the value defined by the format, or zero if the format does not define a numeric value.</p>
+		
+		<p><b>Note:</b> If a Format option is defined, the Windows timestamp value of the measure can still be retrieved and used with the <a href="!variables/section-variables#Timestamp">[MeasureName:Timestamp]</a> section variable measure modifier.</p>
+	</dd>	
+	
+	<dt id="FormatLocale"><code>FormatLocale</code></dt>
+	<dd>
+		<p>An optional value that defines the "language / locale" that the measure value formatted by the Format option will be displayed in.</p>
+		
+		<p>This will allow a Time measure's value to be automatically "translated", and displayed in a particular language when used with the Format option. This will translate things like the "month name", "day of week name" and other text values to the language defined in this option.</p>
+		
+		<p>Note that in most cases, this option won't be needed, as the Format option will already translate text values to the default "locale" defined for the system. This can be used to define an "output" locale that is different than the default one.</p>
+		
+		<p>The values for this option are the same ones defined for the <a href="#TimeStampLocale">TimeStampLocale</a> option.</p>
+		
+		<p>An example might be:</p>
+		<p><code>TimeStamp=Wednesday, February 18, 2015 at 01:07:40</code><br/>
+		<code>TimeStampFormat=%A, %B %#d, %Y at %H:%M:%S</code><br/>
+		<code>TimeStampLocale=en-US</code><br/>
+		<code>FormatLocale=de-DE</code><br/>
+		<code>Format=%#c</code><br/>
+		Result in a String meter: <em>Mittwoch, 18. Februar 2015 01:07:40</em></p>
+		
+		<b>Note:</b> While any Format string desired can be used, the <code>%#c</code> Time Format code is particularly useful for easily changing between "locale" values from the "input" to the "output". The <code>%#c</code> code in Format, in conjunction with FormatLocale, (or your system's default "locale" settings in Windows) will not only "translate" the strings text values, but will arrange the output time string with the order, structure and punctuation appropriate for that "locale".</p> 
+		
+	</dd>	
 
 	<dt id="TimeZone"><code>TimeZone</code> <small>Default: <code>local</code></small></dt>
 	<dd>
@@ -53,7 +154,7 @@ title: 'Time measure'
 		<p>If <code>DaylightSavingTime</code> is set to <code>0</code> and <code>TimeZone</code> is supplied, the current local offset for Daylight Savings Time is not applied to the value.</p>
 
 		<p><b>Note:</b> All locations do not follow the same Daylight Savings Time schedule, if any. If a Time measure is intended to provide the time in a specific location, and that location follows a different schedule from the user's local system, the default value will be wrong on certain dates over the course of the year. In order to provide an accurate time, <code>DaylightSavingTime</code> must be set to <code>0</code>, and <code>TimeZone</code> must be set in a way that accounts for the current Daylight Savings Time rules for that location.</p>
-	</dd>
+	</dd>	
 </dl>
 
 <h2 id="FormatCodes">Format codes</h2>
@@ -64,7 +165,7 @@ title: 'Time measure'
 <li><code>%A</code>: Full weekday name.</li>
 <li><code>%b</code>: Abbreviated month name.</li>
 <li><code>%B</code>: Full month name.</li>
-<li><code>%c</code>: Date and time representation appropriate for locale.</li>
+<li><code>%c</code>: Date and time representation appropriate for current locale.</li>
 <li><code>%d</code>: Day of month as number (01 - 31).</li>
 <li><code>%H</code>: Hour in 24-hour format (00 - 23).</li>
 <li><code>%I</code>: Hour in 12-hour format (01 - 12).</li>
