@@ -4,7 +4,7 @@ permalink: manual-beta/measures/time
 title: 'Time measure'
 ---
 <p><code>Measure=Time</code> measures a date and time.</p>
-<p>By default this is simply the current system date and time.</p>
+<p>By default this is simply the current system date and time. The string representation desired for the date and / or time of the measure is then defined by using the <a href="#Format">Format</a> option.</p>
 
 <h2>Options</h2>
 <dl>
@@ -12,6 +12,21 @@ title: 'Time measure'
 	<dd>
 		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
 	</dd>
+
+	<dt id="Format"><code>Format</code> <small>Default: <code>%H:%M:%S</code></small></dt>
+	<dd>
+		<p>Display format for the string value of the measure. This can be any combination of text and Time <a href="#FormatCodes">Format codes</a>.</p>
+		
+		<p>An example might be:</p>
+		<ul>
+		<li><code>Format=%A, %B %#d, %Y %#I:%M %p</code><br/>
+		<em>Tuesday, January 27, 2015 3:22:30 PM</em></li>
+		</ul>
+
+		<p>If Format is not defined, the <a href="!measures#Values">string value</a> returned is in the default format <code>%H:%M:%S</code>, however the <a href="!measures#Values">number value</a> will be a <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>. If Format is defined, the number value will be the value defined by the format, or zero if the format does not define a numeric value.</p>
+		
+		<p><b>Note:</b> If a Format option is defined, the Windows timestamp value of the measure can still be retrieved and used with the <a href="!variables/section-variables#Timestamp">[MeasureName:Timestamp]</a> section variable measure modifier.</p>
+	</dd>	
 
 	<dt id="TimeStamp"><code>TimeStamp</code></dt>
 	<dd>
@@ -94,7 +109,7 @@ title: 'Time measure'
 		
 		<p>The values for this option can be found at <a href="http://www.microsoft.com/resources/msdn/goglobal/default.mspx">NLS Language / Locale Identifiers</a>. The values in the columns "Culture Name" or "Language Name Abbreviation" or "Language" can be used. Be sure to select your Windows version from the pull-down on the top left to get the most accurate information.<p>
 
-		<p><b>Note:</b> In addition, a combination of "Language", an "_" underscore, "Country" (from inside the parentheses in the "Locale" column) a "." dot and the value of the "ANSI Codepage" column can be used to be <em>very</em> specific.<p>
+		<p><b>Hint:</b> In addition, a combination of "Language", an "_" underscore, "Country" (from inside the parentheses in the "Locale" column) a "." dot and the value of the "ANSI Codepage" column can be used to be <em>very</em> specific.<p>
 		
 		<p>Some examples might be:</p>
 		<ul>
@@ -105,30 +120,17 @@ title: 'Time measure'
 		<li><code>TimeStampLocale=Russian_Russia.1251</code><br/>
 		<em>The "Language"_"Country"."ANSI Codepage" for Russian - Russia using codepage 1251</em></li>
 		</ul>
+		
+		<p><b>Note:</b> While the NLS Language / Locale information is included with all versions of Windows XP (Service Pack 2) or later, extraordinarily rare cases of missing or damaged information can be corrected by downloading and installing the package at <a href="http://www.microsoft.com/en-us/download/details.aspx?id=25241">Microsoft National Language Support Downlevel APIs 1.0</a>.</p>
 	</dd>
 
-	<dt id="Format"><code>Format</code> <small>Default: <code>%H:%M:%S</code></small></dt>
-	<dd>
-		<p>Display format for the string value of the measure. This can be any combination of text and Time <a href="#FormatCodes">Format codes</a>.</p>
-		
-		<p>An example might be:</p>
-		<ul>
-		<li>Format=%A, %B %#d, %Y %#I:%M %p<br/>
-		<em>Tuesday, January 27, 2015 3:22:30 PM</em></li>
-		</ul>
-
-		<p>If Format is not defined, the <a href="!measures#Values">string value</a> returned is in the default format <code>%H:%M:%S</code>, however the <a href="!measures#Values">number value</a> will be a <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>. If a <code>Format</code> is given, the number value will be the value defined by the format, or zero if the format does not define a numeric value.</p>
-		
-		<p><b>Note:</b> If a Format option is defined, the Windows timestamp value of the measure can still be retrieved and used with the <a href="!variables/section-variables#Timestamp">[MeasureName:Timestamp]</a> section variable measure modifier.</p>
-	</dd>	
-	
 	<dt id="FormatLocale"><code>FormatLocale</code></dt>
 	<dd>
 		<p>An optional value that defines the "language / locale" that the measure value formatted by the Format option will be displayed in.</p>
 		
 		<p>This will allow a Time measure's value to be automatically "translated", and displayed in a particular language when used with the Format option. This will translate things like the "month name", "day of week name" and other text values to the language defined in this option.</p>
 		
-		<p>Note that in most cases, this option won't be needed, as the Format option will already translate text values to the default "locale" defined for the system. This can be used to define an "output" locale that is different than the default one.</p>
+		<p>Note that in most cases, this option won't be needed, as the Format option will already translate text values to the default locale defined for the system. However, this can be used to define an "output" locale that is different than the default one.</p>
 		
 		<p>The values for this option are the same ones defined for the <a href="#TimeStampLocale">TimeStampLocale</a> option.</p>
 		
@@ -140,7 +142,7 @@ title: 'Time measure'
 		<code>Format=%#c</code><br/>
 		Result in a String meter: <em>Mittwoch, 18. Februar 2015 01:07:40</em></p>
 		
-		<b>Note:</b> While any Format string desired can be used, the <code>%#c</code> Time Format code is particularly useful for easily changing between "locale" values from the "input" to the "output". The <code>%#c</code> code in Format, in conjunction with FormatLocale, (or your system's default "locale" settings in Windows) will not only "translate" the strings text values, but will arrange the output time string with the order, structure and punctuation appropriate for that "locale".</p> 
+		<b>Note:</b> While any Format string desired can be used, the codes like <code>%#c</code> that return long or short representations of the date and/or time for the system locale or the locale defined by TimeStampLocale or FormatLocal are particularly useful for easily changing between locale values from the "input" to the "output". Not only will it use the language defined by the locale, but also with the appropriate order, structure and punctuation.</p> 
 		
 	</dd>	
 
@@ -158,36 +160,35 @@ title: 'Time measure'
 </dl>
 
 <h2 id="FormatCodes">Format codes</h2>
-<p>The following formatting codes can be used in the <code>Format</code> option.</p>
+<p>The following formatting codes are used in the <code>Format</code> and <code>TimeStampFormat</code> options.</p>
 
 <ul>
-<li><code>%a</code>: Abbreviated weekday name.</li>
-<li><code>%A</code>: Full weekday name.</li>
-<li><code>%b</code>: Abbreviated month name.</li>
-<li><code>%B</code>: Full month name.</li>
-<li><code>%c</code>: Date and time representation appropriate for current locale.</li>
+<li><code>%a</code>: Abbreviated weekday name. (e.g. "Tue")</li>
+<li><code>%A</code>: Full weekday name. (e.g. "Tuesday")</li>
+<li><code>%b</code>: Abbreviated month name. (e.g. "Mar")</li>
+<li><code>%B</code>: Full month name. (e.g. "March")</li>
+<li><code>%c</code>: Short date and time representation for system or defined locale. (e.g. "3/14/2015 12:41:29")</li>
+<li><code>%#c</code>: Long date and time representation for system or defined locale. (e.g. "Tuesday, March 14, 2015, 12:41:29")</li>
 <li><code>%d</code>: Day of month as number (01 - 31).</li>
 <li><code>%H</code>: Hour in 24-hour format (00 - 23).</li>
 <li><code>%I</code>: Hour in 12-hour format (01 - 12).</li>
 <li><code>%j</code>: Day of year as number (001 - 366).</li>
 <li><code>%m</code>: Month as number (01 - 12).</li>
 <li><code>%M</code>: Minute as number (00 - 59).</li>
-<li><code>%p</code>: Current locale's A.M./P.M. indicator for 12-hour clock.</li>
+<li><code>%p</code>: AM/PM indicator for 12-hour clock.</li>
 <li><code>%S</code>: Second as number (00 - 59).</li>
 <li><code>%U</code>: Week of year as number, with Sunday as first day of week (00 - 53).</li>
 <li><code>%w</code>: Weekday as number (0 - 6, Sunday is 0).</li>
 <li><code>%W</code>: Week of year as number, with Monday as first day of week (00 - 53).</li>
-<li><code>%x</code>: Date representation for current locale.</li>
-<li><code>%X</code>: Time representation for current locale.</li>
+<li><code>%x</code>: Short date representation for system or defined locale. (e.g. "3/14/2015")</li>
+<li><code>%#x</code>: Long date representation for system or defined locale. (e.g. "Tuesday, March 14, 2015")</li>
+<li><code>%X</code>: Time representation for system or defined locale.</li>
 <li><code>%y</code>: Year without century (00 - 99).</li>
 <li><code>%Y</code>: Year with century.</li>
-<li><code>%z</code>, <code>%Z</code>: Either the time-zone name or time zone abbreviation, depending on registry settings.</li>
+<li><code>%z</code>, <code>%Z</code>: Either the time zone name or time zone abbreviation, depending on registry settings.</li>
 <li><code>%%</code>: Percent sign.</li>
-<li><code>%#c</code>: Long date and time representation, appropriate for current locale (e.g. "Tuesday, March 14, 1995, 12:41:29").</li>
-<li><code>%#x</code>: Long date representation, appropriate to current locale (e.g. "Tuesday, March 14, 1995").</li>
+<li><code>locale-date</code>, <code>locale-time</code>: default system date and time representations for the system locale. These codes cannot be modified by using <code>TimeStampLocale</code> or <code>FormatLocal</code>.</li>
 </ul>
-
-<p><code>locale-time</code> and <code>locale-date</code> will use the format that is set currently in Windows.</p>
 
 <p><b>Note:</b> To remove leading zeros in numerical format codes use <code>#</code> after <code>%</code> (e.g. <code>%#d</code> instead of <code>%d</code>).</p>
 
