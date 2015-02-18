@@ -82,7 +82,7 @@ title: 'Time measure'
 		<p>Some examples might be:</p>
 		<ul>
 		<li><code>TimeStamp=2015-01-27T15:22:30Z</code><br>
-		<code>TimeStampFormat=%Y-%m-%dT%H:%M:%S</code></li>
+		<code>TimeStampFormat=%Y-%m-%dT%H:%M:%SZ</code></li>
 		<li><code>TimeStamp=Tue, 27 Jan 2015 15:22:30</code><br>
 		<code>TimeStampFormat=%a, %#d %b %Y %H:%M:%S</code></li>
 		<li><code>TimeStamp=1/27/2105 15:22:30</code><br>
@@ -130,7 +130,7 @@ title: 'Time measure'
 		
 		<p>This will allow a Time measure's value to be automatically "translated", and displayed in a particular language when used with the Format option. This will translate things like the "month name", "day of week name" and other text values to the language defined in this option.</p>
 		
-		<p>Note that in most cases, this option won't be needed, as the Format option will already translate text values to the default locale defined for the system. However, this can be used to define an "output" locale that is different than the default one.</p>
+		<p>Note that in most cases, this option will always be needed if your system locale is other than "English", as the Format option in a Time measure will always default to "English". This can also be used to define an "output" locale that is different than the system's default one.</p>
 		
 		<p>The values for this option are the same ones defined for the <a href="#TimeStampLocale">TimeStampLocale</a> option.</p>
 		
