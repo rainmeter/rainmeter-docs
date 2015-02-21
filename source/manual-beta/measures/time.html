@@ -185,9 +185,9 @@ title: 'Time measure'
 <li><code>%X</code>: Time representation for system or defined locale.</li>
 <li><code>%y</code>: Year without century (00 - 99).</li>
 <li><code>%Y</code>: Year with century.</li>
-<li><code>%z</code>, <code>%Z</code>: Either the time zone name or time zone abbreviation, depending on registry settings.</li>
+<li><code>%z</code>, <code>%Z</code>: Time zone name or abbreviation. These are for the system locale, and cannot be modified using <code>FormatLocale</code>.</li>
 <li><code>%%</code>: Percent sign.</li>
-<li><code>locale-date</code>, <code>locale-time</code>: default system date and time representations for the system locale. These codes cannot be modified by using <code>TimeStampLocale</code> or <code>FormatLocal</code>.</li>
+<li><code>locale-date</code>, <code>locale-time</code>: default system date and time representations for the system locale. These codes cannot be modified by using <code>TimeStampLocale</code> or <code>FormatLocale</code>.</li>
 </ul>
 
 <p><b>Note:</b> To remove leading zeros in numerical format codes use <code>#</code> after <code>%</code> (e.g. <code>%#d</code> instead of <code>%d</code>).</p>
