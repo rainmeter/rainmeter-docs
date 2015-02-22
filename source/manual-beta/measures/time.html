@@ -124,23 +124,30 @@ title: 'Time measure'
 		<p><b>Note:</b> While the NLS Language / Locale information is included with all versions of Windows XP (Service Pack 2) or later, extraordinarily rare cases of missing or damaged information can be corrected by downloading and installing the package at <a href="http://www.microsoft.com/en-us/download/details.aspx?id=25241">Microsoft National Language Support Downlevel APIs 1.0</a>.</p>
 	</dd>
 
-	<dt id="FormatLocale"><code>FormatLocale</code></dt>
+	<dt id="FormatLocale"><code>FormatLocale</code> <small>Default: <em>A standard English format</em></small></dt>
 	<dd>
 		<p>An optional value that defines the "language / locale" that the measure value formatted by the Format option will be displayed in.</p>
 		
 		<p>This will allow a Time measure's value to be automatically "translated", and displayed in a particular language when used with the Format option. This will translate things like the "month name", "day of week name" and other text values to the language defined in this option.</p>
 		
-		<p>Note that in most cases, this option will always be needed if your system locale is other than "English", as the Format option in a Time measure will always default to "English". This can also be used to define an "output" locale that is different than the system's default one.</p>
-		
 		<p>The values for this option are the same ones defined for the <a href="#TimeStampLocale">TimeStampLocale</a> option.</p>
 		
-		<p>An example might be:</p>
+		<p>In addition, using the value <code>Local</code>, e.g. <code>FormatLocale=Local</code> on the measure will cause the output format to automatically use the date / time "locale" language and format set in Windows for the machine the skin is running on, rather than defaulting to a standard platform-agnostic "English" representation.</p>
+		
+		<p>Examples might be:</p>
 		<p><code>TimeStamp=Wednesday, February 18, 2015 at 01:07:40</code><br/>
 		<code>TimeStampFormat=%A, %B %#d, %Y at %H:%M:%S</code><br/>
 		<code>TimeStampLocale=en-US</code><br/>
 		<code>FormatLocale=de-DE</code><br/>
 		<code>Format=%#c</code><br/>
 		Result in a String meter: <em>Mittwoch, 18. Februar 2015 01:07:40</em></p>
+		
+		<p><code>TimeStamp=Wednesday, February 18, 2015 at 01:07:40</code><br/>
+		<code>TimeStampFormat=%A, %B %#d, %Y at %H:%M:%S</code><br/>
+		<code>TimeStampLocale=en-US</code><br/>
+		<code>FormatLocale=Local</code><br/>
+		<code>Format=%#c</code><br/>
+		The result in a String meter will be the language and format representation appropriate for the system the skin is running on.</p> 
 		
 		<b>Note:</b> While any Format string desired can be used, the codes like <code>%#c</code> that return long or short representations of the date and/or time for the system locale or the locale defined by TimeStampLocale or FormatLocal are particularly useful for easily changing between locale values from the "input" to the "output". Not only will it use the language defined by the locale, but also with the appropriate order, structure and punctuation.</p> 
 		
