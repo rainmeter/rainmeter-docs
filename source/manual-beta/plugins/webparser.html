@@ -200,7 +200,7 @@ StringIndex=2
 		<p><b>Note:</b> FinishAction will be executed when the resource is connected to and the regular expression parsing is complete. It will be executed whether the parsing of the information by <code>RegExp</code> succeeds or fails. It will not be executed if the resource cannot be connected to, or if the regular expression parsing fails, AND an <code>OnRegExpErrorAction</code> option is set on the measure.</p>
 	</dd>
 	
-	<dt id="OnConnectErrorAction">OnConnectErrorAction</dt>
+	<dt id="OnConnectErrorAction"><code>OnConnectErrorAction</code></dt>
 	<dd>
 		<p><a href="!bangs">Bangs</a> or other <a href="!skins/option-types#Action">actions</a> that are executed if WebParser is unable to connect to the hostname or file resource in <code>URL</code>.</p>
 
@@ -209,7 +209,7 @@ StringIndex=2
 		<p><b>Note:</b> It will take some time, perhaps as long as 10-20 seconds, for WebParser to "time out" and execute this action if the resource cannot be connected to over the network.</p>
 	</dd>
 
-	<dt id="OnRegExpErrorAction">OnRegExpErrorAction</dt>
+	<dt id="OnRegExpErrorAction"><code>OnRegExpErrorAction</code></dt>
 	<dd>
 		<p><a href="!bangs">Bangs</a> or other <a href="!skins/option-types#Action">actions</a> that are executed if the resource is connected to, but the regular expression defined in <code>RegExp</code> is unable to successfully parse the information. It will not be executed if the resource cannot be connected to.</p>
 		
