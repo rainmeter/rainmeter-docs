@@ -7,6 +7,16 @@ title: 'Version History'
 
 <h2 id="3.2">Rainmeter 3.2</h2>
 
+<p>March 2, 2015 - Revision 2378</p>
+<ul>
+<li><b>Added</b> WebParser: Added new <a href="http://docs.rainmeter.net/manual-beta/plugins/webparser/#OnConnectErrorAction">OnConnectErrorAction</a> to WebParser parent measures to allow taking an action when a site or file resource cannot be connected to.</li>
+<li><b>Added</b> WebParser: Added new <a href="http://docs.rainmeter.net/manual-beta/plugins/webparser/#OnRegExpErrorAction">OnRegExpErrorAction</a> to WebParser parent measures to allow taking an action when parsing a site or file resource with <code>RegExp</code> (regular expression) fails.</li>
+<li><b>Changed</b> WebParser: Changed the <a href="http://docs.rainmeter.net/manual-beta/plugins/webparser/#FinishAction">FinishAction</a> to not be executed when parsing a site or file resource with <code>RegExp</code> (regular expression) fails AND an <code>OnRegExpErrorAction</code> is defined on the measure.</li>
+<li><b>Added</b> WebParser: Added a new <a href="http://docs.rainmeter.net/manual-beta/plugins/webparser/#CommandMeasureReset">Reset</a> command, used with the <a href="http://docs.rainmeter.net/manual-beta/bangs/#CommandMeasure">!CommandMeasure</a> bang, to reset all values in the WebParser parent and related child measures to their initial empty values.</li>
+<li><b>Fixed</b> Math: Corrected a problem when a comma-separated, multi-argument math function was used in a formula in a comma-separated, multi-argument option. For instance using <code>Clamp(x,low,high)</code> in the arguments for <code>FontColor=rrr,ggg,bbb,aaa</code>.</li>
+<li><b>Fixed</b> Skin Installer: Changed the Skin Packager to only allow inclusion of a valid 400x60 .bmp file as a custom header in a .rmskin. Improperly sized custom images were causing visual problems in the Skin Installer user interface.</li>
+</ul>
+
 <p>February 22, 2015 - Revision 2373</p>
 <ul>
 <li><b>Changed</b> Time: Added a <code>Local</code> value to the FormatLocale option, e.g. <code>FormatLocale=Local</code>. This will cause the output format of the measure to automatically use the date / time "locale" language and format set in Windows for the machine the skin is running on, rather than defaulting to a standard platform-agnostic "English" representation.</li>
