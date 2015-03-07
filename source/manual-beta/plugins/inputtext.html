@@ -60,9 +60,11 @@ title: 'InputText plugin'
 		<p><b>Note:</b> The alpha channel changes the opacity of the entire input box including the text, not just the background.</p>
 	</dd>
 
-	<dt id="FontColor"><code>FontColor</code> <small>Default: <code>0,0,0,255</code></small></dt>
+	<dt id="FontColor"><code>FontColor</code> <small>Default: <code>0,0,0</code></small></dt>
 	<dd>
 		<p><a href="!skins/option-types#Color">Color</a> of the input text.</p>
+		
+		<p><b>Note:</b> Any alpha channel setting of FontColor is entirely ignored. The transparency of the input control is set by <code>SolidColor</code>, which will effect both the input box and text transparency.</p>
 	</dd>
 
 	<dt id="FontFace"><code>FontFace</code></dt>
