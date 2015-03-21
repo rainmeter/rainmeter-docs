@@ -60,11 +60,6 @@ StringIndex=2
 		<p>The <a href="!skins/option-types#RegExp">Perl compatible regular expression</a> used in parsing.</p>
 	</dd>
 
-	<dt id="FinishAction"><code>FinishAction</code></dt>
-	<dd>
-		<p>A <a href="!bangs">bang</a> or <a href="!skins/option-types#Action">action</a> that is executed when the page has been downloaded and the parsing is done. This option is only valid on measures that connect to a site or file with <code>URL</code>, and not on <a href="#ParentChild">child</a> measures.</p>
-	</dd>
-
 	<dt id="StringIndex"><code>StringIndex</code></dt>
 	<dd>
 		<p>Defines which captured string from the <code>RegExp</code> this measure returns. This option is generally used in a <a href="#ParentChild">child</a> measure to determine which of the caputured values in a <a href="#ParentChild">parent</a> measure to use.</p>
@@ -85,7 +80,7 @@ StringIndex=2
 
 		<p><b>Notes:</b> Some caution should be used in determining how often to connect to a site with WebParser. Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
 		
-		<p>In order to override the UpdateRate set on a WebParser measure, to have it connect to the site and download the data "right now", the <a href="!bangs#CommandMeasure">!CommandMeasure</a> bang must be used, with the name of the "parent" measure as the first parameter, and "Update" as the second.</p>
+		<p>In order to override the UpdateRate set on a WebParser measure, to have it connect to the site and download the data "right now", the <a href="#CommandMeasureUpdate">!CommandMeasure</a> bang must be used, with the name of the "parent" measure as the first parameter, and "Update" as the second.</p>
 		
 		<p><code>LeftMouseUpAction=[!SetOption WebMeasure URL "http://SomeNewSite.com"][!CommandMeasure WebMeasure Update]</code></p>
 	</dd>
@@ -122,6 +117,8 @@ StringIndex=2
 	<dt id="Download"><code>Download</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If <code>Download=1</code>, the <code>URL</code> is downloaded to Window's <code>TEMP</code> folder and the name to the file is returned as string value. The measure can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> on an <a href="!meters/image">Image</a> meter to download images from a site and display them.</p>
+		
+		<p><b>Note:</b> When used on a <a href="#ParentChild">child</a> measure, the download itself is treated as a <a href="#ParentChild">parent</a> function, and any <a href="#FinishAction">FinishAction</a> on the measure will be executed if the download succeeds, and any <a href="#OnDownloadErrorAction">OnDownloadErrorAction</a> on the measure will be executed if the download fails.</p>
 	</dd>
 
 	<dt id="DownloadFile"><code>DownloadFile</code></dt>
@@ -137,6 +134,8 @@ StringIndex=2
 	<dt id="ErrorString"><code>ErrorString</code></dt>
 	<dd>
 		 <p>The value of the measure will be set to the string defined in this option if the <code>RegExp</code> results in a regular expression parsing error.</p>
+		 
+		 <p><b>Note:</b> While there might be cases where this option is desirable, the <a href="#OnRegExpErrorAction">OnRegExpErrorAction</a> option might be a more flexible and robust way to deal with regular expression errors.</p> 
 	</dd>
 
 	<dt id="ForceReload"><code>ForceReload</code> <small>Default: <code>0</code></small></dt>
@@ -188,13 +187,87 @@ StringIndex=2
 	</dd>
 </dl>
 
+<h2 id="ActionOptions">Action Options</h2>
+
+<p>These options are only valid on <a href="#ParentChild">parent</a> measures that connect to a site or file with <code>URL</code>, and / or have a <code>RegExp</code> or <code>Download</code> option. They are not valid on <a href="#ParentChild">child</a> measures.</p>
+
+<dl>
+	
+	<dt id="FinishAction"><code>FinishAction</code></dt>
+	<dd>
+		<p><a href="!bangs">Bangs</a> or other <a href="!skins/option-types#Action">actions</a> that are executed when the resource has been downloaded and the regular expression (PCRE) parsing is done.</p>
+		
+		<p><em>Since WebParser is a "threaded" plugin, and Rainmeter does not "wait" for it to return information from the resource, FinishAction can be used to ensure that things in the skin that are dependent on the values from the measure don't generate errors or undesirable visual displays while the WebParser measure hasn't finished getting and parsing the information, or that they are immediately updated as soon as WebParser is done.</em></p>
+		
+		<p><b>Note:</b> FinishAction will be executed when the resource is connected to and the regular expression parsing is complete. It will be executed whether the parsing of the information by <code>RegExp</code> succeeds or fails. It will not be executed if the resource cannot be connected to, or if the regular expression parsing fails, AND an <code>OnRegExpErrorAction</code> option is set on the measure.</p>
+	</dd>
+	
+	<dt id="OnConnectErrorAction"><code>OnConnectErrorAction</code></dt>
+	<dd>
+		<p><a href="!bangs">Bangs</a> or other <a href="!skins/option-types#Action">actions</a> that are executed if WebParser is unable to connect to the hostname or file resource in <code>URL</code>.</p>
+
+		<p>This might be due to network unavailability on the local computer, or network or server problems at the remote resource. In the case of the file:// protocol, this would be triggered by not finding the defined local file.</p>
+		
+		<p><b>Note:</b> It will take some time, perhaps as long as 10-20 seconds, for WebParser to "time out" and execute this action if the resource cannot be connected to over the network.</p>
+	</dd>
+
+	<dt id="OnRegExpErrorAction"><code>OnRegExpErrorAction</code></dt>
+	<dd>
+		<p><a href="!bangs">Bangs</a> or other <a href="!skins/option-types#Action">actions</a> that are executed if the resource is connected to, but the regular expression defined in <code>RegExp</code> is unable to successfully parse the information. It will not be executed if the resource cannot be connected to.</p>
+		
+		<p>This might be due to an incorrectly defined <code>RegExp</code> option, a change to a web site that causes the parsing to fail, or a remote server problem where the site is accessible, but the specific page defined on the URL can't be found or causes a redirect to an HTTP error condition.</p>
+		
+		<p><b>Note:</b> If this option is defined and the parsing fails, <code>FinishAction</code> will not be executed.</p>
+	</dd>
+	
+	<dt id="OnDownloadErrorAction"><code>OnDownloadErrorAction</code></dt>
+	<dd>
+		<p><a href="!bangs">Bangs</a> or other <a href="!skins/option-types#Action">actions</a> that are executed if a measure has a <a href="#Download">Download</a> option set to 1, and the download of the resource fails.</p>
+		
+		<p>This may be due to a missing file on the remote host, or the inability of Windows to save the file locally in either the Windows TEMP location or the location specified in a <a href="#DownloadFile">DownloadFile</a> option.</p>
+		
+		<p>The action will not be executed if the connection to or parsing of the resource in the <a href="#ParentChild">parent</a> <code>URL</code> option fails. It is executed if all else succeeds, but the specific download process fails.</p>
+		
+		<p><b>Note:</b> When <a href="#Download">Download</a> is used on a <a href="#ParentChild">child</a> measure, the download itself is treated as a <a href="#ParentChild">parent</a> function, and any <a href="#FinishAction">FinishAction</a> on the measure will be executed if the download succeeds, and any <a href="#OnDownloadErrorAction">OnDownloadErrorAction</a> on the measure will be executed if the download fails.</p>		
+	</dd>
+	
+	<br/><p><b>Note:</b> If some condition causes the error actions to be executed, care should be taken not to create an endless loop or cause the skin to repeatedly try to access a resource in a short period of time. For instance, it would not be wise to have these actions automatically update the measure they are on, or refresh the skin.</p> 
+</dl>	
+
+<h2 id="MeasureCommands">Measure Commands</h2>
+
+<p>Commands that can be sent to a parent WebParser measure using the <a href="!bangs#CommandMeasure">!CommandMeasure</a> bang.</p>
+ 
+<p>These are only valid with a target <a href="#ParentChild">parent</a> measure that connects to a site or file with <code>URL</code>, and / or has a <code>RegExp</code> option. They are not valid with a <a href="#ParentChild">child</a> measure as the target.</p>
+
+<dl>
+	
+	<dt id="CommandMeasureUpdate"><code>Update</code></dt>
+	<dd>
+		<p>This will cause a WebParser parent measure to override any current <a href="#UpdateRate">UpdateRate</a> setting, and immediately access and parse the resource defined in <code>URL</code>.</p>
+		
+		<p>Example: <code>[!CommandMeasure MeasureName "Update"]</code></p>
+	</dd>
+	
+	<dt id="CommandMeasureReset"><code>Reset</code></dt>
+	<dd>
+		<p>This will cause a WebParser parent measure to reset all values for the parent and any related child measures to their initial empty values.</p>
+		
+		<p>If a WebParser measure is able to connect and parse information from a web site or file, then that information is "remembered", and is only replaced when new information is successfully received on subsequent connections to the resource. This is both to allow a seamless transition from the old data to the new, and to allow a skin to continue displaying information if it is temporarily unable to connect or parse the resource.</p> 
+		
+		<p>Generally, the above behavior works best. However, this command might be used in conjunction with the <a href="#OnConnectErrorAction">OnConnectErrorAction</a> and / or <a href="#OnRegExpErrorAction">OnRegExpErrorAction</a> actions if the skin design makes it desirable that WebParser "forget" old information when some error condition is triggered on subsequent connections to the resource.</p> 
+		
+		<p>Example: <code>[!CommandMeasure MeasureName "Reset"]</code></p>
+	</dd>	
+</dl>	
+
 <h2 id="Dynamic">WebParser and Dynamic Variables</h2>
 
 <p>Dynamic variables can be used with the WebParser plugin. There are some things specific to WebParser that should be kept in mind when doing things in a dynamic way in WebParser measures:</p>
 
 <p>WebParser uses <a href="#UpdateRate">UpdateRate</a> to determine how often the plugin should actually access the site or file. While you can dynamically change any option on a WebParser measure, the plugin will not use the changes and access the site again until the next UpdateRate is reached. Just using <a href="!bangs#Update">!Update</a> or <a href="!bangs#UpdateMeasure">!UpdateMeasure</a> will NOT override the UpdateRate.</p>
 
-<p>In order to have a dynamic change make WebParser parse the site "right now", you will use the <a href="!bangs#CommandMeasure">!CommandMeasure</a> bang with the "parent" WebParser measure as the first parameter, and "Update" as the second.</p>
+<p>In order to have a dynamic change make WebParser parse the site "right now", you will use the <a href="#CommandMeasureUpdate">!CommandMeasure</a> bang with the "parent" WebParser measure as the first parameter, and "Update" as the second.</p>
 
 <p><code>LeftMouseUpAction=[!SetOption WebMeasure URL "http://SomeNewSite.com"][!CommandMeasure WebMeasure Update]</code></p>
 

@@ -3,13 +3,19 @@ layout: manual
 permalink: manual/formulas
 title: 'Formulas'
 ---
-<p>Many options in Rainmeter use numbers, such as to position meters or to define color options. These numbers can also be expressed using formulas, allowing flexibility and advanced possibilities.</p>
+<p>There are many situations where formulas can be used in Rainmeter to arrive at a numerical result. These might be things like:</p>
 
-<p>For example <code>X=20</code> is the same as <code>X=(2*10)</code>. A more advanced example would be <code>SolidColor=255,0,0,255</code> being the same as <code>SolidColor=(200+55),0,0,255</code>.</p>
+<ul>
+<li>In a Calc measure: <code>Formula=(2.5 + 100) * 2</code></li>
+<li>In an IFCondition option value: <code>IfCondition=MeasureName > (2.5 + 100) * 2</code></li>
+<li>In a numeric meter or measure option value: <code>W=((2.5 + 100) * 2)</code></li>
+<li>As a numeric part of an option value: <code>FontColor=(255 * 0.5),255,255,255</code></li>
+<li>In a Bang: <code>LeftMouseUpAction=[!SetOption SomeMeter W "((2.5 + 100) * 2)"]</code></li>
+</ul>
 
-<p>Anytime a formula is used it must be surrounded in parenthesis, alerting Rainmeter that a formula is being used. The one exception to this is the Formula option on the <a href="!measures/calc">Calc Measure</a>.</p>
+<p>Mathematical formulas must be entirely enclosed in (parentheses) to alert Rainmeter that it is a formula, unless they are being used in a <a href="!measures/calc">Calc</a> measure or <a href="!measures/general-options/ifconditions">IfCondition</a> option, where the function is always assumed to be a formula, and the enclosing parentheses are optional.</p>
 
-<p><b>Note:</b> While Measures, Section Variables, Variables and Built-in Variables can be used in a formula they must not evaluate to a string that is not valid for use in a formula. For example <code>1+two</code> is not valid.</p>
+<p><b>Note:</b> While [Measures], [SectionVariables:] and #Variables# can be used in a formula, all the components of a formula must be numeric, using only numbers, operators, functions and constants.</p>
 
 <h2 id="Formulas">Formula Syntax</h2>
 
@@ -44,6 +50,7 @@ title: 'Formulas'
 <h3 id="Functions">Functions</h3>
 <ul>
 	<li><code>Atan(<em>x</em>)</code>, <code>Asin(<em>x</em>)</code>, <code>Acos(<em>x</em>)</code>, <code>Cos(<em>x</em>)</code>, <code>Sin(<em>x</em>)</code>, <code>Tan(<em>x</em>)</code>: Standard trigonometric functions. <em>x</em> is in radians.</li>
+	<li><code>Atan2(<em>y</em>, <em>x</em>)</code> - Returns the radians of arc tangent between points <em>Y</em> and <em>X</em> in the Cartesian plane. The sign of the elements determines the quadrant.</li>
 	<li><code>Rad(<em>x</em>)</code> - Converts <em>x</em> degrees to radians.</li>
 	<li><code>Abs(<em>x</em>)</code> - Absolute value of <em>x</em>.</li>
 	<li><code>Exp(<em>x</em>)</code> - Returns <em>e</em><sup>x</sup>.</li>
@@ -55,6 +62,9 @@ title: 'Formulas'
 	<li><code>Trunc(<em>x</em>)</code> - Integer part (e.g. trunc(1.234) = 1).</li>
 	<li><code>Floor(<em>x</em>)</code> - Floor of <em>x</em>.</li>
 	<li><code>Ceil(<em>x</em>)</code> - Ceiling of <em>x</em>.</li>
+	<li><code>Min(<em>x</em>, <em>y</em>)</code> - Minimum of <em>x</em> and <em>y</em>.</li>
+	<li><code>Max(<em>x</em>, <em>y</em>)</code> - Maximum of <em>x</em> and <em>y</em>.</li>
+	<li><code>Clamp(<em>x</em>, <em>low</em>, <em>high</em>)</code> - Restricts value <em>x</em> to <em>low</em> and <em>high</em> limits.</li>
 	<li><code>Round(<em>x</em>, <em>precision</em>)</code> - Rounds <em>x</em> to an integer, or
 	to a specified number of decimal places. <em>precision</em> is optional.<br><br></li>
 </ul>

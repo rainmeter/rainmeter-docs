@@ -14,38 +14,59 @@ title: 'SysInfo plugin'
 
 	<dt id="SysInfoType"><code>SysInfoType</code></dt>
 	<dd>
-		Piece of system information to retrieve.<br>String values (Can only be used with <a href="!meters/string">String</a> meters):
+		<p>Piece of system information to retrieve.</p>
+		<h4 id="StringValues">String values (Can only be used with <a href="!meters/string">String</a> meters)</h4>
 		<ul>
-			<li><code>COMPUTER_NAME</code>: The computers name as specified in your system settings.</li>
-			<li><code>USER_NAME</code>: The username of the current user.</li>
-			<li><code>SCREEN_SIZE</code>: The resolution of the primary display monitor in a string of the form "width x height".</li>
-			<li><code>WORK_AREA</code>: The size of the client area of the primary display monitor in a string of the form "width x height".</li>
-			<li><code>OS_VERSION</code>: The current version of Windows.</li>
-			<li><code>OS_BITS</code>: Returns whether your OS is 32 or 64 bit.</li>
-			<li><code>ADAPTER_DESCRIPTION</code>: The description of the network adapter specified by <code>SysInfoData</code>.</li>
-			<li><code>NET_MASK</code>: The current net mask. <code>SysInfoData</code> specifies which net mask if there are multiple.</li>
-			<li><code>IP_ADDRESS</code>: The current IP address. <code>SysInfoData</code> specifies which IP if there are multiple. 0-999 for installed, 1000-1999 for active</li>
-			<li><code>GATEWAY_ADDRESS</code>: The current gateway address. <code>SysInfoData</code> specifies which adapter if there are multiple.</li>
-			<li><code>HOST_NAME</code>: The current host name.</li>
-			<li><code>DOMAIN_NAME</code>: The current domain.</li>
-			<li><code>DNS_SERVER</code>: The DNS server address.</li>
+			<li><code>COMPUTER_NAME</code> : The computers name as specified in your system settings.</li>
+			<li><code>USER_NAME</code> : The username of the current user.</li>
+			<li><code>SCREEN_SIZE</code> : The resolution of the primary display monitor in a string of the form "width x height".</li>
+			<li><code>WORK_AREA</code> : The size of the client area of the primary display monitor in a string of the form "width x height".</li>
+			<li><code>OS_VERSION</code> : The current version of Windows.</li>
+			<li><code>OS_BITS</code> : Returns whether your OS is 32 or 64 bit.</li>
+			<li><code>ADAPTER_DESCRIPTION</code> : The description of the network adapter specified by <code>SysInfoData</code>.</li>
+			<li><code>NET_MASK</code> : The current net mask. <code>SysInfoData</code> specifies which net mask if there are multiple.</li>
+			<li><code>IP_ADDRESS</code> : The current IP address. <code>SysInfoData</code> specifies which IP if there are multiple. 0-999 for installed, 1000-1999 for active</li>
+			<li><code>GATEWAY_ADDRESS</code> : The current gateway address. <code>SysInfoData</code> specifies which adapter if there are multiple.</li>
+			<li><code>HOST_NAME</code> : The current host name.</li>
+			<li><code>DOMAIN_NAME</code> : The current domain.</li>
+			<li><code>DNS_SERVER</code> : The DNS server address.</li>
 		</ul>
-		Numeric Values (Can be used anywhere):
+		<h4 id="NumericValues">Numeric Values (Can be used anywhere)</h4>
 		<ul>
-			<li><code>SCREEN_WIDTH</code>: The width, in pixels, of the monitor. <code>SysInfoData</code> specifies which monitor if there are multiple.</li>
-			<li><code>SCREEN_HEIGHT</code>: The height, in pixels, of the monitor. <code>SysInfoData</code> specifies which monitor if there are multiple.</li>
-			<li><code>VIRTUAL_SCREEN_TOP</code>: Y-Coordinate of the upper left corner of the virtual screen. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
-			<li><code>VIRTUAL_SCREEN_LEFT</code>: X-Coordinate of the upper left corner of the virtual screen. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
-			<li><code>VIRTUAL_SCREEN_WIDTH</code>: Width of the virtual screen which encompases all display monitors.</li>
-			<li><code>VIRTUAL_SCREEN_HEIGHT</code>: Height of the virtual screen which encompases all display monitors.</li>
-			<li><code>WORK_AREA_TOP</code>: Y-Coordinate of the upper left corner of the client area. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
-			<li><code>WORK_AREA_LEFT</code>: X-Coordinate of the upper left corner of the client area. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
-			<li><code>WORK_AREA_WIDTH</code>: Width of the client area of the primary display monitor. Use <code>SysInfoData</code> to specify a different monitor, if there are several.</li>
-			<li><code>WORK_AREA_HEIGHT</code>: Height of the client area of the primary display monitor. Use <code>SysInfoData</code> to specify a different monitor, if there are several.</li>
-			<li><code>NUM_MONITORS</code>: The number of display monitors currently active.</li>
-			<li><code>IDLE_TIME</code>: The time in seconds since the last user input to the OS (mouse or keyboard).</li>
-			<li><code>LAN_CONNECTIVITY</code>: Returns 1 if your computer is connected to a LAN, -1 if not. Note: This option value is only available on Windows Vista or later. On Windows XP, it will always return 1.</li>
-			<li><code>INTERNET_CONNECTIVITY</code>: Returns 1 if your computer is connected to the Internet, -1 if not.  Note: This option value is only available on Windows Vista or later. On Windows XP, it will always return 1.</li>			
+			<li><code>SCREEN_WIDTH</code> : The width, in pixels, of the monitor. <code>SysInfoData</code> specifies which monitor if there are multiple.</li>
+			<li><code>SCREEN_HEIGHT</code> : The height, in pixels, of the monitor. <code>SysInfoData</code> specifies which monitor if there are multiple.</li>
+			<li><code>VIRTUAL_SCREEN_TOP</code> : Y-Coordinate of the upper left corner of the virtual screen. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
+			<li><code>VIRTUAL_SCREEN_LEFT</code> : X-Coordinate of the upper left corner of the virtual screen. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
+			<li><code>VIRTUAL_SCREEN_WIDTH</code> : Width of the virtual screen which encompases all display monitors.</li>
+			<li><code>VIRTUAL_SCREEN_HEIGHT</code> : Height of the virtual screen which encompases all display monitors.</li>
+			<li><code>WORK_AREA_TOP</code> : Y-Coordinate of the upper left corner of the client area. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
+			<li><code>WORK_AREA_LEFT</code> : X-Coordinate of the upper left corner of the client area. Use <code>SysInfoData</code> to specify the monitor. These coordinates are relative to the primary monitor and can be negative.</li>
+			<li><code>WORK_AREA_WIDTH</code> : Width of the client area of the primary display monitor. Use <code>SysInfoData</code> to specify a different monitor, if there are several.</li>
+			<li><code>WORK_AREA_HEIGHT</code> : Height of the client area of the primary display monitor. Use <code>SysInfoData</code> to specify a different monitor, if there are several.</li>
+			<li><code>NUM_MONITORS</code> : The number of display monitors currently active.</li>
+			<li><code>IDLE_TIME</code> : The time in seconds since the last user input to the OS (mouse or keyboard).</li>
+			<li><code>LAN_CONNECTIVITY</code> : Returns 1 if your computer is connected to a LAN, -1 if not. Note: This option value is only available on Windows Vista or later. On Windows XP, it will always return 1.</li>
+			<li><code>INTERNET_CONNECTIVITY</code> : Returns 1 if your computer is connected to the Internet, -1 if not.  Note: This option value is only available on Windows Vista or later. On Windows XP, it will always return 1.</li>			
+		</ul>
+		<h4 id="TimeZoneValues">Time Zone values. (Some are string and some are numeric)</h4>
+		<ul>
+		<li><code>TIMEZONE_ISDST</code><br/>
+		A numeric flag indicating the current state of Daylight Savings Time for the local computer.<br/>
+		Possible Values are:<br/>
+		<code>1</code> : Daylight Savings Time is currently in effect<br/>
+		<code>0</code> : Daylight Savings Time is currently not in effect<br/>
+		<code>-1</code> : The local region does not use Daylight Savings Time, or the functionality is disabled in Windows.</li>
+		<li><code>TIMEZONE_BIAS</code><br/>
+		The numeric difference, in minutes, between standard local time and Coordinated Universal Time (UTC). This is the difference <em>from</em> the standard local time <em>to</em> UTC, or <code>UTC = standard local time + time zone bias</code>.</li>
+		<li><code>TIMEZONE_STANDARD_NAME</code><br/>
+		The full string name of the local computer's Time Zone when Daylight Savings Time is not in effect. For example, "Eastern Standard Time".</li>
+		<li><code>TIMEZONE_STANDARD_BIAS</code><br/>
+		The numeric difference in minutes between standard local time and the local time when Daylight Savings Time is not in effect. For most areas, this will always be zero. Adding this to the value of TIMEZONE_BIAS will produce the total actual difference in minutes between the local computer and UTC when Daylight Savings Time is not in effect, or <code>UTC = standard local time + time zone bias + standard bias</code>.</li>
+		<li><code>TIMEZONE_DAYLIGHT_NAME</code><br/>
+		The full string name of the local computer's Time Zone when Daylight Savings Time is in effect. For example, "Eastern Daylight Time".</li>
+		<li><code>TIMEZONE_DAYLIGHT_BIAS</code><br/>
+		The numeric difference in minutes between standard local time and the local time when Daylight Savings Time is in effect. For most areas, this will always be -60. Adding this to the value of TIMEZONE_BIAS will produce the total actual difference in minutes between the local computer and UTC when Daylight Savings Time is in effect, or <code>UTC = standard local time + time zone bias + daylight bias</code>.<br/><br/>
+		<b>Note:</b> Also see Daylight Savings Time <a href="!measures/time/#TimeStamp">TimeStamp</a> options on <a href="!measures/time">Time</a> measures.</li>
 		</ul>
 	</dd>
 

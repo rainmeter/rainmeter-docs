@@ -16,14 +16,28 @@ title: 'General Image Options'
 	
 	<dt id="ImageCrop"><code>ImageCrop</code></dt>
 	<dd>
-		<p>Crops the image. The value should be in the form: <code>X, Y, W, H<em>, Origin</em></code>. Origin is optional and can be set to one of the following:</p>
+		<p>Crops out and uses a defined part of the image. The option value should be in the form: <code>X, Y, W, H<em>, Origin</em></code>.</p>
+
+		<p><em>Origin is optional and can be set to one of the following:</p>
 		<ul>
-		<li><code>1</code>: Top left.</li>
-		<li><code>2</code>: Top right.</li>
-		<li><code>3</code>: Bottom right.</li>
-		<li><code>4</code>: Bottom left.</li>
-		<li><code>5</code>: Center (both W and H).</li>
-		</ul>
+		<li><code>1</code> : Top left (default)</li>
+		<li><code>2</code> : Top right</li>
+		<li><code>3</code> : Bottom right</li>
+		<li><code>4</code> : Bottom left</li>
+		<li><code>5</code> : Center</li>
+		</ul></em><br/>
+		
+		<p>A way to envision what ImageCrop is doing is:</p>
+		
+		<p><code>ImageCrop=-50,-30,100,60,5</code></p>
+		
+		<p>Start at the Origin of <code>5</code> or "Center". Then move <code>-50</code> pixels left (negative number is left, positive number is right) and <code>-30</code> pixels up (negative number is up, positive number is down). Then capture <code>100</code> pixels of width, and <code>60</code> pixels of height, and that is the new image. This will crop and use 100 X 60 pixels of the center of the image.</p>
+		
+		<p><b>Notes:</b></p>
+
+		<p>ImageCrop is done before any resizing of the image with the <code>W</code> and <code>H</code> general meter options. If <code>W</code> and <code>H</code> are set, the new "cropped" image will be resized to fit.</p>
+		
+		<p>If <code>W</code> and <code>H</code> are not defined, ImageCrop will change the size of the entire meter container to the size of the "cropped" image.</p>  
 	</dd>
 
 	<dt id="Greyscale"><code>Greyscale</code> <small>Default: <code>0</code></small></dt>
