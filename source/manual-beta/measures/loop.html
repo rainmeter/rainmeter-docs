@@ -7,6 +7,8 @@ title: 'Loop measure'
 
 <p>The measure will be the value of <code>StartValue</code> for one update, will increment based on the value of <code>Increment</code> on each subsequent update, and will be the value of <code>EndValue</code> for one update. If <code>LoopCount</code> is other than <code>1</code>, the loop will then repeat.</p>
 
+<p>On the final <code>LoopCount</code>, if the value of <code>Increment</code> is such that the final increment would cause the value to overrun the value of <code>EndValue</code>, the final increment will be reduced to the remainder required to have the loop end at <code>EndValue</code>.</p>
+
 <p>The measure will have a range from <code>StartValue</code> to <code>EndValue</code> for use by meters requiring a <a href="!measures#Percentage">percentage</a>.
 
 <p><b>Note:</b> All options must be positive or negative whole numbers or formulas that resolve to whole numbers. Fractional values will be truncated.</p>
