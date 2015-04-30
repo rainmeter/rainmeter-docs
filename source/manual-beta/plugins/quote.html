@@ -9,6 +9,8 @@ title: 'Quote plugin'
 <li>A random file path and and name selected from a folder.</li>
 </ul>
 
+<p>The most common uses of the plugin are to either retrieve and display a random line of text from a text file of quotes, or to retrieve and display a random image file from a folder.</p>
+
 <h2>Options</h2>
 <dl>
 	<dt>General measure options</dt>
@@ -18,28 +20,28 @@ title: 'Quote plugin'
 
 	<dt id="PathName"><code>PathName</code></dt>
 	<dd>
-		<a href="!skins/option-types#Path">Path</a> of a folder or a file.
+		<a href="!skins/option-types#Path">Path</a> of a file or a folder.
 		<ul>
 		<li>If the specified path is a file, the measure value is a random part of a text file and the <code>Separator</code> option is valid for use.</li>
-		<li>If the specified path is a folder, the measure value is a the path and name of a random file in the folder and the <code>Subfolders</code> and <code>FileFilter</code> options are valid for use.</li>
+		<li>If the specified path is a folder, the measure value is the path and name of a random file in the folder and the <code>Subfolders</code> and <code>FileFilter</code> options are valid for use.</li>
 		</ul>
 	</dd>
 
 	<dt id="Separator"><code>Separator</code> <small>Default: <code>#CRLF#</code></small></dt>
 	<dd>
-		Delimiter used to separate text. By default, the delimiter is a newline.
+		Delimiter used to separate text. By default, the delimiter is a newline (carriage return / linefeed).
 	</dd>
 
 	<dt id="Subfolders"><code>Subfolders</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		If set to <code>1</code>, subfolders are taken into account.
+		If set to <code>1</code>, subfolders of <code>PathName</code> are also used.
 	</dd>
 
 	<dt id="FileFilter"><code>FileFilter</code></dt>
 	<dd>
 		If specified, only file names matching a semicolon <code>;</code> delimited list of filters are taken into account. The standard wildcard characters <code>*</code> and <code>?</code> can be used.
 
-		<br><br><b>Example:</b> <code>*.jpg;*.gif</code>
+		<br><br><b>Example:</b> <code>*.jpg;*.png;*.gif</code>
 	</dd>
 </dl>
 
@@ -53,9 +55,9 @@ SolidColor=0,0,0,255
 [MeasureQuote]
 Measure=Plugin
 Plugin=QuotePlugin
-PathName=%HOMEDRIVE%%HOMEPATH%\My Documents\My Pictures\
+PathName=%HOMEDRIVE%%HOMEPATH%\Documents\Pictures\
 Subfolders=1
-FileFilter=*.jpg;*.gif
+FileFilter=*.jpg;*.png;*.gif
 
 [MeterQuote]
 Meter=Image
@@ -63,5 +65,5 @@ MeasureName=MeasureQuote
 X=0
 Y=0
 W=200
-H=200
+PreserveAspectRatio=1
 ```
