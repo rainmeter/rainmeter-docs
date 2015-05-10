@@ -1,0 +1,228 @@
+---
+layout: manual
+permalink: manual/getting-started/skin-anatomy
+title: 'Anatomy of a Skin'
+---
+
+<p>The goal of this guide is to familiarize users who are new to Rainmeter with what a Rainmeter skin is, and how it works. This is not intended to be comprehensive, but at a level of detail that will help users grasp the fundamentals of Rainmeter. Once you understand what a Rainmeter skin "is", it will be far easier to come to terms with the huge amount of options and functionality described in detail in the rest of the documentation.</p>
+
+<h2 id="TheSkinWindow">The skin window</h2>
+
+<p>In a simplified sense, each skin in Rainmeter is a free-floating window, which periodically gathers system and other information using various Measures, and displays the results on the window with various Meters.</p>
+
+<p>So at its most basic, measures are "input" and meters are "output". That is Rainmeter in a nutshell.</p>
+
+<p>While the skin can simply obtain information and display it, the skin can also react to changing values in the information it measures, or react to your mouse clicks. The skin can be very visibly dynamic and interactive.</p>
+
+<h2 id="HowASkinIsWritten">How a skin is written</h2>
+
+<p>Let's start with what a skin file looks like. Rainmeter uses a standard plain-text .INI format that consists of only three types of lines:</p>
+
+<p>[SectionName]<br/>
+OptionName=Option Value<br/>
+;Comment</p>
+
+<p>There are only a few rules for the .INI format:</p>
+
+<ul>
+	<li>All section names in a skin must be unique.</li>
+	<li>All option names within a section must be unique.</li>
+	<li>Section and option names should include alphanumeric characters only (no spaces or punctuation).</li>
+	<li>Option values must be kept on a single line.</li>
+</ul>
+
+<p>The following is an example of a very simple Rainmeter skin file. It updates the skin once a second, measures the used CPU as a percentage, and displays that percentage.</p>
+
+``` ini
+[Rainmeter]
+Update=1000
+
+[MeasureCPU]
+Measure=CPU
+
+[MeterCPU]
+Meter=String
+MeasureName=MeasureCPU
+```
+
+<h2 id="TypesOfSections">There are six types of [Sections].</h2>
+
+<p><b>[Rainmeter]</b><br/>
+This section will always be named [Rainmeter], and is used as sort of a header for the skin, to set up some options that impact the entire skin. This might be things like the update rate of the skin, the background color or image for the skin, or actions you want to take when something happens to the entire skin.</p>
+
+<p><a href="!skins/rainmeter-section">[Rainmeter]</a> section details.</p>
+
+<p><b>[Metadata]</b><br/>
+This section will always be named [Metadata], and is used to provide information about your skin. The author's name, the version number, configuration or usage instructions and other information. This information will be visible when someone selects your skin in the Rainmeter Manage window.</p>
+
+<p><a href="!skins/metadata-section">[Metadata]</a> section details.</p>
+
+<p><b>[Variables]</b><br/>
+This section will always be named [Variables], and is used to define values that can be used anywhere in the skin by enclosing the variable name inside #PoundSigns#. This can be helpful to create a value that you want to use many places in the skin, while allowing you to change it in only one place. A simple example might be:</p>
+
+``` ini
+[Variables]
+MyFontColor=255,255,255,255
+
+[MeterOne]
+Meter=String
+FontColor=#MyFontColor#
+
+[MeterTwo]
+Meter=String
+FontColor=#MyFontColor#
+```
+
+<p><a href="!variables#Section">[Variables]</a> section details.</p>
+
+<p><b>[MeterStyles]</b><br/>
+These sections can have any unique name, and are similar to [Variables] in function. They allow you to set up "styles" for meters where you can for instance define some or all of the "formatting" options for your meters, and use the MeterStyle in many meters while again allowing you to only have to change it in one place. A simple example might be:</p>
+
+``` ini
+[MyTextStyle]
+FontFace=Arial
+FontSize=12
+FontColor=255,255,255,255
+AntiAlias=1
+
+[MeterOne]
+Meter=String
+MeterStyle=MyTextStyle
+
+[MeterTwo]
+Meter=String
+MeterStyle=MyTextStyle
+```
+
+<p><a href="!meters/general-options/meterstyles">[MeterStyle]</a> section details.</p>
+
+<p><b>[Measures]</b><br/>
+These sections can have any unique name, and are used to "measure" some system or other information. There are many measure types, defined by the value of the <code>Measure=MeasureType</code> option on the section.</p> 
+
+<p>There are two kinds of options used on a measure. There are <a href="!measures/general-options">general measure options</a> that define behaviors for most or all measure types, and measure options that are specific to the type of measure. These specific options are explained in the manual section for each measure type. Some simple examples might be:</p>
+
+``` ini
+[MeasureDateTime]
+Measure=Time
+Format=%A, %B %#d, %Y %#I:%M %p
+
+[MeasureFreeDriveC]
+Measure=FreeDiskSpace
+Drive=C:
+```
+
+<p><a href="!measures">[Measures]</a> section details.</p>
+
+<p><b>[Meters]</b><br/>
+These sections can have any unique name, and are used to "display" things in the skin window. Most often, a meter will be used to display some information obtained by a measure, which is done by "binding" the meter to one or more measures with the <code>MeasureName=SomeMeasure</code> option. A simple example might be:</p>
+
+``` ini
+[MeasureDateTime]
+Measure=Time
+Format=%A, %B %#d, %Y %#I:%M %p
+
+[MeterDateTime]
+Meter=String
+MeasureName=MeasureDateTime
+```
+
+<p><em>The meter [MeterDateTime] is "bound" to the measure [MeasureDateTime], and will display the current value of the measure as it changes.</em></p>
+
+<p>There are many meter types, defined by the value of the <code>Meter=MeterType</code> option on the section. These can display information as strings of text, various kinds of graphs, images you associate with values, interactive buttons or even animations. While a meter is most often used to display the results of measures "bound" to the meter. They can also be used to display text or images you define yourself. Meters are the "paint", the skin window is the "canvas".</p>
+
+<p>There are two kinds of options used on a meter. There are <a href="!meters/general-options">general meter options</a> that define behaviors for most or all meter types, and meter options that are specific to the type of meter. These specific options are explained in the manual section for each meter type.</p>
+
+<p><a href="!meters">[Meters]</a> section details.</p>
+
+<h2 id="HowASkinBehaves">How a skin behaves</h2>
+
+<p>The easiest way to envision how a skin works is to picture it in a big "loop".</p>
+
+<p>In the [Rainmeter] section of the skin, you will define an Update rate, which is how often, in milliseconds, that the "loop" will be run by Rainmeter for that skin. How often the skin will be "updated" by Rainmeter.</p>
+
+<p>If you for instance have the default <code>Update=1000</code> in [Rainmeter], then once a second (every 1000 milliseconds) Rainmeter will:</p>
+
+<ol>
+	<li>Start the update cycle.<br/><br/></li>
+
+	<li>Update measures<br/>
+	Each measure in the skin, in the order they are in the skin .ini file, will be updated. They will perform whatever work they are designed to do, and will then have a "value" that is the result.<br/><br/>
+	You can further control how often a measure is updated by adding an UpdateDivider option to the measure. This will in effect say "update this measure only every UpdateDivider skin updates". It is a way to have a measure that doesn't need to update once a second for instance, update once a minute or once an hour instead.<br/><br/></li>
+
+	<li>Update meters<br/>
+	Each meter in the skin, in the order they are in the skin .ini file, will be updated. They will get the current values of any measures they are "bound" to, and apply any meter options to the result. At this point the meter is ready to be displayed.<br/><br/></li>
+
+	<li>Redraw the skin<br/>
+	The entire skin window, any skin background set in [Rainmeter], and all meters, in the order they are in the skin .ini file, will be "redrawn". The order that meters are in the skin .ini file can be important, as meters that overlap will visibly be in the "front to back" order that they are in the code. First behind, last in front.<br/><br/></li>
+
+	<li>Restart the update cycle.</li>
+</ol>
+
+<p><em>Yes, it does all that in the space of a second, and in fact can do the entire update cycle in far less than a second. Rainmeter is very efficient, and computers are really, really fast...</em></p>
+
+<p>That is all you need to know for the basics of how a Rainmeter skin behaves. If you understand what we have so far, how to measure things, how to display things, and how the skin updates to gather and display the changing results, you are off to a great start. This is an important "foundation" that we can now build on.</p>
+
+<h2 id="Actions">Actions in a skin</h2>
+
+<p>So your skin might be kind of boring if it is just measuring some value and displaying the result. As useful as just that is, the real power of Rainmeter is having your skin react to changing values in a dynamic way, and in allowing you to dynamically interact with the skin with your mouse. This is done by setting "action" options on measures and meters.<p>
+
+<p><b>There are two primary kinds of action options:</b></p> 
+
+<p><b>Measure actions</b><br/>
+These are options that in a sense "test" the value or state of the measure they are on, and take actions, which are bangs or commands, based on that test being "true" or "false". These actions are evaluated and executed on each update of the measure. There are several types of actions for measures, which are detailed in the rest of the documentation. Certainly you can test if a measure's current value is above or below some range you define, contains some string of text you define, or has changed since the last update.</p>
+
+<p>A simple example might be:</p>
+
+``` ini
+[MeasureCPU]
+Measure=CPU
+IfCondition=MeasureCPU > 60
+IfTrueAction=[!SetOption MeterCPU FontColor "255,0,0"]
+IfFalseAction=[!SetOption MeterCPU FontColor "0,255,0"]
+```
+
+<p><em>If the value of [MeasureCPU] is greater than 60, then change the FontColor of the String meter [MeterCPU] to "red", if not, change it to "green".</em></p>
+
+<p><a href="!measures/general-options">Measure Action</a> details.</p>
+
+<p><b>Mouse actions</b><br/>
+These are options you put on meters, (or the skin background) that can react to various kinds of mouse hovers, clicks and scrolls, and take actions, which are bangs or commands. These action are immediate, when the mouse action is detected by the meter, and do not have to wait for the next skin or meter update cycle. This can make your skin very dynamic indeed to user interaction.</p>
+
+<p>A simple example might be:</p>
+
+``` ini
+[MeterCPU]
+Meter=String
+FontColor=0,255,0
+MouseOverAction=[!SetOption MeterCPU FontColor "255,0,0"]
+MouseLeaveAction=[!SetOption MeterCPU FontColor "0,255,0"]
+LeftMouseUpAction=["taskmgr.exe"]
+```
+
+<p><a href="!mouse-actions">Mouse Action</a> details.</p>
+
+<p><b>There are two kinds of actions you can take when an action option is executed:</b></p>
+
+<p><b>Bangs</b><br/>
+These are internal Rainmeter commands, that allow you do a wide range of things in your skin. You might want to change some formatting option on a meter, set or change a variable value, hide or show meters, disable or enable measures, even load and unload skins. Multiple bangs can be executed by one action option by simply enclosing them in [Square brackets].</p>
+
+<p>There are a great many bangs, each of which is described in the manual.</p>
+
+<p><a href="!bangs">Bang</a> details.</p>
+
+<p><b>Commands</b><br/>
+In addition, you can have an action option execute any external command to the Windows operating system. This is what allows you to create an "application launcher" in Rainmeter, by simply having a meter that for instance displays an image of a calculator run the program "calc.exe" when clicked. You can also open a web site in your default browser by simply executing the URL as a Windows command.<p>
+
+<p>Some simple examples might be:</p>
+
+``` ini
+LeftMouseUpAction=["C:\Program Files\WinRar\WinRar.exe"]
+LeftMouseUpAction=["http://cnn.com"]
+```
+
+<p>Hopefully this will get you off and running with Rainmeter skins. There are other areas of how the application itself works that are important to understand, and the <a href="!getting-started">Getting Started</a> and <a href="!user-interface">User Interface</a> sections of the manual are important references. Don't skip them.</p>
+
+<p style="clear: both;">&nbsp;</p>
+
+<div class="right"><p><a href="!getting-started/basic-tutorials">Continue to: Basic Tutorials &raquo;</a></p> </div>
+<p><a href="!getting-started/creating-skins">&laquo; Back to: Creating Skins</a></p>
