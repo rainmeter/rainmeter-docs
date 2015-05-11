@@ -43,7 +43,7 @@ UpdateDivider=-1
 
 <p>UpdateRate essentially states how often the WebParser should connect to the internet to download the specified URL. The general formula for this is in seconds is as follows: (Update x UpdateDivider x UpdateRate / 1000).</p>
 
-<p>In the example below, [MeasureMailCount] does not have <code>UpdateDivider</code>. As a result, UpdateDivider will default to 1.</p>
+<p>In the example below, [MeasureMailCount] has no <code>UpdateDivider</code>. As a result, UpdateDivider will default to 1.</p>
 
 <p>Since [MeasureMailCount] has <code>UpdateRate=1200</code> set, we can calculate that WebParser will download the page every 1200 seconds (or every 20 minutes).</p>
 
@@ -56,5 +56,6 @@ RegExp="(?siU)<fullcount>(.*)</fullcount>"
 StringIndex=1
 UpdateRate=1200
 ```
+<p>Generally, you want to use UpdateRate in place of UpdateDivider on a WebParser measure, not in addition to it. In some instances, using both can cause a "lag" between when the plugin is finished getting and parsing the data from the site, and when it is actually used and displayed in the skin.</p>
 
 <p>Since WebParser connects to the internet, it is important to have a high enough "download interval". If you try to download a page too often (e.g. every second), you may end up causing a high load on the target site, which ultimately may cause the site to block all access from your computer. As a safety measure, UpdateRate has a default value of 600, or 10 minutes when <code>Update=1000</code> and UpdateDivider is not set.</p>
