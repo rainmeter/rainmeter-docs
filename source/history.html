@@ -7,6 +7,12 @@ title: 'Version History'
 
 <h2 id="3.3">Rainmeter 3.3</h2>
 
+<p>May 24, 2015 - Revision 2414</p>
+<ul>
+<li><b>Fixed</b> RegExpSubstitute: Fixed a problem where a (capture) that returned an empty string would cause Rainmeter to hang or crash. Care should still be taken when using <code>*</code> (zero or more) quantifiers or <code>(?(?=</code> (If/Then Lookaround) constructs in RegExpSubstitute, as any (capture) returning an empty string will cause the Substitute to fail.</li>
+<li><b>Fixed</b> Net measures: Improved the detection of "Best" and "named" <code>Interface</code> options on Windows XP.</li>
+</ul>
+
 <p>April 30, 2015 - Revision 2412</p>
 <ul>
 <li><b>Fixed</b> Net measures: Corrected a bug when using Interface with a number, introduced in r2410. It is important that this new version be used in place of r2410.</li>
