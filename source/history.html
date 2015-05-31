@@ -7,6 +7,12 @@ title: 'Version History'
 
 <h2 id="3.3">Rainmeter 3.3</h2>
 
+<p>May 31, 2015 - Revision 2416</p>
+<ul>
+<li><b>Fixed</b> RegExpSubstitute: Corrected a bug, introduced in r2414, where comparisons with an empty string could fail.</li>
+<li><b>Fixed</b> Plugin API: Corrected a long-standing issue where a plugin could crash or hang Rainmeter if Refresh All or Unload Skin was done while the plugin was executing commands to the main Rainmeter process.</li>
+</ul>
+
 <p>May 24, 2015 - Revision 2414</p>
 <ul>
 <li><b>Fixed</b> RegExpSubstitute: Fixed a problem where a (capture) that returned an empty string would cause Rainmeter to hang or crash. Care should still be taken when using <code>*</code> (zero or more) quantifiers or <code>(?(?=</code> (If/Then Lookaround) constructs in RegExpSubstitute, as any (capture) returning an empty string will cause the Substitute to fail.</li>
