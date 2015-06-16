@@ -49,11 +49,13 @@ title: '[Rainmeter] section'
 	<dt id="OnRefreshAction"><code>OnRefreshAction</code></dt>
 	<dd>
 		<p><a href="!skins/option-types#Action">Action</a> to execute when the skin is loaded or refreshed.</p>
+		<p><b>Note:</b> The action(s) defined will take place at the very end of the first update cycle. Changes made will generally not be visible until the next update, unless bangs are used to update desired measures and meters and redraw the skin.</p>
 	</dd>
 
 	<dt id="OnUpdateAction"><code>OnUpdateAction</code></dt>
 	<dd>
 		<p><a href="!skins/option-types#Action">Action</a> to execute on each <a href="#Update">Update</a> of the skin.</p>
+		<p><b>Note:</b> The action(s) defined will take place at the very end of the update cycle. Changes made will generally not be visible until the next update, unless bangs are used to update desired measures and meters and redraw the skin.</p>
 	</dd>
 
 	<dt id="OnCloseAction"><code>OnCloseAction</code></dt>
@@ -63,17 +65,20 @@ title: '[Rainmeter] section'
 
 	<dt id="OnFocusAction"><code>OnFocusAction</code></dt>
 	<dd>
-		<p><a href="!skins/option-types#Action">Action</a> to execute when the skin recieves focus in Windows (set by clicking the mouse on the skin).</p>
+		<p><a href="!skins/option-types#Action">Action</a> to execute when the skin receives focus in Windows (focus is given when the mouse is clicked on the skin).</p>
+		<p><b>Note:</b> The action(s) defined will take place at the very end of the update cycle. Changes made will generally not be visible until the next update, unless bangs are used to update desired measures and meters and redraw the skin.</p>
 	</dd>
 
 	<dt id="OnUnfocusAction"><code>OnUnfocusAction</code></dt>
 	<dd>
-		<p><a href="!skins/option-types#Action">Action</a> to execute when the skin loses focus in Windows.</p>
+		<p><a href="!skins/option-types#Action">Action</a> to execute when the skin loses focus in Windows (focus is lost when the mouse is clicked outside the skin).</p>
+		<p><b>Note:</b> The action(s) defined will take place at the very end of the update cycle. Changes made will generally not be visible until the next update, unless bangs are used to update desired measures and meters and redraw the skin.</p>
 	</dd>
 	
 	<dt id="OnWakeAction"><code>OnWakeAction</code></dt>
 	<dd>
 		<p><a href="!skins/option-types#Action">Action</a> to execute when Windows returns from the sleep or hibernate states.</p>
+		<p><b>Note:</b> The action(s) defined will take place at the very end of the first update cycle. Changes made will generally not be visible until the next update, unless bangs are used to update desired measures and meters and redraw the skin.</p>		
 	</dd>	
 
 	<dt id="TransitionUpdate"><code>TransitionUpdate</code> <small>Default: <code>100</code></small></dt>
