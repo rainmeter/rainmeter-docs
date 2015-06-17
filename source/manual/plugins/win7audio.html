@@ -3,9 +3,18 @@ layout: manual
 permalink: manual/plugins/win7audio
 title: 'Win7Audio plugin'
 ---
-<p><code>Plugin=Win7AudioPlugin</code> controls the sound device and volume for Windows Vista and newer. Previous versions of Windows are not supported.</p>
+<p><code>Plugin=Win7AudioPlugin</code> controls the sound device and volume.</p>
 
-<p>Returns the name of the current sound device (when used in a <a href="!meters/string">String</a> meter) and the percentage (0-100) of current volume level (when used in a meter which requires a <a href="!measures#Percentage">percentage</a>).</p>
+</p>Supported on Windows Vista / Windows 7 / Windows 8.x and Windows 10.</p>
+
+<p>Windows XP is not supported.</p>
+
+<p>The measure will return different "string" and "number" values.</p>
+
+<ul>
+<li><b>String:</b> The name of the current sound device. This will be used when the measure is bound to a <a href="!meters/string">String</a> meter, or if the string <a href="!variables/section-variables#MeasureNone">[SectionVariable]</a> value of the measure is used.</li>
+<li><b>Number:</b> The percentage (0-100) of current volume level. This will be used when the measure is bound to a meter which requires a <a href="!measures#Percentage">percentage</a>. This numeric value can also be used in a String meter, by setting the <a href="!meters/string#Text">Text</a> option of the meter to the numeric <a href="!variables/section-variables#Colon">[SectionVariable:]</a> value of the measure.</li>
+</ul>
 
 <h2>Options</h2>
 <dl>
@@ -144,14 +153,9 @@ Y=20
 Text=">>"
 LeftMouseUpAction=!CommandMeasure "MeasureWin7Audio" "ChangeVolume 10"
 
-[MeasureVolPercent]
-Measure=Calc
-Formula=MeasureWin7Audio
-
 ; Displays the percentage volume level as text
 [MeterVolPercent]
 Meter=String
-MeasureName=MeasureVolPercent
 X=55
 Y=40
 W=110
@@ -161,7 +165,8 @@ FontSize=10
 FontColor=255,255,255,255
 StringAlign=Center
 AntiAlias=1
-Text=%1%
+Text=[MeasureWin7Audio:]%
+DynamicVariables=1
 
 ; Toggles "mute" for the current device
 [MeterVolToggleMute]
