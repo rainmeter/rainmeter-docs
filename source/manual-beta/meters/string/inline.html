@@ -1,0 +1,163 @@
+---
+layout: manual-beta
+permalink: manual-beta/meters/string/inline
+title: 'Inline Options'
+---
+<p><b>Inline options</b> on a String meter are used to add or modify character formatting features to all or part of a string displayed by the meter.</p>
+
+<p>This has two primary purposes:</p>
+<ul>
+	<li>Changing the inline format of part of the string. What this means is that you might have two or more FontFace, FontSize or FontColor (or other) settings in a string, without needing to use multiple meters and relative positioning.<br/><br/></li>
+	<li>Adding some new Direct2D character formatting features to the String meter. These include things like more robust control of the Weight of the font, new style features like Oblique, Underline and Strikethrough, and control of Stretch and Typography features when used with supporting fonts.</li>
+</ul>
+
+<p>Inline options are defined by matching pairs of InlineSetting ... InlineSetting(<em>N</em>) and InlinePattern ... InlinePattern(<em>N</em>) options on the meter. In effect, InlineSetting is "what" and InlinePattern is "where".</p>
+
+<p>InlineSetting(<em>N</em>) defines the character formatting setting you wish to add or change, and the matching InlinePattern(<em>N</em>) uses regular expressions to define the part of the string you wish to change. These must be matching pairs, and there may not be missing (<em>N</em>) number postfixes, which start with <em>2</em>.</p>
+
+<p>The inline formatting is applied to the final string as it will be displayed by the meter, reflecting the value of any measures bound to the meter with MeasureName(<em>N</em>), any Text option on the meter, as well as any formatting applied through other meter options.</p>
+
+<p><code>AccurateText=1</code> should be set in the [Rainmeter] section of the skin, to ensure that the formatting is done on fonts using proper D2D font spacing and metrics.</p>
+
+<p><b>Important Note:</b> The entire Inline Options functionality requires that Rainmeter have <a href="!user-interface/manage/#General">D2D (Direct2D) enabled</a>. This in effect means that this functionality is <b>not supported on Windows XP</b>, and will be ignored on that platform, or if D2D is disabled in Rainmeter. <em>In general, Rainmeter is not going to be keeping an eye on Windows XP in the rear-view mirror for very much longer.</em></p>
+
+<h2>Options</h2>
+<dl>
+	<dt id="InlineSetting"><code>InlineSetting</code>, <code>InlineSetting2</code>, <code>InlineSetting3</code>... </dt>
+	<dd>
+		<p>This takes the form of the <b>setting name</b> to be added, a <b>|</b> (pipe) character, and the <b>value</b> for the setting.</p>
+		
+		<p>Example: <code>InlineSetting=Size | 12</code></p>
+		
+		<p>Supported settings:</p>		
+		<ul>
+			<li><b>Face |</b> <em>font family name</em>.<br/>
+			This uses the same values as the setting for FontFace on the meter.</li>
+			<li><b>Size |</b> <em>numeric point size</em>.<br/>
+			This uses the same values as the setting for FontSize on the meter.</li>
+			<li><b>Color |</b> <em>rrr,ggg,bbb,aaa or RRGGBBAA color code</em>.<br/>
+			This uses the same values as the setting for FontColor on the meter.</li>
+			<li><b>Weight |</b> <em>One of 9 numeric weights if supported by the font</em>.<br/>
+			The following values can be set. If the value is supported by the font, it will be used. If not, the closest value that is supported by the font will be used.<br/><br/>
+			<b>100</b> - Thin (Hairline)</br>
+			<b>200</b> - Extra Light (Ultra Light)</br>
+			<b>300</b> - Light</br>
+			<b>400</b> - Regular (Normal)</br>
+			<b>500</b> - Medium</br>
+			<b>600</b> - Semi Bold (Demi Bold)</br>
+			<b>700</b> - Bold</br>
+			<b>800</b> - Extra Bold (Ultra Bold)</br>
+			<b>900</b> - Black (Heavy)<br/><br/>
+			If the font does not support any additional weights, then 500 and below will use the font's normal weight, and 600 and above will simulate a bold effect.<br/><br/>
+			</li>
+			<li><b>Italic</b><br/>
+			Uses Italic characters in part or all of the string. No parameter required. This will be simulated by Rainmeter if not supported in the font.</li>
+			<li><b>Oblique</b><br/>Uses Oblique characters in part or all of the string. No parameter required. This will be simulated by Rainmeter if not supported in the font.</li>
+			<li><b>Underline</b><br/>
+			Used to <u>Underline</u> characters in part or all of the string. No parameter required.</li>
+			<li><b>Strikethrough</b><br/>
+			Used to <del>Strikethrough</del> characters in part or all of the string. No parameter required.</li>
+			<li><b>Stretch |</b> <em>One of 9 numeric compressed / expanded values if supported by the font.</em><br/>
+			The following values can be set. If the value is supported by the font, it will be used. If not, the closest value that is supported by the font will be used.<br/><br/>
+			<b>1</b> - Ultra-Condensed</br>
+			<b>2</b> - Extra-Condensed</br>
+			<b>3</b> - Condensed</br>
+			<b>4</b> - Semi-Condensed</br>
+			<b>5</b> - Normal</br>
+			<b>6</b> - Semi-Expanded</br>
+			<b>7</b> - Expanded</br>
+			<b>8</b> - Extra-Expanded</br>
+			<b>9</b> - Ultra-Expanded<br/><br/>
+			</li>
+			<li><b>Typography |</b> <em>One of 80 <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd368069(v=vs.85).aspx">Typography</a> codes.</em><br/><br/>
+			To use that site as a reference, scroll down to "Constants" and find the <code>Equivalent OpenType tag:</code> code for the desired feature.<br/><br/>
+			These must be explicitly supported by the font being used. A few common examples might be:<br/><br/>
+			<b>smcp</b> - Small Capitals<br/>
+			<b>onum</b> - Old Style Figures<br/>
+			<b>sups</b> - Superscript<br/>
+			<b>subs</b> - Subscript<br/>
+			<b>cpsp</b> - Capital Spacing<br/>
+			<b>ss01</b> - Stylistic Set 1<br/>
+			<b>ss02</b> - Stylistic Set 2<br/><br/>
+			Note that a few Typography codes support an additional second parameter which is a numeric index to a variant of the code. If that is required, the format <code>Typography | code | index</code> should be used.<br/><br/>
+			</li>
+			<li><b>None</b><br/>
+			When set to "None", no setting will be applied. This is generally going to be used with the <a href="!bangs/#SetOption">!SetOption</a> bang, in order to dynamically "turn off" and "turn on" a particular setting. Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlineSetting(<em>N</em>) numbers, all subsequent ones will be ignored.</p>
+		</ul>
+	</dd>
+	
+	<dt id="InlinePattern"><code>InlinePattern</code>, <code>InlinePattern2</code>, <code>InlinePattern3</code>... <small>Regular Expression</small></dt>
+	<dd>
+		<p>A <a href="!skins/option-types/#RegExp">Perl Compatible Regular Expression</a> (PCRE) used to define all or part(s) of the string to which to apply the corresponding InlineSetting(<em>N</em>).</p>
+	
+		<p>If (parentheses) are used to <em>capture</em> parts of the string, then that is what the setting will be applied to. If (parentheses) are not used, then the part(s) of the string that match the regular expression will be used.</p>
+		
+		<p><code>InlinePattern=.*</code> is how you would simply add or change a setting on the entire string.</p>
+		
+		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "none", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlinePattern(<em>N</em>) numbers, all subsequent ones will be ignored.</p>
+		
+		<p>The full range of <a href="http://www.regular-expressions.info/tutorial.html">PCRE</a> regular expression functionality is supported, so the pattern can match on all or part of the meter's	string value. Logical OR and AND matching can be done in the regular expression, using the <code>|</code> character to support OR and <a href="http://www.regular-expressions.info/lookaround.html">Lookahead assertions</a> <code>(?=..)</code> to support AND.</p>
+
+		<p>Reserved characters in regular expression, which are <code>.</code><code>^</code><code>$</code><code>*</code><code>+</code><code>?</code><code>(</code><code>)</code><code>[</code><code>{</code><code>\</code><code>|</code> must be escaped with the <code>\</code> character when used as a literal in the <code>InLinePattern</code> option.  If using a measure value as a section variable in the option, the <a href="!variables/section-variables#EscapeRegExp">:EscapeRegExp</a> modifier can be used to properly escape reserved characters in the measure.</p>		
+	</dd>	
+</dl>
+
+<h2>Some Examples</h2>
+``` ini
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+
+[MeasureString]
+Measure=String
+String=This is an InlinePattern test string#CRLF#It contains numbers like 123 and 456#CRLF#and colors like red and blue.
+
+[MeterString]
+Meter=String
+MeasureName=MeasureString
+FontSize=15
+FontColor=255,255,255,255
+AntiAlias=1
+InlineSetting=Weight | 700
+InlinePattern=^(.*) is
+InlineSetting2=Oblique
+InlinePattern2=test string
+InlineSetting3=Underline
+InlinePattern3=test string
+InlineSetting4=Size | 17
+InlinePattern4=(\d\d\d)
+InlineSetting5=Color | 255,97,97,255
+InlinePattern5=colors like (.*) and
+InlineSetting6=Color | 117,199,235,255
+InlinePattern6=colors like .* and (.*).
+InlineSetting7=Face | Segoe Script
+InlinePattern7=colors like .* and (.*).
+```
+<p>Using that string defined in [MeasureString], let's look at each of our InlineSetting / InlinePattern options.</p>
+
+<p><b>InlineSetting=Weight | 700<br/>
+InlinePattern=^(.*) is</b><br/>
+We are starting at the beginning of the string, and (capturing) all characters until we reach a space and the word "is". That will change the Weight of the word "This" at the start of the string to Bold.</p>
+<p><b>InlineSetting2=Oblique<br/>
+InlinePattern2=test string</b><br/>
+We are searching for the phrase "test string", and applying the Oblique style to it.</p>
+<p><b>InlineSetting3=Underline<br/>
+InlinePattern3=test string</b><br/>
+We are searching for the same phrase "test string", and applying the Underline style to it. So "test string" will be <em>both</em> Oblique and Underline.</p>
+<p><b>InlineSetting4=Size | 17<br/>
+InlinePattern4=(\d\d\d)</b><br/>
+We are capturing any parts of the string that are three consecutive numeric digits. This will change the font Size of both "123" and "456" to 17.</p>
+<p><b>InlineSetting5=Color | 255,97,97,255<br/>
+InlinePattern5=colors like (.*) and</b><br/>
+We are capturing the part of the string that is after "colors like ", and before " and". This will change the font Color of the word "red" to 255,97,97,255.</p>
+<p><b>InlineSetting6=Color | 117,199,235,255<br/>
+InlinePattern6=colors like .* and (.*).</b><br/>
+We are capturing the part of the string that is after "colors like ", Then after " and ". This will change the font Color of the word "blue" to 117,199,235,255.</p>
+<p><b>InlineSetting7=Face | Segoe Script<br/>
+InlinePattern7=colors like .* and (.*).</b><br/>
+We are again capturing the part of the string that is after "colors like ", Then after " and ". This will change the font Face of the word "blue" to Segoe Script.<br/><br/></p>
+
+<div class="exampleprev">
+	<p><img src="!img/meters/inline/InlineExample1.jpg"/></p>
+</div>
