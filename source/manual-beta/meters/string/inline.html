@@ -11,11 +11,11 @@ title: 'Inline Options'
 	<li>Adding some new Direct2D character formatting features to the String meter. These include things like more robust control of the Weight of the font, new style features like Oblique, Underline and Strikethrough, and control of Stretch and Typography features when used with supporting fonts.</li>
 </ul>
 
-<p>Inline options are defined by matching pairs of InlineSetting ... InlineSetting<b><em>N</em></b> and InlinePattern ... InlinePattern<b><em>N</em></b> options on the meter. In effect, InlineSetting is "what" and InlinePattern is "where".</p>
+<p>Inline options are defined by matching pairs of InlineSetting ... InlineSetting<em>N</em> and InlinePattern ... InlinePattern<em>N</em> options on the meter. In effect, InlineSetting is "what" and InlinePattern is "where".</p>
 
-<p>InlineSetting<b><em>N</em></b> defines the character formatting setting you wish to add or change, and the matching InlinePattern<b><em>N</em></b> uses regular expressions to define the part of the string you wish to change. These must be matching pairs, and there may not be missing <b><em>N</em></b> number postfixes, which start with <em>2</em>.</p>
+<p>InlineSetting<em>N</em> defines the character formatting setting you wish to add or change, and the matching InlinePattern<em>N</em> uses regular expressions to define the part of the string you wish to change. These must be matching pairs, and there may not be missing <em>N</em> number postfixes, which start with <em>2</em>.</p>
 
-<p>The inline formatting is applied to the final string as it will be displayed by the meter, reflecting the value of any measures bound to the meter with MeasureName<b><em>N</em></b>, any Text option on the meter, as well as any formatting applied through other meter options.</p>
+<p>The inline formatting is applied to the final string as it will be displayed by the meter, reflecting the value of any measures bound to the meter with MeasureName<em>N</em>, any Text option on the meter, as well as any formatting applied through other meter options.</p>
 
 <p><code>AccurateText=1</code> should be set in the [Rainmeter] section of the skin, to ensure that the formatting is done on fonts using proper D2D font spacing and metrics.</p>
 
@@ -82,19 +82,19 @@ title: 'Inline Options'
 			Note that a few Typography codes support an additional second parameter which is a numeric index to a variant of the code. If that is required, the format <code>Typography | code | index</code> should be used.<br/><br/>
 			</li>
 			<li><b>None</b><br/>
-			When set to "None", no setting will be applied. This is generally going to be used with the <a href="!bangs/#SetOption">!SetOption</a> bang, in order to dynamically "turn off" and "turn on" a particular setting. Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlineSetting<b><em>N</em></b> numbers, all subsequent ones will be ignored.</p>
+			When set to "None", no setting will be applied. This is generally going to be used with the <a href="!bangs/#SetOption">!SetOption</a> bang, in order to dynamically "turn off" and "turn on" a particular setting. Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlineSetting<em>N</em> numbers, all subsequent ones will be ignored.</p>
 		</ul>
 	</dd>
 	
 	<dt id="InlinePattern"><code>InlinePattern</code>, <code>InlinePattern2</code>, <code>InlinePattern3</code>... <small>Regular Expression</small></dt>
 	<dd>
-		<p>A <a href="!skins/option-types/#RegExp">Perl Compatible Regular Expression</a> (PCRE) used to define all or part(s) of the string to which to apply the corresponding InlineSetting<b><em>N</em></b>.</p>
+		<p>A <a href="!skins/option-types/#RegExp">Perl Compatible Regular Expression</a> (PCRE) used to define all or part(s) of the string to which to apply the corresponding InlineSetting<em>N</em>.</p>
 	
 		<p>If (parentheses) are used to <em>capture</em> parts of the string, then that is what the setting will be applied to. If (parentheses) are not used, then the part(s) of the string that match the regular expression will be used.</p>
 		
 		<p><code>InlinePattern=.*</code> is how you would simply add or change a setting on the entire string.</p>
 		
-		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "nothing", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlinePattern<b><em>N</em></b> numbers, all subsequent ones will be ignored.</p>
+		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "nothing", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlinePattern<em>N</em> numbers, all subsequent ones will be ignored.</p>
 		
 		<p>The full range of <a href="http://www.regular-expressions.info/tutorial.html">PCRE</a> regular expression functionality is supported, so the pattern can match on all or part of the meter's	string value. Logical OR and AND matching can be done in the regular expression, using the <code>|</code> character to support OR and <a href="http://www.regular-expressions.info/lookaround.html">Lookahead assertions</a> <code>(?=..)</code> to support AND.</p>
 
