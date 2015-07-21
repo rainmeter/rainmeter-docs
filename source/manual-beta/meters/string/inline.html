@@ -94,7 +94,7 @@ title: 'Inline Options'
 		
 		<p><code>InlinePattern=.*</code> is how you would simply add or change a setting on the entire string.</p>
 		
-		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "none", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlinePattern(<em>N</em>) numbers, all subsequent ones will be ignored.</p>
+		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "nothing", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlinePattern(<em>N</em>) numbers, all subsequent ones will be ignored.</p>
 		
 		<p>The full range of <a href="http://www.regular-expressions.info/tutorial.html">PCRE</a> regular expression functionality is supported, so the pattern can match on all or part of the meter's	string value. Logical OR and AND matching can be done in the regular expression, using the <code>|</code> character to support OR and <a href="http://www.regular-expressions.info/lookaround.html">Lookahead assertions</a> <code>(?=..)</code> to support AND.</p>
 
