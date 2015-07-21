@@ -8,7 +8,7 @@ title: 'Inline Options'
 <p>This has two primary purposes:</p>
 <ul>
 	<li>Changing the inline format of part of the string. What this means is that you might have two or more FontFace, FontSize or FontColor (or other) settings in a string, without needing to use multiple meters and relative positioning.<br/><br/></li>
-	<li>Adding some new Direct2D character formatting features to the String meter. These include things like more robust control of the Weight of the font, new style features like Oblique, Underline and Strikethrough, and control of Stretch and Typography features when used with supporting fonts.</li>
+	<li>Adding some Direct2D character formatting features to the String meter. These include things like more robust control of the Weight of the font, new style features like Oblique, Underline and Strikethrough, and control of Stretch and Typography features when used with supporting fonts.</li>
 </ul>
 
 <p>Inline options are defined by pairs of InlineSetting ... InlineSetting<em>N</em> and InlinePattern ... InlinePattern<em>N</em> options on the meter. InlineSetting<em>N</em> defines the character formatting setting you wish to add or change, and the matching InlinePattern<em>N</em> uses regular expressions to define the part of the string you wish to change. These must be matching pairs, and there may not be missing <em>N</em> number postfixes, which start with <em>2</em>.</p>
