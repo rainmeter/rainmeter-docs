@@ -101,11 +101,11 @@ title: 'Inline Options'
 			<b>270</b> - Bottom to Top<br/><br/>
 			
 			If a string is displayed on more than one line in the meter, due either to wrapping with ClipString=2, or literal linefeed characters or #CRLF# variables being embedded in the string, any selected text that spans the linefeed will have the GradientColor setting applied to it separately on each line.<br/><br/>
-			Most fonts have extra space above or below (or both) the actual character "glyph" in the font. This will vary from font to font. The gradient will be applied to the entire font character including the invisible extra space, and particularly when creating gradients that are vertical in direction, some tweaking of the percentage points may be required to have the gradient position as desired on the text. Hint: Nothing says that the first point must be 0.0 and the last point must be 1.0<br/><br/>
+			Most fonts have extra space above or below (or both) the actual character "glyph" in the font. This will vary from font to font. The gradient will be applied to the entire font character including the invisible extra space, and particularly when creating gradients that are vertical in direction, some tweaking of the percentage points may be required to have the gradient position as desired on the text. Hint: Nothing says that the first point must be 0.0 and the last point must be 1.0.<br/><br/>
 			</li>
 
 			<li><b>None</b><br/>
-			When set to "None", no setting will be applied. This is generally going to be used with the <a href="!bangs/#SetOption">!SetOption</a> bang, in order to dynamically "turn off" and "turn on" a particular setting. Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlineSetting<em>N</em> numbers, all subsequent ones will be ignored.</p>
+			When <code>InlineSetting=None</code>, no setting will be applied. This is generally going to be used with the <a href="!bangs/#SetOption">!SetOption</a> bang, in order to dynamically "turn off" and "turn on" a particular setting. Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlineSetting<em>N</em> numbers, all subsequent ones will be ignored.</p>
 		</ul>
 	</dd>
 	
