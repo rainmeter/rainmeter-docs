@@ -141,6 +141,8 @@ Meter=String
 MeasureName=MeasureString
 FontSize=15
 FontColor=255,255,255,255
+SolidColor=20,20,20,255
+Padding=5,5,5,5
 AntiAlias=1
 InlineSetting=Weight | 700
 InlinePattern=^(.*) is
@@ -156,6 +158,8 @@ InlineSetting6=Color | 117,199,235,255
 InlinePattern6=colors like .* and (.*).
 InlineSetting7=Face | Segoe Script
 InlinePattern7=colors like .* and (.*).
+InlineSetting8=GradientColor | 180 | 57,204,79,255 ; 0.0 | 250,247,157,255 ; 1.0
+InlinePattern8=Gradient color
 ```
 <p>Using that string defined in [MeasureString], let's look at each of our InlineSetting / InlinePattern options.</p>
 
@@ -175,11 +179,14 @@ We are capturing any parts of the string that are three consecutive numeric digi
 InlinePattern5=colors like (.*) and</b><br/>
 We are capturing the part of the string that is after "colors like ", and before " and". This will change the font Color of the word "red" to 255,97,97,255.</p>
 <p><b>InlineSetting6=Color | 117,199,235,255<br/>
-InlinePattern6=colors like .* and (.*).</b><br/>
+InlinePattern6=colors like .* and (.*)\.</b><br/>
 We are capturing the part of the string that is after "colors like ", Then after " and ". This will change the font Color of the word "blue" to 117,199,235,255.</p>
 <p><b>InlineSetting7=Face | Segoe Script<br/>
-InlinePattern7=colors like .* and (.*).</b><br/>
-We are again capturing the part of the string that is after "colors like ", Then after " and ". This will change the font Face of the word "blue" to Segoe Script.<br/><br/></p>
+InlinePattern7=colors like .* and (.*)\.</b><br/>
+We are again capturing the part of the string that is after "colors like ", Then after " and ". This will change the font Face of the word "blue" to Segoe Script.</p>
+<p><b>InlineSetting8=GradientColor | 180 | 57,204,79,255 ; 0.0 | 250,247,157,255 ; 1.0<br/>
+InlinePattern8=Gradient color</b><br/>
+We are defining a GradientColor for the phrase "Gradient color" that will transition from 57,204,79,255 (green) to 250,247,157,255 (yellow) at an angle of 180 degrees (left to right).<br/><br/></p>
 
 <div class="exampleprev">
 	<p><img src="!img/meters/inline/InlineExample1.jpg"/></p>
