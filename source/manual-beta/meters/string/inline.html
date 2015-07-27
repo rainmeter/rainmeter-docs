@@ -30,13 +30,13 @@ title: 'Inline Options'
 		
 		<p>Supported settings:</p>		
 		<ul>
-			<li><b>Face |</b> <em>font family name</em>.<br/>
+			<li><b style="font-size:16px">Face</b> <b>|</b> <em>font family name</em>.<br/>
 			This uses the same values as the setting for FontFace on the meter.</li>
-			<li><b>Size |</b> <em>numeric point size</em>.<br/>
+			<li><b style="font-size:16px">Size</b> <b>|</b> <em>numeric point size</em>.<br/>
 			This uses the same values as the setting for FontSize on the meter.</li>
-			<li><b>Color |</b> <em>rrr,ggg,bbb,aaa or RRGGBBAA color code</em>.<br/>
+			<li><b style="font-size:16px">Color</b> <b>|</b> <em>rrr,ggg,bbb,aaa or RRGGBBAA color code</em>.<br/>
 			This uses the same values as the setting for FontColor on the meter.</li>
-			<li><b>Weight |</b> <em>A numeric value in the range 1-999.</em>.<br/>
+			<li><b style="font-size:16px">Weight</b> <b>|</b> <em>A numeric value in the range 1-999.</em>.<br/>
 			The following are common values and their meanings. If the value is supported by the font family, it will be used. If not, the closest value that is supported by the font family will be used.<br/><br/>
 			<b>100</b> - Thin (Hairline)</br>
 			<b>200</b> - Extra Light (Ultra Light)</br>
@@ -49,14 +49,14 @@ title: 'Inline Options'
 			<b>900</b> - Black (Heavy)<br/><br/>
 			If the font does not support any additional weights, then 500 and below will use the font's normal weight, and 600 and above will simulate a bold effect.<br/><br/>
 			</li>
-			<li><b>Italic</b><br/>
+			<li><b style="font-size:16px">Italic</b><br/>
 			Uses Italic characters in part or all of the string. No parameter required. This will be simulated by Rainmeter if not supported by the font family.</li>
-			<li><b>Oblique</b><br/>Uses Oblique characters in part or all of the string. No parameter required. This will be simulated by Rainmeter if not supported by the font family.</li>
-			<li><b>Underline</b><br/>
+			<li><b style="font-size:16px">Oblique</b><br/>Uses Oblique characters in part or all of the string. No parameter required. This will be simulated by Rainmeter if not supported by the font family.</li>
+			<li><b style="font-size:16px">Underline</b><br/>
 			Used to <u>Underline</u> characters in part or all of the string. No parameter required.</li>
-			<li><b>Strikethrough</b><br/>
+			<li><b style="font-size:16px">Strikethrough</b><br/>
 			Used to <del>Strikethrough</del> characters in part or all of the string. No parameter required.</li>
-			<li><b>Stretch |</b> <em>One of 9 numeric compressed / expanded values if supported by the font.</em><br/>
+			<li><b style="font-size:16px">Stretch</b> <b>|</b> <em>One of 9 numeric compressed / expanded values if supported by the font.</em><br/>
 			The following values can be set. If the value is supported by the font family, it will be used. If not, the closest value that is supported by the font family will be used.<br/><br/>
 			<b>1</b> - Ultra-Condensed</br>
 			<b>2</b> - Extra-Condensed</br>
@@ -68,7 +68,7 @@ title: 'Inline Options'
 			<b>8</b> - Extra-Expanded</br>
 			<b>9</b> - Ultra-Expanded<br/><br/>
 			</li>
-			<li><b>Typography |</b> <em>One of 80 Typography codes.</em><br/>
+			<li><b style="font-size:16px">Typography</b> <b>|</b> <em>One of 80 Typography codes.</em><br/>
 			Used to select alternative glyphs in a font, these must be explicitly supported by the font being used. A few common examples might be:<br/><br/>
 			<b>smcp</b> - Small Capitals<br/>
 			<b>onum</b> - Old Style Figures<br/>
@@ -80,7 +80,7 @@ title: 'Inline Options'
 			Note that a few Typography codes support an additional second parameter which is a numeric index to a variant of the code. If that is required, the format <code>Typography | code | index</code> should be used.<br/><br/>
 			A full list of supported codes can be found at <a href="http://docs.rainmeter.net/tips/font-features">Font Features</a><br/><br/>
 			</li>
-			<li><b>GradientColor |</b> <em>Angle | Color ; Percentage | Color ; Percentage | ...</em><br/>
+			<li><b style="font-size:16px">GradientColor</b> <b>|</b> <em>Angle | Color ; Percentage | Color ; Percentage | ...</em><br/>
 			Defines a color gradient to be used on the selected text. This can consist of two or more colors as desired, with percentage points being used to define transition points for each color. The gradient can be applied to the text at any angle.<br/><br/>
 			
 			This takes the form of the <b>Angle</b> for the gradient in degrees, a <b>|</b> pipe character, then a series of <b>Color codes</b>, a <b>;</b> semi-colon, and a <b>Percentage</b> from 0.0 to 1.0 to define the position of the color in the text. Each series of <b>Color ; Percentage</b> are separated by a <b>|</b> pipe character.<br/><br/>
@@ -105,7 +105,7 @@ title: 'Inline Options'
 			Most fonts have extra space above or below (or both) the actual character "glyph" in the font. This will vary from font to font. The gradient will be applied to the entire font character including the invisible extra space, so particularly when creating gradients that are vertical in direction, some tweaking of the percentage points may be required to have the gradient position as desired on the text. Hint: Nothing says that the first point must be 0.0 and the last point must be 1.0.<br/><br/>
 			</li>
 
-			<li><b>None</b><br/>
+			<li><b style="font-size:16px">None</b><br/>
 			When <code>InlineSetting=None</code>, no setting will be applied. This is generally going to be used with the <a href="!bangs/#SetOption">!SetOption</a> bang, in order to dynamically "turn off" and "turn on" a particular setting. Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlineSetting<em>N</em> numbers, all subsequent ones will be ignored.</p>
 		</ul>
 	</dd>
@@ -118,11 +118,11 @@ title: 'Inline Options'
 		
 		<p><code>InlinePattern=.*</code> is how you would simply add or change a setting on the entire string.</p>
 		
-		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "nothing", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlinePattern<em>N</em> numbers, all subsequent ones will be ignored.</p>
-		
 		<p>The full range of <a href="http://www.regular-expressions.info/tutorial.html">PCRE</a> regular expression functionality is supported, so the pattern can match on all or part of the meter's	string value. Logical OR and AND matching can be done in the regular expression, using the <code>|</code> character to support OR and <a href="http://www.regular-expressions.info/lookaround.html">Lookahead assertions</a> <code>(?=..)</code> to support AND.</p>
 
 		<p>Reserved characters in regular expression, which are <code>.</code><code>^</code><code>$</code><code>*</code><code>+</code><code>?</code><code>(</code><code>)</code><code>[</code><code>{</code><code>\</code><code>|</code> must be escaped with the <code>\</code> character when used as a literal in the <code>InLinePattern</code> option.  If using a measure value as a section variable in the option, the <a href="!variables/section-variables#EscapeRegExp">:EscapeRegExp</a> modifier can be used to properly escape reserved characters in the measure.</p>		
+		
+		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "nothing", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlinePattern<em>N</em> numbers, all subsequent ones will be ignored.</p>		
 	</dd>	
 </dl>
 
