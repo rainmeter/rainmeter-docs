@@ -55,27 +55,25 @@ DynamicVariables=1
 
 <p>Regular expression substitution:</p>
 ``` ini
-; The Time measure is used below for example purposes.
-
 [MeasureEx1]
-Measure=Time
-Format=I am Rainy
+Measure=String
+String=I am Rainy
 RegExpSubstitute=1
 Substitute="(\w+) (\w+) (\w+)":"\3, \1 \2","Rainy":"Yoda"
 ; Reorders the sentence and then replaces Rainy with Yoda.
 ; The result is: Yoda, I am
 
 [MeasureEx2]
-Measure=Time
-Format=Hello, world!
+Measure=String
+String=Hello, world!
 RegExpSubstitute=1
 Substitute="^(.{0,5}).+$":"\1..."
 ; Truncates string by length (in this case 5) and appends "...".
 ; The result is: Hello...
 
 [MeasureEx3]
-Measure=Time
-Format=192.168.1.101
+Measure=String
+String=192.168.1.101
 RegExpSubstitute=1
 Substitute="^(\d{1,3}).(\d{1,3}).(\d{1,3}).\d{1,3}$":"\1.\2.\3.***"
 ; Masks an IP address. The result is: 192.168.1.***
