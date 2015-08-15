@@ -7,6 +7,14 @@ title: 'Version History'
 
 <h2 id="3.3">Rainmeter 3.3</h2>
 
+<p>August 15, 2015 - Revision 2461</p>
+<ul>
+<li><b>Added</b> Skins: Added new <code>SkinWidth</code> and <code>SkinHeight</code> option to the [Rainmeter] section of a skin. This will constrain the skin to the dimensions defined, either the width, the height, or both. Any meter or part of a meter positioned outside the defined boundaries will be truncated. DynamicWindowSize will be ignored for the defined dimension(s), and meters that would normally display even "outside" the skin will be truncated by the "fixed" skin dimensions.</li>
+<li><b>Fixed</b> IfActions: Corrected an issue with IfMatch where doing a match on a measure that has returned no string value could crash Rainmeter.</li>
+<li><b>Fixed</b> Skin Installer: Corrected an issue with the comparison of plugin versions when multiple plugins were included in the .rmskin.</li>
+<li><b>Fixed</b> String meter: Corrected an issue with <code>InlineSetting=GradientColor</code> where the gradient did not properly react to relative positioning dynamically changing the meter position.</li>
+</ul>
+
 <p>August 11, 2015 - Revision 2457</p>
 <ul>
 <li><b>Fixed</b> WebParser: Fixed a bug introduced in r2455 that caused grandparent > parent > child measures to fail RegExp.</li>
