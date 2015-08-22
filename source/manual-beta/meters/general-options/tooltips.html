@@ -13,14 +13,15 @@ title: 'Tooltips'
 
 		<p>Values from <code>MeasureName</code> from the meter can be used with <code>%1</code>, <code>%2</code> etc. as appropriate for various meter types:</p>
 		<ul>
-			<li><b>Line, String:</b> <code>%1</code>, <code>%2</code>, <code>%3</code>, ...</li>
+			<li><b>String, Line, Image:</b> <code>%1</code>, <code>%2</code>, <code>%3</code>, ...</li>
 			<li><b>Histogram:</b> <code>%1</code>, <code>%2</code></li>
 			<li><b>Others:</b> <code>%1</code></li>
 		</ul>
 		
 		<p><b>Notes:</b></p>
 		<p>To wrap the text on multiple lines, use the <a href="!variables/built-in-variables#CRLF">#CRLF# variable</a>.</p>
-		<p>There are no formatting options possible with ToolTipText. The font, colors and sizes are the ones built into the standard tooltip behavior in the Windows operating system.</p>
+		<p>There are no text formatting options possible with ToolTipText. The font, colors and sizes are the ones built into the standard tooltip behavior in the Windows operating system.</p>
+		<p>On a String meter, numeric formatting options are forced to AutoScale=1, Scale=1, NumOfDecimals=0, Percentual=0 on the tooltip when values from the meter are used with <code>%1</code>, <code>%2</code> etc. To have more control over numeric formatting, <a href="!variables/section-variables#MeasureParameters">[SectionVariables]</a> should be used instead. Be sure to use <code>DynamicVariables=1</code> on the meter when section variables are used.</p>
 		
 	</dd>
 
