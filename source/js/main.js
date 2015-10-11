@@ -23,6 +23,12 @@ function toggleClass(elem, className) {
     }
 }
 
+(function() {
+	if (location.hostname === 'rainmeter.github.io') {
+		location.replace('http://docs.rainmeter.net');
+	}
+})();
+
 // Spice up the side nav.
 (function() {
 	var nav = document.getElementById('tree');
