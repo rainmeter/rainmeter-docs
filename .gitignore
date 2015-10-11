@@ -1,4 +1,5 @@
-node_modules
-www
+*debug.log
+_generated
+_ghpages.git
 db.json
-debug.log
+node_modules
