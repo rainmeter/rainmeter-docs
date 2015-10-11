@@ -17,9 +17,9 @@ export GIT_DIR=_ghpages.git
 export GIT_WORK_TREE=_generated
 
 git config core.autocrlf false
-git checkout -- .nojekyll CNAME
 git fetch --force origin gh-pages
 git reset --mixed FETCH_HEAD
+git checkout -- .nojekyll CNAME
 git add -A .
 git commit -m "Update"
 git push origin gh-pages
