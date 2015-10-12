@@ -28,7 +28,7 @@ AccurateText=1
 Measure=Plugin
 Plugin=WebParser
 UpdateRate=1800
-Url=http://www.rainmeter.net/forum/
+Url=http://forum.rainmeter.net/
 RegExp=(?siU)&lt;img src="(.*)"
 StringIndex=1
 FinishAction=[!CommandMeasure MeasureImageDownload "Update"] 
@@ -37,7 +37,7 @@ FinishAction=[!CommandMeasure MeasureImageDownload "Update"]
 Measure=Plugin
 Plugin=WebParser
 UpdateRate=1800
-Url=http://www.rainmeter.net/forum/[&MeasureImageLocation]
+Url=http://forum.rainmeter.net/[&MeasureImageLocation]
 StringIndex=1
 DynamicVariables=1
 Download=1
@@ -50,4 +50,4 @@ PreserveAspectRatio=1
 ```
 
 <p>Here we are using the first Measure [MeasureImageLocation] to get the relative path and filename of the image.</p>
-<p>Then we use the second Measure [MeasureImageDownload] to combine the known URL and the information in a <a href="http://rainmeter.net/forum/viewtopic.php?f=111&t=16210">dynamic way</a> [&MeasureImageLocation] to create a fully loaded Measure which will succeed in downloading the image... Then we just display it.</p>
+<p>Then we use the second Measure [MeasureImageDownload] to combine the known URL and the information in a <a href="http://forum.rainmeter.net/viewtopic.php?f=111&t=16210">dynamic way</a> [&MeasureImageLocation] to create a fully loaded Measure which will succeed in downloading the image... Then we just display it.</p>
