@@ -40,7 +40,7 @@ function toggleClass(elem, className) {
 			if (!a) continue;
 
 			var ul = li.children[1];
-			var aPath = a.pathname.replace(/^\//, '');
+			var aPath = a.pathname.replace(/\/$/, '').replace(/^\//, '');
 			if (path == aPath && !a.hash) {
 				addClass(a, 'active');
 			} else if (path.indexOf(aPath) != 0) {
