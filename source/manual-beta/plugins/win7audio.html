@@ -12,15 +12,15 @@ title: 'Win7Audio plugin'
 <p>The measure will return different "string" and "number" values.</p>
 
 <ul>
-<li><b>String:</b> The name of the current sound device. This will be used when the measure is bound to a <a href="!meters/string">String</a> meter, or if the string <a href="!variables/section-variables#MeasureNone">[SectionVariable]</a> value of the measure is used.</li>
-<li><b>Number:</b> The percentage (0-100) of current volume level. This will be used when the measure is bound to a meter which requires a <a href="!measures#Percentage">percentage</a>. This numeric value can also be used in a String meter, by setting the <a href="!meters/string#Text">Text</a> option of the meter to the numeric <a href="!variables/section-variables#Colon">[SectionVariable:]</a> value of the measure.</li>
+<li><b>String:</b> The name of the current sound device. This will be used when the measure is bound to a <a href="!meters/string/">String</a> meter, or if the string <a href="!variables/section-variables/#MeasureNone">[SectionVariable]</a> value of the measure is used.</li>
+<li><b>Number:</b> The percentage (0-100) of current volume level. This will be used when the measure is bound to a meter which requires a <a href="!measures/#Percentage">percentage</a>. This numeric value can also be used in a String meter, by setting the <a href="!meters/string/#Text">Text</a> option of the meter to the numeric <a href="!variables/section-variables/#Colon">[SectionVariable:]</a> value of the measure.</li>
 </ul>
 
 <h2>Options</h2>
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		All <a href="!measures/general-options">general measure options</a> are valid.
+		All <a href="!measures/general-options/">general measure options</a> are valid.
 	</dd>
 </dl>
 
@@ -33,7 +33,7 @@ Plugin=Win7AudioPlugin
 ```
 
 <h2>Bangs</h2>
-<p>To control the sound device or volume, use the <a href="!bangs#CommandMeasure">!CommandMeasure</a> bang. In the examples below <code>MeasureWin7Audio</code> is the section name for the Win7Audio measure. Your <a href="!skins#Format">section name</a> may differ.</p>
+<p>To control the sound device or volume, use the <a href="!bangs/#CommandMeasure">!CommandMeasure</a> bang. In the examples below <code>MeasureWin7Audio</code> is the section name for the Win7Audio measure. Your <a href="!skins/#Format">section name</a> may differ.</p>
 <dl>
 	<dt id="ToggleNext"><code>!CommandMeasure "MeasureWin7Audio" "ToggleNext"</code></dt>
 	<dd>

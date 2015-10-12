@@ -5,7 +5,7 @@ title: 'WebParser plugin'
 ---
 <p><code>Plugin=WebParser</code> reads and parses information from web pages.</p>
 
-<p>The plugin uses <a href="!skins/option-types#RegExp">Perl Compatible Regular Expressions</a> to extract information from any web page or <a href="#Local">local file</a>.</p>
+<p>The plugin uses <a href="!skins/option-types/#RegExp">Perl Compatible Regular Expressions</a> to extract information from any web page or <a href="#Local">local file</a>.</p>
 
 <h2>Usage</h2>
 <p>WebParser measures take the form:</p>
@@ -30,16 +30,16 @@ Plugin=WebParser
 URL=[MeasureParent]
 StringIndex=2
 ```
-<p>The values of the two <a href="#ParentChild">child</a> measures are now the information parsed into StringIndexes 1 and 2 by the <a href="#ParentChild">parent</a> measure. These can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="!meters">meters</a>.
+<p>The values of the two <a href="#ParentChild">child</a> measures are now the information parsed into StringIndexes 1 and 2 by the <a href="#ParentChild">parent</a> measure. These can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="!meters/">meters</a>.
 
 
-<p><b>Note:</b> More information and examples for WebParser can be found at <a href="/tips/webparser-tutorial">WebParser Tutorial</a> and <a href="/tips/rss-feed-tutorial">RSS/Atom Feed Tutorial</a>.</p>
+<p><b>Note:</b> More information and examples for WebParser can be found at <a href="/tips/webparser-tutorial/">WebParser Tutorial</a> and <a href="/tips/rss-feed-tutorial/">RSS/Atom Feed Tutorial</a>.</p>
 
 <h2>Options</h2>
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
+		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
 
 	<dt id="URL"><code>URL</code></dt>
@@ -48,16 +48,16 @@ StringIndex=2
 
 		<p id="Authentication">WebParser <b>cannot</b> use cookies or other session-based authentication, so it <b>cannot</b> be used to retrieve information from web sites requiring a login. However, Webparser <b>can</b> be used on sites which support <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP authentication</a>. E.g. <code>http://myname:mypassword@somesite.com</code>.</p>
 
-		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="http://en.wikipedia.org/wiki/File_URI_scheme">URI scheme</a>. E.g. <code>URL=file://<a href="!variables/built-in-variables#CURRENTPATH">#CURRENTPATH#</a>SomeFile.txt</code>.</p>
+		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="http://en.wikipedia.org/wiki/File_URI_scheme">URI scheme</a>. E.g. <code>URL=file://<a href="!variables/built-in-variables/#CURRENTPATH">#CURRENTPATH#</a>SomeFile.txt</code>.</p>
 		
-		<p>If you want to use the current value of a measure in a dynamic way as a <a href="!variables/section-variables">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
+		<p>If you want to use the current value of a measure in a dynamic way as a <a href="!variables/section-variables/">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
 
 		<p><code>URL=http://SomeSite.com\[&WebMeasure]</code></p>
 	</dd>
 
 	<dt id="RegExp"><code>RegExp</code></dt>
 	<dd>
-		<p>The <a href="!skins/option-types#RegExp">Perl compatible regular expression</a> used in parsing.</p>
+		<p>The <a href="!skins/option-types/#RegExp">Perl compatible regular expression</a> used in parsing.</p>
 	</dd>
 
 	<dt id="StringIndex"><code>StringIndex</code></dt>
@@ -69,14 +69,14 @@ StringIndex=2
 	<dd>
 		<p>The second string index is used when using a <code>RegExp</code> in a measure that uses data from another WebParser measure (i.e. the <code>URL</code> points to a <a href="#ParentChild">parent</a> measure. In this case the <code>StringIndex</code> defines the index of the result of the parent measure's <code>RegExp</code> and the <code>StringIndex2</code> defines the index of this measure's <code>RegExp</code> (i.e. it defines the string that the measure returns).</p>
 
-		<p>More information on using StringIndex2 can be found <a href="/tips/webparser-using-stringindex2">here</a>.</p>
+		<p>More information on using StringIndex2 can be found <a href="/tips/webparser-using-stringindex2/">here</a>.</p>
 
 		<p><b>Note:</b> If the <code>RegExp</code> is not defined in this measure, the <code>StringIndex2</code> has no effect.</p>
 	</dd>
 
 	<dt id="UpdateRate"><code>UpdateRate</code> <small>Default: <code>600</code></small></dt>
 	<dd>
-		<p>The rate in milliseconds determining how often the webpage is downloaded. This is relative to the config's main <a href="!skins#Update">Update</a> rate <b>and</b> any <a href="!measures/general-options/#UpdateDivider">UpdateDivider</a> on the measure. So the formula would be <code>Update</code> X <code>UpdateDivider</code> X <code>UpdateRate</code> = "how often the measure connects to the site".</p>
+		<p>The rate in milliseconds determining how often the webpage is downloaded. This is relative to the config's main <a href="!skins/#Update">Update</a> rate <b>and</b> any <a href="!measures/general-options/#UpdateDivider">UpdateDivider</a> on the measure. So the formula would be <code>Update</code> X <code>UpdateDivider</code> X <code>UpdateRate</code> = "how often the measure connects to the site".</p>
 
 		<p><b>Notes:</b> Some caution should be used in determining how often to connect to a site with WebParser. Excessively accessing a site can cause your computer to be seen as an "attack" and result in being blocked. The <code>UpdateRate</code> option defaults to <code>600</code> as a safety measure. This should not be changed unless there is some reason to connect more or less often to the site.</p>
 		
@@ -87,7 +87,7 @@ StringIndex=2
 
 	<dt id="DecodeCharacterReference"><code>DecodeCharacterReference</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>Automatically decodes <a href="http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references">HTML Character References</a>. This will eliminate the need to use a <a href="!measures/general-options/substitute"><code>Substitute</code></a> statement to translate character references like <code>&amp;quot;</code>, <code>&amp;amp;</code>, <code>&amp;lt;</code>, and <code>&amp;gt;</code> to the actual character. Valid values are:</p>
+		<p>Automatically decodes <a href="http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references">HTML Character References</a>. This will eliminate the need to use a <a href="!measures/general-options/substitute/"><code>Substitute</code></a> statement to translate character references like <code>&amp;quot;</code>, <code>&amp;amp;</code>, <code>&amp;lt;</code>, and <code>&amp;gt;</code> to the actual character. Valid values are:</p>
 		<ul>
 			<li><code>0</code>: Does nothing (default).</li>
 			<li><code>1</code>: Decodes both numeric character references and character entity references.</li>
@@ -98,13 +98,13 @@ StringIndex=2
 
 	<dt id="Debug"><code>Debug</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>Logs DEBUG messages to the Rainmeter <a href="!user-interface/about#LogTab">log</a> or to a file. Valid values are:</p>
+		<p>Logs DEBUG messages to the Rainmeter <a href="!user-interface/about/#LogTab">log</a> or to a file. Valid values are:</p>
 		<ul>
 			<li><code>0</code>: Does not log DEBUG messages from WebParser.</li>
-			<li><code>1</code>: Logs DEBUG message to the log. Rainmeter must also be in <a href="!settings/rainmeter-section#Debug">Debug</a> mode.</li>
+			<li><code>1</code>: Logs DEBUG message to the log. Rainmeter must also be in <a href="!settings/rainmeter-section/#Debug">Debug</a> mode.</li>
 			<li><code>2</code>: Saves the downloaded webpage to <code>WebParserDump.txt</code> in the current skin folder. This can be useful since some web servers send different information depending which client requests it. Remember to remove this from your config once you have it working correctly.</li>
 		</ul>
-		 <p><b>Hint:</b> Determining <a href="#StringIndex">StringIndex</a> values to use in a <a id="#ParentChild">child</a> measure can be done by setting <code>Debug=1</code> on a measure having the <code>RegExp</code> option, which will display matched strings and StringIndex numbers in the Rainmeter <a href="!user-interface/about#LogTab">log</a></p>
+		 <p><b>Hint:</b> Determining <a href="#StringIndex">StringIndex</a> values to use in a <a id="#ParentChild">child</a> measure can be done by setting <code>Debug=1</code> on a measure having the <code>RegExp</code> option, which will display matched strings and StringIndex numbers in the Rainmeter <a href="!user-interface/about/#LogTab">log</a></p>
 	</dd>
 
 	<dt id="Debug2File"><code>Debug2File</code></dt>
@@ -116,7 +116,7 @@ StringIndex=2
 
 	<dt id="Download"><code>Download</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>If <code>Download=1</code>, the <code>URL</code> is downloaded to Window's <code>TEMP</code> folder and the name to the file is returned as string value. The measure can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> on an <a href="!meters/image">Image</a> meter to download images from a site and display them.</p>
+		<p>If <code>Download=1</code>, the <code>URL</code> is downloaded to Window's <code>TEMP</code> folder and the name to the file is returned as string value. The measure can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> on an <a href="!meters/image/">Image</a> meter to download images from a site and display them.</p>
 		
 		<p><b>Note:</b> When used on a <a href="#ParentChild">child</a> measure, the download itself is treated as a <a href="#ParentChild">parent</a> function, and any <a href="#FinishAction">FinishAction</a> on the measure will be executed if the download succeeds, and any <a href="#OnDownloadErrorAction">OnDownloadErrorAction</a> on the measure will be executed if the download fails.</p>
 	</dd>
@@ -125,7 +125,7 @@ StringIndex=2
 	<dd>
 		<p>If the <code>Download</code> option is set to <code>1</code>, this option defines a relative path and file name where the downloaded file will be saved instead of in Windows <code>TEMP</code>.
 
-		<p>A folder <code>DownloadFile</code> will be created in the <a href="!variables/built-in-variables#CURRENTPATH">current folder</a>, and the defined relative path and file name will be created under that. It is not possible to specify an absolute path.</p>
+		<p>A folder <code>DownloadFile</code> will be created in the <a href="!variables/built-in-variables/#CURRENTPATH">current folder</a>, and the defined relative path and file name will be created under that. It is not possible to specify an absolute path.</p>
 
 		<p><b>Note:</b> This file is <b>not</b> a temporary file so it is <b>not</b> deleted after unloading a skin or exiting Rainmeter.</p>
 
@@ -155,7 +155,7 @@ StringIndex=2
 		This will connect to the proxy server hostname or ip address and port defined. Port is often optional with proxy servers.</li>
 		</ul>
 
-		<br><p>This option can also be set in the <a href="!settings#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
+		<br><p>This option can also be set in the <a href="!settings/#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
 
 		<p><b>Note: </b>The plugin doesn't support any authentication, so <b>only</b> use proxy settings that do not require it.</p>
 
@@ -183,7 +183,7 @@ StringIndex=2
 		 
 		 <p>Codepage definitions and more information can be found at <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx">Windows code pages</a>.</p>
 		 
-		 <p>Additional general help with Unicode encoding in Rainmeter can be found at <a href="http://rainmeter.net/forum/viewtopic.php?p=92182#p92182">Character Encoding in Rainmeter</a>.</p>
+		 <p>Additional general help with Unicode encoding in Rainmeter can be found at <a href="http://forum.rainmeter.net/viewtopic.php?p=92182#p92182">Character Encoding in Rainmeter</a>.</p>
 	</dd>
 </dl>
 
@@ -195,7 +195,7 @@ StringIndex=2
 	
 	<dt id="FinishAction"><code>FinishAction</code></dt>
 	<dd>
-		<p><a href="!bangs">Bangs</a> or other <a href="!skins/option-types#Action">actions</a> that are executed when the resource has been downloaded and the regular expression (PCRE) parsing is done.</p>
+		<p><a href="!bangs/">Bangs</a> or other <a href="!skins/option-types/#Action">actions</a> that are executed when the resource has been downloaded and the regular expression (PCRE) parsing is done.</p>
 		
 		<p><em>Since WebParser is a "threaded" plugin, and Rainmeter does not "wait" for it to return information from the resource, FinishAction can be used to ensure that things in the skin that are dependent on the values from the measure don't generate errors or undesirable visual displays while the WebParser measure hasn't finished getting and parsing the information, or that they are immediately updated as soon as WebParser is done.</em></p>
 		
@@ -204,7 +204,7 @@ StringIndex=2
 	
 	<dt id="OnConnectErrorAction"><code>OnConnectErrorAction</code></dt>
 	<dd>
-		<p><a href="!bangs">Bangs</a> or other <a href="!skins/option-types#Action">actions</a> that are executed if WebParser is unable to connect to the hostname or file resource in <code>URL</code>.</p>
+		<p><a href="!bangs/">Bangs</a> or other <a href="!skins/option-types/#Action">actions</a> that are executed if WebParser is unable to connect to the hostname or file resource in <code>URL</code>.</p>
 
 		<p>This might be due to network unavailability on the local computer, or network or server problems at the remote resource. In the case of the file:// protocol, this would be triggered by not finding the defined local file.</p>
 		
@@ -213,7 +213,7 @@ StringIndex=2
 
 	<dt id="OnRegExpErrorAction"><code>OnRegExpErrorAction</code></dt>
 	<dd>
-		<p><a href="!bangs">Bangs</a> or other <a href="!skins/option-types#Action">actions</a> that are executed if the resource is connected to, but the regular expression defined in <code>RegExp</code> is unable to successfully parse the information. It will not be executed if the resource cannot be connected to.</p>
+		<p><a href="!bangs/">Bangs</a> or other <a href="!skins/option-types/#Action">actions</a> that are executed if the resource is connected to, but the regular expression defined in <code>RegExp</code> is unable to successfully parse the information. It will not be executed if the resource cannot be connected to.</p>
 		
 		<p>This might be due to an incorrectly defined <code>RegExp</code> option, a change to a web site that causes the parsing to fail, or a remote server problem where the site is accessible, but the specific page defined on the URL can't be found or causes a redirect to an HTTP error condition.</p>
 		
@@ -222,7 +222,7 @@ StringIndex=2
 	
 	<dt id="OnDownloadErrorAction"><code>OnDownloadErrorAction</code></dt>
 	<dd>
-		<p><a href="!bangs">Bangs</a> or other <a href="!skins/option-types#Action">actions</a> that are executed if a measure has a <a href="#Download">Download</a> option set to 1, and the download of the resource fails.</p>
+		<p><a href="!bangs/">Bangs</a> or other <a href="!skins/option-types/#Action">actions</a> that are executed if a measure has a <a href="#Download">Download</a> option set to 1, and the download of the resource fails.</p>
 		
 		<p>This may be due to a missing file on the remote host, or the inability of Windows to save the file locally in either the Windows TEMP location or the location specified in a <a href="#DownloadFile">DownloadFile</a> option.</p>
 		
@@ -236,7 +236,7 @@ StringIndex=2
 
 <h2 id="MeasureCommands">Measure Commands</h2>
 
-<p>Commands that can be sent to a parent WebParser measure using the <a href="!bangs#CommandMeasure">!CommandMeasure</a> bang.</p>
+<p>Commands that can be sent to a parent WebParser measure using the <a href="!bangs/#CommandMeasure">!CommandMeasure</a> bang.</p>
  
 <p>These are only valid with a target <a href="#ParentChild">parent</a> measure that connects to a site or file with <code>URL</code>, and / or has a <code>RegExp</code> option. They are not valid with a <a href="#ParentChild">child</a> measure as the target.</p>
 
@@ -265,7 +265,7 @@ StringIndex=2
 
 <p>Dynamic variables can be used with the WebParser plugin. There are some things specific to WebParser that should be kept in mind when doing things in a dynamic way in WebParser measures:</p>
 
-<p>WebParser uses <a href="#UpdateRate">UpdateRate</a> to determine how often the plugin should actually access the site or file. While you can dynamically change any option on a WebParser measure, the plugin will not use the changes and access the site again until the next UpdateRate is reached. Just using <a href="!bangs#Update">!Update</a> or <a href="!bangs#UpdateMeasure">!UpdateMeasure</a> will NOT override the UpdateRate.</p>
+<p>WebParser uses <a href="#UpdateRate">UpdateRate</a> to determine how often the plugin should actually access the site or file. While you can dynamically change any option on a WebParser measure, the plugin will not use the changes and access the site again until the next UpdateRate is reached. Just using <a href="!bangs/#Update">!Update</a> or <a href="!bangs/#UpdateMeasure">!UpdateMeasure</a> will NOT override the UpdateRate.</p>
 
 <p>In order to have a dynamic change make WebParser parse the site "right now", you will use the <a href="#CommandMeasureUpdate">!CommandMeasure</a> bang with the "parent" WebParser measure as the first parameter, and "Update" as the second.</p>
 
@@ -273,7 +273,7 @@ StringIndex=2
 
 <p>If you dynamically change an option on a "child" WebParser measure that depends on a "parent" measure, (like StringIndex for instance) you MUST use !CommandMeasure with "Update", targeting the "parent" WebParser measure. The values of child WebParser measures are a function of the parent measure, and are only updated when the parent is. You should never use !CommandMeasure on a "child" measure.</p>
 
-<p>If you want to use the current value of a measure in a dynamic way as a <a href="!variables/section-variables">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
+<p>If you want to use the current value of a measure in a dynamic way as a <a href="!variables/section-variables/">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
 
 <p><code>URL=http://SomeSite.com\[&WebMeasure]</code></p>
 

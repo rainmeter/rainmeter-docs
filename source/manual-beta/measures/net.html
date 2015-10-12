@@ -9,7 +9,7 @@ title: 'Net measures'
 
 <p>The bandwidth is measured in bytes.</p>
 
-<p><b>Notes:</b> The measured value is the number of bytes per second, factored by the total <a href="!skins#Update">update rate</a> of the measure, as defined by the <code>Update</code> option for the skin and any <code>UpdateDivider</code> option on the measure. Since the usual display of network traffic is in bytes per <em>second</em>, it is best to either set <code>Update=1000</code> in the [Rainmeter] section of the skin, or add UpdateDivider options to NetIn / NetOut measures so they are updated once a second.</p>
+<p><b>Notes:</b> The measured value is the number of bytes per second, factored by the total <a href="!skins/#Update">update rate</a> of the measure, as defined by the <code>Update</code> option for the skin and any <code>UpdateDivider</code> option on the measure. Since the usual display of network traffic is in bytes per <em>second</em>, it is best to either set <code>Update=1000</code> in the [Rainmeter] section of the skin, or add UpdateDivider options to NetIn / NetOut measures so they are updated once a second.</p>
 
 <p>The measured value is the network traffic in and out of the network interface controller (NIC) of the computer running the skin. If the computer is on a network connected to a router (LAN), the traffic will include all interaction between the computer and both the router and any other devices on the LAN. It will not include traffic directly to and from other devices and the internet (WAN), and cannot be used to determine the amount of internet traffic.</p>
 
@@ -17,7 +17,7 @@ title: 'Net measures'
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
+		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
 
 	<dt id="Interface"><code>Interface</code> <small>Default: <code>0</code></small></dt>
@@ -40,7 +40,7 @@ title: 'Net measures'
 	<dd>
 		<p>If set to <code>1</code>, measures the cumulative network traffic. This can be used to measure the cumulative NetIn, NetOut or NetTotal traffic through a NIC during a certain interval.</p>
 		
-		<p><b>Note:</b> The network traffic cumulative statistics are persistent and stored when Rainmeter is exited. They can be reset by either using the "Reset statistics" button in the "Settings" tab of the <a href="!user-interface/manage#General">Manage</a> interface, or by using the <a href="!bangs#ResetStats">!ResetStats</a> bang in a skin.</p> 
+		<p><b>Note:</b> The network traffic cumulative statistics are persistent and stored when Rainmeter is exited. They can be reset by either using the "Reset statistics" button in the "Settings" tab of the <a href="!user-interface/manage/#General">Manage</a> interface, or by using the <a href="!bangs/#ResetStats">!ResetStats</a> bang in a skin.</p> 
 	</dd>
 
 </dl>
@@ -49,12 +49,12 @@ title: 'Net measures'
 <dl>
 	<dt id="NetInSpeed"><code>NetInSpeed</code> <small>Number of Bytes per second</small></dt>
 	<dd>
-		<p>This option replicates the behavior of setting <a href="!measures/general-options#MaxValue">MaxValue</a> on the measure. There is no reason to prefer this over MaxValue.</p>
+		<p>This option replicates the behavior of setting <a href="!measures/general-options/#MaxValue">MaxValue</a> on the measure. There is no reason to prefer this over MaxValue.</p>
 	</dd>
 
 	<dt id="NetOutSpeed"><code>NetOutSpeed</code> <small>Number of Bytes per second</small></dt>
 	<dd>
-		<p>This option replicates the behavior of setting <a href="!measures/general-options#MaxValue">MaxValue</a> on the measure. There is no reason to prefer this over MaxValue.</p>
+		<p>This option replicates the behavior of setting <a href="!measures/general-options/#MaxValue">MaxValue</a> on the measure. There is no reason to prefer this over MaxValue.</p>
 	</dd>
 </dl>
 

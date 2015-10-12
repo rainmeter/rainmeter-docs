@@ -14,7 +14,7 @@ title: 'General Measure Options'
 
 	<dt id="UpdateDivider"><code>UpdateDivider</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		<p>Frequency at which the measure value is updated. The <a href="!skins/rainmeter-section#Update"><code>Update</code></a> option in the [Rainmeter] section of the skin is multiplied by the specified value to determine how often the measure is updated.</p>
+		<p>Frequency at which the measure value is updated. The <a href="!skins/rainmeter-section/#Update"><code>Update</code></a> option in the [Rainmeter] section of the skin is multiplied by the specified value to determine how often the measure is updated.</p>
 
 		<p><b>Example:</b> If <code>Update=1000</code> (in the [Rainmeter] section) and <code>UpdateDivider=30</code>, the measure is updated every 30 seconds.</p>
 		
@@ -23,33 +23,33 @@ title: 'General Measure Options'
 
 	<dt id="OnUpdateAction"><code>OnUpdateAction</code></dt>
 	<dd>
-		<p><a href="!skins/option-types#Action">Action</a> to execute each time the measure is updated.</p>
+		<p><a href="!skins/option-types/#Action">Action</a> to execute each time the measure is updated.</p>
 		
-		<p><b>Note:</b> This may be based on the values in <a href="!skins/rainmeter-section#Update">Update</a> in the [Rainmeter] section and any <a href="#UpdateDivider">UpdateDivider</a> on the measure, or if the measure is updated with a <a href="!bangs#Measure">Measure Bang</a> or other relevant bang.</p>
+		<p><b>Note:</b> This may be based on the values in <a href="!skins/rainmeter-section/#Update">Update</a> in the [Rainmeter] section and any <a href="#UpdateDivider">UpdateDivider</a> on the measure, or if the measure is updated with a <a href="!bangs/#Measure">Measure Bang</a> or other relevant bang.</p>
 	</dd>
 
 	<dt id="OnChangeAction"><code>OnChangeAction</code></dt>
 	<dd>
-		<p><a href="!skins/option-types#Action">Action</a> to execute when the number or string value of the measure changes. The initial change from "nothing" to a value when the skin is loaded or refreshed is ignored.</p>
+		<p><a href="!skins/option-types/#Action">Action</a> to execute when the number or string value of the measure changes. The initial change from "nothing" to a value when the skin is loaded or refreshed is ignored.</p>
 
-		<p><b>Note:</b> With plugins that perform work in the background (e.g. <a href="!plugins/webparser">WebParser</a> and <a href="!plugins/fileview">FileView</a>), the action will be executed on the first change when loading or refreshing the skin.</p>
+		<p><b>Note:</b> With plugins that perform work in the background (e.g. <a href="!plugins/webparser/">WebParser</a> and <a href="!plugins/fileview/">FileView</a>), the action will be executed on the first change when loading or refreshing the skin.</p>
 	</dd>
 
 	<dt id="InvertMeasure"><code>InvertMeasure</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the measure value is inverted.</p>
 
-		<p><b>Example:</b> With the <a href="!measures/freediskspace">FreeDiskSpace</a> measure, this option can be used to measure the used disk space instead of the free disk space.</p>
+		<p><b>Example:</b> With the <a href="!measures/freediskspace/">FreeDiskSpace</a> measure, this option can be used to measure the used disk space instead of the free disk space.</p>
 	</dd>
 
 	<dt id="MaxValue"><code>MaxValue</code> <small>Default: <code>1.0</code></small></dt>
 	<dd>
-		<p>The maximum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.</p>
+		<p>The maximum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures/#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.</p>
 	</dd>
 
 	<dt id="MinValue"><code>MinValue</code> <small>Default: <code>0.0</code></small></dt>
 	<dd>
-		<p>The minimum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.</p>
+		<p>The minimum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures/#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.</p>
 	</dd>
 
 	<dt id="AverageSize"><code>AverageSize</code> <small>Default: <code>1</code></small></dt>
@@ -61,7 +61,7 @@ title: 'General Measure Options'
 	<dd>
 		<p>If set to <code>1</code>, the measure is dynamic.</p>
 
-		<p><b>See also:</b> <a href="!variables#DynamicVariables">Dynamic Variables</a></p>
+		<p><b>See also:</b> <a href="!variables/#DynamicVariables">Dynamic Variables</a></p>
 	</dd>
 
 	<dt id="Disabled"><code>Disabled</code> <small>Default: <code>0</code></small></dt>
@@ -76,6 +76,6 @@ title: 'General Measure Options'
 	
 	<dt id="Group"><code>Group</code></dt>
 	<dd>
-		<p>Defines a group or series of groups that the measure belongs to. For more information please see the <a href="!groups">Groups</a> page.</p>
+		<p>Defines a group or series of groups that the measure belongs to. For more information please see the <a href="!groups/">Groups</a> page.</p>
 	</dd>
 </dl>	

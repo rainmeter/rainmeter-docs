@@ -13,7 +13,7 @@ title: 'AudioLevel plugin'
 
 <p><em>The plugin monitors the amplitude of the post-mixer signal at a Windows audio endpoint. (i.e. sound card speaker output, USB audio interface, headphone port, microphone input) It does this by creating a <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd371455(v=vs.85).aspx">WASAPI</a> capture client in <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd316551%28v=vs.85%29.aspx">loopback mode</a>. The capture client streams audio data to the plugin where it can be filtered and measured. The resulting volume level is returned by the plugin for use in Rainmeter measures and meters.</em></p>
 
-<p><b>Note:</b> Creating meters that display sound levels in real-time will require that the skin be set with a fairly low <a href="!skins/rainmeter-section#Update">Update</a> rate in the [Rainmeter] section of the skin. While the plugin is quite resource friendly and efficient, some care should be taken when deciding how much analysis should be done on the signal, and it is recommended that this plugin be used in a skin dedicated to it, and not as a part of a larger skin where the low update rate may cause higher CPU usage.</p>
+<p><b>Note:</b> Creating meters that display sound levels in real-time will require that the skin be set with a fairly low <a href="!skins/rainmeter-section/#Update">Update</a> rate in the [Rainmeter] section of the skin. While the plugin is quite resource friendly and efficient, some care should be taken when deciding how much analysis should be done on the signal, and it is recommended that this plugin be used in a skin dedicated to it, and not as a part of a larger skin where the low update rate may cause higher CPU usage.</p>
 
 <h2>Usage</h2>
 
@@ -49,7 +49,7 @@ Type=RMS
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
+		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
 
 </dl>

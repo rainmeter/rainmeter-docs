@@ -14,7 +14,7 @@ title: 'General Meter Options'
 
 	<dt id="MeterStyle"><code>MeterStyle</code></dt>
 	<dd>
-		<p>Specifies one or more sections as <a href="!meters/general-options/meterstyles">MeterStyles</a> from which option values are inherited. Multiple MeterStyles are delimited with pipes (<code>|</code>).</p>
+		<p>Specifies one or more sections as <a href="!meters/general-options/meterstyles/">MeterStyles</a> from which option values are inherited. Multiple MeterStyles are delimited with pipes (<code>|</code>).</p>
 	</dd>
 
 	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, <code>MeasureName3</code>... </dt>
@@ -42,19 +42,19 @@ title: 'General Meter Options'
 	
 	<dt id="Padding"><code>Padding</code> <small>Format: <code>Left,Top,Right,Bottom</code></small></dt>
 	<dd>
-		<p>Adds padding in pixels around any or all sides of a meter. The width and height of the meter will dynamically be adjusted to the new size. The padding will be drawn using the <a href="!skins/option-types#Color">Color</a> defined with <a href="#SolidColor">SolidColor / SolidColor2</a>.</p>
+		<p>Adds padding in pixels around any or all sides of a meter. The width and height of the meter will dynamically be adjusted to the new size. The padding will be drawn using the <a href="!skins/option-types/#Color">Color</a> defined with <a href="#SolidColor">SolidColor / SolidColor2</a>.</p>
 		<p><b>Format:</b> <code>Padding=Left,Top,Right,Bottom</code></p>
 		<p><b>Example:</b> <code>Padding=5,10,5,10</code></p>
 	</dd>	
 	
 	<dt id="Hidden"><code>Hidden</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>If set to <code>1</code>, the meter is hidden. The visibility can also be changed with the <a href="!bangs#ShowHideToggleMeter">!ShowMeter and !HideMeter bangs</a>.</p>
+		<p>If set to <code>1</code>, the meter is hidden. The visibility can also be changed with the <a href="!bangs/#ShowHideToggleMeter">!ShowMeter and !HideMeter bangs</a>.</p>
 	</dd>
 
 	<dt id="UpdateDivider"><code>UpdateDivider</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		<p>Frequency at which the meter is updated. The <a href="!skins/rainmeter-section#Update"><code>Update</code></a> option in the [Rainmeter] section of the skin is multiplied by the specified value to determine how often the meter is updated.</p>
+		<p>Frequency at which the meter is updated. The <a href="!skins/rainmeter-section/#Update"><code>Update</code></a> option in the [Rainmeter] section of the skin is multiplied by the specified value to determine how often the meter is updated.</p>
 
 		<p><b>Example:</b> If <code>Update=1000</code> (in the [Rainmeter] section) and <code>UpdateDivider=30</code>, the meter is updated every 30 seconds.</p>
 		
@@ -63,14 +63,14 @@ title: 'General Meter Options'
 
 	<dt id="OnUpdateAction"><code>OnUpdateAction</code></dt>
 	<dd>
-		<p><a href="!skins/option-types#Action">Action</a> to execute each time the meter is updated.</p>
+		<p><a href="!skins/option-types/#Action">Action</a> to execute each time the meter is updated.</p>
 		
-		<p><b>Note:</b> This may be based on the values in <a href="!skins/rainmeter-section#Update">Update</a> in the [Rainmeter] section and any <a href="#UpdateDivider">UpdateDivider</a> on the meter, or if the meter is updated with a <a href="!bangs#Meter">Meter Bang</a> or other relevant bang.</p>
+		<p><b>Note:</b> This may be based on the values in <a href="!skins/rainmeter-section/#Update">Update</a> in the [Rainmeter] section and any <a href="#UpdateDivider">UpdateDivider</a> on the meter, or if the meter is updated with a <a href="!bangs/#Meter">Meter Bang</a> or other relevant bang.</p>
 	</dd>
 
 	<dt id="SolidColor"><code>SolidColor</code>, <code>SolidColor2</code> <small>Default: <code>0,0,0,0</code></small></dt>
 	<dd>
-		<p><a href="!skins/option-types#Color">Color</a> of the meter background. If <code>SolidColor2</code> is also specified, the background is a <a href="#GradientAngle">gradient</a> composed of <code>SolidColor</code> and <code>SolidColor2</code>.</p>
+		<p><a href="!skins/option-types/#Color">Color</a> of the meter background. If <code>SolidColor2</code> is also specified, the background is a <a href="#GradientAngle">gradient</a> composed of <code>SolidColor</code> and <code>SolidColor2</code>.</p>
 
 		<p><b>Hint:</b> <code>SolidColor=0,0,0,1</code> can be used to make transparent areas of the meter clickable.</p>
 	</dd>
@@ -99,7 +99,7 @@ title: 'General Meter Options'
 	<dd>
 		<p>If set to <code>1</code>, the meter is dynamic.</p>
 
-		<p><b>See also:</b> <a href="!variables#DynamicVariables">Dynamic Variables</a></p>
+		<p><b>See also:</b> <a href="!variables/#DynamicVariables">Dynamic Variables</a></p>
 	</dd>
 
 	<dt id="TransformationMatrix"><code>TransformationMatrix</code> <small>Default: <code>1;0;0;1;0;0</code></small></dt>
@@ -110,7 +110,7 @@ title: 'General Meter Options'
 
 		<p>Combining these can have drastic effects on the meter it is applied to.</p>
 
-		<p><b>See also:</b> <a href="/tips/transformation-matrix-guide">Transformation Matrix</a></p>
+		<p><b>See also:</b> <a href="/tips/transformation-matrix-guide/">Transformation Matrix</a></p>
 
 		<p><b>Examples:</b>
 		<ul>
@@ -126,6 +126,6 @@ title: 'General Meter Options'
 	
 	<dt id="Group"><code>Group</code></dt>
 	<dd>
-		<p>Defines a group or series of groups that the meter belongs to. For more information please see the <a href="!groups">Groups</a> page.</p>
+		<p>Defines a group or series of groups that the meter belongs to. For more information please see the <a href="!groups/">Groups</a> page.</p>
 	</dd>
 </dl>
