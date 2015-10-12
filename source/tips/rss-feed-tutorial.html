@@ -3,9 +3,9 @@ layout: tips
 permalink: tips/rss-feed-tutorial/
 title: 'RSS Feed Tutorial'
 ---
-<p>One of the most common uses of the <a href="/manual/plugins/webparser">WebParser plugin</a> in Rainmeter is to create a skin to parse and display information from an RSS or Atom feed.<p>
+<p>One of the most common uses of the <a href="/manual/plugins/webparser/">WebParser plugin</a> in Rainmeter is to create a skin to parse and display information from an RSS or Atom feed.<p>
 
-<p>This guide is not intended as a general purpose <a href="/tips/webparser-tutorial">tutorial for the WebParser plugin</a>, nor does it attempt to explore all that regular expressions can do.  A great deal of additional help is available at <a href="/manual/skins/option-types#RegExp">Regular Expression Options</a>.</p>
+<p>This guide is not intended as a general purpose <a href="/tips/webparser-tutorial/">tutorial for the WebParser plugin</a>, nor does it attempt to explore all that regular expressions can do.  A great deal of additional help is available at <a href="/manual/skins/option-types/#RegExp">Regular Expression Options</a>.</p>
 
 <p>RSS and Atom feeds follow certain patterns that make them fairly easy to parse. While there are differences between the RSS and Atom standards, which we will touch on a bit later, let's use a simple RSS output to outline how they are laid out.</p>
 
@@ -252,7 +252,7 @@ Plugin=WebParser
 URL=http://feeds.bbci.co.uk/news/rss.xml
 ```
 
-<p>The next thing we will need is the all-important <code>RegExp</code> option. Again, this guide is not a tutorial for the WebParser measure, nor a tutorial for <a href="/manual/skins/option-types#RegExp">Regular Expressions</a>. However, at a high level what we want to do is use a regular expression in the "parent measure" to search the feed and capture parts of it into <code>StringIndex</code> numbers that we will use later in "child measures".</p>
+<p>The next thing we will need is the all-important <code>RegExp</code> option. Again, this guide is not a tutorial for the WebParser measure, nor a tutorial for <a href="/manual/skins/option-types/#RegExp">Regular Expressions</a>. However, at a high level what we want to do is use a regular expression in the "parent measure" to search the feed and capture parts of it into <code>StringIndex</code> numbers that we will use later in "child measures".</p>
 
 <p>We can begin by getting the title of the feed into a StringIndex.</p>
 
@@ -417,7 +417,7 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 
 <p>An RSS or Atom feed can contain the HTML codes for some characters, ones that you would want to display as the actual character instead of the code. For instance, the raw data might contain the code <code>&amp;lt;</code> which is the <code>&lt;</code> character. You don't want to dislay the code, but the actual <code>&lt;</code>. 
 
-<p>If you add the option <a href="/manual/plugins/webparser#DecodeCharacterReference">DecodeCharacterReference=1</a> to any or all desired <b>child</b> measures, Rainmeter will translate and display the correct character for the embedded HTML code.</p>
+<p>If you add the option <a href="/manual/plugins/webparser/#DecodeCharacterReference">DecodeCharacterReference=1</a> to any or all desired <b>child</b> measures, Rainmeter will translate and display the correct character for the embedded HTML code.</p>
 
 ``` ini
 [MeasureItem1Title]
@@ -434,7 +434,7 @@ DecodeCharacterReference=1
 
 <p>One of the other things you will run into in feeds, more often in Atom feeds than in RSS, is the <code>&lt;![CDATA[  ]]&gt;</code> tag around some data. It will take the form <code>&lt;![CDATA[Some Text in here]]&gt;</code>. This special tag construct in HTML just means that any text inside the opening <code>&lt;![CDATA[</code> and the closing <code>]]&gt;</code> will be displayed as the characters, without any problems with characters that are illegal in XML data. (like &amp;, &lt;, &gt; &quot; and others)</p>
 
-<p>While it would be complicated and annoying to use your regular expression to "parse around" this tag, you certainly don't want that text displayed as part of your skin output. You can use the <a href="/manual/measures/general-options/substitute">Substitute</a> option to find and remove this text on any or all <b>child</b> measures. Note that sometime the feed will start and end the tag with <code>&lt;</code> and <code>&gt;</code> and sometimes not. We should use Substitute to take care of both cases.</p>
+<p>While it would be complicated and annoying to use your regular expression to "parse around" this tag, you certainly don't want that text displayed as part of your skin output. You can use the <a href="/manual/measures/general-options/substitute/">Substitute</a> option to find and remove this text on any or all <b>child</b> measures. Note that sometime the feed will start and end the tag with <code>&lt;</code> and <code>&gt;</code> and sometimes not. We should use Substitute to take care of both cases.</p>
 
 ``` ini
 [MeasureItem1Title]
@@ -458,7 +458,7 @@ Substitute="<![CDATA[":"","]]>":"","![CDATA[":"","]]":""
 </item>
 ```
 
-<p>We don't want to capture and display those leading tab characters in this example, so we can use the <a href="/manual/measures/general-options/substitute#RegExpSubstitute">RegExpSubstitute</a> option instead of the normal Substitute, so we can take advantage of the additional power of regular expressions in our substitution.</p>
+<p>We don't want to capture and display those leading tab characters in this example, so we can use the <a href="/manual/measures/general-options/substitute/#RegExpSubstitute">RegExpSubstitute</a> option instead of the normal Substitute, so we can take advantage of the additional power of regular expressions in our substitution.</p>
 
 ``` ini
 [MeasureItem1Title]
@@ -479,7 +479,7 @@ Substitute="^\s+":"","<!\[CDATA\[":"","\]\]>":"","!\[CDATA\[":"","\]\]":""
 
 <p>In our example above, we used our #Item# variable in our <code>RegExp</code> option to retrieve five "items" from the feed. What if there are currently only four items in the feed?  Our regular expression will fail, and no information at all will be obtained.<p>
 
-<p>You can protect against this by using what is known in regular expressions as a "lookahead assertion". What this does is basically say "if the following text exists, then parse it this way. If not, then just skip that part of the regular expression without failing". The format for using a lookahead assertion in regular expressions looks a bit daunting, but in concept it is not too hard to wrap your head around. I strongly suggest looking at the guide at <a href="/tips/webparser-lookahead-assertions-in-regexp">WebParser - Lookahead Assertions</a>.</p>
+<p>You can protect against this by using what is known in regular expressions as a "lookahead assertion". What this does is basically say "if the following text exists, then parse it this way. If not, then just skip that part of the regular expression without failing". The format for using a lookahead assertion in regular expressions looks a bit daunting, but in concept it is not too hard to wrap your head around. I strongly suggest looking at the guide at <a href="/tips/webparser-lookahead-assertions-in-regexp/">WebParser - Lookahead Assertions</a>.</p>
 
 <p>To cut to the chase, if we change our #Item# variable to this:</p>
 

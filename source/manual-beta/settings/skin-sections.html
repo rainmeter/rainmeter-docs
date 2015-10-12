@@ -4,20 +4,20 @@ permalink: manual-beta/settings/skin-sections/
 title: 'Skin sections'
 ---
 <p>Skin sections in Rainmeter.ini (e.g. <code>[illustro\Clock]</code>) define options for how the skin is loaded and displayed in Rainmeter.</p>
-<p>The skin is defined in Rainmeter.ini using the <a href="!skins#Config">Config</a> name.</p>
+<p>The skin is defined in Rainmeter.ini using the <a href="!skins/#Config">Config</a> name.</p>
 
 <h2>Options</h2>
 <dl>
 	<dt id="Active"><code>Active</code></dt>
 	<dd>
-		<p>The current active state of the <a href="!skins#Config">config</a>. If Active is <code>0</code>, the config is inactive. If a number other than 0, the active skin .ini or <a href="!skins#Variants">variant</a> is the file in alphabetical order in the config folder.</p>
+		<p>The current active state of the <a href="!skins/#Config">config</a>. If Active is <code>0</code>, the config is inactive. If a number other than 0, the active skin .ini or <a href="!skins/#Variants">variant</a> is the file in alphabetical order in the config folder.</p>
 	</dd>
 
 	<dt id="WindowXY"><code>WindowX</code>, <code>WindowY</code></dt>
 	<dd>
 		<p>The X and Y position of the skin. A trailing <code>%</code> sign indicates that the value is a percentage of the screen width. A trailing <code>R</code> will make the position relative to the right edge of the screen instead of the left. A trailing <code>B</code> will make the position relative to the bottom edge of the screen instead of the top.</p>
 		<p>The <code>%</code> and <code>R</code> / <code>B</code> modifiers can be used together.</p>
-		<p>By default the position is relative to the <a href="!user-interface/manage#Monitors">primary screen</a>. You can override this with <code>@<em>N</em></code> where <em>N</em> is 0 to 32 and denotes which screen to position the skin on (1-32) or the virtual desktop (0). The screen selection will apply to both WindowX and WindowY if the value is set on only one of them.</p>
+		<p>By default the position is relative to the <a href="!user-interface/manage/#Monitors">primary screen</a>. You can override this with <code>@<em>N</em></code> where <em>N</em> is 0 to 32 and denotes which screen to position the skin on (1-32) or the virtual desktop (0). The screen selection will apply to both WindowX and WindowY if the value is set on only one of them.</p>
 	</dd>
 
 	<dt id="AnchorXY"><code>AnchorX</code>, <code>AnchorY</code></dt>
@@ -60,7 +60,7 @@ title: 'Skin sections'
 
 	<dt id="StartHidden"><code>StartHidden</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>If set to <code>1</code>, the skin will start hidden. The <a href="!bangs#ShowHideToggle">!Show bang</a> must be used to show the skin.</p>
+		<p>If set to <code>1</code>, the skin will start hidden. The <a href="!bangs/#ShowHideToggle">!Show bang</a> must be used to show the skin.</p>
 	</dd>
 
 	<dt id="AlphaValue"><code>AlphaValue</code> <small>Default: <code>255</code></small></dt>
@@ -70,7 +70,7 @@ title: 'Skin sections'
 
 	<dt id="FadeDuration"><code>FadeDuration</code> <small>Default: <code>250</code></small></dt>
 	<dd>
-		<p>Defines the length of the fade duration in milliseconds when activating/deactivating the skin or when the <a href="!bangs#ShowHideToggleFade">fade bangs</a> are used.</p>
+		<p>Defines the length of the fade duration in milliseconds when activating/deactivating the skin or when the <a href="!bangs/#ShowHideToggleFade">fade bangs</a> are used.</p>
 	</dd>
 
 	<dt id="ClickThrough"><code>ClickThrough</code> <small>Default: <code>0</code></small></dt>
@@ -85,7 +85,7 @@ title: 'Skin sections'
 	
 	<dt id="UseD2D"><code>UseD2D</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		<p>Used to override the global <a href="!user-interface/manage#SettingsTab">UseD2D rendering</a> setting for an individual skin.</p>
+		<p>Used to override the global <a href="!user-interface/manage/#SettingsTab">UseD2D rendering</a> setting for an individual skin.</p>
 		<p>If set to <code>1</code> (default), UseD2D is enabled for this skin. If set to <code>0</code>, UseD2D is disabled for this skin, and the older GDI+ rendering engine will be used.</p>
 		<p><b>Note:</b> This selection will be disabled if the system does not support Direct2D.</p>
 	</dd>	
@@ -99,11 +99,11 @@ title: 'Skin sections'
 
 	<dt id="AutoSelectScreen"><code>AutoSelectScreen</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the <a href="!user-interface/manage#Monitors">WindowX/WindowY "@<em>N</em>"</a> settings are made automatically based on the position of the meter's window. This setting will reset to 0 when a monitor is selected in the <a href="!user-interface/manage">Manage</a> window or on the skins <a href="!user-interface/context-menus#SkinContextMenus">context menu</a>.
+		If set to <code>1</code>, the <a href="!user-interface/manage/#Monitors">WindowX/WindowY "@<em>N</em>"</a> settings are made automatically based on the position of the meter's window. This setting will reset to 0 when a monitor is selected in the <a href="!user-interface/manage/">Manage</a> window or on the skins <a href="!user-interface/context-menus/#SkinContextMenus">context menu</a>.
 	</dd>
 	
 	<dt id="Group"><code>Group</code></dt>
 	<dd>
-		<p>Defines a group or series of groups that the skin belongs to. For more information please see the <a href="!groups">Groups</a> page.</p>
+		<p>Defines a group or series of groups that the skin belongs to. For more information please see the <a href="!groups/">Groups</a> page.</p>
 	</dd>
 </dl>	

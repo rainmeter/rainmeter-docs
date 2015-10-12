@@ -9,7 +9,7 @@ title: '@Include option'
 <dl>
 	<dt id="Include"><code>@Include</code>, <code>@Include2</code>, <code>@Include<em>N</em></code></dt>
 	<dd>
-		<p><a href="!skins/option-types#Path">Path</a> to the INI formatted file to include. It is recommended that include files use the .inc extension (rather than .ini) and are placed in the <a href="!skins/resources-folder">@Resources folder</a>.</p>
+		<p><a href="!skins/option-types/#Path">Path</a> to the INI formatted file to include. It is recommended that include files use the .inc extension (rather than .ini) and are placed in the <a href="!skins/resources-folder/">@Resources folder</a>.</p>
 		<p>The <em>N</em> in <code>@Include<em>N</em></code> can also represent text. For example: <code>@Include2</code>, <code>@Include3</code>, <code>@IncludeVariables</code>, and <code>@IncludeMeters</code> are all valid.</p>
 	</dd>
 </dl>
@@ -21,7 +21,7 @@ title: '@Include option'
 
 <p>If there is a conflict - that is, if the same section exists in more than one file - Rainmeter will treat whichever one comes first in the ordering as the "real" section. Any options on the later instances will be added to the first one, and otherwise the later instances are simply ignored. If there are different values given for the same key, the last value is taken. Unlike new sections, options on pre-existing sections are added in their original order, so the calling section may overwrite values from the included file if they are placed below the @include statement.</p>
 
-<p><b>See also:</b> <a href="/tips/include-guide">@Include Guide</a></p>
+<p><b>See also:</b> <a href="/tips/include-guide/">@Include Guide</a></p>
 
 <h2>Example</h2>
 <p>IncludeFile.inc:</p>

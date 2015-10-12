@@ -5,29 +5,29 @@ title: 'Roundline meter'
 ---
 <p><code>Meter=Roundline</code> displays a line or solid fill that rotates in a circle around a point, based on a measure value.</p>
 
-<p>The values for <a href="#StartAngle">StartAngle</a> and <a href="#RotationAngle">RotationAngle</a> are defined in <a href="/tips/radians-guide">Radians</a></p>
+<p>The values for <a href="#StartAngle">StartAngle</a> and <a href="#RotationAngle">RotationAngle</a> are defined in <a href="/tips/radians-guide/">Radians</a></p>
 
 <h2>Options</h2>
 <dl>
 	<dt>General meter options</dt>
 	<dd>
-		<p>All <a href="!meters/general-options">general meter options</a> are valid.</p>
+		<p>All <a href="!meters/general-options/">general meter options</a> are valid.</p>
 	</dd>
 
 	<dt id="MeasureName"><code>MeasureName</code></dt>
 	<dd>
-		<p>Name of the measure whose percentual value controls the amount of rotation. The measure must be able to return <a href="!measures#Percentage">percentual values</a>.</p>
+		<p>Name of the measure whose percentual value controls the amount of rotation. The measure must be able to return <a href="!measures/#Percentage">percentual values</a>.</p>
 		<p><b>Note:</b> If MeasureName is not specified, then the value is in effect always 100%, which can be used for instance to draw a circle or other curved solid.</p>
 	</dd>
 
 	<dt id="StartAngle"><code>StartAngle</code></dt>
 	<dd>
-		<p>The starting angle in <a href="/tips/radians-guide">radians</a> for the line. This defines the starting point on the circle that will be treated as zero percent. The zero angle is to the right of the center.</p>
+		<p>The starting angle in <a href="/tips/radians-guide/">radians</a> for the line. This defines the starting point on the circle that will be treated as zero percent. The zero angle is to the right of the center.</p>
 	</dd>
 	
 	<dt id="RotationAngle"><code>RotationAngle</code></dt>
 	<dd>
-		<p>The size of the rotation angle in <a href="/tips/radians-guide">radians</a> for the line. This defines the distance in radians from <code>StartAngle</code> that the meter will travel around the circle when the measure value is 100%. Use a negative value for counter-clockwise rotation.</p>
+		<p>The size of the rotation angle in <a href="/tips/radians-guide/">radians</a> for the line. This defines the distance in radians from <code>StartAngle</code> that the meter will travel around the circle when the measure value is 100%. Use a negative value for counter-clockwise rotation.</p>
 	</dd>
 	
 	<dt id="LineStart"><code>LineStart</code></dt>
@@ -47,7 +47,7 @@ title: 'Roundline meter'
 
 	<dt id="LineColor"><code>LineColor</code> <small>Default: <code>255,255,255,255</code></small></dt>
 	<dd>
-		<p>The <a href="!skins/option-types#Color">Color</a> of the line.</p>
+		<p>The <a href="!skins/option-types/#Color">Color</a> of the line.</p>
 	</dd>
 
 	<dt id="Solid"><code>Solid</code> <small>Default: <code>0</code></small></dt>
@@ -76,13 +76,13 @@ title: 'Roundline meter'
 	<dd>
 		<p>Use a remainder instead of the actual measured value.</p>
 		
-		<p>This is primarily used to draw an analog clock. When used with the value of a <a href="!measures/time">Time</a> measure in <a href="#MeasureName">MeasureName</a> the meter will internally use the <code>%</code> modulo mathematical <a href="!formulas#Operators">operator</a>, and calculate the meter based on the <a href="http://en.wikipedia.org/wiki/Euclidean_division">remainder</a> when the number of seconds in the Time measure is divided by the following values:</p>
+		<p>This is primarily used to draw an analog clock. When used with the value of a <a href="!measures/time/">Time</a> measure in <a href="#MeasureName">MeasureName</a> the meter will internally use the <code>%</code> modulo mathematical <a href="!formulas/#Operators">operator</a>, and calculate the meter based on the <a href="http://en.wikipedia.org/wiki/Euclidean_division">remainder</a> when the number of seconds in the Time measure is divided by the following values:</p>
 		<ul>
 		<li>Hours Hand: <code>ValueRemainder=43200</code> Seconds in a 12-hour analog clock face.</li>
 		<li>Minutes Hand: <code>ValueRemainder=3600</code> Seconds in an hour.</li>
 		<li>Seconds Hand: <code>ValueRemainder=60</code> Seconds in a minute.</li>
 		</ul>
-		<p>See the <a href="!meters/rotator">Rotator</a> meter for an example.</p>
+		<p>See the <a href="!meters/rotator/">Rotator</a> meter for an example.</p>
 	</dd>
 </dl>
 

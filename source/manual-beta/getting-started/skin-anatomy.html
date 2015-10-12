@@ -50,12 +50,12 @@ MeasureName=MeasureCPU
 <p><b>[Rainmeter]</b><br/>
 This section will always be named [Rainmeter], and is used as sort of a header for the skin, to set up some options that impact the entire skin. This might be things like the update rate of the skin, the background color or image for the skin, or actions you want to take when something happens to the entire skin.</p>
 
-<p><a href="!skins/rainmeter-section">[Rainmeter]</a> section details.</p>
+<p><a href="!skins/rainmeter-section/">[Rainmeter]</a> section details.</p>
 
 <p><b>[Metadata]</b><br/>
 This section will always be named [Metadata], and is used to provide information about your skin. The author's name, the version number, configuration or usage instructions and other information. This information will be visible when someone selects your skin in the Rainmeter Manage window.</p>
 
-<p><a href="!skins/metadata-section">[Metadata]</a> section details.</p>
+<p><a href="!skins/metadata-section/">[Metadata]</a> section details.</p>
 
 <p><b>[Variables]</b><br/>
 This section will always be named [Variables], and is used to define values that can be used anywhere in the skin by enclosing the variable name inside #PoundSigns#. This can be helpful to create a value that you want to use many places in the skin, while allowing you to change it in only one place. A simple example might be:</p>
@@ -73,7 +73,7 @@ Meter=String
 FontColor=#MyFontColor#
 ```
 
-<p><a href="!variables#Section">[Variables]</a> section details.</p>
+<p><a href="!variables/#Section">[Variables]</a> section details.</p>
 
 <p><b>[MeterStyles]</b><br/>
 These sections can have any unique name, and are similar to [Variables] in function. They allow you to set up "styles" for meters where you can for instance define some or all of the "formatting" options for your meters, and use the MeterStyle in many meters while again allowing you to only have to change it in one place. A simple example might be:</p>
@@ -94,12 +94,12 @@ Meter=String
 MeterStyle=MyTextStyle
 ```
 
-<p><a href="!meters/general-options/meterstyles">[MeterStyle]</a> section details.</p>
+<p><a href="!meters/general-options/meterstyles/">[MeterStyle]</a> section details.</p>
 
 <p><b>[Measures]</b><br/>
 These sections can have any unique name, and are used to "measure" some system or other information. There are many measure types, defined by the value of the <code>Measure=MeasureType</code> option on the section.</p> 
 
-<p>There are two kinds of options used on a measure. There are <a href="!measures/general-options">general measure options</a> that define behaviors for most or all measure types, and measure options that are specific to the type of measure. These specific options are explained in the manual section for each measure type. Some simple examples might be:</p>
+<p>There are two kinds of options used on a measure. There are <a href="!measures/general-options/">general measure options</a> that define behaviors for most or all measure types, and measure options that are specific to the type of measure. These specific options are explained in the manual section for each measure type. Some simple examples might be:</p>
 
 ``` ini
 [MeasureDateTime]
@@ -111,7 +111,7 @@ Measure=FreeDiskSpace
 Drive=C:
 ```
 
-<p><a href="!measures">[Measures]</a> section details.</p>
+<p><a href="!measures/">[Measures]</a> section details.</p>
 
 <p><b>[Meters]</b><br/>
 These sections can have any unique name, and are used to "display" things in the skin window. Most often, a meter will be used to display some information obtained by a measure, which is done by "binding" the meter to one or more measures with the <code>MeasureName=SomeMeasure</code> option. A simple example might be:</p>
@@ -130,9 +130,9 @@ MeasureName=MeasureDateTime
 
 <p>There are many meter types, defined by the value of the <code>Meter=MeterType</code> option on the section. These can display information as strings of text, various kinds of graphs, images you associate with values, interactive buttons or even animations. While a meter is most often used to display the results of measures "bound" to the meter. They can also be used to display text or images you define yourself. Meters are the "paint", the skin window is the "canvas".</p>
 
-<p>There are two kinds of options used on a meter. There are <a href="!meters/general-options">general meter options</a> that define behaviors for most or all meter types, and meter options that are specific to the type of meter. These specific options are explained in the manual section for each meter type.</p>
+<p>There are two kinds of options used on a meter. There are <a href="!meters/general-options/">general meter options</a> that define behaviors for most or all meter types, and meter options that are specific to the type of meter. These specific options are explained in the manual section for each meter type.</p>
 
-<p><a href="!meters">[Meters]</a> section details.</p>
+<p><a href="!meters/">[Meters]</a> section details.</p>
 
 <h2 id="HowASkinBehaves">How a skin behaves</h2>
 
@@ -183,7 +183,7 @@ IfFalseAction=[!SetOption MeterCPU FontColor "0,255,0"]
 
 <p><em>If the value of [MeasureCPU] is greater than 60, then change the FontColor of the String meter [MeterCPU] to "red", if not, change it to "green".</em></p>
 
-<p><a href="!measures/general-options">Measure Action</a> details.</p>
+<p><a href="!measures/general-options/">Measure Action</a> details.</p>
 
 <p><b>Mouse actions</b><br/>
 These are options you put on meters, (or the skin background) that can react to various kinds of mouse hovers, clicks and scrolls, and take actions, which are bangs or commands. These action are immediate, when the mouse action is detected by the meter, and do not have to wait for the next skin or meter update cycle. This can make your skin very dynamic indeed to user interaction.</p>
@@ -199,7 +199,7 @@ MouseLeaveAction=[!SetOption MeterCPU FontColor "0,255,0"]
 LeftMouseUpAction=["taskmgr.exe"]
 ```
 
-<p><a href="!mouse-actions">Mouse Action</a> details.</p>
+<p><a href="!mouse-actions/">Mouse Action</a> details.</p>
 
 <p><b>There are two kinds of actions you can take when an action option is executed:</b></p>
 
@@ -208,7 +208,7 @@ These are internal Rainmeter commands, that allow you do a wide range of things 
 
 <p>There are a great many bangs, each of which is described in the manual.</p>
 
-<p><a href="!bangs">Bang</a> details.</p>
+<p><a href="!bangs/">Bang</a> details.</p>
 
 <p><b>Commands</b><br/>
 In addition, you can have an action option execute any external command to the Windows operating system. This is what allows you to create an "application launcher" in Rainmeter, by simply having a meter that for instance displays an image of a calculator run the program "calc.exe" when clicked. You can also open a web site in your default browser by simply executing the URL as a Windows command.<p>
@@ -220,9 +220,9 @@ LeftMouseUpAction=["C:\Program Files\WinRar\WinRar.exe"]
 LeftMouseUpAction=["http://cnn.com"]
 ```
 
-<p>Hopefully this will get you off and running with Rainmeter skins. There are other areas of how the application itself works that are important to understand, and the <a href="!getting-started">Getting Started</a> and <a href="!user-interface">User Interface</a> sections of the manual are important references. Don't skip them.</p>
+<p>Hopefully this will get you off and running with Rainmeter skins. There are other areas of how the application itself works that are important to understand, and the <a href="!getting-started/">Getting Started</a> and <a href="!user-interface/">User Interface</a> sections of the manual are important references. Don't skip them.</p>
 
 <p style="clear: both;">&nbsp;</p>
 
-<div class="right"><p><a href="!getting-started/basic-tutorials">Continue to: Basic Tutorials &raquo;</a></p> </div>
-<p><a href="!getting-started/creating-skins">&laquo; Back to: Creating Skins</a></p>
+<div class="right"><p><a href="!getting-started/basic-tutorials/">Continue to: Basic Tutorials &raquo;</a></p> </div>
+<p><a href="!getting-started/creating-skins/">&laquo; Back to: Creating Skins</a></p>

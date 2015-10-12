@@ -5,13 +5,13 @@ title: 'AdvancedCPU measure'
 ---
 <p><code>Plugin=AdvancedCPU</code> measures CPU usage by processes.</p>
 
-<p><b>Note:</b> The value is a calculation of process CPU time scaled by the number of CPU cores. In order to use the value as a <a href="!measures#Percentage">percentage</a> in meters, it must have the <a href="!measures/general-options/#MaxValue">MaxValue</a> of the measure dynamically set to the current value of an AdvancedCPU measure which has no <code>CPUInclude</code> or <code>CPUExclude</code> options. See the <a href="#Example">Example</a> below.</p>
+<p><b>Note:</b> The value is a calculation of process CPU time scaled by the number of CPU cores. In order to use the value as a <a href="!measures/#Percentage">percentage</a> in meters, it must have the <a href="!measures/general-options/#MaxValue">MaxValue</a> of the measure dynamically set to the current value of an AdvancedCPU measure which has no <code>CPUInclude</code> or <code>CPUExclude</code> options. See the <a href="#Example">Example</a> below.</p>
 
 <h2>Options</h2>
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		<p>All <a href="!measures/general-options">general measure options</a> are valid.</p>
+		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
 
 	<dt id="CPUInclude"><code>CPUInclude</code></dt>
@@ -29,8 +29,8 @@ title: 'AdvancedCPU measure'
 	<dd>
 		<p>Measures the process that is currently using the most CPU. Valid values are:
 		<ul>
-		<li><code>1</code> : The <a href="!measures#Values">value</a> will be the process CPU usage.</li>
-		<li><code>2</code> : The <a href="!measures#Values">string value</a> will be the process name. The number value is not altered.</li>
+		<li><code>1</code> : The <a href="!measures/#Values">value</a> will be the process CPU usage.</li>
+		<li><code>2</code> : The <a href="!measures/#Values">string value</a> will be the process name. The number value is not altered.</li>
 		</ul></p>
 	</dd>
 </dl>

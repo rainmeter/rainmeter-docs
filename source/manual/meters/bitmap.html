@@ -9,24 +9,24 @@ title: 'Bitmap meter'
 <dl>
 	<dt>General meter options</dt>
 	<dd>
-		All <a href="!meters/general-options">general meter options</a> are valid, <b>except</b> <code>W</code> and <code>H</code>.
+		All <a href="!meters/general-options/">general meter options</a> are valid, <b>except</b> <code>W</code> and <code>H</code>.
 	</dd>
 
 	<dt>General image options</dt>
 	<dd>
-		All <a href="!meters/general-options/image-options">general image options</a> are valid for <code>BitmapImage</code>, <b>except</b> <code>ImageCrop</code>, and <code>ImageRotate</code>.
+		All <a href="!meters/general-options/image-options/">general image options</a> are valid for <code>BitmapImage</code>, <b>except</b> <code>ImageCrop</code>, and <code>ImageRotate</code>.
 	</dd>
 
 	<dt id="MeasureName"><code>MeasureName</code></dt>
 	<dd>
-		Name of the measure used to determine the frame to display. The measures used must be able to return <a href="!measures#Percentage">percentual values</a>.
+		Name of the measure used to determine the frame to display. The measures used must be able to return <a href="!measures/#Percentage">percentual values</a>.
 
 		<br><br><b>Example:</b> If the image contains 5 frames, the first frame is displayed when the percentual measure value is between 0% and 19%, the second frame is shown from 20% to 39% , and so on.
 	</dd>
 
 	<dt id="BitmapImage"><code>BitmapImage</code></dt>
 	<dd>
-		<a href="!skins/option-types#Path">Path</a> to the image. The frames in the images can be laid out either horizontally or vertically (the orientation is determined automatically from the height or the width of the image). The size of a single frame is also determined automatically, so no extra space should surround the frames.
+		<a href="!skins/option-types/#Path">Path</a> to the image. The frames in the images can be laid out either horizontally or vertically (the orientation is determined automatically from the height or the width of the image). The size of a single frame is also determined automatically, so no extra space should surround the frames.
 
 		<br><br>If <code>BitmapExtend</code> is not set to <code>1</code>, the measure being used must return values from 0.0 to 1.0 or must have both <code>MaxValue</code> and <code>MinValue</code> set.
 	</dd>
@@ -38,7 +38,7 @@ title: 'Bitmap meter'
 
 	<dt id="BitmapTransitionFrames"><code>BitmapTransitionFrames</code></dt>
 	<dd>
-		The number of transition frames per each actual frame. The transition frames are frames which are displayed when the measure value changes. The same number of transition frames must be used after each regular frame. The <a href="!skins/rainmeter-section#TransitionUpdate">TransitionUpdate</a> option in the [Rainmeter] section determines the rate at which the transition frames change during the transition. The total duration of the transition is therefore <code>TransitionUpdate</code> multiplied by <code>BitmapTransitionFrames</code>.<br><br>
+		The number of transition frames per each actual frame. The transition frames are frames which are displayed when the measure value changes. The same number of transition frames must be used after each regular frame. The <a href="!skins/rainmeter-section/#TransitionUpdate">TransitionUpdate</a> option in the [Rainmeter] section determines the rate at which the transition frames change during the transition. The total duration of the transition is therefore <code>TransitionUpdate</code> multiplied by <code>BitmapTransitionFrames</code>.<br><br>
 
 		<b>Note:</b> <code>BitmapFrames</code> always defines the total number of frames in the bitmap, including the transition frames.
 

@@ -5,13 +5,13 @@ title: 'Network Skin'
 ---
 <p>One of the things folks like to have on their desktop is a skin to monitor the behavior and traffic of their network.</p>
 
-<p>The <a href="/manual/measures/net">NetIn / NetOut / NetTotal</a> measures in Rainmeter can be used to monitor all traffic in and out of the NIC (Network Interface Card) on your computer.</p>
+<p>The <a href="/manual/measures/net/">NetIn / NetOut / NetTotal</a> measures in Rainmeter can be used to monitor all traffic in and out of the NIC (Network Interface Card) on your computer.</p>
 
 <p>However, there are a few considerations you should keep in mind to have a skin that is useful, accurate and informative.</p>
 
 <h2>The Interface option</h2>
 
-<p>One of the options that can be set on the Net measures is <a href="/manual/measures/net#Interface">Interface</a>. This is the index number of the network adapter (NIC) you want to measure. It defaults to "0", which is just "all interfaces".</p>
+<p>One of the options that can be set on the Net measures is <a href="/manual/measures/net/#Interface">Interface</a>. This is the index number of the network adapter (NIC) you want to measure. It defaults to "0", which is just "all interfaces".</p>
 
 <p>This default value will likely be fine for you, assuming you don't have more than one network adapter on your computer, or are only using one at a time. However, you might find that the traffic values that the measures return are incorrect. Sometimes they can be double the expected values or even more. This will be the case if you have more than one active network adapter, or sometimes due to some "virtual interfaces" that Windows detects.</p>
 
@@ -55,21 +55,21 @@ When done:
 
 <p>The network measures in Rainmeter measure the average number of <b>Bytes</b> sent through the interface every second. However, the nature of network traffic is that it can be very "spiky". Many people find that a network skin has a more useful behavior if we "smooth out" these spikes a bit. So the traffic values "ramp up" and "ramp down" as the values change, rather than having a very jerky behavior.</p>
 
-<p>This can be done by using the <a href="/manual/measures/general-options#AverageSize">AverageSize</a> option on the measure(s). This will cause the measure(s) to average the returned values over the number of skin updates specified in the <code>AverageSize</code> option.</p>
+<p>This can be done by using the <a href="/manual/measures/general-options/#AverageSize">AverageSize</a> option on the measure(s). This will cause the measure(s) to average the returned values over the number of skin updates specified in the <code>AverageSize</code> option.</p>
 
 <p>e.g: <code>AverageSize=5</code></p>
 
 <h2>Using Network values as a percentage</h2>
 
-<p>While it is simple enough to just display the number of Bytes / kBytes / MBytes from the measures in a <a href="/manual/meters/string">String</a> meter using <a href="/manual/meters/string#AutoScale">AutoScale</a> to format the numbers, you may want to display the traffic in a meter that requires a <a href="/manual/measures#Percentage">percentage</a>. This would include the <a href="/manual/meters/bar">Bar</a>, <a href="/manual/meters/bitmap">Bitmap</a>, <a href="/manual/meters/histogram">Histogram</a>, <a href="/manual/meters/line">Line</a>, <a href="/manual/meters/rotator">Rotator</a> and <a href="/manual/meters/roundline">Roundline</a> meters.</p>
+<p>While it is simple enough to just display the number of Bytes / kBytes / MBytes from the measures in a <a href="/manual/meters/string/">String</a> meter using <a href="/manual/meters/string/#AutoScale">AutoScale</a> to format the numbers, you may want to display the traffic in a meter that requires a <a href="/manual/measures/#Percentage">percentage</a>. This would include the <a href="/manual/meters/bar/">Bar</a>, <a href="/manual/meters/bitmap/">Bitmap</a>, <a href="/manual/meters/histogram/">Histogram</a>, <a href="/manual/meters/line/">Line</a>, <a href="/manual/meters/rotator/">Rotator</a> and <a href="/manual/meters/roundline/">Roundline</a> meters.</p>
 
-<p>As discussed in the <a href="/manual/measures#Percentage">percentage</a> manual entry, these meters will require that a "range" of values is provided, so the meter knows where in the scale of 0% to 100% the current value of the measure lies.</p>
+<p>As discussed in the <a href="/manual/measures/#Percentage">percentage</a> manual entry, these meters will require that a "range" of values is provided, so the meter knows where in the scale of 0% to 100% the current value of the measure lies.</p>
 
-<p>Some measures, like <a href="/manual/measures/freediskspace">FreeDiskSpace</a> for instance, automatically set this "range", based on examining the resource being measured. The Network measures also attempt to do this, but with some serious limitations. What the measures do is dynamically set the maximum value for the range to the highest value the measure has been since the skin was loaded or refreshed. This can cause really undesirable behavior on these "percentage" meters until your skin has been running for a while and you have done things to  use a large percentage of your total bandwidth. </p>
+<p>Some measures, like <a href="/manual/measures/freediskspace/">FreeDiskSpace</a> for instance, automatically set this "range", based on examining the resource being measured. The Network measures also attempt to do this, but with some serious limitations. What the measures do is dynamically set the maximum value for the range to the highest value the measure has been since the skin was loaded or refreshed. This can cause really undesirable behavior on these "percentage" meters until your skin has been running for a while and you have done things to  use a large percentage of your total bandwidth. </p>
 
 <h3>Setting the MinValue / MaxValue options:</h3>
 
-<p>The way to correct this behavior is to manually set the <a href="/manual/measures/general-options#MinValue">MinValue</a> and <a href="/manual/measures/general-options#MaxValue">MaxValue</a> options on the network measure(s). This will explicitly set the possible "range" of values for the measure so that meters requiring a percentage will immediately and correctly know where in the range of 0% to 100% the current value lies.</p>
+<p>The way to correct this behavior is to manually set the <a href="/manual/measures/general-options/#MinValue">MinValue</a> and <a href="/manual/measures/general-options/#MaxValue">MaxValue</a> options on the network measure(s). This will explicitly set the possible "range" of values for the measure so that meters requiring a percentage will immediately and correctly know where in the range of 0% to 100% the current value lies.</p>
 
 <h3>Finding your maximum download and upload bandwidth:</h3>
 

@@ -5,7 +5,7 @@ title: 'Skins'
 ---
 <p>Rainmeter's basic purpose is to run skins. A <b>skin</b> is a movable, dynamic, sometimes-interactive window that appears over the Windows desktop, and usually gathers and displays information of some kind.</p>
 
-<p>Skins come with many different sizes, styles, user interfaces, and levels of complexity. Rainmeter includes utilities for <a href="!publishing-skins">publishing</a> and <a href="!installing-skins">installing</a> 3rd-party skins. Each skin is generally stored and loaded as an independent, self-contained module.</p>
+<p>Skins come with many different sizes, styles, user interfaces, and levels of complexity. Rainmeter includes utilities for <a href="!publishing-skins/">publishing</a> and <a href="!installing-skins/">installing</a> 3rd-party skins. Each skin is generally stored and loaded as an independent, self-contained module.</p>
 
 <h2 id="FilesFolders">Files and Folders</h2>
 
@@ -16,23 +16,23 @@ title: 'Skins'
 	<li><code>C:\Users\<em>YourName</em>\Documents\Rainmeter\Skins</code><sup>1</sup> (for Windows Vista, 7 and 8).</li>
 </ul>
 
-<p>If Rainmeter is installed as a <a href="!installing-rainmeter#PortableInstallation">portable application</a>, the Skins folder is found in the installation folder. The Skins folder can also be changed in Rainmeter's <a href="!settings/rainmeter-section#SkinPath">settings</a>.</p>
+<p>If Rainmeter is installed as a <a href="!installing-rainmeter/#PortableInstallation">portable application</a>, the Skins folder is found in the installation folder. The Skins folder can also be changed in Rainmeter's <a href="!settings/rainmeter-section/#SkinPath">settings</a>.</p>
 
 <p>A skin is stored as a file called "<em>SkinName</em>.ini" in its own folder within Skins, as in: <code>Rainmeter\Skins\<em>SkinName</em>\<em>SkinName</em>.ini</code>.<sup>1</sup> (The file and folder names do not need to match.)</p>
 
-<p>All of these folder paths may be referenced in a skin as <a href="!variables/built-in-variables">built-in-variables</a>.</p>
+<p>All of these folder paths may be referenced in a skin as <a href="!variables/built-in-variables/">built-in-variables</a>.</p>
 
 <p class="footnote">1. "YourName" and "SkinName" are examples.</p>
 
 <h3 id="Variants">Variants</h3>
 
-<p>If one folder contains multiple <code><em>SkinName</em>.ini</code><sup>1</sup> files, they are each considered <b>variants</b> of the same skin. This means that only one variant can be active at a time, and all variants use the same <a href="!settings/skin-sections">settings</a>. Separate skins must be stored in separate folders.</p>
+<p>If one folder contains multiple <code><em>SkinName</em>.ini</code><sup>1</sup> files, they are each considered <b>variants</b> of the same skin. This means that only one variant can be active at a time, and all variants use the same <a href="!settings/skin-sections/">settings</a>. Separate skins must be stored in separate folders.</p>
 
 <p class="footnote">1. "YourName" and "SkinName" are examples.</p>
 
 <h3 id="Resources">@Resources</h3>
 
-<p>Any supporting files used by the skin, such as images, addon executables, sounds, or <a href="!lua-scripting">Lua scripts</a>, should also be stored in the skin folder. Complex skins are recommended to store supporting files in a folder called <a href="!skins/resources-folder">@Resources</a> inside the <a href="#Root">root config</a> folder. The @Resources folder is ignored by Rainmeter, except to load <a href="/tips/fonts-guide">custom fonts</a> and <a href="!mouse-actions#MouseActionCursorName"> custom cursors</a>.</p>
+<p>Any supporting files used by the skin, such as images, addon executables, sounds, or <a href="!lua-scripting/">Lua scripts</a>, should also be stored in the skin folder. Complex skins are recommended to store supporting files in a folder called <a href="!skins/resources-folder/">@Resources</a> inside the <a href="#Root">root config</a> folder. The @Resources folder is ignored by Rainmeter, except to load <a href="/tips/fonts-guide/">custom fonts</a> and <a href="!mouse-actions/#MouseActionCursorName"> custom cursors</a>.</p>
 
 <h3 id="Config">Config</h3>
 
@@ -44,11 +44,11 @@ title: 'Skins'
 
 	<blockquote><p><code>Foo\Bar</code></p></blockquote>
 
-<p>Because skins may have any number of variants, many Rainmeter features&mdash;especially <a href="!bangs">bangs</a>&mdash;refer to a specific skin by its config name, rather than the skin's filename.</p>
+<p>Because skins may have any number of variants, many Rainmeter features&mdash;especially <a href="!bangs/">bangs</a>&mdash;refer to a specific skin by its config name, rather than the skin's filename.</p>
 
 <h3 id="Root">Root config</h3>
 
-<p>Skins may also be stored in subfolders within the same <b>root</b> config folder. They share the same <a href="!skins/resources-folder">@Resources</a> folder, and are <a href="!publishing-skins">packaged</a> and <a href="!installing-skins">installed</a> together. Otherwise, Rainmeter treats each subfolder as a separate config.</p>
+<p>Skins may also be stored in subfolders within the same <b>root</b> config folder. They share the same <a href="!skins/resources-folder/">@Resources</a> folder, and are <a href="!publishing-skins/">packaged</a> and <a href="!installing-skins/">installed</a> together. Otherwise, Rainmeter treats each subfolder as a separate config.</p>
 
 <p>For example, the following skins belong to the "illustro" suite:</p>
 
@@ -79,20 +79,20 @@ title: 'Skins'
 Key=Value
 ```
 
-<p>Each property of the skin is defined by a section. Each key is an <a href="!skins/option-types">option</a> that modifies that property. The following sections may be used in skins:</p>
+<p>Each property of the skin is defined by a section. Each key is an <a href="!skins/option-types/">option</a> that modifies that property. The following sections may be used in skins:</p>
 
 <ul>
-	<li><p><a href="!skins/rainmeter-section">[Rainmeter]</a><br>
+	<li><p><a href="!skins/rainmeter-section/">[Rainmeter]</a><br>
 		Defines options that affect the entire skin.</p></li>
-	<li><p><a href="!variables">[Variables]</a><br>
+	<li><p><a href="!variables/">[Variables]</a><br>
 		Defines text strings that can be used throughout the skin.</p></li>
-	<li><p><a href="!measures">Measures</a><br>
+	<li><p><a href="!measures/">Measures</a><br>
 		Objects that retrieve (or "measure") information of some kind.</p></li>
-	<li><p><a href="!meters">Meters</a><br>
+	<li><p><a href="!meters/">Meters</a><br>
 		Objects that display information and other visual elements.</p></li>
 	<li><p><a href="!meters/general-options/#MeterStyle">MeterStyles</a><br>
 		Define options that may be used by several meters.</p></li>
-	<li><p><a href="!skins/metadata-section">[Metadata]</a><br>
+	<li><p><a href="!skins/metadata-section/">[Metadata]</a><br>
 		Defines the name, version, license, and other non-functional information about the skin.</p></li>
 </ul>
 
@@ -111,12 +111,12 @@ Key=Value
 
 <h2 id="Update">Update</h2>
 
-<p>When a skin is loaded, it <b>updates</b> on a regular cycle. The length of time between updates is defined by the <a href="!skins/rainmeter-section#Update">Update</a> option in the [Rainmeter] section, and defaults to 1 second (or 1000 milliseconds). The update determines when the skin reacts to changes in the values of variables, measures and options.</p>
+<p>When a skin is loaded, it <b>updates</b> on a regular cycle. The length of time between updates is defined by the <a href="!skins/rainmeter-section/#Update">Update</a> option in the [Rainmeter] section, and defaults to 1 second (or 1000 milliseconds). The update determines when the skin reacts to changes in the values of variables, measures and options.</p>
 
-<p>Individual meters and measures can be made to update more slowly by "skipping" cycles, using the <a href="!measures/general-options/#UpdateDivider">UpdateDivider</a> option. In addition, the <a href="!bangs#Update">!Update</a> bang forces the skin to update immediately, resetting the timed cycle.</p>
+<p>Individual meters and measures can be made to update more slowly by "skipping" cycles, using the <a href="!measures/general-options/#UpdateDivider">UpdateDivider</a> option. In addition, the <a href="!bangs/#Update">!Update</a> bang forces the skin to update immediately, resetting the timed cycle.</p>
 
 <h2 id="Refresh">Refresh</h2>
 
 <p>When a skin <b>refreshes</b>, all values are reset, and the skin starts over as if it had just been loaded for the first time. Refreshing also applies any changes that have been made to the code in <code>SkinName.ini</code>.</p>
 
-<p>A skin can be refreshed from the <a href="!user-interface/context-menus">context menus</a>, or using the <a href="!bangs#Refresh">!Refresh</a> bang.</p>
+<p>A skin can be refreshed from the <a href="!user-interface/context-menus/">context menus</a>, or using the <a href="!bangs/#Refresh">!Refresh</a> bang.</p>

@@ -3,7 +3,7 @@ layout: manual
 permalink: manual/getting-started/customizing/
 title: 'Customizing'
 ---
-<p>Now that you are familiar with Rainmeter's basic <a href="!getting-started/using-rainmeter">user interface</a>, you're ready to start customizing Rainmeter to your liking.</p>
+<p>Now that you are familiar with Rainmeter's basic <a href="!getting-started/using-rainmeter/">user interface</a>, you're ready to start customizing Rainmeter to your liking.</p>
 
 <h2 id="FindingSkins">Finding Skins</h2>
 
@@ -34,7 +34,7 @@ title: 'Customizing'
 <p>We recommend that you follow some simple, common-sense tips to make sure that your computer stays malware-free:</p>
 
 <ul>
-	<li><p>Whenever possible, only download skins in the Rainmeter Skin Installer <i>(.rmskin)</i> format. Recent versions of Rainmeter require new skin packages to be created by Rainmeter's official <a href="!publishing-skins">Skin Packager</a>, which helps reduce the risk of tampering. Many older skins may still be published as <i>.zip</i> files that must be installed manually&mdash;these files are at greater risk of containing malware, and you should look for a newer version of the skin, if possible. You should never download a <i>.exe</i> file that claims to be a Rainmeter skin installer.</p></li>
+	<li><p>Whenever possible, only download skins in the Rainmeter Skin Installer <i>(.rmskin)</i> format. Recent versions of Rainmeter require new skin packages to be created by Rainmeter's official <a href="!publishing-skins/">Skin Packager</a>, which helps reduce the risk of tampering. Many older skins may still be published as <i>.zip</i> files that must be installed manually&mdash;these files are at greater risk of containing malware, and you should look for a newer version of the skin, if possible. You should never download a <i>.exe</i> file that claims to be a Rainmeter skin installer.</p></li>
 	<li><p>Make sure the skin publisher is trustworthy. An account that is new, or has very few downloads, page views, or profile detals may be suspicious. Users that disable or delete comments on their submissions are also suspicious. In contrast, a long-standing author who has many comments and downloads is more likely to be safe.</p></li>
 	<li><p>If comments are enabled on the submission, check them to see if other users have reported the skin as malware. Likewise, if you discover that a skin is dangerous, please take a moment to warn your fellow Rainmeter users, by posting a message in the comments and reporting the submission to the side administrators. Sites like deviantArt and Flickr include an easy "Report Spam" button on every page.</p></li>
 	<li><p>If you are suspicious of a skin for any reason, upload the file to <a href="https://www.virustotal.com/">VirusTotal</a>, which will scan the file with over 40 anti-malware services and report the results to you. (Note that false positives are common; only report skins that are flagged as dangerous by a significant number of tests.)</p></li>
@@ -47,15 +47,15 @@ title: 'Customizing'
 	<p class="thumbnail">Installing a typical Rainmeter skin.</p>
 </div>
 
-<p>Installing a skin in the Rainmeter Skin Installer <i>(.rmskin)</i> format is easy. Just double-click the file to open the package with Rainmeter's built-in <a href="!installing-skins">Skin Installer</a>, and follow the instructions like you did when you installed Rainmeter.</p>
+<p>Installing a skin in the Rainmeter Skin Installer <i>(.rmskin)</i> format is easy. Just double-click the file to open the package with Rainmeter's built-in <a href="!installing-skins/">Skin Installer</a>, and follow the instructions like you did when you installed Rainmeter.</p>
 
-<p>(Skins that are not in the .rmskin format, but instead come in an archive file like <i>.zip</i>, <i>.rar</i> or <i>.7z</i>, require a few more steps. See <a href="!installing-skins">Installing Skins</a> for more detailed instructions, including steps for installing skins on a portable version of Rainmeter.)</p>
+<p>(Skins that are not in the .rmskin format, but instead come in an archive file like <i>.zip</i>, <i>.rar</i> or <i>.7z</i>, require a few more steps. See <a href="!installing-skins/">Installing Skins</a> for more detailed instructions, including steps for installing skins on a portable version of Rainmeter.)</p>
 
 <p>For an example of a Rainmeter skin package, try downloading and installing one of the <a href="http://www.rainmeter.net/discover">Featured Suites</a> from the Rainmeter homepage.</p>
 
 <h2 id="EditingSkins">Editing Skins</h2>
 
-<p>You have already learned how to change basic <a href="!settings/skin-sections">skin settings</a> in Rainmeter. Now, it's time to learn how to make edits to a skin itself.</p>
+<p>You have already learned how to change basic <a href="!settings/skin-sections/">skin settings</a> in Rainmeter. Now, it's time to learn how to make edits to a skin itself.</p>
 
 	<blockquote><p><i>Remember: every skin is different. Some skins provide more customization options, tools and instructions than others, and the processes for customizing two skins may be very different. In all cases, you should look to whatever documentation the author has provided, whether in the form of a "readme" file, an online support URL, or <code>;comments</code> embedded in the skin code.</i></p></blockquote>
 
@@ -77,7 +77,7 @@ title: 'Customizing'
 	<p class="thumbnail">What a skin looks like on the inside.</p>
 </div>
 
-<p>Most of the time, a skin's customization options&mdash;that is, options that the author intends and expects you, the user, to change around&mdash;are saved as <a href="!variables">variables</a>. To see an example, right-click the illustro "Clock" skin on your desktop, and select <code>Edit skin</code>. The file "Clock.ini" will open in Notepad (or your default text editor).</p>
+<p>Most of the time, a skin's customization options&mdash;that is, options that the author intends and expects you, the user, to change around&mdash;are saved as <a href="!variables/">variables</a>. To see an example, right-click the illustro "Clock" skin on your desktop, and select <code>Edit skin</code>. The file "Clock.ini" will open in Notepad (or your default text editor).</p>
 
 <p>This is what Rainmeter's configuration code looks like. (Click the image on the right to zoom in.)</p>
 
@@ -86,7 +86,7 @@ title: 'Customizing'
 <ul>
 	<li><p>A <b>section</b>. Section names are contained in brackets (<code>[]</code>) and are used to "declare" some property of the skin.</p></li>
 	<li><p>A <b>key</b>. Keys are found at the beginning of each line in a section, followed by an equal sign (<code>=</code>).</p></li>
-	<li><p>A <b>value</b>. The value is whatever meaning is assigned to a key&mdash;everything after the first equal sign (<code>=</code>) is the value. (Values must be constrained on a single line.) In Rainmeter, the pairing of a key and a value is called an <a href="!skins/option-types">option</a>.</p></li>
+	<li><p>A <b>value</b>. The value is whatever meaning is assigned to a key&mdash;everything after the first equal sign (<code>=</code>) is the value. (Values must be constrained on a single line.) In Rainmeter, the pairing of a key and a value is called an <a href="!skins/option-types/">option</a>.</p></li>
 </ul>
 
 <div class="noscroll">
@@ -128,7 +128,7 @@ colorText=255,255,255,205
 
 <h2 id="Refresh">Refresh</h2>
 
-<p>The <a href="!skins#Refresh">refresh</a> action is important in Rainmeter. The effect of refreshing a skin is the same as if you had unloaded and then re-loaded the skin. When this happens, all <a href="!variables#DynamicVariables">dynamic</a> variables and other options are reset according to their original values in the skin file, and all <a href="!measures">measures</a> restart from the beginning. Refreshing a skin is also necessary to apply any changes that have been made to a skin's files.</p>
+<p>The <a href="!skins/#Refresh">refresh</a> action is important in Rainmeter. The effect of refreshing a skin is the same as if you had unloaded and then re-loaded the skin. When this happens, all <a href="!variables/#DynamicVariables">dynamic</a> variables and other options are reset according to their original values in the skin file, and all <a href="!measures/">measures</a> restart from the beginning. Refreshing a skin is also necessary to apply any changes that have been made to a skin's files.</p>
 
 <p>You can refresh any skin by selecting <code>Refresh skin</code> in the context menu, or browsing to the skin in Manage and clicking the <code>Refresh</code> button in the top-right.</p>
 
@@ -151,5 +151,5 @@ colorText=255,255,255,205
 
 <p style="clear: both;">&nbsp;</p>
 
-<div class="right"><p><a href="!getting-started/creating-skins">Continue to: Creating Skins &raquo;</a></p> </div>
-<p><a href="!getting-started/using-rainmeter">&laquo; Back to: Using Rainmeter</a></p>
+<div class="right"><p><a href="!getting-started/creating-skins/">Continue to: Creating Skins &raquo;</a></p> </div>
+<p><a href="!getting-started/using-rainmeter/">&laquo; Back to: Using Rainmeter</a></p>

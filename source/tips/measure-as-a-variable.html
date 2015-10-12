@@ -3,7 +3,7 @@ layout: tips
 permalink: tips/measure-as-a-variable/
 title: 'Using a Measure as a Variable'
 ---
-<p>In Rainmeter, <a href="/manual/variables/#DynamicVariables">dynamic variables</a> (DVs) let you use measure values almost anywhere you want. When you use a measure value in a <a href="/manual/measures/calc">Calc</a> formula, there are special rules to consider. A Calc formula is the only place where you do not need DVs to use another measure's value. For example:</p>
+<p>In Rainmeter, <a href="/manual/variables/#DynamicVariables">dynamic variables</a> (DVs) let you use measure values almost anywhere you want. When you use a measure value in a <a href="/manual/measures/calc/">Calc</a> formula, there are special rules to consider. A Calc formula is the only place where you do not need DVs to use another measure's value. For example:</p>
 
 ``` ini
 [MeasureA]
@@ -50,23 +50,23 @@ DynamicVariables=1
 <ol>
 
 	<li>
-	<p><b>No math.</b> If the original measure value contains any non-numeric characters, aside from valid <a href="/manual/measures/calc#Formulas">operators</a>, the number value is zero. This includes letters, punctuation and special characters.</p>
+	<p><b>No math.</b> If the original measure value contains any non-numeric characters, aside from valid <a href="/manual/measures/calc/#Formulas">operators</a>, the number value is zero. This includes letters, punctuation and special characters.</p>
 	<p>You'll probably never use a measure like this in a Calc formula to begin with.</p>
 	</li>
 
 	<li>
 	<p><b>Rounding.</b> Even when a measure gives you an actual number, Rainmeter may round the string value to a certain decimal place. The number value preserves the "true" value, which is always better for calculation.</p>
-	<p>Even if you want a rounded number, the <a href="/manual/measures/calc#Functions">ROUND(x[,precision])</a> calculator function will give you much finer control over the result.</p>
+	<p>Even if you want a rounded number, the <a href="/manual/measures/calc/#Functions">ROUND(x[,precision])</a> calculator function will give you much finer control over the result.</p>
 	</li>
 
 	<li>
-	<p><b>Formatting.</b> Some measures return a formatted string value that is meant for display, but not for calculations. For example, the <a href="/manual/measures/time">Time</a> measure gives a string value with hours, minutes and seconds ("HH:MM:SS"), which is how a real person would want to see the time, but which makes no sense in a math equation. The number value gives the raw <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>, which <em>can</em> be used by a Calc measure, e.g. to calculate the difference between two dates.</p>
+	<p><b>Formatting.</b> Some measures return a formatted string value that is meant for display, but not for calculations. For example, the <a href="/manual/measures/time/">Time</a> measure gives a string value with hours, minutes and seconds ("HH:MM:SS"), which is how a real person would want to see the time, but which makes no sense in a math equation. The number value gives the raw <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>, which <em>can</em> be used by a Calc measure, e.g. to calculate the difference between two dates.</p>
 
 	<p>There may be cases in which you would want to use a formatted string value in a Calc formula, but these would likely be rare and unorthodox.</p>
 	</li>
 
 	<li>
-	<p><b>Substitution.</b> Measure <a href="/manual/measures/general-options/substitute">substitution</a> is applied only to the string value, not the number value. For example:</p>
+	<p><b>Substitution.</b> Measure <a href="/manual/measures/general-options/substitute/">substitution</a> is applied only to the string value, not the number value. For example:</p>
 
 ``` ini
 [MeasureA]
@@ -144,5 +144,5 @@ DynamicVariables=1
 
 <li>When you use the name of a measure in a Calc measure or other formula (with square brackets and DynamicVariables=1), then the string value is used.</li>
 
-<li>The <a href="/manual/variables/section-variables#Colon">Section Variables</a> <code>[MeasureName:]</code> functionality offers some additional control. Used with DynamicVariables=1, it uses the number value of the measure. This is particularly useful where you want to use the value of a measure dynamically in a formula on a meter or measure, while not getting the string or Substituted value.</li>
+<li>The <a href="/manual/variables/section-variables/#Colon">Section Variables</a> <code>[MeasureName:]</code> functionality offers some additional control. Used with DynamicVariables=1, it uses the number value of the measure. This is particularly useful where you want to use the value of a measure dynamically in a formula on a meter or measure, while not getting the string or Substituted value.</li>
 </ul>
