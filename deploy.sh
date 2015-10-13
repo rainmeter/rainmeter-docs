@@ -11,7 +11,7 @@ if [ ! -d "_ghpages.git" ]; then
 fi
 
 rm -rf _generated
-hexo generate
+hexo optimized_generate
 
 export GIT_DIR=_ghpages.git
 export GIT_WORK_TREE=_generated
