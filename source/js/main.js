@@ -86,24 +86,21 @@ function toggleClass(elem, className) {
 	}
 })();
 
-// Add Select all to <pre> blocks.
+// Add 'Select all' and 'Download' buttons to <pre> blocks.
 (function() {
 	var divs = document.getElementsByClassName('highlight');
 	for (var i = 0; div = divs[i]; ++i) {
-
-		// SELECT ALL
-		var a = document.createElement('a');
-		a.innerHTML = 'Select all';
+		var selectA = document.createElement('a');
+		selectA.innerHTML = 'Select all';
 
 		var pre = div.getElementsByTagName('pre')[0];
 		var scrollWidth = pre.offsetWidth - pre.clientWidth - 2;
-		a.style.right = scrollWidth + 'px';
-
+		selectA.style.right = scrollWidth + 'px';
 		if (scrollWidth > 0) {
-			a.style.borderRight = 0;
+			selectA.style.borderRight = 0;
 		}
 
-		a.onclick = function() {
+		selectA.onclick = function() {
 			var pre = this.parentNode.firstChild;
 			if (document.body.createTextRange) {
 				var range = document.body.createTextRange();
@@ -118,26 +115,15 @@ function toggleClass(elem, className) {
 			}
 		};
 
-		div.appendChild(a);
+		div.appendChild(selectA);
 
-		// DOWNLOAD
-		var prev = div.previousSibling;
-		// Keep looking back until an element is found.
-		do prev = prev.previousSibling;
-		while (prev && prev.nodeType != 1);
-
-		if (prev && prev.className == 'download') {
-			prevHref = prev.href;
-			prev.parentNode.removeChild(prev);
-
-			var b = document.createElement('a');
-			b.innerHTML = 'Download';
-			b.style.right = scrollWidth + a.offsetWidth + 'px';
-			b.style.borderRight = 0;
-			b.href = prevHref;
-			div.appendChild(b);
+		var downloadA = div.previousElementSibling;
+		if (downloadA && downloadA.className == 'download') {
+			downloadA.innerHTML = 'Download';
+			downloadA.style.right = scrollWidth + selectA.offsetWidth + 'px';
+			downloadA.style.borderRight = 0;
+			div.appendChild(downloadA);
 		}
-
 	}
 })();
 
