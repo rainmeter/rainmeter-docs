@@ -1,9 +1,13 @@
+---
+css_version: 1
+js_version: 1
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<title><% if (page.title) { %><%= page.title %> - <% } %>Rainmeter <%= base_title %></title>
-	<link href="/css/main.css" rel="stylesheet">
+	<link href="/css/main.css?v=<%= css_version %>" rel="stylesheet">
 	<link rel="shortcut icon" href="//www.rainmeter.net/favicon.ico">
 	<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script><![endif]-->
 </head>
@@ -33,6 +37,6 @@
 		<div id="footer-push"></div>
 	</div>
 
-	<script src="/js/main.js"></script>
+	<script src="/js/main.js?v=<%= js_version %>"></script>
 </body>
 </html>
