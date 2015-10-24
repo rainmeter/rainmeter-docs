@@ -95,7 +95,7 @@ function toggleClass(elem, className) {
 		var a = document.createElement('a');
 		a.innerHTML = 'Select all';
 
-		var pre = div.firstChild;
+		var pre = div.getElementsByTagName('pre')[0];
 		var scrollWidth = pre.offsetWidth - pre.clientWidth - 2;
 		a.style.right = scrollWidth + 'px';
 
