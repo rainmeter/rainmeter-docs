@@ -81,7 +81,7 @@ A variant of the UTF-8 standard with a <a href="http://en.wikipedia.org/wiki/Byt
 
 <p>The Lua programming language is an older language, and is designed to be very platform independent. The result is that the native string libraries in Lua are written in such a way that the handling of multi-byte Unicode characters is imperfect. Without getting too far under the covers, the language internally always handles strings as 8-bit single-byte characters. What this means is that certain string functions that use hard-coded character positions (i.e. "return the 4th character from the string") can have incorrect results with multi-byte Unicode character strings.</p>
 
-<p>This will normally not be an issue, as that kind of syntax is going to be very rare in the context of Lua with Rainmeter, but it is worth understanding the implications described at the end of <a href="http://forum.rainmeter.net/viewtopic.php?p=90816#p90816">this post</a>.</p>
+<p>This will normally not be an issue, as that kind of syntax is going to be very rare in the context of Lua with Rainmeter, but it is worth understanding the implications described at the end of <a href="//forum.rainmeter.net/viewtopic.php?p=90816#p90816">this post</a>.</p>
 
 <h3>Reading and writing external Unicode files in Lua</h3>
 
