@@ -7,7 +7,7 @@ language:
 timezone:
 
 # URL
-url: 'http://docs.rainmeter.net'
+url: 'https://docs.rainmeter.net'
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
