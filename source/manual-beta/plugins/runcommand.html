@@ -1,0 +1,206 @@
+---
+layout: manual-beta
+permalink: manual-beta/plugins/runcommand/
+title: 'RunCommand plugin'
+---
+<p><code>Plugin=RunCommand</code></p>
+
+<p>Executes an external command or program in Windows, allowing the skin to obtain and use any output from the program.</p>
+
+<p>There are several important differences between this and just executing a command with something like:</p>
+<p><code>LeftMouseUpAction=["SomePath\SomeProgram.exe" "SomeParameters"]</code></p>
+
+<ul>
+<li>The command can be run with a <em>hidden</em> initial state, to eliminate the cmd.exe (DOS) Command Prompt window that is created when an external command-line command or program is executed normally from Rainmeter.</li>
+<li>Any output of the command to STDOUT (the "Standard Out" string output of a program in a cmd.exe Command Prompt window) can be captured, either directly, as the the value of the plugin measure, or piped to a text file for additional processing as needed.</li>
+<li>The plugin can detect that a command is "finished", and your skin can in effect wait for the command to be done before taking some action and using any returned value.</li>
+<li>The plugin can detect that a command caused a set of "error" return codes, and the skin can take some action based on success or failure of the command and the type of error.</li>
+<li>The plugin can be set with a "timeout" value, which will automatically end the external command or program when the timeout value is reached.</li>
+</ul>
+
+<p><b>Overview</b></p>
+
+<p>What the plugin does when triggered with <code>[!CommandMeasure MeasureName "Run"]</code> is to execute what is defined in the measure's <code>Program</code> option, appending any program parameters defined in the <code>Parameter</code> option.</p>
+
+<p>In most cases, the purpose of the plugin is to execute a Command Line Interface (CLI) program that takes some action or returns some value. Command-line programs by their nature always run in a cmd.exe Command Prompt window.</p>
+
+<p>The plugin will monitor the program defined in the <code>Program</code> option, and when it ends, when the executable terminates, any string output the program did to STDOUT (Standard Out) will be captured and set as the string value of the plugin measure.</p>
+
+<p><b>The string value of the measure</b></p>
+
+<p>The string value of the measure will be any output that the program writes to STDOUT. In effect, what you would see if you manually ran the command in a cmd.exe Command Prompt window will become the string value of the measure.</p>
+
+<p><b>The number value of the measure</b></p>
+
+<p>The number value of the measure will indicate if the command finished with or without any errors. You can get the number value of the measure by using <a href="!variables/section-variables/#MeasureParameters">Section Variables</a> (e.g. [MeasureName:]). Before the command has first run, the number value of the measure will be -1. While the command is running, the number value of the measure will be 0. If an error occurs, the number value of the measure will indicate the type of error that has occurred. If the program finishes without error, the number value of the measure will be 1, meaning "success". These can be used to take different skin actions depending on the numeric return value.</p>
+
+<h2>Options</h2>
+<dl>
+
+	<dt>General measure options</dt>
+	<dd>
+		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
+	</dd>
+	
+	<dt id="Program"><code>Program</code> <small>Default: <code>%ComSpec% \U \C</code></small></dt>
+	<dd>
+		<p>The program to run. If not specified, the default value is the %ComSpec% environment variable (normally cmd.exe) with the parameters "\U" for Unicode pipe output and "\C" to close the Command Prompt window and exit the cmd.exe shell when finished.</p>
+		
+		<p>Generally it is best to leave this undefined and use the <code>Parameter</code> option to define the command and parameters to be executed. Command-line program will simply cause Windows to first execute cmd.exe anyway, to create the Command Prompt environment the program must run in. <em>Basic "DOS" commands like "dir" or "copy" don't have any .exe "program" to run in any case, and are simply internal functions of cmd.exe.</em></p>		
+		
+		<p>Information on <a href="https://en.wikipedia.org/wiki/Cmd.exe">cmd.exe</a>.</p>
+	</dd>
+	
+	<dt id="Parameter"><code>Parameter</code> <small>Default: <code>None</code></small></dt>
+	<dd>
+		<p>Command-line parameters. If no <code>Program</code> is specified, this option represents the entire command-line, which will be executed in the context of the default cmd.exe Command Prompt window as described above.</p>
+		
+		<p><b>Note:</b> Care should be taken to properly "quote" commands with a path or parameters having spaces in values.</p> 
+		
+		<p><b>Example:</b> <code>Parameter=wmic os get lastbootuptime</code>.</p>
+	</dd>
+	
+	<dt id="State"><code>State</code> <small>Default: <code>Hide</code></small></dt>
+	<dd>
+		<p>Initial "visible state" of the program.</p>
+		<ul>
+		<li>Hide (default)<br>
+		 Attempts to hide the program's window from being visible. This option is not recommended for GUI programs and/or programs that expect any form of input.</li>
+		<li>Show<br>
+		Shows the program's normal window.</li>
+		<li>Minimized<br>
+		 Attempts to start the program minimized.</li>
+		<li>Maximized<br>
+		 Attempts to start the program maximized.</li>
+		</ul>
+		
+		<p><b>Notes:</b> If <code>State=Hide</code>, the plugin will automatically "kill" any program it executed, when either the skin is refreshed or unloaded, or Rainmeter is exited.</p>
+
+		<p>A few programs with a windowed GUI user-interface (for instance Calc.exe) explicitly show themselves and will not respond to initial state requests like Hidden or Minimized. This will be a rare problem, as normally there is no useful reason to use this plugin to execute GUI programs from the command line. They will likely take no desirable independent action, and will have no STDOUT "output" in any case.</p>
+	</dd>
+
+	<dt id="FinishAction"><code>FinishAction</code> <small>Default: <code>None</code></small></dt>
+	<dd>
+		<p><a href="!bangs/">Bangs</a> or other <a href="!skins/option-types/#Action">actions</a> that are executed when the program has finished / exited.</p>
+	</dd>
+	
+	<dt id="OutputFile"><code>OutputFile</code> <small>Default: <code>None</code></small></dt>
+	<dd>
+		<p>Optional path and file name where the STDOUT output will be saved. The file's encoding is controlled by the <code>OutputType</code> option. The default path will be the skin folder.</p>
+	</dd>
+	
+	<dt id="OutputType"><code>OutputType</code> <small>Default: <code>UTF-16</code></small></dt>
+	<dd>
+		<p>Type of output to be <em>expected</em> from the program. Any <code>OutputFile</code> will also be encode with these values.</p>
+
+		<ul>
+		<li>UTF-16 (default)</li>
+		<li>UTF-8</li>
+		<li>ANSI</li>
+		</ul>
+		
+		<p><b>Note:</b> Although by default cmd.exe will be executed with the \U (UTF-16 Unicode) parameter, that does not mean that any program executed in the Command Prompt window will necessarily produce output in UTF-16. While most internal Windows commands like "dir" will produce UTF-16 output, a great many command-line programs will produce ANSI output. If you get gibberish characters returned by the measure, setting <code>OutputType=ANSI</code> will often correct the issue.</p> 
+	</dd>
+
+	<dt id="StartInFolder"><code>StartInFolder</code> <small>Default: <code>Skin folder</code></small></dt>
+	<dd>
+		<p>Optional path which will be used as the "Start in" folder for the executed program. The default path will be the skin folder.</p>
+	</dd>
+	
+	<dt id="Timeout"><code>Timeout</code> <small>Default: <code>-1</code></small></dt>
+	<dd>
+		<p>Timeout value in milliseconds. If positive, RunCommand will either "Close" the program if the <code>State</code> is other than <code>Hide</code> or "Kill" the program if the <code>State</code> is <code>Hide</code>. The default is -1, which means no timeout. Any <code>FinishAction</code> will run even if the program does not actually terminate (e.g. if closing "Notepad" and clicking "Cancel" when asked to save the document). It should be noted that this value is independent of any <code>Update</code> or <code>UpdateDivider</code> values in the skin.</p>
+	</dd>
+	
+</dl>
+
+<p><b>Note:</b> Because Rainmeter strips any quotes from the start and end of an option if both exist, it is important to double double-quote the Program and Parameter options If the overall command or parameter requires both starting and ending quotes.</p>
+<p><b>Example:</b> Program=""C:\Program Files\Some Program\Something with a space.exe""</p>
+
+<h2 id="PluginCommands">Plugin Commands</h2>
+<dl>
+
+	<dt id="Run"><code>Run</code></dt>
+	<dd>
+		<p>Runs the program. <b>The plugin will take no action unless triggered with this command.</b></p>
+		<p><b>Example:</b> <code>LeftMouseUpAction=[!CommandMeasure MeasureName "Run"]</code></p>
+	</dd>
+	
+	<dt id="Close"><code>Close</code></dt>
+	<dd>
+		<p>Sends a normal "close" message to the program.</p>
+		<p>The program may produce an "are you sure?" prompt before closing. Some programs can cancel the closing of the program, in which case the plugin will continue to gather any output.</p>
+		<p><b>Example:</b> <code>LeftMouseUpAction=[!CommandMeasure MeasureName "Close"]</code></p>
+	</dd>
+
+	<dt id="Kill"><code>Kill</code></dt>
+	<dd>
+		<p>Terminates the program without notice. This should generally be used when ending a program that was run with <code>State=Hide</code>.</p>
+		<p><b>Example:</b> <code>LeftMouseUpAction=[!CommandMeasure MeasureName "Kill"]</code></p>
+	</dd>
+
+</dl>
+
+<h2 id="ErrorCodes">Error codes</h2>
+
+<p>Here is a list of possible error codes returned by the plugin:<p>
+<ul>
+<li><b>100</b> Unknown command. This happens when an invalid !CommandMeasure command was sent to the plugin.</li>
+<li><b>101</b> Program still running. This happens when trying to Run the program again before it has finished running.</li>
+<li><b>102</b> Program not running. This happens when trying to Close or Kill a program that is not running.</li>
+<li><b>103</b> Cannot start program. This happens when the Program option is invalid. Usually a wrong path or typo in the Program option is the cause. Note that cmd.exe may start perfectly well but be unable to execute a command or program passed as a Parameter option. That will not trigger this error code.</li>
+<li><b>104</b> Cannot save file. This happens when there is an error saving the file. This could happen if writing to a locked location or file. The string value of the plugin will still contain any output of the program.</li>
+<li><b>105</b> Cannot terminate process. There was an error when attempting to close or kill the program. This should rarely happen. If so, it might be necessary to open the Windows Task Manager and manually close the program.</li>
+<li><b>106</b> Cannot create pipe. This happens when the plugin cannot create a pipe to the program trying to run. The program will not run if this error happens. This error should rarely happen.</li>
+</ul>
+
+<p><b>Note:</b> These error codes are produced by the plugin, and have nothing to do with any error encountered by the executed program itself. Errors from the program will generally be displayed in the STDOUT output, and can be tested for and reacted to there.</p>
+
+<h2>Example</h2>
+
+``` ini
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+
+[MeasureRun]
+Measure=Plugin
+Plugin=RunCommand
+Parameter=wmic cpu get Name
+State=Hide
+OutputType=ANSI
+OutputFile=#CURRENTPATH#CPUName.txt
+RegExpSubstitute=1
+Substitute="Name.*#CRLF#":"","#CRLF#":""
+
+[MeterRun]
+Meter=String
+FontSize=11
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=Click to Run
+LeftMouseUpAction=[!CommandMeasure MeasureRun "Run"]
+
+[MeterResult]
+Meter=String
+MeasureName=MeasureRun
+Y=10R
+FontSize=14
+FontColor=255,255,255,255
+AntiAlias=1
+```
+<p>This example will run the program wmic.exe, which is in the Windows %PATH% and thus needs no path on the command itself.</p>
+<p>The wmic.exe program will use the parameters of "cpu get Name". The program will be run in a "hidden" cmd.exe Command Prompt window, and nothing visible will happen.</p>
+<p>In effect this is really executing <code>"C:\Windows\cmd.exe \U \C" "wmic cpu get Name"</code>.</p>
+<p>The output of the wmic.exe program (the "name" of your CPU in this case) will be written to STDOUT in the hidden cmd.exe Command Prompt window, which will be captured by the plugin and set as the string value of the [MeasureRun] measure.</p>
+<p><em>The Substitute option is being used to strip off some extra label information and linefeeds that are output by the program.</em></p>
+<p>Additionally, the file defined in OutputFile will contain the entire output of the wmic command, which in this example might be:</p>
+
+``` txt
+Name                                 
+Intel Core i7 920 @ 3.20GHz  
+```
+<p>Additional parsing of this file could be done with the WebParser plugin or String measures if you wanted for instance to obtain multiple separate values from the single command output.</p>

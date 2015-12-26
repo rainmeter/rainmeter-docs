@@ -1,0 +1,211 @@
+---
+layout: manual-beta
+permalink: manual-beta/plugins/actiontimer/
+title: 'ActionTimer plugin'
+---
+<p><code>Plugin=ActionTimer</code></p>
+
+<p>Executes a series of Rainmeter actions independent of the normal skin Update cycle. This can allow the series of actions to be executed faster (or slower) than the rate defined in Update in [Rainmeter] and can be executed as fast as 1 millisecond apart. 
+</p>
+
+<h2 id="OverView">Overview</h2>
+
+<p>To understand the purpose of ActionTimer, it helps to have some understanding of how Rainmeter runs a skin. On each skin <a href="!skins/rainmeter-section/#Update">Update</a>, the value set in the [Rainmeter] section of the skin, Rainmeter does the following:</p>
+
+<ul>
+<li>Update all measures</li>
+<li>Execute measure actions</li>
+<li>Update all meters</li>
+<li>Redraw the skin</li>
+</ul>
+
+<p>Update has a lower limit of 16, or once every 16 milliseconds. This means that any series of separate actions can only execute every 16 milliseconds. In addition, setting a very low Update rate in [Rainmeter] can cause the entire skin to use a lot of CPU resources, when you may only need it to be "fast" for a specific purpose, perhaps some animation or transition effect. Finally, any series of actions you take in the context of the Update cycle are "blocking", in the sense that Rainmeter must complete them before it is able to continue with other normal skin processing.</p>
+
+<p>While you can "stack up" actions in a single action option:</p>
+
+<p><code>IfTrueAction=[!SetOption SomeMeter X "5"][!SetOption SomeMeter X "10"]</code></p>
+
+<p>Rainmeter will run both of the actions in the same Update cycle, before it updates the meters and redraws the skin, and so in effect they both visibly happen "at once". The meter won't visibly move to "5" and then "10", but will just jump straight to "10". The only current solution is to have the two actions take place in two Update cycles, and thus the fastest the series can ever execute is every 16 milliseconds.</p>
+
+<p>Now 16 milliseconds seems pretty fast, and it is. However, if you have some animation with 100 "frames" or want to do some "transition" of a meter; fading the opacity, shifting the color or sliding the position, it is in fact visibly quite slow.</p>
+
+<p>Don't forget as well, that that 16 millisecond lower limit is the time Rainmeter will have to do everything in the skin. Update all measures, take all actions, update all meters, and redraw the skin. In reality, even a moderately complicated skin isn't really going to update every 16 milliseconds in any case, it will at best "try to".</p>
+
+<p>What ActionTimer does is execute the list of actions defined in ActionList<em>N</em>, one after the other, in a separate thread outside the normal Update cycle, as fast as it possibly can. This is REALLY fast. The <em>Wait N</em> values that you put in between each action in the list is what stops them from appearing to just happen all at once, and allows you to completely control the speed of the series of actions. <em>Wait</em> can be any number, from 1 (one millisecond) to whatever you need.</p>
+
+<p>Since the actions in ActionList<em>N</em> are executed in a separate thread from the main Rainmeter process, the skin will carry on updating normally, while the ActionTimer plugin will control the actions in the list.</p>
+
+<h2 id="ImportantNote">Important Note</h2>
+
+<p>While ActionTimer is very CPU efficient, it is not "free". The actions are executed by the plugin in a separate thread from the rest of the Rainmeter skin, allowing the skin to continue to process normally while the plugin actions are executing, with the plugin communicating with the skin via window "messages" to the Rainmeter message queue. This allows the plugin to instruct the skin to "do this now", much as a MouseOverAction is recognized and acted upon immediately.</p>
+
+<p>Some care must be taken however, not to overwhelm the message queue. Things done with ActionTimer in general should be short targeted actions, like a meter transition or short animation. Ensure that there is at least some "wait" time between actions, so Rainmeter has time to handle other messages in the message queue. In addition, keep in mind that <code>!Redraw</code> actions can be relatively CPU expensive, particularly if a lot of image resizing is involved.</p> 
+
+<p>ActionTimer does not support, and should not be used, to do anything "endless" or otherwise of a very long duration combined with a very rapid update. If the Rainmeter message queue becomes overwhelmed, the skin can get laggy and unresponsive to mouse actions you might take.</p>
+
+<h2>Options</h2>
+<dl>
+
+	<dt>General measure options</dt>
+	<dd>
+		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
+	</dd>
+	
+	<dt id="ActionList"><code>ActionList1, ActionList2 .. ActionList<em>N</em></code></dt>
+	<dd>
+		<p>A numbered option, starting with ActionList1.</p>
+		
+		<p>Each ActionList<em>N</em> will execute one or more <code>Actions</code> separated by the pipe <code>|</code> character. In addition there are two list commands, Repeat and Wait, that can be used in the ActionList. In a sense, this option is a "script" of what you want the plugin to do when the ActionList is triggered. In its most simple expression, it is</p>
+		
+		<p><code>ActionList1=<em>Do this</em> | <em>Wait this long</em> | <em>Do that</em></code></p>
+		
+		<p><b>ActionList components</b></p>
+		<ul>
+		<li><em>Action name</em><br>
+		The plugin will execute what is defined in the named <em>Action</em> option. The action name can be anything. This is simply the name of the <em>Action</em> option, and should never be actual bangs or commands itself. The actual skin bangs or commands to be executed are defined in the <a href="#Action">Action</a> option.</li>
+		<li><b>Repeat</b> <em>Action name</em>, <em>Wait time number</em>, <em>Repeat count number</em><br>
+		This will repeat the named <em>Action</em> option <em>Repeat count</em> times, with a wait of <em>Wait time</em> milliseconds between each. Note that <em>Wait time</em> is not applied after the last execution of <em>Action name</em>, only between each.</li>
+		<li><b>Wait</b> <em>number of milliseconds</em><br>
+		This is used to create a pause or wait in milliseconds between each named <em>Action</em> or other component in the ActionList. There should always be a Wait of at least 1 millisecond between each ActionList component.</li>
+		<li>The pipe <code><b>|</b></code> character is used to separate each of the ActionList components.</li>
+		</ul>
+		
+		<p><b>Examples:</b></p>
+		<p><code>ActionList1=FirstAction | Wait 5 | SecondAction</code><br>
+		Execute everything defined in the <em>FirstAction</em> option, wait 5 milliseconds, and execute everything defined in the <em>SecondAction</em> option.</p>
+		<p><code>ActionList1=Repeat FirstAction, 5, 20 | Wait 5 | SecondAction</code><br>
+		Execute everything defined in the <em>FirstAction</em> option 20 times, with a wait of 5 milliseconds between each execution of <em>FirstAction</em>. Wait 5 milliseconds, and execute everything defined in the <em>SecondAction</em> option.</p>
+	</dd>
+	
+	<dt id="Action"><code><em>Action</em></code> <small><code>Any unique name=[!bang or command]</code></small></dt>
+	<dd>
+		<p>These can be any unique name, in any order. They will contain the skin bangs or other actions that will be executed by the plugin when the named action is called by an <a href="#ActionList">ActionList</a>.</p>
+		
+		<p>They are defined and executed exactly the same as any other <a href="!skins/option-types/#Action">Action option</a> in Rainmeter, for instance <code>LeftMouseUpAction</code> or <code>OnChangeAction</code>.</p>
+		
+		<p><b>Examples:</b></p>
+
+```txt
+[MeasureChangeFont]
+Measure=Plugin
+Plugin=ActionTimer
+ActionList1=SetFontSmall | Wait 1000 | SetFontBig
+SetFontSmall=[!SetOption SomeMeter FontSize "10"][!UpdateMeter SomeMeter][!Redraw]
+SetFontBig=[!SetOption SomeMeter FontSize "15"][!UpdateMeter SomeMeter][!Redraw]
+```
+	<p><b>Notes:</b></p>
+	<ul>
+	<li>Since the actions are being done independent of the <code>Update</code> cycle of the skin, you must explicitly do any <code>!UpdateMeter</code> and <code>!Redraw</code> commands needed to have the skin actually reflect any changes to meters made in the action.</li>
+	<li>If you are using <code>!SetVariable</code> to change and use any dynamic #Variables# in the action, you will need to <code>!UpdateMeasure</code> the plugin measure between each execution of the action option, to ensure the measure has the most current value for the #Variable#.</li>
+	</ul>
+	<p>This can be simplified by setting and using a #Variable# that will take the appropriate update actions, and then just execute that #Variable# at the end of each action option.</p>
+
+``` txt
+[Variables]
+U=[!UpdateMeasure MeasureChangeFont][!UpdateMeter *][!Redraw]
+
+[MeasureChangeFont]
+Measure=Plugin
+Plugin=ActionTimer
+ActionList1=SetFontSmall | Wait 1000 | SetFontBig
+SetFontSmall=[!SetOption SomeMeter FontSize "10"]#U#
+SetFontBig=[!SetOption SomeMeter FontSize "15"]#U#
+```
+	
+	</dd>
+
+	<dt id="IgnoreWarnings"><code>IgnoreWarnings</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>Any ActionList<em>N</em> must completely finish all actions in the list before it can be executed again. Any command to execute the list while it is still performing actions will be ignored, and a warning message will be generated in the log. There may be occasions where this is in fact desired behavior, and the log error messages can be suppressed.<p>
+
+		<ul>
+		<li><b>0</b> - Warnings in the log are produced. (default)</li>
+		<li><b>1</b> - Warnings in the log are suppressed.</li>
+		</ul>
+	</dd>
+</dl>
+
+<h2 id="PluginCommands">Plugin Commands</h2>
+<p><b>The plugin will take no action unless triggered with one of these commands.</b></p>
+
+<dl>
+
+	<dt id="Execute"><code>Execute <em>ActionList number</em></code></dt>
+	<dd>
+		<p>Execute the correspondingly numbered <code>ActionList<em>N</em></code>.</p>
+		<p><b>Example:</b></p>
+		<p><code>LeftMouseUpAction=[!CommandMeasure MeasureName "Execute 1"]</code></p>
+	</dd>
+	
+	<dt id="Stop"><code>Stop <em>ActionList number</em></code></dt>
+	<dd>
+		<p>Stop the correspondingly numbered <code>ActionList<em>N</em></code>.</p>
+		<p>As noted above, Any ActionList<em>N</em> must completely finish all actions in the list before it can be executed again. Any command to execute the list while it is still performing actions will be ignored, and a warning message will be generated in the log.</p> 
+
+		<p>The <code>Stop <em>N</em></code> command will immediately terminate and reset the corresponding running ActionList<em>N</em>, so it may be executed again.
+
+		<p><b>Example:</b></p>
+		<p><code>LeftMouseUpAction=[!CommandMeasure SomeMeasure "Stop 1"][!CommandMeasure SomeMeasure "Execute 1"]</code></p>
+	</dd>
+</dl>
+
+<h2>Example</h2>
+
+``` txt
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+
+[Variables]
+W=15
+U=[!UpdateMeasureGroup Sizers][!UpdateMeter MeterText][!Redraw]
+Size=8
+
+[MeasureSizeUp]
+Measure=Plugin
+Plugin=ActionTimer
+Group=Sizers
+ActionList1=ChangeSizeStart|Wait #W#|Repeat ChangeSizeCalc,#W#,11
+ChangeSizeStart=[!SetVariable Size "#Size#"]#U#
+ChangeSizeCalc=[!SetVariable Size "(Clamp(#Size#+5,8,60))"]#U#
+IfCondition=#Size# = 8
+IfTrueAction=[!SetOption MeterText Text "small"]#U#
+IfCondition2=(#Size# > 8) && (#Size# < 60)
+IfTrueAction2=[!SetOption MeterText Text "Changing"]#U#
+IfCondition3=#Size# = 60
+IfTrueAction3=[!SetOption MeterText Text "BIG"]#U#
+DynamicVariables=1
+
+[MeasureSizeDown]
+Measure=Plugin
+Plugin=ActionTimer
+Group=Sizers
+ActionList1=ChangeSizeStart|Wait #W#|Repeat ChangeSizeCalc,#W#,11
+ChangeSizeStart=[!SetVariable Size "#Size#"]#U#
+ChangeSizeCalc=[!SetVariable Size "(Clamp(#Size#-5,8,60))"]#U#
+IfCondition=#Size# = 8
+IfTrueAction=[!SetOption MeterText Text "small"]#U#
+IfCondition2=(#Size# > 8) && (#Size# < 60)
+IfTrueAction2=[!SetOption MeterText Text "Changing"]#U#
+IfCondition3=#Size# = 60
+IfTrueAction3=[!SetOption MeterText Text "BIG"]#U#
+DynamicVariables=1
+
+[MeterText]
+Meter=String
+W=400
+H=90
+X=200
+Y=45
+StringAlign=CenterCenter
+FontSize=#Size#
+FontColor=255,255,255,255
+SolidColor=0,0,0,1
+AntiAlias=1
+Text=Small
+UpdateDivider=-1
+DynamicVariables=1
+MouseOverAction=[!CommandMeasure MeasureSizeDown "Stop 1"][!CommandMeasure MeasureSizeUp "Execute 1"]
+MouseLeaveAction=[!CommandMeasure MeasureSizeUp "Stop 1"][!CommandMeasure MeasureSizeDown "Execute 1"]
+```
