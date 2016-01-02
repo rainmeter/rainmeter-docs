@@ -108,9 +108,10 @@ Text=This is text containing %1 and %2.
 		<ul>
 		<li><code>0</code>: Disabled. The string will not be clipped or wrapped. (default)</li>
 		<li><code>1</code>: Enabled. The string will be clipped with an added ellipsis <code>...</code> when it exceeds the specified <code>W</code> (<a href="!meters/general-options/#WH">width</a>) option on the meter. If the <code>H</code> (<a href="!meters/general-options/#WH">height</a>) option is large enough to allow multiple lines, the text is wrapped until the value of <code>H</code> is reached, then clipped.</li>
-		<li><code>2</code>: Auto. The string will be clipped or wrapped based on the value of <code>W</code> and/or <code>H</code>. If the width or height are not specified, the meter itself will change size to accommodate the string. This setting works in conjunction with the <a href="#ClipStringW">ClipStringW</a> and <a href="#ClipStringH">ClipStringH</a> options below, to set a "maximum" size that the meter should expand to accomodate the string before clipping.
+		<li><code>2</code>: Auto. The string will be clipped or wrapped based on the value of <code>W</code> and/or <code>H</code>. If the width or height are not specified, the meter itself will change size to accommodate the string. This setting works in conjunction with the <a href="#ClipStringW">ClipStringW</a> and <a href="#ClipStringH">ClipStringH</a> options below, to set a "maximum" size that the meter should expand to accommodate the string before clipping.
 		</ul>
 		<p><b>Notes: </b>The changing size of meters when <code>ClipString=2</code> can cause truncation issues with the overall window size of the skin, unless <a href="!skins/rainmeter-section/#DynamicWindowSize">DynamicWindowSize=1</a> is set in the [Rainmeter] section of the skin.</p>
+		<p><code>ClipString=2</code> will always wrap on word boundaries (spaces or tabs). Any single word that is longer than the defined or maximum width will clip that line, rather than breaking the word in two.</p>
 		<p>When <code>ClipString=2</code> is used with bound measures that have an initial value of "", (WebParser and QuotePlugin for example) <a href="!meters/general-options/#DynamicVariables">DynamicVariables=1</a> must be set on the meter.</p>
 	</dd>
 

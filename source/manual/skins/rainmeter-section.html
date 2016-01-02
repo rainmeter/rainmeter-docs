@@ -40,6 +40,11 @@ title: '[Rainmeter] section'
 	<dd>
 		<p>If set to <code>1</code>, the window size is adjusted on each update to fit the meters.</p>
 	</dd>
+	
+	<dt id="SkinWidthHeight"><code>SkinWidth</code>, <code>SkinHeight</code> <small>Default: <em>None</em></small></dt>
+	<dd>
+		<p>Either or both may be set. This will constrain the skin to the dimensions defined, either the width, the height, or both. Any meter or part of a meter positioned outside the defined boundaries will be truncated. DynamicWindowSize will be ignored for the defined dimension(s), and meters that would normally display even "outside" the skin will be truncated by the "fixed" skin dimension(s).</p>
+	</dd>
 
 	<dt id="DragMargins"><code>DragMargins</code> <small>Default: <code>0,0,0,0</code></small></dt>
 	<dd>
@@ -157,7 +162,7 @@ title: '[Rainmeter] section'
 <dl>
 	<dt id="ContextTitle"><code>ContextTitle</code>, <code>ContextTitle2</code>, <code>ContextTitle3</code>... </dt>
 	<dd>
-		<p>If not blank, adds an item to the skin's <a href="!user-interface/context-menus/">context menu</a> under "Custom skin actions". Up to 15 <em>ContextTitleN</em> options are allowed, with up to 30 characters per option. Additional characters are truncated with an ellipsis (<code>...</code>). If more than 3 <em>ContextTitleN</em> options are given, "Custom skin actions" becomes a submenu. If a <em>ContextTitleN</em> option is not valid, all subsequent <em>ContextTitleN</em> options are ignored. In addition, if more than 3 options are given, and the value of <em>ContextTitleN</em> includes only dashes (<code>-</code>), the item is displayed as a separator.</p>
+		<p>If not blank, adds an item to the skin's <a href="!user-interface/context-menus/">context menu</a> under "Custom skin actions". Up to 25 <em>ContextTitleN</em> options are allowed, with up to 30 characters per option. Additional characters are truncated with an ellipsis (<code>...</code>). If more than 3 <em>ContextTitleN</em> options are given, "Custom skin actions" becomes a submenu. If a <em>ContextTitleN</em> option is not valid, all subsequent <em>ContextTitleN</em> options are ignored. In addition, if more than 3 options are given, and the value of <em>ContextTitleN</em> includes only dashes (<code>-</code>), the item is displayed as a separator.</p>
 
 		<p><b>Note:</b> Variables in <code>ContextTitleN</code> are always <a href="!variables/#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened.</p>
 	</dd>

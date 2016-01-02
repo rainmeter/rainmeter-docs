@@ -5,7 +5,7 @@ title: 'Net measures'
 ---
 <p><code>Measure=NetIn</code> measures incoming (download) network traffic.<br>
 	<code>Measure=NetOut</code> measures outgoing (upload) network traffic.<br>
-	<code>Measure=NetTotal</code> measures total network traffic.</p>
+	<code>Measure=NetTotal</code> measures both incoming and outgoing network traffic.</p>
 
 <p>The bandwidth is measured in bytes.</p>
 
@@ -17,14 +17,31 @@ title: 'Net measures'
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		All <a href="!measures/general-options/">general measure options</a> are valid.
+		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
 
 	<dt id="Interface"><code>Interface</code> <small>Default: <code>0</code></small></dt>
-	<dd>Index of the network interface controller (NIC) to measure. If set to <code>0</code>, all interfaces are measured.</dd>
+	<dd>
+		<p>Identity of the network interface controller (NIC) to measure.<p>
+		<p>This can be defined in one of several ways:
+		<ul>
+			<li>The string value <code>Best</code>, which will automatically detect the active interface.</li>
+			<li>The name of the network interface controller. For example, <code>Qualcomm AR938x Wireless Network Adapter</code>.</li>
+			<li>The index number of the network interface controller. If set to <code>0</code>, (default) all interfaces are measured.</li>
+		</ul></p>
+		<p>Example: <code>Interface=Best</code></p>
+		
+		<p><b>Notes:</b></p>
+		<p>When the option is set to <code>Best</code>, the function will select a "wired" network connection in preference to a "wireless" one, if both are active.</p>
+		<p>When the option is set to <code>Best</code>, <code>DynamicVariables=1</code> must be set on the measure if you want it to automatically react to changes in the active interface. This should be done if for instance you have a laptop or other computer that you switch between wired and wireless connections.</p>
+	</dd>
 
 	<dt id="Cumulative"><code>Cumulative</code> <small>Default: <code>0</code></small></dt>
-	<dd>If set to <code>1</code>, measures the cumulative network traffic. This can be used to measure the total consumed bandwidth during certain interval.</dd>
+	<dd>
+		<p>If set to <code>1</code>, measures the cumulative network traffic. This can be used to measure the cumulative NetIn, NetOut or NetTotal traffic through a NIC during a certain interval.</p>
+		
+		<p><b>Note:</b> The network traffic cumulative statistics are persistent and stored when Rainmeter is exited. They can be reset by either using the "Reset statistics" button in the "Settings" tab of the <a href="!user-interface/manage/#General">Manage</a> interface, or by using the <a href="!bangs/#ResetStats">!ResetStats</a> bang in a skin.</p> 
+	</dd>
 
 </dl>
 
@@ -32,12 +49,12 @@ title: 'Net measures'
 <dl>
 	<dt id="NetInSpeed"><code>NetInSpeed</code> <small>Number of Bytes per second</small></dt>
 	<dd>
-		This option replicates the behavior of setting <a href="!measures/general-options/#MaxValue">MaxValue</a> on the measure. There is no reason to prefer this over MaxValue.
+		<p>This option replicates the behavior of setting <a href="!measures/general-options/#MaxValue">MaxValue</a> on the measure. There is no reason to prefer this over MaxValue.</p>
 	</dd>
 
 	<dt id="NetOutSpeed"><code>NetOutSpeed</code> <small>Number of Bytes per second</small></dt>
 	<dd>
-		This option replicates the behavior of setting <a href="!measures/general-options/#MaxValue">MaxValue</a> on the measure. There is no reason to prefer this over MaxValue.
+		<p>This option replicates the behavior of setting <a href="!measures/general-options/#MaxValue">MaxValue</a> on the measure. There is no reason to prefer this over MaxValue.</p>
 	</dd>
 </dl>
 
