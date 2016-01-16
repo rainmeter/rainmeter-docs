@@ -3,104 +3,124 @@ layout: tips
 permalink: tips/animated-gif-files/
 title: 'Animated .GIF Files'
 ---
-<p><em>Tip by Kenz0 and JSMorley</em></p>
+<p><em>Tip by The Rainmeter Team</em></p>
 
 <p>Rainmeter will not display animated .gif files by just using a Meter=Image meter. It will treat the animated gif as just a regular .gif file and display only the first "frame" of the image.</p>
 
-<p>There are ways to use your animated .gif files in Rainmeter however. It requires using one of a couple of tools to do some conversions on your original image, and a couple of ways to display the result so it is animated and looks just like your original in all its glory.</p>
+<p>There are ways to use your animated .gif files in Rainmeter however. It requires using a tool to do some conversions on your original image, and a couple of ways to display the result so it is animated and looks just like your original in all its glory.</p>
 
 <p>Let's use this animated .gif image for our example:</p>
 <div class="exampleprev">
-<img src="/tips/img/animated-gif-files/Shark.gif"/>
+<img src="/tips/img/animated-gif-files/Loading.gif"/>
 </div>
 
-<h3>Method One: Using Individual Frame Images</h3>
-<p><em>Advantages: Simple easy to use conversion tool.<br>
-Disadvantages: More hard drive space, a bit more CPU usage.</em></p>
+<h3><b>Get ImageMagick</b></h3>
+<p>This is a free utility you can <a href="http://www.imagemagick.org/script/binary-releases.php" target="_blank">GET HERE</a><br>
+Download and install ImageMagick.<br>
+It will by default install to C:\Program Files\ImageMagick, and add itself to the Windows PATH.</p>
+
+<h3>Method One: Using individual frame images (preferred)</h3>
+<p><em>Advantages: You can define the size and other attributes of the image(s) when they are displayed.<br>
+This may include options to size with W and H, AntiAlias, Rotate, TransformationMatrix and others.<br>
+Disadvantages: A bit more hard drive space, and a bit more CPU usage.</em></p>
 <p>This method involves "deconstructing" your .gif image into separate .jpg or .png files, then displaying them one after the other in a way that creates an animation effect.</p>
-<p><b>Step 1: Get GifFrame.exe</b><p>
-<p>This is a free utility you can get <a href="http://www.softpedia.com/get/Multimedia/Graphic/Graphic-Others/Animated-Gif-Frame-Extractor.shtml" target="_blank">HERE</a><br>
-Use this utility to convert your .gif file to individual images. The images can be saved as .jpg or .png. Use .png to preserve transparency.</p>
-<p><b>Step 2: Create a skin like this to display the images one after the other to create an animation.</b></p>
+
+<p><b>Start a Command Prompt window.</b></p>
+<p><b>In the Command Prompt window, deconstruct your .gif file.</b><p>
+<p>Use the ImageMagick tool to extract the "frames" from the .gif image into separate image files. Any output image format can be used, but if your .gif has transparency, you will need to output to .png.</p>
+<p>The following is the format for the command line you will need:</p>
+<p><code>convert -coalesce "C:\PathToInput\InputName.gif" "C:\PathToOutput\OutputName.png"</code></p>
+<p>Or in this example, while in the folder with the file:</p>
+<p><code>convert -coalesce "Loading.gif" "Loading.png"</code></p>
+<p>This will create separate .png images for each of the "frames" in the .gif file in the current folder. The images in this example will be named <em>Loading-0.png</em>, <em>Loading-1.png</em> ... <em>Loading-7.png</em>. You can exit the Command Prompt window.</p>
+
+<p><b>Create a skin like this to display the images one after the other to display the animation:</b></p>
 
 <a href="/tips/examples/ExampleAnimatedGif.rmskin" class="download"></a>
 ``` ini
-;=================================================
-; Rainmeter configuration file
-; Updated October 4, 2012
-;
-; Note - You will need to get GifFrames.exe from:
-; http://www.evanolds.com/#GFE
-; Use this tool to convert your .gif to individual .jpg or .png images.
-;
-;=================================================
+; Note - You will need to get and install ImageMagick from:
+; http://www.imagemagick.org/script/binary-releases.php
+
+; Convert your .gif image to a "Bitmap" with the following in a cmd.exe command prompt window:
+; convert -coalesce "C:\PathToInput\InputName.gif" "C:\PathToOutput\OutputName.png"
 
 [Rainmeter]
 Update=100
 
 [Metadata]
 Name=GIFFrames
-Author=Jeffrey Morley
-Information=Displays a deconstructed .gif file (individual frames) as if it was a .gif file || Instructions: See .ini file for how to get and use GifFrames.exe
-Version=March 8, 2010
+Author=Rainmeter Team
+Information=Displays a deconstructed .gif file (individual frames) as if it was a .gif file || Instructions: See .ini file for how to get and use ImageMagick
+Version=Jan 16, 2016
 License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
 
 [ImageNumberCalc]
 Measure=Calc
-Formula=Counter % 12
+Formula=Counter % 8
 
 [ImageMeter]
 Meter=Image
-ImageName=#@#ImagesFrames\Frame[ImageNumberCalc].png
+ImageName=#@#ImagesFrames\Loading-[ImageNumberCalc].png
+AntiAlias=1
 DynamicVariables=1
+
 ```
 
-<h3>Method Two: Converting a .GIF to a Multiple Frame "Bitmap" Image</h3>
-<p><em>Advantages: Less hard drive space, a bit less CPU intensive<br>
-Disadvantages: Conversion tool is just a bit more complicated.</em></p>
-<p>This involves using a tool called <em>ImageMagick</em> to convert your .gif file into a "bitmap" with multiple frames, then using the Meter=BITMAP meter type in Rainmeter to display the frames in the single image as an animation. The bitmap will look like this:</p>
+<h3>Method Two: Converting a .gif to a multiple frame "Bitmap" image</h3>
+<p><em>Advantages: A bit less hard drive space, and a bit less CPU usage.<br>
+Disadvantages: You can <b>not</b> define the size and other attributes of the image(s) when they are displayed.<br>
+This may include options to size with W and H, AntiAlias, Rotate, TransformationMatrix and others.<br></p>
+<p>This method involves "converting" the frames of your .gif image into a single "bitmap" file, which is then displayed with a Bitmap Meter.</p>
+
+<p><b>Start a Command Prompt window.</b></p>
+<p><b>In the Command Prompt window, convert your .gif file to a bitmap.</b><p>
+<p>Use the ImageMagick tool to extract and combine the "frames" from the .gif image into the single image file. Any output image format can be used, but if your .gif has transparency, you will need to output to .png.</p>
+<p>The following is the format for the command line you will need:</p>
+<p><code>convert -coalesce -append "C:\PathToInput\InputName.gif" "C:\PathToOutput\OutputName.png"</code></p>
+<p>Or in this example, while in the folder with the file:</p>
+<p><code>convert -coalesce -append "Loading.gif" "Loading.png"</code></p>
+
+<p>This will create a sinlge <em>Loading.png</em> file like this:</p>
+
 <div class="exampleprev">
-<img src="/tips/img/animated-gif-files/SharkBitmap.png" class="lightbox">
+<img src="/tips/img/animated-gif-files/LoadingBitmap.png" class="lightbox">
 </div>
-<p><b>Step 1: Get ImageMagick</b><p>
-<p>This is a free utility you can get <a href="http://www.imagemagick.org/script/binary-releases.php?ImageMagick=ricm49nmhtgaut61n97h3fmt92#windows" target="_blank">HERE</a><br>
-You should probably get the latest "Portable" "Static" version on the list at the above site. This will allow you to just unzip the program and use it from the command line without any "installation".</p>
-<p>Use this utility to convert your .gif file to a multiple frame bitmap image. The image can be saved as .jpg or .png. Use .png to preserve transparency.</p>
-<p>Convert your .gif image to a "Bitmap" with the following in a cmd.exe command prompt window: <em>C:\PathToImageMagick\convert.exe +append C:\PathToGif\YourGif.gif C:\PathToDesiredOutput\YourBitmap.png</em></p>
-<p><b>Step 2: Create a skin like this to display the bitmap frames one after the other to create an animation.</b></p>
+
+<p><b>Create a skin like this to display the bitmap frames one after the other to display the animation:</b></p>
 
 <a href="/tips/examples/ExampleAnimatedGif.rmskin" class="download"></a>
 ``` ini
-;=================================================
-; Rainmeter configuration file
-; Updated October 4, 2012
-;
-; Note - You will need to get ImageMagick from:
-; http://www.imagemagick.org/script/binary-releases.php?ImageMagick=ricm49nmhtgaut61n97h3fmt92#windows
-; Get the last one on the list, the latest "Portable / Static" 16bit version.
+; Note - You will need to get and install ImageMagick from:
+; http://www.imagemagick.org/script/binary-releases.php
+
 ; Convert your .gif image to a "Bitmap" with the following in a cmd.exe command prompt window:
-; C:\PathToImageMagick\convert.exe +append C:\PathToGif\YourGif.gif C:\PathToDesiredOutput\YourBitmap.png
-;
-;=================================================
+; convert -coalesce +append "C:\PathToInput\InputName.gif" "C:\PathToOutput\OutputName.png"
 
 [Rainmeter]
 Update=100
 
 [Metadata]
 Name=GIFBitmap
-Author=kenz0
+Author=The Rainmeter Team
 Information=Displays a "Bitmap" made from a .gif file using ImageMagick to convert a .gif to a multi-frame bitmap image. || Instructions: See .ini file for how to get and use ImageMagick
-Version=March 8, 2010
+Version=Jan 16, 21016
 License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
 
 [MeasureAnimation]
-Measure=CALC
-Formula=Counter % 12
+Measure=Calc
+Formula=Counter % 8
 
 [MeterAnimation]
-Meter=BITMAP
+Meter=BitMap
 MeasureName=MeasureAnimation
-BitmapImage=#@#ImagesBitmap\shark_bitmap.png
-BitmapFrames=12
+BitmapImage=#@#ImagesBitmap\Loading.png
+BitmapFrames=8
 BitmapExtend=1
 ```
+
+<h3>Alternative tool for creating individual frame images</h3>
+
+<p>An alternative to ImageMagick for extracting a .gif to individual frame files is <b>GifFrame.exe</b><p>
+
+<p>This is a free utility you can <a href="http://www.softpedia.com/get/Multimedia/Graphic/Graphic-Others/Animated-Gif-Frame-Extractor.shtml" target="_blank">GET HERE</a><br>
+Use this utility to convert your .gif file to individual images. The images can be saved as .jpg or .png. Use .png to preserve transparency.</p>
