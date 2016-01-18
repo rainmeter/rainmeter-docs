@@ -76,9 +76,9 @@ This may include options to size with W and H, AntiAlias, Rotate, Transformation
 <p><b>In the Command Prompt window, convert your .gif file to a bitmap.</b><p>
 <p>Use the ImageMagick tool to extract and combine the "frames" from the .gif image into the single image file. Any output image format can be used, but if your .gif has transparency, you will need to output to .png.</p>
 <p>The following is the format for the command line you will need:</p>
-<p><code>convert -coalesce -append "C:\PathToInput\InputName.gif" "C:\PathToOutput\OutputName.png"</code></p>
+<p><code>convert -coalesce +append "C:\PathToInput\InputName.gif" "C:\PathToOutput\OutputName.png"</code></p>
 <p>Or in this example, while in the folder with the file:</p>
-<p><code>convert -coalesce -append "Loading.gif" "Loading.png"</code></p>
+<p><code>convert -coalesce +append "Loading.gif" "Loading.png"</code></p>
 
 <p>This will create a sinlge <em>Loading.png</em> file like this:</p>
 
