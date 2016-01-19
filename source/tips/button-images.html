@@ -13,9 +13,11 @@ ButtonImage=MyButton.png
 ButtonCommand=["SomeCommand"]
 ```
 
-<p>Buttons are a special kind of meter in Rainmeter, and require a special kind of image. Rainmeter, like Windows, wants a button to have three "states". "UP", "DOWN" and "OVER", or "When your mouse isn't on the button", "When you are clicking on the button" and "When you are hovering over the button".</p>
+<p>Buttons are a special kind of meter in Rainmeter, and require a special kind of image. Rainmeter, like Windows, wants a button to have three "states". "UP", "DOWN" and "OVER", or "When your mouse isn't on the button", "When you are clicking on the button" and "When you are hovering over the button". This is referred to as a "bitmap" image.</p>
 
-<p>Create the images in Photoshop, Gimp, Paint.NET, whatever you like. It's VERY helpful if the tool has the capability to create "layers" however.</p>
+<h3>Alternative 1 - Create the bitmap in your image editing software</h3>
+
+<p>Create the image in Photoshop, Gimp, Paint.NET, whatever you like. It's VERY helpful if the tool has the capability to create "layers" however.</p>
 
 <p>Create a new image with a transparent background which has the "HEIGHT" of the image you want for the button, and a "WIDTH" which is three times the width of the image. This is because Rainmeter will want to find three horizontal versions of the image in the file; one for "UP", one for "DOWN" and one for "OVER" - in that order.</p>
 <div class="exampleprev">
@@ -33,3 +35,43 @@ ButtonCommand=["SomeCommand"]
 <div class="exampleprev">
 <img src="/tips/img/button-images/ButtonExample.gif"/>
 </div>
+
+<h3>Alternative 2 - Create the image with three separate image files, and ImageMagick</h3>
+
+<p>It can be challenging to properly create the bitmap image in a tool like Photoshop or Gimp if you are not used to using them. The important thing is that the separate images be positioned in the overall image file in a way that when the image is divided into three equal pieces by Rainmeter, the different "state" images are positioned correctly so the image doesn't appear to "move" when you hover over it or click it. It can take some trial-and-error to get this right using layers in a tool like Photoshop.</p>
+
+<p>There is another approach that can take some of the guess-work out of this. What we want to do in this case is have three <em>separate</em> images, one for the "UP" state, one for the "DOWN" state, and one for the "OVER" state.</p>
+
+<p><b>The only requirement is that the three images be exactly the same size in width and height.</b></p>
+
+<p>So you might have three separate image files you downloaded from somewhere, or you might create a single image in your image editing software, and then save that file three times, after making whatever "transition effect" changes you want to reflect the "states". In either case, you want one image to indicate "UP", one for "DOWN" and one for "OVER".</p>
+
+<p>Let's assume we end up with <b>ComputerUp.png</b>, <b>ComputerDown.png</b> and <b>ComputerOver.png</b></p>
+<div class="exampleprev">
+<img src="/tips/img/button-images/SeparateImages.jpg"/>
+</div>
+
+<h3><b>Get ImageMagick</b></h3>
+<p>This is a free utility you can <a href="http://www.imagemagick.org/script/binary-releases.php" target="_blank">GET HERE</a><br>
+Download and install ImageMagick.<br>
+It will by default install to C:\Program Files\ImageMagick, and add itself to the Windows PATH.</p>
+
+<p><b>Start a Command Prompt window.</b></p>
+<p><b>In the Command Prompt window, combine your three files to a single bitmap.</b><p>
+<p>Use the ImageMagick tool to combine the three images into the single bitmap image file. Any output image format can be used, but if your three files have transparency, you will need to output to .png.</p>
+<p>The following is the format for the command line you will need:</p>
+<p><code>convert +append "C:\PathToInput\UpFile.png" "C:\PathToInput\DownFile.png" "C:\PathToInput\OverFile.png" "C:\PathToOutput\OutputName.png"</code></p>
+<p>Or in this example, while in the folder with the files:</p>
+<p><code>convert +append "ComputerUp.png" "ComputerDown.png" "ComputerOver.png" "ComputerButton.png"</code></p>
+
+<p>Be sure you combine them in the order <b>"UP"</b>, <b>"DOWN"</b>, <b>"OVER"</b>.</p>
+
+<p>This will create a single <em>ComputerButton.png</em> file exactly like our earlier example:</p>
+<div class="exampleprev">
+<img src="/tips/img/button-images/ButtonBitmap.png"/>
+</div>
+
+<p>Again, when you use the button in your code, Rainmeter chooses the 1/3 of the overall image to display depending on the state of the button.</p>
+
+
+
