@@ -7,6 +7,8 @@ title: '@Resources folder'
 
 <p>The @Resources folder must be created at the <a href="!skins/#Root">root config</a> level of the skin (e.g. <code>Skins\illustro\@Resources</code>) and the <code>#@#</code> <a href="!variables/built-in-variables/#@">built-in variable</a> can be used as a shortcut to specify it.</p>
 
+<p><b>Note:</b> The <code>#@#</code> <a href="!variables/built-in-variables/#@">built-in variable</a> should always be used to specify the location of the @Resources folder. Since @Resources must be at the <a href="!skins/#Root">root config</a> level of the skin, a relative path like <code>ImageName=@Resources\Images\MyImage.png</code> will assume that @Resources is in the same folder as the skin .ini file, and that can be wrong. Using <code>ImageName=#@#Images\MyImage.png</code> is much more reliable.</p>
+
 <h2 id="Fonts">Fonts</h2>
 <p>TrueType (.ttf) <a href="/tips/fonts-guide/">fonts</a> in the <code>@Resources\Fonts</code> folder are automatically loaded and can be used with the <a href="!meters/string/#FontFace">FontFace</a> option in <a href="!meters/string/">string</a> meters.</p>
 
