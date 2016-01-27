@@ -7,15 +7,23 @@ title: 'Net measures'
 	<code>Measure=NetOut</code> measures outgoing (upload) network traffic.<br>
 	<code>Measure=NetTotal</code> measures both incoming and outgoing network traffic.</p>
 
-<p>The bandwidth is measured in bytes.</p>
+<p><b>Net measures will have a value in bytes per second.</b></p>
 
-<p><b>Notes:</b></p> 
+<p><b>Bits and Bytes</b></p> 
 
-<p>The Net measures internally measure the traffic data in <b>bits</b> per second. The measures automatically divide both this internal measurement, and any MinValue / MaxValue options by 8, in order to use and display the values as bytes in meters. This means that any <a href="!measures/general-options/#MinValue">MinValue</a> and <a href="!measures/general-options/#MaxValue">MaxValue</a> options should be set in <b>bits</b>, not bytes. Rainmeter will do the conversion to bytes automatically when the value(s) are used.</p>
+<p>The Net measures internally measure the traffic across the NIC (Network Interface Controller) in bits per second. The measures automatically divide both this internal measurement and any <a href="!measures/general-options/#MinValue">MinValue</a> or <a href="!measures/general-options/#MaxValue">MaxValue</a> options by 8, (there are 8 bits in a byte) in order to use and display the values as bytes in measures and meters.<p>
 
-<p>The measured value is the number of bytes per second, factored by the total <a href="!skins/#Update">update rate</a> of the measure, as defined by the <code>Update</code> option for the skin and any <code>UpdateDivider</code> option on the measure. Since the usual display of network traffic is in bytes per <em>second</em>, it is best to either set <code>Update=1000</code> in the [Rainmeter] section of the skin, or add UpdateDivider options to NetIn / NetOut measures so they are updated once a second.</p>
+<p><b>Note</b> that this means that any <a href="!measures/general-options/#MinValue">MinValue</a> and <a href="!measures/general-options/#MaxValue">MaxValue</a> options on the measures, used to support a <a href="!measures/#Percentage">percentage</a> in meters, should be set by you in <b>bits</b>, not bytes. Rainmeter itself will do the conversion to bytes automatically when the value(s) are used.</p>
 
-<p>The measured value is the network traffic in and out of the network interface controller (NIC) of the computer running the skin. If the computer is on a network connected to a router (LAN), the traffic will include all interaction between the computer and both the router and any other devices on the LAN. It will not include traffic directly to and from other devices and the internet (WAN), and cannot be used to determine the amount of internet traffic.</p>
+<p><b>Per Second</b></p>
+
+<p>The measured value is the number of bytes per second, factored by the total <a href="!skins/#Update">update rate</a> of the measure, as defined by the <code>Update</code> option for the skin and any <code>UpdateDivider</code> option on the measure. Since the usual display of network traffic is in bytes per <em>second</em>, it is advisable to either set <code>Update=1000</code> in the [Rainmeter] section of the skin, or add UpdateDivider options to NetIn / NetOut / NetTotal measures so they are updated once a second. Updating these measures at a rate other than once a second will return results that are confusing at best.</p>
+
+<p><b>LAN and WAN</b></p>
+
+<p>The measured value is simply the network traffic in and out of the network interface controller (NIC) of the computer running the skin. If the computer is on a local network through a router (LAN), the traffic will include all interaction between the computer and both the router and any other devices on the LAN. It will not include traffic directly to and from other devices and the internet (WAN), and so cannot be used to determine the amount of internet traffic.</p>
+
+<p>You just cannot isolate traffic between your computer and another devices on the local network (LAN), from traffic coming from or going to the internet (WAN), nor can you ever know what some other device on your LAN is doing with the internet. <em>If you are on some kind of "metered" connection to the internet, do not try to use these measures to manage that, other than in the most "approximate" kind of way.</em></p>
 
 <h2>Options</h2>
 <dl>
