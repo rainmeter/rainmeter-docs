@@ -11,45 +11,7 @@ title: 'Network Skin'
 
 <h2>The Interface option</h2>
 
-<p>One of the options that can be set on the Net measures is <a href="/manual/measures/net/#Interface">Interface</a>. This is the index number of the network adapter (NIC) you want to measure. It defaults to "0", which is just "all interfaces".</p>
-
-<p>This default value will likely be fine for you, assuming you don't have more than one network adapter on your computer, or are only using one at a time. However, you might find that the traffic values that the measures return are incorrect. Sometimes they can be double the expected values or even more. This will be the case if you have more than one active network adapter, or sometimes due to some "virtual interfaces" that Windows detects.</p>
-
-<p>This can be corrected by choosing the correct <code>Interface</code> option for the measure(s).</p> 
-
-<h3>Finding your Interface:</h3>
-
-To find the correct <code>Interface</code> option for your system, you should do the following:
-<ul>
-<li>Open Manage from the Rainmeter tray icon</li>
-<li>Go to the Settings tab</li>
-<li>Turn on "Debug mode" and "Log to file"</li>
-<li>Exit Rainmeter</li>
-<li>Start Rainmeter</li>
-<li>Open Manage from the Rainmeter tray icon</li>
-<li>Go to the Settings tab</li>
-<li>Select "Show log file"</li>
-</ul>
-
-<p>That debug version of the log file will include a list of all network interfaces with the number Rainmeter will use. In my case, my physical (Hardware=Yes) NIC interface is at:<br/>
-``` plain
-DBUG (00:00:00.031) : 8: Realtek PCIe GBE Family Controller
-DBUG (00:00:00.031) :   Alias: Ethernet
-DBUG (00:00:00.031) :   Type=Ethernet(6), Hardware=Yes, Filter=No
-```
-</p>
-
-<p>So I use "8" in Interface. The key is generally using the one that is <b>Hardware=Yes</b>.</p>
-
-When done:
-<ul>
-<li>Open Manage from the Rainmeter tray icon</li>
-<li>Go to the Settings tab</li>
-<li>Turn off "Debug mode" and "Log to file"</li>
-<li>Select "Delete log file"</li>
-</ul>
-
-<p><i>Don't leave the log running both writing to file and in debug mode when you don't need it. It will cause Rainmeter to work a lot harder than it has to.</i></p>
+<p>One of the options that can be set on the Net measures is <a href="/manual/measures/net/#Interface">Interface</a>. It will almost always be correct to set this to <code>Interface=Best</code>.</p>
 
 <h2>Smoothing out the traffic values</h2>
 
