@@ -29,6 +29,8 @@ title: 'Network Skin'
 
 <p>Some measures, like <a href="/manual/measures/freediskspace/">FreeDiskSpace</a> for instance, automatically set this "range", based on examining the resource being measured. The Network measures also attempt to do this, but with some serious limitations. What the measures do is dynamically set the maximum value for the range to the highest value the measure has been since the skin was loaded or refreshed. This can cause really undesirable behavior on these "percentage" meters until your skin has been running for a while and you have done things to  use a large percentage of your total bandwidth. </p>
 
+<p><b>Note:</b> The Net measures internally measure the traffic data in bits per second. The measures automatically divide both this internal measurement, and any MinValue / MaxValue options by 8, in order to use and display the values as bytes in meters. This means that any MinValue and MaxValue options should be set in bits, not bytes. Rainmeter will do the conversion to bytes automatically when the value(s) are used.</p>
+
 <h3>Setting the MinValue / MaxValue options:</h3>
 
 <p>The way to correct this behavior is to manually set the <a href="/manual/measures/general-options/#MinValue">MinValue</a> and <a href="/manual/measures/general-options/#MaxValue">MaxValue</a> options on the network measure(s). This will explicitly set the possible "range" of values for the measure so that meters requiring a percentage will immediately and correctly know where in the range of 0% to 100% the current value lies.</p>
