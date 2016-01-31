@@ -14,7 +14,7 @@ title: 'Rotate an Image Around its Center'
 of the image based on the width and height of the original. Then you will need to find the total width and height of the container needed to rotate the image, which will be the length
 of a line from the upper left to the bottom right corners. These will be used to set the <code>W</code> and <code>H</code> of the Rotator meter.</p>
 <p>Then you can use any measure that returns a value between 0% and 100% (with any number of "steps") as the <code>MeasureName</code> of the meter, and the image will rotate around its own center based on the current value of that measure.</p>
-``` ini
+``` txt
 [Rainmeter]
 Update=50
 DynamicWindowSize=1
@@ -44,7 +44,7 @@ H=(SQRT(#ImageW# ** 2 + #ImageH# ** 2))
 
 <p><b>Note:</b> If the visible part of the image being used is "round", then you will not need the formula to set the width and height of the meter. In fact, doing so will make the overall size of the meter container unnecessarily large. Simply use the full size of the image when specifying the <code>W</code> and <code>H</code> options in the meter.</p>
 
-``` ini
+``` txt
 [Rainmeter]
 Update=50
 DynamicWindowSize=1

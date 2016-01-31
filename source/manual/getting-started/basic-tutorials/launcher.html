@@ -16,13 +16,13 @@ title: 'Launcher'
 <h2>Building the Launcher skin</h2>
 
 <p>First, as we did in our earlier "hello world" skin, let's add the [Rainmeter] section to control the Update speed of the skin.</p>
-``` ini
+``` txt
 [Rainmeter]
 Update=1000
 ```
 
 <p>Then, we can add our first <a href="!meters/">meter</a> to the skin.</p>
-``` ini
+``` txt
 [MeterLaunch1]
 Meter=String
 X=5
@@ -38,7 +38,7 @@ LeftMouseUpAction=["C:\Windows\System32\Notepad.exe"]
 ```
 
 <p>Note that the first two things we must do is create a <a href="!skins/#Format">[SectionName]</a> for the meter, and tell Rainmeter what type of meter this is.</p>
-``` ini
+``` txt
 [MeterLaunch1]
 Meter=String
 ```
@@ -78,7 +78,7 @@ Meter=String
 
 <p>Next, let's add another meter to launch another application. The format of the meter will be much the same as the earlier one, but we need to do some things to make sure the <b>position</b> of the meter is appropriate.</p>
 
-``` ini
+``` txt
 [MeterLaunch2]
 Meter=String
 X=0r
@@ -105,7 +105,7 @@ LeftMouseUpAction=["MSPaint.exe"]
 
 <p>Now we are going to shift gears a bit, and introduce a new meter type. What we want to do with the next meter is display an image, which we can click on to launch the application.</p>
 
-``` ini
+``` txt
 [MeterLaunch3Image]
 Meter=Image
 ImageName=#@#Images\Calc.png
@@ -134,7 +134,7 @@ In Windows Explorer, create a new folder under <b>Skins\Tutorials\</b> called <b
 
 <p>Just as you did with the second String meter above, use relative positioning and the <a href="!meters/general-options/#XY">X and Y</a> options to position the image below the previous meter.</p>
 
-``` ini
+``` txt
 ImageName=#@#Images\Calc.png
 W=32
 H=32
@@ -152,7 +152,7 @@ Y=2R
 
 <p style="clear: both;">You could just use the image as is, but let's add a string label next to the image. For that, create a new String meter, much like the ones above.</p>
 
-``` ini
+``` txt
 [MeterLaunch3Text]
 Meter=String
 X=0R
@@ -181,7 +181,7 @@ LeftMouseUpAction=["Calc.exe"]
 
 <p>So, let's go back up to the top of the skin, just below the <b>[Rainmeter]</b> section, but before the first String meter <b>[MeterLaunch1]</b> and put in our new background Image meter.</p>
 
-``` ini
+``` txt
 [Rainmeter]
 Update=1000
 

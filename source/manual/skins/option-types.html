@@ -5,7 +5,7 @@ title: 'Option Types'
 ---
 <p>In the most basic sense, a skin in Rainmeter is controlled by a .ini file consisting of sections, options, and option values.</p>
 
-``` ini
+``` txt
 [SectionName]
 OptionName=OptionValue
 ```
@@ -27,7 +27,7 @@ OptionName=OptionValue
 <h2 id="String">String options</h2>
 <p>String options require a text value.</p>
 
-``` ini
+``` txt
 Text=Hello World
 MyVar=Hello World
 ```
@@ -35,7 +35,7 @@ MyVar=Hello World
 <h2 id="Number">Number options</h2>
 <p>Number options require either a number or a <a href="!formulas/">formula</a>.</p>
 
-``` ini
+``` txt
 ; The following lines are equivalent:
 FontSize=42
 FontSize=(40 + 2)
@@ -49,7 +49,7 @@ FontSize=(2 > 1 ? 42 : 666)
 
 <p>In addition, there is a built-in variable <code>#@#</code> that resolves to the <a href="!skins/resources-folder/">@Resources</a> folder in the <a href="!skins/#Root">root config</a> folder of the current skin.
 
-``` ini
+``` txt
 ; Paths relative to the current skin folder:
 ImageName=lolcat.png
 ImageName=..\lolcat.png
@@ -72,7 +72,7 @@ ImageName=#@#Images\lolcat.png
 
 <p><b>Note:</b> The alpha component is optional. As with the other components it is a value from 0 to 255 (00 to FF), with 0 being completely invisible (and the meter will not react to the mouse) to 255, which is completely opaque. The default is 255 (or FF).  To have a element be "invisible" while still reacting to the mouse, use an alpha value of 1.</p>
 
-``` ini
+``` txt
 ; The following lines are equivalent to solid opaque red:
 SolidColor=255,0,0,255
 SolidColor=255,0,0
@@ -86,7 +86,7 @@ SolidColor=FF0000
 
 <p>Normally the value of an action option is going to be one or more <a href="!bangs/">bangs</a>, or the execution of external commands in Windows. When multiple bangs are defined on the same action option, enclose them in square brackets <code>[]</code>.</p>
 
-``` ini
+``` txt
 ; Single bang:
 LeftMouseUpAction=!HideMeter SomeMeter
 LeftMouseUpAction=[!HideMeter SomeMeter]
@@ -96,7 +96,7 @@ LeftMouseUpAction=[!HideMeter SomeMeter][!HideMeter SomeOtherMeter]
 ```
 
 <p>For bangs that take parameters, the arguments should be separated by a space. Parameters that contain spaces must use quotes around the parameter.</p>
-``` ini
+``` txt
 ; These two lines are equivalent:
 LeftMouseUpAction=[!HideMeter SomeMeter]
 LeftMouseUpAction=[!HideMeter "SomeMeter"]
@@ -116,7 +116,7 @@ LeftMouseUpAction=[!SetWallpaper "#ImageFile#"]
 
 <p>External Windows commands can be executed by specifying the path to the executable and any parameters. Enclose the command in square brackets <code>[]</code>, and enclose any values with spaces in quotes.</p>
 
-``` ini
+``` txt
 LeftMouseUpAction=["C:\Windows\Notepad.exe" MyFile.txt]
 ; Runs Notepad.exe and loads the file MyFile.txt.
 
@@ -128,7 +128,7 @@ LeftMouseUpAction=["https://forum.rainmeter.net"]
 
 <p>A parameter to a bang that contains embedded quotes should be surrounded by a what we call """magic quotes""". A pair of triple quotes.</p>
 
-``` ini
+``` txt
 ; The first line will fail due to extra quotes. The second line will properly log
 ; Example string: Bob said "hello" to Susan
 LeftMouseUpAction=[!Log "Bob said "hello" to Susan"]
@@ -141,7 +141,7 @@ LeftMouseUpAction=[!Log """Bob said "hello" to Susan"""]
 
 </p>For example, use <code>#*VarName*#</code> or <code>[*MeasureName*]</code> to tell Rainmeter to "escape" the variable or measure name. You do not want the value resolved, but rather used as a literal string.</p>
 
-``` ini
+``` txt
 LeftMouseUpAction=!SetOption SomeMeter FontSize #VarName#
 ; The FontSize option for SomeMeter will be set to the current value of the variable.
 

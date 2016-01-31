@@ -13,7 +13,7 @@ title: 'WebParser Tutorial'
 
 <p>The basic format of a WebParser skin is:</p>
 
-```ini
+``` txt
 [MeasureParent]
 Measure=Plugin
 Plugin=WebParser
@@ -100,7 +100,7 @@ MeasureName=MeasureChild2
 
 <p>First, let's get our skin started, and use an option on our first parent WebParser measure to get the raw HTML output from the site into a text file we can use for reference.</p>
 
-```ini
+``` txt
 [Rainmeter]
 Update=1000
 AccurateText=1
@@ -146,7 +146,7 @@ Meter=String
 
 <p>First, we change that "parent" measure, we created above, containing the RegExp with the StringIndex captures.</p>
 
-``` ini
+``` txt
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -178,7 +178,7 @@ UpdateRate=3600
 
 <p>Then, we build a "child" measure, to grab that information from StringIndex 1 of the "parent" measure.</p>
 
-``` ini
+``` txt
 [MeasureIP]
 Measure=Plugin
 Plugin=WebParser
@@ -210,7 +210,7 @@ StringIndex=1
 
 <p>So we want to add to our "RegExp=" statement, search for the flag image name, and return the result in the next StringIndex on the parent measure:</p>
 
-``` ini
+``` txt
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -233,7 +233,7 @@ UpdateRate=3600
 
 <p>However, wait.. that value "flags/us.png" is not a full URL to the image. It is a "relative path" to the image on the remote server. That's ok, we can still get it.</p>
 
-```ini
+``` txt
 [MeasureFlagImage]
 Measure=Plugin
 Plugin=WebParser
@@ -256,7 +256,7 @@ Download=1
 
 <p>To get that, we will use a child measure like this:</p>
 
-```ini
+``` txt
 [MeasureCountryCode]
 Measure=Plugin
 Plugin=WebParser
@@ -272,7 +272,7 @@ Substitute=".*/(.*).png":"\1"
 
 <h3>Our next child measure</h3>
 
-```ini
+``` txt
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -285,7 +285,7 @@ UpdateDivider=3600
 
 <p>In our parent measure, we are adding <code> (.*)&lt;/td&gt;</code> to our <code>RegExp</code> to skip a space, then capturing everything into <code>StringIndex=3</code> until we hit <code>&lt;/td&gt;</code>.
 
-```ini
+``` txt
 [MeasureCountryName]
 Measure=Plugin
 Plugin=WebParser
@@ -299,7 +299,7 @@ StringIndex=3
 
 <p>Carry on like that until you have retrieved all the data you want from the website. Here is the final parent measure with the completed RegExp:</p>
 
-```ini
+``` txt
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -311,7 +311,7 @@ UpdateRate=3600
 <p>and the rest of the child measures:</p>
 
 
-```ini
+``` txt
 [MeasureRegion]
 Measure=Plugin
 Plugin=WebParser
@@ -347,7 +347,7 @@ StringIndex=7
 
 <p>We won't go into any explanation of how the meters work in this guide, but if you use this code:</p>
 
-```ini
+``` txt
 [MeterBackground]
 Meter=Image
 W=300

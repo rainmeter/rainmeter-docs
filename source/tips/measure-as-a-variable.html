@@ -5,7 +5,7 @@ title: 'Using a Measure as a Variable'
 ---
 <p>In Rainmeter, <a href="/manual/variables/#DynamicVariables">dynamic variables</a> (DVs) let you use measure values almost anywhere you want. When you use a measure value in a <a href="/manual/measures/calc/">Calc</a> formula, there are special rules to consider. A Calc formula is the only place where you do not need DVs to use another measure's value. For example:</p>
 
-``` ini
+``` txt
 [MeasureA]
 Measure=...
 
@@ -16,7 +16,7 @@ Formula=MeasureA+3
 
 <p>Sometimes, however, you may still want to use DVs to get a measure value into a Calc formula. Why? Because in fact, every measure has two values: a <b>number value</b> and a <b>string value</b>. Normally, Calc formulas use the number value. But using DVs (with brackets around the measure name) forces Rainmeter to use the string value. Which means that this...</p>
 
-``` ini
+``` txt
 [MeasureB]
 Measure=Calc
 Formula=MeasureA+3
@@ -24,7 +24,7 @@ Formula=MeasureA+3
 
 <p>...does not always mean the same thing as this:</p>
 
-``` ini
+``` txt
 [MeasureB]
 Measure=Calc
 Formula=[MeasureA]+3
@@ -68,7 +68,7 @@ DynamicVariables=1
 	<li>
 	<p><b>Substitution.</b> Measure <a href="/manual/measures/general-options/substitute/">substitution</a> is applied only to the string value, not the number value. For example:</p>
 
-``` ini
+``` txt
 [MeasureA]
 Measure=Calc
 Formula=1
@@ -88,7 +88,7 @@ DynamicVariables=1
 
 	<p>This means that if you need the substituted value of a measure, you will need to use DVs and brackets. This can be useful when the original value of a measure is not a number at all (as in case #1), but a Substitute is used to change it into one:</p>
 
-``` ini
+``` txt
 [MeasureGetStatus]
 Measure=Plugin
 Plugin=Plugins\WebParser.dll
@@ -118,7 +118,7 @@ DynamicVariables=1
 
 <p>You can use measures as number values if you are using DVs elsewhere in the Calc measure. You can even mix types of measure values within the same formula:</p>
 
-``` ini
+``` txt
 [MeasureD]
 Measure=Calc
 Formula=MeasureA+[MeasureA]+MeasureB+3

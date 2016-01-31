@@ -35,7 +35,7 @@ title: 'WindowMessage plugin'
 
 <p>The following example returns the name of the song that is playing in WinAmp.</p>
 
-``` ini
+``` txt
 [MeasureWinamp]
 Measure=Plugin
 Plugin=WindowMessagePlugin
@@ -45,7 +45,7 @@ Substitute="[Paused]":""," - Winamp":""
 
 <p>Check if Winamp is playing, or not. The following example returns <code>0</code> if it's not playing, <code>1</code> if it is playing, and <code>3</code> if it's paused.</p>
 
-``` ini
+``` txt
 [MeasureWinampPlaying]
 Measure=Plugin
 Plugin=WindowMessagePlugin
@@ -55,7 +55,7 @@ WindowMessage=1024 0 104
 
 <p>Show song progress. In the following example, the <code>[MeasureWinampDuration]</code> will return the current song position as a value between <code>0</code> and <code>1</code>. Then you can use the <a href="!meters/bar/">Bar</a> meter to display the value.</p>
 
-``` ini
+``` txt
 [MeasureWinampFull]
 Measure=Plugin
 Plugin=WindowMessagePlugin

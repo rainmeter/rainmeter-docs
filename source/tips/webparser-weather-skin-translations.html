@@ -5,7 +5,7 @@ title: 'WebParser: Weather Skin Translations'
 ---
 <p>One of the things that is often asked is "How can I translate the weather conditions text, returned by WebParser when creating or editing a weather skin, to my own language?"</p>
 <p>This actually pretty simple to do. First find the measure or measures (often in a weather skin there will be 3 - 5 of them) which are returning the "weather conditions" text. It will look something like this:</p>
-``` ini
+``` txt
 [MeasureCurrentWeatherConditions]
 Measure=Plugin
 Plugin=WebParser
@@ -15,7 +15,7 @@ StringIndex=34
 
 <p><em>Note that a weather skin normally works by having a first, primary measure that retrieves all the information from the weather RSS feed in one shot. Then there will be subsequent measures which will extract the individual bits of information from the large array of values returned by this first measure. So you will often see something like:</em></p>
 
-``` ini
+``` txt
 [MeasureYahooWeather]
 Measure=Plugin
 Plugin=WebParser
@@ -25,7 +25,7 @@ RegExp="(?siU)<title>.*- (.*)</title>.*<link>(.*)/\*(.*)</link>.*<description>(.
 ```
 
 <p><em>Followed by something like this later on in the skin:</em></p>
-``` ini
+``` txt
 [MeasureCurrentWeatherConditions]
 Measure=Plugin
 Plugin=WebParser

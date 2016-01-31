@@ -26,7 +26,7 @@ title: 'WebParser: Lookahead Assertions in RegExp'
 
 <p>Normally, we might use something like this in a WebParser measure to search for and return three results:</p>
 
-``` ini
+``` txt
 [MeasureParent]
 Measure=Plugin
 Plugin=WebParser
@@ -38,7 +38,7 @@ RegExp="(?siU)<Item>.*<Name>(.*)</Name>.*<Item>.*<Name>(.*)</Name>.*<Item>.*<Nam
 
 <p>Using a "lookahead assertion" will allow you to solve this. You can use a RegExp of:</p>
 
-``` ini
+``` txt
 ;RegExp with look-ahead assertions
 RegExp="(?siU)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name>)"
 ```
@@ -60,7 +60,7 @@ RegExp="(?siU)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name
 
 <p>Let's put it all together. I will use a [Variable] to define the search pattern, then just repeatedly use the variable in the <code>RegExp=</code> statement to save some typing, and set a <code>Substitute=</code> on the WebParser measures so we get something other than just a null value displayed.</p>
 
-``` ini
+``` txt
 [Rainmeter]
 DynamicWindowSize=1
 

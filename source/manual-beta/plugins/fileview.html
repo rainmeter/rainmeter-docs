@@ -11,7 +11,7 @@ title: 'FileView plugin'
 
 <h2>Usage</h2>
 <p>FileView measures take the form:</p>
-``` ini
+``` txt
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -25,7 +25,7 @@ ShowFolder=0
 Count=3
 ```
 <p id="ParentChild">In this example, this "parent" measure will obtain name, size, date and icon information about all files in the selected folder, then create three <a href="#Index">Index</a> values for the first three files. The information is used in subsequent "child" FileView measures:</p>
-``` ini
+``` txt
 [MeasureChild1]
 Measure=Plugin
 Plugin=FileView
@@ -50,7 +50,7 @@ Index=3
 <p>The values of the three <a href="#ParentChild">child</a> measures are now the FileName information parsed into Indexes 1 through 3 by the <a href="#ParentChild">parent</a> measure. These can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="!meters/">meters</a>.</p>
 
 <p>Another way to use the information in child measures is:</p>
-``` ini
+``` txt
 [MeasureChild1]
 Measure=Plugin
 Plugin=FileView
@@ -78,7 +78,7 @@ Index=1
 
 <p><b>Important Note:</b> A FileView measure will not re-read the disk information on a normal update cycle or using <a href="/tips/update-guide/">UpdateDivider</a> on the measure, nor when the <a href="!bangs/#Update">!Update</a> / <a href="!bangs/#UpdateMeasure">!UpdateMeasure</a> bangs are used. If the options on the parent measure are changed dynamically with <a href="!bangs/#SetVariable">!SetVariable</a> or <a href="!bangs/#SetOption">!SetOption</a>, the <a href="#Update">Update plugin command</a> will need to be used to update the values.<p>
 
-``` ini
+``` txt
 [MeasureFolder]
 Measure=Plugin
 Plugin=FileView
@@ -95,7 +95,7 @@ LeftMouseUpAction=[!SetOption MeasureFolder Path "C:\VideoFolder"][!CommandMeasu
 
 <p>If it is desired that a folder be monitored for new or changed files, the <a href="#Update">Update plugin command</a> should be used in conjunction with an <a href="!measures/general-options/#OnUpdateAction">OnUpdateAction</a> statement to keep the measure current with changing disk information. Be aware that having the plugin physically access the disk has a performance cost, and care should be taken to use an approriate <a href="/tips/update-guide/">UpdateDivider</a>.</p> 
 
-``` ini
+``` txt
 [MeasureFolder]
 Measure=Plugin
 Plugin=FileView
@@ -330,7 +330,7 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 
 <h2>Example</h2>
 
-``` ini
+``` txt
 [Rainmeter]
 Update=1000
 MouseScrollUpAction=[!CommandMeasure mPath "IndexUp"][!UpdateMeasure mPath][!UpdateMeasureGroup Children][!UpdateMeter *][!Redraw]
