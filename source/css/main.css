@@ -676,6 +676,7 @@ table#contents tr td:nth-child(2){
 
 .exampleprev p {
 	text-align:left;
+	max-width:200px;
 }
 
 .exampleprev img {
