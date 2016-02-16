@@ -12,7 +12,7 @@ title: 'Inline Options'
 	<li>Support for a color Gradient on part or all of the string.</li>
 </ul>
 
-<p>Inline options are defined by pairs of InlineSetting ... InlineSetting<em>N</em> and InlinePattern ... InlinePattern<em>N</em> options on the meter. InlineSetting<em>N</em> defines the character formatting setting you wish to add or change, and the matching InlinePattern<em>N</em> uses regular expressions to define the part of the string you wish to change. These must be matching pairs, and there may not be missing <em>N</em> number postfixes, which start with <em>2</em>.</p>
+<p>Inline options are defined by pairs of InlineSetting ... InlineSetting<em>N</em> and InlinePattern ... InlinePattern<em>N</em> options on the meter. InlineSetting<em>N</em> defines the character formatting setting you wish to add or change, and the matching InlinePattern<em>N</em> uses regular expressions to define the part of the string you wish to change. These must be matching pairs, and there may not be missing <em>N</em> number postfixes in InlineSetting, which start with <em>2</em>.</p>
 
 <p>The inline formatting is applied to the final string as it will be displayed by the meter, reflecting the value of any measures bound to the meter with MeasureName<em>N</em>, any Text option on the meter, and any string manipulation applied with other meter options like StringCase, Percentual or NumOfDecimals.</p>
 
@@ -119,19 +119,19 @@ title: 'Inline Options'
 		</ul>
 	</dd>
 	
-	<dt id="InlinePattern"><code>InlinePattern</code>, <code>InlinePattern2</code>, <code>InlinePattern3</code>... <small>Regular Expression</small></dt>
+	<dt id="InlinePattern"><code>InlinePattern</code>, <code>InlinePattern2</code>, <code>InlinePattern3</code>... <small>Regular Expression</small> <small>Default: <code>.*</code></small> </dt>
 	<dd>
 		<p>A <a href="!skins/option-types/#RegExp">Perl Compatible Regular Expression</a> (PCRE) used to define all or part(s) of the string to which to apply the corresponding InlineSetting<em>N</em>.</p>
 	
 		<p>If (parentheses) are used to <em>capture</em> parts of the string, then that is what the setting will be applied to. If (parentheses) are not used, then the part(s) of the string that match the regular expression will be used.</p>
 		
-		<p><code>InlinePattern=.*</code> is how you would simply add or change a setting on the entire string.</p>
+		<p><code>InlinePattern=.*</code> (default) is how you would simply add or change a setting on the entire string.</p>
 		
 		<p>The full range of <a href="http://www.regular-expressions.info/tutorial.html">PCRE</a> regular expression functionality is supported, so the pattern can match on all or part of the meter's	string value. Logical OR and AND matching can be done in the regular expression, using the <code>|</code> character to support OR and <a href="http://www.regular-expressions.info/lookaround.html">Lookahead assertions</a> <code>(?=..)</code> to support AND.</p>
 
 		<p>Reserved characters in regular expression, which are <code>.</code><code>^</code><code>$</code><code>*</code><code>+</code><code>?</code><code>(</code><code>)</code><code>[</code><code>{</code><code>\</code><code>|</code> must be escaped with the <code>\</code> character when used as a literal in the <code>InLinePattern</code> option.  If using a measure value as a section variable in the option, the <a href="!variables/section-variables/#EscapeRegExp">:EscapeRegExp</a> modifier can be used to properly escape reserved characters in the measure.</p>		
 		
-		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "nothing", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlinePattern<em>N</em> numbers, all subsequent ones will be ignored.</p>		
+		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "nothing", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and this will set it to the default of <code>.*</code>, or the entire string.</p>		
 	</dd>	
 </dl>
 
