@@ -95,6 +95,10 @@ Text=This is text containing %1 and %2.
 	<dt id="StringEffect"><code>StringEffect</code> <small>Default: <code>None</code></small></dt>
 	<dd>
 		<p>Effect applied to a string. Valid values are <code>None</code>, <code>Shadow</code>, and <code>Border</code>.</p>
+		<p><code>Shadow</code> makes a background copy of the string, offset 1px "right" and 1px "down", in the color defined in <code>FontEffectColor</code>.</p>
+		<p><code>Border</code> makes a background copy of the string, 2px "larger", and offset 1px "left" and 1px "up", in the color defined in <code>FontEffectColor</code>.</p>
+		<p>The size of the font used in the string has no effect on the fixed 1px size of the <code>Shadow</code> or <code>Border</code> effect.</p>
+		<p>Due to how these effects are created, transparent colors on the string may have undesirable results.</p>
 	</dd>
 
 	<dt id="FontEffectColor"><code>FontEffectColor</code> <small>Default: <code>0,0,0,255</code></small></dt>
