@@ -100,7 +100,10 @@ title: 'Built-In Variables'
 
 <h3 id="MonitorVariables">Monitor variables</h3>
 
-<p><b>Note:</b> These variables are <a href="!variables/#DynamicVariables">dynamic</a>.</p>
+<p><b>Notes:</b></p>
+
+<p>Monitor variables are <a href="!variables/#DynamicVariables">dynamic</a>, and <code>DynamicVariables=1</code> will be required to detect changes when used in a skin. The values will be static when used in the [Rainmeter] section of a skin.</p>
+<p>When the variables are used without specifying an <code>@<em>N</em></code> monitor number, by default the values will be based on the primary monitor, where Rainmeter is started. In order to have the values reflect the monitor the skin is currently on, set <a href="!settings/skin-sections/#AutoSelectScreen">AutoSelectScreen</a> to "1" in <a href="!user-interface/manage/#SkinSettings">Manage</a>. or alternately, use the <a href="!bangs/#AutoSelectScreen">!AutoSelectScreen</a> bang in the skin.</p>
 
 <dl>
 	<dt id="WORKAREAXYWH"><code>#WORKAREAX#</code>, <code>#WORKAREAY#</code>, <code>#WORKAREAWIDTH#</code>, <code>#WORKAREAHEIGHT#</code></dt>
