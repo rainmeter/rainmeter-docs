@@ -29,8 +29,9 @@ title: 'SysInfo plugin'
 		<h4 id="Network">Network values</h4>
 		<ul>
 			<li><code>HOST_NAME</code> : [String] The computer's network host name.</li>
-			<li><code>DOMAIN_NAME</code> : [String] The network domain name.</li>
-			<li><code>DNS_SERVER</code> : [String] The network primary DNS server IP address.</li>
+			<li><code>DOMAIN_NAME</code> : [String] The computer's network domain name.</li>
+			<li><code>DOMAINWORKGROUP</code> : [String] The computer's network domain or workgroup name.</li>			
+			<li><code>DNS_SERVER</code> : [String] The computer's network primary DNS server IP address.</li>
 			<li><code>ADAPTER_DESCRIPTION</code> : [String] The description of the network adapter specified by <code>SysInfoData</code>.</li>
 			<li><code>ADAPTER_TYPE</code> : [String and Number] The type of network adapter specified by <code>SysInfoData</code>.<br/><br/>The string value will be one of <code>Ethernet</code>, <code>Wireless</code> or <code>Other</code>. The number value will be one of <code>6</code> (Ethernet), <code>71</code> (Wireless), or some other number in the range 0-280 (Other). The meaning of numeric codes other than 6 and 71 can be found at: <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa366062(v=vs.85).aspx">MSDN Adapter Info</a>.<br/><br/>
 			<li><code>NET_MASK</code> : [String] The subnet mask of the network adapter specified by <code>SysInfoData</code>.</li>
