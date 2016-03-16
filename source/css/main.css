@@ -247,18 +247,20 @@ label {
 dt {
 	padding:3px 4px;
 	margin-top:12px;
-	background-color:#E3F2DC;
+	background-color:#2A6D9B;
 	border:1px solid #C4CFC2;
+	color:#FFFFFF;
 }
 
 dt:target {
-	background-color:#FFF1AD;
+	background-color:#E09028;
+	color:#FFFFFF;
 }
 
 dt code {
 	padding:0px 2px;
 	border:0;
-	font-weight:bold;
+	color:#FFFFFF;
 	background-color:transparent;
 }
 
@@ -282,6 +284,12 @@ dd {
 
 dd p:last-child {
 	margin-bottom:0;
+}
+
+.dd_value {
+	font-weight:bold;
+	font-size:16px;
+	color:#2A6D9B;
 }
 
 table {

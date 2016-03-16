@@ -71,7 +71,7 @@ function toggleClass(elem, className) {
 
 // Make ctrl+click on <dt> and <hN> tags anchor the page with id.
 (function() {
-	var tags = ['dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+	var tags = ['dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'];
 	for (i = 0; tag = tags[i]; ++i) {
 		var elems = document.getElementsByTagName(tag);
 		for (var j = 0, elem; elem = elems[j]; ++j) {
