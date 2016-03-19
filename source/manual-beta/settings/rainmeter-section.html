@@ -17,15 +17,16 @@ title: '[Rainmeter] section'
 		<p>Defines the application that is used to edit the Rainmeter's configuration files when "Edit Skin" is chosen from the context menu. Relative paths can be used here, which may be useful for portable installs.</p>
 	</dd>
 
-	<dt id="TrayExecute"><code>TrayExecuteM</code>, <code>TrayExecuteR</code>, <code>TrayExecuteDM</code>, <code>TrayExecuteDR</code></dt>
-	<dd>
-		<p><a href="!skins/option-types/#Action">Action</a> to be executed when the <b>m</b>iddle or <b>r</b>ight clicking (or <b>d</b>ouble-clicking) on the notification area (tray) icon.<br><br><b>Note:</b> <code>TrayExecuteR</code> will override the context menu that normally appears (hold CTRL and right-click to force context menu).</p>
-	</dd>
-
 	<dt id="TrayIcon"><code>TrayIcon</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>Set to <code>0</code> to remove the notification area (tray) icon.</p>
 		<p><b>Note:</b> If all skins are unloaded, the notification area icon will appear, regardless of this setting, in order to avoid a situation where you can't interact with Rainmeter at all.</p>
+	</dd>
+
+	<dt id="TrayExecute"><code>TrayExecuteM</code>, <code>TrayExecuteR</code>, <code>TrayExecuteDM</code>, <code>TrayExecuteDR</code></dt>
+	<dd>
+		<p><a href="!skins/option-types/#Action">Action</a> to be executed when clicking or double-clicking the <b>M</b>iddle or <b>R</b>ight mouse buttons on the notification area icon. Left-clicking the icon will always load the Manage dialog.</p>
+		<p><b>Note:</b> <code>TrayExecuteR</code> will override the context menu that normally appears (hold CTRL and right-click to force context menu).</p>
 	</dd>
 
 	<dt id="DesktopWorkArea"><code>DesktopWorkArea</code></dt>
@@ -46,7 +47,7 @@ title: '[Rainmeter] section'
 
 	<dt id="Debug"><code>Debug</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>If set to <code>1</code>, <a href="#Logging">logging</a> will be more verbose. Use <code>Debug=1</code> with caution as it degrades performance.</p>
+		<p>If set to <code>1</code>, <a href="#Logging">logging</a> will be more verbose. Use <code>Debug=1</code> only when needed, as it degrades performance.</p>
 	</dd>
 
 	<dt id="DisableVersionCheck"><code>DisableVersionCheck</code> <small>Default: <code>0</code></small></dt>
