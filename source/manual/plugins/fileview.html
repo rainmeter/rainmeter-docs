@@ -214,10 +214,26 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 
 	<dt id="Type"><code>Type</code> <small>Default: <code>FolderPath</code></small></dt>
 	<dd>
-		<p>Type of information to obtain from the parent measure. Valid values are: <code>FolderPath</code>, <code>FolderSize</code>, <code>FileCount</code>, <code>FolderCount</code>, <code>FileName</code>, <code>FileType</code>, <code>FileSize</code>, <code>FileDate</code>, <code>FilePath</code>, <code>PathToFile</code>, and <code>Icon</code>.</p>
-
-		<p><b>Notes:</b> If <code>Type=Icon</code>, the full path of the icon file is returned. See <a href="#IconPath">IconPath</a> below. This can be used with <code>MeasureName</code> or <code>ImageName</code> in an Image meter to display the icon.</p>
-		<p><code>FilePath</code> returns the full path and name of the file. <code>PathToFile</code> returns just the full path to the file, including a trailing "\".</p>
+		<p>Type of information to obtain from the parent measure.</p>
+		<p><b>Information for path returned by the parent measure</b></p>
+		<ul>
+		<li><code>FolderPath</code> : Path of folder returned in parent Path, with trailing "\"</li>
+		<li><code>FolderSize</code> : Size in bytes of folder returned in parent Path</li>
+		<li><code>FileCount</code> : Count of files in folder returned in parent Path</li>
+		<li><code>FolderCount</code> : Count of folders in folder returned in parent Path</li>
+		</ul>
+		<p><b>Information for object returned by the child Index number</b></p>
+		<ul>
+		<li><code>FileName</code> : Name of indexed object, folder or file</li>
+		<li><code>FileType</code> : Extension only with no "." for indexed file. Empty with folder</li>
+		<li><code>FileSize</code> : Size in bytes of indexed file. Empty with folder</li>
+		<li><code>FileDate</code> : System date of indexed object, folder or file. See <code>DateType</code> for possible date types</li>
+		<li><code>FilePath</code> : Full path and name of indexed object, folder or file. No trailing "\" with folders</li>
+		<li><code>PathToFile</code> : Full path up to indexed object, folder or file, with trailing "\")</li>
+		<li><code>Icon</code> : Full path and name of icon extracted from indexed object, folder or file</li>
+		</ul>
+		
+		<p><b>Note:</b> If <code>Type=Icon</code>, the full path of the icon file is returned. See <a href="#IconPath">IconPath</a> below. This can be used with <code>MeasureName</code> or <code>ImageName</code> in an Image meter to display the icon.</p>
 	</dd>
 
 	<dt id="DateType"><code>DateType</code> <small>Default: <code>Modified</code></small></dt>
