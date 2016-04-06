@@ -91,7 +91,7 @@ title: 'RunCommand plugin'
 	
 	<dt id="OutputType"><code>OutputType</code> <small>Default: <code>UTF-16</code></small></dt>
 	<dd>
-		<p>Type of output to be <em>expected</em> from the program. Any <code>OutputFile</code> will also be encode with these values.</p>
+		<p>Type of output to be <em>expected</em> from the program. Any <code>OutputFile</code> will also be encoded with these values. You must be sure that what you tell it here matches what is actually output by the program you run. This option does not "control" what is output by the program.</p>
 
 		<ul>
 		<li>UTF-16 (default)</li>
@@ -194,7 +194,7 @@ AntiAlias=1
 ```
 <p>This example will run the program wmic.exe, which is in the Windows %PATH% and thus needs no path on the command itself.</p>
 <p>The wmic.exe program will use the parameters of "cpu get Name". The program will be run in a "hidden" cmd.exe Command Prompt window, and nothing visible will happen.</p>
-<p>In effect this is really executing <code>"C:\Windows\cmd.exe \U \C" "wmic cpu get Name"</code>.</p>
+<p>In effect this is really executing <code>"%windir%\system32\cmd.exe \U \C" "wmic cpu get Name"</code>.</p>
 <p>The output of the wmic.exe program (the "name" of your CPU in this case) will be written to STDOUT in the hidden cmd.exe Command Prompt window, which will be captured by the plugin and set as the string value of the [MeasureRun] measure.</p>
 <p><em>The Substitute option is being used to strip off some extra label information and linefeeds that are output by the program.</em></p>
 <p>Additionally, the file defined in OutputFile will contain the entire output of the wmic command, which in this example might be:</p>
