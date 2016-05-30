@@ -103,70 +103,105 @@ Information=Example of the Roundline meter
 License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
 Version=1.0
 
-[MeasureFreeDisk]
-Measure=FreeDiskSpace
-Drive=C:
-InvertMeasure=1
+[Variables]
+TotalColor=173,230,224,255
+FreeColor=75,171,161,255
+UsedColor=255,205,112,255
 
 [MeasureTotalDisk]
 Measure=FreeDiskSpace
 Drive=C:
 Total=1
 
+[MeasureUsedDisk]
+Measure=FreeDiskSpace
+Drive=C:
+InvertMeasure=1
+
+[MeasureFreeDisk]
+Measure=FreeDiskSpace
+Drive=C:
+
 [MeterTotalDisk]
 Meter=Roundline
 MeasureName=MeasureTotalDisk
-X=0
+X=10
 Y=0
 W=120
 H=120
 StartAngle=4.712
 RotationAngle=6.283
 LineLength=60
-LineColor=40,92,87,255
+LineColor=#TotalColor#
+Solid=1
+AntiAlias=1
+
+[MeterUsedDisk]
+Meter=Roundline
+MeasureName=MeasureUsedDisk
+X=10
+Y=0
+W=120
+H=120
+StartAngle=4.712
+RotationAngle=6.283
+LineLength=52
+LineColor=#UsedColor#
 Solid=1
 AntiAlias=1
 
 [MeterFreeDisk]
 Meter=Roundline
 MeasureName=MeasureFreeDisk
-X=0
+X=10
 Y=0
 W=120
 H=120
 StartAngle=4.712
-RotationAngle=6.283
-LineLength=56
-LineColor=216,242,240,255
+RotationAngle=-6.283
+LineLength=52
+LineColor=#FreeColor#
 Solid=1
 AntiAlias=1
 
 [MeterTotalText]
 Meter=String
 MeasureName=MeasureTotalDisk
-X=60
+X=70
 Y=130
 FontSize=11
-FontColor=36,82,77,255
+FontColor=#TotalColor#
 StringAlign=Center
 AntiAlias=1
 AutoScale=1
-Text=Total Disk: %1
+Text=Total Disk: %1B
+
+[MeterUsedText]
+Meter=String
+MeasureName=MeasureUsedDisk
+X=70
+Y=6R
+FontSize=11
+FontColor=#UsedColor#
+StringAlign=Center
+AntiAlias=1
+AutoScale=1
+Text=Used Disk: %1B
 
 [MeterFreeText]
 Meter=String
 MeasureName=MeasureFreeDisk
-X=60
+X=70
 Y=6R
 FontSize=11
-FontColor=216,242,240,255
+FontColor=#FreeColor#
 StringAlign=Center
 AntiAlias=1
 AutoScale=1
-Text=Free Disk: %1
+Text=Free Disk: %1B
 ```
 
 <div class="exampleprev">
 	<p><img src="!img/example-meters/ExampleMeterRoundline.jpg"/></p>
-	<p>An example skin demontrating a Roundline meter.</p>
+	<p>An example skin demonstrating a Roundline meter.</p>
 </div>
