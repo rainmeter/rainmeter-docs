@@ -75,7 +75,18 @@ end
 
 <p>Actions that are needed to "set up" the script, such as declaring global variables, should be done in the Initialize function.</p>
 
+<p><span  id="dofile"><b>Using dofile</b></span></p>
 
+<p>The <a href="http://www.lua.org/manual/5.1/manual.html#pdf-dofile">dofile function</a> can be used to include libraries or other snippets of Lua code. You must specify a full path to the dofile, using the syntax <code>dofile('C:\PathToDoFile\SomeLua.lua')</code>. Use <a href="#GetVariable">GetVariable</a> function if you want to use the #@# variable shortcut to the @Resources folder for the current config, or <a href="#MakePathAbsolute">MakePathAbsolute</a> if you want to have the .lua file be relative to the current skin folder.</a>
+
+``` lua
+function Initalize()
+	dofile(SKIN:GetVariable('@')..'MyDoFiles\\toolkit.lua')
+	dofile(SKIN:MakePathAbsolute('toolkit.lua'))
+end
+```
+
+<p><b>Note:</b> While a dofile you call can be anywhere on your system, be aware that if you do not put the dofile .lua file somewhere in the path to the current config, you won't be able to distribute it with your skin as a .rmskin package. A .rmskin package can only distribute the contents of a single root config folder.</p>
 
 <h2 id="Update">Update</h2>
 
@@ -342,7 +353,7 @@ end
 <ul>
 	<li>The <a href="http://www.lua.org/manual/5.1/manual.html#5.2">coroutine</a> and <a href="http://www.lua.org/manual/5.1/manual.html#5.9">debug</a> libraries.</li>
 	<li>External libraries, such as <a href="http://luacurl.luaforge.net/">LuaCURL</a>.</li>
-	<li>The <a href="http://www.lua.org/manual/5.1/manual.html#pdf-require">require</a>, <a href="http://www.lua.org/manual/5.1/manual.html#pdf-dofile">dofile</a>, <code>os.exit</code>, <code>os.setlocale</code>, <code>io.popen</code>, <code>collectgarbage</code>, <code>getfenv</code>, and <code>setfenv</code> functions.</li>
+	<li>The <a href="http://www.lua.org/manual/5.1/manual.html#pdf-require">require</a>, <code>os.exit</code>, <code>os.setlocale</code>, <code>io.popen</code>, <code>collectgarbage</code>, <code>getfenv</code>, and <code>setfenv</code> functions.</li>
 </ul>
 
 <h3 id="Deprecated">Deprecated Features</h3>
