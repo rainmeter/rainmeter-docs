@@ -7,6 +7,13 @@ title: 'Version History'
 
 <h2 id="4.0">Rainmeter 4.0</h2>
 
+<p>September 4, 2016 - Revision 2620</p>
+<ul>
+<li><b>Fixed</b> Illustro skins: Changed the remote site used to get the user's WAN IP address in the Network.ini skin.</li>
+<li><b>Changed</b> Lua scripting: Corrected an issue where anything defined in the Initialize() function of a Lua script was treated as "global" across all skins using Lua, which could cause "bleeding" of defined variables between skins, or between script measures in a single skin. Each Lua measure will now run in an entirely separate local context.</li>
+<li><b>Changed</b> Lua scripting: The above change to the context of each Lua measure in a skin has allowed for the use of the Lua <a href="https://docs.rainmeter.net/manual-beta/lua-scripting/#dofile">dofile function</a> in your scripts. Some changes were made to the standard Lua dofile functionality to support Unicode characters in a file path, and to improve error logging.</li>
+</ul>
+
 <p>July 13, 2016 - Revision 2618</p>
 <ul>
 <li><b>Fixed</b> String meter: Corrected an issue where the position of an inline Gradient could be incorrect when an inline Shadow was also used on the meter.</li>
