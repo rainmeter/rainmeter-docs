@@ -151,6 +151,7 @@ end
 				<p>Multiple bangs must be separate using this method.</p>
 				<p><code>SKIN:Bang('[!UpdateMeter "MyMeter"]')</code><br>
 				<code>SKIN:Bang('[!Redraw]')</code></p>
+				<p><b>Note:</b> In spite of the need for a separate <code>SKIN:Bang()</code> function for each bang you want to use, this second method is strongly recommended. You will quickly find that the first method, using a single string to define the bang(s) will quickly become very complicated to properly quote if the bangs themselves contain strings that must be quoted.</p>
 			</li>
 		</ol>
 	</dd>
