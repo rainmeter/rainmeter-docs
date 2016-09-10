@@ -50,6 +50,8 @@ title: 'General Meter Options'
 	<dt id="Hidden"><code>Hidden</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the meter is hidden. The visibility can also be changed with the <a href="!bangs/#ShowHideToggleMeter">!ShowMeter and !HideMeter bangs</a>.</p>
+		
+		<p><b>Note:</b> This is done by setting the width and height of the meter to zero, so some care should be taken when using the <code>R</code> relative positioning suffix on <code>X</code> or <code>Y</code> on any following meters. While in effect a "singularity", the hidden meter still exists and occupies a position in space.</p>
 	</dd>
 
 	<dt id="UpdateDivider"><code>UpdateDivider</code> <small>Default: <code>1</code></small></dt>
