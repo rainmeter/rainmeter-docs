@@ -5,7 +5,7 @@ title: '[Rainmeter] section'
 ---
 <p>The [Rainmeter] section of a skin defines options for the entire skin.</p>
 
-<p><b>Note: </b>The [Rainmeter] section does not support <a href="!variables/#DynamicVariables">Dynamic Variables</a> or changes using the <a href="!bangs/#SetOption">!SetOption</a> bang.</p>
+<p><b>Note: </b>The [Rainmeter] section does not support <a href="!variables/#DynamicVariables">Dynamic Variables</a> or changes using the <a href="!bangs/#SetOption">!SetOption</a> bang, with the exception of custom <a href="#Context">Context menu</a> items.</p>
 
 <h2 id="General">General Options</h2>
 <dl>
@@ -164,14 +164,14 @@ title: '[Rainmeter] section'
 	<dd>
 		<p>If not blank, adds an item to the skin's <a href="!user-interface/context-menus/">context menu</a> under "Custom skin actions". Up to 25 <em>ContextTitleN</em> options are allowed, with up to 30 characters per option. Additional characters are truncated with an ellipsis (<code>...</code>). If more than 3 <em>ContextTitleN</em> options are given, "Custom skin actions" becomes a submenu. If a <em>ContextTitleN</em> option is not valid, all subsequent <em>ContextTitleN</em> options are ignored. In addition, if more than 3 options are given, and the value of <em>ContextTitleN</em> includes only dashes (<code>-</code>), the item is displayed as a separator.</p>
 
-		<p><b>Note:</b> Variables in <code>ContextTitleN</code> are always <a href="!variables/#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened.</p>
+		<p><b>Note:</b> Variables in <code>ContextTitleN</code> are always <a href="!variables/#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened. This means that the <a href="!bangs/#SetOption">!SetOption</a> bang can be used to change these values.</p>
 	</dd>
 
 	<dt id="ContextAction"><code>ContextAction</code>, <code>ContextAction2</code>, <code>ContextAction3</code>... </dt>
 	<dd>
 		<p><a href="!skins/option-types/#Action">Action</a> triggered by clicking the corresponding <a href="#ContextTitle">ContextTitleN</a> item. <em>ContextActionN</em> is required for <em>ContextTitleN</em> to be valid, unless the item is a separator.</p>
 
-		<p><b>Note:</b> Variables in <code>ContextActionN</code> are always <a href="!variables/#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu item is clicked.</p>
+		<p><b>Note:</b> Variables in <code>ContextTitleN</code> are always <a href="!variables/#DynamicVariables">dynamic</a>. Variable values are read at the time the context menu is opened. This means that the <a href="!bangs/#SetOption">!SetOption</a> bang can be used to change these values.</p>
 	</dd>
 </dl>
 
