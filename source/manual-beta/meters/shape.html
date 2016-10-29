@@ -1,0 +1,341 @@
+---
+layout: manual-beta
+permalink: manual-beta/meters/shape/
+title: 'Shape meter'
+---
+<p><code>Meter=Shape</code> is used to create one or more <a href="https://en.wikipedia.org/wiki/Vector_graphics">vector graphic</a> shapes.</p>
+
+<p>This allows creating shape images that can be drawn and scaled without the aliasing and pixelating issues encountered when sizing raster (bitmap) images. It can also reduce overall file size of your skin packages, as vector shapes are created entirely in code, and not as separate .png or .jpg image files that must be included and loaded.</p>
+
+<p><em>You "paint" with Raster (i.e. Photoshop), you "draw" with Vector. (i.e. Illustrator)</em></p>
+
+<p><b>Note:</b> Currently only the <b>Rectangle</b> and <b>Combine</b> shape types are implemented in this early beta phase. Other shapes, Ellipse, Line, Arc, Bézier Curve, Path (and possibly others) are planned for implementation soon.</p>
+
+<p>The meter will consist of one or more Shape...Shape2...Shape<em>N</em> objects. You first define the type of shape, the relative starting position in the meter, and shape definition parameters. You can then add <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers to each shape, which can control things like FillColor, StrokeWidth, Rotate, Scale, and many more. Shapes in a meter can also be <a href="#Combine">Combined</a>, which will allow you to merge two or more separate shapes in a variety of ways.</p>
+
+<p>This is a very powerful meter, with a huge amount of control over how things work and look. It is highly recommend that you spend some time getting familiar with the definition parameters, attributes and transforms described below, and take a look at the code in the suite of example skins that is included at the end of this manual page.</p>
+
+<h2 id="Overview">Overview</h2>
+
+<p>It will be useful, before we dig into the details, to take a high-level look at how a shape meter is constructed.</p>
+
+<p>You start with the Shape<em>N</em> option, followed by the <b>type</b> of shape, and any required and optional <b>shape definition</b> parameters, separated by commas.</p>
+
+```txt
+[MeterShape]
+Meter=Shape
+Shape=Rectangle 0,0,100,50
+```
+
+<p>We will explain the required and optional parameters for each shape type fully below, but in this example we are saying "Create a rectangle, starting at an X of 0 and a Y of 0 relative to the meter, with a width of 100, and a height of 50." This is the most basic example of the meter, and will create a 100 X 50 rectangle with a default white fill color and a default 1 pixel black edge stroke.</p>
+
+<p>You will fully define everything else about this shape on this single Shape option line. Let's carry on with some modifiers on our shape.</p>
+
+```txt
+[MeterShape]
+Meter=Shape
+Shape=Rectangle 0,0,100,50 | FillColor 0,0,0,255 | StrokeWidth 4 | StrokeColor 255,255,255,255
+```
+
+<p>Modifiers are added on the Shape<em>N</em> option by defining them separated by the pipe <code>|</code> character. All modifiers are optional, and they can be in any order in the option, after the shape definition. Again, we will fully explain all the possibilities in a bit, but this example adds "Use a black fill color in the shape, change the width of the drawing stroke to 4 pixels, and color the stroke white."</p>
+
+<p>If you have more than one shape defined in the meter, you may want them to share some or all modifiers, rather than repeating them in each Shape<em>N</em> option. This is done with the <a href="#ExtendModifier">Extend modifier</a>. The way this works is that you use the modifier Extend, followed by one or more named identifiers. Then you add that named identifier as a separate option on the meter, and in it put any modifiers you want to share.</p>
+
+```txt
+[MeterShapes]
+Meter=Shape
+Shape=Rectangle 0,0,100,50 | Extend MySharedModifiers
+Shape2=Rectangle 20,10,50,50 | Extend MySharedModifiers
+MySharedModifiers=FillColor 0,0,0,255 | StrokeWidth 4 | StrokeColor 255,255,255,255
+```
+
+</p>Think of Extend as a way to include or insert modifiers in a shape option without having to fully specify them on the same line. In this example we have two shapes in the meter, at different positions and of different sizes, but sharing the modifiers that define the FillColor, StrokeWidth, and StrokeColor. Again, more on this below.</p>
+
+<h2>Options</h2>
+<dl>
+	<dt>General meter options</dt>
+	<dd>
+		<p>All <a href="!meters/general-options/">general meter options</a> are valid.</p>
+		<p><b>Note:</b> The <a href="!meters/general-options/#WH#">W</a> and <a href="!meters/general-options/#WH#">H</a> width and height meter options are not particularly useful in a Shape meter, as the shape(s) sizes are defined in and of themselves, and the meter container will automatically be sized to contain them if W and H are not defined. If you do define W and / or H, and the shape is larger than what you define for the meter, it will just happily draw outside the meter in any case, and then relative positioning is tricky at best.</p>
+	</dd>
+
+	<dt id="Shape"><code>Shape, Shape2, Shape3...</code></dt>
+	<dd>
+		<p>This is the only Shape meter specific option used. It will define the <span class="dd_value">Shape Type</span> and its definition parameters, and any <span class="dd_value">Attribute</span> and <span class="dd_value">Transform</span> modifiers for the shape(s) to be drawn.</p>
+
+		<p>There can be from one to a reasonably unlimited number of shapes in a single Shape meter. Multiple shapes are drawn in the numerical order of the Shape<em>N</em>, so in the case of overlap, higher numbered shapes will be drawn on top / in front of lower numbered shapes.</p>
+		
+```txt
+[MeterShapes]
+Meter=Shape
+Shape=Rectangle 25,25,100,100 | FillColor 106,159,212,255 | Rotate 45
+Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
+```
+		
+		<h2 id="ShapeTypes">Shape Types</h2>
+		
+		<ul>
+			<li><span class="dd_value" id="Rectangle">Rectangle</span><br/>
+			A rectangle or rounded rectangle shape.<br/><br/>
+			<b>Required parameters:</b><br/>
+			<code>X,Y,Width,Height</code>. Values in pixels. X and Y are relative to the meter position.<br/>
+			<b>Optional parameters:</b><br/>
+			One optional parameter <code>Rounding</code> in pixels for equal corner rounding.<br/>
+			Two optional parameters <code>XRounding,YRounding</code> in pixels for distinct corner rounding in the X and Y axis.<br/><br/>
+			
+			Examples:<br/>
+			<code>Shape=Rectangle 0,0,100,50</code><br/>
+			<code>Shape=Rectangle 0,0,100,50,10</code><br/>
+			<code>Shape=Rectangle 0,0,100,50,20,5</code><br/><br/></li>
+		
+			<li><span class="dd_value" style="color:rgb(170,170,170)"> Other shape types coming soon...</span><br/><br/></li>
+			
+			<li><span class="dd_value" id="Combine">Combine</span><br/>
+			Combine is a special shape type, that combines or merges two or more existing shapes in the meter, <b>replacing</b> them with a new "combined" shape. The first shape in the Combine definition will be the "parent", and any shapes, separated with the pipe <code>|</code> character, with which it is combined are "children". This distinction is important in the context of how modifiers are inherited or not on combined shapes.<br/><br/>
+			
+			<b>Parameters:</b><br/>
+			<code>ParentShapeName | CombineType ChildShapeName | CombineType ChildShapeName...</code><br/><br/>
+			
+			<b><span id="CombineTypes">Combine types:</span></b><br/>
+			<code>Union</code> : Merges the parent and defined child shapes together in the new shape.<br/>
+			<code>Intersect</code> : Only the overlapping / intersecting portions of the parent and defined child shapes are drawn in the new shape.<br/>
+			<code>XOR</code> : Only the NON overlapping / intersecting portions of the parent and defined child shapes are drawn in the new shape.<br/>
+			<code>Exclude</code> : Only the portion of the parent shape that is NON overlapping / intersecting with the defined child shape is drawn in the new shape.<br/><br/>
+			
+			Examples:<br/>
+			<code>Shape4=Combine Shape | Union Shape2 | XOR Shape3</code><br/>
+			<code>Shape4=Combine Shape2 | Intersect Shape</code><br/>
+			<code>Shape4=Combine Shape | Union Shape3 | Exclude Shape2</code><br/><br/>
+			
+			<b>Notes on Combine:</b><br/>
+			When shapes are combined, the only <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. FillColor and StrokeWidth, that are used on the new combined shape are the parent shape's modifiers. Any Attribute modifiers on child shapes are ignored.<br/><br/>
+			When shapes are combined, any <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on either the parent or child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape.<br/><br/>
+			Both Attribute and Transform modifiers are ignored on the combined shape option. Attribute modifiers are used from the parent shape, and Transform modifiers are performed on the original shapes before the combine is done. The final combined shape may not be modified.<br/><br/>
+			The order of the front-to-back position of the shapes can be impacted by combining shapes, as the shapes are drawn in the numerical order of their Shape<em>N</em> option name. Since the new combined shape is also a numbered shape option, some thought should be given when numbering combined and uncombined shapes, to get the order you want.
+			</li>
+		</ul>	
+		
+		<h2 id="AttributeModifiers">Attribute Modifiers</h2>
+		
+		<ul>
+			<li><span class="dd_value" id="FillColor">FillColor</span><br/>
+			<a href="!skins/option-types/#Color">Color</a> used to fill a closed shape.<br/>
+			Default: 255,255,255,255<br/></br>
+			
+			Example:<br/>
+			<code>Shape=Rectangle 0,0,100,50 | FillColor 0,255,0,255</code><br/><br/></li>
+			
+			<li><span class="dd_value" id="StrokeWidth">StrokeWidth</span><br/>
+			Size in pixels of the drawing stroke on the shape.<br/>
+			Default: 1<br/><br/>
+			
+			Example:<br/>
+			<code>Shape=Rectangle 2,2,100,50 | StrokeWidth 4</code><br/><br/>
+			
+			<b>Notes on StrokeWidth:</b><br/>
+			This is <b>not</b> a "border around" the shape. It is the shape's "drawing stroke". One half of the stroke will be "inside" the shape, and one half will be "outside" the shape. With an odd-numbered StrokeWidth, which can't be divided evenly by two, the very most inside and very most outside pixels will actually be 1/2 pixels in size, with Direct2D "aliasing" the edge of the two pixels, to create "half pixels" and keep the stroke the correct size.<br/><br/>
+			
+			If you have a meter at the left or top of the skin, and define a shape with an X or Y of 0, that is where the shape will be drawn. However, since any StrokeWidth added to the shape will have one half of it outside the shape, you will need to move either the meter or the shape right or down to accommodate this, or part of the stroke will be outside the skin and truncated.<br/><br/></li>
+			
+			<li><span class="dd_value" id="StrokeColor">StrokeColor</span><br/>
+			<a href="!skins/option-types/#Color">Color</a> for the drawing stroke on a shape.<br/>
+			Default: 0,0,0,255<br/></br>
+			
+			Example:<br/>
+			<code>Shape=Rectangle 0,0,100,50 | StrokeColor 255,0,0,255</code><br/><br/></li>
+			
+			<li><span class="dd_value" id="StrokeStartCap">StrokeStartCap</span><br/>
+			Defines the shape of a cap used at the start of the drawing stroke on an open shape. This modifier is ignored on closed shapes.<br/><br/>
+			<b>Required Parameter:</b> CapShape<br/>
+			Default: Flat<br/><br/>
+			
+			<b><span id="CapShapes">Cap shapes:</span></b><br/>
+			<code>Flat</code> This really no end cap, the same as leaving the modifier off entirely.<br/>
+			<code>Round</code><br/>
+			<code>Square</code><br/>
+			<code>Triangle</code><br/><br/>
+			
+			Example:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeStartCap Round</code><br/><br/>
+			
+			<b>Note:</b> There are no opens shapes yet implemented in this early beta.<br/><br/></li>
+			
+			<li><span class="dd_value" id="StrokeEndCap">StrokeEndCap</span><br/>
+			Defines the shape of a cap used at the end of the drawing stroke on an open shape. This modifier is ignored on closed shapes.<br/><br/>
+			<b>Required Parameter:</b> CapShape<br/>
+			Default: Flat<br/><br/>
+			
+			<b><span id="CapShapes">Cap shapes:</span></b><br/>
+			<code>Flat</code> This really no end cap, the same as leaving the modifier off entirely.<br/>
+			<code>Round</code><br/>
+			<code>Square</code><br/>
+			<code>Triangle</code><br/><br/>
+			
+			Example:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeEndCap Round</code><br/><br/>
+			
+			<b>Note:</b> There are no opens shapes yet implemented in this early beta.<br/><br/></li>
+			
+			<li><span class="dd_value" id="StrokeLineJoin">StrokeLineJoin</span><br/>
+			Defines the shape used to join two lines or segments of a shape. An optional number value of MiterLimit can be used to specify how sharp miter joins are allowed to be.<br/><br/>
+			<b>Required Parameter:</b> JoinType<br/>
+			<b>Optional Parameter:</b> MiterLimit<br/>
+			Default: Miter, 10.0<br/><br/>
+			
+			<b><span id="Jointypes">Join types :</span></b><br/>
+			<code>Miter</code><br/>
+			<code>Bevel</code><br/>
+			<code>Round</code><br/>
+			<code>MiterOrBevel</code><br/><br/>
+			
+			Example:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StokeLineJoin Bevel</code><br/><br/>
+			
+			<li><span class="dd_value" id="StrokeDashes">StrokeDashes</span><br/>
+			Defines a repeating dash or dot pattern for the shape's drawing stroke.<br/><br/>
+			
+			<b>Required Parameters:</b> DashSize,GapSize<br/>
+			<b>Optional Parameters:</b> DashSize,GapSize,DashSize,GapSize...<br/>
+			Default: None (solid stroke)<br/><br/>
+			
+			This is done with a single or repeating sets of comma-separated pairs of DashSize,GapSize. These are not numbers of pixels, but are a multiplication factor based on the StrokeWidth.  So <code>2,1.5</code> would be a dash twice as long as the StrokeWidth, followed by a gap one and one-half times as long as the StrokeWidth, and this would be repeated for the entire stroke. This can be extended, i.e <code>2,1,3,1.5,4,2</code> to create a repeating custom dashed stroke of various sizes and gaps.<br/><br/>
+			
+			Example:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,1.5</code><br/><br/>
+			
+			<b>Notes on StrokeDashes:</b><br/>
+			Dots instead of dashes are created in conjunction with the <b>StrokeDashCap</b> option below. If you specify a dash size of <code>0</code>, and a StrokeDashCap of <code>Round</code> you will get dots, <code>Triangle</code> you will get diamonds, and so on. So for instance <code>0,2</code> with a StrokeDaskCap of <code>Round</code> will create NO "dash", just the two rounded end caps next to each other followed by a gap, which will create a dotted line.<br/><br/>
+		
+			<li><span class="dd_value" id="StrokeDashCap">StrokeDashCap</span><br/>
+			Defines the shape of a cap used at the start and end of each dash in the drawing stroke.<br/><br/>
+			<b>Dependent on:</b> <a href="#StrokeDashes">StrokeDashes</a><br/>
+			<b>Required Parameter:</b> CapShape<br/>
+			Default: Flat<br/><br/>
+			
+			<b><span id="CapShapes">Cap shapes:</span></b><br/>
+			<code>Flat</code> This really no end cap, the same as leaving the modifier off entirely.<br/>
+			<code>Round</code><br/>
+			<code>Square</code><br/>
+			<code>Triangle</code><br/><br/>
+
+			Example:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 0,2 | StrokeDashCap Round</code><br/><br/>
+			
+			<li><span class="dd_value" id="StrokeDashOffset">StrokeDashOffset</span><br/>			
+			Defines an offset in pixels where the first dash will start relative to the start of the shape.<br/><br/>
+			<b>Dependent on:</b> <a href="#StrokeDashes">StrokeDashes</a><br/>
+			<b>Required Parameter:</b> OffsetPixels<br/>
+			Default: None<br/><br/>			
+			
+			Example:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,2 | StrokeDashOffset 10</code></li>
+		</ul>
+		
+		<h2 id="TransformModifiers">Transform Modifiers</h2>
+
+		<ul>
+			<li><span class="dd_value" id="Rotate">Rotate</span><br/>
+			Rotates the shape some number of positive or negative degrees of angle, either around the center of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.<br/><br/>
+			<b>Required Parameter:</b> RotateDegrees<br/>
+			<b>Default:</b> 0<br/>
+			<b>Optional Parameter:</b> XAnchor,YAnchor<br/>
+			<b>Default:</b> The center of the shape is used.<br/><br/>
+			
+			Examples:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | Rotate 45</code><br/>
+			<code>Shape=Rectangle 0,0,100,100 | Rotate 90,10,50</code><br/><br/></li>
+			
+			<li><span class="dd_value" id="Scale">Scale</span><br/>
+			Scales the shape in the X and / or Y axis, using multiplication factors. Reducing the scale would be done with a scaling factor less than 1. The scaling is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape. So for instance, to scale a shape to the left, you would set the anchor point to the right.<br/><br/>
+			<b>Required Parameters:</b> XScaleFactor,YScaleFactor<br/>
+			<b>Default:</b> 1.0<br/>
+			<b>Optional Parameters:</b> XAnchor,YAnchor<br/>
+			<b>Default:</b> The top left of the shape is used.<br/><br/>
+			
+			Examples:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | Scale 1.5,0</code><br/>
+			<code>Shape=Rectangle 0,0,100,100 | Scale 3.0,0.5,100,100</code><br/><br/></li>
+
+			<li><span class="dd_value" id="Skew">Skew</span><br/>
+			Skews the shape in the X and / or Y axis, some number of positive or negative degrees of angle. The skew is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.<br/><br/>
+			<b>Required Parameters:</b> XSkewDegrees,YSkewDegrees<br/>
+			<b>Default:</b> 0<br/>
+			<b>Optional Parameters:</b> XAnchor,YAnchor<br/>
+			<b>Default:</b> The top left of the shape is used.<br/><br/>
+			
+			Examples:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | Skew 20,0</code><br/>
+			<code>Shape=Rectangle 0,0,100,100 | Skew 0,-20,100,0</code><br/><br/></li>
+
+			<li><span class="dd_value" id="Offset">Offset</span><br/>
+			Offsets (moves) the shape in the X and / or Y axis, some number of positive or negative pixels.<br/><br/>
+			<b>Required Parameters:</b> XOffsetPixels,YOffSetPixels<br/>
+			<b>Default:</b> 0,0<br/>
+			
+			Examples:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | Offset 10,0</code><br/>
+			<code>Shape=Rectangle 0,0,100,100 | Offset 0,-10</code><br/><br/></li>
+			
+			<li><span class="dd_value" id="TransformOrder">TransformOrder</span><br/>
+			Allows you to define or change the order in which the various Transform modifiers are applied. This can be important when anchor points are used in transforms, as for instance you may want to Scale before you Rotate.<br/><br/>
+			<b>Parameters:</b> Comma separated list of Transform modifier names.<br/>
+			<b>Default:</b> Rotate,Scale,Skew,Offset<br/><br/>
+			
+			Any number of the Transform modifier names can be specified, with any that are not in the list simply moved to the end of the "queue" and still applied.<br/><br/>
+			
+			Example:<br/>
+			<code>Shape=Rectangle 0,0,100,100 | TransformOrder Scale,Rotate</code><br/>
+			In this example the resulting order would be Scale,Rotate,Skew,Offset<br/><br/></li>
+		</ul>		
+	
+		<h2 id="ExtendModifier">Extend Modifier</h2>		
+		
+		<ul>
+			<li><span class="dd_value" id="Extend">Extend</span><br/>
+			A special modifier that will allow you to "extend" the pipe <code>|</code> separated list of Attribute and / or Transform modifiers from the Shape<em>N</em> option to one or more separate named options in the meter. The intent of this is two-fold. First, to allow different shape to <b>share</b> modifiers without having to specify them repeatedly in each shape option. Second, to provide a way to <b>shorten</b> the overall length of the shape option line, by breaking them out as desired to separate named options.<br/><br/>
+			
+			<b>Parameters:</b> Comma separated list of named options.<br/>
+			<b>Default:</b> None<br/><br/>
+
+			Example:<br/>
+			
+```txt
+[MeterShapes]
+Meter=Shape
+Shape=Rectangle 0,0,100,50 | Extend MySharedModifiers, MyRotateAndScale1
+Shape2=Rectangle 20,10,50,50 | Extend MySharedModifiers, MyRotateAndScale2
+MySharedModifiers=FillColor 0,0,0,255 | StrokeWidth 4 | StrokeColor 255,255,255,255
+MyRotate1=Rotate 20 | Scale 1.5,0
+MyRotate2=Rotate 45 | Scale 2.0,1.5
+```
+			<b>Notes on Extend:</b><br/>
+			The "named" options can be any names you like, however as with any other option in a .ini file, they must be unique to the [Section].<br/><br/>
+			
+			This functionality cannot "cascade", and you can't have a named Extend option use an Extend modifier.<br/><br/>
+			
+			If any given Attribute and / or Transform modifier is specified both directly on the Shape<em>N</em> option line and in a named Extend option, the one in the named Extend option will always "win" and be the only one performed, no matter what order things are on the Shape<em>N</em> option line.<br/><br/>
+			
+			If any given Attribute and / or Transform modifier is specified in two or more named Extend options specified on the same Shape<em>N</em>, the one in the first named Extend option on the Shape<em>N</em> option line will be the only one performed. The same modifier, even with different parameter values, cannot be performed on the same shape twice.<br/><br/>
+			</li>
+		</ul>
+		
+	</dd>
+</dl>
+
+<h2>Mouse Detection on Shapes</h2>
+
+<p>The behavior of <a href="!mouse-actions/">Mouse Actions</a>, for actions like LeftMouseUpAction, MouseOverAction, MouseScrollDownAction and the others is a bit different on a Shape meter than other meters.</p>
+
+<p><b>In a Shape meter, the mouse is detected on any solid part of the drawing created by all shapes in the meter. It is not detected on the actual meter container, no matter what value SolidColor is set to, or what other meters may be behind or in front of the Shape meter.</b></p>
+
+<p>In order to have the mouse detected in the non-solid parts of your shape(s), you will need to create a background Shape as the first shape in the meter. It can simply be a rectangle (or any other shape you like) set to the size you need, with a FillColor of 0,0,0,1 and a StrokeWidth of 0. Again, simply setting SolidColor on the meter itself will not help with Shape meters. For Shape meters, mouse detection has been entirely moved from the "meter" to the "shape".</p>
+
+<p><b>The mouse will be detected on any solid part of the shape even if (and this will be common with shape meters using Arc and Curve and Path) the shape extends outside the boundaries of the meter container.</b><br/>
+<em>This is why, in this meter type, we have changed the "target" of the mouse detection from the meter to the shape.</em></p>
+
+<p>The mouse actions are still set on the overall Shape meter, and as always, there can only be one of each kind of mouse action in a [Section]. This means that you can't have two Shape<em>N</em> shapes in the meter, and have for instance a distinct LeftMouseUpAction on each. In order to have distinct mouse actions of the same type on distinct shapes, you will need to create the shapes in different Shape meters.<p>
+
+<p>Of course, other than Combine, there is nothing that says two Shape meters with two shapes can't overlap or otherwise look like they are both part of the same logical drawing. Keep in mind however, that if two meters with the same mouse action on them overlap, the meter "in front", or last in the .ini file, will detect the mouse in the overlapping areas.</p>
+
+<h2>Examples</h2>
+<p>Working on it...</p>
