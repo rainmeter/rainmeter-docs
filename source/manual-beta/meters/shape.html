@@ -13,7 +13,7 @@ title: 'Shape meter'
 
 <p>The meter will consist of one or more Shape...Shape2...Shape<em>N</em> objects. You first define the type of shape, the relative starting position in the meter, and shape definition parameters. You can then add <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers to each shape, which can control things like FillColor, StrokeWidth, Rotate, Scale, and many more. Shapes in a meter can also be <a href="#Combine">Combined</a>, which will allow you to merge two or more separate shapes in a variety of ways.</p>
 
-<p>This is a very powerful meter, with a huge amount of control over how things work and look. It is highly recommend that you spend some time getting familiar with the definition parameters, attributes and transforms described below, and take a look at the code in the suite of example skins that is included at the end of this manual page.</p>
+<p>This is a very powerful meter, with a huge amount of control over how things work and look. It is highly recommend that you spend some time getting familiar with the definition parameters, attributes and transforms described below, and take a look at the code in the suite of <a href="#Examples">example skins</a> that is included for download at the end of this manual page.</p>
 
 <h2 id="Overview">Overview</h2>
 
@@ -75,7 +75,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 		
 		<ul>
 			<li><span class="dd_value" id="Rectangle">Rectangle</span><br/>
-			A rectangle or rounded rectangle shape.<br/><br/>
+			A rectangle or rounded rectangle.<br/><br/>
 			<b>Required parameters:</b><br/>
 			<code>X,Y,Width,Height</code>. Values in pixels. X and Y are relative to the meter position.<br/>
 			<b>Optional parameters:</b><br/>
@@ -336,7 +336,7 @@ MyRotateAndScale2=Rotate 45 | Scale 2.0,1.5
 
 <p>As always, there can only be one of each kind of mouse action in a [Section]. This means that you can't for instance have two Shape<em>N</em> shapes in the meter, and have a distinct LeftMouseUpAction on each. In order to have distinct mouse actions of the same type on individual shapes, you will need to create the shapes in different Shape meters.<p>
 
-<h2>Examples</h2>
+<h2 id="Examples">Examples</h2>
 <p>While the code here is for a simple skin that demonstrates various ways to manipulate the Rectangle shape type, the .rmskin in the Download button is a much more robust suite of skins demonstrating many of the aspects of the Shape meter.</p>
 
 <a href="!examples/ExamplesMeterShape.rmskin" class="download"></a>
