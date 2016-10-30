@@ -292,7 +292,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 		
 		<ul>
 			<li><span class="dd_value" id="Extend">Extend</span><br/>
-			A special modifier that will allow you to "extend" the pipe <code>|</code> separated list of Attribute and / or Transform modifiers from the Shape<em>N</em> option to one or more separate named options in the meter. The intent of this is two-fold. First, to allow different shape to <b>share</b> modifiers without having to specify them repeatedly in each shape option. Second, to provide a way to <b>shorten</b> the overall length of the shape option line, by breaking them out as desired to separate named options.<br/><br/>
+			A special modifier that will allow you to move Attribute and / or Transform modifiers from the Shape<em>N</em> option to one or more named options in the meter. The intent of this is two-fold. First, to allow different shape to <b>share</b> modifiers without having to specify them repeatedly in each shape option. Second, to provide a way to <b>shorten</b> the overall length of the shape option line, by breaking out modifiers as desired to separate named options.<br/><br/>
 			
 			<b>Parameters:</b> Comma separated list of named options.<br/>
 			<b>Default:</b> None<br/><br/>
@@ -326,11 +326,11 @@ MyRotate2=Rotate 45 | Scale 2.0,1.5
 
 <p>The behavior of <a href="!mouse-actions/">Mouse Actions</a>, for actions like LeftMouseUpAction, MouseOverAction, MouseScrollDownAction and the others is a bit different on a Shape meter than other meters.</p>
 
-<p><b>In a Shape meter, the mouse is detected on any solid part of the drawing created by all shapes in the meter. It is not detected on the actual meter container, no matter what value SolidColor is set to, or what other meters may be behind or in front of the Shape meter.</b></p>
+<p><b>In a Shape meter, the mouse is detected on any solid part of the drawing created by any and all shapes in the meter. It is not detected on the actual meter container, no matter what value SolidColor is set to, or what other meters may be behind or in front of the Shape meter.</b></p>
 
 <p>In order to have the mouse detected in the non-solid parts of your shape(s), you will need to create a background Shape as the first shape in the meter. It can simply be a rectangle (or any other shape you like) set to the size you need, with a FillColor of 0,0,0,1 and a StrokeWidth of 0. Again, simply setting SolidColor on the meter itself will not work. For Shape meters, mouse detection has been entirely moved from the "meter" to the "shape".</p>
 
-<p><b>The mouse will be detected on any solid part of the shape even if the shape extends outside the boundaries of the meter container.</b> This will be common with this meter type and is why we have changed the "target" of the mouse detection from the meter to the shape.</p>
+<p><b>The mouse will be detected on any solid part of the shapes even if the shapes extend outside the boundaries of the meter container.</b> This will be common with this meter type and is why we have changed the "target" of the mouse detection from the meter to the shapes.</p>
 
 <p>As always, there can only be one of each kind of mouse action in a [Section]. This means that you can't for instance have two Shape<em>N</em> shapes in the meter, and have a distinct LeftMouseUpAction on each. In order to have distinct mouse actions of the same type on individual shapes, you will need to create the shapes in different Shape meters.<p>
 
