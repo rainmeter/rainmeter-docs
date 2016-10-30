@@ -27,9 +27,9 @@ Meter=Shape
 Shape=Rectangle 0,0,100,50
 ```
 
-<p>We will explain the required and optional parameters for each shape type fully below, but in this example we are saying "Create a rectangle, starting at an X of 0 and a Y of 0 relative to the meter, with a width of 100, and a height of 50." This is the most basic example of the meter, and will create a 100 X 50 rectangle with a default white fill color and a default 1 pixel black edge stroke.</p>
+<p>We will explain the required and optional parameters for each shape type fully below, but in this example we are saying "Create a rectangle, starting at an X of 0 and a Y of 0 relative to the meter, with a width of 100, and a height of 50." This is the most basic example of the meter, and will create a 100 X 50 rectangle with a default white fill color and a default 1 pixel black drawing stroke.</p>
 
-<p>You will fully define everything else about this shape on this single Shape option line. Let's carry on with some modifiers on our shape.</p>
+<p>You will define everything about this shape on this single Shape option line. Let's carry on with some modifiers on our shape.</p>
 
 ```txt
 [MeterShape]
@@ -49,14 +49,13 @@ Shape2=Rectangle 20,10,50,50 | Extend MySharedModifiers
 MySharedModifiers=FillColor 0,0,0,255 | StrokeWidth 4 | StrokeColor 255,255,255,255
 ```
 
-</p>Think of Extend as a way to include or insert modifiers in a shape option without having to fully specify them on the same line. In this example we have two shapes in the meter, at different positions and of different sizes, but sharing the modifiers that define the FillColor, StrokeWidth, and StrokeColor. Again, more on this below.</p>
+</p>Think of Extend as a way to move modifiers in a shape option to a separate line, for sharing or just to shorten the option line. In this example we have two shapes in the meter, at different positions and of different sizes, but sharing the modifiers that define the FillColor, StrokeWidth, and StrokeColor. Again, more on this below.</p>
 
 <h2>Options</h2>
 <dl>
 	<dt>General meter options</dt>
 	<dd>
 		<p>All <a href="!meters/general-options/">general meter options</a> are valid.</p>
-		<p><b>Note:</b> The <a href="!meters/general-options/#WH#">W</a> and <a href="!meters/general-options/#WH#">H</a> width and height meter options are not particularly useful in a Shape meter, as the shape(s) sizes are defined in and of themselves, and the meter container will automatically be sized to contain them if W and H are not defined. If you do define W and / or H, and the shape is larger than what you define for the meter, it will just happily draw outside the meter in any case, and then relative positioning is tricky at best.</p>
 	</dd>
 
 	<dt id="Shape"><code>Shape, Shape2, Shape3...</code></dt>
@@ -311,7 +310,7 @@ MyRotate2=Rotate 45 | Scale 2.0,1.5
 			<b>Notes on Extend:</b><br/>
 			The "named" options can be any names you like, however as with any other option in a .ini file, they must be unique to the [Section].<br/><br/>
 			
-			This functionality cannot "cascade", and you can't have a named Extend option use an Extend modifier.<br/><br/>
+			This functionality cannot "cascade". You can't have a named Extend option use an Extend modifier.<br/><br/>
 			
 			If any given Attribute and / or Transform modifier is specified both directly on the Shape<em>N</em> option line and in a named Extend option, the one in the named Extend option will always "win" and be the only one performed, no matter what order things are on the Shape<em>N</em> option line.<br/><br/>
 			
