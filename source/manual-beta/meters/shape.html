@@ -62,7 +62,7 @@ MySharedModifiers=FillColor 0,0,0,255 | StrokeWidth 4 | StrokeColor 255,255,255,
 	<dd>
 		<p>This is the only Shape meter specific option used. It will define the <span class="dd_value">Shape Type</span> and its definition parameters, and any <span class="dd_value">Attribute</span> and <span class="dd_value">Transform</span> modifiers for the shape(s) to be drawn.</p>
 
-		<p>There can be from one to a reasonably unlimited number of shapes in a single Shape meter. Multiple shapes are drawn in the numerical order of the Shape<em>N</em>, so in the case of overlap, higher numbered shapes will be drawn on top / in front of lower numbered shapes.</p>
+		<p>There can be from one to a reasonably unlimited number of shapes in a single Shape meter. Multiple shapes are <b>drawn in the numerical order of the Shape<em>N</em></b>, so in the case of overlap, higher numbered shapes will be drawn on top / in front of lower numbered shapes.</p>
 		
 ```txt
 [MeterShapes]
@@ -176,7 +176,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 			<b>Note:</b> There are no opens shapes yet implemented in this early beta.<br/><br/></li>
 			
 			<li><span class="dd_value" id="StrokeLineJoin">StrokeLineJoin</span><br/>
-			Defines the shape used to join two lines or segments of a shape. An optional number value of MiterLimit can be used to specify how sharp miter joins are allowed to be.<br/><br/>
+			Defines the type of join used on the angled connection of drawing stroke segments in a shape. An optional number value of MiterLimit can be used to specify how sharp Miter joins are allowed to be.<br/><br/>
 			<b>Required Parameter:</b> JoinType<br/>
 			<b>Optional Parameter:</b> MiterLimit<br/>
 			Default: Miter, 10.0<br/><br/>
