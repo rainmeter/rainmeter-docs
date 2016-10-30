@@ -188,7 +188,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 			<code>MiterOrBevel</code><br/><br/>
 			
 			Example:<br/>
-			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeLineJoin Bevel</code><br/><br/>
+			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeLineJoin Bevel</code><br/><br/></li>
 			
 			<li><span class="dd_value" id="StrokeDashes">StrokeDashes</span><br/>
 			Defines a repeating dash or dot pattern for the shape's drawing stroke.<br/><br/>
@@ -203,7 +203,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,1.5</code><br/><br/>
 			
 			<b>Notes on StrokeDashes:</b><br/>
-			Dots instead of dashes are created in conjunction with the <b>StrokeDashCap</b> option below. If you specify a dash size of <code>0</code>, and a StrokeDashCap of <code>Round</code> you will get dots, <code>Triangle</code> you will get diamonds, and so on. So for instance <code>0,2</code> with a StrokeDaskCap of <code>Round</code> will create NO "dash", just the two rounded end caps next to each other followed by a gap, which will create a dotted line.<br/><br/>
+			Dots instead of dashes are created in conjunction with the <b>StrokeDashCap</b> option below. If you specify a dash size of <code>0</code>, and a StrokeDashCap of <code>Round</code> you will get dots, <code>Triangle</code> you will get diamonds, and so on. So for instance <code>0,2</code> with a StrokeDaskCap of <code>Round</code> will create NO "dash", just the two rounded end caps next to each other followed by a gap, which will create a dotted line.<br/><br/></li>
 		
 			<li><span class="dd_value" id="StrokeDashCap">StrokeDashCap</span><br/>
 			Defines the shape of a cap used at the start and end of each dash in the drawing stroke.<br/><br/>
@@ -218,7 +218,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 			<code>Triangle</code><br/><br/>
 
 			Example:<br/>
-			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 0,2 | StrokeDashCap Round</code><br/><br/>
+			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 0,2 | StrokeDashCap Round</code><br/><br/></li>
 			
 			<li><span class="dd_value" id="StrokeOffset">StrokeOffset</span><br/>			
 			Defines an offset in pixels where the first dash will start relative to the start of the shape.<br/><br/>
@@ -253,8 +253,11 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 			
 			Examples:<br/>
 			<code>Shape=Rectangle 0,0,100,100 | Scale 1.5,0</code><br/>
-			<code>Shape=Rectangle 0,0,100,100 | Scale 3.0,0.5,100,100</code><br/><br/></li>
-
+			<code>Shape=Rectangle 0,0,100,100 | Scale 3.0,0.5,100,100</code><br/><br/>
+			
+			<b>Notes on Scale</b><br/>
+			The size of any StrokeWdith, the drawing stroke, is not effected by when the shape is scaled.<br/><br/></li>
+			
 			<li><span class="dd_value" id="Skew">Skew</span><br/>
 			Skews the shape in the X and / or Y axis, some number of positive or negative degrees of angle. The skew is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.<br/><br/>
 			<b>Required Parameters:</b> XSkewDegrees,YSkewDegrees<br/>
