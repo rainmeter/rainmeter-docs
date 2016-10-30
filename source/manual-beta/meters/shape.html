@@ -328,14 +328,11 @@ MyRotate2=Rotate 45 | Scale 2.0,1.5
 
 <p><b>In a Shape meter, the mouse is detected on any solid part of the drawing created by all shapes in the meter. It is not detected on the actual meter container, no matter what value SolidColor is set to, or what other meters may be behind or in front of the Shape meter.</b></p>
 
-<p>In order to have the mouse detected in the non-solid parts of your shape(s), you will need to create a background Shape as the first shape in the meter. It can simply be a rectangle (or any other shape you like) set to the size you need, with a FillColor of 0,0,0,1 and a StrokeWidth of 0. Again, simply setting SolidColor on the meter itself will not help with Shape meters. For Shape meters, mouse detection has been entirely moved from the "meter" to the "shape".</p>
+<p>In order to have the mouse detected in the non-solid parts of your shape(s), you will need to create a background Shape as the first shape in the meter. It can simply be a rectangle (or any other shape you like) set to the size you need, with a FillColor of 0,0,0,1 and a StrokeWidth of 0. Again, simply setting SolidColor on the meter itself will not work. For Shape meters, mouse detection has been entirely moved from the "meter" to the "shape".</p>
 
-<p><b>The mouse will be detected on any solid part of the shape even if (and this will be common with shape meters using Arc and Curve and Path) the shape extends outside the boundaries of the meter container.</b><br/>
-<em>This is why, in this meter type, we have changed the "target" of the mouse detection from the meter to the shape.</em></p>
+<p><b>The mouse will be detected on any solid part of the shape even if the shape extends outside the boundaries of the meter container.</b> This will be common with this meter type and is why we have changed the "target" of the mouse detection from the meter to the shape.</p>
 
-<p>The mouse actions are still set on the overall Shape meter, and as always, there can only be one of each kind of mouse action in a [Section]. This means that you can't have two Shape<em>N</em> shapes in the meter, and have for instance a distinct LeftMouseUpAction on each. In order to have distinct mouse actions of the same type on distinct shapes, you will need to create the shapes in different Shape meters.<p>
-
-<p>Of course, other than Combine, there is nothing that says two Shape meters with two shapes can't overlap or otherwise look like they are both part of the same logical drawing. Keep in mind however, that if two meters with the same mouse action on them overlap, the meter "in front", or last in the .ini file, will detect the mouse in the overlapping areas.</p>
+<p>As always, there can only be one of each kind of mouse action in a [Section]. This means that you can't for instance have two Shape<em>N</em> shapes in the meter, and have a distinct LeftMouseUpAction on each. In order to have distinct mouse actions of the same type on individual shapes, you will need to create the shapes in different Shape meters.<p>
 
 <h2>Examples</h2>
 <p>Working on it...</p>
