@@ -110,7 +110,6 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 			When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. FillColor and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes are ignored.<br/><br/>
 			When shapes are combined, any <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on either the parent or child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape.<br/><br/>
 			Both Attribute and Transform modifiers are ignored on the combined shape option line. Attribute modifiers are inherited from the parent shape, and Transform modifiers are performed on the original shapes before the combine is done. The final combined shape may not be modified.<br/><br/>
-			A Shape<em>N</em> defined as a type of Combine may then also be a child shape in another combine. It may not be a parent in another combine.<br/><br/>
 			The order of the front-to-back position of the shapes can be impacted by combining shapes, as the shapes are drawn in the numerical order of their Shape<em>N</em> option name. Since the new combined shape is also a numbered shape option, some thought should be given when numbering combined and uncombined shapes, to get the order you want.
 			</li>
 		</ul>	
