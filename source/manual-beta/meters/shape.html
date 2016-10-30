@@ -247,7 +247,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 			<li><span class="dd_value" id="Scale">Scale</span><br/>
 			Scales the shape in the X and / or Y axis, using multiplication factors. Reducing the scale would be done with a scaling factor less than 1. The scaling is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape. So for instance, to scale a shape to the left, you would set the anchor point to the right.<br/><br/>
 			<b>Required Parameters:</b> XScaleFactor,YScaleFactor<br/>
-			<b>Default:</b> 1.0<br/>
+			<b>Default:</b> 1.0,1.0<br/>
 			<b>Optional Parameters:</b> XAnchor,YAnchor<br/>
 			<b>Default:</b> The top left of the shape is used.<br/><br/>
 			
@@ -261,7 +261,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 			<li><span class="dd_value" id="Skew">Skew</span><br/>
 			Skews the shape in the X and / or Y axis, some number of positive or negative degrees of angle. The skew is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.<br/><br/>
 			<b>Required Parameters:</b> XSkewDegrees,YSkewDegrees<br/>
-			<b>Default:</b> 0<br/>
+			<b>Default:</b> 0,0<br/>
 			<b>Optional Parameters:</b> XAnchor,YAnchor<br/>
 			<b>Default:</b> The top left of the shape is used.<br/><br/>
 			
@@ -311,13 +311,11 @@ MyRotateAndScale1=Rotate 20 | Scale 1.5,0
 MyRotateAndScale2=Rotate 45 | Scale 2.0,1.5
 ```
 			<b>Notes on Extend:</b><br/>
-			The "named" options can be any names you like, however as with any other option in a .ini file, they must be unique to the [Section].<br/><br/>
+			The named options can be any names you like, however as with any other option in a .ini file, they must be unique to the [Section].<br/><br/>
 			
 			This functionality cannot "cascade". You can't have a named Extend option use an Extend modifier.<br/><br/>
 			
-			If any given Attribute and / or Transform modifier is specified both directly on the Shape<em>N</em> option line and in a named Extend option, the one in the named Extend option will always "win" and be the only one performed, no matter what order things are on the Shape<em>N</em> option line.<br/><br/>
-			
-			If any given Attribute and / or Transform modifier is specified in two or more named Extend options specified on the same Shape<em>N</em>, the one in the first named Extend option on the Shape<em>N</em> option line will be the only one performed. The same modifier, even with different parameter values, cannot be performed on the same shape twice.<br/><br/>
+			The modifiers in the named option are in effect "inserted" in the Shape<em>N</em> option line where the Extend keyword is located. In the case of any duplication of a modifier this inadvertently causes, the rule is "last wins". If there are two instances of for example StrokeWidth that end up being defined for a single Shape<em>N</em> option, the last one that is defined after all Extend named options are "inserted" will be performed.<br/>
 			</li>
 		</ul>
 		
