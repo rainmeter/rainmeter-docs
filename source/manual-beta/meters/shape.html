@@ -334,4 +334,82 @@ MyRotate2=Rotate 45 | Scale 2.0,1.5
 <p>As always, there can only be one of each kind of mouse action in a [Section]. This means that you can't for instance have two Shape<em>N</em> shapes in the meter, and have a distinct LeftMouseUpAction on each. In order to have distinct mouse actions of the same type on individual shapes, you will need to create the shapes in different Shape meters.<p>
 
 <h2>Examples</h2>
-<p>Working on it...</p>
+<p>While the code here is for a simple skin that demonstrates various ways to manipulate the Rectangle shape type, the .rmskin in the Download button is a much more robust suite of skins demonstrating many of the aspects of the Shape meter.</p>
+
+<a href="!examples/ExamplesMeterShape.rmskin" class="download"></a>
+``` txt
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+
+[MeterRectangle]
+Meter=Shape
+X=2
+Y=2
+Shape=Rectangle 0,0,100,100 | Extend MyModifiers1
+MyModifiers1=FillColor 191,237,239,255 | StrokeWidth 4 | StrokeColor 46,115,31,255
+
+[MeterRotatedRectangle]
+Meter=Shape
+X=25R
+Y=14r
+Shape=Rectangle 0,0,70,70 | Extend MyModifiers1, MyModifiers2
+MyModifiers1=FillColor 191,237,239,255 | StrokeWidth 4 | StrokeColor 46,115,31,255
+MyModifiers2=Rotate 45
+
+[MeterRoundedRectangle]
+Meter=Shape
+X=10R
+Y=2
+Shape=Rectangle 0,0,100,100,20 | Extend MyModifiers1
+MyModifiers1=FillColor 191,237,239,255 | StrokeWidth 4 | StrokeColor 46,115,31,255
+AntiAlias=1
+
+[MeterRoundedX]
+Meter=Shape
+X=10R
+Y=2
+Shape=Rectangle 0,0,100,100,40,20 | Extend MyModifiers1
+MyModifiers1=FillColor 191,237,239,255 | StrokeWidth 4 | StrokeColor 46,115,31,255
+
+[MeterRoundedY]
+Meter=Shape
+X=10R
+Y=2
+Shape=Rectangle 0,0,100,100,20,40 | Extend MyModifiers1
+MyModifiers1=FillColor 191,237,239,255 | StrokeWidth 4 | StrokeColor 46,115,31,255
+
+[MeterOvalWide]
+Meter=Shape
+X=10R
+Y=15r
+Shape=Rectangle 0,0,100,70,50 | Extend MyModifiers1
+MyModifiers1=FillColor 191,237,239,255 | StrokeWidth 4 | StrokeColor 46,115,31,255
+
+[MeterOvalTall]
+Meter=Shape
+X=10R
+Y=2
+Shape=Rectangle 0,0,70,100,50 | Extend MyModifiers1
+MyModifiers1=FillColor 191,237,239,255 | StrokeWidth 4 | StrokeColor 46,115,31,255
+
+[MeterEllipse]
+Meter=Shape
+X=10R
+Y=2
+Shape=Rectangle 0,0,100,100,50 | Extend MyModifiers1
+MyModifiers1=FillColor 191,237,239,255 | StrokeWidth 4 | StrokeColor 46,115,31,255
+
+[MeterLine]
+Meter=Shape
+X=0
+Y=20R
+Shape=Rectangle 0,0,858,2, | Extend MyModifiers1
+MyModifiers1=FillColor 191,237,239,255 | StrokeWidth 0
+```
+
+<div class="exampleprev">
+	<img src="!img/example-meters/ExampleMeterShape.jpg"/>
+	<p>An example skin demonstrating the Shape meter.</p>
+</div>
