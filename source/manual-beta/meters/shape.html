@@ -117,9 +117,8 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 			<code>Shape4=Combine Shape | Union Shape3 | Exclude Shape2</code><br/><br/>
 			
 			<b>Notes on Combine:</b><br/>
-			When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. FillColor and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes are ignored.<br/><br/>
-			When shapes are combined, any <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on either the parent or child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape.<br/><br/>
-			Both Attribute and Transform modifiers are ignored on the combined shape option line. Attribute modifiers are inherited from the parent shape, and Transform modifiers are performed on the original shapes before the combine is done. The final combined shape may not be modified.<br/><br/>
+			When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. FillColor and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes or the new combined shape are ignored.<br/><br/>
+			When shapes are combined, all <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on both the parent and child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape. The new combined shape can then also have its own Transform Modifiers, which will be done after the shapes are combined.<br/><br/>
 			The order of the front-to-back position of the shapes can be impacted by combining shapes, as the shapes are drawn in the numerical order of their Shape<em>N</em> option name. Since the new combined shape is also a numbered shape option, some thought should be given when numbering combined and uncombined shapes, to get the order you want.
 			</li>
 		</ul>	
@@ -230,14 +229,14 @@ Shape2=Rectangle 50,50,50,50,25 | FillColor 255,255,255,255 | StrokeWidth 4
 			Example:<br/>
 			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 0,2 | StrokeDashCap Round</code><br/><br/></li>
 			
-			<li><span class="dd_value" id="StrokeOffset">StrokeOffset</span><br/>			
+			<li><span class="dd_value" id="StrokeDashOffset">StrokeDashOffset</span><br/>			
 			Defines an offset in pixels where the first dash will start relative to the start of the shape.<br/><br/>
 			<b>Dependent on:</b> <a href="#StrokeDashes">StrokeDashes</a><br/>
 			<b>Required Parameter:</b> OffsetPixels<br/>
 			Default: 0<br/><br/>			
 			
 			Example:<br/>
-			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,2 | StrokeOffset 10</code></li>
+			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,2 | StrokeDashOffset 10</code></li>
 		</ul>
 		
 		<h2 id="TransformModifiers">Transform Modifiers</h2>
