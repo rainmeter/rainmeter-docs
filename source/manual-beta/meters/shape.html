@@ -45,7 +45,7 @@ Shape=Rectangle 0,0,100,50
 ```txt
 [MeterShape]
 Meter=Shape
-Shape=Rectangle 0,0,100,50 | FillType Color 0,0,0,255 | StrokeWidth 4 | StrokeColor 255,255,255,255
+Shape=Rectangle 0,0,100,50 | Fill Color 0,0,0,255 | StrokeWidth 4 | StrokeColor 255,255,255,255
 ```
 
 <p>Modifiers are added on the Shape<em>N</em> option by defining them separated by the pipe <code>|</code> character. All modifiers are optional, and they can be in any order in the option, after the shape definition. Again, we will fully explain all the possibilities in a bit, but this example adds "Use a solid black fill color in the shape, change the width of the drawing stroke to 4 pixels, and color the stroke white."</p>
@@ -57,10 +57,10 @@ Shape=Rectangle 0,0,100,50 | FillType Color 0,0,0,255 | StrokeWidth 4 | StrokeCo
 Meter=Shape
 Shape=Rectangle 0,0,100,50 | Extend MySharedModifiers
 Shape2=Rectangle 20,10,50,50 | Extend MySharedModifiers
-MySharedModifiers=FillType Color 0,0,0,255 | StrokeWidth 4 | StrokeColor 255,255,255,255
+MySharedModifiers=Fill Color 0,0,0,255 | StrokeWidth 4 | StrokeColor 255,255,255,255
 ```
 
-</p>Think of Extend as a way to move modifiers in a shape option to a separate line, for sharing or just to shorten the option line. In this example we have two shapes in the meter, at different positions and of different sizes, but sharing the modifiers that define the FillType, StrokeWidth, and StrokeColor. Again, more on this below.</p>
+</p>Think of Extend as a way to move modifiers in a shape option to a separate line, for sharing or just to shorten the option line. In this example we have two shapes in the meter, at different positions and of different sizes, but sharing the modifiers that define the Fill, StrokeWidth, and StrokeColor. Again, more on this below.</p>
 
 <h2>Options</h2>
 <dl>
@@ -78,8 +78,8 @@ MySharedModifiers=FillType Color 0,0,0,255 | StrokeWidth 4 | StrokeColor 255,255
 ```txt
 [MeterShapes]
 Meter=Shape
-Shape=Rectangle 25,25,100,100 | FillType Color 106,159,212,255 | Rotate 45
-Shape2=Rectangle 50,50,50,50,25 | FillType Color 255,255,255,255 | StrokeWidth 4
+Shape=Rectangle 25,25,100,100 | Fill Color 106,159,212,255 | Rotate 45
+Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 ```
 		
 		<h2 id="ShapeTypes">Shape Types</h2>
@@ -118,7 +118,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillType Color 255,255,255,255 | StrokeWidth 4
 			<code>Shape4=Combine Shape | Union Shape3 | Exclude Shape2</code><br/><br/>
 			
 			<b>Notes on Combine:</b><br/>
-			When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. FillType and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes or the new combined shape are ignored.<br/><br/>
+			When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. Fill and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes or the new combined shape are ignored.<br/><br/>
 			When shapes are combined, all <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on both the parent and child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape. The new combined shape can then also have its own Transform Modifiers, which will be done after the shapes are combined.<br/><br/>
 			The order of the front-to-back position of the shapes can be impacted by combining shapes, as the shapes are drawn in the numerical order of their Shape<em>N</em> option name. Since the new combined shape is also a numbered shape option, some thought should be given when numbering combined and uncombined shapes, to get the order you want.
 			</li>
@@ -127,8 +127,8 @@ Shape2=Rectangle 50,50,50,50,25 | FillType Color 255,255,255,255 | StrokeWidth 4
 		<h2 id="AttributeModifiers">Attribute Modifiers</h2>
 		
 		<ul>
-			<li><span class="dd_value" id="FillType">FillType</span><br/>
-			Method used to fill a closed shape. This will be a keyword defining the type of fill, followed by any required and optional parameters for the type. A shape can only have one FillType defined on it.<br/>
+			<li><span class="dd_value" id="Fill">Fill</span><br/>
+			Method used to fill a closed shape. This will be a keyword defining the type of fill, followed by any required and optional parameters for the type. A shape can only have one Fill defined on it.<br/>
 			Default: Color 255,255,255,255<br/><br/>			
 			
 			<ul>
@@ -136,7 +136,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillType Color 255,255,255,255 | StrokeWidth 4
 			Fills the shape with a single required <a href="!skins/option-types/#Color">Color</a>. The alpha value of the color code can be used to control the opacity of the shape.<br/><br/>
 
 			Example:<br/>
-			<code>Shape=Rectangle 0,0,100,100 | FillType Color 255,0,0,255</code><br/><br/></li>
+			<code>Shape=Rectangle 0,0,100,100 | Fill Color 255,0,0,255</code><br/><br/></li>
 
 
 			<li><b><span style="color:#2A6D9B">LinearGradient</span></b><br/>
@@ -151,8 +151,8 @@ Shape2=Rectangle 50,50,50,50,25 | FillType Color 255,255,255,255 | StrokeWidth 4
 			See <a href="#DefiningGradients">Defining Gradients</a> for details and examples.<br/><br/></li>
 			</ul>
 
-			<li><span class="dd_value" id="StrokeType">StrokeType</span><br/>
-			Method used to draw the stroke on a shape. This will be a keyword defining the type, followed by any required and optional parameters for the type. A shape can only have one StrokeType defined on it.<br/>
+			<li><span class="dd_value" id="Stroke">Stroke</span><br/>
+			Method used to draw the stroke on a shape. This will be a keyword defining the type, followed by any required and optional parameters for the type. A shape can only have one Stroke defined on it.<br/>
 			Default: Color 255,255,255,255<br/><br/>
 
 			<ul>
@@ -160,7 +160,7 @@ Shape2=Rectangle 50,50,50,50,25 | FillType Color 255,255,255,255 | StrokeWidth 4
 			Draws the stroke with a single required <a href="!skins/option-types/#Color">Color</a>. The alpha value of the color code can be used to control the opacity of the stroke.<br/><br/>
 
 			Example:<br/>
-			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeType Color 255,0,0,255</code><br/><br/></li>
+			<code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | Stroke Color 255,0,0,255</code><br/><br/></li>
 			
 			<li><b><span style="color:#2A6D9B">LinearGradient</span></b><br/>
 			Draws the stroke with a linear color gradient. This consists of an angle in degrees, followed by a pipe <code>|</code> character and two or more sets of color ; percentage defining the gradient "stops".<br/><br/>
@@ -368,17 +368,17 @@ MyRotateAndScale2=Rotate 45 | Scale 2.0,1.5
 
 <h2 id="DefiningGradients">Defining Gradients</h2>
 
-<p>Gradients <b>must</b> be defined in a separate named option, which you then reference in <a href="#FillType">FillType</a> or <a href="#StrokeType">StrokeType</a> modifiers on the shape. There are two kinds of gradients possible, LinearGradient and RadialGradient.</p>
+<p>Gradients <b>must</b> be defined in a separate named option, which you then reference in <a href="#Fill">Fill</a> or <a href="#Stroke">Stroke</a> modifiers on the shape. There are two kinds of gradients possible, LinearGradient and RadialGradient.</p>
 
 Examples:<br/>
 ```txt
 [MeterShape]
 Meter=Shape
 ; Filling the shape with a gradient
-Shape=Rectangle 0,0,100,100 | FillType LinearGradient MyFillGradient
+Shape=Rectangle 0,0,100,100 | Fill LinearGradient MyFillGradient
 MyFillGradient 180 | 255,0,0,255 ; 0.0 | 0,255,0,255 ; 0.5 | 0,0,255,255 ; 1.0
 ; Drawing the stroke with a gradient
-Shape2=Rectangle 50,50,100,100 | StrokeWidth 10 | StrokeType LinearGradient MyStokeGradient
+Shape2=Rectangle 50,50,100,100 | StrokeWidth 10 | Stroke LinearGradient MyStokeGradient
 MyStrokeGradient 270 | 0,0,255,255 ; 0.0 | 0,255,0,255 ; 0.5 | 255,0,0,255 ; 1.0
 ```
 
@@ -395,7 +395,7 @@ Example:<br/>
 ```txt
 [MeterShape]
 Meter=Shape
-Shape=Rectangle 0,0,100,100 | FillType LinearGradient MyFillGradient
+Shape=Rectangle 0,0,100,100 | Fill LinearGradient MyFillGradient
 MyFillGradient 180 | 255,0,0,255 ; 0.0 | 0,255,0,255 ; 0.5 | 0,0,255,255 ; 1.0
 ```
 
@@ -428,9 +428,9 @@ Examples:<br/>
 ```txt
 [MeterShape]
 Meter=Shape
-Shape=Rectangle 1,1,100,100,50 | StrokeWidth 2 | FillType RadialGradient MyGradient1
+Shape=Rectangle 1,1,100,100,50 | StrokeWidth 2 | Fill RadialGradient MyGradient1
 MyGradient1=0,0 | 155,200,232,255 ; 0.0 | 6,46,75,255 ; 1.0
-Shape2=Rectangle 111,1,100,100,50 | StrokeWidth 2 | FillType RadialGradient MyGradient2
+Shape2=Rectangle 111,1,100,100,50 | StrokeWidth 2 | Fill RadialGradient MyGradient2
 MyGradient2=0,0,20,20 | 155,200,232,255 ; 0.0 | 6,46,75,255 ; 1.0
 ```
 
