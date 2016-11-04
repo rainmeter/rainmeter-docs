@@ -434,6 +434,10 @@ Shape2=Rectangle 111,1,100,100,50 | StrokeWidth 2 | FillType RadialGradient MyGr
 MyGradient2=0,0,20,20 | 155,200,232,255 ; 0.0 | 6,46,75,255 ; 1.0
 ```
 
+<p><b>Note on Gradients:</b></p>
+
+<p>An alternative form of the gradients can be used by adding a "1" to the end of LinearGradient or RadialGradient These LinearGradient1 and RadialGradient1 forms use all the same setting values, but interpolate the gradient using an alternative method of handling gamma correction. In some cases you may find this makes for a smoother or brighter gradient transition.</p>
+
 <h2 id="MouseDetection">Mouse Detection on Shapes</h2>
 
 <p>The behavior of <a href="!mouse-actions/">Mouse Actions</a>, for actions like LeftMouseUpAction, MouseOverAction, MouseScrollDownAction and the others is a bit different on a Shape meter than other meters.</p>
