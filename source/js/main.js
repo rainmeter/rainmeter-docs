@@ -93,12 +93,21 @@ function toggleClass(elem, className) {
 		var selectA = document.createElement('a');
 		selectA.innerHTML = 'Select all';
 
+		// Adjust for FF browsers
+		var isFirefox = typeof InstallTrigger !== 'undefined';
+
 		var pre = div.getElementsByTagName('pre')[0];
-		var scrollWidth = pre.offsetWidth - pre.clientWidth - 2;
+		var scrollWidth = pre.offsetWidth - pre.clientWidth;
+		if (isFirefox) {
+			scrollWidth -= 1;
+		}
+
 		selectA.style.right = scrollWidth + 'px';
 		if (scrollWidth > 0) {
 			selectA.style.borderRight = 0;
 		}
+
+		selectA.style.top += 1 + 'px';
 
 		selectA.onclick = function() {
 			var pre = this.parentNode.firstChild;
@@ -122,6 +131,7 @@ function toggleClass(elem, className) {
 			downloadA.innerHTML = 'Download';
 			downloadA.style.right = scrollWidth + selectA.offsetWidth + 'px';
 			downloadA.style.borderRight = 0;
+			downloadA.style.top = 1 + 'px';
 			div.appendChild(downloadA);
 		}
 	}

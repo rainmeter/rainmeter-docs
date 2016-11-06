@@ -67,8 +67,6 @@ MySharedModifiers=Fill Color 0,0,0,255 | StrokeWidth 4 | Stroke Color 255,255,25
 	<dt>General meter options</dt>
 	<dd>
 		<p>All <a href="!meters/general-options/">general meter options</a> are valid.</p>
-		
-		<p><b>Note:</b> <code>AntiAlias</code> is never needed with a Shape meter.</p>
 	</dd>
 
 	<dt id="Shape"><code>Shape, Shape2, Shape3...</code></dt>
@@ -283,7 +281,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 		<dl>
 
 		<h2 id="TransformModifiers">Transform Modifiers</h2>
-		
+
 		<dl>
 			<dt id="Rotate" class="sub"><code>Rotate</code> <small>Default: <code><b>0<em>, X anchor, Y anchor</em></b></code></small></dt>
 			<dd>
@@ -369,7 +367,7 @@ MyRotateAndScale2=Rotate 45 | Scale 2.0,1.5
 
 <p>Gradients <b>must</b> be defined in a separate named option, which you then reference in <a href="#Fill">Fill</a> or <a href="#Stroke">Stroke</a> modifiers on the shape. There are two kinds of gradients possible, LinearGradient and RadialGradient.</p>
 
-Examples:<br/>
+<p><b>Examples:</b></p>
 ```txt
 [MeterShape]
 Meter=Shape
@@ -381,49 +379,49 @@ Shape2=Rectangle 50,50,100,100 | StrokeWidth 10 | Stroke LinearGradient MyStokeG
 MyStrokeGradient 270 | 0,0,255,255 ; 0.0 | 0,255,0,255 ; 0.5 | 255,0,0,255 ; 1.0
 ```
 
-<br/><p><span class="dd_value" id="LinearGradient">LinearGradient</span></p>
+<dl>
+	<dt id="LinearGradient" class="sub"><code>LinearGradient</code> <small>Parameters: <code><b>Angle | Color ; Percentage</b> | <em>...</em></code></small></dt>
+	<dd>
+		<p>This takes the form of the <b>Angle</b> for the gradient in degrees, a <b>|</b> pipe character, then a series of <b>Color codes</b>, a <b>;</b> semi-colon, and a <b>Percentage</b> from 0.0 to 1.0 to define the position of the color in the gradient. Each series of <b>Color ; Percentage</b> are separated by a <b>|</b> pipe character.</p>
 
-<p><b>Parameters:</b> Angle, | ColorCode ; Percentage | ColorCode ; Percentage | ...</p>
-
-<b>Required Definition Parameters:</b> Angle<br/>
-<b>Required Gradient Parameters:</b> ColorCode ; Percentage | ColorCode ; Percentage | ...</p>
-
-<p>This takes the form of the <b>Angle</b> for the gradient in degrees, a <b>|</b> pipe character, then a series of <b>Color codes</b>, a <b>;</b> semi-colon, and a <b>Percentage</b> from 0.0 to 1.0 to define the position of the color in the gradient. Each series of <b>Color ; Percentage</b> are separated by a <b>|</b> pipe character.</p>
-
-Example:<br/>
+		<p><b>Example:</b></p>
 ```txt
 [MeterShape]
 Meter=Shape
 Shape=Rectangle 0,0,100,100 | Fill LinearGradient MyFillGradient
 MyFillGradient 180 | 255,0,0,255 ; 0.0 | 0,255,0,255 ; 0.5 | 0,0,255,255 ; 1.0
 ```
+		<p>That will define a gradient at 180 degrees. It will start with a color of 255,0,0,255 (red) at percentage 0.0 (the start), will transition to a color of 0,255,0,255 (green) at percentage 0.5 (50 percent), and to 0,0,255,255 (blue) at percentage 1.0 (100 percent).</p>
 
-<p>That will define a gradient at 180 degrees. It will start with a color of 255,0,0,255 (red) at percentage 0.0 (the start), will transition to a color of 0,255,0,255 (green) at percentage 0.5 (50 percent), and to 0,0,255,255 (blue) at percentage 1.0 (100 percent).</p>
+		<p>The <b>Angle</b> is defined as any number of degrees, with 0 or 360 starting directly to the right and rotating clockwise. This results in the following gradient <em>directions</em> on the Shape or Stroke:</p>
 
-<p>The <b>Angle</b> is defined as any number of degrees, with 0 or 360 starting directly to the right and rotating clockwise. This results in the following gradient <em>directions</em> on the Shape or Stroke:</p>
+		<ul>
+			<li><b>0</b> (360) : Right to Left</li>
+			<li><b>90</b> : Bottom to Top</li>
+			<li><b>180</b> : Left to Right</li>
+			<li><b>270</b> : Top to Bottom</li>
+		</ul>
 
-<p><b>0</b> (360) : Right to Left<br/>
-<b>90</b> : Bottom to Top<br/>
-<b>180</b> : Left to Right<br/>
-<b>270</b> : Top to Bottom<br/><br/></p>
+		<p><b>Note:</b> Any defined color with a percentage outside the 0.0 to 1.0 range will not directly be displayed, but will still affect the interpolation of the gradient.</p>
+	</dd>
 
-<p><span class="dd_value" id="RadialGradient">RadialGradient</span></p>
+	<dt id="RadialGradient" class="sub"><code>RadialGradient</code> <small>Parameters: (See below)</small></dt>
+	<dd>
+		<p>This takes the form of the required <code>CenterX, CenterY</code> and any optional coordinate parameters, a <b>|</b> pipe character, then a series of <b>Color codes</b>, a <b>;</b> semi-colon, and a <b>Percentage</b> from 0.0 to 1.0 to define the position of the color in the gradient. Each series of <b>Color ; Percentage</b> are separated by a <b>|</b> pipe character.</p>
 
-<p><b>Parameters:</b> xCenter,yCenter,xOffset,yOffset,xRadius,yRadius | ColorCode ; Percentage | ColorCode ; Percentage | ...</p>
+		<p><b>Parameters:</b> <code><b>CenterX, CenterY</b><em>, OffsetX, OffsetY, RadiusX, RadiusY</em> | <b>Color ; Percentage</b> | <em>...</em></code>
+			<ul>
+				<li><code>CenterX</code> (required): Amount of pixels along the x-axis from the center of the shape to offset the center of the gradient ellipse.</li>
+				<li><code>CenterY</code> (required): Amount of pixels along the y-axis from the center of the shape to offset the center of the gradient ellipse.</li>
+				<li><code>OffsetX</code> (optional): Amount of pixels along the x-axis to offset the gradient origin relative to the gradient ellipse's center (CenterX).</li>
+				<li><code>OffsetY</code> (optional): Amount of pixels along the y-axis to offset the gradient origin relative to the gradient ellipse's center (CenterY).</li>
+				<li><code>RadiusX</code> (optional): The radius along the x-axis of the gradient ellipse.</li>
+				<li><code>RadiusY</code> (optional): The radius along the y-axis of the gradient ellipse.</li>
+				<li><code>Color ; Percentage</code> (required): 1 or more color and percentage pairs (separated by a semi-colon<code>;</code>) that defines the colors at specific percentages in the gradient.</li>
+			</ul>
+		</p>
 
-<p><b>Required Coordinate Parameters:</b> xCenter,yCenter<br/>
-<b>Optional Coordinate Parameters:</b> xOffset,yOffset,xRadius,yRadius<br/>
-<b>Default for Optional:</b> 0,0,WidthOfShape,HeightOfShape<br/>
-<b>Required Gradient Parameters:</b> ColorCode ; Percentage | ColorCode ; Percentage | ...</p>	
-
-<p><b>Coordinate Definitions:</b><br/>
-<code>xCenter,yCenter</code> : A number of positive or negative pixels relative to the center of the shape. This moves the gradient in the shape. <code>0,0</code> is the center of the shape.<br/>
-<code>xOffset,yOffset</code> : A number of positive or negative pixels relative to the center of the gradient. This moves the center of the gradient within the overall gradient.<br/>
-<code>xRadius,yRadius</code> : A number of pixels defining the size of the overall gradient relative to the center.</p>
-
-<p>This takes the form of the required <code>xCenter, yCenter</code> and any optional coordinate parameters, a <b>|</b> pipe character, then a series of <b>Color codes</b>, a <b>;</b> semi-colon, and a <b>Percentage</b> from 0.0 to 1.0 to define the position of the color in the gradient. Each series of <b>Color ; Percentage</b> are separated by a <b>|</b> pipe character.</p>
-
-Examples:<br/>
+		<p><b>Examples:</b></p>
 ```txt
 [MeterShape]
 Meter=Shape
@@ -433,21 +431,25 @@ Shape2=Rectangle 111,1,100,100,50 | StrokeWidth 2 | Fill RadialGradient MyGradie
 MyGradient2=0,0,20,20 | 155,200,232,255 ; 0.0 | 6,46,75,255 ; 1.0
 ```
 
+		<p><b>Note:</b> Any defined color with a percentage outside the 0.0 to 1.0 range will not directly be displayed, but will still affect the interpolation of the gradient.</p>
+	</dd>
+</dl>
+
 <p><b>Note on Gradients:</b></p>
 
-<p>An alternative form of the gradients can be used by adding a "1" to the end of LinearGradient or RadialGradient These LinearGradient1 and RadialGradient1 forms use all the same setting values, but interpolate the gradient using an alternative method of handling gamma correction. In some cases you may find this makes for a smoother or brighter gradient transition.</p>
+<p>An alternative form of the gradients can be used by adding a "1" to the end of LinearGradient or RadialGradient These <code>LinearGradient1</code> and <code>RadialGradient1</code> forms use all the same setting values, but interpolate the gradient using an alternative method of handling gamma correction. In some cases you may find this makes for a smoother or brighter gradient transition.</p>
 
 <h2 id="MouseDetection">Mouse Detection on Shapes</h2>
 
-<p>The behavior of <a href="!mouse-actions/">Mouse Actions</a>, for actions like LeftMouseUpAction, MouseOverAction, MouseScrollDownAction and the others is a bit different on a Shape meter than other meters.</p>
+<p>The behavior of <a href="!mouse-actions/">Mouse Actions</a>, for actions like <code>LeftMouseUpAction</code>, <code>MouseOverAction</code>, <code>MouseScrollDownAction</code> and the others is a bit different on a Shape meter than other meters.</p>
 
 <p><b>In a Shape meter, the mouse is detected on any solid part of the drawing created by any and all shapes in the meter. It is not detected on the actual meter container, no matter what value SolidColor is set to, or what other meters may be behind or in front of the Shape meter.</b></p>
 
-<p>In order to have the mouse detected in the non-solid parts of your shape(s), you will need to create a background Shape as the first shape in the meter. It can simply be a rectangle (or any other shape you like) set to the size you need, with a Fill Color of 0,0,0,1 and a StrokeWidth of 0. Again, simply setting SolidColor on the meter itself will not work. For Shape meters, mouse detection has been entirely moved from the "meter" to the "shape".</p>
+<p>In order to have the mouse detected in the non-solid parts of your shape(s), you will need to create a background Shape as the first shape in the meter. It can simply be a rectangle (or any other shape you like) set to the size you need, with a <code>Fill Color 0,0,0,1</code> and a <code>StrokeWidth 0</code>. Again, simply setting SolidColor on the meter itself will not work. For Shape meters, mouse detection has been entirely moved from the "meter" to the "shape".</p>
 
 <p><b>The mouse will be detected on any solid part of the shapes even if the shapes extend outside the boundaries of the meter container.</b> This will be common with this meter type and is why we have changed the "target" of the mouse detection from the meter to the shapes.</p>
 
-<p>As always, there can only be one of each kind of mouse action in a [Section]. This means that you can't for instance have two Shape<em>N</em> shapes in the meter, and have a distinct LeftMouseUpAction on each. In order to have distinct mouse actions of the same type on individual shapes, you will need to create the shapes in different Shape meters.<p>
+<p>As always, there can only be one of each kind of mouse action in a [Section]. This means that you can't for instance have two Shape<em>N</em> shapes in the meter, and have a distinct <code>LeftMouseUpAction</code> on each. In order to have distinct mouse actions of the same type on individual shapes, you will need to create the shapes in different Shape meters.<p>
 
 <h2 id="Examples">Examples</h2>
 <p>While the code here is for a simple skin that demonstrates various ways to manipulate the Rectangle shape type, the .rmskin in the Download button is a much more robust suite of skins demonstrating many of the aspects of the Shape meter.</p>
