@@ -173,6 +173,10 @@ pre {
 	border:1px solid #ddd;
 }
 
+div.line {
+	min-height:18px;
+}
+
 .noscroll pre {
 	max-height:none;
 	overflow-y:visible;
