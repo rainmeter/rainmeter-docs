@@ -734,6 +734,7 @@ pre .javadoc {
   font-style: italic
 }
 
+pre .attr,
 pre .keyword,
 pre .css .rule .keyword,
 pre .winutils,
