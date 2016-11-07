@@ -93,14 +93,8 @@ function toggleClass(elem, className) {
 		var selectA = document.createElement('a');
 		selectA.innerHTML = 'Select all';
 
-		// Adjust for FF browsers
-		var isFirefox = typeof InstallTrigger !== 'undefined';
-
 		var pre = div.getElementsByTagName('pre')[0];
 		var scrollWidth = pre.offsetWidth - pre.clientWidth;
-		if (isFirefox) {
-			scrollWidth -= 1;
-		}
 
 		selectA.style.right = scrollWidth + 'px';
 		if (scrollWidth > 0) {
