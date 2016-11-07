@@ -161,7 +161,7 @@ pre {
 	font-size:12.025px;
 	line-height:18px;
 	max-height:340px;
-	overflow-y:scroll;
+	overflow-y:auto;
 	tab-size:4;
 	-moz-tab-size:4;
 	-webkit-tab-size:4;
