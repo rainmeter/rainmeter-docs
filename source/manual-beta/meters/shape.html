@@ -376,7 +376,7 @@ Shape=Rectangle 0,0,100,100 | Fill LinearGradient MyFillGradient
 MyFillGradient 180 | 255,0,0,255 ; 0.0 | 0,255,0,255 ; 0.5 | 0,0,255,255 ; 1.0
 ; Drawing the stroke with a gradient
 Shape2=Rectangle 50,50,100,100 | StrokeWidth 10 | Stroke LinearGradient MyStokeGradient
-MyStrokeGradient 270 | 0,0,255,255 ; 0.0 | 0,255,0,255 ; 0.5 | 255,0,0,255 ; 1.0
+MyStrokeGradient=270 | 0,0,255,255 ; 0.0 | 0,255,0,255 ; 0.5 | 255,0,0,255 ; 1.0
 ```
 
 <dl>
@@ -389,7 +389,7 @@ MyStrokeGradient 270 | 0,0,255,255 ; 0.0 | 0,255,0,255 ; 0.5 | 255,0,0,255 ; 1.0
 [MeterShape]
 Meter=Shape
 Shape=Rectangle 0,0,100,100 | Fill LinearGradient MyFillGradient
-MyFillGradient 180 | 255,0,0,255 ; 0.0 | 0,255,0,255 ; 0.5 | 0,0,255,255 ; 1.0
+MyFillGradient=180 | 255,0,0,255 ; 0.0 | 0,255,0,255 ; 0.5 | 0,0,255,255 ; 1.0
 ```
 		<p>That will define a gradient at 180 degrees. It will start with a color of 255,0,0,255 (red) at percentage 0.0 (the start), will transition to a color of 0,255,0,255 (green) at percentage 0.5 (50 percent), and to 0,0,255,255 (blue) at percentage 1.0 (100 percent).</p>
 
