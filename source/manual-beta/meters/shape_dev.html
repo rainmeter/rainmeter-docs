@@ -165,10 +165,12 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				</p>
 
 				<p><b>Example:</b><br/>
-					<code>Shape=Line 50,50,200,200</code><br/>
+					<code>Shape=Arc 3,200,203,200,100,100,0,0,0,0 | StrokeWidth 6</code><br/>
 				</p>
 				
 				<b>Notes on Arc:</b><br/>
+				The first 4 parameters are required, the rest are optional, but in order. When you use an optional parameter later in the order, an asterisk <code>*</code> symbol can be used to indicate "default" in earlier optional parameters.<br/><br/>
+				
 				An arc describes two virtual ellipses intersecting the starting and ending points. One Clockwise and one Counter-clockwise. This actually creates 4 possible arcs:
 				<ul>
 				<li>Clockwise small</li>
