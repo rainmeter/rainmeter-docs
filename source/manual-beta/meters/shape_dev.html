@@ -85,7 +85,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 		<h2 id="ShapeTypes">Shape Types</h2>
 
 		<dl>
-			<dt id="Rectangle" class="sub"><code>Rectangle</code> <small>Parameters: <code><b>X, Y, Width, Height</b><em>, X Radius, Y Radius</em></code></small></dt>
+			<dt id="Rectangle" class="sub"><code>Rectangle</code> <small>Parameters: <code><b>X, Y, Width, Height</b><em>,  RadiusX, RadiusY</em></code></small></dt>
 			<dd>
 				<p>A rectangle or rounded rectangle.</p>
 
@@ -95,8 +95,8 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 						<li><code>Y</code> (required): Y coordinate of the shape relative to the meter.</li>
 						<li><code>Width</code> (required): Width of the shape.</li>
 						<li><code>Height</code> (required): Height of the shape.</li>
-						<li><code>X Radius</code> (optional): Radius of the corners of rounded rectangles. If used with the optional 'Y Radius', this will represent the radius on the X-axis.</li>
-						<li><code>Y Radius</code> (optional): Y-Axis radius of the corners of rounded rectangles.</li>
+						<li><code>RadiusX</code> (optional): Radius of the corners of rounded rectangles. If used with the optional ' RadiusY', this will represent the radius on the X-axis.</li>
+						<li><code>RadiusY</code> (optional): Y-Axis radius of the corners of rounded rectangles.</li>
 					</ul>
 				</p>
 
@@ -106,6 +106,27 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					<code>Shape=Rectangle 0,0,100,50,20,5</code>
 				</p>
 			</dd>
+			
+			
+			<dt id="Ellipse" class="sub"><code>Ellipse</code> <small>Parameters: <code><b>CenterX, CenterY, RadiusX, <em>RadiusY</em></b></code></small></dt>
+			<dd>
+				<p>A circle or oval.</p>
+
+				<p><b>Parameters:</b><br/>
+					<ul>
+						<li><code>CenterX</code> (required): X coordinate of the center of the ellipse.</li>
+						<li><code>Center Y</code> (required): Y coordinate of the center of the ellipse.</li>
+						<li><code>RadiusX</code> (required): Radius of the ellipse. If used with the optional  'RadiusY', this will represent the radius on the X-axis.</li>
+						<li><code>RadiusY</code> (optional): Radius of the ellipse in the Y-axis.</li>
+					</ul>
+				</p>
+
+				<p><b>Examples:</b><br/>
+					<code>Shape=Ellipse 50,50</code><br/>
+					<code>Shape=Ellipse 50,50,25,50</code><br/>
+					<code>Shape=Ellipse 50,50,50,25</code>
+				</p>
+			</dd>			
 
 			<dt id="Other" class="sub" style="color:rgb(200,200,200)">Other shape types coming soon...</dt>
 			<!--<dd></dd>-->
@@ -283,7 +304,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 		<h2 id="TransformModifiers">Transform Modifiers</h2>
 
 		<dl>
-			<dt id="Rotate" class="sub"><code>Rotate</code> <small>Default: <code><b>0<em>, X anchor, Y anchor</em></b></code></small></dt>
+			<dt id="Rotate" class="sub"><code>Rotate</code> <small>Default: <code><b>0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
 				<p>Rotates the shape some number of positive or negative degrees of angle, either around the center of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.</p>
 
@@ -293,7 +314,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				</p>
 			</dd>
 
-			<dt id="Scale" class="sub"><code>Scale</code> <small>Default: <code><b>1.0, 1.0<em>, X anchor, Y anchor</em></b></code></small></dt>
+			<dt id="Scale" class="sub"><code>Scale</code> <small>Default: <code><b>1.0, 1.0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
 				<p>Scales the shape in the X and / or Y axis, using multiplication factors. Reducing the scale would be done with a scaling factor less than 1. The scaling is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape. So for instance, to scale a shape to the left, you would set the anchor point to the right.</p>
 
@@ -307,7 +328,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				</p>
 			</dd>
 
-			<dt id="Skew" class="sub"><code>Skew</code> <small>Default: <code><b>0.0, 0.0<em>, X anchor, Y anchor</em></b></code></small></dt>
+			<dt id="Skew" class="sub"><code>Skew</code> <small>Default: <code><b>0.0, 0.0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
 				<p>Skews the shape in the X and / or Y axis, some number of positive or negative degrees of angle. The skew is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.</p>
 
