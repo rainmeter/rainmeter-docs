@@ -9,14 +9,14 @@ title: 'Shape meter'
 
 <p><em>You "paint" with Raster (i.e. Photoshop), you "draw" with Vector. (i.e. Illustrator)</em></p>
 
-<p><b>Note:</b> Currently only the <b>Rectangle</b> and <b>Combine</b> shape types are implemented in this early beta phase. Other shapes, Ellipse, Line, Arc, Bézier Curve, Path (and possibly others) are planned for implementation soon.</p>
-
 <p>The meter will consist of one or more Shape...Shape2...Shape<em>N</em> objects. You first define the type of shape, the relative starting position in the meter, and shape definition parameters. You can then add <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers to each shape, which can control things like Fill Color, StrokeWidth, Rotate, Scale, and many more. Shapes in a meter can also be <a href="#Combine">Combined</a>, which will allow you to merge two or more separate shapes in a variety of ways.</p>
 
 <h2>Quick Jump</h2>
 <ul>
 <li><a href="#Shape">Shape Option</a></li>
 <li><a href="#Rectangle">Rectangle Shape</a></li>
+<li><a href="#Ellipse">Ellipse Shape</a></li>
+<li><a href="#Line">Line Shape</a></li>
 <li><a href="#Combine">Combine Shapes</a></li>
 <li><a href="#AttributeModifiers">Attribute Modifiers</a></li>
 <li><a href="#TransformModifiers">Transform Modifiers</a></li>
@@ -106,8 +106,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					<code>Shape=Rectangle 0,0,100,50,20,5</code>
 				</p>
 			</dd>
-			
-			
+
 			<dt id="Ellipse" class="sub"><code>Ellipse</code> <small>Parameters: <code><b>CenterX, CenterY, RadiusX, <em>RadiusY</em></b></code></small></dt>
 			<dd>
 				<p>A circle or oval.</p>
@@ -117,7 +116,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 						<li><code>CenterX</code> (required): X coordinate of the center of the ellipse.</li>
 						<li><code>CenterY</code> (required): Y coordinate of the center of the ellipse.</li>
 						<li><code>RadiusX</code> (required): Radius of the ellipse. If used with the optional  'RadiusY', this will represent the radius on the X-axis.</li>
-						<li><code>RadiusY</code> (optional): Radius of the ellipse in the Y-axis.</li>
+						<li><code>RadiusY</code> (optional): Radius of the ellipse on the Y-axis.</li>
 					</ul>
 				</p>
 
@@ -126,7 +125,67 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					<code>Shape=Ellipse 50,50,50</code><br/>
 					<code>Shape=Ellipse 50,50,50,25</code>
 				</p>
-			</dd>			
+			</dd>
+
+			<dt id="Line" class="sub"><code>Line</code> <small>Parameters: <code><b>StartX, StartY, EndX, EndY</b></code></small></dt>
+			<dd>
+				<p>A line between two points.</p>
+
+				<p><b>Parameters:</b><br/>
+					<ul>
+						<li><code>StartX</code> (required): X coordinate of the starting point of the line.</li>
+						<li><code>StartY</code> (required): Y coordinate of the starting point of the line.</li>
+						<li><code>EndX</code> (required):  X coordinate of the ending point of the line.</li>
+						<li><code>EndY</code> (required): Y coordinate of the ending point of the line.</li>
+					</ul>
+				</p>
+
+				<p><b>Example:</b><br/>
+					<code>Shape=Line 50,50,200,200</code><br/>
+				</p>
+			</dd>
+			
+			<dt id="Arc" class="sub"><code>Arc</code> <small>Parameters: (See below)</small></dt>
+			<dd>
+				<p>An arc between two points.</p>
+
+				<p><b>Parameters:</b><br/>
+					<ul>
+						<li><code>StartX</code> (required): X coordinate of the starting point of the line.</li>
+						<li><code>StartY</code> (required): Y coordinate of the starting point of the line.</li>
+						<li><code>EndX</code> (required):  X coordinate of the ending point of the line.</li>
+						<li><code>EndY</code> (required): Y coordinate of the ending point of the line.</li>
+						<li><code>RadiusX</code> (optional): X radius of the arc.</li>
+						<li><code>RadiusY</code> (optional):  Y radius of the arc.</li>
+						<li><code>RotationAngle</code> (optional): Positive or negative angle in degrees of skew of the arc.</li>
+						<li><code>SweepDirection</code> (optional): Clockwise (0 - default) or counter-clockwise (1) direction.</li>
+						<li><code>ArcSize</code> (optional): Use small (0 - default) or large (1) arc size.</li>
+						<li><code>ShapeEnding</code> (optional): Leave the shape open (0 - default) or automatically close (1) the shape.</li>
+					</ul>
+				</p>
+
+				<p><b>Example:</b><br/>
+					<code>Shape=Line 50,50,200,200</code><br/>
+				</p>
+				
+				<b>Notes on Arc:</b><br/>
+				An arc describes two virtual ellipses intersecting the starting and ending points. One Clockwise and one Counter-clockwise. This actually creates 4 possible arcs:
+				<ul>
+				<li>Clockwise small</li>
+				<li>Clockwise large</li>
+				<li>Counter-clockwise small</li>
+				<li>Counter-clockwise large</li><br/>
+				</ul>
+				
+				An Arc shape can be either be left open, or have a line segment automatically drawn to close the shape. The impact this has on attributes are:
+				<ul>
+				<li>Fill attributes default to transparent on an open shape.</li>
+				<li>Fill Attributes can be defined for either an open or closed shape.</li>
+				<li>StrokeWidth is used on the entirety of a closed shape.</li>
+				<li>StrokeWidth is only used on the "drawn" part of the arc on an open shape.</li>
+				</ul>
+				
+			</dd>
 
 			<dt id="Other" class="sub" style="color:rgb(200,200,200)">Other shape types coming soon...</dt>
 			<!--<dd></dd>-->
@@ -227,9 +286,6 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeStartCap Round</code></p>
 
-				<p><b>Note:</b> There are no open shapes yet implemented in this early beta.</p>
-			</dd>
-
 			<dt id="StrokeEndCap" class="sub"><code>StrokeEndCap</code> <small>Default: <code><b>Flat</b></code></small></dt>
 			<dd>
 				<p>Defines the shape of a cap used at the end of the drawing stroke on an open shape. This modifier is ignored on closed shapes.</p>
@@ -244,9 +300,6 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				</p>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeEndCap Triangle</code></p>
-
-				<p><b>Note:</b> There are no open shapes yet implemented in this early beta.</p>
-			</dd>
 
 			<dt id="StrokeDashCap" class="sub"><code>StrokeDashCap</code> <small>Default: <code><b>Flat</b></code></small></dt>
 			<dd>
