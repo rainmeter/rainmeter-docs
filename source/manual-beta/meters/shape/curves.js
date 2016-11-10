@@ -74,7 +74,7 @@
 			"," + point.p2.y + "," + point.c1.x + "," + point.c1.y + "," + 
 			(point.c2 ? point.c2.x + "," + point.c2.y + "," : "") + 
 			(fill ? "1" : "0");
-			code.textContent = 'Shape=Curve '+ d1 +' | ...';
+			code.textContent = 'Shape=Curve '+ d1;
 		}
 	}
 	
