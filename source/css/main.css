@@ -887,7 +887,7 @@ pre .chunk {
 
 #svg
 {
-	display:block;
+	display:inline;
 	float:left;
 	width:510px;
 	height:500px;
