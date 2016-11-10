@@ -170,7 +170,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				</p>
 				
 				<b>Notes on Arc:</b><br/>
-				The first 4 parameters are required, the rest are optional, but in order. When you use an optional parameter later in the order, an asterisk <code>*</code> symbol can be used to indicate "default" in earlier optional parameters.<br/><br/>
+				The first 4 parameters are required. The rest are optional, but in order. When you use an optional parameter later in the order, an asterisk <code>*</code> symbol can be used to indicate "default" in earlier optional parameters.<br/><br/>
 				
 				An arc describes two virtual ellipses intersecting the starting and ending points. One Clockwise and one Counter-clockwise. This actually creates 4 possible arcs:
 				<ul>
@@ -180,7 +180,44 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<li>Counter-clockwise large</li><br/>
 				</ul>
 				
-				An Arc shape can be either be left open, or have a line segment automatically drawn to close the shape. The impact this has on attributes are:
+				An Arc shape can be either be left open, or have a line segment automatically drawn to close the shape. The impact this has on Attribute Modifiers is:
+				<ul>
+				<li>Fill attributes default to transparent on an open shape.</li>
+				<li>Fill Attributes can be defined for either an open or closed shape.</li>
+				<li>StrokeWidth is used on the entirety of a closed shape.</li>
+				<li>StrokeWidth is only used on the "drawn" part of the arc on an open shape.</li>
+				</ul>
+				
+			</dd>
+			
+			<dt id="Curve" class="sub"><code>Curve</code> <small>Parameters: (See below)</small></dt>
+			<dd>
+				<p>An quadratic or cubic bézier curve between two points.</p>
+				
+				<p>A quadratic bézier curve is described with a single control point between starting and ending points.<br/>
+				A cubic bézier curve is described with two control points between starting and ending points.</p>
+			
+				<p><b>Parameters:</b><br/>
+					<ul>
+						<li><code>StartX</code> (required): X coordinate of the starting point of the curve.</li>
+						<li><code>StartY</code> (required): Y coordinate of the starting point of the curve.</li>
+						<li><code>EndX</code> (required):  X coordinate of the ending point of the curve.</li>
+						<li><code>EndY</code> (required): Y coordinate of the ending point of the curve.</li>
+						<li><code>ControlX1</code> (required): X coordinate of the first control point</li>
+						<li><code>ControlY1</code> (required): Y coordinate of the first control point</li>
+						<li><code>ControlX2</code> (optional): X coordinate of the second control point</li>
+						<li><code>ControlY2</code> (optional): Y coordinate of the second control point</li>						
+						<li><code>ShapeEnding</code> (optional): Leave the shape open (0 - default) or automatically close (1) the shape.</li>
+					</ul>
+				</p>
+
+				<p><b>Examples:</b><br/>
+					<code>Shape=Curve 5,5,200,225,400,115,0 | StrokeWidth 6</code><br/>
+					<code>Shape=Curve 5,5,215,120,40,130,160,15,0 | StrokeWidth 6</code>
+				</p>
+				
+				<b>Notes on Curve:</b><br/>
+				A Curve shape can be either be left open, or have a line segment automatically drawn to close the shape. The impact this has on Attribute Modifiers is:
 				<ul>
 				<li>Fill attributes default to transparent on an open shape.</li>
 				<li>Fill Attributes can be defined for either an open or closed shape.</li>
