@@ -1,6 +1,6 @@
 ---
 layout: manual-beta
-permalink: manual-beta/meters/shape_dev/
+permalink: manual-beta/meters/shape/index_dev.html
 title: 'Shape meter'
 ---
 <p><code>Meter=Shape</code> is used to create one or more <a href="https://en.wikipedia.org/wiki/Vector_graphics">vector graphic</a> shapes.</p>
@@ -146,7 +146,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					<code>Shape=Line 50,50,200,200</code><br/>
 				</p>
 			</dd>
-			
+
 			<dt id="Arc" class="sub"><code>Arc</code> <small>Parameters: (See below)</small></dt>
 			<dd>
 				<p>An arc between two points.</p>
@@ -170,10 +170,10 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					<code>Shape=Arc 3,200,203,200,100,100,0,0,0,0 | StrokeWidth 6</code><br/>
 					<code>Shape=Arc 10,15,110,215,*,*,*,*,*,1 | StrokeWidth 6</code>
 				</p>
-				
+
 				<b>Notes on Arc:</b><br/>
 				The first 4 parameters are required. The rest are optional, but in order. When you use an optional parameter later in the order, an asterisk <code>*</code> symbol can be used to indicate "default" in earlier optional parameters.<br/><br/>
-				
+
 				An arc describes two virtual ellipses intersecting the starting and ending points. One Clockwise and one Counter-clockwise. This actually creates 4 possible arcs:
 				<ul>
 				<li>Clockwise small</li>
@@ -181,7 +181,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<li>Counter-clockwise small</li>
 				<li>Counter-clockwise large</li><br/>
 				</ul>
-				
+
 				An Arc shape can be either be left open, or have a line segment automatically drawn to close the shape. The impact this has on Attribute Modifiers is:
 				<ul>
 				<li>Fill attributes default to transparent on an open shape.</li>
@@ -189,16 +189,16 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<li>StrokeWidth is used on the entirety of a closed shape.</li>
 				<li>StrokeWidth is only used on the "drawn" part of the arc on an open shape.</li>
 				</ul>
-				
+
 			</dd>
-			
+
 			<dt id="Curve" class="sub"><code>Curve</code> <small>Parameters: (See below)</small></dt>
 			<dd>
 				<p>A quadratic or cubic bézier curve between two points.</p>
-				
+
 				<p>A quadratic bézier curve is described with a single control point between starting and ending points.<br/>
 				A cubic bézier curve is described with two control points between starting and ending points.</p>
-			
+
 				<p><b>Parameters:</b><br/>
 					<ul>
 						<li><code>StartX</code> (required): X coordinate of the starting point of the curve.</li>
@@ -217,7 +217,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					<code>Shape=Curve 5,5,200,225,400,115,0 | StrokeWidth 6</code><br/>
 					<code>Shape=Curve 5,5,215,120,40,130,160,15,0 | StrokeWidth 6</code>
 				</p>
-				
+
 				<b>Notes on Curve:</b><br/>
 				A Curve shape can be either be left open, or have a line segment automatically drawn to close the shape. The impact this has on Attribute Modifiers is:
 				<ul>
@@ -226,10 +226,10 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<li>StrokeWidth is used on the entirety of a closed shape.</li>
 				<li>StrokeWidth is only used on the "drawn" part of the curve on an open shape.</li>
 				</ul>
-				
-				<p>These two sites may be of some help in understanding the nature of and values needed for bézier curves:<br/>
-				<a href="http://blogs.sitepointstatic.com/examples/tech/svg-curves/quadratic-curve.html">Quadratic Curve Creator</a><br/>
-				<a href="http://blogs.sitepointstatic.com/examples/tech/svg-curves/cubic-curve.html">Cubic Curve Creator</a></p>
+
+				<p>We have provided the following pages to help show the behavior of bézier curves:<br/>
+				<a href="!meters/shape/quadratic.html">Quadratic Curves</a><br/>
+				<a href="!meters/shape/cubic.html">Cubic Curves</a></p>
 				
 			</dd>
 

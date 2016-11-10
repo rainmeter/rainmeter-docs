@@ -879,3 +879,33 @@ pre .chunk {
 	border:8px solid #eee;
 	box-shadow:0 3px 3px rgba(0, 0, 0, 0.5);
 }
+
+
+/*
+** Interactive SVG Bézier Curve example
+*/
+
+#svg
+{
+	display:block;
+	float:left;
+	width:510px;
+	height:500px;
+	background-color:#fff;
+	border:1px solid #000;
+}
+
+#svg_code
+{
+	display:block;
+	width:500px;
+	height:20px;
+	font-family:monospace;
+	font-size:1.2em;
+	padding:2px 4px;
+	margin:0;
+	color:#555;
+	background-color:#eee;
+	border:1px solid #999;
+	overflow:auto;
+}
