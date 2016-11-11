@@ -272,7 +272,8 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<p><b>Notes on Combine:</b><br/>
 					When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. Fill and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes or the new combined shape are ignored.<br/><br/>
 					When shapes are combined, all <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on both the parent and child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape. The new combined shape can then also have its own Transform Modifiers, which will be done after the shapes are combined.<br/><br/>
-					The order of the front-to-back position of the shapes can be impacted by combining shapes, as the shapes are drawn in the numerical order of their Shape<em>N</em> option name. Since the new combined shape is also a numbered shape option, some thought should be given when numbering combined and uncombined shapes, to get the order you want.
+					The order of the front-to-back position of the shapes can be impacted by combining shapes, as the shapes are drawn in the numerical order of their Shape<em>N</em> option name. Since the new combined shape is also a numbered shape option, some thought should be given when numbering combined and uncombined shapes, to get the order you want.<br/><br/>
+					A Combined shape is always closed.
 				</p>
 			</dd>
 		</dl>
