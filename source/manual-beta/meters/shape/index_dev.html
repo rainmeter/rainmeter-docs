@@ -112,7 +112,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 			<dt id="Ellipse" class="sub"><code>Ellipse</code> <small>Parameters: <code><b>CenterX, CenterY, RadiusX, <em>RadiusY</em></b></code></small></dt>
 			<dd>
 				<p>A circle or oval.</p>
-
+				
 				<p><b>Parameters:</b><br/>
 					<ul>
 						<li><code>CenterX</code> (required): X coordinate of the center of the ellipse.</li>
@@ -127,6 +127,9 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					<code>Shape=Ellipse 50,50,50</code><br/>
 					<code>Shape=Ellipse 50,50,50,25</code>
 				</p>
+				
+				<p><b>Note on Ellipse:</b><br/>
+				The shape is drawn centered on the position defined by CenterX and CenterY. In a sense, it draws from the center out. Be sure that CenterX and CenterY, or the X and Y on the meter, leave enough room in the overall skin to not truncate the shape at the left and top.</p>
 			</dd>
 
 			<dt id="Line" class="sub"><code>Line</code> <small>Parameters: <code><b>StartX, StartY, EndX, EndY</b></code></small></dt>
