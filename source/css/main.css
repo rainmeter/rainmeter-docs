@@ -882,11 +882,10 @@ pre .chunk {
 
 
 /*
-** Interactive SVG Bézier Curve example
+** Interactive SVG Bézier Curve and Arc examples
 */
 
-#svg
-{
+#svg {
 	display:inline;
 	float:left;
 	width:510px;
@@ -895,8 +894,7 @@ pre .chunk {
 	border:1px solid #000;
 }
 
-#svg_code
-{
+#svg_code {
 	display:block;
 	width:500px;
 	height:20px;
@@ -908,4 +906,23 @@ pre .chunk {
 	background-color:#eee;
 	border:1px solid #999;
 	overflow:auto;
+}
+
+input[type=range][orient=vertical] {
+	position:absolute;
+	width:28px;
+	height: 500px;
+	writing-mode: bt-lr; /* IE */
+	-webkit-appearance: slider-vertical; /* WebKit */
+}
+
+input[type=range]::-moz-range-thumb {
+	-moz-transform: scaleX(-1);
+}
+
+.arc_pos {
+	position:relative;
+	left:-10px;
+	width:110px;
+	float:right;
 }
