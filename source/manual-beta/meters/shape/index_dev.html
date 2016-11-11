@@ -174,7 +174,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<b>Notes on Arc:</b><br/>
 				The first 4 parameters are required. The rest are optional, but in order. When you use an optional parameter later in the order, an asterisk <code>*</code> symbol can be used to indicate "default" in earlier optional parameters.<br/><br/>
 
-				An arc describes two virtual ellipses intersecting the starting and ending points. One Clockwise and one Counter-clockwise. If the radius of the arc is greater than 1/2 distance between the starting and ending points, this actually creates 4 possible arcs:
+				<b>SweepDirection</b> : <b>ArcSize</b> : An arc describes two virtual ellipses intersecting the starting and ending points. One Clockwise and one Counter-clockwise. If the radius of the arc is greater than 1/2 distance between the starting and ending points, this actually creates 4 possible arcs:
 				<ul>
 				<li>Clockwise small</li>
 				<li>Clockwise large</li>
@@ -182,9 +182,9 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<li>Counter-clockwise large</li><br/>
 				</ul>
 
-				If the RadiusX and RadiusY of the arc are not the same, then RotationAngle will rotate the two ellipses around a center point defined on and at 1/2 the distance between the starting and ending points.<br/><br/>
+				<b>RotationAngle</b> : If the RadiusX and RadiusY of the arc are not the same, then RotationAngle will rotate the two ellipses around a center point defined on and at 1/2 the distance between the starting and ending points.<br/><br/>
 
-				An Arc shape can be either be left open, or have a line segment automatically drawn to close the shape. The impact this has on Attribute Modifiers is:
+				<b>ShapeEnding</b> : An Arc shape can be either be left open, or have a line segment automatically drawn to close the shape. The impact this has on Attribute Modifiers is:
 				<ul>
 				<li>Fill attributes default to transparent on an open shape.</li>
 				<li>Fill Attributes can be defined for either an open or closed shape.</li>
