@@ -173,20 +173,21 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					</ul>
 				</p>
 
+				<p>The first 4 parameters are required. The rest are optional, but in order. When you use an optional parameter later in the order, an asterisk <code>*</code> symbol can be used to indicate "default" in earlier optional parameters.</p>
+
 				<p><b>Examples:</b><br/>
 					<code>Shape=Arc 3,200,203,200,100,100,0,0,0,0 | StrokeWidth 6</code><br/>
 					<code>Shape=Arc 10,15,110,215,*,*,*,*,*,1 | StrokeWidth 6</code>
 				</p>
 
 				<b>Notes on Arc:</b><br/>
-				The first 4 parameters are required. The rest are optional, but in order. When you use an optional parameter later in the order, an asterisk <code>*</code> symbol can be used to indicate "default" in earlier optional parameters.<br/><br/>
 
 				<b>SweepDirection</b> : <b>ArcSize</b> : An arc describes two virtual ellipses intersecting the starting and ending points. One Clockwise and one Counter-clockwise. If the radius of the arc is greater than 1/2 distance between the starting and ending points, this actually creates 4 possible arcs:
 				<ul>
-				<li>Clockwise small</li>
-				<li>Clockwise large</li>
-				<li>Counter-clockwise small</li>
-				<li>Counter-clockwise large</li>
+					<li>Clockwise small</li>
+					<li>Clockwise large</li>
+					<li>Counter-clockwise small</li>
+					<li>Counter-clockwise large</li>
 				</ul>
 
 				<b>RotationAngle</b> : If the RadiusX and RadiusY of the arc are not the same, then RotationAngle will rotate the two ellipses around a center point defined on and at 1/2 the distance between the starting and ending points.<br/><br/>
