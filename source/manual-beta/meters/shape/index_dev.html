@@ -156,7 +156,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 
 			<dt id="Arc" class="sub"><code>Arc</code> <small>Parameters: (See below)</small></dt>
 			<dd>
-				<p>An arc between two points.</p>
+				<p>An arc between two points. See our <b>live</b> <a href="!meters/shape/arc.html">interactive arc example</a>.</p>
 
 				<p><b>Parameters:</b><br/>
 					<ul>
@@ -186,7 +186,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<li>Clockwise small</li>
 				<li>Clockwise large</li>
 				<li>Counter-clockwise small</li>
-				<li>Counter-clockwise large</li><br/>
+				<li>Counter-clockwise large</li>
 				</ul>
 
 				<b>RotationAngle</b> : If the RadiusX and RadiusY of the arc are not the same, then RotationAngle will rotate the two ellipses around a center point defined on and at 1/2 the distance between the starting and ending points.<br/><br/>
@@ -198,17 +198,14 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<li>StrokeWidth is used on the entirety of a closed shape.</li>
 				<li>StrokeWidth is only used on the "drawn" part of the arc on an open shape.</li>
 				</ul>
-
-				<p>We have provided the following page to help show the behavior of arcs:<br/>
-				<a href="!meters/shape/arc.html">Interactive Arc Example</a></p>
 			</dd>
 
 			<dt id="Curve" class="sub"><code>Curve</code> <small>Parameters: (See below)</small></dt>
 			<dd>
 				<p>A quadratic or cubic bézier curve between two points.</p>
 
-				<p>A quadratic bézier curve is a single set of X and Y control points between starting and ending points.<br/>
-				A cubic bézier curve is two sets of X and Y control points between starting and ending points.</p>
+				<p>A quadratic bézier curve is a single set of X and Y control points between starting and ending points. See our <b>live</b> <a href="!meters/shape/quadratic.html">interactive quadratic curve example</a>.</p>
+				<p>A cubic bézier curve is two sets of X and Y control points between starting and ending points. See our <b>live</b> <a href="!meters/shape/cubic.html">interactive cubic curve example</a>.</p>
 
 				<p><b>Parameters:</b><br/>
 					<ul>
@@ -219,12 +216,12 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 						<li><code>ControlX1</code> (required): X coordinate of the first control point.<br/>
 						<code>ControlY1</code> (required): Y coordinate of the first control point.</li>
 						<li><code>ControlX2</code> (optional): X coordinate of the second control point.<br/>
-						<code>ControlY2</code> (optional): Y coordinate of the second control point.</li>						
+						<code>ControlY2</code> (optional): Y coordinate of the second control point.</li>
 						<li><code>ShapeEnding</code> (optional): Leave the shape open (0 - default) or automatically close (1) the shape.</li>
 					</ul>
 				</p>
 				
-				<p>If either 1 or 2 sets of control points are defined, the next parameter will be ShapeEnding.</p>
+				<p>If either 1 or 2 sets of control points are defined, the next parameter will be <code>ShapeEnding</code>.</p>
 
 				<p><b>Examples:</b><br/>
 					<code>Shape=Curve 5,5,200,225,400,115,0 | StrokeWidth 6</code><br/>
@@ -239,10 +236,6 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<li>StrokeWidth is used on the entirety of a closed shape.</li>
 				<li>StrokeWidth is only used on the "drawn" part of the curve on an open shape.</li>
 				</ul>
-
-				<p>We have provided the following pages to help show the behavior of bézier curves:<br/>
-				<a href="!meters/shape/quadratic.html">Interactive Quadratic Curves</a><br/>
-				<a href="!meters/shape/cubic.html">Interactive Cubic Curves</a></p>
 			</dd>
 
 			<dt id="Other" class="sub" style="color:rgb(200,200,200)">Other shape types coming soon...</dt>
