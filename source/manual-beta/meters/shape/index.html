@@ -1,15 +1,17 @@
 ---
 layout: manual-beta
-permalink: manual-beta/meters/shape/
+permalink: manual-beta/meters/shape/index.html
 title: 'Shape meter'
 ---
 <p><code>Meter=Shape</code> is used to create one or more <a href="https://en.wikipedia.org/wiki/Vector_graphics">vector graphic</a> shapes.</p>
 
+<div style="display:inline-block">
+<img src="!img/shapes/Shapes.png"/>
+</div>
+
 <p>This creates shape images that can be drawn and scaled without the aliasing and pixelating issues encountered when sizing raster (bitmap) images. It can also reduce the overall file size of your skin packages, as vector shapes are created entirely in code, and not as separate .png or .jpg image files that must be included and loaded.</p>
 
 <p><em>You "paint" with Raster (i.e. Photoshop), you "draw" with Vector. (i.e. Illustrator)</em></p>
-
-<p><b>Note:</b> Currently only the <b>Rectangle</b> and <b>Combine</b> shape types are implemented in this early beta phase. Other shapes, Ellipse, Line, Arc, Bézier Curve, Path (and possibly others) are planned for implementation soon.</p>
 
 <p>The meter will consist of one or more Shape...Shape2...Shape<em>N</em> objects. You first define the type of shape, the relative starting position in the meter, and shape definition parameters. You can then add <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers to each shape, which can control things like Fill Color, StrokeWidth, Rotate, Scale, and many more. Shapes in a meter can also be <a href="#Combine">Combined</a>, which will allow you to merge two or more separate shapes in a variety of ways.</p>
 
@@ -17,6 +19,10 @@ title: 'Shape meter'
 <ul>
 <li><a href="#Shape">Shape Option</a></li>
 <li><a href="#Rectangle">Rectangle Shape</a></li>
+<li><a href="#Ellipse">Ellipse Shape</a></li>
+<li><a href="#Line">Line Shape</a></li>
+<li><a href="#Arc">Arc Shape</a></li>
+<li><a href="#Curve">Curve Shape</a></li>
 <li><a href="#Combine">Combine Shapes</a></li>
 <li><a href="#AttributeModifiers">Attribute Modifiers</a></li>
 <li><a href="#TransformModifiers">Transform Modifiers</a></li>
@@ -85,7 +91,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 		<h2 id="ShapeTypes">Shape Types</h2>
 
 		<dl>
-			<dt id="Rectangle" class="sub"><code>Rectangle</code> <small>Parameters: <code><b>X, Y, Width, Height</b><em>, X Radius, Y Radius</em></code></small></dt>
+			<dt id="Rectangle" class="sub"><code>Rectangle</code> <small>Parameters: <code><b>X, Y, Width, Height</b><em>,  RadiusX, RadiusY</em></code></small></dt>
 			<dd>
 				<p>A rectangle or rounded rectangle.</p>
 
@@ -95,8 +101,8 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 						<li><code>Y</code> (required): Y coordinate of the shape relative to the meter.</li>
 						<li><code>Width</code> (required): Width of the shape.</li>
 						<li><code>Height</code> (required): Height of the shape.</li>
-						<li><code>X Radius</code> (optional): Radius of the corners of rounded rectangles. If used with the optional 'Y Radius', this will represent the radius on the X-axis.</li>
-						<li><code>Y Radius</code> (optional): Y-Axis radius of the corners of rounded rectangles.</li>
+						<li><code>RadiusX</code> (optional): Radius of the corners of rounded rectangles. If used with the optional ' RadiusY', this will represent the radius on the X-axis.</li>
+						<li><code>RadiusY</code> (optional): Y-Axis radius of the corners of rounded rectangles.</li>
 					</ul>
 				</p>
 
@@ -107,8 +113,134 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				</p>
 			</dd>
 
-			<dt id="Other" class="sub" style="color:rgb(200,200,200)">Other shape types coming soon...</dt>
-			<!--<dd></dd>-->
+			<dt id="Ellipse" class="sub"><code>Ellipse</code> <small>Parameters: <code><b>CenterX, CenterY, RadiusX, <em>RadiusY</em></b></code></small></dt>
+			<dd>
+				<p>A circle or oval.</p>
+
+				<p><b>Parameters:</b><br/>
+					<ul>
+						<li><code>CenterX</code> (required): X coordinate of the center of the ellipse.</li>
+						<li><code>CenterY</code> (required): Y coordinate of the center of the ellipse.</li>
+						<li><code>RadiusX</code> (required): Radius of the ellipse. If used with the optional  'RadiusY', this will represent the radius on the X-axis.</li>
+						<li><code>RadiusY</code> (optional): Radius of the ellipse on the Y-axis.</li>
+					</ul>
+				</p>
+
+				<p><b>Examples:</b><br/>
+					<code>Shape=Ellipse 50,50</code><br/>
+					<code>Shape=Ellipse 50,50,50</code><br/>
+					<code>Shape=Ellipse 50,50,50,25</code>
+				</p>
+				
+				<p><b>Note on Ellipse:</b><br/>
+				The shape is drawn centered on the position defined by CenterX and CenterY. In a sense, it draws from the center out. Be sure that CenterX and CenterY, or the X and Y on the meter, leave enough room in the overall skin to not truncate the shape at the left and top.</p>
+			</dd>
+
+			<dt id="Line" class="sub"><code>Line</code> <small>Parameters: <code><b>StartX, StartY, EndX, EndY</b></code></small></dt>
+			<dd>
+				<p>A line between two points.</p>
+
+				<p><b>Parameters:</b><br/>
+					<ul>
+						<li><code>StartX</code> (required): X coordinate of the starting point of the line.</li>
+						<li><code>StartY</code> (required): Y coordinate of the starting point of the line.</li>
+						<li><code>EndX</code> (required):  X coordinate of the ending point of the line.</li>
+						<li><code>EndY</code> (required): Y coordinate of the ending point of the line.</li>
+					</ul>
+				</p>
+
+				<p><b>Example:</b><br/>
+					<code>Shape=Line 50,50,200,200</code><br/>
+				</p>
+			</dd>
+
+			<dt id="Arc" class="sub"><code>Arc</code> <small>Parameters: (See below)</small></dt>
+			<dd>
+				<p>An arc between two points.<br/>
+				See our <b>live</b> <a href="!meters/shape/arc.html">interactive arc example</a>.</p>
+
+				<p><b>Parameters:</b><br/>
+					<ul>
+						<li><code>StartX</code> (required): X coordinate of the starting point of the arc.</li>
+						<li><code>StartY</code> (required): Y coordinate of the starting point of the arc.</li>
+						<li><code>EndX</code> (required):  X coordinate of the ending point of the arc.</li>
+						<li><code>EndY</code> (required): Y coordinate of the ending point of the arc.</li>
+						<li><code>RadiusX</code> (optional): X radius of the arc.</li>
+						<li><code>RadiusY</code> (optional):  Y radius of the arc.</li>
+						<li><code>RotationAngle</code> (optional): Positive or negative angle of rotation. (see note)</li>
+						<li><code>SweepDirection</code> (optional): Clockwise (0 - default) or counter-clockwise (1) direction.</li>
+						<li><code>ArcSize</code> (optional): Use small (0 - default) or large (1) arc size. (see note)</li>
+						<li><code>ShapeEnding</code> (optional): Leave the shape open (0 - default) or automatically close (1) the shape.</li>
+					</ul>
+				</p>
+
+				<p>The first 4 parameters are required. The rest are optional, but in order. When you use an optional parameter later in the order, an asterisk <code>*</code> symbol can be used to indicate "default" in earlier optional parameters.</p>
+
+				<p><b>Examples:</b><br/>
+					<code>Shape=Arc 3,200,203,200,100,100,0,0,0,0 | StrokeWidth 6</code><br/>
+					<code>Shape=Arc 10,15,110,215,*,*,*,*,*,1 | StrokeWidth 6</code>
+				</p>
+
+				<b>Notes on Arc:</b><br/>
+
+				<b>SweepDirection</b> : <b>ArcSize</b> : An arc describes two virtual ellipses intersecting the starting and ending points. One Clockwise and one Counter-clockwise. If the radius of the arc is greater than 1/2 distance between the starting and ending points, this actually creates 4 possible arcs:
+				<ul>
+					<li>Clockwise small</li>
+					<li>Clockwise large</li>
+					<li>Counter-clockwise small</li>
+					<li>Counter-clockwise large</li>
+				</ul>
+
+				<b>RotationAngle</b> : If the RadiusX and RadiusY of the arc are not the same, then RotationAngle will rotate the two ellipses around a center point defined on and at 1/2 the distance between the starting and ending points.<br/><br/>
+
+				<b>ShapeEnding</b> : An Arc shape can be either be left open, or have a line segment automatically drawn to close the shape. The impact this has on Attribute Modifiers is:
+				<ul>
+				<li>Fill attributes default to transparent on an open shape.</li>
+				<li>Fill Attributes can be defined for either an open or closed shape.</li>
+				<li>StrokeWidth is used on the entirety of a closed shape.</li>
+				<li>StrokeWidth is only used on the "drawn" part of the arc on an open shape.</li>
+				</ul>
+			</dd>
+
+			<dt id="Curve" class="sub"><code>Curve</code> <small>Parameters: (See below)</small></dt>
+			<dd>
+				<p>A quadratic or cubic bézier curve between two points.</p>
+
+				<p>A quadratic bézier curve is a single set of X and Y control points between starting and ending points.<br/>
+				See our <b>live</b> <a href="!meters/shape/quadratic.html">interactive quadratic curve example</a>.</p>
+				<p>A cubic bézier curve is two sets of X and Y control points between starting and ending points.<br/>
+				See our <b>live</b> <a href="!meters/shape/cubic.html">interactive cubic curve example</a>.</p>
+
+				<p><b>Parameters:</b><br/>
+					<ul>
+						<li><code>StartX</code> (required): X coordinate of the starting point of the curve.</li>
+						<li><code>StartY</code> (required): Y coordinate of the starting point of the curve.</li>
+						<li><code>EndX</code> (required):  X coordinate of the ending point of the curve.</li>
+						<li><code>EndY</code> (required): Y coordinate of the ending point of the curve.</li>
+						<li><code>ControlX1</code> (required): X coordinate of the first control point.<br/>
+						<code>ControlY1</code> (required): Y coordinate of the first control point.</li>
+						<li><code>ControlX2</code> (optional): X coordinate of the second control point.<br/>
+						<code>ControlY2</code> (optional): Y coordinate of the second control point.</li>
+						<li><code>ShapeEnding</code> (optional): Leave the shape open (0 - default) or automatically close (1) the shape.</li>
+					</ul>
+				</p>
+
+				<p>If either 1 or 2 sets of control points are defined, the next parameter will be <code>ShapeEnding</code>.</p>
+
+				<p><b>Examples:</b><br/>
+					<code>Shape=Curve 5,5,200,225,400,115,0 | StrokeWidth 6</code><br/>
+					<code>Shape=Curve 5,5,215,120,40,130,160,15,0 | StrokeWidth 6</code>
+				</p>
+
+				<b>Notes on Curve:</b><br/>
+				A Curve shape can be either be left open, or have a line segment automatically drawn to close the shape. The impact this has on Attribute Modifiers is:
+				<ul>
+				<li>Fill attributes default to transparent on an open shape.</li>
+				<li>Fill Attributes can be defined for either an open or closed shape.</li>
+				<li>StrokeWidth is used on the entirety of a closed shape.</li>
+				<li>StrokeWidth is only used on the "drawn" part of the curve on an open shape.</li>
+				</ul>
+			</dd>
 
 			<dt id="Combine" class="sub"><code>Combine</code> <small>Parameters: <code><b>Shape<em>N</em> | ...</b></code></small></dt>
 			<dd>
@@ -136,7 +268,8 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<p><b>Notes on Combine:</b><br/>
 					When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. Fill and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes or the new combined shape are ignored.<br/><br/>
 					When shapes are combined, all <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on both the parent and child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape. The new combined shape can then also have its own Transform Modifiers, which will be done after the shapes are combined.<br/><br/>
-					The order of the front-to-back position of the shapes can be impacted by combining shapes, as the shapes are drawn in the numerical order of their Shape<em>N</em> option name. Since the new combined shape is also a numbered shape option, some thought should be given when numbering combined and uncombined shapes, to get the order you want.
+					The order of the front-to-back position of the shapes can be impacted by combining shapes, as the shapes are drawn in the numerical order of their Shape<em>N</em> option name. Since the new combined shape is also a numbered shape option, some thought should be given when numbering combined and uncombined shapes, to get the order you want.<br/><br/>
+					A Combined shape is always closed.
 				</p>
 			</dd>
 		</dl>
@@ -206,9 +339,6 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeStartCap Round</code></p>
 
-				<p><b>Note:</b> There are no open shapes yet implemented in this early beta.</p>
-			</dd>
-
 			<dt id="StrokeEndCap" class="sub"><code>StrokeEndCap</code> <small>Default: <code><b>Flat</b></code></small></dt>
 			<dd>
 				<p>Defines the shape of a cap used at the end of the drawing stroke on an open shape. This modifier is ignored on closed shapes.</p>
@@ -223,9 +353,6 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				</p>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeEndCap Triangle</code></p>
-
-				<p><b>Note:</b> There are no open shapes yet implemented in this early beta.</p>
-			</dd>
 
 			<dt id="StrokeDashCap" class="sub"><code>StrokeDashCap</code> <small>Default: <code><b>Flat</b></code></small></dt>
 			<dd>
@@ -283,7 +410,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 		<h2 id="TransformModifiers">Transform Modifiers</h2>
 
 		<dl>
-			<dt id="Rotate" class="sub"><code>Rotate</code> <small>Default: <code><b>0<em>, X anchor, Y anchor</em></b></code></small></dt>
+			<dt id="Rotate" class="sub"><code>Rotate</code> <small>Default: <code><b>0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
 				<p>Rotates the shape some number of positive or negative degrees of angle, either around the center of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.</p>
 
@@ -293,7 +420,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				</p>
 			</dd>
 
-			<dt id="Scale" class="sub"><code>Scale</code> <small>Default: <code><b>1.0, 1.0<em>, X anchor, Y anchor</em></b></code></small></dt>
+			<dt id="Scale" class="sub"><code>Scale</code> <small>Default: <code><b>1.0, 1.0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
 				<p>Scales the shape in the X and / or Y axis, using multiplication factors. Reducing the scale would be done with a scaling factor less than 1. The scaling is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape. So for instance, to scale a shape to the left, you would set the anchor point to the right.</p>
 
@@ -307,7 +434,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				</p>
 			</dd>
 
-			<dt id="Skew" class="sub"><code>Skew</code> <small>Default: <code><b>0.0, 0.0<em>, X anchor, Y anchor</em></b></code></small></dt>
+			<dt id="Skew" class="sub"><code>Skew</code> <small>Default: <code><b>0.0, 0.0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
 				<p>Skews the shape in the X and / or Y axis, some number of positive or negative degrees of angle. The skew is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.</p>
 
