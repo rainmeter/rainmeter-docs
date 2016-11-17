@@ -259,8 +259,11 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 						<li><code>LineTo</code> (optional): Uses the same parameters as the <b><a href="#Line">Line</a></b> shape, less the X and Y starting coordinates and any ShapeEnding value. Segments will automatically know their starting points, and must always in and of themselves be an open shape.</li>
 						<li><code>ArcTo</code> (optional): Uses the same parameters as the <b><a href="#Arc">Arc</a></b> shape, less the X and Y starting coordinates and any ShapeEnding value. Segments will automatically know their starting points, and must always in and of themselves be an open shape.</li>
 						<li><code>CurveTo</code> (optional): Uses the same parameters as the <b><a href="#Curve">Curve</a></b> shape, less the X and Y starting coordinates and any ShapeEnding value. Segments will automatically know their starting points, and must always in and of themselves be an open shape.<br/><br/></li>
+						In addition, there are two optional segment control commands that can be used at any point in the path definition. These will alter the behavior of the path's stroke from the default values or any defined in the Shape(<em>N</em>) definition, from the point they are used in the path until they are altered again or the end of the path is reached:<br/><br/>
+						<li><code>SetRoundJoin</code> (optional): Values are 0 or 1. Use the default or defined value of <a href="#StrokeLineJoin">StrokeLineJoin</a> (0 - default) to join angled segments, or use a Round (1) line join.</li>
+						<li><code>SetNoStroke</code> (optional): Values are 0 or 1. Use the default or defined value of <a href="#StrokeWidth">StrokeWidth</a> (0 - default), or do not draw a stroke (1). This does not change the open or closed nature of the shape.<br/><br/></li>
 						Following the final definition of the path segments, a path may or may not create a fully enclosed shape. This can be controlled by optionally ending the definition with:<br/><br/>
-						<li><code>CloseShape</code> (optional): Leave the shape open (0 - default) or automatically close (1) the shape by drawing a line segment from the final ending point to the starting point.</li>
+						<li><code>CloseShape</code> (optional): Values are 0 or 1. Leave the shape open (0 - default) or automatically close (1) the shape by drawing a line segment from the final ending point to the starting point.</li>						
 					</ul>
 
 				<p><b>Examples:</b></p>
@@ -281,7 +284,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 ```
 
 			<p><b>Notes on Path:</b><br/>
-			All <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers may be used on the shape, but they may only be defined once on the Shape(<em>N</em>) option line. Individual path segments may not be modified, and the named path definition may only contain the starting point, one or more segment definitions, and an optional ClosePath value.</p>
+			All <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers may be used on the shape, but they may only be defined once on the Shape(<em>N</em>) option line. Individual path segments may not be modified, and the named path definition may only contain the starting point, one or more segment definitions, any optional SetLineJoin or SetNoStroke segment commands, and an optional ClosePath value.</p>
 			
 			<p>Closed shapes are automatically filled with the default white fill color. Open shapes are not filled by default, although in both instances this may be changed or forced with a <a href="#Fill">Fill</a> attribute modifier on the shape.</p>
 			
@@ -430,7 +433,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 
 			<dt id="StrokeLineJoin" class="sub"><code>StrokeLineJoin</code> <small>Default: <code><b>Miter<em>, 10</em></b></code></small></dt>
 			<dd>
-				<p>Defines the type of join used on the angled connection of drawing stroke segments in a shape. An optional MiterLimit can be used to specify how sharp Miter joins are allowed to be (default is 10).</p>
+				<p>Defines the type of join used on the angled connection of drawing stroke segments in a shape or path. An optional MiterLimit can be used to specify how sharp Miter joins are allowed to be (default is 10).</p>
 
 				<p><b>Join Types:</b><br/>
 					<ul>
@@ -467,7 +470,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 
 			<dt id="Scale" class="sub"><code>Scale</code> <small>Default: <code><b>1.0, 1.0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
-				<p>Scales the shape in the X and / or Y axis, using multiplication factors. Reducing the scale would be done with a scaling factor less than 1. The scaling is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape. So for instance, to scale a shape to the left, you would set the anchor point to the right.</p>
+				<p>Scales the shape in the X and / or Y axis, using multiplication factors. Reducing the scale would be done with a scaling factor less than 1. The scaling is done either from the center of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.</p>
 
 				<p><b>Examples:</b><br/>
 					<code>Shape=Rectangle 0,0,100,100 | Scale 1.5,0</code><br/>
@@ -481,7 +484,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 
 			<dt id="Skew" class="sub"><code>Skew</code> <small>Default: <code><b>0.0, 0.0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
-				<p>Skews the shape in the X and / or Y axis, some number of positive or negative degrees of angle. The skew is done either from the top left of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.</p>
+				<p>Skews the shape in the X and / or Y axis, some number of positive or negative degrees of angle. The skew is done either from the center of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.</p>
 
 				<p><b>Examples:</b><br/>
 					<code>Shape=Rectangle 0,0,100,100 | Skew 20,0</code><br/>
