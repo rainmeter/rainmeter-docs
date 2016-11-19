@@ -38,29 +38,32 @@ title: 'Shape meter'
 
 <h2 id="Overview">Overview</h2>
 
-<p>It will be useful, before we dig into the details, to take a high-level look at how a shape meter is constructed.</p>
+<p>The meter will consist of one or more Shape...Shape2...Shape<em>N</em> objects.</p>
 
-<p>The meter will consist of one or more Shape...Shape2...Shape<em>N</em> objects. You first define the type of shape, the relative starting position in the meter, and shape definition parameters. You can then add <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers to each shape, which can control things like Fill Color, StrokeWidth, Rotate, Scale, and many more. Shapes in a meter can also be <a href="#Combine">Combined</a>, which will allow you to merge two or more separate shapes in a variety of ways.</p>
-
-<p>You start with the Shape<em>N</em> option, followed by the <b>type</b> of shape, and any required and optional <b>shape definition</b> parameters, separated by commas.</p>
-
+<p>You first define the type of <a href="#Shape">Shape</a>, the relative starting position in the meter, and required and optional shape definition parameters.</p>
 ```txt
 [MeterShape]
 Meter=Shape
 Shape=Rectangle 0,0,100,50
 ```
+<p>In this example we are saying "Create a rectangle, starting at an X of 0 and a Y of 0 relative to the meter, with a width of 100, and a height of 50." This is the most basic example of the meter, and will create a 100 X 50 rectangle with a default white fill color and a default 1 pixel black drawing stroke.</p>
 
-<p>We will explain the required and optional parameters for each shape type fully below, but in this example we are saying "Create a rectangle, starting at an X of 0 and a Y of 0 relative to the meter, with a width of 100, and a height of 50." This is the most basic example of the meter, and will create a 100 X 50 rectangle with a default white fill color and a default 1 pixel black drawing stroke.</p>
-
-<p>You will define everything about this shape on this single Shape option line. Let's carry on with some modifiers on our shape.</p>
-
+<p>You can then add <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers to each shape, which can control things like Fill Color, StrokeWidth, Rotate, Scale, and much more.</p>
 ```txt
 [MeterShape]
 Meter=Shape
 Shape=Rectangle 0,0,100,50 | Fill Color 0,0,0 | StrokeWidth 4 | Stroke Color 255,255,255
 ```
+<p>Modifiers are added on the Shape<em>N</em> option by defining them separated by the pipe <code>|</code> character. All modifiers are optional, and they can be in any order in the option, after the shape definition. This example adds "Use a solid black fill color in the shape, change the width of the drawing stroke to 4 pixels, and color the stroke white."</p>
 
-<p>Modifiers are added on the Shape<em>N</em> option by defining them separated by the pipe <code>|</code> character. All modifiers are optional, and they can be in any order in the option, after the shape definition. Again, we will fully explain all the possibilities in a bit, but this example adds "Use a solid black fill color in the shape, change the width of the drawing stroke to 4 pixels, and color the stroke white."</p>
+<p>Shapes in a meter can also be <a href="#Combine">Combined</a>, which will allow you to merge two or more separate shapes in a variety of ways.</p>
+```txt
+[MeterShapes]
+Meter=Shape
+Shape=Rectangle 4,4,110,110,55
+Shape2=Rectangle 54,54,80,80,10
+Shape3=Combine Shape | Union Shape2
+```
 
 <p>If you have more than one shape defined in the meter, you may want them to share some or all modifiers, rather than repeating them in each Shape<em>N</em> option. This is done with the <a href="#ExtendModifier">Extend modifier</a>. The way this works is that you use the modifier Extend, followed by one or more named identifiers. Then you add that named identifier as a separate option on the meter, and in it put any modifiers you want to share.</p>
 
@@ -71,8 +74,6 @@ Shape=Rectangle 0,0,100,50 | Extend MySharedModifiers
 Shape2=Rectangle 20,10,50,50 | Extend MySharedModifiers
 MySharedModifiers=Fill Color 0,0,0,255 | StrokeWidth 4 | Stroke Color 255,255,255,255
 ```
-
-</p>Think of Extend as a way to move modifiers in a shape option to a separate line, for sharing or just to shorten the option line. In this example we have two shapes in the meter, at different positions and of different sizes, but sharing the modifiers that define the Fill, StrokeWidth, and Stroke. Again, more on this below.</p>
 
 <h2>Options</h2>
 <dl>
