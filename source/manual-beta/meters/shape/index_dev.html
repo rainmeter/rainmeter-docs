@@ -95,7 +95,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 		<dl>
 			<dt id="Rectangle" class="sub"><code>Rectangle</code> <small>Parameters: <code><b>X, Y, Width, Height</b><em>,  RadiusX, RadiusY</em></code></small></dt>
 			<dd>
-				<p>A rectangle or rounded rectangle.</p>
+				<p>A closed rectangle or rounded rectangle.</p>
 
 				<p><b>Parameters:</b><br/>
 					<ul>
@@ -117,7 +117,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 
 			<dt id="Ellipse" class="sub"><code>Ellipse</code> <small>Parameters: <code><b>CenterX, CenterY, RadiusX, <em>RadiusY</em></b></code></small></dt>
 			<dd>
-				<p>A circle or oval.</p>
+				<p>A closed circle or oval.</p>
 
 				<p><b>Parameters:</b><br/>
 					<ul>
@@ -139,7 +139,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 
 			<dt id="Line" class="sub"><code>Line</code> <small>Parameters: <code><b>StartX, StartY, EndX, EndY</b></code></small></dt>
 			<dd>
-				<p>A line between two points.</p>
+				<p>An open line between two points.</p>
 
 				<p><b>Parameters:</b><br/>
 					<ul>
@@ -157,7 +157,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 
 			<dt id="Arc" class="sub"><code>Arc</code> <small>Parameters: (See below)</small></dt>
 			<dd>
-				<p>An arc between two points.<br/>
+				<p>An open arc between two points.<br/>
 				See our <b>live</b> <a href="!meters/shape/arc.html">interactive arc example</a>.</p>
 
 				<p><b>Parameters:</b><br/>
@@ -205,7 +205,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 
 			<dt id="Curve" class="sub"><code>Curve</code> <small>Parameters: (See below)</small></dt>
 			<dd>
-				<p>A quadratic or cubic bézier curve between two points.</p>
+				<p>An open quadratic or cubic bézier curve between two points.</p>
 
 				<p>A quadratic bézier curve is a single set of X and Y control points between starting and ending points.<br/>
 				See our <b>live</b> <a href="!meters/shape/quadratic.html">interactive quadratic curve example</a>.</p>
@@ -245,7 +245,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 			
 			<dt id="Path" class="sub"><code>Path</code> <small>Parameters: (See below)</small></dt>
 			<dd>
-				<p>Drawing segments that define the outline of a shape, consisting of a starting point followed by a series of one or more lines, arcs or curves. Each segment will automatically start where the previous one ends</p>
+				<p>Drawing segments that define the outline of a shape, consisting of a starting point followed by a series of one or more lines, arcs or curves. Each segment will automatically start where the previous one ends. The final result may produce an open or closed shape.</p>
 
 				<p>Path definitions <b>must</b> be defined in a separate named option, which you then reference immediately following the Path type on the Shape(<em>N</em>) option line. For example: <code>Shape=Path MyPath | StrokeColor 0,255,0,255</code>.</p>
 				
@@ -291,7 +291,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 
 			<dt id="Combine" class="sub"><code>Combine</code> <small>Parameters: <code><b>Shape<em>N</em> | ...</b></code></small></dt>
 			<dd>
-				<p>Combine is a special shape type, that combines or merges two or more existing shapes in the meter, <b>replacing</b> them with a new "combined" shape. The first shape in the Combine definition will be the "parent", and any shapes, separated with the pipe <code>|</code> character, with which it is combined are "children". This distinction is important in the context of how modifiers are inherited or not on combined shapes.</p>
+				<p>Combine is a special shape type, that combines or merges two or more existing closed shapes in the meter, <b>replacing</b> them with a new "combined" shape. The first shape in the Combine definition will be the "parent", and any shapes, separated with the pipe <code>|</code> character, with which it is combined are "children". This distinction is important in the context of how modifiers are inherited or not on combined shapes.</p>
 
 				<p><b>Parameters:</b><br/>
 					<code>ParentShapeName | CombineType ChildShapeName | CombineType ChildShapeName...</code>
@@ -316,7 +316,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 					When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. Fill and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes or the new combined shape are ignored.<br/><br/>
 					When shapes are combined, all <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on both the parent and child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape. The new combined shape can then also have its own Transform Modifiers, which will be done after the shapes are combined.<br/><br/>
 					The order of the front-to-back position of the shapes can be impacted by combining shapes, as the shapes are drawn in the numerical order of their Shape<em>N</em> option name. Since the new combined shape is also a numbered shape option, some thought should be given when numbering combined and uncombined shapes, to get the order you want.<br/><br/>
-					A Combined shape is always closed.
+					A Combined shape is always closed. Any open shapes or paths used as a parent or child will automatically be closed before they are combined.
 				</p>
 			</dd>
 		</dl>
