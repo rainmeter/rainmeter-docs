@@ -11,10 +11,6 @@ title: 'Shape meter'
 
 <p>This creates shape images that can be drawn and scaled without the aliasing and pixelating issues encountered when sizing raster (bitmap) images. It can also reduce the overall file size of your skin packages, as vector shapes are created entirely in code, and not as separate .png or .jpg image files that must be included and loaded.</p>
 
-<p><em>You "paint" with Raster (i.e. Photoshop), you "draw" with Vector. (i.e. Illustrator)</em></p>
-
-<p>The meter will consist of one or more Shape...Shape2...Shape<em>N</em> objects. You first define the type of shape, the relative starting position in the meter, and shape definition parameters. You can then add <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers to each shape, which can control things like Fill Color, StrokeWidth, Rotate, Scale, and many more. Shapes in a meter can also be <a href="#Combine">Combined</a>, which will allow you to merge two or more separate shapes in a variety of ways.</p>
-
 <h2>Quick Jump</h2>
 <table id="quickjump">
 <tr>
@@ -45,6 +41,8 @@ title: 'Shape meter'
 <h2 id="Overview">Overview</h2>
 
 <p>It will be useful, before we dig into the details, to take a high-level look at how a shape meter is constructed.</p>
+
+<p>The meter will consist of one or more Shape...Shape2...Shape<em>N</em> objects. You first define the type of shape, the relative starting position in the meter, and shape definition parameters. You can then add <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers to each shape, which can control things like Fill Color, StrokeWidth, Rotate, Scale, and many more. Shapes in a meter can also be <a href="#Combine">Combined</a>, which will allow you to merge two or more separate shapes in a variety of ways.</p>
 
 <p>You start with the Shape<em>N</em> option, followed by the <b>type</b> of shape, and any required and optional <b>shape definition</b> parameters, separated by commas.</p>
 
