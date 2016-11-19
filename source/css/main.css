@@ -926,3 +926,11 @@ input[type=range]::-moz-range-thumb {
 	width:110px;
 	float:right;
 }
+
+table#quickjump {
+	width:70%;
+}
+
+table#quickjump td {
+	width:33%;
+}

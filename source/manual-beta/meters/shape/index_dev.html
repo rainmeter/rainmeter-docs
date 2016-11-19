@@ -16,23 +16,31 @@ title: 'Shape meter'
 <p>The meter will consist of one or more Shape...Shape2...Shape<em>N</em> objects. You first define the type of shape, the relative starting position in the meter, and shape definition parameters. You can then add <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers to each shape, which can control things like Fill Color, StrokeWidth, Rotate, Scale, and many more. Shapes in a meter can also be <a href="#Combine">Combined</a>, which will allow you to merge two or more separate shapes in a variety of ways.</p>
 
 <h2>Quick Jump</h2>
-<ul>
-<li><a href="#Shape">Shape Option</a></li>
-<li><a href="#Rectangle">Rectangle Shape</a></li>
-<li><a href="#Ellipse">Ellipse Shape</a></li>
-<li><a href="#Line">Line Shape</a></li>
-<li><a href="#Arc">Arc Shape</a></li>
-<li><a href="#Curve">Curve Shape</a></li>
-<li><a href="#Path">Path Shape</a></li>
-<li><a href="#Combine">Combine Shapes</a></li>
-<li><a href="#AttributeModifiers">Attribute Modifiers</a></li>
-<li><a href="#TransformModifiers">Transform Modifiers</a></li>
-<li><a href="#ExtendModifier">Extend Modifier</a></li>
-<li><a href="#DefiningGradients">Defining Gradients</a></li>
-<li><a href="#MouseDetection">Mouse Detection</a></li>
-<li><a href="#DeviceIndependentPixels">Device Independent Pixels</a></li>
-<li><a href="#Examples">Examples for Download</a></li>
-</ul>
+<table id="quickjump">
+<tr>
+<td><a href="#Shape">Shape Option</a></td>
+<td><a href="#AttributeModifiers">Attribute Modifiers</a></td>
+<td><a href="#DefiningGradients">Defining Gradients</a></td>
+</tr><tr>
+<td><a href="#Rectangle">Rectangle Shape</a></td>
+<td><a href="#TransformModifiers">Transform Modifiers</a></td>
+<td><a href="#MouseDetection">Mouse Detection</a></td>
+</tr><tr>
+<td><a href="#Ellipse">Ellipse Shape</a></td>
+<td><a href="#ExtendModifier">Extend Modifier</a></td>
+<td><a href="#DeviceIndependentPixels">Device Independent Pixels</a></td>
+</tr><tr>
+<td><a href="#Line">Line Shape</a></td>
+<td></td>
+<td><a href="#Examples">Examples for Download</a></td>
+</tr><tr>
+<td><a href="#Arc">Arc Shape</a></td>
+</tr><tr>
+<td><a href="#Curve">Curve Shape</a></td>
+</tr><tr>
+<td><a href="#Path">Path Shape</a></td>
+</tr><tr>
+</table>
 
 <h2 id="Overview">Overview</h2>
 
@@ -459,7 +467,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 		<dl>
 			<dt id="Rotate" class="sub"><code>Rotate</code> <small>Default: <code><b>0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
-				<p>Rotates the shape some number of positive or negative degrees of angle, either around the center of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.</p>
+				<p>Rotates the shape some number of positive or negative degrees of angle, either around the center of the shape (default), or optional X,Y anchor points in pixels relative to the top left of the shape.</p>
 
 				<p><b>Examples:</b><br/>
 					<code>Shape=Rectangle 0,0,100,100 | Rotate 45</code><br/>
@@ -469,7 +477,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 
 			<dt id="Scale" class="sub"><code>Scale</code> <small>Default: <code><b>1.0, 1.0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
-				<p>Scales the shape in the X and / or Y axis, using multiplication factors. Reducing the scale would be done with a scaling factor less than 1. The scaling is done either from the center of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.</p>
+				<p>Scales the shape in the X and / or Y axis, using multiplication factors. Reducing the scale would be done with a scaling factor less than 1. The scaling is done either from the center of the shape (default), or optional X,Y anchor points in pixels relative to the top left of the shape.</p>
 
 				<p><b>Examples:</b><br/>
 					<code>Shape=Rectangle 0,0,100,100 | Scale 1.5,0</code><br/>
@@ -477,13 +485,14 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 				</p>
 
 				<p><b>Notes on Scale:</b><br/>
-					The size of any StrokeWidth, the drawing stroke, is not effected by scaling the shape. If you specify a StrokeWidth of 4, it will remain 4 pixels in size no matter how you scale the shape.
-				</p>
+					The size of any StrokeWidth, the drawing stroke, is not effected by scaling the shape. If you specify a StrokeWidth of 4, it will remain 4 pixels in size no matter how you scale the shape.</p>
+
+					<p>A shape may be "flipped" or "mirrored" using Scale, by simply scaling it <code>-1.0</code> on the axis you wish to flip. So Horizontal would be <code>-1.0,1.0</code>, Vertical would be <code>1.0,-1.0</code>, and Both would be <code>-1.0,-1.0</code>.</p>
 			</dd>
 
 			<dt id="Skew" class="sub"><code>Skew</code> <small>Default: <code><b>0.0, 0.0<em>, AnchorX, AnchorY</em></b></code></small></dt>
 			<dd>
-				<p>Skews the shape in the X and / or Y axis, some number of positive or negative degrees of angle. The skew is done either from the center of the shape (default), or a defined X,Y anchor point in pixels relative to the top left of the shape.</p>
+				<p>Skews the shape in the X and / or Y axis, some number of positive or negative degrees of angle. The skew is done either from the center of the shape (default), or optional X,Y anchor points in pixels relative to the top left of the shape.</p>
 
 				<p><b>Examples:</b><br/>
 					<code>Shape=Rectangle 0,0,100,100 | Skew 20,0</code><br/>
@@ -491,7 +500,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 				</p>
 			</dd>
 
-			<dt id="OFfset" class="sub"><code>Offset</code> <small>Default: <code><b>0, 0</b></code></small></dt>
+			<dt id="Offset" class="sub"><code>Offset</code> <small>Default: <code><b>0, 0</b></code></small></dt>
 			<dd>
 				<p>Offsets (moves) the shape in the X and / or Y axis some number of positive or negative pixels.</p>
 
