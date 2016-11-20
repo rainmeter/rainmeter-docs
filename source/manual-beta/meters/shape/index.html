@@ -439,13 +439,14 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 			<dd>
 				<p>Defines the type of join used on the angled connection of drawing stroke segments in a shape or path. An optional MiterLimit can be used to specify how sharp Miter joins are allowed to be (default is 10).</p>
 
-				<b>Join Types:</b><br/>
+				<p><b>Join Types:</b><br/>
 					<ul>
 						<li><code>Miter</code></li>
 						<li><code>Bevel</code></li>
 						<li><code>Round</code></li>
 						<li><code>MiterOrBevel</code></li>
 					</ul>
+				</p>
 				<p>Miter or MeterOrBevel can be followed by a "," and an optional pixel value for MiterLimit. Think of MiterLimit as controlling the amount of "pointiness" when a very sharp angle join is mitered.</p>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeLineJoin Bevel</code></p>
