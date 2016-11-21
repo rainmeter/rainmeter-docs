@@ -435,19 +435,19 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 				</p>
 			</dd>
 
-			<dt id="StrokeLineJoin" class="sub"><code>StrokeLineJoin</code> <small>Default: <code><b>Miter<em>, 10</em></b></code></small></dt>
+			<dt id="StrokeLineJoin" class="sub"><code>StrokeLineJoin</code> <small>Default: <code><b>Miter<em>, 10.0</em></b></code></small></dt>
 			<dd>
-				<p>Defines the type of join used on the angled connection of drawing stroke segments in a shape or path. An optional MiterLimit can be used to specify how sharp Miter joins are allowed to be (default is 10).</p>
+				<p>Defines the type of join used on angled connections of drawing stroke segments in a shape or path. An optional MiterLimit can be used to specify how sharp Miter joins are allowed to be (default is 10.0).</p>
 
 				<p><b>Join Types:</b><br/>
 					<ul>
-						<li><code>Miter</code></li>
-						<li><code>Bevel</code></li>
-						<li><code>Round</code></li>
-						<li><code>MiterOrBevel</code></li>
+						<li><code>Miter</code> : Mitered corners. The corner will be mitered up to the point of MiterLimit, then squared off.</li>
+						<li><code>Bevel</code> : Beveled or squared corners.</li>
+						<li><code>Round</code> : Rounded corners.</li>
+						<li><code>MiterOrBevel</code> : Miter is used unless the default or defined value of MiterLimit would be exceeded, in which case Bevel is used.</li>
 					</ul>
 				</p>
-				<p>Miter or MeterOrBevel can be followed by a "," and an optional pixel value for MiterLimit. Think of MiterLimit as controlling the amount of "pointiness" when a very sharp angle join is mitered.</p>
+				<p>Miter or MeterOrBevel can be followed by a "," and an optional value for MiterLimit. Think of MiterLimit as controlling the amount of "pointiness" when a very sharp angle join is mitered. MiterLimit is a positive number greater than or equal to 1.0 that describes the limit as a ratio of the miter length to half the stroke's thickness.</p>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeLineJoin Bevel</code></p>
 			</dd>
