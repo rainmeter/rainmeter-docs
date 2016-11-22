@@ -467,6 +467,10 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>Round</code> : Rounded corners.</li>
 						<li><code>MiterOrBevel</code> : Miter is used unless the default or defined value of MiterLimit would be exceeded, in which case Bevel is used.</li>
 					</ul>
+					<a id="toggle_StrokeLineJoin.png" onclick="document.getElementById('StrokeLineJoin.png').style.display=''; document.getElementById('toggle_StrokeLineJoin.png').style.display='none';" class="spoiler">▶ Show Joins</a><span id="StrokeLineJoin.png" style="display: none"><a onclick="document.getElementById('StrokeLineJoin.png').style.display='none'; document.getElementById('toggle_StrokeLineJoin.png').style.display='';" class="spoiler">▲ Hide Joins</a><br/>
+					<div style="display:inline-block">
+					<img src="!img/shapes/StrokeLineJoin.png"/>
+					</div></span>					
 				</p>
 				<p>Miter or MeterOrBevel can be followed by a "," and an optional value for MiterLimit. Think of MiterLimit as controlling the amount of "pointiness" when a very sharp angle join is mitered. MiterLimit is a positive number greater than or equal to 1.0 that describes the limit as a ratio of the miter length to half the stroke's thickness.</p>
 
