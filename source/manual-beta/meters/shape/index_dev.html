@@ -309,7 +309,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>XOR</code> : Only the NON overlapping / intersecting portions of the parent and defined child shapes are drawn in the new shape.</li>
 						<li><code>Exclude</code> : Only the portion of the parent shape that is NON overlapping / intersecting with the defined child shape is drawn in the new shape.</li>
 					</ul>
-					<a id="toggle" onclick="document.getElementById('Combine.png').style.display=''; document.getElementById('toggle').style.display='none';" class="spoiler">▶ Show Combine Types</a><span id="Combine.png" style="display: none"><a onclick="document.getElementById('Combine.png').style.display='none'; document.getElementById('toggle').style.display='';" class="spoiler">▲ Hide Combine Types</a><br/>
+					<a id="toggle_Combine.png" onclick="document.getElementById('Combine.png').style.display=''; document.getElementById('toggle_Combine.png').style.display='none';" class="spoiler">▶ Show Combine Types</a><span id="Combine.png" style="display: none"><a onclick="document.getElementById('Combine.png').style.display='none'; document.getElementById('toggle_Combine.png').style.display='';" class="spoiler">▲ Hide Combine Types</a><br/>
 					<div style="display:inline-block">
 					<img src="!img/shapes/Combine.png"/>
 					</div></span>
@@ -391,6 +391,10 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>Square</code> : </li>
 						<li><code>Triangle</code> : </li>
 					</ul>
+					<a id="toggle_StrokeStartCap.png" onclick="document.getElementById('StrokeStartCap.png').style.display=''; document.getElementById('toggle_StrokeStartCap.png').style.display='none';" class="spoiler">▶ Show Start Caps</a><span id="StrokeStartCap.png" style="display: none"><a onclick="document.getElementById('StrokeStartCap.png').style.display='none'; document.getElementById('toggle_StrokeStartCap.png').style.display='';" class="spoiler">▲ Hide Start Caps</a><br/>
+					<div style="display:inline-block">
+					<img src="!img/shapes/StrokeStartCap.png"/>
+					</div></span>
 				</p>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeStartCap Round</code></p>
@@ -405,7 +409,11 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>Round</code> : </li>
 						<li><code>Square</code> : </li>
 						<li><code>Triangle</code> : </li>
-					</ul>
+					</ul>						
+						<a id="toggle_StrokeEndCap.png" onclick="document.getElementById('StrokeEndCap.png').style.display=''; document.getElementById('toggle_StrokeEndCap.png').style.display='none';" class="spoiler">▶ Show End Caps</a><span id="StrokeEndCap.png" style="display: none"><a onclick="document.getElementById('StrokeEndCap.png').style.display='none'; document.getElementById('toggle_StrokeEndCap.png').style.display='';" class="spoiler">▲ Hide End Caps</a><br/>
+						<div style="display:inline-block">
+						<img src="!img/shapes/StrokeEndCap.png"/>
+						</div></span>
 				</p>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeEndCap Triangle</code></p>
