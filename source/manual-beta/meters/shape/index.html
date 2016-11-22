@@ -1,6 +1,6 @@
 ---
 layout: manual-beta
-permalink: manual-beta/meters/shape/index.html
+permalink: manual-beta/meters/shape/index_dev.html
 title: 'Shape meter'
 ---
 <p><code>Meter=Shape</code> is used to create one or more <a href="https://en.wikipedia.org/wiki/Vector_graphics">vector graphic</a> shapes.</p>
@@ -13,19 +13,19 @@ title: 'Shape meter'
 <table id="quickjump">
 <tr>
 <td><a href="#Shape">Shape Option</a></td>
-<td><a href="#AttributeModifiers">Attribute Modifiers</a></td>
+<td><a href="#Combine">Combining Shapes</a></td>
 <td><a href="#DefiningGradients">Defining Gradients</a></td>
 </tr><tr>
 <td><a href="#Rectangle">Rectangle Shape</a></td>
-<td><a href="#TransformModifiers">Transform Modifiers</a></td>
+<td><a href="#AttributeModifiers">Attribute Modifiers</a></td>
 <td><a href="#MouseDetection">Mouse Detection</a></td>
 </tr><tr>
 <td><a href="#Ellipse">Ellipse Shape</a></td>
-<td><a href="#ExtendModifier">Extend Modifier</a></td>
+<td><a href="#TransformModifiers">Transform Modifiers</a></td>
 <td><a href="#DeviceIndependentPixels">Device Independent Pixels</a></td>
 </tr><tr>
 <td><a href="#Line">Line Shape</a></td>
-<td></td>
+<td><a href="#ExtendModifier">Extend Modifier</a></td>
 <td><a href="#Examples">Examples for Download</a></td>
 </tr><tr>
 <td><a href="#Arc">Arc Shape</a></td>
@@ -309,14 +309,18 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>XOR</code> : Only the NON overlapping / intersecting portions of the parent and defined child shapes are drawn in the new shape.</li>
 						<li><code>Exclude</code> : Only the portion of the parent shape that is NON overlapping / intersecting with the defined child shape is drawn in the new shape.</li>
 					</ul>
-				</p>
+					<a id="toggle_Combine.png" onclick="document.getElementById('Combine.png').style.display=''; document.getElementById('toggle_Combine.png').style.display='none';" class="spoiler">▶ Show Combine Types</a><span id="Combine.png" style="display: none"><a onclick="document.getElementById('Combine.png').style.display='none'; document.getElementById('toggle_Combine.png').style.display='';" class="spoiler">▲ Hide Combine Types</a><br/>
+					<div style="display:inline-block">
+					<img src="!img/shapes/Combine.png"/>
+					</div></span>
+					</p>
 
 				<p><b>Examples:</b><br/>
 					<code>Shape4=Combine Shape | Union Shape2 | XOR Shape3</code><br/>
 					<code>Shape4=Combine Shape2 | Intersect Shape</code><br/>
 					<code>Shape4=Combine Shape | Union Shape3 | Exclude Shape2</code>
 				</p>
-
+				
 				<p><b>Notes on Combine:</b><br/>
 					When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. Fill and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes or the new combined shape are ignored.<br/><br/>
 					When shapes are combined, all <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on both the parent and child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape. The new combined shape can then also have its own Transform Modifiers, which will be done after the shapes are combined.<br/><br/>
@@ -387,6 +391,10 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>Square</code> : </li>
 						<li><code>Triangle</code> : </li>
 					</ul>
+					<a id="toggle_StrokeStartCap.png" onclick="document.getElementById('StrokeStartCap.png').style.display=''; document.getElementById('toggle_StrokeStartCap.png').style.display='none';" class="spoiler">▶ Show Start Caps</a><span id="StrokeStartCap.png" style="display: none"><a onclick="document.getElementById('StrokeStartCap.png').style.display='none'; document.getElementById('toggle_StrokeStartCap.png').style.display='';" class="spoiler">▲ Hide Start Caps</a><br/>
+					<div style="display:inline-block">
+					<img src="!img/shapes/StrokeStartCap.png"/>
+					</div></span>
 				</p>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeStartCap Round</code></p>
@@ -401,7 +409,11 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>Round</code> : </li>
 						<li><code>Square</code> : </li>
 						<li><code>Triangle</code> : </li>
-					</ul>
+					</ul>						
+						<a id="toggle_StrokeEndCap.png" onclick="document.getElementById('StrokeEndCap.png').style.display=''; document.getElementById('toggle_StrokeEndCap.png').style.display='none';" class="spoiler">▶ Show End Caps</a><span id="StrokeEndCap.png" style="display: none"><a onclick="document.getElementById('StrokeEndCap.png').style.display='none'; document.getElementById('toggle_StrokeEndCap.png').style.display='';" class="spoiler">▲ Hide End Caps</a><br/>
+						<div style="display:inline-block">
+						<img src="!img/shapes/StrokeEndCap.png"/>
+						</div></span>
 				</p>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeEndCap Triangle</code></p>
@@ -417,6 +429,10 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>Square</code> : </li>
 						<li><code>Triangle</code> : </li>
 					</ul>
+						<a id="toggle_StrokeDashCap.png" onclick="document.getElementById('StrokeDashCap.png').style.display=''; document.getElementById('toggle_StrokeDashCap.png').style.display='none';" class="spoiler">▶ Show Dash Caps</a><span id="StrokeDashCap.png" style="display: none"><a onclick="document.getElementById('StrokeDashCap.png').style.display='none'; document.getElementById('toggle_StrokeDashCap.png').style.display='';" class="spoiler">▲ Hide Dash Caps</a><br/>
+						<div style="display:inline-block">
+						<img src="!img/shapes/StrokeDashCap.png"/>
+						</div></span>					
 				</p>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,2 | StrokeDashCap Round</code></p>
@@ -427,6 +443,11 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 				<p>Defines a repeating dash or dot pattern for the shape's drawing stroke.</p>
 
 				<p>This is done with a single or repeating sets of comma-separated pairs of <code>DashSize,GapSize</code>. These are not numbers of pixels, but are a multiplication factor based on the StrokeWidth.  So <code>2, 1.5</code> would be a dash twice as long as the StrokeWidth, followed by a gap one and one-half times as long as the StrokeWidth, and this would be repeated for the entire stroke. This can be extended, i.e <code>2,1,3,1.5,4,2</code> to create a repeating custom dashed stroke of various sizes and gaps.</p>
+
+				<a id="toggle_StrokeDashes.png" onclick="document.getElementById('StrokeDashes.png').style.display=''; document.getElementById('toggle_StrokeDashes.png').style.display='none';" class="spoiler">▶ Show Dashes</a><span id="StrokeDashes.png" style="display: none"><a onclick="document.getElementById('StrokeDashes.png').style.display='none'; document.getElementById('toggle_StrokeDashes.png').style.display='';" class="spoiler">▲ Hide Dashes</a><br/>
+				<div style="display:inline-block">
+				<img src="!img/shapes/StrokeDashes.png"/>
+				</div></span><br/><br/>									
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,1.5</code></p>
 
@@ -446,6 +467,10 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>Round</code> : Rounded corners.</li>
 						<li><code>MiterOrBevel</code> : Miter is used unless the default or defined value of MiterLimit would be exceeded, in which case Bevel is used.</li>
 					</ul>
+					<a id="toggle_StrokeLineJoin.png" onclick="document.getElementById('StrokeLineJoin.png').style.display=''; document.getElementById('toggle_StrokeLineJoin.png').style.display='none';" class="spoiler">▶ Show Joins</a><span id="StrokeLineJoin.png" style="display: none"><a onclick="document.getElementById('StrokeLineJoin.png').style.display='none'; document.getElementById('toggle_StrokeLineJoin.png').style.display='';" class="spoiler">▲ Hide Joins</a><br/>
+					<div style="display:inline-block">
+					<img src="!img/shapes/StrokeLineJoin.png"/>
+					</div></span>					
 				</p>
 				<p>Miter or MeterOrBevel can be followed by a "," and an optional value for MiterLimit. Think of MiterLimit as controlling the amount of "pointiness" when a very sharp angle join is mitered. MiterLimit is a positive number greater than or equal to 1.0 that describes the limit as a ratio of the miter length to half the stroke's thickness.</p>
 
