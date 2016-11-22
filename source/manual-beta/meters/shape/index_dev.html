@@ -5,30 +5,27 @@ title: 'Shape meter'
 ---
 <p><code>Meter=Shape</code> is used to create one or more <a href="https://en.wikipedia.org/wiki/Vector_graphics">vector graphic</a> shapes.</p>
 
-<a id="toggle" onclick="document.getElementById('Shapes.png').style.display=''; document.getElementById('toggle').style.display='none';" class="spoiler">▶ Show Example</a><span id="Shapes.png" style="display: none"><a onclick="document.getElementById('Shapes.png').style.display='none'; document.getElementById('toggle').style.display='';" class="spoiler">▲ Hide Example</a><br/>
-
 <div style="display:inline-block">
 <img src="!img/shapes/Shapes.png"/>
 </div>
-</span>
 
 <h2>Quick Jump</h2>
 <table id="quickjump">
 <tr>
 <td><a href="#Shape">Shape Option</a></td>
-<td><a href="#AttributeModifiers">Attribute Modifiers</a></td>
+<td><a href="#Combine">Combining Shapes</a></td>
 <td><a href="#DefiningGradients">Defining Gradients</a></td>
 </tr><tr>
 <td><a href="#Rectangle">Rectangle Shape</a></td>
-<td><a href="#TransformModifiers">Transform Modifiers</a></td>
+<td><a href="#AttributeModifiers">Attribute Modifiers</a></td>
 <td><a href="#MouseDetection">Mouse Detection</a></td>
 </tr><tr>
 <td><a href="#Ellipse">Ellipse Shape</a></td>
-<td><a href="#ExtendModifier">Extend Modifier</a></td>
+<td><a href="#TransformModifiers">Transform Modifiers</a></td>
 <td><a href="#DeviceIndependentPixels">Device Independent Pixels</a></td>
 </tr><tr>
 <td><a href="#Line">Line Shape</a></td>
-<td></td>
+<td><a href="#ExtendModifier">Extend Modifier</a></td>
 <td><a href="#Examples">Examples for Download</a></td>
 </tr><tr>
 <td><a href="#Arc">Arc Shape</a></td>
@@ -319,7 +316,12 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 					<code>Shape4=Combine Shape2 | Intersect Shape</code><br/>
 					<code>Shape4=Combine Shape | Union Shape3 | Exclude Shape2</code>
 				</p>
-
+				
+				<a id="toggle" onclick="document.getElementById('Combine.png').style.display=''; document.getElementById('toggle').style.display='none';" class="spoiler">▶ Show Example</a><span id="Combine.png" style="display: none"><a onclick="document.getElementById('Combine.png').style.display='none'; document.getElementById('toggle').style.display='';" class="spoiler">▲ Hide Example</a><br/>
+				<div style="display:inline-block">
+				<img src="!img/shapes/Combine.png"/>
+				</div></span><br/><br/>
+				
 				<p><b>Notes on Combine:</b><br/>
 					When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. Fill and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes or the new combined shape are ignored.<br/><br/>
 					When shapes are combined, all <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on both the parent and child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape. The new combined shape can then also have its own Transform Modifiers, which will be done after the shapes are combined.<br/><br/>
