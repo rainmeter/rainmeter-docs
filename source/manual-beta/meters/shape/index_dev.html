@@ -309,18 +309,17 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>XOR</code> : Only the NON overlapping / intersecting portions of the parent and defined child shapes are drawn in the new shape.</li>
 						<li><code>Exclude</code> : Only the portion of the parent shape that is NON overlapping / intersecting with the defined child shape is drawn in the new shape.</li>
 					</ul>
-				</p>
+					<a id="toggle" onclick="document.getElementById('Combine.png').style.display=''; document.getElementById('toggle').style.display='none';" class="spoiler">▶ Show Combine Types</a><span id="Combine.png" style="display: none"><a onclick="document.getElementById('Combine.png').style.display='none'; document.getElementById('toggle').style.display='';" class="spoiler">▲ Hide Combine Types</a><br/>
+					<div style="display:inline-block">
+					<img src="!img/shapes/Combine.png"/>
+					</div></span>
+					</p>
 
 				<p><b>Examples:</b><br/>
 					<code>Shape4=Combine Shape | Union Shape2 | XOR Shape3</code><br/>
 					<code>Shape4=Combine Shape2 | Intersect Shape</code><br/>
 					<code>Shape4=Combine Shape | Union Shape3 | Exclude Shape2</code>
 				</p>
-				
-				<a id="toggle" onclick="document.getElementById('Combine.png').style.display=''; document.getElementById('toggle').style.display='none';" class="spoiler">▶ Show Example</a><span id="Combine.png" style="display: none"><a onclick="document.getElementById('Combine.png').style.display='none'; document.getElementById('toggle').style.display='';" class="spoiler">▲ Hide Example</a><br/>
-				<div style="display:inline-block">
-				<img src="!img/shapes/Combine.png"/>
-				</div></span><br/><br/>
 				
 				<p><b>Notes on Combine:</b><br/>
 					When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. Fill and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes or the new combined shape are ignored.<br/><br/>
