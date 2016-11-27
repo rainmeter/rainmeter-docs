@@ -58,6 +58,21 @@ title: 'Manage'
 <div style="clear: both;"></div>
 
 <div class="exampleprev floatright">
+<img src="!img/user-interface/Skins03a.png" class="lightbox">
+</div>
+
+<h3 id="CreateNewSkin">Create new skin</h3>
+<p>The "Create new skin" button will simplify creating a new root-level skin. It will create the folder under Skins, will create an empty @Resources folder, and will create and open the new skin in your default or defined text editor.</p>
+
+<p>When the button is clicked, enter the name of the new config / skin you wish to create, and hit "Enter".
+
+<p>You may edit the <a href="!user-interface/manage/#EditTempate">default template</a> used for creating a new skin.</p>
+
+<p>This is a "shortcut" for creating a single root-level skin. More complicated setups that require several skins under one root config folder will still require using Windows Explorer to create folders and files.</p>
+
+<div style="clear: both;"></div>
+
+<div class="exampleprev floatright">
 <img src="!img/user-interface/Skins03.png" class="lightbox">
 </div>
 
@@ -66,6 +81,7 @@ title: 'Manage'
 <p>Clicking on a skin will make that skin active in the Manage tab.</p>
 
 <div style="clear: both;"></div>
+
 
 <div class="exampleprev floatright">
 <img src="!img/user-interface/Skins04.png" class="lightbox">
@@ -203,3 +219,26 @@ title: 'Manage'
 <li><b>Show log file</b><br>If clicked, the Rainmeter.log file will be loaded in the text editor associated with .log files.</li>
 <li><b>Delete log file</b><br>If clicked, the Rainmeter.log file will be deleted. If <b>Log to file</b> is currently active, it will automatically be turned off.</li>
 </ul>
+
+<h3 id="EditTempate">Edit NewSkin.template file</h3>
+
+<p>When the <a href="#CreateNewSkin">Create new skin</a> button is used to create a new root-level skin, the new skin is initially populated with the contents of a file <b>NewSkin.template</b> which is stored in the <a href="!variables/built-in-variables/#SETTINGSPATH">settings folder</a>. This link will open this template file in your default or defined text editor, so you can adjust what is in a new skin as desired.</p>
+
+<p>The default template is:</p>
+```txt
+[Rainmeter]
+Update=1000
+AccurateText=1
+
+[Metadata]
+Name=
+Author=
+Information=
+Version=
+License=Creative Commons Attribution - Non - Commercial - Share Alike 3.0
+
+[Variables]
+
+[MeterString]
+Meter=String
+```
