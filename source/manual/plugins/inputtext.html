@@ -1,5 +1,5 @@
 ---
-layout: manual
+layout: manual-beta
 permalink: manual/plugins/inputtext/
 title: 'InputText plugin'
 ---
@@ -37,6 +37,16 @@ title: 'InputText plugin'
 	<dt id="Password"><code>Password</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the input will be displayed as asterisks.</p>
+	</dd>
+	
+	<dt id="InputLimit"><code>InputLimit</code> <small>Default: <code>0</code> <em>unlimited</em></small></dt>
+	<dd>
+		<p>If defined, this will limit the number of characters allowed in the input field. Note that if a new line is entered with <code>CTRL-Enter</code>, this will be two characters, <code>/r/n</code>, toward the limit.</p>
+	</dd>
+	
+	<dt id="InputNumber"><code>InputNumber</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>If set to <code>1</code>, only numeric input will be allowed. A single <code>-</code> can be the first character, and a single <code>.</code> can be at any position in the input.</p>
 	</dd>
 
 	<dt id="XY"><code>X</code>, <code>Y</code></dt>

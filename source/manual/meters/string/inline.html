@@ -1,5 +1,5 @@
 ---
-layout: manual
+layout: manual-beta
 permalink: manual/meters/string/inline/
 title: 'Inline Options'
 ---
@@ -12,31 +12,30 @@ title: 'Inline Options'
 	<li>Support for a color Gradient on part or all of the string.</li>
 </ul>
 
-<p>Inline options are defined by pairs of InlineSetting ... InlineSetting<em>N</em> and InlinePattern ... InlinePattern<em>N</em> options on the meter. InlineSetting<em>N</em> defines the character formatting setting you wish to add or change, and the matching InlinePattern<em>N</em> uses regular expressions to define the part of the string you wish to change. These must be matching pairs, and there may not be missing <em>N</em> number postfixes, which start with <em>2</em>.</p>
+<p>Inline options are defined by pairs of InlineSetting ... InlineSetting<em>N</em> and InlinePattern ... InlinePattern<em>N</em> options on the meter. InlineSetting<em>N</em> defines the character formatting setting you wish to add or change, and the matching InlinePattern<em>N</em> uses regular expressions to define the part of the string you wish to change. These must be matching pairs, and there may not be missing <em>N</em> number postfixes in InlineSetting, which start with <em>2</em>.</p>
 
 <p>The inline formatting is applied to the final string as it will be displayed by the meter, reflecting the value of any measures bound to the meter with MeasureName<em>N</em>, any Text option on the meter, and any string manipulation applied with other meter options like StringCase, Percentual or NumOfDecimals.</p>
 
 <p>While not required, <code>AccurateText=1</code> should be set in the [Rainmeter] section of the skin, to ensure that the formatting is done on fonts using proper D2D font spacing and metrics.</p>
 
-<p><b>Important Note:</b> The entire Inline Options functionality requires that Rainmeter have <a href="!user-interface/manage/#General">D2D (Direct2D) enabled</a>. This in effect means that this functionality is <b>not supported on Windows XP</b>, and will be ignored on that platform, or if D2D is disabled in Rainmeter.</p>
 
 <h2>Options</h2>
 <dl>
 	<dt id="InlineSetting"><code>InlineSetting</code>, <code>InlineSetting2</code>, <code>InlineSetting3</code>... </dt>
 	<dd>
-		<p>This takes the form of the <b>setting name</b> to be added, a <b>|</b> (pipe) character, and the <b>value</b> for the setting.</p>
+		<p>This takes the form of the <span class="dd_value">setting name</span> to be added, a <b>|</b> (pipe) character, and the value for the setting.</p>
 		
 		<p>Example: <code>InlineSetting=Size | 12</code></p>
 		
 		<p>Supported settings:</p>		
 		<ul>
-			<li><b style="font-size:16px">Face</b> <b>|</b> <em>font family name</em>.<br/>
-			This uses the same values as the setting for FontFace on the meter.</li>
-			<li><b style="font-size:16px">Size</b> <b>|</b> <em>numeric point size</em>.<br/>
-			This uses the same values as the setting for FontSize on the meter.</li>
-			<li><b style="font-size:16px">Color</b> <b>|</b> <em>rrr,ggg,bbb,aaa or RRGGBBAA color code</em>.<br/>
-			This uses the same values as the setting for FontColor on the meter.</li>
-			<li><b style="font-size:16px">Weight</b> <b>|</b> <em>numeric value in the range 1-999.</em>.<br/>
+			<li><span class="dd_value" id="InlineFace">Face</span> <b>|</b> <em>font family name</em>.<br/>
+			This uses the same values as the setting for FontFace on the meter.<br/><br/></li>
+			<li><span class="dd_value" id="InlineSize">Size</span> <b>|</b> <em>numeric point size</em>.<br/>
+			This uses the same values as the setting for FontSize on the meter.<br/><br/></li>
+			<li><span class="dd_value" id="InlineColor">Color</span> <b>|</b> <em>rrr,ggg,bbb,aaa or RRGGBBAA color code</em>.<br/>
+			This uses the same values as the setting for FontColor on the meter.<br/><br/></li>
+			<li><span class="dd_value" id="InlineWeight">Weight</span> <b>|</b> <em>numeric value in the range 1-999.</em>.<br/>
 			The following are common values and their meanings. If the value is supported by the font family, it will be used. If not, the closest value that is supported by the font family will be used.<br/><br/>
 			<b>100</b> - Thin (Hairline)<br/>
 			<b>200</b> - Extra Light (Ultra Light)<br/>
@@ -48,23 +47,42 @@ title: 'Inline Options'
 			<b>800</b> - Extra Bold (Ultra Bold)<br/>
 			<b>900</b> - Black (Heavy)<br/>
 			<b>950</b> - Extra Black (Ultra Black)<br/><br/>
-			If the font does not support any additional weights, then 500 and below will use the font's normal weight, and 600 and above will simulate a bold effect.<br/><br/>
-			</li>
+			If the font does not support any additional weights, then 500 and below will use the font's normal weight, and 600 and above will simulate a bold effect.<br/><br/></li>
+
+			<li><span class="dd_value" id="InlineCase">Case</span> <b>|</b> <em>One of the following string case options:</em><br/><br/>
 			
-			<li><b style="font-size:16px">CharacterSpacing</b> <b>|</b> <em>Leading | Trailing | Minimum Advance Width</em><br/>
+			<b>Lower</b> - All characters lower case<br/>
+			<b>Upper</b> - All characters upper case<br/>
+			<b>Proper</b> - First character of each word upper case, the balance lower case<br/>
+			<b>Sentence</b> - First character of each sentence upper case, the balance lower case<br/><br/></li>
+			
+			<li><span class="dd_value" id="InlineCharacterSpacing">CharacterSpacing</span> <b>|</b> <em>Leading | Trailing | Minimum Advance Width</em><br/>
 			Defines the inter-character spacing for part or all of the string. <b>Leading</b> and <b>Trailing</b> may be any positive or negative integer or fractional number. The value is based on DIP (Device-Independent-Pixels), and does not have to be an integer. <b>Minimum Advance Width</b> must be a positive integer. Any value may be set to an asterisk <b>*</b> to ignore.<br/><br/>
 			Example:<br/><br/>
 			<code>InlineSetting=CharacterSpacing | 2 | 2</code><br/>
-			That will increase the leading space before characters and the trailing space after characters by 2 DIP.<br/><br/>
+			That will increase the leading space before characters and the trailing space after characters by 2 DIP.<br/><br/></li>
+			<li><span class="dd_value" id="InlineItalic">Italic</span><br/>
+			Uses <span style="font-style: italic;">Italic</span> characters in part or all of the string. No parameter required. This will be simulated by Rainmeter if not supported by the font family.<br/><br/></li>
+			<li><span class="dd_value" id="InlineOblique">Oblique</span><br/>Uses <span style="font-style: oblique;">Oblique</span> characters in part or all of the string. No parameter required. This will be simulated by Rainmeter if not supported by the font family.<br/><br/></li>
+			<li><span class="dd_value" id="InlineUnderline">Underline</span><br/>
+			Used to <u>Underline</u> characters in part or all of the string. No parameter required.<br/><br/></li>
+			<li><span class="dd_value" id="InlineStrikethrough">Strikethrough</span><br/>
+			Used to <del>Strikethrough</del> characters in part or all of the string. No parameter required.<br/><br/></li>
+			
+			<li><span class="dd_value" id="InlineShadow">Shadow</span> <b>|</b> <em>X Offset | Y Offset | Blur Amount | Color</em><br/>
+			Used to create a <span style="text-shadow: 1px 1px #A3A3A3;">Drop Shadow</span> on all or part of the string.<br/><br/>
+			<em>X Offset</em> - Number of positive (right) or negative (left) pixels to offset the shadow from the string.<br/>
+			<em>Y Offset</em> - Number of positive (below) or negative (above) pixels to offset the shadow from the string.<br/>
+			<em>Blur Amount</em> - Amount of blur transition in pixels. The number of pixels used to transition the shadow from solid to fully transparent. The value is based on DIP (Device-Independent-Pixels), and does not have to be an integer.<br/>
+			<em>Color</em> - rrr,ggg,bbb,aaa or RRGGBBAA color code. The alpha component of the shadow color is multiplied with the alpha component of the string color.<br/><br/>			
+			
+			Example:<br/><br/>
+			<code>InlineSetting=Shadow | 2 | 2 | 3.5 | 150,150,150,200</code><br/><br/>
+			
+			<b>Note:</b> The shadow effect does not change the size or position of the overall meter, and you should ensure that the meter is sized and positioned appropriately to display the shadow without clipping. The overall amount that the shadow effect impacts the desired meter size is a function the font size, the offset amounts and the blur amount.<br/><br/>
 			</li>
-			<li><b style="font-size:16px">Italic</b><br/>
-			Uses <span style="font-style: italic;">Italic</span> characters in part or all of the string. No parameter required. This will be simulated by Rainmeter if not supported by the font family.</li>
-			<li><b style="font-size:16px">Oblique</b><br/>Uses <span style="font-style: oblique;">Oblique</span> characters in part or all of the string. No parameter required. This will be simulated by Rainmeter if not supported by the font family.</li>
-			<li><b style="font-size:16px">Underline</b><br/>
-			Used to <u>Underline</u> characters in part or all of the string. No parameter required.</li>
-			<li><b style="font-size:16px">Strikethrough</b><br/>
-			Used to <del>Strikethrough</del> characters in part or all of the string. No parameter required.</li>
-			<li><b style="font-size:16px">Stretch</b> <b>|</b> <em>one of 9 numeric compressed / expanded values if supported by the font.</em><br/>
+			
+			<li><span class="dd_value" id="InlineStretch">Stretch</span> <b>|</b> <em>one of 9 numeric compressed / expanded values if supported by the font.</em><br/>
 			The following values can be set. If the value is supported by the font family, it will be used. If not, the closest value that is supported by the font family will be used.<br/><br/>
 			<b>1</b> - Ultra-Condensed<br/>
 			<b>2</b> - Extra-Condensed<br/>
@@ -75,9 +93,8 @@ title: 'Inline Options'
 			<b>7</b> - Expanded<br/>
 			<b>8</b> - Extra-Expanded<br/>
 			<b>9</b> - Ultra-Expanded<br/><br/>
-			<b>Note:</b> There are relatively few fonts that support alternative stretch values for glyphs. In many cases the <b>CharacterSpacing</b> setting might be a better choice to get a similar "wide" or "compressed" effect.<br/><br/>
-			</li>
-			<li><b style="font-size:16px">Typography</b> <b>|</b> <em>one of 80 Typography codes.</em><br/>
+			<b>Note:</b> There are relatively few fonts that support alternative stretch values for glyphs. In many cases the <b>CharacterSpacing</b> setting might be a better choice to get a similar "wide" or "compressed" effect.<br/><br/></li>
+			<li><span class="dd_value" id="InlineTypography">Typography</span> <b>|</b> <em>one of 80 Typography codes.</em><br/>
 			Used to select alternative glyphs in a font, these must be explicitly supported by the font being used. A few common examples might be:<br/><br/>
 			<b>smcp</b> - Small Capitals<br/>
 			<b>onum</b> - Old Style Figures<br/>
@@ -87,9 +104,8 @@ title: 'Inline Options'
 			<b>ss01</b> - Stylistic Set 1<br/>
 			<b>ss02</b> - Stylistic Set 2<br/><br/>
 			Note that a few Typography codes support an additional second parameter which is a numeric index to a variant of the code. If that is required, the format <code>Typography | code | index</code> should be used.<br/><br/>
-			A full list of supported codes can be found at <a href="/tips/font-features">Font Features</a><br/><br/>
-			</li>
-			<li><b style="font-size:16px">GradientColor</b> <b>|</b> <em>Angle | Color ; Percentage | Color ; Percentage | ...</em><br/>
+			A full list of supported codes can be found at <a href="/tips/font-features">Font Features</a><br/><br/></li>
+			<li><span class="dd_value" id="InlineGradientColor">GradientColor</span> <b>|</b> <em>Angle | Color ; Percentage | Color ; Percentage | ...</em><br/>
 			Defines a color gradient, at any angle, to be used on the selected text. This can consist of two or more colors as desired, with percentage points being used to define transition points for each color.<br/><br/>
 			
 			This takes the form of the <b>Angle</b> for the gradient in degrees, a <b>|</b> pipe character, then a series of <b>Color codes</b>, a <b>;</b> semi-colon, and a <b>Percentage</b> from 0.0 to 1.0 to define the position of the color in the text. Each series of <b>Color ; Percentage</b> are separated by a <b>|</b> pipe character.<br/><br/>
@@ -116,24 +132,24 @@ title: 'Inline Options'
 			<b>Note:</b> An alternative form of GradientColor, <b>GradientColor1</b>, can be used. This uses the same setting values as GradientColor, but interpolates the gradient using an alternative method of handling gamma correction. In some cases you may find this makes for a smoother or brighter gradient transition.<br/><br/> 
 			</li>
 
-			<li><b style="font-size:16px">None</b><br/>
+			<li><span class="dd_value" id="InlineNone">None</span><br/>
 			When <code>InlineSetting=None</code>, no setting will be applied. This is generally going to be used with the <a href="!bangs/#SetOption">!SetOption</a> bang, in order to dynamically "turn off" and "turn on" a particular setting. Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlineSetting<em>N</em> numbers, all subsequent ones will be ignored.</p>
 		</ul>
 	</dd>
 	
-	<dt id="InlinePattern"><code>InlinePattern</code>, <code>InlinePattern2</code>, <code>InlinePattern3</code>... <small>Regular Expression</small></dt>
+	<dt id="InlinePattern"><code>InlinePattern</code>, <code>InlinePattern2</code>, <code>InlinePattern3</code>... <small>A Regular Expression - Default <code>.*</code></small></dt>
 	<dd>
 		<p>A <a href="!skins/option-types/#RegExp">Perl Compatible Regular Expression</a> (PCRE) used to define all or part(s) of the string to which to apply the corresponding InlineSetting<em>N</em>.</p>
 	
 		<p>If (parentheses) are used to <em>capture</em> parts of the string, then that is what the setting will be applied to. If (parentheses) are not used, then the part(s) of the string that match the regular expression will be used.</p>
 		
-		<p><code>InlinePattern=.*</code> is how you would simply add or change a setting on the entire string.</p>
+		<p><code>InlinePattern=.*</code> (default) is how you would simply add or change a setting on the entire string.</p>
 		
 		<p>The full range of <a href="http://www.regular-expressions.info/tutorial.html">PCRE</a> regular expression functionality is supported, so the pattern can match on all or part of the meter's	string value. Logical OR and AND matching can be done in the regular expression, using the <code>|</code> character to support OR and <a href="http://www.regular-expressions.info/lookaround.html">Lookahead assertions</a> <code>(?=..)</code> to support AND.</p>
 
 		<p>Reserved characters in regular expression, which are <code>.</code><code>^</code><code>$</code><code>*</code><code>+</code><code>?</code><code>(</code><code>)</code><code>[</code><code>{</code><code>\</code><code>|</code> must be escaped with the <code>\</code> character when used as a literal in the <code>InLinePattern</code> option.  If using a measure value as a section variable in the option, the <a href="!variables/section-variables/#EscapeRegExp">:EscapeRegExp</a> modifier can be used to properly escape reserved characters in the measure.</p>		
 		
-		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "nothing", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and as there can't be "missing" or "skipped" InlinePattern<em>N</em> numbers, all subsequent ones will be ignored.</p>		
+		<p>If the <a href="!bangs/#SetOption">!SetOption</a> bang is being used to dynamically "turn off" and "turn on" an InlinePattern, <code>InlinePattern=^$</code> should be used to indicate "nothing", as  Using a !SetOption that sets the value to "" will as always "remove" the option entirely, and this will set it to the default of <code>.*</code>, or the entire string.</p>		
 	</dd>	
 </dl>
 

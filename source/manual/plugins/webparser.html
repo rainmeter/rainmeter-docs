@@ -1,5 +1,5 @@
 ---
-layout: manual
+layout: manual-beta
 permalink: manual/plugins/webparser/
 title: 'WebParser plugin'
 ---
@@ -48,7 +48,7 @@ StringIndex=2
 
 		<p id="Authentication">WebParser <b>cannot</b> use cookies or other session-based authentication, so it <b>cannot</b> be used to retrieve information from web sites requiring a login. However, Webparser <b>can</b> be used on sites which support <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP authentication</a>. E.g. <code>http://myname:mypassword@somesite.com</code>.</p>
 
-		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="http://en.wikipedia.org/wiki/File_URI_scheme">URI scheme</a>. E.g. <code>URL=file://<a href="!variables/built-in-variables/#CURRENTPATH">#CURRENTPATH#</a>SomeFile.txt</code>.</p>
+		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="http://en.wikipedia.org/wiki/File_URI_scheme">URI scheme</a>. E.g. <code>URL=file://<a href="!variables/built-in-variables/#CURRENTPATH">#CURRENTPATH#</a>SomeFile.txt</code>. Note that this must be a fully qualified path to the file.</p>
 		
 		<p>If you want to use the current value of a measure in a dynamic way as a <a href="!variables/section-variables/">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
 
@@ -95,7 +95,7 @@ StringIndex=2
 			<li><code>2</code>: Decodes only numeric character references.</li>
 			<li><code>3</code>: Decodes only character entity references.</li>
 		</ul>
-		<p><b>Note:</b> This option is used on the <a href="#ParentChild">child</a> measures actually returning the value of a StringIndex.</p>		
+		<p><b>Note:</b> This option is used on the <a href="#ParentChild">child</a> measures actually returning the value of a StringIndex.</p>
 	</dd>
 
 	<dt id="Debug"><code>Debug</code> <small>Default: <code>0</code></small></dt>
@@ -139,34 +139,21 @@ StringIndex=2
 		 
 		 <p><b>Note:</b> While there might be cases where this option is desirable, the <a href="#OnRegExpErrorAction">OnRegExpErrorAction</a> option might be a more flexible and robust way to deal with regular expression errors.</p> 
 	</dd>
+	
+	<dt id="LogSubstringErrors"><code>LogSubstringErrors</code><small>Default: <code>1</code></small></dt>
+	<dd>
+		 <p>If set to "0", this will suppress logging of "Not enough substring" errors. This can be useful when for instance you are using <a href="https://docs.rainmeter.net/tips/webparser-lookahead-assertions-in-regexp/">lookahead assertions</a> in a regular expression, and missing (captures) should not be treated as an "error".</p>
+		 <p><b>Note:</b> This option is set on the <a href="#ParentChild">parent</a> WebParser measure.</p>
+	</dd>	
 
 	<dt id="ForceReload"><code>ForceReload</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		 <p>WebParser reads the resource only if it has been modified since last read. This can be overridden with <code>ForceReload=1</code>.</p>
 	</dd>
-
-	<dt id="ProxyServer"><code>ProxyServer</code> <small>Default: <code>/auto</code></small></dt>
-	<dd>
-		<p>Proxy server to use with the plugin. The following settings are valid:</p>
-		<ul>
-		<li><b>/auto</b><br>
-		This will use the proxy settings contained in the options for Internet Explorer. (default)</li>
-		<li><b>/none</b><br>
-		This will make a direct connection, and will not use any proxy setting.</li>
-		<li><b>ServerName:Port</b><br>
-		This will connect to the proxy server hostname or ip address and port defined. Port is often optional with proxy servers.</li>
-		</ul>
-
-		<br><p>This option can also be set in the <a href="!settings/#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
-
-		<p><b>Note: </b>The plugin doesn't support any authentication, so <b>only</b> use proxy settings that do not require it.</p>
-
-		<p><b>Examples:</b> <code>ProxyServer=/none</code>, <code>ProxyServer=192.168.1.1:8080</code>, <code>ProxyServer=ProxyHostname.net</code></p>
-	</dd>
-
+	
 	<dt id="CodePage"><code>CodePage</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		 <p>Defines the <a href="http://en.wikipedia.org/wiki/Code_page">code page</a> of the downloaded URL=http:// web page or external file read with URL=file://.</p>
+		 <p>Specifies the <a href="http://en.wikipedia.org/wiki/Code_page">code page</a> of the downloaded URL=http:// web page or external file read with URL=file://.</p>
 		 
 		 <p>Most web sites on the web today are encoded with the Unicode UTF-8 standard. This is the default for WebParser, and it will seamlessly handle the site. No CodePage option is needed.</p>
 
@@ -186,7 +173,44 @@ StringIndex=2
 		 <p>Codepage definitions and more information can be found at <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx">Windows code pages</a>.</p>
 		 
 		 <p>Additional general help with Unicode encoding in Rainmeter can be found at <a href="//forum.rainmeter.net/viewtopic.php?p=92182#p92182">Character Encoding in Rainmeter</a>.</p>
+	</dd>	
+
+	<dt id="ProxyServer"><code>ProxyServer</code> <small>Default: <code>/auto</code></small></dt>
+	<dd>
+		<p>Proxy server to use with the plugin. The following settings are valid:</p>
+		<ul>
+		<li><b>/auto</b><br>
+		This will use the proxy settings contained in the options for Internet Explorer. (default)</li>
+		<li><b>/none</b><br>
+		This will make a direct connection, and will not use any proxy setting.</li>
+		<li><b>ServerName:Port</b><br>
+		This will connect to the proxy server hostname or ip address and port defined. Port is often optional with proxy servers.</li>
+		</ul>
+
+		<p>This option can also be set in the <a href="!settings/#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
+		<p>The plugin doesn't support any authentication, so <b>only</b> use proxy settings that do not require it.</p>
+		<p>This setting is applied when the measure is initialized on skin load / refresh, and cannot be changed dynamically.</p>
+
+		<p><b>Examples:</b> <code>ProxyServer=/none</code>, <code>ProxyServer=192.168.1.1:8080</code>, <code>ProxyServer=ProxyHostname.net</code></p>
 	</dd>
+
+	<dt id="UserAgent"><code>UserAgent</code> <small>Default: <code>Rainmeter WebParser plugin</code></small></dt>
+	<dd>
+		<p>Specifies a custom <a href="https://en.wikipedia.org/wiki/User_agent">User Agent String</a> to be sent when the parent WebParser measure connects to a remote resource using HTTP(S).</p>
+		
+		<p>If you want to find out what the User Agent String is for the browser you use, you can connect to <a href="https://www.whatismybrowser.com/detect/what-is-my-user-agent">WhatIsMyBrowser</a> in your browser and copy the string it returns. Other common User Agent String values can be found at <a href="http://www.useragentstring.com/pages/useragentstring.php">UserAgentString</a>.</p>
+
+		<p>This option can also be set in the <a href="!settings/#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
+		<p>This setting is applied when the measure is initialized on skin load / refresh, and cannot be changed dynamically.</p>
+	</dd>
+	
+	<dt id="Header"><code>Header, Header2, Header3...</code></dt>
+	<dd>
+		<p>Specifies one or more custom <a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">HTTP Header Fields</a> to be sent when the parent WebParser measure connects to a remote resource using HTTP(S).</p>
+		
+		<p><b>Example:</b> <code>Header=Cache-Control: no-cache</code></p>
+	</dd>	
+
 </dl>
 
 <h2 id="ActionOptions">Action Options</h2>

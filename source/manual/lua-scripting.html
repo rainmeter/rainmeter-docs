@@ -1,5 +1,5 @@
 ---
-layout: manual
+layout: manual-beta
 permalink: manual/lua-scripting/
 title: 'Lua Scripting'
 ---
@@ -17,8 +17,6 @@ title: 'Lua Scripting'
 
 <p>The rest of this page assumes a basic knowledge of the Lua language.</p>
 
-
-
 <h2 id="ScriptMeasure">Script Measure</h2>
 
 <p>The <a href="!measures/script/">script measure</a> is used to load a Lua script from a file and interface with the script. The <a href="!measures/script/#ScriptFile">script file</a> must be a text file, and typically has the extension <code>.lua</code>.</p>
@@ -31,8 +29,6 @@ Measure=Script
 ScriptFile=MyScript.lua
 ```
 
-
-
 <h3 id="Options">Options</h3>
 
 <p>In addition to <a href="!measures/general-options/">general measure options</a> and <a href="!measures/script/#ScriptFile">ScriptFile</a>, scripts also allow <a href="!measures/script/#UserDefined">user-defined options</a>. These options may have any name and value, and may be changed with <a href="!bangs/#SetOption">!SetOption</a>. The script can read and use its own option values using the <a href="#SelfObject">SELF object functions</a>. This allows the same script file to be used with different parameters depending on the context.</p>
@@ -43,8 +39,6 @@ Measure=Script
 ScriptFile=MyScript.lua
 MyOption=Hello, world!
 ```
-
-
 
 <h3 id="DynamicVariables">Dynamic Variables</h3>
 
@@ -62,7 +56,6 @@ MyOption=Hello, world!
 
 <p>All statements must be passed as a single parameter in the bang. Because single-quotes (<code>'</code>) and double-quotes (<code>"</code>) are both valid string containers in Lua, while only double-quotes are recognized in Rainmeter, single quotes are recommended when passing strings with !CommandMeasure.</p>
 
-
 <h2 id="Initialize">Initialize</h2>
 
 <p>If the <b>Initialize</b> function is defined in any script, the function is called one time (without parameters) when the skin is activated or <a href="!skins/#Refresh">refreshed</a>. This happens even if the script measure is <a href="!measures/general-options/#Disabled">disabled</a>. If the script file is changed by a <a href="!bangs/#SetOption">!SetOption</a> bang, the new script's Initialize function is called as well.</p>
@@ -75,7 +68,18 @@ end
 
 <p>Actions that are needed to "set up" the script, such as declaring global variables, should be done in the Initialize function.</p>
 
+<p><span  id="dofile"><b>Using dofile</b></span></p>
 
+<p>The <a href="http://www.lua.org/manual/5.1/manual.html#pdf-dofile">dofile function</a> can be used to include libraries or other snippets of Lua code. You must specify a full path to the dofile, using the syntax <code>dofile('C:\PathToDoFile\SomeLua.lua')</code>. Use the <a href="#GetVariable">GetVariable</a> function if you want to use the #@# variable shortcut to the @Resources folder for the current config, or <a href="#MakePathAbsolute">MakePathAbsolute</a> if you want to have the .lua file be relative to the current skin folder.</a>
+
+``` lua
+function Initalize()
+	dofile(SKIN:GetVariable('@')..'MyDoFiles\\toolkit.lua')
+	dofile(SKIN:MakePathAbsolute('toolkit.lua'))
+end
+```
+
+<p><b>Note:</b> While a dofile you call can be anywhere on your system, be aware that if you do not put the dofile .lua file somewhere in the path to the current config, you won't be able to distribute it with your skin as a .rmskin package. A .rmskin package can only distribute the contents of a single root config folder.</p>
 
 <h2 id="Update">Update</h2>
 
@@ -98,20 +102,15 @@ end
 
 <p>The values provided by the script measure can be <a href="!measures/#Usage">used in the same way as other measure values</a>. (<b>Note:</b> the values only update when the measure itself updates. Calling <code>Update()</code> within Lua does not update the measure values.)</p>
 
-
 <h2 id="Log">Log</h2>
 
 <p>Lua errors are logged in the <a href="!user-interface/about/">About</a> window. The <a href="http://www.lua.org/manual/5.1/manual.html#pdf-print">print</a> function may also be used to write strings to the log. This can provide helpful feedback when writing or troubleshooting a script.</p>
 
-	<blockquote><p><code>print('The current value of MyVariable is: ' .. MyVariable)</code></p></blockquote>
-
-
+<p><code>print('The current value of MyVariable is: ' .. MyVariable)</code></p>
 
 <h2 id="Functions">Functions</h2>
 
 <p>Lua functions are provided to identify a <a href="!meters/">meter</a>, a <a href="!measures/">measure</a>, or the current <a href="!skins/">skin</a> as a Lua <b>object</b>. Additional functions are provided for manipulating each type of object in specific ways.</p>
-
-
 
 <h3 id="SkinObject">SKIN object</h3>
 
@@ -120,13 +119,13 @@ end
 <dl>
 	<dt id="GetMeasure"><code>GetMeasure</code> <small>Parameter: <code><b>MeasureName</b></code></small></dt>
 	<dd>
-		<p>Creates an object for the named measure. Returns <code>nil</code> if the measure is not found.</p>
+		<p>Creates a handle object for the named measure. Returns <code>nil</code> if the measure is not found.</p>
 		<p><b>Example:</b> <code>MyMeasure = SKIN:GetMeasure('MeasureName')</code></p>
 	</dd>
 
 	<dt id="GetMeter"><code>GetMeter</code> <small>Parameter: <code><b>MeterName</b></code></small></dt>
 	<dd>
-		<p>Creates an object for the named meter. Returns <code>nil</code> if the meter is not found.</p>
+		<p>Creates a handle object for the named meter. Returns <code>nil</code> if the meter is not found.</p>
 		<p><b>Example:</b> <code>MyMeter = SKIN:GetMeter('MeterName')</code></p>
 	</dd>
 
@@ -144,18 +143,22 @@ end
 				<p>The entire bang as a single string.</p>
 				<p><b>Example:</b> <code>SKIN:Bang('!SetOption "MyMeter" "Text" "Hello, world!"')</code></p>
 				<p>Multiple bangs are valid using this method.</p>
-				<p><b>Example:</b> <code>SKIN:Bang('[!UpdateMeter "MyMeter"][!Redraw]')</code></p>
-			</li>
+				<p><code>SKIN:Bang('[!UpdateMeter "MyMeter"][!Redraw]')</code></p>
+			</li><br>
 			<li>
 				<p>Each bang parameter as a separate parameter in the function.</p>
 				<p><b>Example:</b> <code>SKIN:Bang('!SetOption', 'MyMeter', 'Text', 'Hello, world!')</code></p>
+				<p>Multiple bangs must be separate using this method.</p>
+				<p><code>SKIN:Bang('[!UpdateMeter "MyMeter"]')</code><br>
+				<code>SKIN:Bang('[!Redraw]')</code></p>
+				<p><b>Note:</b> In spite of the need for a separate <code>SKIN:Bang()</code> function for each bang you want to use, this second method is strongly recommended. You will quickly find that the first method, using a single string to define the bang(s) will quickly become very complicated to properly quote if the bangs themselves contain strings that must be quoted.</p>
 			</li>
 		</ol>
 	</dd>
 
 	<dt id="MakePathAbsolute"><code>MakePathAbsolute</code> <small>Parameter: <code><b>File/Folder</b></code></small></dt>
 	<dd>
-		<p>Converts a relative filepath into an absolute filepath, in the same manner as a <a href="!skins/option-types/#Path">path option</a>. </p>
+		<p>Converts a relative file path into a full file path. The path will be relative to the skin folder.</p>
 		<p><b>Example:</b> <code>MyPath = SKIN:MakePathAbsolute('MyImage.png')</code></p>
 	</dd>
 
@@ -167,15 +170,19 @@ end
 
 	<dt id="ParseFormula"><code>ParseFormula</code> <small>Parameter: <code><b>FormulaString</b></code></small></dt>
 	<dd>
-		<p>If the given string is a valid <a href="!skins/option-types/#Number">formula</a>, evaluates the formula and returns the result as the number. Otherwise, returns <code>nil</code>.</p>
-		<p><b>Example:</b> <code>MyNumber = SKIN:ParseFormula('2+2')</code></p>
+		<p>If the given string is a valid <a href="!formulas/">formula</a>, evaluates the formula and returns the result as the number. Otherwise, returns <code>nil</code>. This can take advantage of mathematical functions in Rainmeter that may not be built into Lua. Remember that formulas in Rainmeter must be entirely enclosed in (parentheses).</p>
+		
+``` lua
+numToRound = 239.78
+roundedNum = SKIN:ParseFormula('(Round('..numToRound..'))')
+```
 	</dd>
 </dl>
 
 
 <h3 id="MeasureObject">Measure object</h3>
 
-<p>A <code>Measure</code> object is created using <a href="#GetMeasure">GetMeasure</a>. It is linked to a specific <a href="!measures/">measure</a> in the skin.</p>
+<p>A <code>Measure</code> object is created using <a href="#GetMeasure">GetMeasure</a>. It creates a handle to a specific <a href="!measures/">measure</a> in the skin, which can then be used with the following functions to act on the measure.</p>
 <p><b>Example:</b> <code>MyMeasure = SKIN:GetMeasure('MeasureName')</code></p>
 
 <dl>
@@ -223,13 +230,13 @@ end
 
 	<dt id="GetRelativeValue"><code>GetRelativeValue</code></dt>
 	<dd>
-		<p>Returns the measure's current number <a href="!measures/#Percentage">percentage value</a> as a number, scaled from <code>0.0</code> to <code>1.0</code>.</p>
+		<p>Returns the measure's current number <a href="!measures/#Percentage">percentage value</a> as a number, scaled from <code>0.0</code> to <code>1.0</code>. The result will be based on the current defined or derived <a href="!measures/general-options/#MinValue">MinValue</a> and <a href="!measures/general-options/#MaxValue">MaxValue</a> of the measure.</p>
 		<p><b>Example:</b> <code>MyMeasureValue = MyMeasure:GetRelativeValue()</code></p>
 	</dd>
 
 	<dt id="GetValueRange"><code>GetValueRange</code></dt>
 	<dd>
-		<p>Returns the current <a href="!measures/#Percentage">value range</a> of the measure as a number.</p>
+		<p>Returns the current <a href="!measures/#Percentage">value range</a> of the measure as a number. The result will be based on the current defined or derived <a href="!measures/general-options/#MinValue">MinValue</a> and <a href="!measures/general-options/#MaxValue">MaxValue</a> of the measure, and will be the difference between the two.</p>
 		<p><b>Example:</b> <code>MyMeasureRange = MyMeasure:GetValueRange()</code></p>
 	</dd>
 
@@ -246,19 +253,15 @@ end
 	</dd>
 </dl>
 
-
-
 <h3 id="SelfObject">SELF object</h3>
 
 <p>The <code>SELF</code> object is created automatically. <code>SELF</code> is a measure object linked to the current script measure. All <a href="#MeasureObject">measure object functions</a> are valid for <code>SELF</code>.</p>
 
-	<blockquote><p><code>MyScriptMeasureName = SELF:GetName()</code></p></blockquote>
-
-
+<p><code>MyScriptMeasureName = SELF:GetName()</code></p>
 
 <h3 id="MeterObject">Meter object</h3>
 
-<p>A <code>Meter</code> object is created using <a href="#GetMeter">GetMeter</a>. It is linked to a specific <a href="!meters/">meter</a> in the skin.</p>
+<p>A <code>Meter</code> object is created using <a href="#GetMeter">GetMeter</a>. It creates a handle to a specific <a href="!meters/">meter</a> in the skin, which can then be used with the following functions to act on the meter.</p>
 <p><b>Example:</b> <code>MyMeter = SKIN:GetMeter('MeterName')</code></p>
 
 <dl>
@@ -276,13 +279,13 @@ end
 
 	<dt id="GetX"><code>GetX</code> <small>Parameters: <code><em>Absolute</em></code></small></dt>
 	<dd>
-		<p>Returns the current <a href="!meters/general-options/#XY">X position</a> of the meter as a number. If the optional <em>Absolute</em> parameter is <code>true</code>, returns the absolute (or <a href="!variables/section-variables/#XY">"real"</a>) X position.</p>
+		<p>Returns the current <a href="!meters/general-options/#XY">X position</a> of the meter as a number. If the optional <em>Absolute</em> parameter is <code>true</code>, returns the absolute (or <a href="!variables/section-variables/#XY">"real"</a>) X position, which may be different than the defined option on the meter.</p>
 		<p><b>Example:</b> <code>MyX = MyMeter:GetX()</code></p>
 	</dd>
 
 	<dt id="GetY"><code>GetY</code> <small>Parameters: <code><em>Absolute</em></code></small></dt>
 	<dd>
-		<p>Returns the current <a href="!meters/general-options/#XY">Y position</a> of the meter as a number. If the optional <em>Absolute</em> parameter is <code>true</code>, returns the absolute (or <a href="!variables/section-variables/#XY">"real"</a>) Y position.</p>
+		<p>Returns the current <a href="!meters/general-options/#XY">Y position</a> of the meter as a number. If the optional <em>Absolute</em> parameter is <code>true</code>, returns the absolute (or <a href="!variables/section-variables/#XY">"real"</a>) Y position, which may be different than the defined option on the meter.</p>
 		<p><b>Example:</b> <code>MyY = MyMeter:GetY()</code></p>
 	</dd>
 
@@ -341,8 +344,8 @@ end
 
 <ul>
 	<li>The <a href="http://www.lua.org/manual/5.1/manual.html#5.2">coroutine</a> and <a href="http://www.lua.org/manual/5.1/manual.html#5.9">debug</a> libraries.</li>
-	<li>External libraries, such as <a href="http://luacurl.luaforge.net/">LuaCURL</a>.</li>
-	<li>The <a href="http://www.lua.org/manual/5.1/manual.html#pdf-require">require</a>, <a href="http://www.lua.org/manual/5.1/manual.html#pdf-dofile">dofile</a>, <code>os.exit</code>, <code>os.setlocale</code>, <code>io.popen</code>, <code>collectgarbage</code>, <code>getfenv</code>, and <code>setfenv</code> functions.</li>
+	<li>External compiled libraries, such as <a href="http://luacurl.luaforge.net/">LuaCURL</a>.</li>
+	<li>The <code><a href="http://www.lua.org/manual/5.1/manual.html#pdf-require">require</a></code>, <code>os.exit</code>, <code>os.setlocale</code>, <code>io.popen</code>, <code>collectgarbage</code>, <code>getfenv</code>, and <code>setfenv</code> functions.</li>
 </ul>
 
 <h3 id="Deprecated">Deprecated Features</h3>
@@ -358,5 +361,5 @@ end
 		<code>SKIN:Bang('!SetOption', 'MeterName', 'Text', '...')</code></p></li>
 	<li><p><code>function GetStringValue()</code><br>
 		This function was used to set the script measure's value. Instead, use:<br>
-		<code>function Update() return ... end</code></p></li>
+		<code>function Update() ... return ... end</code></p></li>
 </ul>

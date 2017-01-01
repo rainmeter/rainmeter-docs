@@ -1,5 +1,5 @@
 ---
-layout: manual
+layout: manual-beta
 permalink: manual/settings/
 title: 'Settings'
 ---
@@ -7,22 +7,15 @@ title: 'Settings'
 
 <p><b>Note:</b> Many <a href="!skins/">skins</a> include features that are described as "settings," "options," "preferences," etc. that allow the user to customize the appearance and behavior of the skin. However, these features are different from the "settings" described on this page. They are handled entirely by the skin, usually as <a href="!variables/">variables</a>, and are not managed by Rainmeter at all. Options such as fonts, colors, passwords, RSS feeds and "weather codes" are in this category. These are not "standard" features, and are not supported in any formal way.</p>
 
-
-
 <h2 id="FilesFolders">Files and Folders</h2>
 
 <p>All Rainmeter settings files are stored in Rainmeter's application data folder. If Rainmeter has been installed normally, the default location of the folder is:</p>
 
-<ul>
-	<li><code>C:\Documents and Settings\YourName\Application Data\Rainmeter</code><sup>1</sup> (for Windows XP).</li>
-	<li><code>C:\Users\YourName\AppData\Roaming\Rainmeter</code><sup>1</sup> (for Windows Vista, 7 and 8).</li>
-</ul>
+<p><code>C:\Users\YourName\AppData\Roaming\Rainmeter</code><sup>1</sup></p>
 
 <p>If Rainmeter is installed as a <a href="!installing-rainmeter/#PortableInstallation">portable application</a>, settings files are found in the installation folder.</p>
 
 <p class="footnote">1. "YourName" is an example.</p>
-
-
 
 <h2 id="RainmeterIni">Rainmeter.ini</h2>
 
@@ -48,21 +41,19 @@ Key=Value
 
 <p class="footnote">1. "Section," "Key" and "Value" are examples.</p>
 
-
-
 <h2 id="OtherFiles">Other Files</h2>
 
 <h3 id="RainmeterData">Rainmeter.data</h3>
 
 <p>This file is used by Rainmeter's program and some <a href="!plugins/">plugins</a> to store "global" settings that are not related to individual skins. These are system- or user-specific settings that are not saved with <a href="#Layouts">layouts</a>.</p>
 
-
-
 <h3 id="RainmeterStats">Rainmeter.stats</h3>
 
 <p>This file records Windows' network usage statistics over time. These statistics are used by the <a href="!measures/net/">Net measures</a> to display "cumulative" network usage data. The contents of Rainmeter.stats may be cleared using the <a href="!bangs/#ResetStats">!ResetStats bang</a>.</p>
 
+<h3 id="NewSkinTempate">NewSkin.template</h3>
 
+<p>This file contains a template for a new skin used by the <a href="!user-interface/manage/#CreateNewSkin">Create new skin</a> button in Manage. This can be <a href="!user-interface/manage/#EditTempate">edited</a> as desired.</p>
 
 <h3 id="Layouts">Layouts</h3>
 
@@ -79,8 +70,6 @@ Key=Value
 <h3 id="Plugins">Plugins</h3>
 
 <p><a href="!plugins/#Custom">Custom plugins</a> are installed to this folder. Plugins in this folder can be used in the same manner as the standard plugins included with Rainmeter.</p>
-
-
 
 <h3 id="Addons">Addons</h3>
 

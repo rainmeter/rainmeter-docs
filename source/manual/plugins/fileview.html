@@ -1,5 +1,5 @@
 ---
-layout: manual
+layout: manual-beta
 permalink: manual/plugins/fileview/
 title: 'FileView plugin'
 ---
@@ -93,7 +93,7 @@ SolidColor=0,0,0,255
 LeftMouseUpAction=[!SetOption MeasureFolder Path "C:\VideoFolder"][!CommandMeasure MeasureFolder Update]
 ```
 
-<p>If it is desired that a folder be monitored for new or changed files, the <a href="#Update">Update plugin command</a> should be used in conjunction with an <a href="!measures/general-options/#OnUpdateAction">OnUpdateAction</a> statement to keep the measure current with changing disk information. Be aware that having the plugin physically access the disk has a performance cost, and care should be taken to use an approriate <a href="/tips/update-guide/">UpdateDivider</a>.</p> 
+<p>If it is desired that a folder be monitored for new or changed files, the <a href="#Update">Update plugin command</a> should be used in conjunction with an <a href="!measures/general-options/#OnUpdateAction">OnUpdateAction</a> statement to keep the measure current with changing disk information. Be aware that having the plugin physically access the disk has a performance cost, and care should be taken to use an appropriate <a href="/tips/update-guide/">UpdateDivider</a>.</p> 
 
 ``` txt
 [MeasureFolder]
@@ -114,7 +114,7 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 
 	<dt id="Path"><code>Path</code></dt>
 	<dd>
-		<p>In a <b>parent measure</b>, defines the path of the folder to read. By default, the <b>My Computer</b> folder is used.</p>
+		<p>In a <b>parent measure</b>, defines the path of the folder to read. By default, the <b>This PC (formerly My Computer)</b> folder is used.</p>
 		
 		<p><b>Note:</b> While #Variables# can be used in the parent Path option, [SectionVariables] cannot, as this is ambiguous with the parent definition in a child measure.</p>
 
@@ -238,7 +238,7 @@ OnUpdateAction=!CommandMeasure MeasureFolder Update
 
 	<dt id="DateType"><code>DateType</code> <small>Default: <code>Modified</code></small></dt>
 	<dd>
-		<p>The date entry to retrieve from the parent measure when <code>Type=Date</code>. Valid values are: <code>Modified</code>, <code>Created</code>, <code>Accessed</code>.</p>
+		<p>The date entry to retrieve from the parent measure when <code>Type=FileDate</code>. Valid values are: <code>Modified</code>, <code>Created</code>, <code>Accessed</code>.</p>
 	</dd>
 
 	<dt id="IconPath"><code>IconPath</code></dt>
