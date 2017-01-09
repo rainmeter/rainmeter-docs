@@ -294,6 +294,15 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 			
 			</dd>
 
+			<dt id="Path1" class="sub"><code>Path1</code> <small>Parameters: (See Path above)</small></dt>
+			<dd>
+			<p>Path1 is an alternative form of the Path shape, using all the same parameters. It will use a different form of the <a href="https://www.w3.org/TR/SVG/painting.html#FillProperties">SVG fill-rule</a> when the shape is filled with a color or gradient. This determines what parts of a shape with intersecting segments are "inside" the shape and what are "outside", for purposes of filling the shape with the defined color or gradient.</p>
+			
+			<p><b>Path</b>: This uses an <b>even-odd</b> fill rule. The "insideness" of a point in the shape is determined by imagining a ray from that point to infinity in any direction and counting the number of path segments from the given shape that the ray crosses. If this number is odd, the point is inside; if even, the point is outside.</p>
+			
+			<p><b>Path1</b>: This uses a <b>non-zero</b> fill rule. The "insideness" of a point in the shape is determined by imagining a ray from that point to infinity in any direction and then examining the places where a segment of the shape crosses the ray. Starting with a count of zero, add one each time a path segment crosses the ray from left to right and subtract one each time a path segment crosses the ray from right to left. After counting the crossings, if the result is zero then the point is outside the path. Otherwise, it is inside.</p> 
+			</dd>
+			
 			<dt id="Combine" class="sub"><code>Combine</code> <small>Parameters: <code><b>Shape<em>N</em> | ...</b></code></small></dt>
 			<dd>
 				<p>Combine is a special shape type, that combines or merges two or more existing closed shapes in the meter, <b>replacing</b> them with a new "combined" shape. The first shape in the Combine definition will be the "parent", and any shapes, separated with the pipe <code>|</code> character, with which it is combined are "children". This distinction is important in the context of how modifiers are inherited or not on combined shapes.</p>
