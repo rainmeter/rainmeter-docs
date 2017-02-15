@@ -30,7 +30,7 @@ title: 'Bitmap meter'
 
 		If for example the image contains 5 frames, the first frame is displayed when the percentual measure value is between 0% and 19%, the second frame is shown from 20% to 39% , and so on.<br/><br/></li>
 		
-		<li>The measure returns any integer numeric value.<br/><br/>
+		<li>The measure returns any integer numeric value. This is an <code>int64</code> numeric type, and can be any value up to <code>9,223,372,036,854,775,807</code>. Fractional values will be rounded to whole numbers.<br/><br/>
 		
 		This can be used to display a numeric value using multiple frames from the bitmap image.<br/><br/>
 		
