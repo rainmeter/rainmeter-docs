@@ -5,13 +5,27 @@ title: 'Version History'
 ---
 <p>This page includes a brief description of changes included in each publicly-released version of Rainmeter. For a complete, line-by-line history of Rainmeter's source code changes since version <a href="#0.14">0.14</a>, see the project <a href="https://github.com/rainmeter/rainmeter/commits/master">commit history on GitHub</a></p>
 
+<h2 id="4.1">Rainmeter 4.1</h2>
+
+<p><b>April 21, 2017 - Revision 2787</b></p>
+<ul>
+<li><b>Added</b> String meter: Added new <a href="https://docs.rainmeter.net/manual-beta/meters/string/#FontWeight">FontWeight</a> option.</li>
+<li><b>Added</b> Shape meter: Added Path1 alternative of the Path shape. It will use a different form of the <a href="https://www.w3.org/TR/SVG/painting.html#FillProperties">SVG fill-rule</a> when the shape is filled with a color or gradient. This determines what parts of a shape with intersecting segments are "inside" the shape and what are "outside", for purposes of filling the shape with the defined color or gradient. See <a href="https://docs.rainmeter.net/manual-beta/meters/shape/#Path1">Path1 shape</a> for details.</li>
+<li><b>Added</b> CoreTemp plugin: The author of both the <a href="http://www.alcpu.com/CoreTemp/">CoreTemp application</a> and Rainmeter plugin, Arthur Liberman, added CPU core-specific values to the data available in the plugin. See <a href="https://docs.rainmeter.net/manual-beta/plugins/coretemp/">CoreTemp plugin</a> for details.</li>
+<li><b>Changed</b> Bitmap meter: Changed the allowable measure value when <a href="https://docs.rainmeter.net/manual-beta/meters/bitmap/#BitmapExtend">BitmapExtend=1</a> from a C-language int data type (2,147,483,647 maximum) to int64 (9,223,372,036,854,775,807 maximum).</li>
+<li><b>Fixed</b> Bangs: Fixed an issue when the config parameter of a bang contained a leading or trailing slash.</li>
+<li><b>Fixed</b> InputText plugin: Fixed a possible Rainmeter crash if an input box is open and the skin is deactivated.</li>
+<li><b>Fixed</b> Shape meter: Fixed a possible Rainmeter crash if the starting point of a Path shape was invalid.</li>
+<li><b>Fixed</b> Bitmap meter: Fixed an issue where BitmapExtend=1 would not increase the meters width and/or height, which would cause the meter to ignore DynamicWindowSize and draw outside its bounds and possibly truncate outside the skin window.</li>
+<li><b>Fixed</b> Bitmap meter: Fixed an issue where the <a href="https://docs.rainmeter.net/manual-beta/meters/general-options/#Padding">Padding</a> height values on the meter would be ignored in some situations.</li>
+<li><b>Fixed</b> InlineSetting: Corrected an issue where Rainmeter could crash in some cases when an initial empty string was received by a meter using InlineSetting.</li>
+<li><b>Fixed</b> Shape meter: Fixed an issue where certain gradients would not display correctly if there were multiple gradients in a shape meter.</li>
+</ul>
+
 <h2 id="4.0">Rainmeter 4.0</h2>
 
 <p>January 1, 2017 - Revision 2746</p>
 <p><b>4.0 Release Version - Revision 2746</b></p>
-<ul>
-<li><b>Changed</b> Localization: Added new strings for various languages to support New Skin dialog.</li>
-</ul>
 
 <p><b>December 19, 2016 - Revision 2731</b></p>
 <ul>
