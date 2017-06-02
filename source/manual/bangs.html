@@ -278,7 +278,9 @@ title: 'Bangs'
 		<ul>
 		<li><code>Config</code> (optional)</li>
 		</ul>
-		<b>Note:</b> This simply redraws the skin, and meters will use the most recent values the meters obtained for bound measures, variables and section variables. This bang will almost always be used in conjunction with <a href="!bangs/#UpdateMeasure">!UpdateMeasure</a> and <a href="!bangs/#UpdateMeter">!UpdateMeter</a> bangs. The idea is to update one or more specific measures, and one or more specific meters, and then redraw the skin before the next normal update cycle, while not having to force an update of the entire skin.
+		<b>Note:</b> This simply redraws the skin. Meters will use the values obtained when they were last updated. Since by itself !Redraw accomplishes nothing useful, this bang will always be used in conjunction
+		with bangs that update specific things before redrawing the skin. Depending on the case, this might be with <a href="!bangs/#UpdateMeasure">!UpdateMeasure</a> bangs to immediately update measure values, and certainly <a href="!bangs/#UpdateMeter">!UpdateMeter</a> bangs to update meter values and options. The idea is to update specific meters and redraw the skin before the next normal update cycle. This can allow immediate visible changes, while not having to force an update of the entire skin.<br><br>
+		<b>Example:</b> <code>LeftMouseUpAction=[!UpdateMeasure SomeMeasure][!UpdateMeter SomeMeter][!Redraw]</code>
 	</dd>
 
 	<dt id="Refresh"><code>!Refresh</code> <small>Parameter: <code><em>Config</em></code></small></dt>
