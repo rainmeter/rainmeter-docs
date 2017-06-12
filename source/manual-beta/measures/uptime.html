@@ -18,15 +18,16 @@ title: 'Uptime measure'
 	<dd>
 		Format of the measure value. This can be a combination of text and the following codes:
 		<ul>
-		<li><code>%4</code>: Days.
-		<li><code>%3</code>: Hours.
-		<li><code>%2</code>: Minutes.
-		<li><code>%1</code>: Seconds.
+		<li><code>%4</code>: Days.</li>
+		<li><code>%3</code>: Hours.</li>
+		<li><code>%2</code>: Minutes.</li>
+		<li><code>%1</code>: Seconds.</li>
 		</ul>
 		The following modify the codes:
 		<ul>
-		<li><code>!i!</code>: Putting this after the format code shows the numbers with no leading zeros.
-		<li><code>!02i!</code>: Putting this after the format code shows the numbers with leading zeros.
+		<li><code>!i!</code>: Putting this after the format code shows the numbers with no leading zeros.</li>
+		<li><code>!02i!</code>: Putting this after the format code shows the numbers with leading zeros.<br/>
+		The number following the <code>0</code>, as in <code>!02i!</code> above, defines the total length you want for the value, padded with zeros as needed to achieve the length.</li>
 		</ul>
 	</dd>
 
@@ -54,20 +55,16 @@ DynamicVariables=1
 ``` txt
 [Rainmeter]
 Update=1000
-AccurateText=1
 DynamicWindowSize=1
+AccurateText=1
 
 [MeasureUptime]
 Measure=Uptime
 Format="%4!i! days, %3!i! hours, %2!i! minutes %1!i! seconds"
 
-[MeterText]
+[MeterUptime]
 Meter=String
 MeasureName=MeasureUptime
-X=5
-Y=5
-W=200
-H=25
 FontSize=12
 FontColor=255,255,255,255
 SolidColor=47,47,47,255
