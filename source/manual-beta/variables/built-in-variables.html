@@ -96,6 +96,11 @@ title: 'Built-In Variables'
 	<dd>
 		<p>The name of the section in which the variable is used. Provides a blank string if used in another context, such as <a href="!lua-scripting/#GetVariable">GetVariable</a> in a Lua script.</p>
 	</dd>
+	<dt id="CONFIGEDITOR"><code>#CONFIGEDITOR#</code></dt>
+	<dd>
+		<p>The path and executable for the text editor defined in <a href="!settings/rainmeter-section/#ConfigEditor">ConfigEditor</a> in Rainmeter settings, or the text editor associated with .ini files in Windows. The default will be Windows Notepad.exe.<br><br><b>Note:</b> This variable is <a href="!variables/#DynamicVariables">dynamic</a>, and will require <code>DynamicVariables=1</code> to detect changes made to this setting while the skin is running.</p>
+		<p>Example: <code>LeftMouseUpAction=["#CONFIGEDITOR#" "#@#Variables.inc"]</code>.</p>
+	</dd>
 </dl>
 
 <h3 id="MonitorVariables">Monitor variables</h3>

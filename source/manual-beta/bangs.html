@@ -379,7 +379,17 @@ title: 'Bangs'
 		<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
-	</dd>	
+	</dd>
+	
+	<dt id="EditSkin"><code>!EditSkin</code> <small>Parameters: <code><em>Config</em>, <em>File</em></code></small></dt>
+	<dd>
+		Edits a skin .ini file using the text editor defined in <a href="!settings/rainmeter-section/#ConfigEditor">ConfigEditor</a> in Rainmeter settings, or the text editor associated with .ini files in Windows. The default will be Windows Notepad.exe. If no parameters are defined the current skin .ini file will be edited.
+		<ul>
+		<li><code>Config</code> (optional): The config containing the skin.</li>
+		<li><code>File</code> (optional): The .ini skin file in the config to edit.</li>
+		</ul>
+		<br><b>Example:</b> <code>!EditSkin "illustro\Clock" "Clock.ini"</code>
+	</dd>
 </dl>
 
 <h3 id="SkinGroup">Skin group bangs:</h3>
