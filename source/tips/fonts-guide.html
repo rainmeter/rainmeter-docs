@@ -3,37 +3,70 @@ layout: tips
 permalink: tips/fonts-guide/
 title: 'Fonts Guide'
 ---
-<p>Fonts are used in <a href="/manual/meters/string/">String</a> meters with the <a href="/manual/meters/string/#FontFace">FontFace</a> or <a href="/manual/meters/string/inline/#InlineSetting">InlineSetting</a> options.</p>
+<p>Fonts are used in <a href="/manual/meters/string/">String</a> meters with the <a href="/manual/meters/string/#FontFace">FontFace</a> option.</p>
 
-<p>The font can be either <b>.ttf (TrueType)</b> or <b>.otf (OpenType)</b>.<br/>
-<em>Note that .otf (OpenType) is not supported on Windows XP.</em></p>
+<p>The font file can be either <b>.ttf (TrueType)</b> or <b>.otf (OpenType)</b>.</p>
+
+<h3>Obtaining fonts</h3>
+
+<p>There are lots of places where you can download free fonts, licensed to distribute with your skins. A few popular places are:</p>
+
+<ul>
+<li><a href="https://fonts.google.com/">Google Fonts</a></li>
+<li><a href="http://www.dafont.com/">DaFont</a></li>
+<li><a href="https://www.fontsquirrel.com/">Font Squirrel</a></li>
+</ul>
+
+<p><em>Do pay attention to the license for fonts you download and use. If a font is commercial, or licensed for personal use only, it may be technically illegal for you to distribute them with your skins.</em></p>
+
+<h3>No need to install 3rd-party fonts in Windows</h3>
+
+<p>Fonts installed in Windows (they will be in the <b>Windows\Fonts</b> folder) will automatically be available for use in Rainmeter. 3rd-party fonts, which you might obtain from one of those sites listed above, can easily be used in and distributed with your skins, without any need for you or your users to install them in Windows. It's really just a small waste of memory to install fonts that you are only using in Rainmeter.</p>
 
 <h3>Using Fonts</h3>
 
-<p><b>InlineSetting</b></p>
+<p>3rd-party font files can be used by creating a folder <a href="/manual/skins/resources-folder/#Fonts">@Resources\Fonts</a> in the root level folder of the skin, and putting the font .ttf or .otf files there. Rainmeter will automatically load any fonts found in that folder, and they will be available to use as if they were installed in Windows.</p>
 
-<p>Using <a href="/manual/meters/string/inline/#InlineSetting">InlineSetting</a> with the <code>Face</code> setting name is the preferred method of specify a desired font. Fonts are used by specifying the <b>family name</b> of the font in the <code>InlineSetting=Face</code> option in the string meter. (e.g. <code>InlineSetting=Face | Trebuchet MS</code>). The family name can be found by double clicking the font .ttf/.otf file and at the very top left in the Windows font viewer see the <b>Font Name:</b>.</p>
+<p>Specifying the font is done with the <a href="/manual/meters/string/#FontFace">FontFace</a> option in a String meter. The font is identified by specifying the <b>family name</b> of the font (e.g. <code>FontFace=Trebuchet MS</code>). The family name can be found by double clicking the font .ttf/.otf file and at the very top left in the Windows font viewer using the <b>Font Name</b> there.</p>
 
-<p>Additional attributes for the font can then be specified with the other <code>InlineSetting</code> setting names, such as <code>Size</code>, <code>Weight</code>, <code>Color</code>, <code>Italic</code>, <code>GradientColor</code> and more. See the <a href="/manual/meters/string/inline/#InlineSetting">InlineSetting</a> reference for details.</p>
+```txt
+[MeterString]
+Meter=String
+FontFace=Trebuchet MS
+Text=Hello World
+```
 
-<p><b>Note:</b> There is a great deal more functionality and flexibility possible when using the <code>InlineSetting</code> options rather than the older <code>FontFace</code> option described below. In particular, the <code>Weight</code> setting, with up to ten possible values from "Hairline" to "Ultra Black", is much more flexible than the older <code>StringStyle</code> with just "Normal" or "Bold". In addition, several font styling options are only available with <code>InlineSetting</code>. and not with <code>FontFace</code>.</p>
+<h3>Font Attributes</h3>
 
-<p><b>FontFace</b></p>
+<p>Additional attributes for the font can then be specified with other options available on the String meter.
 
-<p>While not as powerful or flexible as <code>InlineSetting</code>, fonts can also be used by specifying the <b>family name</b> of the font in the <a href="/manual/meters/string/#FontFace">FontFace</a> option in the string meter. (e.g. <code>FontFace=Trebuchet MS</code>). This name can be found by double clicking the font .ttf/.otf file and at the very top in the Windows font viewer see the <b>Font Name:</b> at the top left.</p>
-
-<p>Most, but not all fonts used with <code>FontFace</code> can be modified with additional <a href="/manual/meters/string/">String</a> meter options. (e.g. <code>StringStyle</code>, <code>StringEffect</code>) Alternatively, some fonts, particularly some of the ones with subfamily endings such as "Bold" or "Italic", will REQUIRE that the matching <a href="/manual/meters/string/">StringStyle</a> option be added to the string meter. If there are problems using a font, try adding or removing these option on the string meter.</p>
-
-<h3>Installed Vs. Uninstalled Fonts</h3>
-<p>Fonts installed in Windows (they will be in the <b>Windows\Fonts</b> folder) may be used by simply specifying the family name in the <code>InlineSetting</code> or <code>FontFace</code> option of a string meter as described above.</p>
-
-<p>3rd-party font files not installed in Windows can be used by creating a folder <a href="/manual/skins/resources-folder/#Fonts">@Resources\Fonts</a> in the root level folder of the skin, and putting the font .ttf/.otf files there. Rainmeter will automatically load any fonts found in that folder, and they will be available to use with the family name of the font as if they were installed in Windows.</p>
-
-<p><b>Note:</b> While it is possible to set a .rmskin to automatically install included fonts in a user's Windows system, this is <b>strongly discouraged</b>. There is literally never a good reason to do this, and it makes it more difficult for users who are running Rainmeter as a "portable" application to use the skin. The fonts should be put in the @Resources\Fonts folder and they will be available and used when the .rmskin is distributed.</p>
-
-<h3>Troubleshooting</h3>
-<p>There are two ways Rainmeter will react if there is a problem with a font or the way it has been used in a string meter.</p>
 <ul>
-<li>It may produce no error, but display the default Arial font instead of the one specified in <code>FontFace</code>. This will happen if the wrong family name is specified.</li>
-<li>A log error "Can't create font" may be produced, and the entire string meter will fail to display. This generally means that a string modifier option like <code>StringStyle=Bold</code> has been used with a font that does not support it, or the font itself is just not compatible with Rainmeter.</li>
+<li><b>FontSize</b> : The size of the font in points.</li>
+<li><b>FontColor</b> : A rrr,ggg,bbb,aaa (rgb) or rrggbbaa (hex) <a href="/manual/skins/option-types/#Color">color code</a>.</li>
+<li><b>FontWeight</b> : A number between 0-999 specifying the weight of the font.<br>
+Details on this option can be found at <a href="https://docs.rainmeter.net/manual-beta/meters/string/#FontWeight">FontWeight</a>.</li>
 </ul>
+
+```txt
+[MeterString]
+Meter=String
+FontFace=Trebuchet MS
+FontSize=12
+FontColor=255,255,255,255
+FontWeight=400
+Text=Hello World
+```
+
+<p>In addition, there are other attributes that can be set using the <a href="/manual/meters/string/inline/">InlineSetting</a> option on a String meter. Some of the features that can be set are Italic, Oblique, Unlderline, StrikeThrough and Shadow, as well as adding gradients to the text.</p>
+
+```txt
+[MeterString]
+Meter=String
+FontFace=Trebuchet MS
+FontSize=12
+FontColor=255,255,255,255
+FontWeight=400
+InlineSetting=Oblique
+InlineSetting2=GradientColor | 180 | 255,0,0,255 ; 0.0 | 0,255,0,255 ; 0.5 | 0,0,255,255 ; 1.0
+Text=Hello World
+```
