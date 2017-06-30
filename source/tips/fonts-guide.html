@@ -70,3 +70,19 @@ InlineSetting=Oblique
 InlineSetting2=GradientColor | 180 | 255,0,0,255 ; 0.0 | 0,255,0,255 ; 0.5 | 0,0,255,255 ; 1.0
 Text=Hello World
 ```
+
+<h3>Advanced</h3>
+
+<p>Many fonts will come in a .zip package with several font .ttf or .otf files, with each being a different weight or style. Generally these are all fonts that share the same font family name, but the font viewer program in Windows may show the font name including sub-family names, like "Fira Sans Bold" or "Roboto Italic". If you use those full family / sub-family names, that is almost always going to be fine. Rainmeter will figure out the actual family name when the font is loaded, and will use the correct font file when attributes like weight or italic are used.</p>
+
+<p>However, there is a really nice tool that can give you a lot more information about your fonts. This can be useful when specifying the family name in <code>FontFace</code>, as well as when using <a href="/manual/meters/string/inline/#InlineTypography">Typography</a> (See the "Glyph substitution" tab) options. This can also provide copyright and license information.</p>
+
+<p>Get the <b>dp4 Font Viewer</b> free utility from <a href="http://us.fontviewer.de/">http://us.fontviewer.de/</a>. It is a portable application that you can just run from any folder. When you run it, and select a folder containing your fonts, a lot of useful information is available.</p>
+
+<div class="exampleprev">
+<img src="/manual/img/tips/dp4FontViewer.png" class="lightbox">
+</div>
+
+<p>In this example, I would simply use <code>FontFace=Fira Sans</code>, and all those weights will be available to me using <code>FontWeight</code>.
+
+
