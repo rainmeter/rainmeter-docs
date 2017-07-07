@@ -1,0 +1,55 @@
+---
+layout: manual-beta
+permalink: manual-beta/arranging-skins/
+title: 'Arranging Skins'
+---
+<p>Loaded skins can be arranged on your desktop by simply using the left mouse button and dragging them where you want them. Once skins are moved, Rainmeter will <a href="!settings/skin-sections/#SavePosition">by default remember</a> where you left them, and they will maintain these positions when Rainmeter is restarted.</p>
+
+<h3 id="Individual">Individual skins</h3>
+
+<p>There are several other settings, which can be changed via the <a href="!user-interface/manage/">Manage dialog</a>, the skin <a href="!user-interface/context-menus/">context menus</a>, or manually in <a href="!settings/#FilesFolders">Rainmeter.ini</a>, which play a role in how individual skins are arranged on the screen.</p>
+
+<ul>
+<li><a href="!settings/skin-sections/#Draggable">Draggable</a> : Toggles the ability to drag a skin with the left mouse button. Hold down the CTRL key to temporarily override this setting. The default is 1, or "on".</li>
+<li><a href="!settings/skin-sections/#SnapEdges">Snap to edges</a> : When set, this will cause skins that are dragged to within 10 pixels of another skin or the edge of the screen to "snap" to them. Hold down the CTRL key to temporarily override this setting. The default is 1, or "on".</li>
+<li><a href="!settings/skin-sections/#KeepOnScreen">Keep on screen</a> : When set, skins will be forced to stay within the boundaries of the monitor screen they are on. Skins can be dragged to another monitor, but will jump entirely onto the other monitor and won't bridge them. The default is 1, or "on".</li>
+<li><a href="!settings/skin-sections/#AlwaysOnTop">Position</a> : This sets the front to back position of a skin relative to other windows and other skins to be one of <code>Always on top</code>, <code>Top</code>, <code>Normal</code>, <code>Bottom</code> or <code>On Desktop</code>. The default is "Normal".</li>
+<li><a href="!settings/skin-sections/#LoadOrder">Load order</a> : If set to a number, this tells Rainmeter in what order to load skins that have the same Position, allowing control over which skins that overlap are in front and in back.</li>
+</ul>
+
+
+<h3 id="Multiple">Multiple skins</h3>
+
+<p>Multiple skins may be selected in order to create a "drag group". When multiple skins are selected, moving one of them will move all of them the same amount.</p>
+
+<p>To select multiple skins and create a drag group, hold down <b>CTRL-ALT</b> while left-clicking a skin. The skin will be overlaid with a colored highlight, so you can tell it is selected. Clicking on additional skins while CTRL-ALT is held down will add or remove skins from the drag group.</p>
+
+<p>Left-clicking anywhere outside of the skins selected in the drag group will deselect all skins.</p>
+
+<h4 id="Nudging">Nudging</h4>
+
+<p>A handy feature, only available when one or more skins are selected in a drag group, is the ability to "nudge" the skin or skins using the keyboard arrow keys. When a skin or skins are selected, using the keyboard arrow keys will move the skin(s) 1 pixel in the direction of the arrow, or 10 pixels if CTRL is held down. This is very useful for fine-tuning the position of a skin or skins on your screen, and is available even if only one skin is selected.</p>
+
+<h4 id="GroupOptions">Options for drag groups</h4>
+
+<p>These must be manually entered in either <a href="!settings/#FilesFolders">Rainmeter.ini</a> or a skin's .ini file</p>
+
+<ul>
+<li><b>SelectedColor</b> : A <a href="!skins/option-types/#Color">color code</a> used to define the color and transparency of the overlay when a skin is selected. When used in the [Rainmeter] section of Rainmeter.ini, it will act as the default color used for the overlay for when any skin is selected. If this option is not defined, the color 255,0,0,90 is used. If SelectedColor is defined in the [Rainmeter] section of any skin, this will override any default color from Rainmeter.ini for that skin.</li>
+
+<li><b>DragGroup</b> : Similar to the <a href="!groups/">Group</a> option, this  will define which group(s) will get selected when the user selects a skin. So if any skin is selected, any skins in the same DragGroup will automatically be selected as well. This option can be defined both in the [ConfigName] section of any skin in Rainmeter.ini and also in the [Rainmeter] section of any individual skin. If both options exist, they are combined (with repeats being skipped). Deselecting a skin will not deselect any groups, just the skin itself.</li>
+</ul>
+
+<h4 id="GroupNotes">Notes on selected skins</h4>
+
+<ul>
+<li>All mouse actions in the skins will be temporarily disabled.</li>
+<li>ToolTips in the skins will be temporarily disabled.</li>
+<li>Right-clicking a skin will still activate that skin's context menu.<br/><br/></li>
+<li>The Draggable option will be temporarily enabled for all selected skins.</li>
+<li>The Click Through option will be temporarily disabled for all selected skins.</li>
+<li>The Keep On Screen option will be temporarily disabled for all selected skins.</li>
+<li>The above options will be grayed out in the Manage dialog, context menu settings, and their respective bangs will not work while the skin is selected.<br/><br/></li>
+<li>Selected skins will still 'snap' to other non-selected skins or the screen (if Snap to edges is enabled), but they will not snap to other selected skins since they should all move in tandem.<br/><br/></li>
+<li>If you CTRL-ALT-Click outside of a skin, this will have no effect on any selection. You don't want a "miss" while clicking to deselect everything and force starting all over. However, this will mean no skin has focus and to deselect all the skins, you will need to re-click on a selected skin then click off any selected skin to properly deselect all the skins. Similarly, using the arrow keys when no selected skins have focus will not move anything. Re-click a selected skin and you can use the arrows again.</li>
+</ul>
