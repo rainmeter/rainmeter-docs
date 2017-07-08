@@ -50,15 +50,15 @@ title: 'ActionTimer plugin'
 	<dd>
 		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
-	
+
 	<dt id="ActionList"><code>ActionList1, ActionList2 .. ActionList<em>N</em></code></dt>
 	<dd>
 		<p>A numbered option, starting with ActionList1.</p>
-		
+
 		<p>Each ActionList<em>N</em> will execute one or more <code>Actions</code> separated by the pipe <code>|</code> character. In addition there are two list commands, Repeat and Wait, that can be used in the ActionList. In a sense, this option is a "script" of what you want the plugin to do when the ActionList is triggered. In its most simple expression, it is</p>
-		
+
 		<p><code>ActionList1=<em>Do this</em> | <em>Wait this long</em> | <em>Do that</em></code></p>
-		
+
 		<p><b>ActionList components</b></p>
 		<ul>
 		<li><em>Action name</em><br>
@@ -69,7 +69,7 @@ title: 'ActionTimer plugin'
 		This is used to create a pause or wait in milliseconds between each named <em>Action</em> or other component in the ActionList. There should always be a Wait of at least 1 millisecond between each ActionList component.</li>
 		<li>The pipe <code><b>|</b></code> character is used to separate each of the ActionList components.</li>
 		</ul>
-		
+
 		<p><b>Examples:</b></p>
 		<p><code>ActionList1=FirstAction | Wait 5 | SecondAction</code><br>
 		Execute everything defined in the <em>FirstAction</em> option, wait 5 milliseconds, and execute everything defined in the <em>SecondAction</em> option.</p>
@@ -80,9 +80,9 @@ title: 'ActionTimer plugin'
 	<dt id="Action"><code><em>Action</em></code> <small><code>Any unique name=[!bang or command]</code></small></dt>
 	<dd>
 		<p>These can be any unique name, in any order. They will contain the skin bangs or other actions that will be executed by the plugin when the named action is called by an <a href="#ActionList">ActionList</a>.</p>
-		
+
 		<p>They are defined and executed exactly the same as any other <a href="!skins/option-types/#Action">Action option</a> in Rainmeter, for instance <code>LeftMouseUpAction</code> or <code>OnChangeAction</code>.</p>
-		
+
 		<p><b>Examples:</b></p>
 
 ``` txt
@@ -111,7 +111,7 @@ ActionList1=SetFontSmall | Wait 1000 | SetFontBig
 SetFontSmall=[!SetOption SomeMeter FontSize "10"]#U#
 SetFontBig=[!SetOption SomeMeter FontSize "15"]#U#
 ```
-	
+
 	</dd>
 
 	<dt id="IgnoreWarnings"><code>IgnoreWarnings</code> <small>Default: <code>0</code></small></dt>

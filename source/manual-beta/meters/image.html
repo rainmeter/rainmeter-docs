@@ -59,7 +59,7 @@ ImageName=%1-%2.png
 		<p>Margins of the image to exclude from scaling when <code>Tile=0</code> and <code>PreserveAspectRatio=0</code>.</p>
 		<p><b>Example:</b> <code>ScaleMargins=10, 50, 10, 50</code></p>
 	</dd>
-	
+
 	<dt id="Tile"><code>Tile</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the image is tiled (repeated) within the bounds defined by <code>W</code> and <code>H</code>.</p>
@@ -78,7 +78,7 @@ ImageName=%1-%2.png
 	<li><code>Path</code><br>
 		The Path option to define the location of images is replaced by the <a href="!meters/general-options/image-options/#ImagePath">ImagePath</a> option in <a href="!meters/general-options/image-options/">general image options</a>.
 	</li>
-</ul>	
+</ul>
 
 <h2>Example</h2>
 
@@ -134,28 +134,28 @@ LeftMouseUpAction=[!Refresh]
 	<dt id="MaskImageName"><code>MaskImageName</code> <small>Default: <code>None</code></small></dt>
 	<dd>
 		<p>Name of an image file to use as a mask for the primary image defined with MeasureName or ImageName. The size and shape of MaskImageName will be used to mask and define the size and shape of the primary image.</p>
-		
+
 		<p>MaskImageName can be a full path and name of any supported image file, or just the name of the file if the <a href="#MaskImagePath">MaskImagePath</a> option is used, or the image file is in the current skin folder.</p>
 
 		<p>If MaskImageName is defined, then <code>W</code> and <code>H</code> define the size of the mask image, and the size of the meter. Whatever is defined as the primary image with ImageName or MeasureName is then masked into the mask image, displaying in any non-transparent areas of MaskImageName using a "fill" method that sizes and crops the image to fit while preserving the aspect ratio.</p>
-		
+
 		<p>If <em>either</em> the primary image or mask image has areas of transparency or partial transparency, those "alpha channel" values are applied to the final image. When both images have a shared area with full or partial transparency, the "most transparent" value is applied.</p> 
-		
+
 		<p><b>Notes:</b></p>
-		
+
 		<p>The Mask Image functionality is only available on systems supporting D2D. It will not work on Windows XP, or if D2D is turned off in the Rainmeter settings.</p>
-		
+
 		<p>MaskImageName cannot be bound to the meter from a measure with MeasureName<em>N</em> and %1, %2 etc.</p>
-		
+
 		<p>If MaskImageName is defined, then <a href="#ScaleMargins">ScaleMargins</a> and <a href="#Tile">Tile</a> options cannot be used on the meter.</p>
-		
+
 	</dd>
-	
+
 	<dt id="MaskImagePath"><code>MaskImagePath</code> <small>Default: <code>None</code></small></dt>
 	<dd>
 		<p>Folder path where an image is located. (e.g. <code>MaskImagePath=#@#Images\</code>).</p>
 	</dd>
-	
+
 	<dt id="MaskImageFlip"><code>MaskImageFlip</code> <small>Default: <code>None</code></small></dt>
 	<dd>
 		<p>Flips the image. Valid values are <code>None</code>, <code>Horizontal</code>, <code>Vertical</code> or <code>Both</code>.</p>

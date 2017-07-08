@@ -24,17 +24,17 @@ title: 'Roundline meter'
 	<dd>
 		<p>The starting angle in <a href="/tips/radians-guide/">radians</a> for the line. This defines the starting point on the circle that will be treated as zero percent. The zero angle is to the right of the center.</p>
 	</dd>
-	
+
 	<dt id="RotationAngle"><code>RotationAngle</code></dt>
 	<dd>
 		<p>The size of the rotation angle in <a href="/tips/radians-guide/">radians</a> for the line. This defines the distance in radians from <code>StartAngle</code> that the meter will travel around the circle when the measure value is 100%. Use a negative value for counter-clockwise rotation.</p>
 	</dd>
-	
+
 	<dt id="LineStart"><code>LineStart</code></dt>
 	<dd>
 		<p>Defines the distance in pixels from the center of rotation at which the line starts.</p>
 	</dd>
-	
+
 	<dt id="LineLength"><code>LineLength</code></dt>
 	<dd>
 		<p>Length in pixels of the line. The length is always measured from the center of rotation, regardless of the <code>LineStart</code> option.</p>
@@ -54,13 +54,13 @@ title: 'Roundline meter'
 	<dd>
 		<p>If set to 1, meter will fill the meter with <code>LineColor</code> from <code>StartAngle</code> to the current <code>MeasureName</code> percentage value. <code>LineWidth</code> is ignored.</p>
 	</dd>
-	
+
 	<dt id="ControlAngle"><code>ControlAngle</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>If ControlAngle is 1 (default), then the percentage value of the measure that is bound to the meter controls the angle of the line (or the fill rotation if Solid=1) starting at <code>StartAngle</code> for <code>RotationAngle</code> radians.</p>
-		
-		<p>If ControlAngle is set to 0, then the measure does not control the angle of the line, which will be static at the value in <code>StartAngle</code>. <code>RotationAngle</code> is ignored.</p>		
-	</dd>	
+
+		<p>If ControlAngle is set to 0, then the measure does not control the angle of the line, which will be static at the value in <code>StartAngle</code>. <code>RotationAngle</code> is ignored.</p>
+	</dd>
 
 	<dt id="ControlStart"><code>ControlStart, StartShift</code> <small>Default: <code>0</code></small></dt>
 	<dd>
@@ -71,11 +71,11 @@ title: 'Roundline meter'
 	<dd>
 		<p>If ControlLength is set to 1, then the percentage value of the measure that is bound to the meter controls the length of the line. This is defined by <code>LengthShift</code>, and will range from <code>LineLength</code> to (<code>LineLength</code> + <code>LengthShift</code>) pixels from the center of rotation.</p>
 	</dd>
-	
+
 	<dt id="ValueRemainder"><code>ValueRemainder</code></dt>
 	<dd>
 		<p>Use a remainder instead of the actual measured value.</p>
-		
+
 		<p>This is primarily used to draw an analog clock. When used with the value of a <a href="!measures/time/">Time</a> measure in <a href="#MeasureName">MeasureName</a> the meter will internally use the <code>%</code> modulo mathematical <a href="!formulas/#Operators">operator</a>, and calculate the meter based on the <a href="http://en.wikipedia.org/wiki/Euclidean_division">remainder</a> when the number of seconds in the Time measure is divided by the following values:</p>
 		<ul>
 		<li>Hours Hand: <code>ValueRemainder=43200</code> Seconds in a 12-hour analog clock face.</li>

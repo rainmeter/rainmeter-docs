@@ -36,30 +36,29 @@ title: 'RunCommand plugin'
 
 <h2>Options</h2>
 <dl>
-
 	<dt>General measure options</dt>
 	<dd>
 		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
-	
+
 	<dt id="Program"><code>Program</code> <small>Default: <code>%ComSpec% \U \C</code></small></dt>
 	<dd>
 		<p>The program to run. If not specified, the default value is the %ComSpec% environment variable (normally cmd.exe) with the parameters "\U" for Unicode pipe output and "\C" to close the Command Prompt window and exit the cmd.exe shell when finished.</p>
-		
-		<p>Generally it is best to leave this undefined and use the <code>Parameter</code> option to define the command and parameters to be executed. Command-line program will simply cause Windows to first execute cmd.exe anyway, to create the Command Prompt environment the program must run in. <em>Basic "DOS" commands like "dir" or "copy" don't have any .exe "program" to run in any case, and are simply internal functions of cmd.exe.</em></p>		
-		
+
+		<p>Generally it is best to leave this undefined and use the <code>Parameter</code> option to define the command and parameters to be executed. Command-line program will simply cause Windows to first execute cmd.exe anyway, to create the Command Prompt environment the program must run in. <em>Basic "DOS" commands like "dir" or "copy" don't have any .exe "program" to run in any case, and are simply internal functions of cmd.exe.</em></p>
+
 		<p>Information on <a href="https://en.wikipedia.org/wiki/Cmd.exe">cmd.exe</a>.</p>
 	</dd>
-	
+
 	<dt id="Parameter"><code>Parameter</code> <small>Default: <code>None</code></small></dt>
 	<dd>
 		<p>Command-line parameters. If no <code>Program</code> is specified, this option represents the entire command-line, which will be executed in the context of the default cmd.exe Command Prompt window as described above.</p>
-		
-		<p><b>Note:</b> Care should be taken to properly "quote" commands with a path or parameters having spaces in values.</p> 
-		
+
+		<p><b>Note:</b> Care should be taken to properly "quote" commands with a path or parameters having spaces in values.</p>
+
 		<p><b>Example:</b> <code>Parameter=wmic os get lastbootuptime</code>.</p>
 	</dd>
-	
+
 	<dt id="State"><code>State</code> <small>Default: <code>Hide</code></small></dt>
 	<dd>
 		<p>Initial "visible state" of the program.</p>
@@ -73,7 +72,7 @@ title: 'RunCommand plugin'
 		<li>Maximized<br>
 		 Attempts to start the program maximized.</li>
 		</ul>
-		
+
 		<p><b>Notes:</b> If <code>State=Hide</code>, the plugin will automatically "kill" any program it executed, when either the skin is refreshed or unloaded, or Rainmeter is exited.</p>
 
 		<p>A few programs with a windowed GUI user-interface (for instance Calc.exe) explicitly show themselves and will not respond to initial state requests like Hidden or Minimized. This will be a rare problem, as normally there is no useful reason to use this plugin to execute GUI programs from the command line. They will likely take no desirable independent action, and will have no STDOUT "output" in any case.</p>
@@ -83,12 +82,12 @@ title: 'RunCommand plugin'
 	<dd>
 		<p><a href="!bangs/">Bangs</a> or other <a href="!skins/option-types/#Action">actions</a> that are executed when the program has finished / exited.</p>
 	</dd>
-	
+
 	<dt id="OutputFile"><code>OutputFile</code> <small>Default: <code>None</code></small></dt>
 	<dd>
 		<p>Optional path and file name where the STDOUT output will be saved. The file's encoding is controlled by the <code>OutputType</code> option. The default path will be the skin folder.</p>
 	</dd>
-	
+
 	<dt id="OutputType"><code>OutputType</code> <small>Default: <code>UTF-16</code></small></dt>
 	<dd>
 		<p>Type of output to be <em>expected</em> from the program. Any <code>OutputFile</code> will also be encoded with these values. You must be sure that what you tell it here matches what is actually output by the program you run. This option does not "control" what is output by the program.</p>
@@ -98,20 +97,19 @@ title: 'RunCommand plugin'
 		<li>UTF-8</li>
 		<li>ANSI</li>
 		</ul>
-		
-		<p><b>Note:</b> Although by default cmd.exe will be executed with the \U (UTF-16 Unicode) parameter, that does not mean that any program executed in the Command Prompt window will necessarily produce output in UTF-16. While most internal Windows commands like "dir" will produce UTF-16 output, a great many command-line programs will produce ANSI output. If you get gibberish characters returned by the measure, setting <code>OutputType=ANSI</code> will often correct the issue.</p> 
+
+		<p><b>Note:</b> Although by default cmd.exe will be executed with the \U (UTF-16 Unicode) parameter, that does not mean that any program executed in the Command Prompt window will necessarily produce output in UTF-16. While most internal Windows commands like "dir" will produce UTF-16 output, a great many command-line programs will produce ANSI output. If you get gibberish characters returned by the measure, setting <code>OutputType=ANSI</code> will often correct the issue.</p>
 	</dd>
 
 	<dt id="StartInFolder"><code>StartInFolder</code> <small>Default: <code>Skin folder</code></small></dt>
 	<dd>
 		<p>Optional path which will be used as the "Start in" folder for the executed program. The default path will be the skin folder.</p>
 	</dd>
-	
+
 	<dt id="Timeout"><code>Timeout</code> <small>Default: <code>-1</code></small></dt>
 	<dd>
 		<p>Timeout value in milliseconds. If positive, RunCommand will either "Close" the program if the <code>State</code> is other than <code>Hide</code> or "Kill" the program if the <code>State</code> is <code>Hide</code>. The default is -1, which means no timeout. Any <code>FinishAction</code> will run even if the program does not actually terminate (e.g. if closing "Notepad" and clicking "Cancel" when asked to save the document). It should be noted that this value is independent of any <code>Update</code> or <code>UpdateDivider</code> values in the skin.</p>
 	</dd>
-	
 </dl>
 
 <p><b>Note:</b> Because Rainmeter strips any quotes from the start and end of an option if both exist, it is important to double double-quote the Program and Parameter options If the overall command or parameter requires both starting and ending quotes.</p>
@@ -119,13 +117,12 @@ title: 'RunCommand plugin'
 
 <h2 id="PluginCommands">Plugin Commands</h2>
 <dl>
-
 	<dt id="Run"><code>Run</code></dt>
 	<dd>
 		<p>Runs the program. <b>The plugin will take no action unless triggered with this command.</b></p>
 		<p><b>Example:</b> <code>LeftMouseUpAction=[!CommandMeasure MeasureName "Run"]</code></p>
 	</dd>
-	
+
 	<dt id="Close"><code>Close</code></dt>
 	<dd>
 		<p>Sends a normal "close" message to the program.</p>
@@ -138,7 +135,6 @@ title: 'RunCommand plugin'
 		<p>Terminates the program without notice. This should generally be used when ending a program that was run with <code>State=Hide</code>.</p>
 		<p><b>Example:</b> <code>LeftMouseUpAction=[!CommandMeasure MeasureName "Kill"]</code></p>
 	</dd>
-
 </dl>
 
 <h2 id="ErrorCodes">Error codes</h2>
@@ -200,7 +196,7 @@ AntiAlias=1
 <p>Additionally, the file defined in OutputFile will contain the entire output of the wmic command, which in this example might be:</p>
 
 ``` txt
-Name                                 
-Intel Core i7 920 @ 3.20GHz  
+Name
+Intel Core i7 920 @ 3.20GHz
 ```
 <p>Additional parsing of this file could be done with the WebParser plugin or String measures if you wanted for instance to obtain multiple separate values from the single command output.</p>

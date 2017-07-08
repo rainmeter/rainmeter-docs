@@ -8,37 +8,37 @@ title: 'Parse File Path'
 <div class="noscroll">
 ``` lua
 function ParseFilePath(s)
-   assert(type(s) == 'string', 'ParseFilePath: string expected, got ' .. type(s) .. '.')
-   local t = {}
+	assert(type(s) == 'string', 'ParseFilePath: string expected, got ' .. type(s) .. '.')
+	local t = {}
 
-   for Piece in s:gmatch('[^\\]+') do
-      table.insert(t, Piece)
-   end
+	for Piece in s:gmatch('[^\\]+') do
+		table.insert(t, Piece)
+	end
 
-   -- VOLUME
-   if #t > 0 then
-      local UNCprefix = s:match('^(\\\\)') or ''
-      t.Vol = UNCprefix .. t[1] .. '\\'
-   end
+	-- VOLUME
+	if #t > 0 then
+		local UNCprefix = s:match('^(\\\\)') or ''
+		t.Vol = UNCprefix .. t[1] .. '\\'
+	end
 
-   -- NAME
-   if #t > 1 then
-      -- DETECT FOLDER OR SEPARATE EXTENSION
-      if s:match('\\$') then
-         t.Name = t[#t] .. '\\'
-      elseif t[#t]:match('.+%..+') then
-         t.Name, t.Ext = t[#t]:match('(.-)%.([^%.]-)$')
-      else
-         t.Name = t[#t]
-      end
-   end
+	-- NAME
+	if #t > 1 then
+		-- DETECT FOLDER OR SEPARATE EXTENSION
+		if s:match('\\$') then
+			t.Name = t[#t] .. '\\'
+		elseif t[#t]:match('.+%..+') then
+			t.Name, t.Ext = t[#t]:match('(.-)%.([^%.]-)$')
+		else
+			t.Name = t[#t]
+		end
+	end
 
-   -- FOLDER
-   if #t > 2 then
-      t.Dir = table.concat(t, '\\', 2, #t-1) .. '\\'
-   end
+	-- FOLDER
+	if #t > 2 then
+		t.Dir = table.concat(t, '\\', 2, #t-1) .. '\\'
+	end
 
-   return t
+	return t
 end
 ```
 </div>

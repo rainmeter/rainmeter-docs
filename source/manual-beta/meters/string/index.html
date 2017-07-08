@@ -15,7 +15,7 @@ title: 'String meter'
 	<dt id="MeasureName"><code>MeasureName</code>, <code>MeasureName2</code>, ..., <code>MeasureName<em>N</em></code></dt>
 	<dd>
 		<p>Name(s) of the measure(s) bound to the meter. The meter will display the current value of the measure defined in <code>MeasureName</code>, with values for additional measures bound to the meter available using the <code>%<em>N</em></code> syntax in the <a href="#Text">Text</a> option.</p>
-		
+
 		<p>The meter does not require a <code>MeasureName<em>N</em></code> option if the <a href="#Text">Text</a> option alone will be used to define the string to display.</p>
 	</dd>
 
@@ -31,7 +31,7 @@ Text=This is text containing %1 and %2.
 ; %1 and %2 will be replaced by the string values of SomeMeasure and
 ; SomeMeasure2, respectively.
 ```
-	
+
 	<p>The <code>Text</code> option can take any combination of the following forms:</p>
 	<ul>
 	<li>Display the value of a measure bound with <code>MeasureName</code></li>
@@ -70,7 +70,7 @@ Text=This is text containing %1 and %2.
 	<dd>
 		<p><a href="!skins/option-types/#Color">Color</a> of the font.</p>
 	</dd>
-	
+
 	<dt id="FontWeight"><code>FontWeight</code></dt>
 	<dd>
 		<p>The weight of the font in the range 1-999.</p>
@@ -86,7 +86,7 @@ Text=This is text containing %1 and %2.
 		<b>900</b> - Black (Heavy)<br/>
 		<b>950</b> - Extra Black (Ultra Black)<br/><br/>
 		If the font does not support any additional weights, then 500 and below will use the font's normal weight, and 600 and above will simulate a bold effect.</p>
-	</dd>	
+	</dd>
 
 	<dt id="StringAlign"><code>StringAlign</code> <small>Default: <code>Left</code></small></dt>
 	<dd>
@@ -150,9 +150,9 @@ Text=This is text containing %1 and %2.
 	<dt id="Angle"><code>Angle</code> <small>Default: <code>0.0</code></small></dt>
 	<dd>
 		<p>Defines the angle of the text in radians.</p>
-		
+
 		<p><b>Note:</b> The size and position of the text are always calculated as if the text is horizontal. This also means that the click-able field used for <a href="!mouse-actions/">Mouse Actions</a> does not change. It remains where the text would be with no Angle.</p>
-		
+
 		<p>More information about using Angle can be found at <a href="//forum.rainmeter.net/viewtopic.php?p=104103">Working with Angle on a String Meter</a>.</p>
 	</dd>
 
@@ -169,7 +169,7 @@ Text=This is text containing %1 and %2.
 	<dt id="Scale"><code>Scale</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>Scaling factor used for the measure values. The measure value is divided by the specified value. If the specified value has a decimal point (e.g. <code>1000.0</code>), the result will also display decimals.</p>
-		
+
 		<p><b>Note:</b> If <code>AutoScale</code> is enabled, this option is ignored.</p>
 	</dd>
 
@@ -183,7 +183,7 @@ Text=This is text containing %1 and %2.
 		<li><code>2</code>: Scales by 1000.</li>
 		<li><code>2k</code>: Scales by 1000 with kilo as the lowest unit.</li>
 		</ul>
-		
+
 		<p><b>Note:</b> The value returned by AutoScale adds a space between the scaled number and the scale unit abbreviation. To remove this space simply add <code>Substitute=" ":""</code> to the Measure that the AutoScale is being applied to.</p>
 	</dd>
 </dl>

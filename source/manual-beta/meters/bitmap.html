@@ -10,7 +10,7 @@ title: 'Bitmap meter'
 	<dt>General meter options</dt>
 	<dd>
 		<p>All <a href="!meters/general-options/">general meter options</a> are valid, <b>except</b> <code>W</code>, <code>H</code> and <code>TransformationMatrix</code>.</p>
-		
+
 		<p>The size of the meter is automatically determined by the height of the bitmap image and the number of image frames displayed.</p>
 	</dd>
 
@@ -22,18 +22,18 @@ title: 'Bitmap meter'
 	<dt id="MeasureName"><code>MeasureName</code></dt>
 	<dd>
 		<p>Name of the measure used to determine the frame(s) to display. There are two kinds of values that can be used:</p>
-		
+
 		<ul>
 		<li>The measure returns a <a href="!measures/#Percentage">percentual value</a>.<br/><br/>
-		
+
 		This can be used to display a single frame from the bitmap image, based on the percentage value. This can be used to create animations.<br/><br/>
 
 		If for example the image contains 5 frames, the first frame is displayed when the percentual measure value is between 0% and 19%, the second frame is shown from 20% to 39% , and so on.<br/><br/></li>
-		
+
 		<li>The measure returns any integer numeric value. This is an <code>int64</code> numeric type, and can be any value up to <code>9,223,372,036,854,775,807</code>. Fractional values will be rounded to whole numbers.<br/><br/>
-		
+
 		This can be used to display a numeric value using multiple frames from the bitmap image.<br/><br/>
-		
+
 		In this case, you will use <a href="#BitmapExtend">BitmapExtend</a> with a value of 1, and set <a href="#BitmapDigits">BitmapDigits</a> with a value equal to the greatest number of digits the value can be. This will be used with a <a href="#BitmapImage">BitmapImage</a> that consists of the numbers from 0 to 9, and a <a href="#BitmapFrames">BitmapFrames</a> of 10. This will then display the entire number using the appropriate numeric (0-9) frames from the bitmap image.</li>
 		</ul>
 	</dd>

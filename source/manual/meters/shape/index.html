@@ -137,7 +137,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					<code>Shape=Ellipse 50,50,50</code><br/>
 					<code>Shape=Ellipse 50,50,50,25</code>
 				</p>
-				
+
 				<p><b>Note on Ellipse:</b><br/>
 				The shape is drawn centered on the position defined by CenterX and CenterY. In a sense, it draws from the center out. Be sure that CenterX and CenterY, or the X and Y on the meter, leave enough room in the overall skin to not truncate the shape at the left and top.</p>
 			</dd>
@@ -247,15 +247,15 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 				<li>StrokeWidth is only used on the "drawn" part of the curve on an open shape.</li>
 				</ul>
 			</dd>
-			
+
 			<dt id="Path" class="sub"><code>Path</code> <small>Parameters: (See below)</small></dt>
 			<dd>
 				<p>Drawing segments that define the outline of a shape, consisting of a starting point followed by a series of one or more lines, arcs or curves. Each segment will automatically start where the previous one ends. The final result may produce an open or closed shape.</p>
 
 				<p>Path definitions <b>must</b> be defined in a separate named option, which you then reference immediately following the Path type on the Shape(<em>N</em>) option line. For example: <code>Shape=Path MyPath | StrokeColor 0,255,0,255</code>.</p>
-				
+
 				<p><b>Parameters:</b></p>
-				
+
 					<ul>
 						<li><code>StartX</code> (required): X coordinate of the starting point of the path.</li>
 						<li><code>StartY</code> (required): Y coordinate of the starting point of the path.<br/><br/>
@@ -267,7 +267,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 						<li><code>SetRoundJoin</code> (optional): Values are 0 or 1. Use the default or defined value of <a href="#StrokeLineJoin">StrokeLineJoin</a> (0 - default) to join angled segments, or use a Round (1) line join.</li>
 						<li><code>SetNoStroke</code> (optional): Values are 0 or 1. Use the default or defined value of <a href="#StrokeWidth">StrokeWidth</a> (0 - default), or do not draw a stroke (1). This does not change the open or closed nature of the shape.<br/><br/></li>
 						Following the final definition of the path segments, a path may or may not create a fully enclosed shape. This can be controlled by optionally ending the definition with:<br/><br/>
-						<li><code>ClosePath</code> (optional): Values are 0 or 1. Leave the shape open (0 - default) or automatically close (1) the shape by drawing a line segment from the final ending point to the starting point.</li>						
+						<li><code>ClosePath</code> (optional): Values are 0 or 1. Leave the shape open (0 - default) or automatically close (1) the shape by drawing a line segment from the final ending point to the starting point.</li>
 					</ul>
 
 				<p><b>Examples:</b></p>
@@ -289,9 +289,9 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 
 			<p><b>Notes on Path:</b><br/>
 			All <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers may be used on the shape, but they may only be defined once on the Shape(<em>N</em>) option line. Individual path segments may not be modified, and the named path definition may only contain the starting point, one or more segment definitions, any optional SetLineJoin or SetNoStroke segment commands, and an optional ClosePath value.</p>
-			
+
 			<p>Closed shapes are automatically filled with the default white fill color. Open shapes are not filled by default, although in both instances this may be changed or forced with a <a href="#Fill">Fill</a> attribute modifier on the shape.</p>
-			
+
 			</dd>
 
 			<dt id="Combine" class="sub"><code>Combine</code> <small>Parameters: <code><b>Shape<em>N</em> | ...</b></code></small></dt>
@@ -320,7 +320,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 					<code>Shape4=Combine Shape2 | Intersect Shape</code><br/>
 					<code>Shape4=Combine Shape | Union Shape3 | Exclude Shape2</code>
 				</p>
-				
+
 				<p><b>Notes on Combine:</b><br/>
 					When shapes are combined, the parent shape's <a href="#AttributeModifiers">Attribute Modifiers</a>, e.g. Fill and StrokeWidth, are automatically inherited by the new combined shape. Any Attribute modifiers on child shapes or the new combined shape are ignored.<br/><br/>
 					When shapes are combined, all <a href="#TransformModifiers">Transform Modifiers</a>, e.g. Rotate and Scale, on both the parent and child shapes are performed first, before the combine is done. So for instance, a child shape can be rotated, and them combined with a parent shape. The new combined shape can then also have its own Transform Modifiers, which will be done after the shapes are combined.<br/><br/>
@@ -409,7 +409,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<li><code>Round</code> : </li>
 						<li><code>Square</code> : </li>
 						<li><code>Triangle</code> : </li>
-					</ul>						
+					</ul>
 						<a id="toggle_StrokeEndCap.png" onclick="document.getElementById('StrokeEndCap.png').style.display=''; document.getElementById('toggle_StrokeEndCap.png').style.display='none';" class="spoiler">▶ Show End Caps</a><span id="StrokeEndCap.png" style="display: none"><a onclick="document.getElementById('StrokeEndCap.png').style.display='none'; document.getElementById('toggle_StrokeEndCap.png').style.display='';" class="spoiler">▲ Hide End Caps</a><br/>
 						<div style="display:inline-block">
 						<img src="!img/shapes/StrokeEndCap.png"/>
@@ -432,7 +432,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 						<a id="toggle_StrokeDashCap.png" onclick="document.getElementById('StrokeDashCap.png').style.display=''; document.getElementById('toggle_StrokeDashCap.png').style.display='none';" class="spoiler">▶ Show Dash Caps</a><span id="StrokeDashCap.png" style="display: none"><a onclick="document.getElementById('StrokeDashCap.png').style.display='none'; document.getElementById('toggle_StrokeDashCap.png').style.display='';" class="spoiler">▲ Hide Dash Caps</a><br/>
 						<div style="display:inline-block">
 						<img src="!img/shapes/StrokeDashCap.png"/>
-						</div></span>					
+						</div></span>
 				</p>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,2 | StrokeDashCap Round</code></p>
@@ -447,7 +447,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 				<a id="toggle_StrokeDashes.png" onclick="document.getElementById('StrokeDashes.png').style.display=''; document.getElementById('toggle_StrokeDashes.png').style.display='none';" class="spoiler">▶ Show Dashes</a><span id="StrokeDashes.png" style="display: none"><a onclick="document.getElementById('StrokeDashes.png').style.display='none'; document.getElementById('toggle_StrokeDashes.png').style.display='';" class="spoiler">▲ Hide Dashes</a><br/>
 				<div style="display:inline-block">
 				<img src="!img/shapes/StrokeDashes.png"/>
-				</div></span><br/><br/>									
+				</div></span><br/><br/>
 
 				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,1.5</code></p>
 
@@ -470,7 +470,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 					<a id="toggle_StrokeLineJoin.png" onclick="document.getElementById('StrokeLineJoin.png').style.display=''; document.getElementById('toggle_StrokeLineJoin.png').style.display='none';" class="spoiler">▶ Show Joins</a><span id="StrokeLineJoin.png" style="display: none"><a onclick="document.getElementById('StrokeLineJoin.png').style.display='none'; document.getElementById('toggle_StrokeLineJoin.png').style.display='';" class="spoiler">▲ Hide Joins</a><br/>
 					<div style="display:inline-block">
 					<img src="!img/shapes/StrokeLineJoin.png"/>
-					</div></span>					
+					</div></span>
 				</p>
 				<p>Miter or MeterOrBevel can be followed by a "," and an optional value for MiterLimit. Think of MiterLimit as controlling the amount of "pointiness" when a very sharp angle join is mitered. MiterLimit is a positive number greater than or equal to 1.0 that describes the limit as a ratio of the miter length to half the stroke's thickness.</p>
 

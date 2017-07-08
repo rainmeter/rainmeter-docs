@@ -8,21 +8,21 @@ title: 'Detect Value Change'
 <div class="noscroll">
 ``` lua
 function Initialize()
-    Old = nil
-    -- If the "Old" value starts as nil, the change action will always fire on the first update.
+	Old = nil
+	-- If the "Old" value starts as nil, the change action will always fire on the first update.
 end
 
 function Update()
-    local New = SKIN:GetVariable('SomeVariable')
-    -- or
-    local New = SKIN:GetMeasure('SomeMeasure'):GetValue()
-    -- or
-    local New = SELF:GetOption('SomeOption')
+	local New = SKIN:GetVariable('SomeVariable')
+	-- or
+	local New = SKIN:GetMeasure('SomeMeasure'):GetValue()
+	-- or
+	local New = SELF:GetOption('SomeOption')
 
-    if Old ~= New then
-        -- do stuff
-        Old = New
-    end
+	if Old ~= New then
+		-- do stuff
+		Old = New
+	end
 end
 ```
 </div>

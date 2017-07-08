@@ -68,97 +68,97 @@ Type=RMS
 	<dt id="ID"><code>ID</code> <small>Default: <code>None</code></small></dt>
 	<dd>
 		<p>Specifies the audio device to measure.</p>
-		
+
 		<p>If not set, it will use the default device for the specified <a href="#Port">Port</a>. If you specify <code>Port=Output</code> and no <code>ID</code>, the plugin will connect to the default audio output device defined in Windows.</p>
-		
+
 		<p>To specify a device other than the default, you will need to find the Windows device ID. See the <code>DeviceList</code> child measure option for more info.</p>
-		
+
 		<p><em>Device ID's will be in the form: <code>{0.0.0.00000000}.{5c106e65-26b4-4d05-a9bf-b207a71e9eaa}</code></em></p>
-		
+
 		<p><b>Note:</b> The default audio device in Windows can be changed by using "Manage Audio Devices" from the Windows Start menu.</p>
 	</dd>
 
 	<h3 id="RMSOptions">RMS options</h3>
-	
+
 	<p>RMS is a way of calculating the average of values over a period of time, using the mathematical algorithm <a href="http://en.wikipedia.org/wiki/Root_mean_square">Root Mean Square</a>. The signal value (amplitude) is squared, averaged over a period of time, then the square root of the result is calculated. The result is a value, that when squared, is related (proportional) to the effective power of the signal.</p>
-		
+
 	<p>This is the most meaningful way of measuring audio volume levels in a skin.</p>
-		
+
 	<p><b>Note:</b> To disable all RMS filtering, set both <a href="#RMSAttack">RMSAttack</a> and <a href="#RMSDecay">RMSDecay</a> to <code>0</code>, and <a href="#RMSGain">RMSGain</a> as the default <code>1.0</code>.</p>
-		
+
 	<p>The following parent options are used in combination with child measures having the <code>Type=RMS</code> option set.</p>
-	
+
 	<dt id="RMSAttack"><code>RMSAttack</code> <small>Default: <code>300</code></small></dt>
 	<dd>
 		<p>Specifies the time in milliseconds over which to interpolate as the signal level increases. For example, how quickly a needle jumps up as the sound level increases.</p>
 	</dd>
-	
+
 	<dt id="RMSDecay"><code>RMSDecay</code> <small>Default: <code>300</code></small></dt>
 	<dd>
 		<p>Specifies the time in milliseconds over which to interpolate as the signal level decreases. For example, how quickly a needle subsides as the sound level decreases.</p>
-	</dd>	
+	</dd>
 
 	<dt id="RMSGain"><code>RMSGain</code> <small>Default: <code>1.0</code></small></dt>
 	<dd>
 		<p>A multiplication factor that will be applied to the RMS analysis.</p>
-	</dd>	
+	</dd>
 
 	<h3 id="PeakOptions">Peak options</h3>
 
 	<p>Peak options are similar to <a href="RMSOptions">RMS options</a>, but measure the peak (high) values rather than squaring to obtain an average over a period of time.</p>
-		
+
 	<p><b>Note:</b> To disable all Peak filtering, set both <a href="#PeakAttack">PeakAttack</a> and <a href="#PeakDecay">PeakDecay</a> to <code>0</code>, and <a href="#PeakGain">PeakGain</a> as the default <code>1.0</code>.</p>
-		
+
 	<p>The following parent options are used in combination with child measures having the <code>Type=Peak</code> option set.</p>
-	
+
 	<dt id="PeakAttack"><code>PeakAttack</code> <small>Default: <code>50</code></small></dt>
 	<dd>
 		<p>Specifies the time in milliseconds over which to interpolate as the signal level increases. For example, how quickly a needle jumps up for a higher peak.</p>
 	</dd>
-	
+
 	<dt id="PeakDecay"><code>PeakDecay</code> <small>Default: <code>2500</code></small></dt>
 	<dd>
 		<p>Specifies the time in milliseconds over which to interpolate as the signal level decreases. For example, how quickly a needle subsides to a lower peak.</p>
-	</dd>	
+	</dd>
 
 	<dt id="PeakGain"><code>PeakGain</code> <small>Default: <code>1.0</code></small></dt>
 	<dd>
 		<p>A multiplication factor that will be applied to the Peak analysis.</p>
-	</dd>	
+	</dd>
 
 	<h3 id="FFTOptions">FFT options</h3>
-	
+
 	<p>FFT options transform the signal from the time domain to the frequency domain, with <code>FTTSize</code> determining how many points you get back in the frequency domain. This is done by analyzing the audio stream into a linear-based number of points using the mathematical algorithm <a href="http://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform</a>.</p>
-	
+
 	<p>This frequency information can then optionally be extrapolated into logarithm-based <code>Bands</code> to distinctly measure by frequency in the ranges that are the most useful for spectrum display, based on the way humans detect changes in sound.</p>
-	
+
 	<p>In order to use <code>Bands</code>, both <code>FFTSize</code> and <code>Bands</code> must be set on the parent measure.</p>
-	
-	<p>The following parent options are used in combination with child measures having the <code>Type=FFT</code>and <code>FFTIdx</code> or <code>Type=Band</code> and <code>BandIdx</code> options set.</p>	
+
+	<p>The following parent options are used in combination with child measures having the <code>Type=FFT</code>and <code>FFTIdx</code> or <code>Type=Band</code> and <code>BandIdx</code> options set.</p>
 
 	<dt id="FFTSize"><code>FFTSize</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>A number value for the frequency resolution of the output data.</p>
-		
+
 		<p>This will be an even integer greater than or equal to 0, usually a power of 2. Typical values are 256, 512, or 1024, with the higher the number the greater the frequency resolution.<p>
-		
+
 		<p><b>Note:</b> It should be kept in mind that as this number increases, more CPU resources and time will be needed to analyze the audio stream. A very high number here can both impact CPU usage and potentially cause some "lag" between the sound generation and the measurement by the plugin.</p>
 	</dd>
-	
+
 	<dt id="FFTOverlap"><code>FFTOverlap</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Optionally, the FFT can be windowed to overlap successive sections. A <a href="http://en.wikipedia.org/wiki/Hann_function">Hann</a> function is used to shape the data before the FFT is applied. Typical values are half the FFTSize. Increasing this value will lower the latency between the audio and the measure's response, at the cost of extra CPU.</p>
 	</dd>
-	
+
 	<dt id="FFTAttack"><code>FFTAttack</code> <small>Default: <code>300</code></small></dt>
 	<dd>
 		<p>Specifies the time in milliseconds over which to interpolate as the signal level increases. For example, how quickly a needle jumps up for a higher level.</p>
 	</dd>
-	
+
 	<dt id="FFTDecay"><code>FFTDecay</code> <small>Default: <code>300</code></small></dt>
 	<dd>
 		<p>Specifies the time in milliseconds over which to interpolate as the signal level decreases. For example, how quickly a needle subsides to a lower level.</p>
-	</dd>	
+	</dd>
 
 	<dt id="Bands"><code>Bands</code> <small>Default: <code>0</code></small></dt>
 	<dd>
@@ -170,8 +170,8 @@ Type=RMS
 	<dt id="FreqMin"><code>FreqMin</code> <small>Default: <code>20</code></small></dt>
 	<dd>
 		<p>A number in Hz, specifying the minimum frequency band calculation.</p>
-	</dd>	
-	
+	</dd>
+
 	<dt id="FreqMax"><code>FreqMax</code> <small>Default: <code>20000</code></small></dt>
 	<dd>
 		<p>A number in Hz, specifying the maximum frequency band calculation.</p>
@@ -181,7 +181,7 @@ Type=RMS
 	<dd>
 		<p>A number specifying in what dB range the measure will return <code>FFT</code> and <code>Band</code> data. Increasing this value will cause the measure to respond to quieter sounds, decreasing it will only trigger the measure on louder sounds.</p>
 	</dd>
-	
+
 </dl>
 
 <h2>Child measure options</h2>
@@ -190,14 +190,14 @@ Type=RMS
 	<dt id="Parent"><code>Parent</code> <small><code>Required</code></small></dt>
 	<dd>
 		<p>Defines the parent AudioLevel plugin measure to read values from.</p>
-		
+
 		<p>Example: <code>Parent=SomeMeasureName</code></p>
 	</dd>
 
 	<dt id="Channel"><code>Channel</code> <small>Default: <code>Sum</code></small></dt>
 	<dd>
 		<p>This specifies which audio channel level to read from the parent. Channels can be identified by name or number, e.g. <code>Channel=0</code> is the same as <code>Channel=L</code> or <code>Channel=FL</code>.</p>
-		
+
 		<ul>
 		<li><code>L</code> or <code>FL</code> or <code>0</code></li>
 		<li><code>R</code> or <code>FR</code> or <code>1</code></li>
@@ -211,16 +211,16 @@ Type=RMS
 		</ul>
 
 	</dd>
-	
+
 	<dt id="Type"><code>Type</code> <small><code>Required</code></small></dt>
 	<dd>
 		<p>Specifies the type of data to retrieve from the parent measure.</p>
-		
+
 		<ul>
 		<li><code>RMS</code> : The current RMS level (0.0 to 1.0) corresponding to the specified <code>Channel</code>.</li>
 		<li><code>Peak</code> : The current Peak level (0.0 to 1.0) corresponding to the specified <code>Channel</code>.</li>
 		<li><code>FFT</code> : The current FFT level (0.0 to 1.0) corresponding to the specified <code>FFTIdx</code> option.</li>
-		<li><code>FFTFreq</code> : The frequency in Hz corresponding to the specified <code>FFTIdx</code> option.</li>		
+		<li><code>FFTFreq</code> : The frequency in Hz corresponding to the specified <code>FFTIdx</code> option.</li>
 		<li><code>Band</code> : The current FFT level (0.0 to 1.0) value corresponding to the specified  <code>BandIdx</code> option.</li>
 		<li><code>BandFreq</code> : The frequency in Hz corresponding to the specified <code>BandIdx</code> option.</li>
 		<li><code>Format</code> : A string describing the audio format of the device connected to with the parent <code>ID</code> option.</li>
@@ -229,21 +229,21 @@ Type=RMS
 		<li><code>DeviceID</code> : A string with the Windows ID of the device connected to with the parent <code>ID</code> option.</li>
 		<li><code>DeviceList</code> : A string with a list of all available device ID's for the specified <code>Port</code> This can be used to identify a desired device ID for use in the parent <code>ID</code> option.</li>
 		</ul>
-		
-		<p>Example: <code>Type=RMS</code></p>		
+
+		<p>Example: <code>Type=RMS</code></p>
 	</dd>
 
 	<dt id="FFTIdx"><code>FFTIdx</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Specifies which FFT point you want to extract from the parent. <code>FFTSize</code> must be enabled on the parent measure to use this option.</p>
-		
+
 		<p>Valid values range from 0 to (FFTSize/2).</p>
 	</dd>
 
 	<dt id="BandIdx"><code>BandIdx</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Specifies which frequency band number, starting with 0, you want to extract from the parent. <code>FFTSize</code> and <code>Bands</code> must be enabled on the parent measure to use this option.</p>
-		
+
 		<p>Valid values range from 0 to (Bands-1).</p>
 	</dd>
 

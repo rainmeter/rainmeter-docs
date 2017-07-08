@@ -159,7 +159,6 @@ function Initialize()
 end
 
 function Read()
-
 	local FilePath = SKIN:MakePathAbsolute('TestIn.txt')
 
 	local File = io.open(FilePath, 'r')
@@ -177,11 +176,9 @@ function Read()
 	File:close()
 
 	SKIN:Bang('!SetOption', 'MeterUTF8', 'Text', Contents[1])
-	
 end
 
 function Write()
-
 	local FilePath = SKIN:MakePathAbsolute('TestOut.txt')
 
 	local File = io.open(FilePath, 'w')
@@ -192,12 +189,11 @@ function Write()
 	end
 	
 	local BOM = '\239\187\191'
-	
+
 	File:write(BOM)
 	File:write('Бешеные псы и англичане')
-	
-	File:close()
 
+	File:close()
 end
 ```
 </p>

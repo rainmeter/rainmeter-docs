@@ -7,7 +7,7 @@ title: 'InputText plugin'
 
 <p>InputText works by defining a series of commands, which can be triggered by any "action" string (this includes mouse actions, conditional actions in a Calc measure, and other commands in an InputText measure, including the same measure). When triggered, a free-floating text input box is created to gather user input at the specified points in the command series. When all input has been submitted, the commands are carried out.</p>
 
-<p>Additional help and examples for InputText can be found on the Rainmeter forums at <a href="//forum.rainmeter.net/viewtopic.php?p=98462#p98462">Working with InputText</a>.</p> 
+<p>Additional help and examples for InputText can be found on the Rainmeter forums at <a href="//forum.rainmeter.net/viewtopic.php?p=98462#p98462">Working with InputText</a>.</p>
 
 <p><b>Note:</b> InputText is incompatible with skins set to <a href="!settings/skin-sections/#AlwaysOnTop">Stay Topmost</a>, or <code>AlwaysOnTop=2</code>, as the conflict between the input field, which requires "focus", and the constant attempts by the skin to stay on "top", in front of the input field, will not allow InputText to function correctly.</p>
 
@@ -16,18 +16,18 @@ title: 'InputText plugin'
 	<dt id="Command"><code>Command1</code>, <code>Command2</code>, ..., <code>Command<em>N</em></code></dt>
 	<dd>
 		<p><a href="!skins/option-types/#Action">Actions</a> to execute when the plugin is triggered. The macro string <code>$UserInput$</code> will be replaced by whatever the user types into it.</p>
-		
+
 		<p><code>Command1=[!SetVariable SomeVar "$UserInput$"]</code></p>
-		
+
 		<p>If the macro string <code>$UserInput$</code> is repeated in a command series, multiple input boxes will be created in sequence. However, a single value input by the user can be used multiple times in different bangs in the same command series by using the string value of the InputText [MeasureName] as a <a href="!variables/section-variables/#MeasureParameters">section variable</a>.</p>
-		
+
 		<p><code>Command1=[!WriteKeyValue Variables SomeVar "$UserInput$"]</code><br/>
 		<code>Command2=[!SetVariable SomeVar "[MeasureName]"]</code></p>
-		
+
 		<p>In addition, a command can override the values of options in this measure when an option="value" pair is added as a parameter to a <code>Command</code> option.</p>
 
 		<p><code>Command1=[!SetVariable SomeVar "[MeasureName]"] FontColor="255,0,0,255"</code></p>
-		
+
 		<p><b>Note:</b> The macro string <code>$UserInput$</code> and the section variable [MeasureName] must be enclosed in quotes in the <code>Command</code> option if the user input may contain spaces.</p>
 	</dd>
 
@@ -40,12 +40,12 @@ title: 'InputText plugin'
 	<dd>
 		<p>If set to <code>1</code>, the input will be displayed as asterisks.</p>
 	</dd>
-	
+
 	<dt id="InputLimit"><code>InputLimit</code> <small>Default: <code>0</code> <em>unlimited</em></small></dt>
 	<dd>
 		<p>If defined, this will limit the number of characters allowed in the input field. Note that if a new line is entered with <code>CTRL-Enter</code>, this will be two characters, <code>/r/n</code>, toward the limit.</p>
 	</dd>
-	
+
 	<dt id="InputNumber"><code>InputNumber</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, only numeric input will be allowed. A single <code>-</code> can be the first character, and a single <code>.</code> can be at any position in the input.</p>
@@ -75,7 +75,7 @@ title: 'InputText plugin'
 	<dt id="FontColor"><code>FontColor</code> <small>Default: <code>0,0,0</code></small></dt>
 	<dd>
 		<p><a href="!skins/option-types/#Color">Color</a> of the input text.</p>
-		
+
 		<p><b>Note:</b> Any alpha channel setting of FontColor is entirely ignored. The transparency of the input control is set by <code>SolidColor</code>, which will effect both the input box and text transparency.</p>
 	</dd>
 
@@ -102,23 +102,23 @@ title: 'InputText plugin'
 
 		<p><b>Note:</b> With right-aligned text, the cursor will move from left to right as text is typed. This is advised for skins using languages such as Arabic, which read right-to-left.</p>
 	</dd>
-	
+
 	<dt id="TopMost"><code>TopMost</code></dt>
 	<dd>
 		<p>Sets the Z-position of the input field. If set to <code>1</code> then the input field will stay on top of all windows while active. If set to <code>0</code> then other windows can be dragged in front of the input field while it is active. If not set at all (default) then the Z-position of the input field will follow the <a href="!settings/skin-sections/#AlwaysOnTop">TopMost</a> setting of the overall skin.</p>
 
 		<p><b>Note:</b> This option should not be used when <code>FocusDismiss=1</code> is set.</p>
-	</dd>	
+	</dd>
 
 	<dt id="FocusDismiss"><code>FocusDismiss</code> <small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code> (default), clicking anywhere other than on the input field will dismiss the input without taking action. If set to <code>0</code>, the mouse is disabled until Enter or Escape is pressed.</p>
 	</dd>
-	
+
 	<dt id="OnDismissAction"><code>OnDismissAction</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>A <a href="!bangs/">bang</a> or <a href="!skins/option-types/#Action">action</a> that is executed when an active InputText field is dismissed without hitting Enter to execute the plugin commands.</p>
-	</dd>	
+	</dd>
 </dl>
 
 <h2 id="Bangs">Bangs</h2>

@@ -12,7 +12,7 @@ function SentenceCase(input)
 
 	return (input:gsub('[^.!?]+', function(sentence)
 			local space, first, rest = sentence:match('(%s*)(.)(.*)')
-	
+
 			return space .. first:upper() .. rest:lower():gsub("%si([%s'])", ' I%1')
 		end))
 end

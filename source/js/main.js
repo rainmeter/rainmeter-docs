@@ -1,26 +1,26 @@
 // Helpers based on https://github.com/cferdinandi/buoy.
 function hasClass(elem, className) {
-    return new RegExp('(^|\\s)' + className + '(\\s|$)').test(elem.className);
+	return new RegExp('(^|\\s)' + className + '(\\s|$)').test(elem.className);
 }
 
 function addClass(elem, className) {
-    if (!hasClass(elem, className)) {
-        elem.className += (elem.className ? ' ' : '') + className;
-    }
+	if (!hasClass(elem, className)) {
+		elem.className += (elem.className ? ' ' : '') + className;
+	}
 }
 
 function removeClass(elem, className) {
-    if (hasClass(elem, className)) {
-        elem.className = elem.className.replace(new RegExp('(^|\\s)*' + className + '(\\s|$)*', 'g'), '');
-    }
+	if (hasClass(elem, className)) {
+		elem.className = elem.className.replace(new RegExp('(^|\\s)*' + className + '(\\s|$)*', 'g'), '');
+	}
 }
 
 function toggleClass(elem, className) {
-    if (hasClass(elem, className)) {
-        removeClass(elem, className);
-    } else {
-        addClass(elem, className);
-    }
+	if (hasClass(elem, className)) {
+		removeClass(elem, className);
+	} else {
+		addClass(elem, className);
+	}
 }
 
 (function() {

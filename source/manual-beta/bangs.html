@@ -104,7 +104,7 @@ title: 'Bangs'
 		<ul>
 		<li><code>SoundFile</code> (required): Path and file to be played. Must be a .wav file.</li>
 		</ul>
-		<br><b>Note:</b> While listed in this section for simplicity, the Play commands are not bangs, and do not require or allow the <code>!</code> character at the beginning. Rainmeter uses a single-threaded call to embedded Windows functionality to play the sound, and only one sound at a time can be managed, Rainmeter-wide. Playing a sound in any skin will stop any other currently playing sounds. 
+		<br><b>Note:</b> While listed in this section for simplicity, the Play commands are not bangs, and do not require or allow the <code>!</code> character at the beginning. Rainmeter uses a single-threaded call to embedded Windows functionality to play the sound, and only one sound at a time can be managed, Rainmeter-wide. Playing a sound in any skin will stop any other currently playing sounds.
 		<br><br><b>Example:</b> <code>Play "SomeFile.wav"</code>
 	</dd>
 
@@ -206,7 +206,7 @@ title: 'Bangs'
 		<li><code>Config</code> (optional)</li>
 		</ul>
 	</dd>
-	
+
 	<dt id="FadeDuration"><code>!FadeDuration</code> <small>Parameter: <code><b>milliseconds</b></code>, <code><em>Config</em></code></small></dt>
 	<dd>
 		Sets the <a href="!settings/skin-sections/#FadeDuration">FadeDuration</a> value in milliseconds.
@@ -314,7 +314,7 @@ title: 'Bangs'
 		<ul>
 		<li><code>Config</code> (optional)</li>
 		</ul>
-	</dd>	
+	</dd>
 
 	<dt id="SetTransparency"><code>!SetTransparency</code> <small>Parameters: <code><b>Alpha</b><em>, Config</em></code></small></dt>
 	<dd>
@@ -371,7 +371,7 @@ title: 'Bangs'
 		<li><code>Config</code> (optional)</li>
 		</ul>
 	</dd>
-	
+
 	<dt id="AutoSelectScreen"><code>!AutoSelectScreen</code> <small>Parameters: <code><b>Setting</b><em>, Config</em></code></small></dt>
 	<dd>
 		Sets the <a href="!settings/skin-sections/#AutoSelectScreen">AutoSelectScreen</a> option of a skin.
@@ -380,7 +380,7 @@ title: 'Bangs'
 		<li><code>Config</code> (optional)</li>
 		</ul>
 	</dd>
-	
+
 	<dt id="EditSkin"><code>!EditSkin</code> <small>Parameters: <code><em>Config</em>, <em>File</em></code></small></dt>
 	<dd>
 		Edits a skin .ini file using the text editor defined in <a href="!settings/rainmeter-section/#ConfigEditor">ConfigEditor</a> in Rainmeter settings, or the text editor associated with .ini files in Windows. The default will be Windows Notepad.exe. If no parameters are defined the current skin .ini file will be edited.
@@ -410,7 +410,7 @@ title: 'Bangs'
 		<li><code>Group</code> (required): Group to show or hide with a fade effect.</li>
 		</ul>
 	</dd>
-	
+
 	<dt id="FadeDurationGroup"><code>!FadeDurationGroup</code> <small>Parameter: <code><b>milliseconds</b></code>, <code><b>Group</b></code></small></dt>
 	<dd>
 		Sets the <a href="!settings/skin-sections/#FadeDuration">FadeDuration</a> value in milliseconds for a group of skins.
@@ -496,8 +496,8 @@ title: 'Bangs'
 		<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 		<li><code>Group</code> (required): Name of the group.</li>
 		</ul>
-	</dd>	
-	
+	</dd>
+
 	<dt id="SnapEdgesGroup"><code>!SnapEdgesGroup</code> <small>Parameters: <code><b>Setting, Group</b></code></small></dt>
 	<dd>
 		Sets the <a href="!settings/skin-sections/#SnapEdges">SnapEdges</a> setting for the specified <a href="!groups/">group</a>.
@@ -506,7 +506,7 @@ title: 'Bangs'
 		<li><code>Group</code> (required): Name of the group.</li>
 		</ul>
 	</dd>
-	
+
 	<dt id="AutoSelectScreenGroup"><code>!AutoSelectScreenGroup</code> <small>Parameters: <code><b>Setting, Group</b></code></small></dt>
 	<dd>
 		Sets the <a href="!settings/skin-sections/#AutoSelectScreen">AutoSelectScreen</a> setting for the specified <a href="!groups/">group</a>.
@@ -514,7 +514,7 @@ title: 'Bangs'
 		<li><code>Setting</code> (required): <code>0</code> to disable, <code>1</code> to enable or <code>-1</code> to toggle.</li>
 		<li><code>Group</code> (required): Name of the group.</li>
 		</ul>
-	</dd>	
+	</dd>
 </dl>
 
 <h2 id="Meter">Meter bangs</h2>
@@ -582,7 +582,7 @@ title: 'Bangs'
 		<li><code>Measure</code> (required): Name of the measure.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
-		This behavior can also be controlled with the <a href="!measures/general-options/#Disabled">Disabled</a> general measure option. Numeric values in measures will be set to zero when the measure is disabled. <br>
+		This behavior can also be controlled with the <a href="!measures/general-options/#Disabled">Disabled</a> general measure option. Numeric values in measures will be set to zero when the measure is disabled.<br>
 		<br><b>Example:</b> <code>!ToggleMeasure "CPUMeasure"</code>
 	</dd>
 
@@ -595,7 +595,7 @@ title: 'Bangs'
 		</ul>
 		This is similar to <a href="#EnableDisableToggleMeasure">!DisableMeasure</a> / <a href="#EnableDisableToggleMeasure">!EnableMeasure</a>, however the numeric value of the measure will contain the most recent value, rather than being set to zero.<br>
 		<br><b>Example:</b> <code>!TogglePauseMeasure "CPUMeasure"</code>
-	</dd>	
+	</dd>
 
 	<dt id="UpdateMeasure"><code>!UpdateMeasure</code> <small>Parameters: <code><b>Measure</b><em>, Config</em></code></small></dt>
 	<dd>
@@ -637,8 +637,8 @@ title: 'Bangs'
 		<li><code>Group</code> (required): Name of the group.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
-	</dd>		
-	
+	</dd>
+
 	<dt id="UpdateMeasureGroup"><code>!UpdateMeasureGroup</code> <small>Parameters: <code><b>Group</b><em>, Config</em></code></small></dt>
 	<dd>
 		Overrides the setting of the <a href="!skins/rainmeter-section/#Update">Update</a> option in [Rainmeter] or any <a href="!measures/general-options/#UpdateDivider">UpdateDivider</a> on the measures in the specified group, and immediately updates the measures.

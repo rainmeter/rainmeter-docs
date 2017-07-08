@@ -13,12 +13,10 @@
  */
 
 (function() {
-
 	var container, svg, cType, code, point = {}, line = {}, fill = false, drag = null, dPoint, maxX, maxY;
 
 	// define initial points
 	function Init() {
-
 		var c = svg.getElementsByTagName("circle");
 		for (var i = 0; i < c.length; i++) {
 			point[c[i].getAttributeNS(null,"id")] = {
@@ -26,39 +24,37 @@
 				y: parseInt(c[i].getAttributeNS(null,"cy"),10)
 			};
 		}
-		
+
 		// lines
 		line.l1 = svg.getElementById("l1");
 		line.l2 = svg.getElementById("l2");
 		line.curve = svg.getElementById("curve");
-		
+
 		// code
 		code = document.getElementById("svg_code");
-	
+
 		// event handlers
 		svg.onmousedown = svg.onmousemove = svg.onmouseup = Drag;
 		svg.ontouchstart = svg.ontouchmove = svg.ontouchend = Drag;
 		
 		DrawSVG();
 	}
-	
-	
+
 	// draw curve
 	function DrawSVG() {
-	
 		// control line 1
 		line.l1.setAttributeNS(null, "x1", point.p1.x);
 		line.l1.setAttributeNS(null, "y1", point.p1.y);
 		line.l1.setAttributeNS(null, "x2", point.c1.x);
 		line.l1.setAttributeNS(null, "y2", point.c1.y);
-		
+
 		// control line 2
 		var c2 = (point.c2 ? "c2" : "c1");
 		line.l2.setAttributeNS(null, "x1", point.p2.x);
 		line.l2.setAttributeNS(null, "y1", point.p2.y);
 		line.l2.setAttributeNS(null, "x2", point[c2].x);
 		line.l2.setAttributeNS(null, "y2", point[c2].y);
-		
+
 		// curve
 		var d = 
 			"M"+point.p1.x+","+point.p1.y+" "+cType+
@@ -77,26 +73,25 @@
 			code.textContent = 'Shape=Curve '+ d1;
 		}
 	}
-	
+
 	// drag event handler
 	function Drag(e) {
-		
 		e.stopPropagation();
 		var t = e.target, id = t.id, et = e.type, m = MousePos(e);
-	
+
 		// toggle fill class
 		if (!drag && et == "mousedown" && id == "curve") {
 			fill = !fill;
 			t.setAttributeNS(null, "class", (fill ? "fill" : ""));
 			DrawSVG();
 		}
-	
+
 		// start drag
 		if (!drag && typeof(point[id]) != "undefined" && (et == "mousedown" || et == "touchstart")) {
 			drag = t;
 			dPoint = m;
 		}
-		
+
 		// drag
 		if (drag && (et == "mousemove" || et == "touchmove")) {
 			id = drag.id;
@@ -107,15 +102,13 @@
 			drag.setAttributeNS(null, "cy", point[id].y);
 			DrawSVG();
 		}
-		
+
 		// stop drag
 		if (drag && (et == "mouseup" || et == "touchend")) {
 			drag = null;
 		}
-	
 	}
 
-	
 	// mouse position
 	function MousePos(event) {
 		return {
@@ -123,8 +116,7 @@
 			y: Math.max(0, Math.min(maxY, event.pageY))
 		}
 	}
-	
-	
+
 	// start
 	window.onload = function() {
 		container = document.getElementById("svg");
@@ -136,5 +128,4 @@
 			Init();
 		}
 	}
-	
 })();

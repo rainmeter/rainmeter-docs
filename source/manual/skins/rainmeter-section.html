@@ -12,24 +12,24 @@ title: '[Rainmeter] section'
 	<dt id="Update"><code>Update</code> <small>Default: <code>1000</code></small></dt>
 	<dd>
 		<p>Defines the update interval of the skin in milliseconds. On each update, measures and meters are updated, and the skin is redrawn.</p>
-		
+
 		<p>The lowest possible effective value for Update is "16". Some care should be taken to only use very low update rates (less than 100) when really needed, and to balance a low Update with <a href="#DefaultUpdateDivider">DefaultUpdateDivider</a>, or <a href="!measures/general-options/#UpdateDivider">UpdateDivider</a> on individual measures and meters, in order to keep the CPU usage by Rainmeter as low as possible.</p>
-		
+
 		<p>Using <code>-1</code> will update the skin only once on load (or on refresh). The skin can then be manually updated using the <a href="!bangs/#Update">!Update bang</a>.</p>
-		
-		<p><b>Note:</b> While <code>Update=1000</code> will update the skin "once a second",  Update is not related to the system clock, and if a computer is busy or a complicated skin takes longer than the interval to complete a full update of the skin, updates can be unreliable in relation to elapsed time. Do not use the Update value to control clocks or other timing sensitive functions.</p>		
+
+		<p><b>Note:</b> While <code>Update=1000</code> will update the skin "once a second",  Update is not related to the system clock, and if a computer is busy or a complicated skin takes longer than the interval to complete a full update of the skin, updates can be unreliable in relation to elapsed time. Do not use the Update value to control clocks or other timing sensitive functions.</p>
 	</dd>
-	
+
 	<dt id="DefaultUpdateDivider"><code>DefaultUpdateDivider</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		<p>Default number of updates at which skin measure and meter values are updated. The <a href="#Update">Update</a> option is multiplied by the specified value to determine how often measures and meters are updated.
+		<p>Default number of updates at which skin measure and meter values are updated. The <a href="#Update">Update</a> option is multiplied by the specified value to determine how often measures and meters are updated.</p>
 
 		<p>Example: If <code>Update=1000</code> and <code>DefaultUpdateDivider=30</code>, then by default all measures and meters are updated every 30 seconds.</p>
 
 		<p>If DefaultUpdateDivider=-1 or any negative number, then by default all measures and meter are only updated once when the skin is loaded or refreshed.</p>
-		
+
 		<p><b>Note:</b> This option is designed to set a default UpdateDivider for all measures and meters in the skin. It can be overridden by setting <code>UpdateDivider</code> on individual measures or meters. This option should be used when a low <code>Update</code> is desired to support animations or other skin elements requiring rapid update, while avoiding having to manually set an UpdateDivider on a great many other measures and meters that do not need to be updated as quickly.</p>
-	</dd>	
+	</dd>
 
 	<dt id="AccurateText"><code>AccurateText</code> <small>Default: <code>0</code></small></dt>
 	<dd>
@@ -40,7 +40,7 @@ title: '[Rainmeter] section'
 	<dd>
 		<p>If set to <code>1</code>, the window size is adjusted on each update to fit the meters.</p>
 	</dd>
-	
+
 	<dt id="SkinWidthHeight"><code>SkinWidth</code>, <code>SkinHeight</code> <small>Default: <em>None</em></small></dt>
 	<dd>
 		<p>Either or both may be set. This will set and constrain the skin to the fixed dimensions defined, either the width, the height, or both. Any meter or part of a meter positioned outside the defined boundaries will be truncated. DynamicWindowSize will be ignored for the defined dimension(s), and meters that would normally display even "outside" the skin will be truncated by the fixed skin dimension(s).</p>
@@ -79,12 +79,12 @@ title: '[Rainmeter] section'
 		<p><a href="!skins/option-types/#Action">Action</a> to execute when the skin loses focus in Windows (focus is lost when the mouse is clicked outside the skin).</p>
 		<p><b>Note:</b> The action(s) defined will take place at the very end of the update cycle. Changes made will generally not be visible until the next update, unless bangs are used to update desired measures and meters and redraw the skin.</p>
 	</dd>
-	
+
 	<dt id="OnWakeAction"><code>OnWakeAction</code></dt>
 	<dd>
 		<p><a href="!skins/option-types/#Action">Action</a> to execute when Windows returns from the sleep or hibernate states.</p>
-		<p><b>Note:</b> The action(s) defined will take place at the very end of the first update cycle. Changes made will generally not be visible until the next update, unless bangs are used to update desired measures and meters and redraw the skin.</p>		
-	</dd>	
+		<p><b>Note:</b> The action(s) defined will take place at the very end of the first update cycle. Changes made will generally not be visible until the next update, unless bangs are used to update desired measures and meters and redraw the skin.</p>
+	</dd>
 
 	<dt id="TransitionUpdate"><code>TransitionUpdate</code> <small>Default: <code>100</code></small></dt>
 	<dd>
@@ -95,7 +95,7 @@ title: '[Rainmeter] section'
 	<dd>
 		<p>If set to <code>1</code>, all tooltips in the skin will be hidden. More information on <a href="!meters/general-options/tooltips/">tooltips</a>.</p>
 	</dd>
-	
+
 	<dt id="Group"><code>Group</code></dt>
 	<dd>
 		<p>Defines a group or series of groups that the skin belongs to. For more information please see the <a href="!groups/">Groups</a> page.</p>
@@ -177,7 +177,6 @@ title: '[Rainmeter] section'
 
 <h2 id="AeroBlur">Aero Blur options</h2>
 <dl>
-
 	<dt id="Blur"><code>Blur</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Set to 1 to enable Aero Blur on the Windows Windows 7 operating system. If no BlurRegions are specified, the entire skin background is blurred.</p>

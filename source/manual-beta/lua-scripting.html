@@ -171,7 +171,7 @@ end
 	<dt id="ParseFormula"><code>ParseFormula</code> <small>Parameter: <code><b>FormulaString</b></code></small></dt>
 	<dd>
 		<p>If the given string is a valid <a href="!formulas/">formula</a>, evaluates the formula and returns the result as the number. Otherwise, returns <code>nil</code>. This can take advantage of mathematical functions in Rainmeter that may not be built into Lua. Remember that formulas in Rainmeter must be entirely enclosed in (parentheses).</p>
-		
+
 ``` lua
 numToRound = 239.78
 roundedNum = SKIN:ParseFormula('(Round('..numToRound..'))')

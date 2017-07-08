@@ -15,7 +15,7 @@ title: 'SysInfo plugin'
 	<dt id="SysInfoType"><code>SysInfoType</code></dt>
 	<dd>
 		<p>Item of system information to retrieve. Some returned values are <em>String</em> for use in string measures or meters, and some are <em>Number</em> for use in any measure or meter.</p>
-		
+
 		<h4 id="GeneralSystem">General system values</h4>
 		<ul>
 			<li><code>COMPUTER_NAME</code> : [String] The computer's name as specified in the system settings.</li>
@@ -25,12 +25,12 @@ title: 'SysInfo plugin'
 			<li><code>PAGESIZE</code> : [Number] The size in bytes of the current contiguous page size allocated for system memory.</li>
 			<li><code>IDLE_TIME</code> : [Number] The time in seconds since the last mouse or keyboard input to the operating system.</li>
 		</ul>
-		
+
 		<h4 id="Network">Network values</h4>
 		<ul>
 			<li><code>HOST_NAME</code> : [String] The computer's network host name.</li>
 			<li><code>DOMAIN_NAME</code> : [String] The computer's network domain name.</li>
-			<li><code>DOMAINWORKGROUP</code> : [String] The computer's network domain or workgroup name.</li>			
+			<li><code>DOMAINWORKGROUP</code> : [String] The computer's network domain or workgroup name.</li>
 			<li><code>DNS_SERVER</code> : [String] The computer's network primary DNS server IP address.</li>
 			<li><code>ADAPTER_DESCRIPTION</code> : [String] The description of the network adapter specified by <code>SysInfoData</code>.</li>
 			<li><code>ADAPTER_TYPE</code> : [String and Number] The type of network adapter specified by <code>SysInfoData</code>.<br/><br/>The string value will be one of <code>Ethernet</code>, <code>Wireless</code> or <code>Other</code>. The number value will be one of <code>6</code> (Ethernet), <code>71</code> (Wireless), or some other number in the range 0-280 (Other). The meaning of numeric codes other than 6 and 71 can be found at: <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa366062(v=vs.85).aspx">MSDN Adapter Info</a>.<br/><br/>
@@ -38,8 +38,8 @@ title: 'SysInfo plugin'
 			<li><code>IP_ADDRESS</code> : [String] The LAN IP address of the network adapter specified by <code>SysInfoData</code>.</li>
 			<li><code>GATEWAY_ADDRESS</code> : [String] The gateway IP address of the network adapter specified by <code>SysInfoData</code>.</li>
 			<li><code>LAN_CONNECTIVITY</code> : [Number] Returns 1 if your computer is connected to a LAN, -1 if not.</li>
-			<li><code>INTERNET_CONNECTIVITY</code> : [Number] Returns 1 if your computer is connected to the Internet, -1 if not.</li>						
-		</ul>		
+			<li><code>INTERNET_CONNECTIVITY</code> : [Number] Returns 1 if your computer is connected to the Internet, -1 if not.</li>
+		</ul>
 
 		<h4 id="Monitor">Monitor and screen values</h4>
 		<ul>
@@ -57,7 +57,7 @@ title: 'SysInfo plugin'
 			<li><code>WORK_AREA_WIDTH</code> : [Number] Width of the client area of the primary display monitor. Use <code>SysInfoData</code> to specify a different monitor.</li>
 			<li><code>WORK_AREA_HEIGHT</code> : [Number] Height of the client area of the primary display monitor. Use <code>SysInfoData</code> to specify a different monitor.</li>
 		</ul>
-		
+
 		<h4 id="TimeZoneValues">Time Zone values</h4>
 		<ul>
 		<li><code>TIMEZONE_ISDST</code><br/>
@@ -94,9 +94,9 @@ title: 'SysInfo plugin'
 		</ul></p>
 		<p>Example: <code>SysInfoData=Best</code></p>
 		<p><b>Note:</b> When the option is set to <code>Best</code>, the function will select a "wired" network connection in preference to a "wireless" one, if both are active.</p>
-		<p>When the option is set to <code>Best</code>, <code>DyanmicVariables=1</code> must be set on the measure if you want it to automatically react to changes in the active interface. This should be done if for instance you have a laptop or other computer that you switch between wired and wireless connections.</p>		
-		
-		<p><b>Monitor number</b></p>		
+		<p>When the option is set to <code>Best</code>, <code>DyanmicVariables=1</code> must be set on the measure if you want it to automatically react to changes in the active interface. This should be done if for instance you have a laptop or other computer that you switch between wired and wireless connections.</p>
+
+		<p><b>Monitor number</b></p>
 		<p>For <code>SysInfoType</code> values related to monitor information, this will identify the monitor number to use.</p>
 
 		<p><b>Note:</b> The appropriate value to use can be found by opening the Windows Display Properties dialog. It is important to note that "1" is not always the primary display monitor.</p>
