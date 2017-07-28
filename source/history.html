@@ -7,6 +7,12 @@ title: 'Version History'
 
 <h2 id="4.1">Rainmeter 4.1</h2>
 
+<h3 id="r2838">July 28, 2017 - Revision 2838</h3>
+<ul>
+<li><b>Changed</b> Lua Scripting: Due to recent changes made in how each Lua script maintains its own distinct state in the Rainmeter environment, we have been able to add the debug, setfenv, getfenv and coroutine functionality back into the Lua package.</li>
+<li><b>Fixed</b> Skin Installer: Fixed an issue where in some cases .rmskin names or path names in the .rmskin or on the installing computer could cause the installation to fail with Unicode characters. This was due to a problem in an ancient ZIP library being used, and has been updated.</li>
+</ul>
+
 <h3 id="r2824">July 7, 2017 - Revision 2824</h3>
 <ul>
 <li><b>Added</b> Rainmeter: Drag Groups can now be created by selecting skins while holding CTRL-ALT, and dragging one skin, or nudging with the arrow keys will move all selected skins. See <a href="https://docs.rainmeter.net/manual-beta/arranging-skins/#Multiple">Multiple Skins</a> for details.</li>
