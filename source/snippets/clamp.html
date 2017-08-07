@@ -1,0 +1,30 @@
+---
+layout: snippets
+permalink: snippets/clamp/
+title: 'math.clamp'
+---
+<p>This creates the <b>clamp(<em>n</em>, <em>lower</em>, <em>upper</em>)</b> mathematical function, which is not part of the standard Lua math libraries.</p>
+
+<p>The argument <em>n</em> is the number or formula to test. <em>lower</em> is the lowest value it can be, and <em>upper</em> is the highest value it can be.</p>
+
+<div class="noscroll">
+``` lua
+function math.clamp(val, lower, upper)
+
+	assert(val and lower and upper, 'error: math.clamp(val, lower, upper)')
+	return math.max(lower, math.min(upper, val))
+
+end
+```
+</div>
+
+<p><b>Example:</b><br/>
+<em>This will constrain the value of myVal between 15 and 25.</em></p>
+
+<div class="noscroll">
+``` lua
+for i = 10, 30 do
+	myVal = math.clamp(i, 15, 25)
+end
+```
+</div>
