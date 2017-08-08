@@ -52,7 +52,7 @@ MyOption=Hello, world!
 
 <p>Multiple statements may be separated by semicolons (<code>;</code>). All statements are global.</p>
 
-	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "a = b; print(SKIN:ParseFormula('2+2'))"</code></p></blockquote>
+	<blockquote><p><code>!CommandMeasure "MyScriptMeasure" "a = b; print(SKIN:ParseFormula('(2+2)'))"</code></p></blockquote>
 
 <p>All statements must be passed as a single parameter in the bang. Because single-quotes (<code>'</code>) and double-quotes (<code>"</code>) are both valid string containers in Lua, while only double-quotes are recognized in Rainmeter, single quotes are recommended when passing strings with !CommandMeasure.</p>
 
