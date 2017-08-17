@@ -36,7 +36,7 @@ title: 'Nesting Variables'
 
 <p><b>Notes:</b></p>
 
-<p>Unless you are in fact 'nesting' variables within variables, there is no other benefit to using these instead of the normal syntax. It is not suggested that this in any way 'deprecates' the current style of using variables in your skin. This is an 'alternative' way, that simply allows for nesting to be successful. There is a very tiny additional CPU cost for parsing these variables, and while not measurable or at least noticeable in most cases, the highest possible level of efficiency would be to use these where needed, and not convert to always using them in all your skins.</p>
+<p>Unless you are in fact 'nesting' variables within variables, there is no other benefit to using these instead of the normal syntax. It is not suggested that this in any way 'deprecates' the current style of using variables in your skin. This is an 'alternative' way, that simply allows for nesting to be successful. Use them all the time, or use them just when needed, that is a matter of personal preference.</p>
 
 <p>All the same rules for when <code>DynamicVaribles=1</code> is required where these are used still apply. Consider each component of the nested variable. If any of them require dynamic variables to successfully get the current value, then it must be used. In general, ANY nested variable that contains <code>[&MeasureName]</code> is going to require <code>DynamicVaribles=1</code> where it is used.</p>
 
