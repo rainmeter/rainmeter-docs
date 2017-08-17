@@ -38,6 +38,8 @@ title: 'Nesting Variables'
 
 <p>Unless you are in fact 'nesting' variables within variables, there is no other benefit to using these instead of the normal syntax. It is not suggested that this in any way 'deprecates' the current style of using variables in your skin. This is an 'alternative' way, that simply allows for nesting to be successful. Use them all the time, or use them just when needed, that is a matter of personal preference.</p>
 
+<p>Do note however, that any use of <a href="!lua-scripting/inline-lua/">Inline Lua</a> in measures or meters will always require that this Nesting Variables syntax be used, as by its nature as a [SectionVariable], Inline Lua will generally require nesting of other variables or section variables in the parameters.</p>
+
 <p>All the same rules for when <code>DynamicVaribles=1</code> is required where these are used still apply. Consider each component of the nested variable. If any of them require dynamic variables to successfully get the current value, then it must be used. In general, ANY nested variable that contains <code>[&MeasureName]</code> is likely to require <code>DynamicVaribles=1</code> when used in measures or meters.</p>
 
 <h2>Examples</h2>
