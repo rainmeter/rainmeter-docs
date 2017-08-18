@@ -15,6 +15,8 @@ title: 'Inline Lua'
 
 <p>As with any [SectionVariable], these will be resolved, in this case executed, when the skin is loaded, and on each update of the measure or meter containing them. As with any [SectionVariable], <code>DynamicVariables=1</code> must be used on any measure or meter containing them.</p>
 
+<p>Note that this is not designed to execute stand-alone Lua statements, but is used to execute a <code>function FunctionName() .. return ... end</code> code block in the Lua script file.</p>
+
 <h2>Nested variables</h2>
 
 <p>It must be remembered that the entire inline Lua functionality is contained within a [SectionVariable]. This means that any #Variables# or other measure [SectionVariable] you use in the parameters to the Lua function will cause "nesting" of variables within variables. The standard way of expressing #VariableName# and / or [MeasureName] in Rainmeter cannot be "nested", and won't work.</p>
