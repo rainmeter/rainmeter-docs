@@ -42,7 +42,7 @@ end
 
 <p>The syntax of an inline Lua section variable is:</code>
 
-<p><code>[&ScriptMeasureName:LuaFunction(numberParameter, 'stringParameter', ...)]</code></p>
+<p><code>[&ScriptMeasureName:LuaFunctionName(numberParameter, 'stringParameter', ...)]</code></p>
 
 <p>String values in parameters must be explicitly passed as strings to the Lua function, by enclosing them in 'single quotes'. Numbers may, and should, be passed without quotes, but any string passed without quoting will be seen by the Lua as a Lua variable name with a nil value, and will fail.</p>
 
@@ -134,10 +134,6 @@ end
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
-; Demonstrates combining executing some Lua based on an "action"
-; in the skin, with some inline Lua section variables to get 
-; different parts of the result.
 
 [MeasureScript]
 Measure=Script
@@ -256,19 +252,6 @@ Update=1000
 AccurateText=1
 DynamicWindowSize=1
 
-; Demonstrates using [&InlineLua:Function()] to get a single "return" value
-; from a Lua function, replacing the call to the function with the value 
-; returned by it. Much like using other [#Variables] or [&SectionVariables],
-; but we can do any programming we like in the Lua function() we call.
-
-; Note that we need to use DynamicVariables=1 with inline Lua variables,
-; just as we would with [&SectionVariable]. In effect, an inline Lua 
-; variable IS a section variable.
-
-; Examine TranslateDay.lua in the skin folder to see the work we are doing,
-; (not much, it's a simple table lookup) and how we are returning the value
-; to the inline Lua variable.
-
 [Variables]
 MainLang=English
 
@@ -384,7 +367,7 @@ function TranslateDayOfWeek(dayArg, langArg)
 end
 ```
 
-<p>Note that in these examples, we concentrated on using the inline Lua to set Text options on a String meter, as they are easy to understand and demonstrate. Remember though, that inline Lua can be used on any measure or meter option, and in any bang. Anywhere that a [SectionVariable] can be used. So this might be X or FontSize on a String meter, Drive on a FreeDiskSpace measure, some value in an ActionTimer measure, the uses are only limited by how clever you are.</p>
+<p>In these examples, we concentrated on using the inline Lua to set Text options on a String meter, as they are easy to understand and demonstrate. Remember though, that inline Lua can be used on any measure or meter option, and in any bang. Anywhere that a [SectionVariable] can be used. So this might be X or FontColor on a String meter, Drive on a FreeDiskSpace measure, some value in an ActionTimer measure, the uses are only limited by how clever you are.</p>
 
 <h2>Download Examples</h2>
 
