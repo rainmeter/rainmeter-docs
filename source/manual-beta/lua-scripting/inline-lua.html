@@ -82,7 +82,7 @@ DynamicVariables=1
 
 <p>Then we reference the function() in the Lua script file that we want to call. In this case it is a function called <code>GetWelcome()</code>, which requires a 'string' parameter.</p>
 
-<p>We want to use the value of our [MeasureGetUserName] measure as the 'string' parameter to the Lua function, so we use the Nested Variables syntax to pass the value of that measure to the Lua as a 'string', with the [SectionVariable] <code>('[&MeasureGetUserName]')</code>. Then we end the initial section variable, our inline Lua, with a <code>]</code> square bracket.</p>
+<p>We want to use the value of our [MeasureGetUserName] measure as the 'string' parameter to the Lua function, so we use the Nested Variables syntax to pass the value of that measure to the Lua as a 'string', with the section variable <code>('[&MeasureGetUserName]')</code>. Then we end the initial section variable, our inline Lua, with a <code>]</code> square bracket.</p>
 
 <p>SimpleLua.lua:</p>
 
