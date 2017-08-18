@@ -24,7 +24,7 @@ function SomeFunction(arg1, arg2)
 end
 ```
 
-<h2>Nested variables</h2>
+<h2  id="NestedVariables">Nested variables</h2>
 
 <p>It must be remembered that the entire inline Lua functionality is contained within a [SectionVariable]. This means that any #Variables# or other measure [SectionVariable] you use in the parameters to the Lua function will cause "nesting" of variables within variables. The standard way of expressing #VariableName# and / or [MeasureName] in Rainmeter cannot be "nested", and won't work.</p>
 
@@ -38,19 +38,23 @@ end
 
 <p>In general, anything useful that you do with this functionality is going to entail passing variables of one form or another to the Lua function, and just always using the Nested Variables syntax with any inline Lua will save a lot of frustration and confusion.</p>
 
-<h2>Using inline Lua</h2>
+<h2 id="UsingInlineLua">Using inline Lua</h2>
 
 <p>The syntax of an inline Lua section variable is:</code>
 
 <p><code>[&ScriptMeasureName:LuaFunctionName(numberParameter, 'stringParameter', ...)]</code></p>
 
-<p>String values in parameters must be explicitly passed as strings to the Lua function, by enclosing them in 'single quotes'. Numbers may, and should, be passed without quotes, but any string passed without quoting will be seen by the Lua as a Lua variable name with a nil value, and will fail.</p>
+<p>Examples:<br/>
+<code>[&MeasureMyScript:GetCharaceterInString('Rainmeter', 5)]</code><br/>
+<code>[&MeasureMyScript:ConvertTemperature([&MeasureCurrentTemp], 'C')]</code></p>
+
+<p>String values in parameters must be explicitly passed as strings to the Lua function, by enclosing them in 'single quotes'. Numbers or formulas may, and should, be passed without quotes, but any string passed without quoting will be seen by the Lua as a Lua variable name with a nil value, and will fail.</p>
 
 <p>The inline Lua section variable will be replaced by a single number or string value, which must be passed back to Rainmeter using the <code>return</code> function in the Lua.</p>
 
 <p>The best way to explain this is to disassemble a few simple examples.</p>
 
-<h2>SimpleLua</h2>
+<h2 id="SimpleLua">SimpleLua</h2>
 
 <p>SimpleLua.ini:</p>
 ```txt
@@ -121,7 +125,7 @@ end
 
 <p>The Lua script uses the current hour to choose a greeting appropriate for the time of day, and constructs a string to return as the section variable value to the String meter in Rainmeter. That is done with the <code>return</code> function in Lua, as <code>return welcomeText</code>. What would be seen in the skin at nine in the morning is "Good Morning, RainmeterTeam".
 
-<h2>FlipCoin</h2>
+<h2 id="FlipCoin">FlipCoin</h2>
 
 <p>This example is a little more complex, showing how we can combine the use of an "action" in the Rainmeter skin, with inline Lua section variables, to get a result "on demand", and how we can use more than one function() in the same Lua script file.</p>
 
@@ -240,7 +244,7 @@ function GetCount(faceArg)
 end	
 ```
 
-<h2>TranslateDay</h2>
+<h2 id="TranslateDay">TranslateDay</h2>
 
 <p>This example adds a few more pieces, showing how we can use both [&SectionVariables] and [#Variables] (remember our Nesting Variables syntax!) embedded in the inline Lua, and how to pass multiple parameters to the Lua function, both number and 'string'.</p>
 
@@ -369,7 +373,7 @@ end
 
 <p>In these examples, we concentrated on using the inline Lua to set Text options on a String meter, as they are easy to understand and demonstrate. Remember though, that inline Lua can be used on any measure or meter option, and in any bang. Anywhere that a [SectionVariable] can be used. So this might be X or FontColor on a String meter, Drive on a FreeDiskSpace measure, some value in an ActionTimer measure, the uses are only limited by how clever you are.</p>
 
-<h2>Download Examples</h2>
+<h2 id="DownloadExamples">Download Examples</h2>
 
 <p>You can download the above examples, and a few others, as a .rmskin.</p>
 
