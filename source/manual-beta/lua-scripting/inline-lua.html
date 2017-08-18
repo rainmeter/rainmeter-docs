@@ -54,7 +54,7 @@ end
 
 </p>Lua tables, <code>myTable[index]</code>, may not be directly used in a parameter, nor returned to Rainmeter. You will need to extract a single value from the table as a variable, and return that.</p>
 
-<p>The Lua <code>nil</code> data type, indicating that a value doesn't exist, may not be used in a parameter, nor returned to Rainmeter.</p>
+<p>The Lua <code>nil</code> data type, indicating that a value doesn't exist, may not be used in a parameter, nor returned to Rainmeter. In some cases, the <code>boolean</code> value of <code>false</code> may be used to indicate NOT, in place of <code>nil</code>.</p>
 
 <p>The inline Lua section variable will be replaced by a single number or string value, which will be passed back to Rainmeter using the <code>return</code> function in the Lua.</p>
 
