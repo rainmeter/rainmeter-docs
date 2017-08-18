@@ -50,9 +50,11 @@ end
 
 <p>String values in parameters must be explicitly passed as strings to the Lua function, by enclosing them in 'single quotes'. Numbers or formulas may, and should, be passed without quotes, but any string passed without quoting will be seen by the Lua as a Lua variable name with a nil value, and will fail.</p>
 
-<p>The Lua boolean data types may be passed to the Lua function with <code>true</code> or <code>false</code>, and any <code>return</code> to Rainmeter of a boolean <code>true</code> will be 1 and <code>false</code> will be 0.</code>
+<p>The Lua boolean data types may be passed to the Lua function with <code>true</code> or <code>false</code>, and any <code>return</code> to Rainmeter of a boolean <code>true</code> will be 1 and <code>false</code> will be 0.</p>
 
-<p>The inline Lua section variable will be replaced by a single number or string value, which must be passed back to Rainmeter using the <code>return</code> function in the Lua.</p>
+</p>Lua tables, <code>myTable[index]</code>, may not be directly used in a parameter, or returned to Rainmeter. You will need to extract a single value from the table as a variable, and return that.</p>
+
+<p>The inline Lua section variable will be replaced by a single number or string value, which will be passed back to Rainmeter using the <code>return</code> function in the Lua.</p>
 
 <p>The best way to explain this is to disassemble a few simple examples.</p>
 
