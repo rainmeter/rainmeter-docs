@@ -15,7 +15,14 @@ title: 'Inline Lua'
 
 <p>As with any [SectionVariable], these will be resolved, in this case executed, when the skin is loaded, and on each update of the measure or meter containing them. As with any [SectionVariable], <code>DynamicVariables=1</code> must be used on any measure or meter containing them.</p>
 
-<p>Note that this is not designed to execute stand-alone Lua statements, but is used to execute a <code>function FunctionName() .. return ... end</code> code block in the Lua script file.</p>
+<p>Note that this is not designed to execute stand-alone Lua statements, but is used to execute a function() code block in the Lua script file that returns a value. For example:</p>
+
+```txt
+function SomeFunction(arg1, arg2)
+	outValue = arg1 + arg2
+	return outValue
+end
+```
 
 <h2>Nested variables</h2>
 
