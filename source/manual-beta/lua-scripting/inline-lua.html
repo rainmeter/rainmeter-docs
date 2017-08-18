@@ -56,7 +56,7 @@ end
 
 <p>The Lua <code>boolean</code> data type may be passed to the Lua function with <code>true</code> or <code>false</code>, and any <code>return</code> to Rainmeter of a boolean <code>true</code> will be 1 and <code>false</code> will be 0.</p>
 
-</p>Lua tables, <code>myTable[index]</code>, may not be directly used in a parameter, nor returned to Rainmeter. You will need to extract a single value from the table as a variable, and return that.</p>
+</p>Lua tables, <code>myTable[index]</code>, may not be directly used in a parameter to the Lua function, you will need to pass the table name and the index number or string as separate parameters and use them to access the table in Lua. However, the Lua may return a single value from a table with <code>return myTable[index]</code>. The <a href="#TranslateDay">TranlateDay</a> example below demonstrates this.</p>
 
 <p>The Lua <code>nil</code> data type, indicating that a value doesn't exist, may not be used in a parameter, nor returned to Rainmeter. In some cases, the <code>boolean</code> value of <code>false</code> may be used to indicate NOT, in place of <code>nil</code>.</p>
 
