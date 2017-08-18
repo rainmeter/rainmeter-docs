@@ -7,9 +7,9 @@ title: 'Inline Lua'
 
 <p>The Lua function will be executed, using the provided number or string parameters, and the single number or string value returned by the function() in the Lua script will replace the [Section Variable] where it is used.</p>
 
-<p>The way to consider this is that this is a simple [SectionVariable], and works just like any other [SectionVariable]. The only difference is that a [SectionVariable] is used to reference a number or string value returned by some measure in the skin, and this is used to reference a number or string value returned by some function() in the Lua hosted by a Script measure in the skin.<p>
+<p>The way to consider this is as a simple [SectionVariable], that works just like any other [SectionVariable]. The only difference is that a [SectionVariable] is used to reference a number or string value returned by some measure in the skin, and this is used to reference a number or string value returned by some function() in the Lua hosted by a Script measure in the skin.<p>
 
-<p>As the inline Lua can reference any function() within the .lua file, and can pass parameters specific to where the inline Lua is used, a single Script measure can host any number of functions, and those functions can return values specific to where you use them.</p>
+<p>As the inline Lua can reference any function() within the .lua file, and can pass parameters specific to where the inline Lua is used, a single Script measure, and single .lua file, can host any number of functions, and a single function can return context specific values.</p>
 
 <p>These may be used anywhere a [SectionVariable] is allowed. This can be in almost any options in <a href="!measures/">measures</a> or <a href="!meters/">meters</a>, and any <a href="!bangs/">bangs</a> in an <a href="!skins/option-types/#Action">action</a>.</p>
 
