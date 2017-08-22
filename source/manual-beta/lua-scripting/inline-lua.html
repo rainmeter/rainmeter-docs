@@ -81,6 +81,8 @@ end
 
 <p>In many cases, this can be resolved by defining and setting these variables in the global scope of the Lua script, outside of any function block. This global scope will be executed during the initialization phase of the skin, and the values will be immediately available. The global scope of Lua has not been much needed before in Rainmeter, but with inline Lua it can be valuable.</p>
 
+<p>Again, in both cases, this all will generally be transparent and of no consequence, since by the time the skin is first drawn, at the end of the first skin update, all will be well. This issue should be kept in mind however, if you find you are getting single initial error messages in the log.</p>
+
 <p>Inline Lua used in bangs in actions in the skin will only be executed when the action is executed, and so will not display this behavior. They simply can't be executed before the first update of the skin.</p>
 
 <h2 id="Examples">Examples</h2>
