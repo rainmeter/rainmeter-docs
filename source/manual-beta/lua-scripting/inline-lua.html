@@ -71,9 +71,21 @@ end
 
 <p>The Lua <code>nil</code> data type, indicating that a value doesn't exist, may not be used in a parameter, nor returned to Rainmeter. In some cases, the <code>boolean</code> value of <code>false</code> may be used to indicate NOT, in place of <code>nil</code>.</p>
 
+<p><b>Important Final Note</b></p>
+
+<p>Any inline Lua used in options in measures or meters are resolved, and thus executed, when the skin is first read and created on load or refresh. This is the same for all [SectionVariables] in Rainmeter.</p>
+
+<p>During this "initialization" phase of the skin, before the first actual "update" of the skin, the value of all measures will be set to an initial numeric value of <code>0</code>, and if applicable, a string value of "". This will normally be transparent, as before any "result" of the inline Lua is "used", before the skin is "drawn" for the first time, all measures and meters will have been updated and the correct and expected results will happen. However some care should be taken to ensure that a one-time initial value of 0 being passed to your Lua doesn't cause any logic or formula errors.</p>
+
+<p>In addition, the Initialize() function in a Lua script will only be executed during the first update cycle of the skin, this means that if you are defining and setting some default values for variables in Initialize() in your Lua, those values will not be visible before the fist skin update, which will be after any inline Lua in measures or meters are first run, and this may cause "nil" values to be seen and result in errors.</p>
+
+<p>In many cases, this can be resolved by defining and setting these variables in the global scope of the Lua script, outside of any function block. This global scope will be executed during the initialization phase of the skin, and the values will be immediately available. The global scope of Lua has not been much needed before in Rainmeter, but with inline Lua it can be valuable.</p>
+
+<p>Inline Lua used in bangs in actions in the skin will only be executed when the action is executed, and so will not display this behavior. They simply can't be executed before the first update of the skin.</p>
+
 <h2 id="Examples">Examples</h2>
 
-<p>The best way to explain this is to disassemble a few simple examples:</p>
+<p>The best way to explain inline Lua is to disassemble a few simple examples:</p>
 
 <h2 id="SimpleLua">SimpleLua</h2>
 
