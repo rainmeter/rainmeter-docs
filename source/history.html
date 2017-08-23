@@ -7,6 +7,17 @@ title: 'Version History'
 
 <h2 id="4.1">Rainmeter 4.1</h2>
 
+<h3 id="r2851">August 23, 2017 - Revision 2851</h3>
+<ul>
+<li><b>Added</b> Lua Scripting: Added inline Lua section variables, to support an inline return of a value from Lua with a function() call or by retrieving a variable. See <a href="https://docs.rainmeter.net/manual-beta/lua-scripting/inline-lua/">Inline Lua</a> for details.</li>
+<li><b>Added</b> Rainmeter: Added an alternative nesting variables syntax, to enable nesting variables, section variables, and mouse variables inside each other. See <a href="https://docs.rainmeter.net/manual-beta/variables/nesting-variables/">Nesting Variables</a> for details.</li>
+<li><b>Added</b> Net measures: Added a new <code>UseBits</code> option to return the value of NetIn / NetOut / NetTotal measures in bits rather than the default bytes.</li>
+<li><b>Changed</b> AudioLevel: Increased the size of the buffer for DeviceList from 512 to 4096.</li>
+<li><b>Changed</b> Languages: Updated the ChineseTraditional language.</li>
+<li><b>Fixed</b> NowPlaying: Corrected an issue where Spotify was not always updating the State to Playing.</li>
+
+</ul>
+
 <h3 id="r2838">July 28, 2017 - Revision 2838</h3>
 <ul>
 <li><b>Changed</b> Lua Scripting: Due to recent changes made in how each Lua script maintains its own distinct state in the Rainmeter environment, we have been able to add the debug, setfenv, getfenv and coroutine functionality back into the Lua package.</li>
