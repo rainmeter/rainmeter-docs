@@ -172,7 +172,7 @@ end
 
 <h2 id="FlipCoin">FlipCoin</h2>
 
-<p>This example is a little more complex, showing how we can combine the use of an "action" in the Rainmeter skin, with inline Lua section variables, to get a result "on demand", and how we can use more than one function() in the same Lua script file.</p>
+<p>This example is a little more complex, showing how we can combine the use of an "action" in the Rainmeter skin, with inline Lua section variables, to get a result "on demand", and how we can just retrieve variables with Inline Lua, instead of calling a function().</p>
 
 <p>With this one, we will just explain using ;comments in the Rainmeter code, and --comments in the Lua code, as it might be easier to follow the explanation in context.</p>
 
@@ -183,6 +183,10 @@ end
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
+
+; Demonstrates combining executing some Lua based on an "action"
+; in the skin, with some inline Lua section variables to get 
+; different parts of the result.
 
 [MeasureScript]
 Measure=Script
@@ -219,11 +223,30 @@ FontColor=255,255,255,255
 SolidColor=0,0,0,1
 AntiAlias=1
 ; Now we use an inline Lua section variable to ask for the current value,
-; 'Heads' or 'Tails' of the coin, using the GetCoin() function in the Lua.
+; 'Heads' or 'Tails' of the coin, by asking for the current value of the 
+; variable flipText in the Lua.
+
 ; This will get that value, which was created and changed by FlipCoin() and
-; is "global", and replace the inline Lua section variable in the Text
+; is global, and replace the inline Lua section variable in the Text
 ; option of the meter.
-Text=It's [&MeasureScript:GetCoin()]
+Text=It's [&MeasureScript:flipText]
+DynamicVariables=1
+
+[MeterTotal]
+Meter=String
+Group=Coins
+X=0
+Y=10R
+FontSize=17
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=0,0,0,1
+AntiAlias=1
+; When we flip the coin with our !CommandMeasure action, the Lua keeps track
+; of how many times the function has been called. We can then ask the Lua for the
+; current value of the variable totalFlips, and that value will replace the
+; inline Lua section variable in the Text option.
+Text=Total Flips: [&MeasureScript:totalFlips]
 DynamicVariables=1
 
 [MeterCount]
@@ -236,11 +259,11 @@ FontWeight=400
 FontColor=255,255,255,255
 SolidColor=0,0,0,1
 AntiAlias=1
-; And as an added bonus, when we flip the coin with our !CommandMeasure action, the
-; Lua also keeps track of how many times it was 0 or 1. We can then ask the
-; function GetCount() to return either the number of 'Heads' or 'Tails' and those
-; values will replace the inline Lua section variables in the Text option.
-Text=Heads: [&MeasureScript:GetCount('Heads')]  Tails: [&MeasureScript:GetCount('Tails')]
+; When we flip the coin with our !CommandMeasure action, the Lua also keeps track
+; of how many times it was 0 or 1. We can then ask the Lua for the current value
+; of either headsCount or tailsCount to return either the number of 'Heads' or 'Tails',
+; and those values will replace the inline Lua section variables in the Text option.
+Text=Heads: [&MeasureScript:headsCount]  Tails: [&MeasureScript:tailsCount]
 DynamicVariables=1
 ```
 
@@ -248,45 +271,35 @@ DynamicVariables=1
 
 ```txt
 math.randomseed(tonumber(tostring(os.time()):reverse():sub(1,6)))
-	
+
+-- Since the skin will be asking for these variables before the FlipCoin() function is ever
+-- called, we need to set these to some initial value in the global scope, so they are not
+-- initially nil, which would raise an error.
+
+flipText = 'None'
+headsCount = 0
+tailsCount = 0   
+totalFlips = 0
+   
 function FlipCoin()
-
-	flipNumber = math.random(0, 1)
-	
-	if flipNumber == 0 then
-		flipText = 'Heads'
-		headsCount = headsCount + 1
-	else
-		flipText = 'Tails'
-		tailsCount = tailsCount + 1
-	end
-
-end
-	
-function GetCoin()
-
-	-- If FlipCoin() hasn't been executed yet, flipText will be nil. We can't return nil to 
-	-- Rainmeter, so we need to set it to some string initially. 
-	flipText = flipText or 'None'
-	
-	return flipText
+   
+   flipNumber = math.random(0, 1)
+   
+   -- When we "flip the coin", the variables we want are set by the function, and
+   -- since they are not defined as local, they will be available in the global scope
+   -- when we ask for them with the inline Lua in the skin.
+   
+   if flipNumber == 0 then
+      flipText = 'Heads'
+      headsCount = headsCount + 1
+   else
+      flipText = 'Tails'
+      tailsCount = tailsCount + 1
+   end
+   
+   totalFlips = headsCount + tailsCount
 
 end
-
-function GetCount(faceArg)
-
-	-- If FlipCoin() hasn't been executed yet, the counts will be nil. We can't return nil to 
-	-- Rainmeter, so we need to set them to 0 initially. 
-	headsCount = headsCount or 0
-	tailsCount = tailsCount or 0
-	
-	if string.lower(faceArg) == 'heads' then
-		return headsCount
-	else
-		return tailsCount
-	end
-
-end	
 ```
 
 <h2 id="TranslateDay">TranslateDay</h2>
