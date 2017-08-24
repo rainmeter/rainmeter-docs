@@ -94,11 +94,18 @@ Bar=http://www.#Foo#.net/
 
 <h2 id="Escape">Escaping Variables</h2>
 
-<p>Rainmeter always attempts to replace <code>#Name#</code> or <code>[Name]</code> with a value, if "Name" refers to an existing variable, meter or measure. To prevent a variable reference from being replaced, place asterisks (<code>*</code>) inside the containers, as in:</p>
+<p>Rainmeter always attempts to replace <code>#Name#</code> or <code>[Name]</code> with a value, if "Name" refers to an existing variable, meter or measure. To prevent a variable reference from being replaced, escape the "Name" of the variable with asterisks (<code>*</code>).</p>
 
+<p>Normal variables<br/>
 <ul>
-	<li><code>#*Foo*#</code></li>
-	<li><code>[*Bar*]</code></li>
-</ul>
+	<li><code>#*VarName*#</code></li>
+	<li><code>[*MeasureName*]</code></li>
+</ul></p>
+
+<p>Nested variables<br/>
+<ul>
+	<li><code>[#*VarName*]</code></li>
+	<li><code>[&*MeasureName*]</code></li>
+</ul></p>
 
 <p>These are replaced with the literal strings<code>#Foo#</code> and <code>[Bar]</code> respectively. The <a href="!bangs/#SetOption">!SetOption</a> bang can use these escape characters to protect variable references when setting options on dynamic meters or measures.</p>

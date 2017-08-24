@@ -155,6 +155,18 @@ LeftMouseUpAction=!SetOption SomeMeter FontSize [*MeasureName*]
 ; The FontSize option for SomeMeter will be set to the string "[MeasureName]".
 ```
 
+<p>Normal variables<br/>
+<ul>
+	<li><code>#*VarName*#</code></li>
+	<li><code>[*MeasureName*]</code></li>
+</ul></p>
+
+<p>Nested variables<br/>
+<ul>
+	<li><code>[#*VarName*]</code></li>
+	<li><code>[&*MeasureName*]</code></li>
+</ul></p>
+
 <h2 id="RegExp">Regular expression options</h2>
 
 <p>These options use <a href="http://www.pcre.org/">Perl Compatible Regular Expressions</a> (PCRE) to match specific parts of a text string. Regular expressions are used when the structure of a piece of data is known, but the content is not.</p>
