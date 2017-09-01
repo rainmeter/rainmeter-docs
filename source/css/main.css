@@ -939,3 +939,15 @@ table#quickjump td {
 	cursor: pointer;
 	font-weight: bold;
 }
+
+/*
+** Various color settings
+*/
+
+.grayscale { 
+    color: #9E9E9E;
+  }
+  
+.yellowback {
+	 background-color: #FFFFE1;
+   }
