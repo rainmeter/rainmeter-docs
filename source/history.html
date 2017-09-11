@@ -7,6 +7,15 @@ title: 'Version History'
 
 <h2 id="4.1">Rainmeter 4.1</h2>
 
+<h3 id="r2873">September 11, 2017 - Revision 2873</h3>
+<ul>
+<li><b>Added</b> Variables: Added Character Reference Variables to allow plain-text coding of Unicode characters and symbols, as well as icons from specialized fonts like FontAwesome. See <a href="https://docs.rainmeter.net/manual-beta/variables/character-variables/">Character Reference Variables</a> for details.</li>
+<li><b>Changed</b> About Dialog: Major improvements to the Skins panel. Now shows both the "number" and "string" value of measures, and indicates when a measure is either disabled, paused, or both. See <a href="https://docs.rainmeter.net/manual-beta/user-interface/about/#SkinsTab">Skins Tab</a> for details.</li>
+<li><b>Changed</b> PCRE: Added UCP support to the regular expression library, to enable \X \P \p in expressions.</li>
+<li><b>Changed</b> Plugin API: Made some updates and corrections to the Rainmeter Plugin API. Plugin authors should re-based or download the current <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">Rainmeter Plugin SDK</a>.</li>
+<li><b>Fixed</b> NowPlaying: Corrected a long-standing problem with NowPlaying not reacting properly to changes in the state of "shuffle" and "repeat" in iTunes.</li>
+</ul>
+
 <h3 id="r2858">August 24, 2017 - Revision 2858</h3>
 <ul>
 <li><b>Fixed</b> Lua Scripting: Corrected an issue where in some cases retrieving a variable with Inline Lua could crash Rainmeter.</li>
