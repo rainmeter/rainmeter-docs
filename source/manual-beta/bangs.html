@@ -299,6 +299,13 @@ title: 'Bangs'
 		<li><code>Config</code> (optional)</li>
 		</ul>
 	</dd>
+	
+	<dt id="Delay"><code>!Delay</code> <small>Parameter: <code><em>milliseconds</em></code></small></dt>
+	<dd>
+		<p>Delays execution for a defined number of milliseconds when embedded in an <a href="!skins/option-types/#Action">action option</a>. The lowest possible value is 16 milliseconds.</p>
+		<p>Note that this is a very limited form of what is offered by the <a href="!plugins/actiontimer/">ActionTimer plugin</a>. There is no way to interrupt or cancel this short of a <code>!Refresh</code> of the skin, and nothing in the action itself can be dynamically changed during the execution of the action. It is simply a brute-force way to delay part of an action that has multiple components.</p>
+		<p><b>Example:</b> <code>[!ShowMeter SomeMeter][!Delay 5000][!HideMeter SomeMeter]</code></p>
+	</dd>	
 
 	<dt id="SkinMenu"><code>!SkinMenu</code> <small>Parameter: <code><em>Config</em></code></small></dt>
 	<dd>
