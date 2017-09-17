@@ -65,6 +65,10 @@ title: 'General Image Options'
 	<dt id="ImageRotate"><code>ImageRotate</code> <small>Default: <code>0.0</code></small></dt>
 	<dd>
 		<p>Rotates the image by the specified angle in degrees. Negative angles can be used for counter-clockwise rotation.</p>
+		
+		<p>ImageRotate is done before any resizing of the image with the <code>W</code> and <code>H</code> general meter options. If <code>W</code> and <code>H</code> are set, the new "rotated" image will be resized to fit.</p>
+
+		<p>If <code>W</code> and <code>H</code> are not defined, ImageRotate will change the size of the entire meter container to the size of the "rotated" image.</p>		
 	</dd>
 
 	<dt id="UseExifOrientation"><code>UseExifOrientation</code> <small>Default: <code>0</code></small></dt>
