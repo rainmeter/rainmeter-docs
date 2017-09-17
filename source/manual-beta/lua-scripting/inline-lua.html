@@ -83,7 +83,7 @@ end
 
 <p><b>Important Final Note</b></p>
 
-<p>Any inline Lua used in options in measures or meters are resolved, and thus executed, when the skin is first read and created on load or refresh. This is the same for all [SectionVariables] in Rainmeter.</p>
+<p>Any inline Lua used in options in measures or meters are resolved when the skin is first read and created on load or refresh. This is the same for all [SectionVariables] in Rainmeter.</p>
 
 <p>During this "initialization" phase of the skin, before the first actual "update" of the skin, the value of all measures will be set to an initial numeric value of <code>0</code>, and if applicable, a string value of "". This will normally be transparent, as before any "result" of the inline Lua is "used", before the skin is "drawn" for the first time, all measures and meters will have been updated and the correct and expected results will happen. However some care should be taken to ensure that a one-time initial value of 0 being passed to your Lua doesn't cause any logic or formula errors.</p>
 
