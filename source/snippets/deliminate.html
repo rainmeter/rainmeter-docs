@@ -14,8 +14,8 @@ function SplitString(inString, inDelimiter)
 
 	local outTable = {}
 
-	for capturedString in inString:gmatch('[^%' .. inDelimiter .. ']+') do
-		table.insert(outTable, capturedString)
+	for matchedString in inString:gmatch('[^%' .. inDelimiter .. ']+') do
+		table.insert(outTable, matchedString)
 	end
 
 	return outTable
@@ -35,17 +35,17 @@ function SplitString(inString, inPattern)
 	local outTable = {}
 	local findPattern = "(.-)" .. inPattern
 	local lastEnd = 1
-	local currentStart, currentEnd, capturedString = inString:find(findPattern, 1)
+	local currentStart, currentEnd, foundString = inString:find(findPattern, 1)
 	while currentStart do
-		if currentStart ~= 1 or capturedString ~= "" then
-			table.insert(outTable, capturedString)
+		if currentStart ~= 1 or foundString ~= "" then
+			table.insert(outTable, foundString)
 		end
 		lastEnd = currentEnd + 1
-		currentStart, currentEnd, capturedString = inString:find(findPattern, lastEnd)
+		currentStart, currentEnd, foundString = inString:find(findPattern, lastEnd)
 	end
 	if lastEnd <= #inString then
-		capturedString = inString:sub(lastEnd)
-		table.insert(outTable, capturedString)
+		foundString = inString:sub(lastEnd)
+		table.insert(outTable, foundString)
 	end
 
 	return outTable
