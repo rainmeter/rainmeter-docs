@@ -6,11 +6,11 @@ title: 'Deliminate'
 <h3>Method 1</h3>
 
 <p>This splits a given string into a table using a specified single character delimiter.</p>
-<p>Example usage: <code>splitTable=string.split('First part|Second part', '|')</code></p>
+<p>Example usage: <code>splitTable=SplitString('First part|Second part', '|')</code></p>
 
 <div class="noscroll">``` lua
-function string.split(inString, inDelimiter)
-	assert(inDelimiter:len() == 1, 'string.split: Delimiter may only be a single character')
+function SplitString(inString, inDelimiter)
+	assert(inDelimiter:len() == 1, 'SplitString: Delimiter may only be a single character')
 
 	local outTable = {}
 
@@ -27,10 +27,10 @@ end
 <h3>Method 2</h3>
 
 <p>This splits a given string into a table using a specified single or multiple character delimiter.</p>
-<p>Example usage: <code>splitTable=string.split('First part||Second part', '||')</code></p>
+<p>Example usage: <code>splitTable=SplitString('First part||Second part', '||')</code></p>
 
 <div class="noscroll">``` lua
-function string.split(inString, inPattern)
+function SplitString(inString, inPattern)
 
 	local outTable = {}
 	local findPattern = "(.-)" .. inPattern
