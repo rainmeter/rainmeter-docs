@@ -3,19 +3,53 @@ layout: snippets
 permalink: snippets/deliminate/
 title: 'Deliminate'
 ---
-<p>Deliminates a given string into a table using the specified delimiter.</p>
+<h3>Method 1</h3>
+
+<p>This splits a given string into a table using a specified single character delimiter.</p>
+<p>Example usage: <code>splitTable=string.split('First part|Second part', '|')</code></p>
 
 <div class="noscroll">``` lua
-function Delim(line, delimiter) -- Separate String by single character delimiter
-	assert(delimiter:len() == 1, 'Delim: Delimiter may only be a single character')
+function string.split(inString, inDelimiter)
+	assert(inDelimiter:len() == 1, 'string.split: Delimiter may only be a single character')
 
-	local tbl = {}
+	local outTable = {}
 
-	for word in line:gmatch('[^%' .. delimiter .. ']+') do
-		table.insert(tbl, word)
+	for capturedString in inString:gmatch('[^%' .. inDelimiter .. ']+') do
+		table.insert(outTable, capturedString)
 	end
 
-	return tbl
+	return outTable
+	
+end
+```
+</div>
+
+<h3>Method 2</h3>
+
+<p>This splits a given string into a table using a specified single or multiple character delimiter.</p>
+<p>Example usage: <code>splitTable=string.split('First part||Second part', '||')</code></p>
+
+<div class="noscroll">``` lua
+function string.split(inString, inPattern)
+
+	local outTable = {}
+	local findPattern = "(.-)" .. inPattern
+	local lastEnd = 1
+	local currentStart, currentEnd, capturedString = inString:find(findPattern, 1)
+	while currentStart do
+		if currentStart ~= 1 or capturedString ~= "" then
+			table.insert(outTable, capturedString)
+		end
+		lastEnd = currentEnd + 1
+		currentStart, currentEnd, capturedString = inString:find(findPattern, lastEnd)
+	end
+	if lastEnd <= #inString then
+		capturedString = inString:sub(lastEnd)
+		table.insert(outTable, capturedString)
+	end
+
+	return outTable
+
 end
 ```
 </div>
