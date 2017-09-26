@@ -55,7 +55,7 @@ set CERTKEY=certpassword
 <p>Anyone can create and distribute <a href="/manual/plugins/#Custom">custom plugins</a> for Rainmeter.</p>
 
 <p><b>Note:</b> The Rainmeter Skin Installer program, which is used by end-users to install the skins containing your plugin, will not allow the same or older version of the plugin to overwrite a newer version. The means that it is critically important that every release of your plugin must have the "File version" number incremented. If you don't do this, your plugin will not be distributed.</p>
- 
+
 <p>The only software you will need is <b>Microsoft Visual Studio 2017</b> or the free <b>Microsoft Visual Community</b> which can be obtained at <a href="http://www.visualstudio.com/downloads/download-visual-studio-vs">Download Visual Studio</a>. Be sure to download and apply any Visual Studio Updates when prompted.</p>
 
 <p>Then you will want to download the <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">Rainmeter Plugin SDK</a> to a folder on your PC. The SDK contains the API code needed to create plugins, as well as some starting and sample plugin code for C++ and C#:</p>
@@ -67,6 +67,8 @@ An empty plugin template you can use as a starting point for your code.</li>
 An example plugin that returns the Windows system version to a skin.</li>
 <li><b>PluginParentChild</b><br/>
 An example plugin demonstrating how to do "parent-child" functions in your plugin.</li>
+<li><b>PluginSectionVariables</b><br/>
+An example plugin demonstrating how to implement functions to use as seciton variables in your plugin.</li>
 </ul>
 
 <p>To create a plugin, the simplest approach is to make a copy of and rename the PluginEmpty example folder and files.  Use GuidGen.exe from Visual Studio with <em>Format 4</em> to generate a new GUID  and add this and other appropriate changes to the .vcxproj or .csproj files. Open either <b>SDK-CPP.sln</b> (C++) or <b>SDK-CS.sln</b> (C#) in Visual Studio, add your new plugin project to the solution, develop your code in this template and build your plugin.  Be sure that you use the <em>Solution Configuration</em> and <em>Solution Platforms</em> fields and build both x32 and x64 architecture release versions of your plugin .dll before you distribute it.</p>
@@ -74,8 +76,8 @@ An example plugin demonstrating how to do "parent-child" functions in your plugi
 <h2 id="APIDocumentation">Plugin API Documentation</h2>
 
 <ul>
-<li><a href="https://github.com/rainmeter/rainmeter-plugin-sdk/wiki/C---plugin-API">Documentation for C++</a><br/><br/></li>
-<li><a href="https://github.com/rainmeter/rainmeter-plugin-sdk/wiki/C%23-plugin-API">Documentation for C#</a><br/><br/></li>
+<li>Documentation for C++ plugins can be found <a href="!Plugin/C++-Reference/">here</a> and the API <a href="!Plugin/C++-Reference/">here</a><br/><br/></li>
+<li>Documentation for C# plugins can be found <a href="!Plugin/CSharp-Reference/">here</a> and the API <a href="!Plugin/CSharp-Reference/">here</a><br/><br/></li>
 </ul>
 
 <h2 id="SendMessage">Using SendMessage with External Applications</h2>
