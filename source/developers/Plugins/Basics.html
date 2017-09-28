@@ -1,0 +1,46 @@
+---
+layout: developers
+permalink: developers/Plugin/Basics/
+title: 'Anatomy of a Plugin'
+---
+<p>Rainmeter's functionality can be expanded with the use of external plugins. Anyone with knowledge of C++ or C# can make a plugin for Rainmeter.</p>
+
+<h2 id="TheSkinWindow">Exported functions</h2>
+<div>Rainmeter plugins have a general list of functions that they must export and a few optional ones for additional functionality.<br>
+  <p>
+    <h3 id="Initialize"><i>Initialize</i></h3>
+    Called before anything on measures first load.<br>
+    Initialize your object you want to store in the data pointer here, as well as any other setup your plugin will need to do. You should also store the measure refernce here if you are going to make use of it outside Initialize or Reload.
+  </p>
+  <p>
+    <h3 id="Reload"><i>Reload</i></h3>
+    Called right after Initialize and on every update cycle of the measure if DynamicVariables=1<br>
+    Read any options from the measure in here and then doing any remaining setup that your plugin needed to do based on them.
+  </p>
+  <p>
+    <h3 id="Update"><i>Update</i></h3>
+    Called on every update cycle of the measure<br>
+    Return the value you want to use as the number value of the measure here. You should do anything that requires being run regularly here
+  </p>
+  <p>
+    <h3 id="GetString"><i>GetString</i> (Optional)</h3>
+    Called as the string value of the measure is used in any meters or measures<br>
+    Return the value you want to use as the string value of the measure here. You should do absolutely no processing here as it is possible to have this called multiple times an update. Instead calculate any values in update and just return them here.
+  </p>
+  <p>
+    <h3 id="ExecuteBang"><i>ExecuteBang</i> (Optional)</h3>
+    Called whenever a !CommandMeasure bang is used<br>
+    Incredibly useful for interacting with your plugin. Media playback plugins are a good example of using this, so then a skin could have a button to pause the music on command.
+  </p>
+  <p>
+    <h3 id="SectionVariables"><i>SectionVariables</i> (Optional)</h3>
+    Called whenever a section variables is used ex. [&pluginMeasure:func(arg1, arg2)]<br>
+    While similar to ExecuteBang this has the added nicety of being able to return a value. Note that Rainmeter prevents these from being called before Initialization so data will be setup.
+  </p>
+  <p>
+    <h3 id="Finalize"><i>Finalize</i></h3>
+    Called whenever a measure is unloaded<br>
+    Deallocate anything here to prevent memory leaks. Note that on skin reload finalize and initalize will both be called right after eachother.
+  </p>
+  </ul>
+</div><br>

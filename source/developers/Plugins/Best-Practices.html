@@ -1,0 +1,55 @@
+---
+layout: developers
+permalink: developers/Plugin/Best-Practices/
+title: 'Plugin Best Practices'
+---
+<p>After you make Rainmeter plugins for long enough you start to learn a lot of things you could have done better in your earlier plugins. This should help serve as a guide so you have as little of those moments as possible</p>
+
+<p>
+  <h3 id="Multithreading">Multithreading and Rainmeter</h3>
+  <p>While Rainmeter skins are serial it is possible to have a multithreaded plugin, however you need should be careful of a few things.</p>
+  <ul>
+    <li>Measures in Rainmeter can be paused or disabled to prevent CPU usage, thus you may want to avoid doing heavy compute where possible when they are disabled/paused.</li>
+    <li>GetString gets new strings on demand, thus if you update what is returned in GetString it is possible to have GetString change before Update and have GetString ignore being paused or disabled</li>
+  </ul>
+</p>
+<p>
+  <h3 id="Marshalling">C# Plugins and Marshalling</h3>
+  <p>When making C# plugins you may notice references to IntPtr's and Marshal functions. Since Rainmeter is written is C++ variables are encoded different, but dont be intimidated by them.</p>
+  <p>An IntPtr is simply a pointer to C++ style data, which is why you must dealocate data in finalize as well as recast it in every function. Also since string are formatted differently in C++ you should pass your string to Marshal.StringToHGlobalUni before returning it in GetString or SectionVariables.</p>
+  <p>Also the MarshalAs in ExecuteBang and SectionVariable examples just makes sure that you get a C# style string or string array out of the box.</p>
+</p>
+<p>
+  <h3 id="CustomBangs">Adding custom bangs</h3>
+  <p>Many plugins add support for custom bangs so if you find that you have funcitonality that you want a button click to activate or just want to skins to avoid a lot of !SetOption bangs adding custom !CommandMeasureBangs may be useful.</p>
+  <p>However you should note that you are given the raw string from the command so you should be careful of odd capitalization and if you are going to add more complex commands you will need to parse the arguments yourself.</p>
+</p>
+<p>
+  <h3 id="SectionVariables">Section Variables</h3>
+  <p>One of the cool new features of Rainmeter is section variables. This allows Lua scripts and plugins to be called "inline", however unlike Lua scripts plugins must explicitly add support for it. While at first glance it may seem no difference than custom bangs they are way more powerful and you can return a value. Any value your return will replace the variable, and if you decide you dont want to replace it you can just return null.</p>
+  <p>Any function besides the default functions that you export can be used as a section variable, so you may add as many as you like. Make sure though that you document them so that people know how to use them and what arguments they need to give if any.</p>
+</p>
+<p>
+  <h3 id="DynamicVariables">Dynamic Variables</h3>
+  <p>A lot of skin creators can be overzealous about turning on DynamicVariables thus even if you think it is unneeded for your plugin you should try to optimize your skin for if someone does turn them on. Common optimzations include:</p>
+  <ul>
+    <li>Moving anything in Reload that does not require an option being read to Initialization.</li>
+    <li>Caching the last known values of options that would require more a lot of computation so you do not redo setup when no options have changed.</li>
+    <li>Adding custom events that can fire bangs, this will allow skin developers to avoid using Dynamic Variables on measures that rely on your plugin. You do this by reading an option you have named for the event and then you fire it when it is time to by passing that string to RmExecute.</li>
+  </ul>
+</p>
+<p>
+  <h3>Taking advantage of data argument</h3>
+  <p>You might notice that every single function you can implement that Rainmeter can call has a argument called data. This is for your convenience and will allow to save and change info in it for later.</p>
+  <p>In all of our examples you will find that we use a Measure structure/class and set data to an instance of one Initialize. So if you use this approach then you can set/change/use variables that are in that structure in any function and it will stay specific to that measure.</p>
+</p>
+<p>
+  <h3>Saving info in the Rainmeter.data file for later</h3>
+  <p>So you may have a plugin you want to make that has data that would persist across measure and skins and be saved for later. If you do want to do this we recommend storing that data in the Rainmeter.data file.</p>
+  <p>A link to the Rainmeter.data file can be retrieved by calling RmGetSettingsFile, make sure you are using a unique key that another plugin will not also use for any data you have in there. We then recommend using <a href=https://msdn.microsoft.com/en-us/library/windows/desktop/ms724353(v=vs.85).aspx>GetPrivateProfileString</a> and <a href=https://msdn.microsoft.com/en-us/library/windows/desktop/ms725501(v=vs.85).aspx>WritePrivateProfileString</a> for getting and setting data store there.</p>
+</p>
+<p>
+  <h3>Where to save the rm reference</h3>
+  <p>While you are given the reference to the measure (the pointer called rm) in both Initialize or Reload, if you need it later for logging purposes then you should save the one given in initialize as saving it in reload can cause unneeded overhead of DynamicVariables=1.</p>
+  <p>You should always save it for later when you have logging in outside of reload so that the logging statements you give will have a context.<p/>
+</p>
