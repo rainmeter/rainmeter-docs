@@ -1,59 +1,63 @@
 ---
 layout: developers
-permalink: developers/Plugin/C++-Reference/
-title: 'Making a C++ Plugin'
+permalink: developers/plugin/csharp/
+title: 'C# Plugin Overview'
 ---
 <p>When making a Rainmeter plugin there are a some basic functions that your code must export, as well as several optional ones you may want to export.</p>
 
 <p>A copy of the API with some examples can be found <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">here</a> as well as the basics of each function listed bellow:</p>
-<dt id="Initialize"><code>Initialize</code> <small><code>void Initialize(void** data, void* rm)</code></small></dt>
+<dt id="Initialize"><code>Initialize</code> <small><code>void Initialize(ref IntPtr data, IntPtr rm)</code></small></dt>
 <dd>
   <p>Called when a measure is created (i.e. when Rainmeter is launched or when a skin is refreshed). Initialize your measure object here. If you need to save your measure reference that should also be done here</p>
   <p>
     <i>data:</i> <code>You may allocate and store measure-specific data in here</code><br>
-    <i>rm:</i> <code>Internal pointer that is passed to most Rm functions, can be saved for later</code>
+    <i>rm:</i> <code>Internal pointer that should can be used to make a Rainmeter.API object. Used to call certain Rm functions, can be saved for later</code>
   </p>
   ```C
-  PLUGIN_EXPORT void Initialize(void** data, void* rm)
+  [DllExport]
+  public static void Initialize(ref IntPtr data, IntPtr rm)
   {
-    	Measure* measure = new Measure;
+      Measure measure = new Measure();
       //Do any init here, saving any values you want to into data for later
-    	*data = measure;
+      data = GCHandle.ToIntPtr(GCHandle.Alloc(measure));
+      Rainmeter.API api = (Rainmeter.API)rm;
   }
   ```
 </dd>
-<dt id="Finalize"><code>Finalize</code> <small><code>void Finalize(void* data)</code></small></dt>
+<dt id="Finalize"><code>Finalize</code> <small><code>void Finalize(IntPtr data)</code></small></dt>
 <dd>
   <p>Called by Rainmeter when a measure is about to be destroyed. Perform cleanup here.</p>
   <p>
     <i>data:</i> <code>Pointer to whatever data was set to in Initialize</code>
   </p>
   ```
-  PLUGIN_EXPORT void Finalize(void* data)
+  [DllExport]
+  public static void Finalize(IntPtr data)
   {
-    	Measure* measure = (Measure*)data;
+      Measure measure = (Measure)data;
       //Do any cleanup here
-    	delete measure;
+      GCHandle.FromIntPtr(data).Free();
   }
   ```
 </dd>
-<dt id="Reload"><code>Reload</code> <small><code>void Reload(void* data, void* rm, double* maxValue)</code></small></dt>
+<dt id="Reload"><code>Reload</code> <small><code>void Reload(IntPtr data, IntPtr rm, ref double maxValue)</code></small></dt>
 <dd>
   <p>Called by Rainmeter when the measure settings are to be read directly after Initialize. This function must be exported. If DynamicVariables=1 is set on the measure, Reload is called before every update cycle.</p>
   <p>
     <i>data:</i> <code>You may allocate and store measure-specific data in here</code><br>
-    <i>rm:</i> <code>Internal pointer that is passed to most Rm functions</code><br>
+    <i>rm:</i> <code>Internal pointer that should can be used to make a Rainmeter.API object. Used to call certain Rm functions</code><br>
     <i>maxValue:</i> <code>Whatever the maximum possible value of update will be for this measure. Used to for autoscaling. 0 will make it based on the highest value in update. Do not set maxValue unless necessary.</code>
   </p>
   ```C
-  PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
+  [DllExport]
+  public static void Reload(IntPtr data, IntPtr rm, ref double maxValue)
   {
-  	 Measure* measure = (Measure*)data;
-     //Read options here
+      Measure measure = (Measure)data;
+      //Read options here
   }
   ```
 </dd>
-<dt id="Update"><code>Update</code> <small><code>double Update(void* data)</code></small></dt>
+<dt id="Update"><code>Update</code> <small><code>double Update(IntPtr data)</code></small></dt>
 <dd>
   <p>Called by Rainmeter when a measure value is to be updated (i.e. once on each update cycle). Return the new value.</p>
   <p>
@@ -61,69 +65,79 @@ title: 'Making a C++ Plugin'
   </p>
   <p><i>returns:</i> <code>Number value for the measure, if no string value defined it will also be used for string values</code></p>
   ```C
-  PLUGIN_EXPORT double Update(void* data)
+  [DllExport]
+  public static double Update(IntPtr data)
   {
-    	Measure* measure = (Measure*)data;
+      Measure measure = (Measure)data;
       //Any processing that needs to happen often should happen here
-    	return 0.0; //return whatever you want to use as a number value for this measure
+      return 0.0; //return whatever value you want rainmeter to display here
   }
   ```
 </dd>
-<dt id="GetString"><code>GetString (Optional)</code> <small><code>LPCWSTR GetString(void* data)</code></small></dt>
+<dt id="GetString"><code>GetString (Optional)</code> <small><code>String GetString(IntPtr data)</code></small></dt>
 <dd>
   <p>Called on-demand (in other words, may be called multiple times or not at all during a update cycle). Return the string value for the measure here. Do not process data or consume CPU time in this function, instead do processing for string values in update.</br>
   <p>
     <i>data:</i> <code>Pointer to whatever data was set to in Initialize</code>
   </p>
-  <p><i>returns:</i> <code>String value for the measure, if null number value is used instead.</code></p>
+  <p><i>returns:</i> <code>String value for the measure, if null number value is used instead. Must be marshalled from a C# style string to a WCHAR*</code></p>
   ```C
-  PLUGIN_EXPORT LPCWSTR GetString(void* data)
+  [DllExport]
+  public static IntPtr GetString(IntPtr data)
   {
-    	Measure* measure = (Measure*)data;
+      Measure measure = (Measure)data;
       if(something)
       {
           //return a string value to use for this measure
-          return L"SomeValue";
+          //Notice how you must marshal it back and can not use a return MarshalAs
+          return Marshal.StringToHGlobalUni("SomeValue");
       }
-      //Return null when you only want a number value for this measure
-	     return nullptr;
+      //Return null whenyou only want a number value for this measure
+      return IntPtr.Zero;
   }
   ```
 </dd>
-<dt id="ExecuteBang"><code>ExecuteBang (Optional)</code> <small><code>void ExecuteBang(void* data, LPCWSTR args)</code></small></dt>
+<dt id="ExecuteBang"><code>ExecuteBang (Optional)</code> <small><code>void ExecuteBang(IntPtr data, string args)</code></small></dt>
 <dd>
   <p>Called by Rainmeter when a !CommandMeasure bang is sent to the measure. This can be used to change some data within the measure, or to interact with another application. .</p>
+  <p><b>Note:</b> args is a LPCWSTR in C++ an thus must be marshalled to a C# style string</p>
   <p>
     <i>data:</i> <code>Option name to be read from skin</code><br>
-    <i>args:</i> <code>Command string sent from Rainmeter using !CommandMeasure, all variables have been resolved. Removing MashalAs will allo</code>
+    <i>args:</i> <code>Command string sent from Rainmeter using !CommandMeasure, all variables have been resolved.</code>
   </p>
-  ```
-  PLUGIN_EXPORT void ExecuteBang(void* data, LPCWSTR args)
+  ```C
+  [DllExport]
+  public static void ExecuteBang(IntPtr data, [MarshalAs(UnmanagedType.LPWStr)]String args)
   {
-      Measure* measure = (Measure*)data;
+      Measure measure = (Measure)data;
+      //Do something based on args here
   }
   ```
 </dd>
-<dt id="SectionVariables"><code>Section Variable(s) (Optional)</code> <small><code> LPCWSTR func(void* data, const int argc, const WCHAR* argv[] argv)</code></small></dt>
+<dt id="SectionVariables"><code>Section Variable(s) (Optional)</code> <small><code>static string func(IntPtr data, int argc, string[] argv)</code></small></dt>
 <dd>
   <p>Called by Rainmeter when a section variable is used, ex. [&pluginMeasure:func(arg1, arg2)] where func is the function you want called, any non standard function you export can be used. Whatever value you return will replace that value</p>
+  <p><b>Note:</b> argv is a LPCWSTR in C++ and thus must be marshalled to a C# style string </p>
   <p>
     <i>data:</i> <code>Option name to be read from skin</code><br>
     <i>argc:</i> <code>Number of arguments passed to function</code><br>
     <i>argv:</i> <code>Array of arguments passed to function</code>
   </p>
-  <p><i>returns:</i> <code>LPCWSTR to replace section variable with, if null it will be unchanged.</code></p>
+  <p><i>returns:</i> <code>String to replace section variable with, if null it will be unchanged. Must be marshalled from a C# style string to a LPCWSTR</code></p>
   ```C
-  PLUGIN_EXPORT LPCWSTR SomeFunction(void* rm, const int argc, const WCHAR* argv[] argv)
+  [DllExport]
+  public static IntPtr ToLower(IntPtr data, int argc,
+      [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 2)] string[] argv)
   {
       Measure measure = (Measure)data;
       if(argc > 0)
       {
           //Do something and return a value to replace variable with
-          return doSomething(argv);
+          //Notice how you must marshal it back and can not use a return MarshalAs
+          return Marshal.StringToHGlobalUni(doSomething(argv));
       }
       //If null returned then dont replace variable
-      return nullptr;
+      return IntPtr.Zero;
   }
   ```
 </dd>
