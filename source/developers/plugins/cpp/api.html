@@ -11,10 +11,10 @@ title: 'C/C++ API Overview'
 		<p>Returns a string representation of an option.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
-				<li><code>option</code> : Option name to be read from the measure.
-				<li><code>defValue</code> : Default value for the option if it is not found or invalid.
-				<li><code>replaceMeasures</code> : If true, replaces section variables in the returned string. This argument is optional if using the C++ programming language, but is required if using the C programming language.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
+				<li><code>option</code> : Option name to be read from the measure.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found or invalid.</li>
+				<li><code>replaceMeasures</code> : If true, replaces section variables in the returned string. This argument is optional if using the C++ programming language, but is required if using the C programming language.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -36,9 +36,9 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 		<p>Retrieves the option defined in the skin file and converts a relative path to a absolute path.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
-				<li><code>option</code> : Option name to be read from the measure.
-				<li><code>defValue</code> : Default value for the option if it is not found or invalid.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
+				<li><code>option</code> : Option name to be read from the measure.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found or invalid.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -54,9 +54,9 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 		<p>Retrieves the option defined in the skin file and converts it to a double type.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
-				<li><code>option</code> : Option name to be read from the measure.
-				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
+				<li><code>option</code> : Option name to be read from the measure.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -72,9 +72,9 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 		<p>Retrieves the option defined in the skin file and converts it to an integer.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
-				<li><code>option</code> : Option name to be read from the measure.
-				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
+				<li><code>option</code> : Option name to be read from the measure.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -90,8 +90,8 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 		<p>Executes an <a href="manual/skins/option-types/#Action">action</a>.</p>
 		<p>
 			<ul>
-				<li><code>skin</code> : Pointer to current skin (see <a href="!plugin/cpp/api/#GetSkin">RmGetSkin</a>).
-				<li><code>command</code> : Action to execute.
+				<li><code>skin</code> : Pointer to current skin (see <a href="!plugin/cpp/api/#GetSkin">RmGetSkin</a>).</li>
+				<li><code>command</code> : Action to execute.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -112,8 +112,8 @@ PLUGIN_EXPORT double Update(void* data)
 		<p>Returns a string, replacing any variables (or section variables) within the inputted string.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
-				<li><code>str</code> : String with unresolved variables.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
+				<li><code>str</code> : String with unresolved variables.</li>
 			</ul>
 		</p><h3>Example:</h3>
 ```C
@@ -134,7 +134,7 @@ PLUGIN_EXPORT double Update(void* data)
 		<p>Retrieves the name of the measure.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
 			</ul>
 		</p><h3>Example:</h3>
 ```C
@@ -153,7 +153,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 		<p>Retrieves an internal pointer to the current skin.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -187,7 +187,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 		<p>Retrieves full path and name of the skin.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -207,7 +207,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 		<p>Returns a pointer to the handle of the skin window.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -227,9 +227,9 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 		<p>Sends a message to the Rainmeter log.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
-				<li><code>type</code> : Log level (<a href="https://github.com/rainmeter/rainmeter-plugin-sdk/blob/master/API/RainmeterAPI.h#L362-L368">LOG_ERROR, LOG_WARNING, LOG_NOITICE, or LOG_DEBUG</a>)
-				<li><code>message</code> : Message to be logged.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
+				<li><code>type</code> : Log level (<a href="https://github.com/rainmeter/rainmeter-plugin-sdk/blob/master/API/RainmeterAPI.h#L362-L368">LOG_ERROR, LOG_WARNING, LOG_NOITICE, or LOG_DEBUG</a>)</li>
+				<li><code>message</code> : Message to be logged.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -242,10 +242,10 @@ RmLog(rm, LOG_NOTICE, L"I am a 'notice' log message with a source");
 		<p>Sends a formatted message to the Rainmeter log.</p>
 		<p>
 			<ul>
-				<li><code>rm</code> : Pointer to the plugin measure.
-				<li><code>type</code> : Log level (<a href="https://github.com/rainmeter/rainmeter-plugin-sdk/blob/master/API/RainmeterAPI.h#L362-L368">LOG_ERROR, LOG_WARNING, LOG_NOITICE, or LOG_DEBUG</a>)
-				<li><code>format</code> : Formatted message to be logged, follows <a href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/format-specification-syntax-printf-and-wprintf-functions">printf syntax</a>.
-				<li><code>args</code> : Comma separated list of arguments referenced in the formatted message.
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
+				<li><code>type</code> : Log level (<a href="https://github.com/rainmeter/rainmeter-plugin-sdk/blob/master/API/RainmeterAPI.h#L362-L368">LOG_ERROR, LOG_WARNING, LOG_NOITICE, or LOG_DEBUG</a>)</li>
+				<li><code>format</code> : Formatted message to be logged, follows <a href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/format-specification-syntax-printf-and-wprintf-functions">printf syntax</a>.</li>
+				<li><code>args</code> : Comma separated list of arguments referenced in the formatted message.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
