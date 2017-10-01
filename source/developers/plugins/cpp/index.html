@@ -14,8 +14,8 @@ title: 'C/C++ Plugin Overview'
 		<p>Called when a measure is created (i.e. when a skin is loaded or when a skin is refreshed). Create your measure object here. Any other initialization or code that only needs to happen once should be placed here.</p>
 		<p>
 			<ul>
-				<li><code>data</code>: You may allocate and store measure specific data to this variable. The object you save here will be passed to other functions below.</li>
-				<li><code>rm</code>: Internal pointer that is passed to most <a href="!plugin/cpp/api/">API functions</a>. If needed, you may save this value for later use (like for <a href="!plugin/cpp/api/#Log">logging functions</a>).</li>
+				<li><code>data</code> : You may allocate and store measure specific data to this variable. The object you save here will be passed to other functions below.</li>
+				<li><code>rm</code> : Internal pointer that is passed to most <a href="!plugin/cpp/api/">API functions</a>. If needed, you may save this value for later use (like for <a href="!plugin/cpp/api/#Log">logging functions</a>).</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -33,9 +33,9 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 		<p>Called by Rainmeter when the measure settings are to be read directly after <a href="!plugin/cpp/#Intialize">Initialize</a>. If <code>DynamicVariables=1</code> is set on the measure, this function is called just before every call to the <a href="!plugin/cpp/#Update">Update</a> function during the update cycle.</p>
 		<p>
 			<ul>
-				<li><code>data</code>: Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
-				<li><code>rm</code>: Internal pointer that is passed to most <a href="!plugin/cpp/api/">API functions</a>.</li>
-				<li><code>maxValue</code>: Pointer to a double that can be assigned to the default maximum value for this measure. A value of <code>0.0</code> will make it based on the highest value returned from the <a href="!plugin/cpp/#Update">Update</a> function. Do not set maxValue unless necessary.</li>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
+				<li><code>rm</code> : Internal pointer that is passed to most <a href="!plugin/cpp/api/">API functions</a>.</li>
+				<li><code>maxValue</code> : Pointer to a double that can be assigned to the default maximum value for this measure. A value of <code>0.0</code> will make it based on the highest value returned from the <a href="!plugin/cpp/#Update">Update</a> function. Do not set maxValue unless necessary.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -53,7 +53,7 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 		<p>Called by Rainmeter when a measure value is to be updated (i.e. on each update cycle). The number returned represents the number value of the measure.</p>
 		<p>
 			<ul>
-				<li><code>data</code>: Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
 			</ul>
 		</p>
 		<p><b>Returns</b>: The number value of the measure (as a double). This value will be used as the string value of the measure if the <a href="!plugin/cpp/#GetString">GetString</a> function is not used or returns a nullptr.</p>
@@ -72,7 +72,7 @@ PLUGIN_EXPORT double Update(void* data)
 		<p>Called by Rainmeter when a measure is about to be destroyed. Perform cleanup here.</p>
 		<p>
 			<ul>
-				<li><code>data</code>: Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -94,7 +94,7 @@ PLUGIN_EXPORT void Finalize(void* data)
 		<p>Optional function that returns the string value of the measure. Since this function is called 'on-demand' and may be called multiple times during the update cycle, do <b>not</b> process any data or consume CPU in this function. Do as minimal processing as possible to return the desired string. It is recommended to do all processing during the <a href="!plugin/cpp/#Update">Update</a> function and set a string variable there and retrieve that string variable in this function.</p>
 		<p>
 			<ul>
-				<li><code>data</code>: Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
 			</ul>
 		</p>
 		<p><b>Returns</b>: The string value for the measure (as a LPCWSTR). If you want the number value (returned from <a href="!plugin/cpp/#Update">Update</a>) to be used as the measures value, return nullptr instead.</p>
@@ -119,8 +119,8 @@ PLUGIN_EXPORT LPCWSTR GetString(void* data)
 		<p>Optional function that will process a custom bang when called from <a href="/manual/bangs/#CommandMeasure">!CommandMeasure</a>. This can be used to change some data within the measure, or to interact with another application.</p>
 		<p>
 			<ul>
-				<li><code>data</code>: Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
-				<li><code>args</code>: String that contains any arguments to parse.</li>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
+				<li><code>args</code> : String that contains any arguments to parse.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
@@ -139,9 +139,9 @@ PLUGIN_EXPORT void ExecuteBang(void* data, LPCWSTR args)
 		<p>The skin will call this function (as a section variable) like this: <code>[PluginMeasure:func(someArg1, someArg2)]</code>.</p>
 		<p>
 			<ul>
-				<li><code>data</code>: Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
-				<li><code>argc</code>: Number of arguments passed to the function.</li>
-				<li><code>argv</code>: Arguments passed to the function as an array of strings.</li>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/cpp/#Initialize">Initialize</a>.</li>
+				<li><code>argc</code> : Number of arguments passed to the function.</li>
+				<li><code>argv</code> : Arguments passed to the function as an array of strings.</li>
 			</ul>
 		</p>
 		<p><b>Returns</b>: A string to replace the section variable with (as a LPCWSTR). If a nullptr is returned, the variable will not be replaced and remain unchanged.</p>
