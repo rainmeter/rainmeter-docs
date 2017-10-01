@@ -4,7 +4,6 @@ permalink: developers/plugin/cpp/api/
 title: 'C/C++ API Overview'
 ---
 <p>This is an overview of the functions available in C/C++ SDK for Rainmeter.</p>
-<p>Note that summaries are also provided in the API libraries</p>
 
 <dl>
 	<dt id="ReadString"><code>RmReadString</code> <small><code>LPCWSTR ReadString(void* rm, LPCWSTR option, LPCWSTR defValue, BOOL replaceMeasures)</code></small></dt>
@@ -18,6 +17,7 @@ title: 'C/C++ API Overview'
 				<li><code>replaceMeasures</code> : If true, replaces section variables in the returned string. This argument is optional if using the C++ programming language, but is required if using the C programming language.
 			</ul>
 		</p>
+		<h3>Example:</h3>
 ```C
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
@@ -41,6 +41,7 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 				<li><code>defValue</code> : Default value for the option if it is not found or invalid.
 			</ul>
 		</p>
+		<h3>Example:</h3>
 ```C
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
@@ -58,6 +59,7 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.
 			</ul>
 		</p>
+		<h3>Example:</h3>
 ```C
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
@@ -75,6 +77,7 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.
 			</ul>
 		</p>
+		<h3>Example:</h3>
 ```C
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
@@ -91,6 +94,7 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 				<li><code>command</code> : Action to execute.
 			</ul>
 		</p>
+		<h3>Example:</h3>
 ```C
 PLUGIN_EXPORT double Update(void* data)
 {
@@ -111,7 +115,7 @@ PLUGIN_EXPORT double Update(void* data)
 				<li><code>rm</code> : Pointer to the plugin measure.
 				<li><code>str</code> : String with unresolved variables.
 			</ul>
-		</p>
+		</p><h3>Example:</h3>
 ```C
 PLUGIN_EXPORT double Update(void* data)
 {
@@ -132,7 +136,7 @@ PLUGIN_EXPORT double Update(void* data)
 			<ul>
 				<li><code>rm</code> : Pointer to the plugin measure.
 			</ul>
-		</p>
+		</p><h3>Example:</h3>
 ```C
 PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
@@ -152,6 +156,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 				<li><code>rm</code> : Pointer to the plugin measure.
 			</ul>
 		</p>
+		<h3>Example:</h3>
 ```C
 PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
@@ -185,6 +190,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 				<li><code>rm</code> : Pointer to the plugin measure.
 			</ul>
 		</p>
+		<h3>Example:</h3>
 ```C
 PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
@@ -204,6 +210,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 				<li><code>rm</code> : Pointer to the plugin measure.
 			</ul>
 		</p>
+		<h3>Example:</h3>
 ```C
 PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
@@ -225,6 +232,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 				<li><code>message</code> : Message to be logged.
 			</ul>
 		</p>
+		<h3>Example:</h3>
 ```C
 RmLog(rm, LOG_NOTICE, L"I am a 'notice' log message with a source");
 ```
@@ -240,6 +248,7 @@ RmLog(rm, LOG_NOTICE, L"I am a 'notice' log message with a source");
 				<li><code>args</code> : Comma separated list of arguments referenced in the formatted message.
 			</ul>
 		</p>
+		<h3>Example:</h3>
 ```C
 std::wstring notice = L"notice";
 RmLogF(rm, LOG_NOTICE, L"I am a '%s' log message with a source", notice.c_str());
