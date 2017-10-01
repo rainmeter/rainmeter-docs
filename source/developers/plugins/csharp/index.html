@@ -5,139 +5,171 @@ title: 'C# Plugin Overview'
 ---
 <p>When making a Rainmeter plugin there are a some basic functions that your code must export, as well as several optional ones you may want to export.</p>
 
-<p>A copy of the API with some examples can be found <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">here</a> as well as the basics of each function listed bellow:</p>
-<dt id="Initialize"><code>Initialize</code> <small><code>void Initialize(ref IntPtr data, IntPtr rm)</code></small></dt>
-<dd>
-  <p>Called when a measure is created (i.e. when Rainmeter is launched or when a skin is refreshed). Initialize your measure object here. If you need to save your measure reference that should also be done here</p>
-  <p>
-    <i>data:</i> <code>You may allocate and store measure-specific data in here</code><br>
-    <i>rm:</i> <code>Internal pointer that should can be used to make a Rainmeter.API object. Used to call certain Rm functions, can be saved for later</code>
-  </p>
-  ```C
-  [DllExport]
-  public static void Initialize(ref IntPtr data, IntPtr rm)
-  {
-      Measure measure = new Measure();
-      //Do any init here, saving any values you want to into data for later
-      data = GCHandle.ToIntPtr(GCHandle.Alloc(measure));
-      Rainmeter.API api = (Rainmeter.API)rm;
-  }
-  ```
-</dd>
-<dt id="Finalize"><code>Finalize</code> <small><code>void Finalize(IntPtr data)</code></small></dt>
-<dd>
-  <p>Called by Rainmeter when a measure is about to be destroyed. Perform cleanup here.</p>
-  <p>
-    <i>data:</i> <code>Pointer to whatever data was set to in Initialize</code>
-  </p>
-  ```
-  [DllExport]
-  public static void Finalize(IntPtr data)
-  {
-      Measure measure = (Measure)data;
-      //Do any cleanup here
-      GCHandle.FromIntPtr(data).Free();
-  }
-  ```
-</dd>
-<dt id="Reload"><code>Reload</code> <small><code>void Reload(IntPtr data, IntPtr rm, ref double maxValue)</code></small></dt>
-<dd>
-  <p>Called by Rainmeter when the measure settings are to be read directly after Initialize. This function must be exported. If DynamicVariables=1 is set on the measure, Reload is called before every update cycle.</p>
-  <p>
-    <i>data:</i> <code>You may allocate and store measure-specific data in here</code><br>
-    <i>rm:</i> <code>Internal pointer that should can be used to make a Rainmeter.API object. Used to call certain Rm functions</code><br>
-    <i>maxValue:</i> <code>Whatever the maximum possible value of update will be for this measure. Used to for autoscaling. 0 will make it based on the highest value in update. Do not set maxValue unless necessary.</code>
-  </p>
-  ```C
-  [DllExport]
-  public static void Reload(IntPtr data, IntPtr rm, ref double maxValue)
-  {
-      Measure measure = (Measure)data;
-      //Read options here
-  }
-  ```
-</dd>
-<dt id="Update"><code>Update</code> <small><code>double Update(IntPtr data)</code></small></dt>
-<dd>
-  <p>Called by Rainmeter when a measure value is to be updated (i.e. once on each update cycle). Return the new value.</p>
-  <p>
-    <i>data:</i> <code>Pointer to whatever data was set to in Initialize</code>
-  </p>
-  <p><i>returns:</i> <code>Number value for the measure, if no string value defined it will also be used for string values</code></p>
-  ```C
-  [DllExport]
-  public static double Update(IntPtr data)
-  {
-      Measure measure = (Measure)data;
-      //Any processing that needs to happen often should happen here
-      return 0.0; //return whatever value you want rainmeter to display here
-  }
-  ```
-</dd>
-<dt id="GetString"><code>GetString (Optional)</code> <small><code>String GetString(IntPtr data)</code></small></dt>
-<dd>
-  <p>Called on-demand (in other words, may be called multiple times or not at all during a update cycle). Return the string value for the measure here. Do not process data or consume CPU time in this function, instead do processing for string values in update.</br>
-  <p>
-    <i>data:</i> <code>Pointer to whatever data was set to in Initialize</code>
-  </p>
-  <p><i>returns:</i> <code>String value for the measure, if null number value is used instead. Must be marshalled from a C# style string to a WCHAR*</code></p>
-  ```C
-  [DllExport]
-  public static IntPtr GetString(IntPtr data)
-  {
-      Measure measure = (Measure)data;
-      if(something)
-      {
-          //return a string value to use for this measure
-          //Notice how you must marshal it back and can not use a return MarshalAs
-          return Marshal.StringToHGlobalUni("SomeValue");
-      }
-      //Return null whenyou only want a number value for this measure
-      return IntPtr.Zero;
-  }
-  ```
-</dd>
-<dt id="ExecuteBang"><code>ExecuteBang (Optional)</code> <small><code>void ExecuteBang(IntPtr data, string args)</code></small></dt>
-<dd>
-  <p>Called by Rainmeter when a !CommandMeasure bang is sent to the measure. This can be used to change some data within the measure, or to interact with another application. .</p>
-  <p><b>Note:</b> args is a LPCWSTR in C++ an thus must be marshalled to a C# style string</p>
-  <p>
-    <i>data:</i> <code>Option name to be read from skin</code><br>
-    <i>args:</i> <code>Command string sent from Rainmeter using !CommandMeasure, all variables have been resolved.</code>
-  </p>
-  ```C
-  [DllExport]
-  public static void ExecuteBang(IntPtr data, [MarshalAs(UnmanagedType.LPWStr)]String args)
-  {
-      Measure measure = (Measure)data;
-      //Do something based on args here
-  }
-  ```
-</dd>
-<dt id="SectionVariables"><code>Section Variable(s) (Optional)</code> <small><code>static string func(IntPtr data, int argc, string[] argv)</code></small></dt>
-<dd>
-  <p>Called by Rainmeter when a section variable is used, ex. [&pluginMeasure:func(arg1, arg2)] where func is the function you want called, any non standard function you export can be used. Whatever value you return will replace that value</p>
-  <p><b>Note:</b> argv is a LPCWSTR in C++ and thus must be marshalled to a C# style string </p>
-  <p>
-    <i>data:</i> <code>Option name to be read from skin</code><br>
-    <i>argc:</i> <code>Number of arguments passed to function</code><br>
-    <i>argv:</i> <code>Array of arguments passed to function</code>
-  </p>
-  <p><i>returns:</i> <code>String to replace section variable with, if null it will be unchanged. Must be marshalled from a C# style string to a LPCWSTR</code></p>
-  ```C
-  [DllExport]
-  public static IntPtr ToLower(IntPtr data, int argc,
-      [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 2)] string[] argv)
-  {
-      Measure measure = (Measure)data;
-      if(argc > 0)
-      {
-          //Do something and return a value to replace variable with
-          //Notice how you must marshal it back and can not use a return MarshalAs
-          return Marshal.StringToHGlobalUni(doSomething(argv));
-      }
-      //If null returned then dont replace variable
-      return IntPtr.Zero;
-  }
-  ```
-</dd>
+<p>A copy of the API with some examples can be found <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">here</a> as well as the basics of each function listed below:</p>
+
+<h2 id="Required">Required functions</h2>
+<dl>
+	<dt id="Initialize"><code>Initialize</code> <small><code>void Initialize(ref IntPtr data, IntPtr rm)</code></small></dt>
+	<dd>
+		<p>Called when a measure is created (i.e. when a skin is loaded or when a skin is refreshed). Create your measure object here. Any other initialization or code that only needs to happen once should be placed here.</p>
+		<p>
+			<ul>
+				<li><code>data</code> : You may allocate and store measure specific data to this variable. The object you save here will be passed to other functions below.</li>
+				<li><code>rm</code> : Internal pointer that is passed to most <a href="!plugin/csharp/api/">API functions</a>. If needed, you may save this value for later use (like for <a href="!plugin/csharp/api/#Log">logging functions</a>).</li>
+			</ul>
+		</p>
+		<h3>Example:</h3>
+```cs
+[DllExport]
+public static void Initialize(ref IntPtr data, IntPtr rm)
+{
+	Measure measure = new Measure();
+	data = GCHandle.ToIntPtr(GCHandle.Alloc(measure));
+	Rainmeter.API api = (Rainmeter.API)rm;
+	// Do any initialization here, saving any values you want to into data for later
+}
+```
+	</dd>
+	<dt id="Reload"><code>Reload</code> <small><code>void Reload(IntPtr data, IntPtr rm, ref double maxValue)</code></small></dt>
+	<dd>
+		<p>Called by Rainmeter when the measure settings are to be read directly after <a href="!plugin/csharp/#Intialize">Initialize</a>. If <code>DynamicVariables=1</code> is set on the measure, this function is called just before every call to the <a href="!plugin/csharp/#Update">Update</a> function during the update cycle.</p>
+		<p>
+			<ul>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/csharp/#Initialize">Initialize</a>.</li>
+				<li><code>rm</code> : Internal pointer that is passed to most <a href="!plugin/csharp/api/">API functions</a>.</li>
+				<li><code>maxValue</code> : Pointer to a double that can be assigned to the default maximum value for this measure. A value of <code>0.0</code> will make it based on the highest value returned from the <a href="!plugin/csharp/#Update">Update</a> function. Do not set maxValue unless necessary.</li>
+			</ul>
+		</p>
+		<h3>Example:</h3>
+```cs
+[DllExport]
+public static void Reload(IntPtr data, IntPtr rm, ref double maxValue)
+{
+	Measure measure = (Measure)data;
+	// Read measures values from the measure (see API functions)
+
+	// The expected value returned in the Update function will not exceed 100.0
+	maxValue = 100.0;
+}
+```
+	</dd>
+	<dt id="Update"><code>Update</code> <small><code>double Update(IntPtr data)</code></small></dt>
+	<dd>
+		<p>Called by Rainmeter when a measure value is to be updated (i.e. on each update cycle). The number returned represents the number value of the measure.</p>
+		<p>
+			<ul>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/csharp/#Initialize">Initialize</a>.</li>
+			</ul>
+		</p>
+		<p><b>Returns</b>: The number value of the measure (as a double). This value will be used as the string value of the measure if the <a href="!plugin/csharp/#GetString">GetString</a> function is not used or returns a null.</p>
+		<h3>Example:</h3>
+```cs
+[DllExport]
+public static double Update(IntPtr data)
+{
+	Measure measure = (Measure)data;
+	//Any processing that needs to happen during the update cycle should happen here
+	return 0.0; //return whatever value you want rainmeter to display here
+}
+```
+	</dd>
+	<dt id="Finalize"><code>Finalize</code> <small><code>void Finalize(IntPtr data)</code></small></dt>
+	<dd>
+		<p>Called by Rainmeter when a measure is about to be destroyed. Perform cleanup here.</p>
+		<p>
+			<ul>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/csharp/#Initialize">Initialize</a>.</li>
+			</ul>
+		</p>
+		<h3>Example:</h3>
+```cs
+[DllExport]
+public static void Finalize(IntPtr data)
+{
+	Measure measure = (Measure)data;
+	// Do any cleanup here
+	GCHandle.FromIntPtr(data).Free();
+}
+```
+	</dd>
+</dl>
+
+<h2 id="Optional">Optional functions</h2>
+<dl>
+	<dt id="GetString"><code>GetString</code> <small><code>IntPtr GetString(IntPtr data)</code></small></dt>
+	<dd>
+		<p>Optional function that returns the string value of the measure. Since this function is called 'on-demand' and may be called multiple times during the update cycle, do <b>not</b> process any data or consume CPU in this function. Do as minimal processing as possible to return the desired string. It is recommended to do all processing during the <a href="!plugin/csharp/#Update">Update</a> function and set a string variable there and retrieve that string variable in this function. The return value must be marshalled from a C# style string to a C style string (WCHAR*).</p>
+		<p>
+			<ul>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/csharp/#Initialize">Initialize</a>.</li>
+			</ul>
+		</p>
+		<p><b>Returns</b>: The string value for the measure. If you want the number value (returned from <a href="!plugin/csharp/#Update">Update</a>) to be used as the measures value, return null instead. The return value must be marshalled.</p>
+		<h3>Example:</h3>
+```cs
+[DllExport]
+public static IntPtr GetString(IntPtr data)
+{
+	Measure measure = (Measure)data;
+	if (something)
+	{
+		// Return a string value to use for this measure (must be marshalled)
+		return Marshal.StringToHGlobalUni("SomeValue");
+	}
+
+	// Return null when you want to use the number
+	//  value for this measure (the value returned from the Update function)
+	return IntPtr.Zero;
+}
+```
+	</dd>
+	<dt id="ExecuteBang"><code>ExecuteBang</code> <small><code>void ExecuteBang(IntPtr data, string args)</code></small></dt>
+	<dd>
+		<p>Optional function that will process a custom bang when called from <a href="/manual/bangs/#CommandMeasure">!CommandMeasure</a>. This can be used to change some data within the measure, or to interact with another application.</p>
+		<p>
+			<ul>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/csharp/#Initialize">Initialize</a>.</li>
+				<li><code>args</code> : String that contains any arguments to parse. <code>args</code> is a LPCWSTR in C++ and must be marshalled to a C# style string.</li>
+			</ul>
+		</p>
+		<h3>Example:</h3>
+```cs
+[DllExport]
+public static void ExecuteBang(IntPtr data, [MarshalAs(UnmanagedType.LPWStr)] string args)
+{
+	Measure measure = (Measure)data;
+	// !CommandMeasure was used on this measure...any arguments will be in args
+}
+```
+	</dd>
+	<dt id="Custom"><code>Custom function</code> <small><code>string <em>func</em>(IntPtr data, const int argc, const string[] argv)</code></small></dt>
+	<dd>
+		<p>You can define a custom function to be used in a section variable. The name of the function is the name to be used in the skin file as a section variable. The function <u>must</u> be exported and the function prototype must be: <code>string <em>func</em>(IntPtr data, const int argc, const string[] argv)</code>.</p>
+		<p>The function name can be anything <b>except</b> the following: <code>Initialize</code>, <code>Reload</code>, <code>Update</code>, <code>Finialize</code>, <code>GetString</code>, <code>ExecuteBang</code>, <code>Update2</code>, <code>GetPluginAuthor</code>, and <code>GetPluginVersion</code>.</p>
+		<p>The skin will call this function (as a section variable) like this: <code>[PluginMeasure:func(someArg1, someArg2)]</code>.</p>
+		<p>
+			<ul>
+				<li><code>data</code> : Pointer to the data set in <a href="!plugin/csharp/#Initialize">Initialize</a>.</li>
+				<li><code>argc</code> : Number of arguments passed to the function.</li>
+				<li><code>argv</code> : Arguments passed to the function as an array of strings. <code>argv</code> is an array of strings (LPCWSTR) in C++ and must be marshalled to a C# style string.</li>
+			</ul>
+		</p>
+		<p><b>Returns</b>: A string to replace the section variable with. If a null is returned, the variable will not be replaced and remain unchanged. The return value must be marshalled.</p>
+		<h3>Example:</h3>
+```cs
+[DllExport]
+public static IntPtr ToLower(IntPtr data, const int argc,
+	[MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 2)] const string[] argv)
+{
+	Measure measure = (Measure)data;
+	if (argc > 0)
+	{
+		// Do something and return a value to replace variable with (must be marshalled)
+		return Marshal.StringToHGlobalUni(doSomething(argv));
+	}
+
+	return IntPtr.Zero;  // Do not replace the variable
+}
+```
+	</dd>
+</dl>
