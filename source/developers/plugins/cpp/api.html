@@ -6,204 +6,243 @@ title: 'C/C++ API Overview'
 <p>This is an overview of the functions available in C/C++ SDK for Rainmeter.</p>
 <p>Note that summaries are also provided in the API libraries</p>
 
-<dt id="ReadString"><code>RmReadString</code> <small><code>LPCWSTR ReadString(void* rm, LPCWSTR option, LPCWSTR defValue, BOOL replaceMeasures = TRUE)</code></small></dt>
-<dd>
-  <p>Returns a string representation of an option</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code><br>
-    <i>option:</i> <code>Option name to be read from skin</code><br>
-    <i>defValue:</i> <code>Default value for the option if it is not found or invalid</code><br>
-    <i>replaceMeasures:</i> <code>(Optional) If true, replaces section variables in the returned string</code>
-  </p>
-  ```C
-  PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
-  {
-      LPCWSTR value = RmReadString(rm, L"Value", L"DefaultValue");
-      LPCWSTR action = RmReadString(rm, L"Action", L"", FALSE);
-        // [MeasureNames] will be parsed/replaced when the action is executed with RmExecute
-  }
-  ```
-</dd>
-<dt id="ReadPath"><code>RmReadPath</code> <small><code>LPCWSTR RmReadPath(void* rm, LPCWSTR option, LPCWSTR defValue)</code></small></dt>
-<dd>
-  <p>Retrieves the option defined in the skin file and converts a relative path to a absolute path</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code><br>
-    <i>option:</i> <code>Option name to be read from skin</code><br>
-    <i>defValue:</i> <code>Default value for the option if it is not found or invalid</code>
-  </p>
-  ```C
-  PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
-  {
-      LPCWSTR path = RmReadPath(rm, L"MyPath", L"C:\\");
-  }
-  ```
-</dd>
-<dt id="ReadDouble"><code>RmReadDouble</code> <small><code>double RmReadDouble(void* rm, LPCWSTR option, double defValue)</code></small></dt>
-<dd>
-  <p>Retrieves the option defined in the skin file and converts it to a double</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code><br>
-    <i>option:</i> <code>Option name to be read from skin</code><br>
-    <i>defValue:</i> <code>Default value for the option if it is not found, invalid, or a formula could not be parsed</code>
-  </p>
-  ```C
-  PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
-  {
-      double value = RmReadDouble(rm, L"Value", 20.0);
-  }
-  ```
-</dd>
-<dt id="ReadInt"><code>RmReadInt</code> <small><code>int RmReadInt(void* rm, LPCWSTR option, int defValue)</code></small></dt>
-<dd>
-  <p>Retrieves the option defined in the skin file and converts it to an integer</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code><br>
-    <i>option:</i> <code>Option name to be read from skin</code><br>
-    <i>defValue:</i> <code>Default value for the option if it is not found, invalid, or a formula could not be parsed</code>
-  </p>
-  ```C
-  PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
-  {
-      int value = RmReadInt(rm, L"Value", 20);
-  }
-  ```
-</dd>
-<dt id="Execute"><code>RmExecute</code> <small><code>void RmExecute(void* skin, LPCWSTR command)</code></small></dt>
-<dd>
-  <p>Executes a command</p>
-  <p>
-    <i>skin:</i> <code>Pointer to current skin (See API.GetSkin)</code><br>
-    <i>command:</i> <code>Bang to execute</code>
-  </p>
-  ```C
-  PLUGIN_EXPORT double Update(void* data)
-  {
-      Measure* measure = (Measure*)data;
-      RmExecute(measure->skin, L"!SetVariable SomeVar 10");
-        // 'measure->skin' stored previously in the Initialize function
-      return 0.0;
-  }
-  ```
-</dd>
-<dt id="ReplaceVariables"><code>RmReplaceVariables</code> <small><code>LPCWSTR RmReplaceVariables(void* rm, LPCWSTR str)</code></small></dt>
-<dd>
-  <p>Returns a string, replacing any variables (or section variables) within the inputted string</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code><br>
-    <i>str:</i> <code>String with unresolved variables</code>
-  </p>
-  ```C
-  PLUGIN_EXPORT double Update(void* data)
-  {
-      Measure* measure = (Measure*)data;
-      LPCWSTR myVar = RmReplaceVariables(measure->rm, L"#MyVar#");
-        // 'measure->rm' stored previously in the Initialize function
-      if (_wcsicmp(myVar, L"SOMETHING") == 0) { return 1.0; }
-      return 0.0;
-  }
-  ```
-</dd>
-<dt id="GetMeasureName"><code>RmGetMeasureName</code> <small><code>LPCWSTR RmGetMeasureName(void* rm)</code></small></dt>
-<dd>
-  <p>Retrieves the name of the measure</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code>
-  </p>
-  ```C
-  PLUGIN_EXPORT void Initialize(void** data, void* rm)
-  {
-      Measure* measure = new Measure;
-      *data = measure;
-      measure->myName = RmGetMeasureName(rm);
-        // 'measure->myName' defined as a string (LPCWSTR) in class scope
-  }
-  ```
-</dd>
-<dt id="GetSkin"><code>RmGetSkin</code> <small><code>void* RmGetSkin(void* rm)</code></small></dt>
-<dd>
-  <p>Retrieves an internal pointer to the current skin</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code>
-  </p>
-  ```C
-  PLUGIN_EXPORT void Initialize(void** data, void* rm)
-  {
-      Measure* measure = new Measure;
-      *data = measure;
-      measure->mySkin = RmGetSkin(rm);
-        // 'measure->mySkin' defined as a 'void*' in class scope
-  }
-  ```
-</dd>
-<dt id="GetSettingsFile"><code>RmGetSettingsFile</code> <small><code>LPCWSTR GetSettingsFile()</code></small></dt>
-<dd>
-  <p>Retrieves a path to the Rainmeter data file (Rainmeter.data)</p>
-  ```C
-  PLUGIN_EXPORT void Initialize(void** data, void* rm)
-  {
-      Measure* measure = new Measure;
-      *data = measure;
-      if (rmDataFile == nullptr) { rmDataFile = RmGetSettingsFile(); }
-        // 'rmDataFile' defined as a string (LPCWSTR) in global scope
-  }
-  ```
-</dd>
-<dt id="GetSkinName"><code>RmGetSkinName</code> <small><code>LPCWSTR RmGetSkinName(void* rm)</code></small></dt>
-<dd>
-  <p>Retrieves full path and name of the skin</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code>
-  </p>
-  ```C
-  PLUGIN_EXPORT void Initialize(void** data, void* rm)
-  {
-      Measure* measure = new Measure;
-      *data = measure;
-      skinName = RmGetSkinName(rm); }
-        // 'measure->skinName' defined as a string (LPCWSTR) in class scope
-  }
-  ```
-</dd>
-<dt id="GetSkinWindow"><code>RmGetSkinWindow</code> <small><code>HWND RmGetSkinWindow(void* rm)</code></small></dt>
-<dd>
-  <p>Returns a pointer to the handle of the skin window (HWND)</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code>
-  </p>
-  ```C
-  PLUGIN_EXPORT void Initialize(void** data, void* rm)
-  {
-      Measure* measure = new Measure;
-      *data = measure;
-      measure->skinWindow = RmGetSkinWindow(rm); }
-        // 'measure->skinWindow' defined as HWND in class scope
-  }
-  ```
-</dd>
-<dt id="Log"><code>RmLog</code> <small><code>void RmLog(void* rm, int level, LPCWSTR message)</code></small></dt>
-<dd>
-  <p>Sends a message to the Rainmeter log with source</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code><br>
-    <i>type:</i> <code>Log level (API.LogType of Error, Warning, Notice, or Debug)</code><br>
-    <i>message:</i> <code>Message to be logged</code>
-  </p>
-  ```C
-  RmLog(rm, LOG_NOTICE, L"I am a 'notice' log message with a source");
-  ```
-</dd>
-<dt id="LogF"><code>RmLogF</code> <small><code>void RmLogF(void* rm, int level, LPCWSTR format, ...)</code></small></dt>
-<dd>
-  <p>Sends a formatted message to the Rainmeter log</p>
-  <p>
-    <i>rm:</i> <code>Pointer to the plugin measure</code><br>
-    <i>type:</i> <code>Log level (API.LogType of Error, Warning, Notice, or Debug)</code><br>
-    <i>format:</i> <code>Formatted message to be logged, follows printf syntax</code><br>
-    <i>args:</i> <code>Comma separated list of args referenced in the formatted message</code>
-  </p>
-  ```C
-  std::wstring notice = L"notice";
-  RmLogF(rm, LOG_NOTICE, L"I am a '%s' log message with a source", notice.c_str());
-  ```
-</dd>
+<dl>
+	<dt id="ReadString"><code>RmReadString</code> <small><code>LPCWSTR ReadString(void* rm, LPCWSTR option, LPCWSTR defValue, BOOL replaceMeasures)</code></small></dt>
+	<dd>
+		<p>Returns a string representation of an option.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>option</code> : Option name to be read from the measure.
+				<li><code>defValue</code> : Default value for the option if it is not found or invalid.
+				<li><code>replaceMeasures</code> : If true, replaces section variables in the returned string. This argument is optional if using the C++ programming language, but is required if using the C programming language.
+			</ul>
+		</p>
+```C
+PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
+{
+	// The following will replace regular variables and
+	//  section variables in the 'Value' option.
+	LPCWSTR value = RmReadString(rm, L"Value", L"DefaultValue");
+
+	// The following will only replace regular variables,
+	//  but NOT section variables like [MeasureNames].
+	LPCWSTR action = RmReadString(rm, L"Action", L"", FALSE);
+}
+```
+	</dd>
+	<dt id="ReadPath"><code>RmReadPath</code> <small><code>LPCWSTR RmReadPath(void* rm, LPCWSTR option, LPCWSTR defValue)</code></small></dt>
+	<dd>
+		<p>Retrieves the option defined in the skin file and converts a relative path to a absolute path.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>option</code> : Option name to be read from the measure.
+				<li><code>defValue</code> : Default value for the option if it is not found or invalid.
+			</ul>
+		</p>
+```C
+PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
+{
+	LPCWSTR path = RmReadPath(rm, L"MyPath", L"C:\\");
+}
+```
+	</dd>
+	<dt id="ReadDouble"><code>RmReadDouble</code> <small><code>double RmReadDouble(void* rm, LPCWSTR option, double defValue)</code></small></dt>
+	<dd>
+		<p>Retrieves the option defined in the skin file and converts it to a double type.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>option</code> : Option name to be read from the measure.
+				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.
+			</ul>
+		</p>
+```C
+PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
+{
+	double value = RmReadDouble(rm, L"Value", 20.0);
+}
+```
+	</dd>
+	<dt id="ReadInt"><code>RmReadInt</code> <small><code>int RmReadInt(void* rm, LPCWSTR option, int defValue)</code></small></dt>
+	<dd>
+		<p>Retrieves the option defined in the skin file and converts it to an integer.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>option</code> : Option name to be read from the measure.
+				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.
+			</ul>
+		</p>
+```C
+PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
+{
+	int value = RmReadInt(rm, L"Value", 20);
+}
+```
+	</dd>
+	<dt id="Execute"><code>RmExecute</code> <small><code>void RmExecute(void* skin, LPCWSTR command)</code></small></dt>
+	<dd>
+		<p>Executes an <a href="manual/skins/option-types/#Action">action</a>.</p>
+		<p>
+			<ul>
+				<li><code>skin</code> : Pointer to current skin (see <a href="!plugin/cpp/api/#GetSkin">RmGetSkin</a>).
+				<li><code>command</code> : Action to execute.
+			</ul>
+		</p>
+```C
+PLUGIN_EXPORT double Update(void* data)
+{
+	Measure* measure = (Measure*)data;
+
+	// 'measure->skin' stored previously in the Initialize function
+	RmExecute(measure->skin, L"[!SetVariable SomeVar 10]");
+
+	return 0.0;
+}
+```
+	</dd>
+	<dt id="ReplaceVariables"><code>RmReplaceVariables</code> <small><code>LPCWSTR RmReplaceVariables(void* rm, LPCWSTR str)</code></small></dt>
+	<dd>
+		<p>Returns a string, replacing any variables (or section variables) within the inputted string.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>str</code> : String with unresolved variables.
+			</ul>
+		</p>
+```C
+PLUGIN_EXPORT double Update(void* data)
+{
+	Measure* measure = (Measure*)data;
+
+	// 'measure->rm' stored previously in the Initialize function
+	LPCWSTR myVar = RmReplaceVariables(measure->rm, L"#MyVar#");
+
+	if (_wcsicmp(myVar, L"SOMETHING") == 0) { return 1.0; }
+	return 0.0;
+}
+```
+	</dd>
+	<dt id="GetMeasureName"><code>RmGetMeasureName</code> <small><code>LPCWSTR RmGetMeasureName(void* rm)</code></small></dt>
+	<dd>
+		<p>Retrieves the name of the measure.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+			</ul>
+		</p>
+```C
+PLUGIN_EXPORT void Initialize(void** data, void* rm)
+{
+	Measure* measure = new Measure;
+	*data = measure;
+
+	// 'measure->myName' defined as a string (LPCWSTR) in 'Measure' class scope
+	measure->myName = RmGetMeasureName(rm);
+}
+```
+	</dd>
+	<dt id="GetSkin"><code>RmGetSkin</code> <small><code>void* RmGetSkin(void* rm)</code></small></dt>
+	<dd>
+		<p>Retrieves an internal pointer to the current skin.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+			</ul>
+		</p>
+```C
+PLUGIN_EXPORT void Initialize(void** data, void* rm)
+{
+	Measure* measure = new Measure;
+	*data = measure;
+
+	// 'measure->mySkin' defined as a 'void*' in 'Measure' class scope
+	measure->mySkin = RmGetSkin(rm);
+}
+```
+	</dd>
+	<dt id="GetSettingsFile"><code>RmGetSettingsFile</code> <small><code>LPCWSTR GetSettingsFile()</code></small></dt>
+	<dd>
+		<p>Retrieves a path to the Rainmeter data file (Rainmeter.data).</p>
+```C
+PLUGIN_EXPORT void Initialize(void** data, void* rm)
+{
+	Measure* measure = new Measure;
+	*data = measure;
+
+	// 'rmDataFile' defined as a string (LPCWSTR) in global scope
+	if (rmDataFile == nullptr) { rmDataFile = RmGetSettingsFile(); }
+}
+```
+	</dd>
+	<dt id="GetSkinName"><code>RmGetSkinName</code> <small><code>LPCWSTR RmGetSkinName(void* rm)</code></small></dt>
+	<dd>
+		<p>Retrieves full path and name of the skin.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+			</ul>
+		</p>
+```C
+PLUGIN_EXPORT void Initialize(void** data, void* rm)
+{
+	Measure* measure = new Measure;
+	*data = measure;
+
+	// 'measure->skinName' defined as a string (LPCWSTR) in the 'Measure' class scope
+	skinName = RmGetSkinName(rm);
+}
+```
+	</dd>
+	<dt id="GetSkinWindow"><code>RmGetSkinWindow</code> <small><code>HWND RmGetSkinWindow(void* rm)</code></small></dt>
+	<dd>
+		<p>Returns a pointer to the handle of the skin window.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+			</ul>
+		</p>
+```C
+PLUGIN_EXPORT void Initialize(void** data, void* rm)
+{
+	Measure* measure = new Measure;
+	*data = measure;
+
+	// 'measure->skinWindow' defined as HWND in 'Measure' class scope
+	measure->skinWindow = RmGetSkinWindow(rm);
+}
+```
+	</dd>
+	<dt id="Log"><code>RmLog</code> <small><code>void RmLog(void* rm, int level, LPCWSTR message)</code></small></dt>
+	<dd>
+		<p>Sends a message to the Rainmeter log.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>type</code> : Log level (<a href="https://github.com/rainmeter/rainmeter-plugin-sdk/blob/master/API/RainmeterAPI.h#L362-L368">LOG_ERROR, LOG_WARNING, LOG_NOITICE, or LOG_DEBUG</a>)
+				<li><code>message</code> : Message to be logged.
+			</ul>
+		</p>
+```C
+RmLog(rm, LOG_NOTICE, L"I am a 'notice' log message with a source");
+```
+	</dd>
+	<dt id="LogF"><code>RmLogF</code> <small><code>void RmLogF(void* rm, int level, LPCWSTR format, ...)</code></small></dt>
+	<dd>
+		<p>Sends a formatted message to the Rainmeter log.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.
+				<li><code>type</code> : Log level (<a href="https://github.com/rainmeter/rainmeter-plugin-sdk/blob/master/API/RainmeterAPI.h#L362-L368">LOG_ERROR, LOG_WARNING, LOG_NOITICE, or LOG_DEBUG</a>)
+				<li><code>format</code> : Formatted message to be logged, follows <a href="https://docs.microsoft.com/en-us/cpp/c-runtime-library/format-specification-syntax-printf-and-wprintf-functions">printf syntax</a>.
+				<li><code>args</code> : Comma separated list of arguments referenced in the formatted message.
+			</ul>
+		</p>
+```C
+std::wstring notice = L"notice";
+RmLogF(rm, LOG_NOTICE, L"I am a '%s' log message with a source", notice.c_str());
+```
+	</dd>
+</dl>
