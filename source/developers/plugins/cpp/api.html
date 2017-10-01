@@ -31,21 +31,21 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 }
 ```
 	</dd>
-	<dt id="ReadPath"><code>RmReadPath</code> <small><code>LPCWSTR RmReadPath(void* rm, LPCWSTR option, LPCWSTR defValue)</code></small></dt>
+	<dt id="ReadInt"><code>RmReadInt</code> <small><code>int RmReadInt(void* rm, LPCWSTR option, int defValue)</code></small></dt>
 	<dd>
-		<p>Retrieves the option defined in the skin file and converts a relative path to a absolute path.</p>
+		<p>Retrieves the option defined in the skin file and converts it to an integer.</p>
 		<p>
 			<ul>
 				<li><code>rm</code> : Pointer to the plugin measure.</li>
 				<li><code>option</code> : Option name to be read from the measure.</li>
-				<li><code>defValue</code> : Default value for the option if it is not found or invalid.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
 ```C
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
-	LPCWSTR path = RmReadPath(rm, L"MyPath", L"C:\\");
+	int value = RmReadInt(rm, L"Value", 20);
 }
 ```
 	</dd>
@@ -67,21 +67,21 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 }
 ```
 	</dd>
-	<dt id="ReadInt"><code>RmReadInt</code> <small><code>int RmReadInt(void* rm, LPCWSTR option, int defValue)</code></small></dt>
+	<dt id="ReadPath"><code>RmReadPath</code> <small><code>LPCWSTR RmReadPath(void* rm, LPCWSTR option, LPCWSTR defValue)</code></small></dt>
 	<dd>
-		<p>Retrieves the option defined in the skin file and converts it to an integer.</p>
+		<p>Retrieves the option defined in the skin file and converts a relative path to a absolute path.</p>
 		<p>
 			<ul>
 				<li><code>rm</code> : Pointer to the plugin measure.</li>
 				<li><code>option</code> : Option name to be read from the measure.</li>
-				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found or invalid.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
 ```C
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
-	int value = RmReadInt(rm, L"Value", 20);
+	LPCWSTR path = RmReadPath(rm, L"MyPath", L"C:\\");
 }
 ```
 	</dd>
@@ -170,20 +170,6 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 }
 ```
 	</dd>
-	<dt id="GetSettingsFile"><code>RmGetSettingsFile</code> <small><code>LPCWSTR GetSettingsFile()</code></small></dt>
-	<dd>
-		<p>Retrieves a path to the Rainmeter data file (Rainmeter.data).</p>
-```C
-PLUGIN_EXPORT void Initialize(void** data, void* rm)
-{
-	Measure* measure = new Measure;
-	*data = measure;
-
-	// 'rmDataFile' defined as a string (LPCWSTR) in global scope
-	if (rmDataFile == nullptr) { rmDataFile = RmGetSettingsFile(); }
-}
-```
-	</dd>
 	<dt id="GetSkinName"><code>RmGetSkinName</code> <small><code>LPCWSTR RmGetSkinName(void* rm)</code></small></dt>
 	<dd>
 		<p>Retrieves full path and name of the skin.</p>
@@ -221,6 +207,20 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 
 	// 'measure->skinWindow' defined as HWND in 'Measure' class scope
 	measure->skinWindow = RmGetSkinWindow(rm);
+}
+```
+	</dd>
+	<dt id="GetSettingsFile"><code>RmGetSettingsFile</code> <small><code>LPCWSTR GetSettingsFile()</code></small></dt>
+	<dd>
+		<p>Retrieves a path to the Rainmeter data file (Rainmeter.data).</p>
+```C
+PLUGIN_EXPORT void Initialize(void** data, void* rm)
+{
+	Measure* measure = new Measure;
+	*data = measure;
+
+	// 'rmDataFile' defined as a string (LPCWSTR) in global scope
+	if (rmDataFile == nullptr) { rmDataFile = RmGetSettingsFile(); }
 }
 ```
 	</dd>

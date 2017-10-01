@@ -30,20 +30,20 @@ internal void Reload(Rainmeter.API rm, ref double maxValue)
 }
 ```
 	</dd>
-	<dt id="ReadPath"><code>ReadPath</code> <small><code>string ReadPath(string option, string defValue)</code></small></dt>
+	<dt id="ReadInt"><code>ReadInt</code> <small><code>int ReadInt(string option, int defValue)</code></small></dt>
 	<dd>
-		<p>Retrieves the option defined in the skin file and converts a relative path to a absolute path.</p>
+		<p>Retrieves the option defined in the skin file and converts it to an integer.</p>
 		<p>
 			<ul>
 				<li><code>option</code> : Option name to be read from the measure.</li>
-				<li><code>defValue</code> : Default value for the option if it is not found or invalid.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
 ```cs
 internal void Reload(Rainmeter.API rm, ref double maxValue)
 {
-	string path = rm.ReadPath("MyPath", "C:\\");
+	int value = rm.ReadInt("Value", 20);
 }
 ```
 	</dd>
@@ -64,20 +64,20 @@ internal void Reload(Rainmeter.API rm, ref double maxValue)
 }
 ```
 	</dd>
-	<dt id="ReadInt"><code>ReadInt</code> <small><code>int ReadInt(string option, int defValue)</code></small></dt>
+	<dt id="ReadPath"><code>ReadPath</code> <small><code>string ReadPath(string option, string defValue)</code></small></dt>
 	<dd>
-		<p>Retrieves the option defined in the skin file and converts it to an integer.</p>
+		<p>Retrieves the option defined in the skin file and converts a relative path to a absolute path.</p>
 		<p>
 			<ul>
 				<li><code>option</code> : Option name to be read from the measure.</li>
-				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found or invalid.</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
 ```cs
 internal void Reload(Rainmeter.API rm, ref double maxValue)
 {
-	int value = rm.ReadInt("Value", 20);
+	string path = rm.ReadPath("MyPath", "C:\\");
 }
 ```
 	</dd>
@@ -143,17 +143,6 @@ internal void Initialize(Rainmeter.API rm)
 }
 ```
 	</dd>
-	<dt id="GetSettingsFile"><code>GetSettingsFile</code> <small><code>string GetSettingsFile()</code></small></dt>
-	<dd>
-		<p>Retrieves a path to the Rainmeter data file (Rainmeter.data).</p>
-```cs
-internal void Initialize(Rainmeter.API rm)
-{
-	// declare 'rmDataFile' as a string in global scope
-	if (rmDataFile == null) { rmDataFile = GetSettingsFile(); }
-}
-```
-	</dd>
 	<dt id="GetSkinName"><code>GetSkinName</code> <small><code>string GetSkinName()</code></small></dt>
 	<dd>
 		<p>Retrieves full path and name of the skin.</p>
@@ -175,6 +164,17 @@ internal void Initialize(Rainmeter.API rm)
 {
 	// declare 'skinWindow' as a IntPtr in class scope
 	skinWindow = GetSkinWindow();
+}
+```
+	</dd>
+	<dt id="GetSettingsFile"><code>GetSettingsFile</code> <small><code>string GetSettingsFile()</code></small></dt>
+	<dd>
+		<p>Retrieves a path to the Rainmeter data file (Rainmeter.data).</p>
+```cs
+internal void Initialize(Rainmeter.API rm)
+{
+	// declare 'rmDataFile' as a string in global scope
+	if (rmDataFile == null) { rmDataFile = GetSettingsFile(); }
 }
 ```
 	</dd>
