@@ -5,7 +5,7 @@ title: 'C/C++ Plugin Overview'
 ---
 <p>When making a Rainmeter plugin there are a some basic functions that your code must export, as well as several optional ones you may want to export.</p>
 
-<p>A copy of the API with some examples can be found <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">here</a> as well as the basics of each function listed bellow:</p>
+<p>A copy of the API with some examples can be found <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">here</a> as well as the basics of each function listed below:</p>
 
 <h2 id="Required">Required functions</h2>
 <dl>
@@ -24,7 +24,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
 	Measure* measure = new Measure;
 	*data = measure;
-	//Do any initialization here, saving any values you want to into data for later
+	// Do any initialization here, saving any values you want to into data for later
 }
 ```
 	</dd>
@@ -44,7 +44,9 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
 	Measure* measure = (Measure*)data;
 	// Read measures values from the measure (see API functions)
-	*maxValue = 100.0;  // The expected value returned in the Update function will not exceed 100.0
+
+	// The expected value returned in the Update function will not exceed 100.0
+	*maxValue = 100.0;
 }
 ```
 	</dd>
@@ -62,8 +64,8 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 PLUGIN_EXPORT double Update(void* data)
 {
 	Measure* measure = (Measure*)data;
-	//Any processing that needs to happen during the update cycle should happen here
-	return 0.0;  //return the number value of the measure
+	// Any processing that needs to happen during the update cycle should happen here
+	return 0.0;  // Return the number value of the measure
 }
 ```
 	</dd>
@@ -76,11 +78,11 @@ PLUGIN_EXPORT double Update(void* data)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```
+```C
 PLUGIN_EXPORT void Finalize(void* data)
 {
 	Measure* measure = (Measure*)data;
-	//Do any cleanup here
+	// Do any cleanup here
 	delete measure;
 }
 ```
@@ -105,11 +107,12 @@ PLUGIN_EXPORT LPCWSTR GetString(void* data)
 	Measure* measure = (Measure*)data;
 	if (something)
 	{
-		//return a string value to use for this measure
+		// Return a string value to use for this measure
 		return L"SomeValue";
 	}
 
-	//Return nullptr when you want to use the number value for this measure (the value returned from the Update function)
+	//Return nullptr when you want to use the number
+	//  value for this measure (the value returned from the Update function)
 	return nullptr;
 }
 ```
@@ -124,7 +127,7 @@ PLUGIN_EXPORT LPCWSTR GetString(void* data)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```
+```C
 PLUGIN_EXPORT void ExecuteBang(void* data, LPCWSTR args)
 {
 	Measure* measure = (Measure*)data;
@@ -152,7 +155,7 @@ PLUGIN_EXPORT LPCWSTR SomeFunction(void* rm, const int argc, const WCHAR* argv[]
 	Measure measure = (Measure)data;
 	if (argc > 0)
 	{
-		//Do something and return a value to replace variable with
+		// Do something and return a value to replace variable with
 		return doSomething(argv);
 	}
 
