@@ -19,7 +19,7 @@ title: 'C/C++ Plugin Overview'
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
 	Measure* measure = new Measure;
@@ -39,7 +39,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
 	Measure* measure = (Measure*)data;
@@ -60,7 +60,7 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 		</p>
 		<p><b>Returns</b>: The number value of the measure (as a double). This value will be used as the string value of the measure if the <a href="!plugin/cpp/#GetString">GetString</a> function is not used or returns a nullptr.</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT double Update(void* data)
 {
 	Measure* measure = (Measure*)data;
@@ -78,7 +78,7 @@ PLUGIN_EXPORT double Update(void* data)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Finalize(void* data)
 {
 	Measure* measure = (Measure*)data;
@@ -101,7 +101,7 @@ PLUGIN_EXPORT void Finalize(void* data)
 		</p>
 		<p><b>Returns</b>: The string value for the measure (as a LPCWSTR). If you want the number value (returned from <a href="!plugin/cpp/#Update">Update</a>) to be used as the measures value, return nullptr instead.</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT LPCWSTR GetString(void* data)
 {
 	Measure* measure = (Measure*)data;
@@ -127,7 +127,7 @@ PLUGIN_EXPORT LPCWSTR GetString(void* data)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void ExecuteBang(void* data, LPCWSTR args)
 {
 	Measure* measure = (Measure*)data;
@@ -149,7 +149,7 @@ PLUGIN_EXPORT void ExecuteBang(void* data, LPCWSTR args)
 		</p>
 		<p><b>Returns</b>: A string to replace the section variable with (as a LPCWSTR). If a nullptr is returned, the variable will not be replaced and remain unchanged.</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT LPCWSTR SomeFunction(void* rm, const int argc, const WCHAR* argv[] argv)
 {
 	Measure measure = (Measure)data;

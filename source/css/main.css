@@ -763,7 +763,8 @@ pre .tex .formula {
 pre .title,
 pre .id,
 pre .coffeescript .params,
-pre .scss .preprocessor {
+pre .scss .preprocessor,
+pre .section {
 	color: #900;
 	font-weight: bold
 }

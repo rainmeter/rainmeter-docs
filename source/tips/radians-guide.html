@@ -39,7 +39,7 @@ title: 'Radians Guide'
 
 <p>We can use a CPU measure, which returns the amount of CPU usage as a percentage from 0% to 100%. Then we want to have a <a href="/manual-beta/meters/roundline/">Roundline</a> meter that displays the current value as filling a circle. We want the starting point at the top of the circle, and 100% defined as coming all the way back around to the top.</p>
 
-``` txt
+``` ini
 [MeasureCPU]
 Measure=CPU
 
@@ -62,7 +62,7 @@ AntiAlias=1
 
 <p>In another example, if you wanted to do a "VU Meter" type of approach, with the starting point on the left and 100% defined on the right, you would use:</p>
 
-``` txt
+``` ini
 StartAngle=(Rad(180))
 RotationAngle=(Rad(180))
 ```

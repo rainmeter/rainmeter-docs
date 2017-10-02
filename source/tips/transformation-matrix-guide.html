@@ -97,7 +97,7 @@ title: 'Transformation Matrix Guide'
 <p>That's right, it was hiding under your nose the whole time. It's as simple as that. If you make a=2, then the x value will double in size. If you make a=0.5 and d=0.5, the whole thing will shrink to half the size. One neat trick is to make the values negative. Doing that will flip the image as well. For example, if a=-1, then the image will be flipped along the vertical axis. The one that may not be entirely intuitive is the skewing. The simple way to understand it is to go back to our multiplication. Remember that the new x value is represented by this: x' = ax + cy + tx. You already know that this means x will be scaled by whatever a is, it will be moved by whatever tx is and... what's that "y" doing there? That's the skew. A skew will alter one dimension according to the other. So the farther down the shape is, the more x is shifted. It's still the same height, only each progressive point gets a little further away. In the end it looks like the shape is slanted. Or, in pictograms: </p>
 <pre>[ ] --> / /</pre>
 <p>At this point you can make a simple testing skin in Rainmeter to try things out. It doesn't have to be complicated. I suggest just something like this:</p>
-``` txt
+``` ini
 [MeterBG]
 Meter=IMAGE
 w=200
@@ -277,7 +277,7 @@ y'=1*y</pre>
 	<li>d = cos(angle)
 </ul>
 <p>If you look at this, you can see that all we need is the sine of an angle, the cosine of that angle and one more measure that flips the sign of the sine of that angle. That's three simple Calc measures. You'll also need two more: one for calculating tx and one for ty. We can't use static numbers since all of the other are going to be changing. Let's say we want to rotate a square meter that is 100x100 pixels, positioned at (60,60) and rotate it around its center. It could be an image, a block of text, a bar, whatever. For the purpose of this example, all it really needs to be is 100x100 and positioned at (60,60). First we would set up our five Calc measures like so:</p>
-``` txt
+``` ini
 [MeasureSinAngle]
 Measure=Calc
 Formula=SIN((Counter%360)/360*2*PI)

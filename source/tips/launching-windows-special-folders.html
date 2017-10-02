@@ -7,7 +7,7 @@ title: 'Launching Windows Special Folders'
 <p>Windows has many "special folders" like "My Computer" and "Recycle Bin" that are not part of the normal folder system you can specify with a "path" on an action in Rainmeter, or launch differently then they appear in Explorer. </p>
 <p>These folders can be accessed by using the Windows <code>Shell:</code> command and the CLSID identifier codes that Windows assigns to these folders in the Windows Registry. If you know the codes, you can launch these with ease.</p>
 
-``` plain
+``` txt
 Add Network Location							::{D4480A50-BA28-11d1-8E75-00C04FA31A86}
 Administrative Tools							::{D20EA4E1-3957-11d2-A40B-0C5020524153}
 Applications									::{4234d49b-0245-4df3-b780-3893943456e1}
@@ -123,7 +123,7 @@ Windows Update									::{36eef7db-88ad-4e81-ad49-0e313f0c35f8}
 Work Folders									::{ECDB0924-4208-451E-8EE0-373C0956DE16}
 ```
 
-``` txt
+``` ini
 [MeterMyComputer]
 Meter=IMAGE
 ImageName=MyComputer.png
@@ -137,7 +137,7 @@ LeftMouseDownAction=[Shell:::{20D04FE0-3AEA-1069-A2D8-08002B30309D}]
 
 <p>These commands open specific system folders:</p>
 
-``` plain
+``` txt
 shell:AccountPictures											Account Pictures
 shell:AddNewProgramsFolder										AddNewProgramsFolder
 shell:Administrative Tools										Administrative Tools
@@ -258,7 +258,7 @@ shell:UsersLibrariesFolder										UsersLibrariesFolder
 shell:VideosLibrary												Videos
 shell:Windows													Windows
 ```
-``` txt
+``` ini
 [MeterMyComputer]
 Meter=IMAGE
 ImageName=MyPictures.png

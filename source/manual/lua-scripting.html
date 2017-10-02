@@ -24,7 +24,7 @@ title: 'Lua Scripting'
 
 <p>Much like <a href="!measures/plugin/">plugin measures</a>, each script measure creates a separate <b>instance</b> of its script. This means that a skin can have any number of scripts loaded simultaneously&mdash;even from the same script file. (The order in which scripts are executed is determined by the <a href="!measures/#Order">measure order</a>.) "Global" variables are not shared between instances.</p>
 
-``` txt
+``` ini
 [MeasureName]
 Measure=Script
 ScriptFile=MyScript.lua
@@ -34,7 +34,7 @@ ScriptFile=MyScript.lua
 
 <p>In addition to <a href="!measures/general-options/">general measure options</a> and <a href="!measures/script/#ScriptFile">ScriptFile</a>, scripts also allow <a href="!measures/script/#UserDefined">user-defined options</a>. These options may have any name and value, and may be changed with <a href="!bangs/#SetOption">!SetOption</a>. The script can read and use its own option values using the <a href="#SelfObject">SELF object functions</a>. This allows the same script file to be used with different parameters depending on the context.</p>
 
-``` txt
+``` ini
 [MeasureName]
 Measure=Script
 ScriptFile=MyScript.lua

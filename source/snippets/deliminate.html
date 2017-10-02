@@ -8,7 +8,8 @@ title: 'Deliminate'
 <p>This splits a given string into a table using a specified single character delimiter.</p>
 <p>Example usage: <code>splitTable=SplitString('First part|Second part', '|')</code></p>
 
-<div class="noscroll">``` lua
+<div class="noscroll">
+``` lua
 function SplitString(inString, inDelimiter)
 	assert(inDelimiter:len() == 1, 'SplitString: Delimiter may only be a single character')
 
@@ -29,7 +30,8 @@ end
 <p>This splits a given string into a table using a specified single or multiple character delimiter.</p>
 <p>Example usage: <code>splitTable=SplitString('First part||Second part', '||')</code></p>
 
-<div class="noscroll">``` lua
+<div class="noscroll">
+``` lua
 function SplitString(inString, inPattern)
 
 	local outTable = {}

@@ -19,7 +19,7 @@ title: 'C# Plugin Overview'
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 [DllExport]
 public static void Initialize(ref IntPtr data, IntPtr rm)
 {
@@ -41,7 +41,7 @@ public static void Initialize(ref IntPtr data, IntPtr rm)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 [DllExport]
 public static void Reload(IntPtr data, IntPtr rm, ref double maxValue)
 {
@@ -63,7 +63,7 @@ public static void Reload(IntPtr data, IntPtr rm, ref double maxValue)
 		</p>
 		<p><b>Returns</b>: The number value of the measure (as a double). This value will be used as the string value of the measure if the <a href="!plugin/csharp/#GetString">GetString</a> function is not used or returns a null.</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 [DllExport]
 public static double Update(IntPtr data)
 {
@@ -82,7 +82,7 @@ public static double Update(IntPtr data)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 [DllExport]
 public static void Finalize(IntPtr data)
 {
@@ -106,7 +106,7 @@ public static void Finalize(IntPtr data)
 		</p>
 		<p><b>Returns</b>: The string value for the measure. If you want the number value (returned from <a href="!plugin/csharp/#Update">Update</a>) to be used as the measures value, return null instead. The return value must be marshalled.</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 [DllExport]
 public static IntPtr GetString(IntPtr data)
 {
@@ -133,7 +133,7 @@ public static IntPtr GetString(IntPtr data)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 [DllExport]
 public static void ExecuteBang(IntPtr data, [MarshalAs(UnmanagedType.LPWStr)] string args)
 {
@@ -156,7 +156,7 @@ public static void ExecuteBang(IntPtr data, [MarshalAs(UnmanagedType.LPWStr)] st
 		</p>
 		<p><b>Returns</b>: A string to replace the section variable with. If a null is returned, the variable will not be replaced and remain unchanged. The return value must be marshalled.</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 [DllExport]
 public static IntPtr ToLower(IntPtr data, const int argc,
 	[MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 2)] const string[] argv)

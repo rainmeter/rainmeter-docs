@@ -41,7 +41,7 @@ title: 'Shape meter'
 <p>The meter will consist of one or more Shape...Shape2...Shape<em>N</em> objects.</p>
 
 <p>You first define the type of <a href="#Shape">Shape</a>, the relative starting position in the meter, and required and optional shape definition parameters.</p>
-```txt
+``` ini
 [MeterShape]
 Meter=Shape
 Shape=Rectangle 0,0,100,50
@@ -49,7 +49,7 @@ Shape=Rectangle 0,0,100,50
 <p>In this example we are saying "Create a rectangle, starting at an X of 0 and a Y of 0 relative to the meter, with a width of 100, and a height of 50." This is the most basic example of the meter, and will create a 100 X 50 rectangle with a default white fill color and a default 1 pixel black drawing stroke.</p>
 
 <p>You can then add <a href="#AttributeModifiers">Attribute</a> and <a href="#TransformModifiers">Transform</a> modifiers to each shape, which can control things like Fill Color, StrokeWidth, Rotate, Scale, and much more.</p>
-```txt
+``` ini
 [MeterShape]
 Meter=Shape
 Shape=Rectangle 0,0,100,50 | Fill Color 0,0,0 | StrokeWidth 4 | Stroke Color 255,255,255
@@ -57,7 +57,7 @@ Shape=Rectangle 0,0,100,50 | Fill Color 0,0,0 | StrokeWidth 4 | Stroke Color 255
 <p>Modifiers are added on the Shape<em>N</em> option by defining them separated by the pipe <code>|</code> character. All modifiers are optional, and they can be in any order in the option, after the shape definition. This example adds "Use a solid black fill color in the shape, change the width of the drawing stroke to 4 pixels, and color the stroke white."</p>
 
 <p>Shapes in a meter can also be <a href="#Combine">Combined</a>, which will allow you to merge two or more separate shapes in a variety of ways.</p>
-```txt
+``` ini
 [MeterShapes]
 Meter=Shape
 Shape=Rectangle 4,4,110,110,55
@@ -67,7 +67,7 @@ Shape3=Combine Shape | Union Shape2
 
 <p>If you have more than one shape defined in the meter, you may want them to share some or all modifiers, rather than repeating them in each Shape<em>N</em> option. This is done with the <a href="#ExtendModifier">Extend</a> modifier. The way this works is that you use the keyword Extend, followed by one or more named identifiers. Then you add that named identifier as a separate option on the meter, and in it put any modifiers you want to share.</p>
 
-```txt
+``` ini
 [MeterShapes]
 Meter=Shape
 Shape=Rectangle 0,0,100,50 | Extend MySharedModifiers
@@ -88,7 +88,7 @@ MySharedModifiers=Fill Color 0,0,0,255 | StrokeWidth 4 | Stroke Color 255,255,25
 
 		<p>There can be from one to a reasonably unlimited number of shapes in a single Shape meter. Multiple shapes are <b>drawn in the numerical order of the Shape<em>N</em></b>, so in the case of overlap, higher numbered shapes will be drawn on top / in front of lower numbered shapes.</p>
 
-```txt
+``` ini
 [MeterShapes]
 Meter=Shape
 Shape=Rectangle 25,25,100,100 | Fill Color 106,159,212,255 | Rotate 45
@@ -271,7 +271,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					</ul>
 
 				<p><b>Examples:</b></p>
-```txt
+``` ini
 [MeterShape1]
 Meter=Shape
 X=1
@@ -548,7 +548,7 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 				<p>A special modifier that will allow you to move Attribute and / or Transform modifiers from the Shape<em>N</em> option to one or more named options in the meter. The intent of this is two-fold. First, to allow different shape to <b>share</b> modifiers without having to specify them repeatedly in each shape option. Second, to provide a way to <b>shorten</b> the overall length of the shape option line, by breaking out modifiers as desired to separate named options.</p>
 
 				<p><b>Example:</b></p>
-```txt
+``` ini
 [MeterShapes]
 Meter=Shape
 Shape=Rectangle 0,0,100,50 | Extend MySharedModifiers, MyRotateAndScale1
@@ -574,7 +574,7 @@ MyRotateAndScale2=Rotate 45 | Scale 2.0,1.5
 <p>Gradients <b>must</b> be defined in a separate named option, which you then reference in <a href="#Fill">Fill</a> or <a href="#Stroke">Stroke</a> modifiers on the shape. There are two kinds of gradients possible, LinearGradient and RadialGradient.</p>
 
 <p><b>Examples:</b></p>
-```txt
+``` ini
 [MeterShape]
 Meter=Shape
 ; Filling the shape with a gradient
@@ -591,7 +591,7 @@ MyStrokeGradient=270 | 0,0,255,255 ; 0.0 | 0,255,0,255 ; 0.5 | 255,0,0,255 ; 1.0
 		<p>This takes the form of the <b>Angle</b> for the gradient in degrees, a <b>|</b> pipe character, then a series of <b>Color codes</b>, a <b>;</b> semi-colon, and a <b>Percentage</b> from 0.0 to 1.0 to define the position of the color in the gradient. Each series of <b>Color ; Percentage</b> are separated by a <b>|</b> pipe character.</p>
 
 		<p><b>Example:</b></p>
-```txt
+``` ini
 [MeterShape]
 Meter=Shape
 Shape=Rectangle 1,1,101,101 | Fill LinearGradient MyFillGradient
@@ -628,7 +628,7 @@ MyFillGradient=180 | 255,0,0,255 ; 0.0 | 0,255,0,255 ; 0.5 | 0,0,255,255 ; 1.0
 		</p>
 
 		<p><b>Examples:</b></p>
-```txt
+``` ini
 [MeterShape]
 Meter=Shape
 Shape=Ellipse 50,50,50 |  | StrokeWidth 0 | Fill RadialGradient MyGradient1
@@ -665,7 +665,7 @@ MyGradient2=0,0,20,20 | 155,200,232,255 ; 0.0 | 6,46,75,255 ; 1.0
 <p>While the code here is for a simple skin that demonstrates various ways to manipulate the Rectangle shape type, the .rmskin in the Download button is a much more robust suite of skins demonstrating many of the aspects of the Shape meter.</p>
 
 <a href="!examples/ExamplesMeterShape.rmskin" class="download"></a>
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1

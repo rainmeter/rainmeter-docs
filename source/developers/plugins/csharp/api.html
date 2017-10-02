@@ -17,7 +17,7 @@ title: 'C# API Overview'
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 internal void Reload(Rainmeter.API rm, ref double maxValue)
 {
 	// The following will replace regular variables and
@@ -40,7 +40,7 @@ internal void Reload(Rainmeter.API rm, ref double maxValue)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 internal void Reload(Rainmeter.API rm, ref double maxValue)
 {
 	int value = rm.ReadInt("Value", 20);
@@ -57,7 +57,7 @@ internal void Reload(Rainmeter.API rm, ref double maxValue)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 internal void Reload(Rainmeter.API rm, ref double maxValue)
 {
 	double value = rm.ReadDouble("Value", 20.0);
@@ -74,7 +74,7 @@ internal void Reload(Rainmeter.API rm, ref double maxValue)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 internal void Reload(Rainmeter.API rm, ref double maxValue)
 {
 	string path = rm.ReadPath("MyPath", "C:\\");
@@ -91,7 +91,7 @@ internal void Reload(Rainmeter.API rm, ref double maxValue)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 internal double Update(IntPtr data)
 {
 	Measure measure = (Measure)data;
@@ -111,7 +111,7 @@ internal double Update(IntPtr data)
 				<li><code>str</code> : String with unresolved variables.</li>
 			</ul>
 		</p><h3>Example:</h3>
-```cs
+``` cs
 internal double Update()
 {
 	string myVar = ReplaceVariables("#MyVar#").ToUpperInvariant();
@@ -125,7 +125,7 @@ internal double Update()
 	<dd>
 		<p>Retrieves the name of the measure.</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 internal void Initialize(Rainmeter.API rm)
 {
 	myName = GetMeasureName();  // declare 'myName' as a string in class scope
@@ -136,7 +136,7 @@ internal void Initialize(Rainmeter.API rm)
 	<dd>
 		<p>Retrieves an internal pointer to the current skin.</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 internal void Initialize(Rainmeter.API rm)
 {
 	mySkin = GetSkin();  // declare 'mySkin' as a IntPtr in class scope
@@ -147,7 +147,7 @@ internal void Initialize(Rainmeter.API rm)
 	<dd>
 		<p>Retrieves full path and name of the skin.</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 internal void Initialize(Rainmeter.API rm)
 {
 	// declare 'skinName' as a string in class scope
@@ -159,7 +159,7 @@ internal void Initialize(Rainmeter.API rm)
 	<dd>
 		<p>Returns a pointer to the handle (HWND) of the skin window.</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 internal void Initialize(Rainmeter.API rm)
 {
 	// declare 'skinWindow' as a IntPtr in class scope
@@ -170,7 +170,7 @@ internal void Initialize(Rainmeter.API rm)
 	<dt id="GetSettingsFile"><code>GetSettingsFile</code> <small><code>string GetSettingsFile()</code></small></dt>
 	<dd>
 		<p>Retrieves a path to the Rainmeter data file (Rainmeter.data).</p>
-```cs
+``` cs
 internal void Initialize(Rainmeter.API rm)
 {
 	// declare 'rmDataFile' as a string in global scope
@@ -188,7 +188,7 @@ internal void Initialize(Rainmeter.API rm)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 API.Log(API.LogType.Notice, "I am a 'notice' log message with a source");
 ```
 	</dd>
@@ -203,7 +203,7 @@ API.Log(API.LogType.Notice, "I am a 'notice' log message with a source");
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```cs
+``` cs
 string notice = "notice";
 API.LogF(API.LogType.Notice, "I am a '{0}' log message with a source", notice);
 ```

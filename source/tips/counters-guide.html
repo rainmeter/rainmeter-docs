@@ -19,7 +19,7 @@ title: 'Counters Guide'
 
 <h2>Creating Counters</h2>
 <p>First we're going to create some variables that we are going to use later on.</p>
-``` txt
+``` ini
 [Variables]
 MaxNumber=30
 Pause=1
@@ -27,7 +27,7 @@ Reset=1
 ```
 
 <p>Now we need to create the counter.</p>
-``` txt
+``` ini
 [cCounter]
 Measure=Calc
 Formula=cCounter+1
@@ -42,7 +42,7 @@ Formula=cCounter+1
 <h3>Making the counter reset at a given value</h3>
 
 <p>Having it reset after a given value is easy and is accomplished the same way as if you were using the Counter variable.</p>
-``` txt
+``` ini
 [cCounter]
 Measure=Calc
 Formula=(cCounter+1)%(#MaxNumber#+1)
@@ -51,7 +51,7 @@ Formula=(cCounter+1)%(#MaxNumber#+1)
 <p>This will have the counter reset to zero after it hits 30, which is what we have MaxNumber set to. We have the measure add 1 to MaxNumber so that it will reset after the value else it will reset at that value. This is due to the fact that including the number 0 counting to 30 is actually 31 numbers.</p>
 
 <p>If you want your counter to reset to one instead of zero we just need to move things around a bit.</p>
-``` txt
+``` ini
 [cCounter]
 Measure=Calc
 Formula=cCounter%#MaxNumber#+1
@@ -62,7 +62,7 @@ Formula=cCounter%#MaxNumber#+1
 <h3>Resetting a counter via Mouse Actions</h3>
 
 <p>How about having it reset to zero when we click on the skin.</p>
-``` txt
+``` ini
 [Rainmeter]
 LeftMouseUpAction=!SetVariable Reset 0
 
@@ -77,7 +77,7 @@ DynamicVariables=1
 <p>Multiplying the counter by zero will easily reset it. Just make sure to set an action to set the Reset variable back to one when you're done.</p>
 
 <p>Or an alternative for resetting the counter with just a MouseOver:</p>
-``` txt
+``` ini
 [Rainmeter]
 MouseOverAction=!DisableMeasure cCounter
 MouseLeaveAction=!EnableMeasure cCounter
@@ -89,7 +89,7 @@ Formula=cCounter+1
 <p><b>Note:</b> This method only works if the counter is disabled for at least one update cycle.</p>
 
 <p>Now we can combine a couple methods of resetting to have the counter count up, reset, and wait for us to tell it restart again.</p>
-``` txt
+``` ini
 [cCounter]
 Measure=Calc
 Formula=cCounter+1
@@ -102,7 +102,7 @@ IfEqualAction=!DisableMeasure #CURRENTSECTION#
 <h3>Pausing a counter</h3>
 
 <p>Lets pause the counter when you mouse-over the skin.</p>
-``` txt
+``` ini
 [Rainmeter]
 MouseOverAction=!SetVariable Pause 0
 MouseLeaveAction=!SetVariable Pause 1
@@ -118,7 +118,7 @@ DynamicVariables=1
 <p><b>Note:</b> This functionality may also be accomplished using the <a href="/manual/bangs/#PauseMeasure">!PauseMeasure, !UnpauseMeasure and !TogglePauseMeasure</a> bangs.</p>
 
 <p>We can also have the counter stop counting at a certain value and stay there.</p>
-``` txt
+``` ini
 [cCounter]
 Measure=Calc
 Formula=cCounter+(cCounter<#MaxNumber#)
@@ -127,7 +127,7 @@ Formula=cCounter+(cCounter<#MaxNumber#)
 <p>What we did was added a conditional statement. Conditional statements without an "if ? then : else" format resolve to either 1 for true or 0 for false. Using this fact we can easily use conditional statements in mathematical formulas.</p>
 
 <h3>Triggering Actions with a Counter</h3>
-``` txt
+``` ini
 [cCounter]
 Measure=Calc
 Formula=cCounter+1
@@ -138,7 +138,7 @@ IfAboveAction=[!DisableMeasure #CURRENTSECTION#]["Some Action"]
 <p>This will count up to the MaxNumber, disable itself so it doesn't continue to count, and execute some action such as opening an addon. This method can be used to execute some action a certain number of updates after the skin is loaded.</p>
 
 <p>We can use the built in Counter function/variable to accomplish the same thing. Please note that Counter returns the number of updates since the skin was initially loaded and only returns to zero when Rainmeter is loaded or a !RefreshApp bang is used.</p>
-``` txt
+``` ini
 [cCounter]
 Measure=Calc
 Formula=Counter
@@ -150,7 +150,7 @@ IfAboveAction=[!DisableMeasure #CURRENTSECTION#]["Some Action"]
 
 <h3>Bonus Lesson: Making a counter that counts down, not up</h3>
 
-``` txt
+``` ini
 [cCounter]
 Measure=Calc
 Formula=(cCounter-1+(#MaxNumber#+1))%(#MaxNumber#+1)
@@ -162,7 +162,7 @@ Formula=(cCounter-1+(#MaxNumber#+1))%(#MaxNumber#+1)
 
 <h3>Cycling Images</h3>
 
-``` txt
+``` ini
 [cCounter]
 Measure=Calc
 Formula=cCounter%#MaxNumber#+1
@@ -175,7 +175,7 @@ ImageName=#@#Images/%1.png
 
 <h3>Cycling Between Measures</h3>
 
-``` txt
+``` ini
 [Variables]
 MaxNumber=3
 

@@ -11,7 +11,7 @@ title: 'WebParser: Using StringIndex2'
 The second string index is used when using a <code>RegExp</code> in a measure that uses data from another WebParser measure (i.e. the <code>URL</code> points to a parent measure. In this case the <code>StringIndex</code> defines the index of the result of the parent measure's <code>RegExp</code> and the <code>StringIndex2</code> defines the index of this measure's <code>RegExp</code> (i.e. it defines the string that the measure returns).</p>
 
 <p>First, here is the entire code of a little skin to demonstrate how to use this feature. Go ahead and create this and run it to see it in action:</p>
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -152,13 +152,13 @@ LeftMouseUpAction=["[MeasureItem3Link]"]
 <p>So let's tear this apart and see what it is doing:</p>
 
 <p>First, we set a variable that simply gets everything in between &lt;item&gt; and &lt;/item&gt; from the site.</p>
-``` txt
+``` ini
 [Variables]
 Item=.*<item>(.*)</item>
 ```
 
 <p>Then we use WebParser to go get the information from the site.</p>
-``` txt
+``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -169,7 +169,7 @@ RegExp="(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
 <p>Notice we are doing something a bit different here. Instead of fully parsing the site into many, many StringIndexes on the main measure, we are just getting the main title and link for the site into StringIndexes 1 and 2, then getting the <em>entire</em> contents of each &lt;item&gt; into StringIndexes 3, 4 and 5.</p>
 
 <p>Now let's skip the measures for the main title and link, they are done the normal way. Let's move down to this measure:</p>
-``` txt
+``` ini
 [MeasureItem1Title]
 Measure=Plugin
 Plugin=WebParser
@@ -187,7 +187,7 @@ Substitute=#Sub#
 <p><em>The "value" of the measure, when used for instance in a MeasureName= option in a meter, is what is returned in StringIndex2.</em></p>
 
 <p>We can repeat this process to get the link of the first item:</p>
-``` txt
+``` ini
 [MeasureItem1Link]
 Measure=Plugin
 Plugin=WebParser
@@ -200,7 +200,7 @@ StringIndex2=1
 <p>Note that once again we are getting the entire &lt;item&gt; data from <code>StringIndex=3</code> of the main measure, then using a RegExp= to get just the link from that information into <code>StringIndex2=1</code> on this measure.</p>
 
 <p>It might be obvious by now, but when we want to carry on with the second &lt;item&gt; from the feed, we use:</p>
-``` txt
+``` ini
 [MeasureItem2Title]
 Measure=Plugin
 Plugin=WebParser

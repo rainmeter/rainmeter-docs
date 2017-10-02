@@ -21,7 +21,7 @@ title: 'WebParser: Debugging RegExp'
 
 <p>At its simplest, you use WebParser like this:</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 AccurateText=1
@@ -50,7 +50,7 @@ AntiAlias=1
 
 <p>Generally, you are going to be capturing multiple bits of information from the site, so you can use multiple child measures and meters to create your skin.</p>
 
-``` txt
+``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -86,7 +86,7 @@ RegExp=(?siU)<td.*>Your IP Address.*<td>(.*)</td>.*<td.*>Country:.*<img src="(.*
 
 <p>So we would start with:</p>
 
-``` txt
+``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -102,7 +102,7 @@ StringIndex=1
 
 <p>And add on to the <code>RegExp</code>, saving and refreshing the skin as we go to ensure it is working as we want.</p>
 
-``` txt
+``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -130,7 +130,7 @@ RegExp=(?siU)<td.*>Your IP Address.*<td>(.*)</td>.*<td.*>Country:.*<img src="(.*
 
 <p>If you set <a href="/manual/plugins/webparser/#Debug">Debug=2</a> on the parent WebParser measure, (the one with the <code>RegExp</code> on it) and load the skin, it will create a text file <b>WebParserDump.txt</b> in the same folder as your skin .ini file. WebParserDump.txt is simply an exact copy of what the site sent to WebParser, and is an excellent resource when building your <code>RegExp</code> option.</p>
 
-``` txt
+``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser

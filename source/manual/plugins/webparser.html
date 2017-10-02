@@ -9,7 +9,7 @@ title: 'WebParser plugin'
 
 <h2>Usage</h2>
 <p>WebParser measures take the form:</p>
-``` txt
+``` ini
 [MeasureParent]
 Measure=Plugin
 Plugin=WebParser
@@ -17,7 +17,7 @@ URL=http://SomeSite.com
 RegExp=(?siU)<Item>(.*)</Item>.*<Item>(.*)</Item>
 ```
 <p id="ParentChild">This example creates two <a href="#StringIndex">StringIndex</a> values in what is referred to as the "parent" WebParser measure. The information is generally used in subsequent "child" WebParser measures:</p>
-``` txt
+``` ini
 [MeasureChild1]
 Measure=Plugin
 Plugin=WebParser
@@ -304,7 +304,7 @@ StringIndex=2
 
 <p>Retrieve the site title, first item and link from Slashdot's RSS feed.</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -357,7 +357,7 @@ DynamicVariables=1
 
 <p>Retrieve, download and display the latest four submissions from the Rainmeter area on deviantART.</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1

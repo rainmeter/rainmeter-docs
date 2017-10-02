@@ -18,7 +18,7 @@ title: 'WebParser: Relative Paths'
 
 <p>In order to have the two measures work in the correct "order", so the second one isn't looking for the relative URL before the first one is done getting it, you should make the second measure "dynamic", and use [!CommandMeasure SecondMeasure "Update"] as a FinishAction on the first measure. That way the first measure will "drive" the second one.</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1

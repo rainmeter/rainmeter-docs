@@ -33,7 +33,7 @@ OptionName=Option Value<br/>
 
 <p>The following is an example of a very simple Rainmeter skin file. It updates the skin once a second, measures the used CPU as a percentage, and displays that percentage.</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 
@@ -60,7 +60,7 @@ This section will always be named [Metadata], and is used to provide information
 <p><b>[Variables]</b><br/>
 This section will always be named [Variables], and is used to define values that can be used anywhere in the skin by enclosing the variable name inside #PoundSigns#. This can be helpful to create a value that you want to use many places in the skin, while allowing you to change it in only one place. A simple example might be:</p>
 
-``` txt
+``` ini
 [Variables]
 MyFontColor=255,255,255,255
 
@@ -78,7 +78,7 @@ FontColor=#MyFontColor#
 <p><b>[MeterStyles]</b><br/>
 These sections can have any unique name, and are similar to [Variables] in function. They allow you to set up "styles" for meters where you can for instance define some or all of the "formatting" options for your meters, and use the MeterStyle in many meters while again allowing you to only have to change it in one place. A simple example might be:</p>
 
-``` txt
+``` ini
 [MyTextStyle]
 FontFace=Arial
 FontSize=12
@@ -101,7 +101,7 @@ These sections can have any unique name, and are used to "measure" some system o
 
 <p>There are two kinds of options used on a measure. There are <a href="!measures/general-options/">general measure options</a> that define behaviors for most or all measure types, and measure options that are specific to the type of measure. These specific options are explained in the manual section for each measure type. Some simple examples might be:</p>
 
-``` txt
+``` ini
 [MeasureDateTime]
 Measure=Time
 Format=%A, %B %#d, %Y %#I:%M %p
@@ -116,7 +116,7 @@ Drive=C:
 <p><b>[Meters]</b><br/>
 These sections can have any unique name, and are used to "display" things in the skin window. Most often, a meter will be used to display some information obtained by a measure, which is done by "binding" the meter to one or more measures with the <code>MeasureName=SomeMeasure</code> option. A simple example might be:</p>
 
-``` txt
+``` ini
 [MeasureDateTime]
 Measure=Time
 Format=%A, %B %#d, %Y %#I:%M %p
@@ -173,7 +173,7 @@ These are options that in a sense "test" the value or state of the measure they 
 
 <p>A simple example might be:</p>
 
-``` txt
+``` ini
 [MeasureCPU]
 Measure=CPU
 IfCondition=MeasureCPU > 60
@@ -190,7 +190,7 @@ These are options you put on meters, (or the skin background) that can react to 
 
 <p>A simple example might be:</p>
 
-``` txt
+``` ini
 [MeterCPU]
 Meter=String
 FontColor=0,255,0
@@ -215,7 +215,7 @@ In addition, you can have an action option execute any external command to the W
 
 <p>Some simple examples might be:</p>
 
-``` txt
+``` ini
 LeftMouseUpAction=["C:\Program Files\WinRar\WinRar.exe"]
 LeftMouseUpAction=["http://cnn.com"]
 ```

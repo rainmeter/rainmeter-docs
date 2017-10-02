@@ -20,14 +20,14 @@ title: 'System'
 <h2>Building the System skin</h2>
 
 <p>First, as we did in our earlier tutorial, let's add the [Rainmeter] section to control the Update speed of the skin.</p>
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 ```
 
 <p>The next thing we are going to do is define some <a href="!variables/">variables</a> for the skin. Variables are used to create a value, which can be used repeatedly in the skin by enclosing the variable name in <b>##</b> (example: <b>#VarName#</b>). In order to change the value in all places it is used, you only need to change it one time in the <a href="!variables/#Section">[Variables]</a> section of the skin.</p>
 
-``` txt
+``` ini
 [Variables]
 DarkBlue=27,63,107,255
 MediumBlue=92,135,209,255
@@ -41,7 +41,7 @@ Drive2=D:
 
 <p>Now we will cheat a bit. In earlier tutorials, we waited until the end and put a solid background on the skin using an <a href="!meters/image/">Image</a> meter. Let's go ahead and add that now, so we can demonstrate the first use of one of those <b>variables</b> we created above.</p>
 
-``` txt
+``` ini
 [MeterBackground]
 Meter=Image
 X=0
@@ -63,14 +63,14 @@ SolidColor=#AlmostBlack#
 
 <p>Next, let's create a measure to get the current amount of <a href="!measures/cpu/">CPU</a> usage, as a percentage, on each update.</p>
 
-``` txt
+``` ini
 [MeasureCPU]
 Measure=CPU
 ```
 
 <p>Now it is time to introduce a new meter type. We are going to display the value of that <b>[MeasureCPU]</b> measure as filling a cirle on the screen using a <a href="!meters/roundline/">Roundline</a> meter. Create a new section with this code:</p>
 
-``` txt
+``` ini
 [MeterCPUCircle]
 Meter=Roundline
 MeasureName=MeasureCPU
@@ -131,7 +131,7 @@ This option tells the Roundline that instead of a single line, we want the meter
 
 <p>That Roundline meter looks a little funny by itself, so let's add another Roundline meter to serve as a "background" for it. In your code, move up <b>above</b> the <b>[MeterCPUCircle]</b> section we added before, and insert a new meter section. Remember, we want this meter to be "behind" <b>[MeterCPUCircle]</b>, so it needs to be "before" it in the actual .ini skin code.</p>
 
-``` txt
+``` ini
 [MeterCPUCircleBack]
 Meter=Roundline
 X=5
@@ -155,7 +155,7 @@ AntiAlias=1
 
 <p style="clear: both;">Your entire skin code should now look like this:</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 
@@ -212,7 +212,7 @@ AntiAlias=1
 
 <p>Next we want to create a <a href="!meters/string/">String</a> meter showing the actual value we are getting in the <b>[MeasureCPU]</b> measure, and center it inside our circle. We have talked about string meters and positioning in earlier tutorials, so let's just add the following as a new section at the end of your skin code.</p>
 
-``` txt
+``` ini
 [MeterCPUPercent]
 Meter=String
 MeasureName=MeasureCPU
@@ -237,7 +237,7 @@ Text=%1%
 
 <p>Go back near the top of the code and find the the <b>[MeasureCPU]</b> measure. Let's add a few lines to it.</p>
 
-``` txt
+``` ini
 [MeasureCPU]
 Measure=CPU
 IfAboveValue=24
@@ -263,7 +263,7 @@ IfBelowAction=[!SetOption MeterCPUPercent FontColor #LightBlue#][!UpdateMeter *]
 
 <p>Add a new section to the skin.</p>
 
-``` txt
+``` ini
 [MeterCPULine]
 Meter=Line
 MeasureName=MeasureCPU
@@ -287,7 +287,7 @@ SolidColor=#DarkBlue#
 
 <p style="clear: both;">We should put a label on the Line meter, so it is clear what it is measuring. We have looked at the <a href="!meters/string/">String</a> meter previously, so let's just add one and take a look at the result.</p>
 
-``` txt
+``` ini
 [MeterCPUText]
 Meter=String
 FontFace=Segoe UI
@@ -310,7 +310,7 @@ Text=CPU
 
 <p>First, let's set up the measures you will need. Back up in your skin code, right under the <b>[MeasureCPU]</b> we created in the beginning, and add some new measures.</p>
 
-``` txt
+``` ini
 [MeasureDriveTotal]
 Measure=FreeDiskSpace
 Drive=#CurrentDrive#
@@ -360,7 +360,7 @@ By default, FreeDiskSpace will measure the free space on a drive. To measure the
 
 <p>Add the following new meters to the skin.</p>
 
-``` txt
+``` ini
 [MeterDriveCircleBack]
 Meter=Roundline
 X=5
@@ -413,7 +413,7 @@ Text=#CurrentDrive#
 
 <p style="clear: both;">Finally, we can create a nice background to match the one behind the Line meter we created in <b>[MeterCPULine]</b>, by simply creating an <a href="!meters/image/">Image</a> meter with a <a href="!meters/general-options/#SolidColor">SolidColor</a> and no <a href="!meters/general-options/#MeasureName">MeasureName</a> option, then some <a href="!meters/string/">String</a> meters to display the other drive space information, <b>total</b> and <b>free</b>. Add the following meters to the bottom of the skin. Save and refresh.</p>
 
-``` txt
+``` ini
 [MeterDriveBack]
 Meter=Image
 X=49
@@ -491,7 +491,7 @@ Text=%1B
 
 <p>If you look back to the <b>[Variables]</b> section, you will see that we set the following:</p>
 
-``` txt
+``` ini
 CurrentDrive=C:
 Drive1=C:
 Drive2=D:
@@ -503,7 +503,7 @@ Drive2=D:
 
 <p>Let's go back up to our <b>[MeterBackground]</b> meter, the first one after the measures in the skin. Change it by adding our mouse action lines.</p>
 
-``` txt
+``` ini
 [MeterBackground]
 Meter=Image
 X=0
@@ -539,7 +539,7 @@ MouseLeaveAction=[!SetVariable CurrentDrive #Drive1#][!UpdateMeasure *][!UpdateM
 
 <p style="clear: both;">And here is the final code so you can compare to yours.</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 

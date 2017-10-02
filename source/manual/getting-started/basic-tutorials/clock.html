@@ -16,14 +16,14 @@ title: 'Clock'
 <p>This tutorial will introduce using <a href="!measures/">Measures</a> in a skin. Measures are used to obtain some information in Rainmeter, from your computer's system, text files, web sites, and other sources. In addition, we will be using some more features of the <a href="!meters/string/">String meter</a> and dip our toes a little deeper into using <a href="!skins/option-types/#Action">action options</a> and <a href="!bangs/">Bangs</a> in your skin.</p>
 
 <p>First, as we did in our earlier tutorial, let's add the [Rainmeter] section to control the Update speed of the skin.</p>
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 ```
 
 <p>Now let's add our first <a href="!measures/">Measure</a>, in this case a <a href="!measures/time/">Time</a> measure to retrieve information about the system time from your computer.</p>
 
-``` txt
+``` ini
 [MeasureTime]
 Measure=Time
 Format=%#I:%M
@@ -33,7 +33,7 @@ Format=%#I:%M
 
 <p>So let's add a meter to display this value we obtained with our measure. First, we are going to use the <a href="!meters/general-options/meterstyles/">MeterStyle</a> option by creating a <b>[TextStyle]</b> section to set up some common string formatting options. This way we won't have to repeat them in every meter we create. Then add the new <b>[MeterTime]</b> meter.</p>
 
-``` txt
+``` ini
 [TextStyle]
 FontFace=Trebuchet MS
 FontColor=255,245,207,255
@@ -65,7 +65,7 @@ FontSize=40
 
 <p>We are going to use various elements of the system time in different meters in our skin, so let's create some more measures to gather different types of information. Go back up to just under our [MeasureTime] section and add some new measures.</p>
 
-``` txt
+``` ini
 [MeasureSeconds]
 Measure=Time
 Format=%S
@@ -93,7 +93,7 @@ Format=%A
 
 <p>Now, start building meters to display all these different measure values. Let's start with the first one, so we can look at a new meter positioning concept. Head back down to the bottom of your skin and add this new meter.</p>
 
-``` txt
+``` ini
 [MeterSeconds]
 Meter=String
 MeterStyle=TextStyle
@@ -118,7 +118,7 @@ FontColor=255,231,135,255
 
 <p style="clear: both;">Continue creating the meters at the bottom of your skin, to display the information from the various measures.</p>
 
-``` txt
+``` ini
 [MeterAMPM]
 Meter=String
 MeterStyle=TextStyle
@@ -150,7 +150,7 @@ FontSize=13
 
 <p>As you can see, there is a different approach to binding measures to meters in the <b>[MeterMonthDayYear]</b> meter above.</p>
 
-``` txt
+``` ini
 [MeterMonthDayYear]
 Meter=String
 MeterStyle=TextStyle
@@ -179,7 +179,7 @@ Text=%1 %2, %3
 
 <p style="clear: both;">Let's add a background image like we did in the earlier tutorial, by going up above all the existing meters and adding a new Image meter.</p>
 
-``` txt
+``` ini
 [MeterBackground]
 Meter=Image
 W=210
@@ -207,7 +207,7 @@ AntiAlias=1
 
 <p>First, let's add the ability to toggle the display of the time between 12-hour and 24-hour when we hover the mouse over the <b>[MeterTime]</b> meter. Find that meter, and add a couple of lines.</p>
 
-``` txt
+``` ini
 [MeterTime]
 Meter=String
 MeterStyle=TextStyle
@@ -245,7 +245,7 @@ MouseLeaveAction=[!SetOption MeasureTime Format "%#I:%M"][!UpdateMeasure Measure
 
 <p>Now we can add a new measure to control when the sound is played. Let's go up to the top of the skin, right after the <b>[MeasureTime]</b> measure we already have, and add a new one.</p>
 
-``` txt
+``` ini
 [MeasureTime]
 Measure=Time
 Format=%#I:%M
@@ -263,7 +263,7 @@ IfEqualAction=[Play "#@#Sounds\HourChime.wav"]
 
 <p>We have jumped around a bit, so here is the entire completed skin so you can check that your code is the same.</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 

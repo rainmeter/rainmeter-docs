@@ -18,7 +18,7 @@ title: 'C/C++ API Overview'
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
 	// The following will replace regular variables and
@@ -42,7 +42,7 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
 	int value = RmReadInt(rm, L"Value", 20);
@@ -60,7 +60,7 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
 	double value = RmReadDouble(rm, L"Value", 20.0);
@@ -78,7 +78,7 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 {
 	LPCWSTR path = RmReadPath(rm, L"MyPath", L"C:\\");
@@ -95,7 +95,7 @@ PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT double Update(void* data)
 {
 	Measure* measure = (Measure*)data;
@@ -117,7 +117,7 @@ PLUGIN_EXPORT double Update(void* data)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT double Update(void* data)
 {
 	Measure* measure = (Measure*)data;
@@ -139,7 +139,7 @@ PLUGIN_EXPORT double Update(void* data)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
 	Measure* measure = new Measure;
@@ -159,7 +159,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
 	Measure* measure = new Measure;
@@ -179,7 +179,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
 	Measure* measure = new Measure;
@@ -199,7 +199,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
 	Measure* measure = new Measure;
@@ -213,7 +213,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 	<dt id="GetSettingsFile"><code>RmGetSettingsFile</code> <small><code>LPCWSTR GetSettingsFile()</code></small></dt>
 	<dd>
 		<p>Retrieves a path to the Rainmeter data file (Rainmeter.data).</p>
-```C
+``` cpp
 PLUGIN_EXPORT void Initialize(void** data, void* rm)
 {
 	Measure* measure = new Measure;
@@ -235,7 +235,7 @@ PLUGIN_EXPORT void Initialize(void** data, void* rm)
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 RmLog(rm, LOG_NOTICE, L"I am a 'notice' log message with a source");
 ```
 	</dd>
@@ -251,7 +251,7 @@ RmLog(rm, LOG_NOTICE, L"I am a 'notice' log message with a source");
 			</ul>
 		</p>
 		<h3>Example:</h3>
-```C
+``` cpp
 std::wstring notice = L"notice";
 RmLogF(rm, LOG_NOTICE, L"I am a '%s' log message with a source", notice.c_str());
 ```

@@ -85,7 +85,7 @@ title: 'ActionTimer plugin'
 
 		<p><b>Examples:</b></p>
 
-``` txt
+``` ini
 [MeasureChangeFont]
 Measure=Plugin
 Plugin=ActionTimer
@@ -100,7 +100,7 @@ SetFontBig=[!SetOption SomeMeter FontSize "15"][!UpdateMeter SomeMeter][!Redraw]
 	</ul>
 	<p>This can be simplified by setting and using a #Variable# that will take the appropriate update actions, and then just execute that #Variable# at the end of each action option.</p>
 
-``` txt
+``` ini
 [Variables]
 U=[!UpdateMeasure MeasureChangeFont][!UpdateMeter *][!Redraw]
 
@@ -153,7 +153,7 @@ SetFontBig=[!SetOption SomeMeter FontSize "15"]#U#
 <div><p>Several example skins are included in the .rmskin download. Take a look at the code to see some different ways you might use the plugin.</p></div>
 
 <a href="!examples/ExamplesActionTimer.rmskin" class="download"></a>
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1

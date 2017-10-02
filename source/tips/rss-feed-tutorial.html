@@ -236,7 +236,7 @@ and a bit later on, a publication date of<br>
 
 <p>First, let's get the skin started.</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -244,7 +244,7 @@ DynamicWindowSize=1
 
 <p>Now we will start building our first WebParser measure.</p>
 
-``` txt
+``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -255,7 +255,7 @@ URL=http://feeds.bbci.co.uk/news/rss.xml
 
 <p>We can begin by getting the title of the feed into a StringIndex.</p>
 
-``` txt
+``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -267,7 +267,7 @@ RegExp=(?siU)<title>(.*)</title>
 
 <p>Let's extend that <code>RegExp</code> option and get the link for the site and the last build date into StringIndex numbers 2 and 3.</p>
 
-``` txt
+``` ini
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>
 ```
 
@@ -275,7 +275,7 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 
 <p>So now we have those three bits of information we parsed into StringIndex numbers 1, 2 and 3. We can build some child WebParser measures to contain each of those values, that we can then use in meters.</p>
 
-``` txt
+``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -311,7 +311,7 @@ DynamicVariables=1
 
 <p>Now that we have retrieved the site header information into our first three StringIndex numbers, let's get the first of the items from the feed. We do that by again extending our <code>RegExp</code> option.</p>
 
-``` txt
+``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -323,7 +323,7 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 
 <p>Following the same pattern as above, we can add new child measures to reference these StringIndex numbers.</p>
 
-``` txt
+``` ini
 [MeasureItem1Title]
 Measure=Plugin
 Plugin=WebParser
@@ -347,13 +347,13 @@ StringIndex=6
 
 <p>Adding another item is as simple as extending our <code>RegExp</code> option to get the next &lt;item&gt; into the next three StringIndex numbers.</p>
 
-``` txt
+``` ini
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 ```
 
 <p>And create some more child WebParser measures for those values.</p>
 
-``` txt
+``` ini
 [MeasureItem2Title]
 Measure=Plugin
 Plugin=WebParser
@@ -375,7 +375,7 @@ StringIndex=9
 
 <p>Adding a third item is just more of the same.</p>
 
-``` txt
+``` ini
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 ```
 
@@ -383,7 +383,7 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 
 <p>If you are retrieving a number of items, let's say five for instance, that <code>RegExp</code> is going to get pretty long and a bit hard to debug. Let's use a little trick with a variable to simplify it a bit. Go back up to the top of your skin right under the [Rainmeter] section, and create a new [Variables] section.</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -394,7 +394,7 @@ Item=.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 
 <p>And change our <code>RegExp</code> option in our parent measure to use that new variable.</p>
 
-``` txt
+``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
@@ -404,7 +404,7 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 
 <p>Since the variable <code>#Item#</code> is replaced in the <code>RegExp</code> with <code>.*&lt;item&gt;.*&lt;title&gt;(.*)&lt;/title&gt;.*&lt;link&gt;(.*)&lt;/link&gt;.*&lt;pubDate&gt;(.*)&lt;/pubdate&gt;</code>, we still get our parse of the site header information into StringIndex numbers 1, 2 and 3, and our first &lt;item&gt; into StringIndex numbers 4, 5 and 6. However the <code>RegExp</code> is quite a bit shorter and easier to read and debug. Adding more items is as simple as repeating that variable.</p>
 
-``` txt
+``` ini
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>#Item##Item##Item##Item##Item#
 ```
 
@@ -418,7 +418,7 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 
 <p>If you add the option <a href="/manual/plugins/webparser/#DecodeCharacterReference">DecodeCharacterReference=1</a> to any or all desired <b>child</b> measures, Rainmeter will translate and display the correct character for the embedded HTML code.</p>
 
-``` txt
+``` ini
 [MeasureItem1Title]
 Measure=Plugin
 Plugin=WebParser
@@ -435,7 +435,7 @@ DecodeCharacterReference=1
 
 <p>While it would be complicated and annoying to use your regular expression to "parse around" this tag, you certainly don't want that text displayed as part of your skin output. You can use the <a href="/manual/measures/general-options/substitute/">Substitute</a> option to find and remove this text on any or all <b>child</b> measures. Note that sometime the feed will start and end the tag with <code>&lt;</code> and <code>&gt;</code> and sometimes not. We should use Substitute to take care of both cases.</p>
 
-``` txt
+``` ini
 [MeasureItem1Title]
 Measure=Plugin
 Plugin=WebParser
@@ -459,7 +459,7 @@ Substitute="<![CDATA[":"","]]>":"","![CDATA[":"","]]":""
 
 <p>We don't want to capture and display those leading tab characters in this example, so we can use the <a href="/manual/measures/general-options/substitute/#RegExpSubstitute">RegExpSubstitute</a> option instead of the normal Substitute, so we can take advantage of the additional power of regular expressions in our substitution.</p>
 
-``` txt
+``` ini
 [MeasureItem1Title]
 Measure=Plugin
 Plugin=WebParser
@@ -482,7 +482,7 @@ Substitute="^\s+":"","<!\[CDATA\[":"","\]\]>":"","!\[CDATA\[":"","\]\]":""
 
 <p>To cut to the chase, if we change our #Item# variable to this:</p>
 
-``` txt
+``` ini
 [Variables]
 Item=(?(?=.*<item>).*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubDate>)
 ```
@@ -495,7 +495,7 @@ Item=(?(?=.*<item>).*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.
 
 <p>Here is a full skin, using all we have learned so far, that will parse and display the first five items from our RSS feed site. You can copy this code and paste it into a new skin to test it out, modify the output meters as and if you like, and you are well on your way!</p>
 
-``` txt
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -904,7 +904,7 @@ Change the...<p>Statistics: Posted by <a href="">ikarus1969</a> — Fri Jun 28, 
 
 <p>And the variable for the #Item# and the parent WebParser measure you can use to parse the same five items from this feed:</p>
 
-``` txt
+``` ini
 [Variables]
 Item=(?(?=.*<entry>).*<entry>.*<updated>(.*)</updated>.*<link.*"(.*)".*<title.*>(.*)</title>)
 Sub="^\s+":"","<!\[CDATA\[":"","\]\]>":"","!\[CDATA\[":"","\]\]":""

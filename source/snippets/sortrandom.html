@@ -5,7 +5,8 @@ title: 'SortRandom'
 ---
 <p>Sorts a given table into a random order.</p>
 
-<div class="noscroll">``` lua
+<div class="noscroll">
+``` lua
 function SortRandom(input)
 	assert(type(input) == 'table', ('SortRandom must receive a table. Received %s instead.'):format(type(input)))
 	math.randomseed(tonumber(tostring(os.time()):reverse():sub(1,6)))
