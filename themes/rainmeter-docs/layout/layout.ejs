@@ -1,41 +1,36 @@
----
-css_version: 3
-js_version: 4
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!-- Meta tags for proper character encoding and social media handling  -->
 	<meta charset="utf-8">
-	<title><% if (page.title) { %><%= page.title %> - <% } %>Rainmeter <%= base_title %></title>
-	<link href="/css/main.css?v=<%= css_version %>" rel="stylesheet">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=0.9, maximum-scale=0.9">
+	<meta name="og:image" content="https://www.rainmeter.net/img/media_image.png">
+	<meta name="og:site_name" content="Rainmeter">
+	<meta name="og:type" content="website">
+
+	<!-- Page title  -->
+	<title><% if (page.title) { %><%= page.title %> - <% } %>Rainmeter</title>
+
+	<!-- Files need to be local for offline version of documentations -->
+	<%- css('css/bootstrap.min.css') %>
+	<%- css('css/rainmeter.css') %>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
+
+	<!-- Site icon -->
 	<link rel="shortcut icon" href="//www.rainmeter.net/favicon.ico">
-	<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script><![endif]-->
+
 </head>
+
 <body>
-	<div id="wrapper">
-		<div id="top">
-			<div class="container">
-				<a id="logo" href="//rainmeter.net/"></a>
-				<nav id="nav">
-					<ul>
-					<li><a href="//www.rainmeter.net">Home</a>
-					<li><a href="/" class="active">Documentation</a>
-					<li><a href="//www.rainmeter.net/discover">Discover</a>
-					<li><a href="//forum.rainmeter.net">Community</a>
-					</ul>
-				</nav>
-			</div>
-		</div>
 
-		<div class="container">
-			<div class="row">
-				<%- body.replace(/<(.*?)(href|src)="!(.*?)"/g, '<$1$2="/' + base_name + '/$3"') %>
-			</div>
-		</div>
+  <%- body %>
 
-		<div id="footer-push"></div>
-	</div>
+	<!-- Javascript files  -->
+	<%- js('js/main.js') %>
+	<%- js('js/jquery-3.2.1.slim.min.js') %>
+	<%- js('js/bootstrap.min.js') %>
 
-	<script src="/js/main.js?v=<%= js_version %>"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
----
-base_name: ''
-base_nav: ''
-base_title: 'Docs'
----
-<div id="content" class="index">
-	<%- page.content %>
+<div id="hero" class="flat">
+  <%- partial('_partial/navigation') %>
 </div>
+
+<div class="container">
+<%- page.content %>
+</div>
+
+<%- partial('_partial/footer') %>

@@ -1,9 +1,8 @@
 ---
-layout: manual
+layout: docs
 permalink: manual/getting-started/skin-anatomy/
 title: 'Anatomy of a Skin'
 ---
-
 <p>The goal of this guide is to familiarize users who are new to Rainmeter with what a Rainmeter skin is, and how it works. This is not intended to be comprehensive, but at a level of detail that will help users grasp the fundamentals of Rainmeter. Once you understand what a Rainmeter skin "is", it will be far easier to come to terms with the huge amount of options and functionality described in detail in the rest of the documentation.</p>
 
 <h2 id="TheSkinWindow">The skin window</h2>
@@ -97,7 +96,7 @@ MeterStyle=MyTextStyle
 <p><a href="!meters/general-options/meterstyles/">[MeterStyle]</a> section details.</p>
 
 <p><b>[Measures]</b><br/>
-These sections can have any unique name, and are used to "measure" some system or other information. There are many measure types, defined by the value of the <code>Measure=MeasureType</code> option on the section.</p> 
+These sections can have any unique name, and are used to "measure" some system or other information. There are many measure types, defined by the value of the <code>Measure=MeasureType</code> option on the section.</p>
 
 <p>There are two kinds of options used on a measure. There are <a href="!measures/general-options/">general measure options</a> that define behaviors for most or all measure types, and measure options that are specific to the type of measure. These specific options are explained in the manual section for each measure type. Some simple examples might be:</p>
 
@@ -166,7 +165,7 @@ MeasureName=MeasureDateTime
 
 <p>So your skin might be kind of boring if it is just measuring some value and displaying the result. As useful as just that is, the real power of Rainmeter is having your skin react to changing values in a dynamic way, and in allowing you to dynamically interact with the skin with your mouse. This is done by setting "action" options on measures and meters.<p>
 
-<p><b>There are two primary kinds of action options:</b></p> 
+<p><b>There are two primary kinds of action options:</b></p>
 
 <p><b>Measure actions</b><br/>
 These are options that in a sense "test" the value or state of the measure they are on, and take actions, which are bangs or commands, based on that test being "true" or "false". These actions are evaluated and executed on each update of the measure. There are several types of actions for measures, which are detailed in the rest of the documentation. Certainly you can test if a measure's current value is above or below some range you define, contains some string of text you define, or has changed since the last update.</p>
@@ -222,7 +221,8 @@ LeftMouseUpAction=["http://cnn.com"]
 
 <p>Hopefully this will get you off and running with Rainmeter skins. There are other areas of how the application itself works that are important to understand, and the <a href="!getting-started/">Getting Started</a> and <a href="!user-interface/">User Interface</a> sections of the manual are important references. Don't skip them.</p>
 
-<p style="clear: both;">&nbsp;</p>
-
-<div class="right"><p><a href="!getting-started/basic-tutorials/">Continue to: Basic Tutorials &raquo;</a></p> </div>
-<p><a href="!getting-started/creating-skins/">&laquo; Back to: Creating Skins</a></p>
+<div class="docs-pagination">
+	<hr class="mt-4"/>
+	<a class="btn btn-outline-primary float-right" href="!getting-started/basic-tutorials/">Continue to: Basic Tutorials &raquo;</a>
+	<a class="btn btn-outline-secondary float-left" href="!getting-started/creating-skins/">&laquo; Back to: Creating Skins</a>
+</div>

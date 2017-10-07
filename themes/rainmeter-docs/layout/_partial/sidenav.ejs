@@ -1,0 +1,34 @@
+<%
+  var currentFolder = page.path.match(/[^/]*/).toString();
+  if (currentFolder == 'manual') {
+    var currentTitle = '4.0 Manual'
+  }
+  else if (currentFolder == 'manual-beta') {
+    var currentTitle = '4.1 Beta Manual'
+  }
+  else if (currentFolder == 'tips') {
+    var currentTitle = 'Tips & Tricks'
+  }
+  else if (currentFolder == 'snippets') {
+    var currentTitle = 'Snippets'
+  }
+  else if (currentFolder == 'developers') {
+    var currentTitle = 'Developers'
+  }
+  else if (currentFolder == 'history') {
+    var currentTitle = 'Version History'
+  }
+  else {
+    var currentTitle = 'Docs'
+  }
+%>
+
+<h4 id="category"><a href="/<%= currentFolder %>"><%= currentTitle %></a></h4>
+<form id="search-form" method="get" action="http://www.google.com/search">
+  <input name="sitesearch" value="docs.rainmeter.net" type="hidden">
+  <input class="form-control" id="search" name="q" maxlength="255" size="16" placeholder="Search" type="text">
+</form>
+<hr />
+<nav id="sidenav" class="sidenav">
+<%- partial('_navigation/' + currentFolder + '').replace(/<(.*?)(href|src)="!(.*?)"/g, '<$1$2="/' + currentFolder + '/$3"') %>
+</nav>
