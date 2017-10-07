@@ -20,10 +20,12 @@ SomeVariable=AValue
 ```
 <p>The file being used with @include must be formatted in the INI format, meaning that it has all the appropriate [sections] followed by Key=Value pairs. This includes using the [Variables] section.</p>
 <p>If you want to include more than one file, they need to be listed with unique identifiers.</p>
-<pre>@include=SomeFile.inc
+``` ini
+@include=SomeFile.inc
 @include2=SomeOtherFile.inc
 @includeAnotherInclude=YetAnotherFile.inc
-...</pre>
+...
+```
 
 <p>While it is not required to use the .inc extension it is highly recommended. This prevents the file from appearing in Rainmeters list as a skin.</p>
 <p>We can also use a variable to define an @include. The only caveat is that variable cannot be dynamic.</p>

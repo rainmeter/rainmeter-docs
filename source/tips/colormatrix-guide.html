@@ -15,7 +15,8 @@ ColorMatrix5=0; 0; 0; 0; 1
 
 <p>The values on the main diagonal are, from top-left to bottom-right: Red, Green, Blue, Alpha and a placeholder. The values represent the percentage of of the particular value present in the image, where 0.0 is none and 1.0 is normal. The remaining entries in the matrix allow a color to have its value modified in terms of another color (ex: the value of Red might have half of the Blue value added), with the entries in the final row (ColorMatrix5) determining offset values that are added directly to the color. (ex: ColorMatrix5=0.5; 0; 0; 0; 1 will add 50% to the red value)</p>
 <p>The following shows the actual matrix values of the brightness, contrast, and saturation.</p>
-<pre>Brightness Matrix    Contrast Matrix         Saturation Matrix
+``` txt
+Brightness Matrix    Contrast Matrix         Saturation Matrix
 
      R G B A W           R G B A W            R   G   B   A   W
 
@@ -33,7 +34,7 @@ ColorMatrix5=0; 0; 0; 0; 1
  B = blue                                 lumR = 0.3086  or  0.2125
  A = alpha                                lumG = 0.6094  or  0.7154
  W = white                                lumB = 0.0820  or  0.0721
-</pre>
+```
 <ul>
 <li>The brightness matrix is a simple translation matrix on the RGB elements.</li>
 <li>The contrast matrix is a scaling matrix on the RGB elements. The extra translation parameters in the contrast matrix is used for shifting the base color (when c = 0)from black to gray.</li>
@@ -41,11 +42,12 @@ ColorMatrix5=0; 0; 0; 0; 1
 </ul>
 
 <p>From the above information, we can calculate the proper color matrix to transform a given image. To use all three matrices, we need to multiply them together into one single transformation matrix (using matrix multiplication). The result of multiplication is as follows:</p>
-<pre>     R G B A W            R G B A W             R   G   B   A   W
+``` txt
+     R G B A W            R G B A W             R   G   B   A   W
 
  R  [1 0 0 0 0]       R  [c 0 0 0 0]       R  [sr+s sr  sr  0   0]
  G  [0 1 0 0 0]       G  [0 c 0 0 0]       G  [ sg sg+s sg  0   0]
- B  [0 0 1 0 0]    X  B  [0 0 c 0 0]    X  B  [ sb  sb sb+s 0   0]
+ B  [0 0 1 0 0]   X   B  [0 0 c 0 0]   X   B  [ sb  sb sb+s 0   0]
  A  [0 0 0 1 0]       A  [0 0 0 1 0]       A  [ 0   0   0   1   0]
  W  [b b b 0 1]       W  [t t t 0 1]       W  [ 0   0   0   0   1]
 
@@ -61,7 +63,7 @@ Brightness Matrix     Contrast Matrix          Saturation Matrix
                  W  [  t+b    t+b    t+b     0      1   ]
 
                            Transformation Matrix
-</pre>
+```
 
 <p><em>If you want to know more about it, you can check out the <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/ms533809%28v=vs.85%29.aspx" target="_blank">MSDN Site</a> for an excellent explanation on this topic in relation to the usage of the ColorMatrix object. [Source from <a href="http://www.codeproject.com/KB/web-image/AsciiArt.aspx" target="_blank">Code Project</a>]</em></p>
 

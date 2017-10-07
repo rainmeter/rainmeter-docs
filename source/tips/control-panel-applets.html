@@ -9,7 +9,7 @@ title: 'Control Panel Applets'
 <p>They are run from Rainmeter by using the application <b>C:\Windows\System32\control.exe</b> which will take as a parameter the name of any of the Control Panel applets.</p>
 <p>The list of available applets and their functions:</p>
 
-<p><pre>
+``` txt
 Accessibility Options			access.cpl
 Add or Remove Programs			appwiz.cpl
 Display Properties			desk.cpl
@@ -32,7 +32,9 @@ Time and Date Options			timedate.cpl
 Windows Security Center			wscui.cpl
 Automatic Updates			wuaucpl.cpl
 Active Directory Manager		admgmt.msc
-</pre></p>
+```
 
 <p>So to execute one of these applets from Rainmeter use any of the <b>Action</b> features of Rainmeter:</p>
-<p><code>LeftMouseUpAction=["C:\Windows\System32\control.exe" "ncpa.cpl"]</code></p>
+``` ini
+LeftMouseUpAction=["C:\Windows\System32\control.exe" "ncpa.cpl"]
+```

@@ -7,6 +7,13 @@ title: 'Version History'
 <div class="release-notes">
 <h2 id="4.1">Rainmeter 4.1</h2><hr />
 
+<h3 id="r2922">October 4, 2017 - Revision 2922</h3>
+<ul>
+<li><b>Fixed</b> Rainmeter: Corrected a bug introduced in the r2876 beta version that caused a parsing issue when a measure value contained embedded quotes and was used in a bang as a section variable.</li>
+<li><b>Fixed</b> Lua scripting: Corrected a potential memory leak issue when GetOption was used in Lua to retrieve a meter option based on a MeterStyle.</li>
+<li><b>Fixed</b> Shape meter: Corrected a potential crash of Rainmeter if the Combine shape type was used without valid parameters.</li>
+</ul>
+	  
 <h3 id="r2917">October 1, 2017 - Revision 2917</h3>
 <ul>
 <li><span class="badge badge-added">Added</span><b> Rainmeter plugins:</b> Added the ability to create plugins in C++ or C# supporting Inline Plugin [SectionVariables] in a skin. This is primarily a change for plugin authors, with any documentation for how their plugins should be used in a skin provided by the author. Details on how this can be used in a plugin are at <a href="https://docs.rainmeter.net/developers/plugin/cpp/#Custom">C++</a> and <a href="https://docs.rainmeter.net/developers/plugin/csharp/#Custom">C#</a>. The Plugin API has been updated to support this change. In addition, the documentation for plugin authors has been greatly enhanced and improved, and new and improved example plugins added to the SDK. Plugin authors are strongly encouraged to get the latest <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">Plugin SDK</a> and review the new <a href="https://docs.rainmeter.net/developers/">Developer Documentation</a>.</li>
