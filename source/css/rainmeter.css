@@ -54,7 +54,7 @@ blockquote {
 .h3, h3 {
   color: #354B60;
   font-size: 1.25rem;
-  padding-top: 0.4rem;
+  padding-top: 0.6rem;
 }
 #content {
   flex: 1;
@@ -215,6 +215,7 @@ img {
   font-size: 0.74rem;
   font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   border-radius: .25rem;
+  width: 100%;
 }
 .exampleprev.float-left {
   margin-right: 1.5rem;
@@ -239,8 +240,8 @@ img {
   width: 100%;
   max-width: 100%;
 }
-.exampleprev .thumbnail {
-  max-width: 15vw;
+.exampleprev.thumbnail {
+  max-width: 12vw;
 }
 
 .center .exampleprev {
