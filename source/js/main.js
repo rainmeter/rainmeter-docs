@@ -86,40 +86,44 @@ function toggleClass(elem, className) {
 	}
 })();
 
-// Add 'Copy' and 'Download' buttons to <pre> blocks.
+// Add 'Select all' and 'Download' buttons to <pre> blocks.
 (function() {
 	var divs = document.getElementsByClassName('highlight');
 	for (var i = 0; div = divs[i]; ++i) {
-		var copyA = document.createElement('a');
-		copyA.innerHTML = 'Copy';
+		var selectA = document.createElement('a');
+		selectA.innerHTML = 'Select all';
 
 		var pre = div.getElementsByTagName('pre')[0];
 		var scrollWidth = pre.offsetWidth - pre.clientWidth;
 
-		copyA.style.right = scrollWidth + 'px';
+		selectA.style.right = scrollWidth + 'px';
 		if (scrollWidth > 0) {
-			copyA.style.borderRight = 0;
+			selectA.style.borderRight = 0;
 		}
 
-		copyA.style.top += 1 + 'px';
+		selectA.style.top += 1 + 'px';
 
-		copyA.onclick = function() {
+		selectA.onclick = function() {
 			var pre = this.parentNode.firstChild;
-			var selection = window.getSelection();
-			var range = document.createRange();
-			range.selectNodeContents(pre);
-			selection.removeAllRanges();
-			selection.addRange(range);
-			document.execCommand('copy');
-			selection.removeAllRanges();
+			if (document.body.createTextRange) {
+				var range = document.body.createTextRange();
+				range.moveToElementText(pre);
+				range.select();
+			} else if (window.getSelection) {
+				var selection = window.getSelection();
+				var range = document.createRange();
+				range.selectNodeContents(pre);
+				selection.removeAllRanges();
+				selection.addRange(range);
+			}
 		};
 
-		div.appendChild(copyA);
+		div.appendChild(selectA);
 
 		var downloadA = div.previousElementSibling;
 		if (downloadA && downloadA.className == 'download') {
 			downloadA.innerHTML = 'Download';
-			downloadA.style.right = scrollWidth + copyA.offsetWidth + 'px';
+			downloadA.style.right = scrollWidth + selectA.offsetWidth + 'px';
 			downloadA.style.borderRight = 0;
 			downloadA.style.top = 1 + 'px';
 			div.appendChild(downloadA);
