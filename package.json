@@ -2,6 +2,9 @@
 	"name": "hexo-rainmeter-docs",
 	"version": "0.0.0",
 	"private": true,
+	"scripts": {
+		"deploy": "./deploy.sh"
+	},
 	"hexo": {
 		"version": "3.2.2"
 	},
