@@ -6,7 +6,7 @@
 		</button>
 		<div class="collapse navbar-collapse justify-content-end" id="mainNavigation">
 			<ul class="navbar-nav order-12"><% for (var i in theme.menu){ %>
-				<li class="nav-item <%= is_current(theme.menu[i]) ? 'active' : '' %>"><a class="nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li><% } %>
+				<li class="nav-item <% if (i == 'Documentation')  { %>active<% } %>"><a class="nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li><% } %>
 				<div class="dropdown-divider"></div>
 			</ul>
 		</div>
