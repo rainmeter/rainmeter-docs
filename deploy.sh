@@ -13,8 +13,8 @@ fi
 rm -rf _generated
 hexo generate
 
-export GIT_DIR=_ghpages.git
-export GIT_WORK_TREE=_generated
+export GIT_DIR=$PWD/_ghpages.git
+export GIT_WORK_TREE=$PWD/_generated
 
 git config core.autocrlf false
 git fetch --force origin gh-pages
