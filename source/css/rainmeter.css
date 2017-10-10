@@ -596,3 +596,34 @@ table#quickjump td {
   cursor: pointer;
   font-weight: bold;
 }
+.docs-index .card {
+  width: 100%;
+  margin-bottom: 0.75rem;
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+  color: #808080;
+}
+.docs-index .card:hover {
+  border: 1px solid #808080;
+}
+.docs-index .card-icon {
+    left: 1.25rem;
+    top: 1.25rem;
+    position: absolute;
+}
+.docs-index .card-body p {
+  margin: 0;
+}
+.docs-index .card-title {
+  color: #666664;
+  margin-top: 0;
+}
+.docs-index .card:hover .card-title,
+.docs-index .card:hover {
+  color: #0058cc;
+  border-color: #0058cc!important;
+}
+
+.card-manual .card-title {
+  color: #0058cc;
+}
