@@ -9,6 +9,9 @@
 
 /* General styling  */
 body {
+  height: 100%;
+}
+body {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -131,18 +134,21 @@ blockquote {
 .docs-nav {
     position: fixed;
     top: 0;
-    left: 0;
+    left: -20rem;
     width: 20rem;
-    height: 100%;
+    height: 100vh;
     background-color: #FFF;
     z-index: 2;
     overflow-x: hidden;
     overflow-y: scroll;
     font-size: 0.92rem;
     font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 @media (min-width: 991px) {
 .docs-nav {
+  left: 0;
   position: relative;
   z-index: initial;
   display: block;
