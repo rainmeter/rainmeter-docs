@@ -32,7 +32,18 @@
 	<%- js('js/main.js') %>
 	<%- js('js/jquery-3.2.1.slim.min.js') %>
 	<%- js('js/bootstrap.min.js') %>
+	<%- js('js/ahk-sliding-panel.js') %>
 	<%- js('js/jquery.fancybox.min.js') %>
+
+	<!-- Script for the slideout menu on mobile -->
+	<script>
+	var leftMenu = new ahk_slideout({
+		id:"menu",
+		side:"left",
+		width: "18rem",
+		touch_boundary: "50"
+	});
+</script>
 
 </body>
 </html>
