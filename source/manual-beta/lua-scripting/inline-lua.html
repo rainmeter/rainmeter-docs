@@ -21,7 +21,7 @@ title: 'Inline Lua'
 
 <p>Note that this is not designed to execute stand-alone Lua statements, but is used to execute a function() code block in the Lua script file that returns a value. For example:</p>
 
-```txt
+``` lua
 function SomeFunction(arg1, arg2)
 	outValue = arg1 + arg2
 	return outValue
@@ -102,7 +102,7 @@ end
 <h2 id="SimpleLua">SimpleLua</h2>
 
 <p>SimpleLua.ini:</p>
-```txt
+``` ini
 [Rainmeter]
 Update=1000
 AccurateText=1
@@ -146,7 +146,7 @@ DynamicVariables=1
 
 <p>SimpleLua.lua:</p>
 
-```txt
+``` lua
 function GetWelcome(inArg)
 
 	hourOfDay = tonumber(os.date('%H'))
@@ -178,7 +178,7 @@ end
 
 <p>FlipCoin.ini:</p>
 
-```txt
+``` ini
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
@@ -269,7 +269,7 @@ DynamicVariables=1
 
 <p>FlipCoin.lua:</p>
 
-```txt
+``` lua
 math.randomseed(tonumber(tostring(os.time()):reverse():sub(1,6)))
 
 -- Since the skin will be asking for these variables before the FlipCoin() function is ever
@@ -308,7 +308,7 @@ end
 
 <p>TranslateDay.ini:</p>
 
-```txt
+``` ini
 [Rainmeter]
 Update=1000
 AccurateText=1
@@ -395,7 +395,7 @@ DynamicVariables=1
 
 <p>TranslateDay.lua:</p>
 
-```txt
+``` lua
 function Initialize()
 
 	translateToday = {

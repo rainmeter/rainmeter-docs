@@ -21,7 +21,7 @@ Measure=Plugin
 Plugin=WebParser
 UpdateRate=600
 URL=http://weather.yahooapis.com/forecastrss?p=#Location#&u=#Unit#
-RegExp="(?siU)<title>.*- (.*)</title>.*<link>(.*)/\*(.*)</link>.*<description>(.*)</description>.*<language>(.*)</language>.*<lastBuildDate>(.*)</lastBuildDate>.*<yweather:location city="(.*)".*region="(.*)".*country="(.*)".*<yweather:units temperature="(.*)".*distance="(.*)".* pressure="(.*)".*speed="(.*)".*<yweather:wind chill="(.*)".*direction="(.*)".*speed="(.*)".*<yweather:atmosphere humidity="(.*)".* visibility="(.*)".*pressure="(.*)".* rising="(.*)".*<yweather:astronomy sunrise="(.*)".*sunset="(.*)".*<title>(.*)</title>.*<width>(.*)</width>.*<height>(.*)</height>.*<link>(.*)</link>.*<url>(.*)</url>.*<title>(.*)</title>.*<geo:lat>(.*)</geo:lat>.*<geo:long>(.*)</geo:long>.*<link>(.*)/\*(.*)</link>.*<pubDate>(.*)</pubDate>.*<yweather:condition text="(.*)".*code="(.*)".*temp="(.*)".*date="(.*)".*<img src="(.*)".*Current Conditions:</b><br />(.*)<BR />.*Forecast:</b><BR />(.*)<br />.*(.*)<br />.*<a href="(.*)/\*(.*)">.*provided by <a href="(.*)" >(.*)</a>.*<yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*<yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*"
+RegExp=(?siU)<title>.*- (.*)</title>.*<link>(.*)/\*(.*)</link>.*<description>(.*)</description>.*<language>(.*)</language>.*<lastBuildDate>(.*)</lastBuildDate>.*<yweather:location city="(.*)".*region="(.*)".*country="(.*)".*<yweather:units temperature="(.*)".*distance="(.*)".* pressure="(.*)".*speed="(.*)".*<yweather:wind chill="(.*)".*direction="(.*)".*speed="(.*)".*<yweather:atmosphere humidity="(.*)".* visibility="(.*)".*pressure="(.*)".* rising="(.*)".*<yweather:astronomy sunrise="(.*)".*sunset="(.*)".*<title>(.*)</title>.*<width>(.*)</width>.*<height>(.*)</height>.*<link>(.*)</link>.*<url>(.*)</url>.*<title>(.*)</title>.*<geo:lat>(.*)</geo:lat>.*<geo:long>(.*)</geo:long>.*<link>(.*)/\*(.*)</link>.*<pubDate>(.*)</pubDate>.*<yweather:condition text="(.*)".*code="(.*)".*temp="(.*)".*date="(.*)".*<img src="(.*)".*Current Conditions:</b><br />(.*)<BR />.*Forecast:</b><BR />(.*)<br />.*(.*)<br />.*<a href="(.*)/\*(.*)">.*provided by <a href="(.*)" >(.*)</a>.*<yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*<yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*
 ```
 
 <p><em>Followed by something like this later on in the skin:</em></p>
@@ -46,53 +46,53 @@ StringIndex=34
 <p><em>What "Weather Conditions" text codes are returned by Yahoo Weather so I know what to translate?"</em></p>
 <p>Here is a list with the number of the icon and the text returned:</p>
 ``` txt
-0	tornado
-1	tropical storm
-2	hurricane
-3	severe thunderstorms
-4	thunderstorms
-5	mixed rain and snow
-6	mixed rain and sleet
-7	mixed snow and sleet
-8	freezing drizzle
-9	drizzle
-10	freezing rain
-11	showers
-12	showers
-13	snow flurries
-14	light snow showers
-15	blowing snow
-16	snow
-17	hail
-18	sleet
-19	dust
-20	foggy
-21	haze
-22	smoky
-23	blustery
-24	windy
-25	cold
-26	cloudy
-27	mostly cloudy (night, but the "night" text is not included)
-28	mostly cloudy (day, but the "day" text is not included)
-29	partly cloudy (night, but the "night" text is not included)
-30	partly cloudy (day, but the "day" text is not included)
-31	clear (night, but the "night" text is not included)
-32	sunny
-33	fair (night, but the "night" text is not included)
-34	fair (day, but the "day" text is not included)
-35	mixed rain and hail
-36	hot
-37	isolated thunderstorms
-38	scattered thunderstorms
-39	scattered thunderstorms
-40	scattered showers
-41	heavy snow
-42	scattered snow showers
-43	heavy snow
-44	partly cloudy
-45	thundershowers
-46	snow showers
-47	isolated thundershowers
+0		tornado
+1		tropical storm
+2		hurricane
+3		severe thunderstorms
+4		thunderstorms
+5		mixed rain and snow
+6		mixed rain and sleet
+7		mixed snow and sleet
+8		freezing drizzle
+9		drizzle
+10		freezing rain
+11		showers
+12		showers
+13		snow flurries
+14		light snow showers
+15		blowing snow
+16		snow
+17		hail
+18		sleet
+19		dust
+20		foggy
+21		haze
+22		smoky
+23		blustery
+24		windy
+25		cold
+26		cloudy
+27		mostly cloudy (night, but the "night" text is not included)
+28		mostly cloudy (day, but the "day" text is not included)
+29		partly cloudy (night, but the "night" text is not included)
+30		partly cloudy (day, but the "day" text is not included)
+31		clear (night, but the "night" text is not included)
+32		sunny
+33		fair (night, but the "night" text is not included)
+34		fair (day, but the "day" text is not included)
+35		mixed rain and hail
+36		hot
+37		isolated thunderstorms
+38		scattered thunderstorms
+39		scattered thunderstorms
+40		scattered showers
+41		heavy snow
+42		scattered snow showers
+43		heavy snow
+44		partly cloudy
+45		thundershowers
+46		snow showers
+47		isolated thundershowers
 3200	not available
 ```
