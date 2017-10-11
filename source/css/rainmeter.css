@@ -11,8 +11,6 @@
 
 body {
   height: 100%;
-}
-body {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 15px;
   display: -ms-flexbox;
@@ -22,6 +20,7 @@ body {
   color: #4f5c72;
   background-color: #fff;
   -ms-flex-direction: column;
+  overflow-x: hidden;
 }
 b {
   font-weight: 600;
@@ -31,11 +30,20 @@ p {
   word-spacing: .05em;
 }
 footer {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 600;
+  font-size: 1rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  color: #bfbfbf;
-  background-color: #f5f6f6;
+  color: rgba(0,0,0,.2);
+  background-color: rgba(0,0,0,.03);
+}
+footer a {
+  font-weight: 600;
+  color: rgba(0, 0, 0, .35);
+}
+footer a:hover, footer a:focus {
+  text-decoration: none;
 }
 blockquote {
   color: #868e96;
@@ -63,6 +71,10 @@ blockquote {
   margin-top: 0;
   margin-bottom: 1rem;
   flex: 1;
+}
+.symbol {
+  font-size: 140%;
+  font-family: Arial, sans-serif;
 }
 @media (min-width: 991px) {
   #content {
@@ -150,7 +162,7 @@ blockquote {
   height: 100vh;
   transform: translateZ(0);
   background-color: #fff;
-  box-shadow: 2px 0 45px 0 rgba(0, 0, 0, .2);
+  box-shadow: 2px 0 45px 0 rgba(0, 0, 0, .05);
   backface-visibility: hidden;
 }
 @media (min-width: 991px) {
@@ -209,7 +221,7 @@ blockquote {
   padding-bottom: .15rem;
   padding-left: 2.5rem;
   color: #7e8b8c;
-  border-left: 1px solid rgba(0, 0, 0, .1);
+  border-left: 1px solid rgba(0, 0, 0, .05);
 }
 .docs-nav-block li {
   position: relative;
@@ -246,6 +258,7 @@ blockquote {
   top: 0;
 }
 .docs-nav-button svg {
+  display: block;
   width: 1.5rem;
   height: 1.5rem;
   margin-top: 1rem;
@@ -304,9 +317,6 @@ blockquote {
   -ms-interpolation-mode: bicubic;
   border: 0;
 }
-.exampleprev.thumbnail {
-  max-width: 12vw;
-}
 .center .exampleprev {
   display: block;
   width: 70%;
@@ -320,6 +330,9 @@ blockquote {
 @media (min-width: 991px) {
   .exampleprev {
     width: auto;
+  }
+  .exampleprev.thumbnail {
+    max-width: 33%;
   }
 }
 /*
@@ -344,7 +357,7 @@ pre {
   word-break: break-all;
   -moz-tab-size: 4;
   tab-size: 4;
-  border: 1px solid #f7f7f9;
+  border: 1px solid rgba(0,0,0,0.05);
   border-radius: .25rem;
   background-color: #f7f7f9;
   -webkit-tab-size: 4;
@@ -377,6 +390,7 @@ div.line {
   margin: 0;
   padding: .3rem .6rem;
   background-color: #f7f7f9;
+  border-top: 1px solid rgba(0,0,0,0.05);
 }
 .highlight a:hover {
   cursor: pointer;

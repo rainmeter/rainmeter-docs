@@ -37,34 +37,35 @@
 
 	<!-- Script for the slideout menu on mobile -->
 	<script>
-	var docsnav = new ahk_slideout({
-		id:"menu",
-		side:"left",
-		width: "18rem",
-		touch_boundary: "50",
-		slide_time: "0.2"
-	});
+		// set slideout menu variables
+		var docsnav = new ahk_slideout({
+		  id: "menu",
+		  side: "left",
+		  width: "18rem",
+		  touch_boundary: "50",
+		  slide_time: "0.2"
+		});
 
-	function toggleNavMenu(){
-		docsnav.toggleMenu();
-	}
-	function closeNavMenu(){
-		docsnav.closeMenu();
-	}
-	$(function() {
-	    //caches a jQuery object containing the header element
-	    var header = $("#nav-button");
-	    $(window).scroll(function() {
-	        var scroll = $(window).scrollTop();
+		// function to toggle menu
+		}
+		// function to close menu
+		function closeNavMenu() {
+		  docsnav.closeMenu();
+		}
 
-	        if (scroll >= 90) {
-	            header.addClass("sticky");
-	        } else {
-	            header.removeClass("sticky");
-	        }
-	    });
-	});
-</script>
+		// when scrolling below 90, add sticky class to nav-button
+		$(function() {
+		  var header = $("#nav-button");
+		  $(window).scroll(function() {
+		    var scroll = $(window).scrollTop();
+		    if (scroll >= 90) {
+		      header.addClass("sticky");
+		    } else {
+		      header.removeClass("sticky");
+		    }
+		  });
+		});
+	</script>
 
 </body>
 </html>
