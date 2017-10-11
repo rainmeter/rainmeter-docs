@@ -286,13 +286,15 @@ blockquote {
   font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: .74rem;
   display: inline-block;
-  width: 100%;
   margin-top: .5rem;
   margin-bottom: .5rem;
   padding: .5rem;
   border: 1px solid #ddd;
   border-radius: .25rem;
   background-color: #fcfcfc;
+}
+.exampleprev.full-mobile {
+  width: 100%;
 }
 .exampleprev.float-left {
   margin-right: 1.5rem;
@@ -328,7 +330,8 @@ blockquote {
 }
 
 @media (min-width: 991px) {
-  .exampleprev {
+  .exampleprev,
+  .exampleprev.full-mobile {
     width: auto;
   }
   .exampleprev.thumbnail {
