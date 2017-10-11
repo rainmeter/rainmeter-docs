@@ -509,6 +509,7 @@ pre code {
 }
 .docs-pagination .btn {
   width: 100%;
+  margin-bottom: 0.5rem;
 }
 @media (min-width: 768px) {
   .docs-pagination .btn {
