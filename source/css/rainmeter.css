@@ -186,7 +186,7 @@ blockquote {
   top: 0rem;
   left: 0;
   float: left;
-  width: 3rem;
+  width: 2.5rem;
   height: 1.8rem;
   cursor: pointer;
   background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNhMGE5YjIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSIgdHJhbnNmb3JtPSdyb3RhdGUoMjcwIDEyIDEyKSc+PC9wb2x5bGluZT48L3N2Zz4NCg==');
@@ -269,9 +269,6 @@ blockquote {
 ** Example preview image
 */
 
-img {
-  width: 100%;
-}
 .exampleprev {
   font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: .74rem;
@@ -320,6 +317,11 @@ img {
   max-width: 100%;
 }
 
+@media (min-width: 991px) {
+  .exampleprev {
+    width: auto;
+  }
+}
 /*
 ** Code
 */
@@ -401,8 +403,8 @@ pre code {
   background-color: #4b607a;
 }
 .docs-content dt {
-  font-size: .8rem;
-  font-weight: 400;
+  font-size: .82rem;
+  font-weight: 600;
   line-height: 1.5rem;
   width: 100%;
   padding: .15rem .6rem;
@@ -432,7 +434,7 @@ pre code {
   font-size: 90%;
   line-height: 1.5rem;
   float: right;
-  opacity: .8;
+  opacity: .9;
 }
 .docs-content dd {
   font-size: .88em;
