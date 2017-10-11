@@ -82,10 +82,7 @@ function toggleClass(elem, className) {
 		var pre = div.getElementsByTagName('pre')[0];
 		var scrollWidth = pre.offsetWidth - pre.clientWidth;
 
-		selectA.style.right = scrollWidth + 'px';
-		if (scrollWidth > 0) {
-			selectA.style.borderRight = 0;
-		}
+		selectA.style.right = scrollWidth + 1 + 'px';
 
 		selectA.style.top += 1 + 'px';
 
