@@ -8,60 +8,61 @@
 
 
 /* General styling  */
+
 body {
   height: 100%;
 }
 body {
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
   min-height: 100vh;
   color: #4f5c72;
-  font-size: 15px;
-  background-color: #FFF;
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #fff;
+  -ms-flex-direction: column;
 }
 b {
   font-weight: 600;
 }
 p {
-  word-spacing: 0.05em;
-      line-height: 1.6em;
+  line-height: 1.6em;
+  word-spacing: .05em;
 }
 footer {
   font-weight: 600;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  color: #BFBFBF;
-  background-color: #F5F6F6;
+  color: #bfbfbf;
+  background-color: #f5f6f6;
 }
 blockquote {
-    color: #868e96;
+  color: #868e96;
 }
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin-top: 0.8rem;
-  margin-bottom: 0.8rem;
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  margin-top: .8rem;
+  margin-bottom: .8rem;
 }
 .h1, h1 {
-  color: #004bad;
   font-size: 2.5rem;
+  color: #004bad;
 }
 .h2, h2 {
-  color: #004bad;
   font-size: 1.75rem;
-  padding-top: 0.4rem;
+  padding-top: .4rem;
+  color: #004bad;
 }
 .h3, h3 {
-  color: #354B60;
   font-size: 1.25rem;
-  padding-top: 0.6rem;
+  padding-top: .6rem;
+  color: #354b60;
 }
 #content {
-  flex: 1;
   margin-top: 0;
   margin-bottom: 1rem;
+  flex: 1;
 }
 @media (min-width: 991px) {
   #content {
@@ -77,22 +78,22 @@ blockquote {
   }
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-   body {
-     display: block;
-     height: 100%;
-   }
-   .content {
-     /* Calculates the height of the page minus header and footer */
-     height: calc(100% - 88px - 93px);
-   }
+  body {
+    display: block;
+    height: 100%;
+  }
+  .content {
+    /* Calculates the height of the page minus header and footer */
+    height: calc(100% - 88px - 93px);
+  }
 }
 
 /* Navbar */
 
 .navbar {
-  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: rgb(25, 81, 155);
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   padding: 1.5rem 0 !important;
+  background-color: rgb(25, 81, 155);
 }
 .navbar button:focus {
   outline: none;
@@ -128,44 +129,44 @@ blockquote {
   }
 }
 @media (max-width: 991px) {
-.navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid {
-  padding-left: 15px;
-  padding-right: 15px;
-}
+  .navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 }
 
 /* Docs side navigation */
 
 .docs-nav {
-    position: fixed;
-    top: 0;
-    left: -20rem;
-    width: 20rem;
-    height: 100vh;
-    background-color: #FFF;
-    z-index: 2;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    font-size: 0.92rem;
-    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    box-shadow: 2px 0 45px 0 rgba(0, 0, 0, .2);
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: .92rem;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: -20rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 20rem;
+  height: 100vh;
+  transform: translateZ(0);
+  background-color: #fff;
+  box-shadow: 2px 0 45px 0 rgba(0, 0, 0, .2);
+  backface-visibility: hidden;
 }
 @media (min-width: 991px) {
-.docs-nav {
-  left: 0;
-  position: relative;
-  z-index: initial;
-  display: block;
-  overflow-y: visible;
-  max-width: 25%;
-  height: 100%;
-  box-shadow: none;
-}
+  .docs-nav {
+    position: relative;
+    z-index: initial;
+    left: 0;
+    display: block;
+    overflow-y: visible;
+    max-width: 25%;
+    height: 100%;
+    box-shadow: none;
+  }
 }
 .docs-nav h4, .docs-nav h4 a {
-  color: #06387A;
+  color: #06387a;
 }
 .docs-nav-block {
   padding-left: 0;
@@ -174,11 +175,11 @@ blockquote {
   display: none;
 }
 .docs-nav-block .active {
+  font-weight: 600;
   position: relative;
   left: -1px;
-  color: #19519B;
-  border-left: 3px solid #19519B;
-  font-weight: 600;
+  color: #19519b;
+  border-left: 3px solid #19519b;
 }
 .docs-nav-block .expander {
   position: absolute;
@@ -207,7 +208,7 @@ blockquote {
   padding-top: .15rem;
   padding-bottom: .15rem;
   padding-left: 2.5rem;
-  color: #7E8B8C;
+  color: #7e8b8c;
   border-left: 1px solid rgba(0, 0, 0, .1);
 }
 .docs-nav-block li {
@@ -233,11 +234,11 @@ blockquote {
   cursor: pointer;
 }
 .docs-nav-button {
+  position: absolute;
+  z-index: 4;
   display: block;
   width: 100%;
   background-color: #f7f7f7;
-  position: absolute;
-  z-index: 4;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1);
 }
 .docs-nav-button.sticky {
@@ -245,8 +246,8 @@ blockquote {
   top: 0;
 }
 .docs-nav-button svg {
-  height: 1.5rem;
   width: 1.5rem;
+  height: 1.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
   cursor: pointer;
@@ -256,31 +257,32 @@ blockquote {
   cursor: pointer;
 }
 @media (min-width: 991px) {
-  .docs-nav-button,
-  .docs-nav .closeButton {
+  .docs-nav-button, .docs-nav .closeButton {
     display: none;
   }
   .docs-content {
     margin-top: 0;
   }
 }
+
 /*
 ** Example preview image
 */
+
 img {
-    width: 100%;
+  width: 100%;
 }
 .exampleprev {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: .74rem;
   display: inline-block;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  background-color: #FCFCFC;
-  border: 1px solid #DDDDDD;
-  font-size: 0.74rem;
-  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  border-radius: .25rem;
   width: 100%;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  padding: .5rem;
+  border: 1px solid #ddd;
+  border-radius: .25rem;
+  background-color: #fcfcfc;
 }
 .exampleprev.float-left {
   margin-right: 1.5rem;
@@ -293,106 +295,96 @@ img {
   padding: 0;
 }
 .exampleprev p {
+  margin-top: .4rem;
   text-align: left;
-  margin-top: 0.4rem;
 }
 .exampleprev img {
-  display: block;
-  vertical-align: middle;
-  border: 0;
-  -ms-interpolation-mode: bicubic;
   line-height: 1;
+  display: block;
   width: 100%;
   max-width: 100%;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+  border: 0;
 }
 .exampleprev.thumbnail {
   max-width: 12vw;
 }
-
 .center .exampleprev {
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
   display: block;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
 }
-
 .center .exampleprev img {
   max-width: 100%;
 }
+
 /*
 ** Code
 */
- code {
+
+code {
   color: #4155bd;
-  background-color:#f7f7f9;
- }
+  background-color: #f7f7f9;
+}
 pre {
-	display:block;
-	padding:0.8rem;
-	margin:0;
-	font-size:0.75rem;
-	line-height:1.125rem;
-	max-height:22rem;
-	overflow-y:auto;
-	tab-size:4;
-	-moz-tab-size:4;
-	-webkit-tab-size:4;
-	word-break:break-all;
-	word-wrap:break-word;
-	white-space:pre;
-	white-space:pre-wrap;
-	background-color:#f7f7f9;
-	border:1px solid #f7f7f9;
+  font-size: .75rem;
+  line-height: 1.125rem;
+  display: block;
+  overflow-y: auto;
+  max-height: 22rem;
+  margin: 0;
+  padding: .8rem;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  border: 1px solid #f7f7f9;
   border-radius: .25rem;
+  background-color: #f7f7f9;
+  -webkit-tab-size: 4;
 }
-
 div.line {
-	min-height:18px;
+  min-height: 18px;
 }
-
 .noscroll pre {
-	max-height:none;
-	overflow-y:visible;
+  overflow-y: visible;
+  max-height: none;
 }
-
 .highlight {
-	position:relative;
+  position: relative;
 }
-
-.noscroll,
-.highlight {
-	margin:0 0 20px 0;
+.noscroll, .highlight {
+  margin: 0 0 20px 0;
 }
-
 .noscroll .highlight {
-	margin-bottom:0;
+  margin-bottom: 0;
 }
-
 .highlight table {
-	width:100%;
+  width: 100%;
 }
-
 .highlight a {
-	position:absolute;
-	padding:0.3rem 0.6rem;
-	margin:0;
-	top:0;
-	right:17px;
-	font-size:0.9rem;
-	font-weight: 600;
-	background-color:#f7f7f9;
+  font-size: .9rem;
+  font-weight: 600;
+  position: absolute;
+  top: 0;
+  right: 17px;
+  margin: 0;
+  padding: .3rem .6rem;
+  background-color: #f7f7f9;
 }
-
 .highlight a:hover {
-	cursor:pointer;
-	text-decoration:none;
+  cursor: pointer;
+  text-decoration: none;
 }
-
 pre code {
-	padding:0;
-	color:inherit;
-	background-color:transparent;
-	border:0;
+  padding: 0;
+  color: inherit;
+  border: 0;
+  background-color: transparent;
 }
 
 /* Documentation option block */
@@ -409,15 +401,15 @@ pre code {
   background-color: #4b607a;
 }
 .docs-content dt {
-  font-size: 0.8rem;
+  font-size: .8rem;
   font-weight: 400;
   line-height: 1.5rem;
   width: 100%;
-  padding: .15rem 0.6rem;
+  padding: .15rem .6rem;
   color: #fff;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-  background-color: #2A6D9B;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  background-color: #2a6d9b;
   background-size: 150%;
   text-shadow: 0 2px 3px rgba(0, 0, 0, .1);
 }
@@ -437,29 +429,29 @@ pre code {
 }
 .docs-content dt small {
   font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 90%;
   line-height: 1.5rem;
   float: right;
   opacity: .8;
-  font-size: 90%;
 }
 .docs-content dd {
-  font-size: 0.88em;
-  padding: .4rem 0.6rem;
+  font-size: .88em;
+  line-height: 1.6em;
+  padding: .4rem .6rem;
+  word-spacing: .05em;
   border: 1px solid rgba(0, 0, 0, .15);
   border-top: 0 solid transparent;
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: .25rem;
+  border-bottom-left-radius: .25rem;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .05);
-  word-spacing: 0.05em;
-      line-height: 1.6em;
 }
 .docs-content ul {
-  margin-top: 0.4rem;
-  margin-bottom: 0.4rem;
+  margin-top: .4rem;
+  margin-bottom: .4rem;
 }
 .docs-content ul li {
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
+  margin-top: .2rem;
+  margin-bottom: .2rem;
 }
 .docs-content dd dd {
   font-size: 1em;
@@ -470,24 +462,25 @@ pre code {
 .docs-content dd p {
   margin-bottom: .2rem;
 }
-.docs-content dd ul > li {
-  margin-bottom: 0.2rem;
+.docs-content dd ul>li {
+  margin-bottom: .2rem;
 }
 .docs-content a.spoiler {
-    color: #0056b3!important;
-    cursor: pointer;
-    font-weight: bold;
+  font-weight: bold;
+  cursor: pointer;
+  color: #0056b3!important;
 }
 .docs-content a.spoiler:hover {
   text-decoration: underline;
 }
 .docs-content .dd_value {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #036eb9;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #036eb9;
 }
 
 /* Getting started pagination */
+
 .docs-pagination {
   width: 100%;
   margin-top: 3rem;
@@ -500,31 +493,32 @@ pre code {
     width: auto;
   }
 }
+
 /* Release notes */
 
 .badge {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 12px;
-  font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 .badge-added {
   color: rgb(255, 255, 255);
-  background-color: rgb(56,181,93);
+  background-color: rgb(56, 181, 93);
 }
 .badge-changed {
   color: rgb(255, 255, 255);
-  background-color: rgb(0,129,200);
+  background-color: rgb(0, 129, 200);
 }
 .badge-fixed {
   color: rgb(255, 255, 255);
-  background-color: rgb(245,136,38);
+  background-color: rgb(245, 136, 38);
 }
 .badge-removed {
   color: rgb(255, 255, 255);
-  background-color: rgb(242,37,14);
+  background-color: rgb(242, 37, 14);
 }
 .badge-release {
   color: rgb(255, 255, 255);
-  background-color: rgb(109,103,174);
+  background-color: rgb(109, 103, 174);
 }
 .release-notes .feature {
   padding-top: .5rem;
@@ -543,9 +537,9 @@ pre code {
 }
 .release-notes li {
   position: relative;
+  margin-left: 5rem;
   padding-bottom: .5rem;
   color: rgb(114, 121, 127);
-  margin-left: 5rem;
 }
 .release-notes b {
   color: rgb(33, 37, 41);
@@ -563,61 +557,61 @@ pre code {
 */
 
 pre .comment, pre .template_comment, pre .diff .header, pre .javadoc {
+  font-style: italic;
   color: #998;
-  font-style: italic
 }
 pre .attr, pre .keyword, pre .css .rule .keyword, pre .winutils, pre .javascript .title, pre .nginx .title, pre .subst, pre .request, pre .status {
+  font-weight: bold;
   color: #333;
-  font-weight: bold
 }
 pre .number, pre .hexcolor, pre .ruby .constant {
   color: #099;
 }
 pre .string, pre .tag .value, pre .phpdoc, pre .tex .formula {
-  color: #d14
+  color: #d14;
 }
 pre .title, pre .id, pre .coffeescript .params, pre .scss .preprocessor, pre .section {
+  font-weight: bold;
   color: #900;
-  font-weight: bold
 }
 pre .javascript .title, pre .lisp .title, pre .clojure .title, pre .subst {
-  font-weight: normal
+  font-weight: normal;
 }
 pre .class .title, pre .haskell .type, pre .vhdl .literal, pre .tex .command {
+  font-weight: bold;
   color: #458;
-  font-weight: bold
 }
 pre .tag, pre .tag .title, pre .rules .property, pre .django .tag .keyword {
+  font-weight: normal;
   color: #000080;
-  font-weight: normal
 }
 pre .attribute, pre .variable, pre .lisp .body {
-  color: #008080
+  color: #008080;
 }
 pre .regexp {
-  color: #009926
+  color: #009926;
 }
 pre .symbol, pre .ruby .symbol .string, pre .lisp .keyword, pre .tex .special, pre .prompt {
-  color: #990073
+  color: #990073;
 }
 pre .built_in, pre .lisp .title, pre .clojure .built_in {
-  color: #0086b3
+  color: #0086b3;
 }
 pre .preprocessor, pre .pragma, pre .pi, pre .doctype, pre .shebang, pre .cdata {
+  font-weight: bold;
   color: #999;
-  font-weight: bold
 }
 pre .deletion {
-  background: #fdd
+  background: #fdd;
 }
 pre .addition {
-  background: #dfd
+  background: #dfd;
 }
 pre .diff .change {
-  background: #0086b3
+  background: #0086b3;
 }
 pre .chunk {
-  color: #aaa
+  color: #aaa;
 }
 
 /*
@@ -629,20 +623,20 @@ pre .chunk {
   float: left;
   width: 510px;
   height: 500px;
-  background-color: #fff;
   border: 1px solid #000;
+  background-color: #fff;
 }
 #svg_code {
-  display: block;
-  width: 510px;
   font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   font-size: 1em;
-  padding: 0.2rem 0.4rem;
-  margin: 0;
-  color: #555;
-  background-color:#f7f7f9;
+  display: block;
   overflow: auto;
-  border-radius: 0.25rem;
+  width: 510px;
+  margin: 0;
+  padding: .2rem .4rem;
+  color: #555;
+  border-radius: .25rem;
+  background-color: #f7f7f9;
 }
 input[type=range][orient=vertical] {
   position: absolute;
@@ -657,10 +651,10 @@ input[type=range]::-moz-range-thumb {
   -moz-transform: scaleX(-1);
 }
 .arc_pos {
-    position: relative;
-    display: block;
-    left: 0px;
-    text-align: right;
+  position: relative;
+  left: 0;
+  display: block;
+  text-align: right;
 }
 table#quickjump {
   width: 80%;
@@ -669,14 +663,14 @@ table#quickjump td {
   width: 33%;
 }
 .spoiler {
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
 }
 .docs-index .card {
   width: 100%;
-  margin-bottom: 0.75rem;
-  text-decoration: none;
+  margin-bottom: .75rem;
   transition: all .2s ease-in-out;
+  text-decoration: none;
   color: #808080;
 }
 .docs-index .card:hover {
@@ -684,8 +678,8 @@ table#quickjump td {
   border-color: #0058cc!important;
 }
 .docs-index .card-title {
-  color: #0058cc;
   margin-top: 0;
+  color: #0058cc;
 }
 .docs-index .card-body p {
   margin: 0;
