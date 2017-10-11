@@ -35,7 +35,7 @@ function ahk_slideout(info){
 	}
 	function close(){
 		if (left){
-			panel.style.left = initialPanelStyles.left;
+			panel.style.left = "-"+width;
 		}
 		else{
 			panel.style.right = initialPanelStyles.right;
@@ -112,7 +112,7 @@ function ahk_slideout(info){
 
 		//touch boundary
 		if (info.touch_boundary){
-			touch_boundary = info.touch_boundary;
+			touch_boundary = (window.innerWidth/100) * info.touch_boundary;
 		}
 
 		//add the styles to the panel
@@ -129,6 +129,10 @@ function ahk_slideout(info){
 		window.addEventListener("resize", function(){
 			if (left && window.innerWidth < 991) {
 				panel.style.left = "-"+width;
+			}
+			// keep panel open when resized
+			if (left && (slideOut == true) && window.innerWidth < 991) {
+				panel.style.left = "0";
 			}
 			if (left && window.innerWidth > 991 ) {
 				panel.style.left = "0";
