@@ -7,6 +7,18 @@ title: 'Version History'
 
 <h2 id="4.1">Rainmeter 4.1</h2>
 
+<h3 id="r2944">October 12, 2017 - Revision 2944</h3>
+<ul>
+<li><b>Changed</b> Shape meter: Changed the order in which transforms are applied to the geometry when drawn. This corrects a potential issue when TransformationMatrix is used with a Shape meter.</li>
+<li><b>Changed</b> Manage dialog: When a skin is selected in the Skins list, the Enter key will toggle loading and unloading the skin.</li>
+<li><b>Changed</b> About dialog: Added a 'Range: Copy to clipboard' right-click context menu to the Skins panel. This will copy the MinValue - MaxValue range, using the raw numbers rather than the scaled and rounded numbers in the dialog.</li>
+<li><b>Changed</b> About dialog: Added a 'Copy to clipboard' right-click context menu to the Log panel.</li>
+<li><b>Changed</b> About dialog: Added several plugins that have been converted to measures to the Plugins tab to reduce confusion with missing .dll files.</li>
+<li><b>Changed</b> About dialog: Adjusted the column width on the Plugins tab to automatically fit the longest plugin name, and widened the overall size of the About dialog a bit.</li>
+<li><b>Fixed</b> RegExpSubstitute: Fixed a bug where an empty capture would skip following replacements and where an empty capture could create an endless loop.</li>
+<li><b>Fixed</b> Manage Dialog: Fixed an issue where when a skin is selected in the Skins list, double clicking on any navigation arrow would toggle the active state of the skin.</li>
+</ul>
+
 <h3 id="r2922">October 4, 2017 - Revision 2922</h3>
 <ul>
 <li><b>Fixed</b> Rainmeter: Corrected a bug introduced in the r2876 beta version that caused a parsing issue when a measure value contained embedded quotes and was used in a bang as a section variable.</li>
