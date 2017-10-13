@@ -166,7 +166,7 @@ UpdateRate=3600
 									<span>205.185.193.236</span>
 								</div>
 ```
-<p>You can see that we will return 205.185.193.236 in StringIndex 1</p>
+<p>You can see that we will return <code>205.185.193.236</code> in StringIndex 1</p>
 
 <p><b>UpdateRate=3600</b> - We want to check the website at a rate 3600 times the value in the "Update=" parameter in the "Rainmeter" section. As this defaults to "1000" or once every 1000 milliseconds (1 second) we will be running WebParser every 3600 seconds or 60 minutes. This is plenty often, as your IP information doesn't change much and you don't want to "spam" the website with requests. You may well find yourself blocked...</p>
 
@@ -182,7 +182,7 @@ URL=[MeasureSite]
 StringIndex=1
 ```
 
-<p>We are using the values returned by our parent measure [MeasureSite] as the <code>URL</code> for this measure, and setting the value contained in <code>StringIndex=1</code>.  So the value of this child measure will be "205.185.193.236".</p>
+<p>We are using the values returned by our parent measure [MeasureSite] as the <code>URL</code> for this measure, and setting the value contained in <code>StringIndex=1</code>.  So the value of this child measure will be <code>205.185.193.236</code>.</p>
 
 <h3>Testing as we go</h3>
 
@@ -209,8 +209,6 @@ StringIndex=1
 									</span>
 								</div>
 ```
-
-<p>
 
 <p>So we want to add to our "RegExp=" statement, search for the flag image name, and return the result in the next StringIndex on the parent measure:</p>
 
@@ -269,7 +267,6 @@ Download=1
 									</span>
 								</div>
 ```
-
 
 <p>So we want to add to our "RegExp=" statement, search for the country name, and return the result in the next StringIndex on the parent measure:</p>
 
