@@ -84,16 +84,16 @@ MeasureName=MeasureChild2
 
 <h2>Our tutorial skin</h2>
 
-<p>So what we are going to do today is parse a website <a href="http://www.tell-my-ip.com/index.html" target="blank">http://www.tell-my-ip.com/index.html</a> to get our IP and location information to use in a skin. Click that link now if you want to open the page in a new tab/window.</p>
+<p>So what we are going to do today is parse a website <a href="https://www.geoiptool.com/" target="blank">https://www.geoiptool.com/</a> to get our IP and location information to use in a skin. Click that link now if you want to open the page in a new tab/window.</p>
 
 <p>Here is what the web page we are going to parse looks like, with the information we are going to extract numbered:</p>
 <div class="exampleprev">
-<a href="/tips/img/webparser-tutorial/WebParserSite.jpg" data-fancybox><img src="/tips/img/webparser-tutorial/WebParserSite.jpg"></a>
+<a href="/tips/img/webparser-tutorial/WebParserSite.png" data-fancybox><img src="/tips/img/webparser-tutorial/WebParserSite.png"></a>
 </div>
 <br><br>
 <p>Here is the final skin we will create:</p>
 <div class="exampleprev">
-<a href="/tips/img/webparser-tutorial/WebParserSkin.jpg" data-fancybox><img src="/tips/img/webparser-tutorial/WebParserSkin.jpg"></a>
+<a href="/tips/img/webparser-tutorial/WebParserSkin.png" data-fancybox><img src="/tips/img/webparser-tutorial/WebParserSkin.png"></a>
 </div>
 
 <h2>Let's Build It</h2>
@@ -109,7 +109,7 @@ DynamicWindowSize=1
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
-URL=http://www.tell-my-ip.com/index.html
+URL=https://www.geoiptool.com/
 RegExp=
 Debug=2
 
@@ -124,24 +124,17 @@ Meter=String
 
 <p>Now let's look at the first bit of information we want to retrieve.</p>
 
-<p>We want to start by getting our IP address. On the web page, it is near the top of the area with all the information we want, with a label "Your IP Address:"</p>
+<p>We want to start by getting our IP address. On the web page, it is near the top of the area with all the information we want, with a label "IP Address:".</p>
 
-<p>Open up WebParserDump.txt (the saved output from the website) and search for that label. You will find a section of the html which looks like this:</p>
+<p>Open up WebParserDump.txt (the saved output from the website) and search for that label. You will find a section of the html which looks like this. It should start at around line 458:</p>
 
 ``` html
-<tbody>
-<tr><td width="100">Your IP Address:</td><td>72.205.25.80</td></tr>
-<tr><td>Country:</td><td> <img src="flags/us.png"> United States</td></tr>
-<tr><td>Region:</td><td>Virginia</td></tr>
-<tr><td>City:</td><td>Great Falls</td></tr>
-<tr><td>ISP:</td><td>Cox Communications</td></tr>
-<tr><td>Latitude:</td><td>38.9981689453</td></tr>
-<tr><td>Longitude:</td><td>-77.2883224487</td></tr>
-<tr><td>Host:</td><td>ip72-205-25.80.dc.dc.cox.net</td></tr>
-<tr><td>Anonymity Level:</td><td>Elite (or no proxy)</td></tr>
-<tr><td>Map:</td><td><a href='detailed.html'>View your IP on satellite map (Big)</a></td></tr>
-</tbody>
+								<div class="data-item">
+									<span class="bold">IP Address:</span>
+									<span>205.185.193.236</span>
+								</div>
 ```
+
 <h2>The parent measure</h2>
 
 <p>First, we change that "parent" measure, we created above, containing the RegExp with the StringIndex captures.</p>
@@ -150,27 +143,30 @@ Meter=String
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
-URL=http://www.tell-my-ip.com/index.html
-RegExp=(?siU)<td.*>Your IP Address:</td><td>(.*)</td>
+URL=https://www.geoiptool.com/
+RegExp=(?siU)<span class="bold">IP Address:</span>.*<span>(.*)</span>
 UpdateRate=3600
 ```
 
 <p>The important options are:</p>
 
-<p><b>Url=http://www.tell-my-ip.com/index.html</b> - The URL to the website. It can be set as a variable in the [Variables] section to make it easier to find and change if you want.</p>
+<p><b>URL=https://www.geoiptool.com/</b> - The URL to the website. It can be set as a variable in the [Variables] section to make it easier to find and change if you want.</p>
 
-<p><b>RegExp=(?siU)&lt;td.*&gt;Your IP Address:&lt;/td&gt;&lt;td&gt;(.*)&lt;/td&gt;</b> - Ah, the meat and potatoes...</p>
+<p><b>RegExp=(?siU)&lt;span class="bold"&gt;IP Address:&lt;/span&gt;.*&lt;span&gt;(.*)&lt;/span&gt;</b> - Ah, the meat and potatoes...</p>
 
 <p>You are telling RegExp to:</p>
 
-<p>Use the (?siU) expression directives, (described earlier) search for <code>&lt;td.*&gt;Your IP Address:&lt;/td&gt;&lt;td&gt;</code> and capture everything to a StringIndex <code>(.*)</code> until it sees <code>&lt;/td&gt;</code>, where it will stop.</p>
+<p>Use the (?siU) expression directives, (described earlier) search for <code>&lt;span class="bold"&gt;IP Address:&lt;/span&gt;.*&lt;span&gt;</code> and capture everything to a StringIndex <code>(.*)</code> until it sees <code>&lt;/span&gt;</code>, where it will stop.</p>
 
 <p>So if we look again at our output in WebParserDump.txt </p>
 
 ``` html
-<tr><td width="100">Your IP Address:</td><td>72.205.25.80</td></tr>
-``` 
-<p>You can see that we will return 72.205.25.80 in StringIndex 1</p>
+								<div class="data-item">
+									<span class="bold">IP Address:</span>
+									<span>205.185.193.236</span>
+								</div>
+```
+<p>You can see that we will return <code>205.185.193.236</code> in StringIndex 1</p>
 
 <p><b>UpdateRate=3600</b> - We want to check the website at a rate 3600 times the value in the "Update=" parameter in the "Rainmeter" section. As this defaults to "1000" or once every 1000 milliseconds (1 second) we will be running WebParser every 3600 seconds or 60 minutes. This is plenty often, as your IP information doesn't change much and you don't want to "spam" the website with requests. You may well find yourself blocked...</p>
 
@@ -186,14 +182,14 @@ URL=[MeasureSite]
 StringIndex=1
 ```
 
-<p>We are using the values returned by our parent measure [MeasureSite] as the <code>URL</code> for this measure, and setting the value contained in <code>StringIndex=1</code>.  So the value of this child measure will be "72.205.25.80".</p>
+<p>We are using the values returned by our parent measure [MeasureSite] as the <code>URL</code> for this measure, and setting the value contained in <code>StringIndex=1</code>.  So the value of this child measure will be <code>205.185.193.236</code>.</p>
 
 <h3>Testing as we go</h3>
 
 <p>You should open (and pretty much leave open while building your skin) the <a href="/manual/user-interface/about/#SkinsTab">About / Skins</a> dialog.  In this panel you can see the values of your measures as you save and refresh your skin. You will be able to tell at a glance whether you are getting the values you expect from your <code>RegExp</code>.  If there are problems, be sure to check the <a href="/manual/user-interface/about/#LogTab">About / Log</a> panel for any error messages.</p>
 
 <div class="exampleprev">
-<a href="/tips/img/webparser-tutorial/WebParserAbout1.jpg" data-fancybox><img src="/tips/img/webparser-tutorial/WebParserAbout1.jpg"></a>
+<a href="/tips/img/webparser-tutorial/WebParserAbout1.png" data-fancybox><img src="/tips/img/webparser-tutorial/WebParserAbout1.png"></a>
 </div>
 
 <h2>The rest of our child measures</h2>
@@ -203,10 +199,16 @@ StringIndex=1
 <p>The next information in the WebParserDump file that we want is the local path and name of the country flag image.</p>
 
 ``` html
-<tr><td>Country:</td><td> <img src="flags/us.png"> United States</td></tr>
-```
+								<div class="data-item">
+									<span class="bold">Country:</span>
 
-<p>
+									<span>
+
+										<img src="../static/img/flags/br.gif">
+										Brazil
+									</span>
+								</div>
+```
 
 <p>So we want to add to our "RegExp=" statement, search for the flag image name, and return the result in the next StringIndex on the parent measure:</p>
 
@@ -214,16 +216,16 @@ StringIndex=1
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
-URL=http://www.tell-my-ip.com/index.html
-RegExp=(?siU)<td.*>Your IP Address:</td><td>(.*)</td>.*<td>Country:</td>.*<img src="(.*)">
+URL=https://www.geoiptool.com/
+RegExp=(?siU)<span class="bold">IP Address:</span>.*<span>(.*)</span>.*<span class="bold">Country:</span>.*<img src="(.*)">
 UpdateRate=3600
 ```
 
 <p>So after the first pair of start/stop searches we already did, we are adding:</p>
 
-<p><code>.*&lt;td&gt;Country:&lt;/td&gt;.*&lt;img src="(.*)"&gt;</code></p>
+<p><code>.*&lt;span class="bold"&gt;Country:&lt;/span&gt;.*&lt;img src="(.*)"&gt;</code></p>
 
-<p>This will tell RegExp to skip everything until it finds <code>&lt;td&gt;Country:&lt;/td&gt;.*&lt;img src="</code> and then capture everything until it sees <code>"&gt;</code> and put it in <code>StringIndex=2</code>. The result in my example will be "flags/us.png".</p>
+<p>This will tell RegExp to skip everything until it finds <code>&lt;span class="bold"&gt;Country:&lt;/span&gt;.*&lt;img src="</code> and then capture everything until it sees <code>"></code> and put it in <code>StringIndex=2</code>. The result in my example will be <code>../static/img/flags/br.gif</code>.</p>
 
 <h3>Downloading an image</h3>
 
@@ -231,59 +233,58 @@ UpdateRate=3600
 
 <p>As long as the value from the parent measure that is returned in the StringIndex number is the URL to an image file, you can simply add the <code>Download=1</code> option to the child measure, and the image will be downloaded. The value of the child measure will then be the full <em>local</em> path to the file in the Windows TEMP folder Rainmeter will create.</p>
 
-<p>However, wait.. that value "flags/us.png" is not a full URL to the image. It is a "relative path" to the image on the remote server. That's ok, we can still get it.</p>
+<p>However, wait.. that value "../static/img/flags/br.gif" is not a full URL to the image. It is a "relative path" to the image on the remote server. That's ok, we can still get it.</p>
 
 ``` ini
 [MeasureFlagImage]
 Measure=Plugin
 Plugin=WebParser
-URL=http://www.tell-my-ip.com/[MeasureSite]
+URL=https://www.geoiptool.com/[MeasureSite]
 StringIndex=2
 Download=1
 ```
 
-<p>What we are doing is appending the first part of the URL, the one we used on the parent measure to the beginning of the <code>URL</code> option, followed by the reference to [MeasureSite] and the <code>StringIndex=2</code> option. Then we add <code>Download=1</code> and that full URL of <code>http://www.tell-my-ip.com/flags/us.png</code> will be used to retrieve the image file.</p>
+<p>What we are doing is appending the first part of the URL, the one we used on the parent measure to the beginning of the <code>URL</code> option, followed by the reference to [MeasureSite] and the <code>StringIndex=2</code> option. Then we add <code>Download=1</code> and that full URL of <code>https://www.geoiptool.com/../static/img/flags/br.gif</code> will be used to retrieve the image file.</p>
 
 <p>The value of the child measure will in my case be:</p>
 
-<p><code>C:\Users\Jeffrey\AppData\Local\Temp\Rainmeter-Cache\us.png</code></p>
+<p><code>C:\Users\Jeffrey\AppData\Local\Temp\Rainmeter-Cache\br.gif</code></p>
 
 <p>Which we can use in an Image meter later to display it.</p>
 
 <h3>Our next child measure</h3>
 
-<p>Now we want to get the "Country Code" that the flag image represents. It just so happens that the file name of the image IS the Country Code, in this case "us"</p>
+<p>Now we want to get the full name of the "Country". That can be found in the same section of the HTML that you got the flag image from. In this case it is "Brazil".</p>
 
-<p>To get that, we will use a child measure like this:</p>
+``` html
+								<div class="data-item">
+									<span class="bold">Country:</span>
 
-``` ini
-[MeasureCountryCode]
-Measure=Plugin
-Plugin=WebParser
-URL=[MeasureSite]
-StringIndex=2
-RegExpSubstitute=1
-Substitute=".*/(.*).png":"\1"
+									<span>
+
+										<img src="../static/img/flags/br.gif">
+										Brazil
+									</span>
+								</div>
 ```
 
-<p>Note that the StringIndex number that we use is the same <code>StringIndex=2</code> as our child measure that got the flag image. That is because we are just using the same capture from the <code>RegExp</code>, that returned "flags/us.png". We are just using the value a little differently this time.</p>
-
-<p>We are using <a href="/manual/measures/general-options/substitute/#RegExpSubstitute">RegExpSubstitute</a> to allow a regular expression in a <a href="/manual/measures/general-options/substitute/#Substitute">Substitute</a> option. What <code>Substitute=".*/(.*).png":"\1"</code> does is extract and capture just the file name of the image, with no extension.  It then replaces the entire string value of the measure with this. The measure ends up with a string value of "us". We will capitalize and use that in a String meter later.</p>
-
-<h3>Our next child measure</h3>
+<p>So we want to add to our "RegExp=" statement, search for the country name, and return the result in the next StringIndex on the parent measure:</p>
 
 ``` ini
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
-URL=http://www.tell-my-ip.com/index.html
-RegExp=(?siU)<td.*>Your IP Address:</td><td>(.*)</td>.*<td>Country:</td>.*<img src="(.*)"> (.*)</td>
-UpdateDivider=3600
+URL=https://www.geoiptool.com/
+RegExp=(?siU)<span class="bold">IP Address:</span>.*<span>(.*)</span>.*<span class="bold">Country:</span>.*<img src="(.*)">(.*)</span>
 ```
 
-<p>Hopefully you can see how this is going to work going forward.</p>
+<p>So after the start/stop searches we already had on the RegExp option, we are adding:</p>
 
-<p>In our parent measure, we are adding <code> (.*)&lt;/td&gt;</code> to our <code>RegExp</code> to skip a space, then capturing everything into <code>StringIndex=3</code> until we hit <code>&lt;/td&gt;</code>.
+<p><code>(.*)&lt;/span&gt;</code></p>
+
+<p>This will tell RegExp to capture everything until it sees <code>&lt;/span&gt;</code> and put it in <code>StringIndex=3</code>.</p>
+
+<p>However, as you can see from the HTML above, the country name resides on its own line, with the only easy way to capture it being to capture everything from the <code>&gt;</code> at the end of the flag image name, to the <code>&lt;/span&gt;</code> on the line after the country name. That's ok, we will deal with that in our next child measure.</p>
 
 ``` ini
 [MeasureCountryName]
@@ -291,9 +292,39 @@ Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=3
+Substitute="	":"","#CRLF#":""
 ```
 
-<p>When we add this child measure, it ends up with a value of "United States".</p>
+<p>Embedded in the information we captured for the country name were some number of TAB characters, and two LINEFEED characters. We don't want to keep those, so we  use a <a href="/manual/measures/general-options/substitute/#Substitute">Substitute</a> option to remove them. In this case we are just left with <code>Brazil</code> as the value.</p>
+
+<h3>Our next child measure</h3>
+
+<p>Now we want to get the "Country Code" that the flag image represents. That is contained in the HTML in:</p>
+
+``` html
+								<div class="data-item">
+									<span class="bold">Country Code:</span>
+									<span>BR (BRA)</span>
+								</div>
+```
+
+<p>So we once again want to add to our "RegExp=" statement, search for the country code, and return the result in the next StringIndex on the parent measure:</p>
+
+``` ini
+[MeasureSite]
+Measure=Plugin
+Plugin=WebParser
+URL=https://www.geoiptool.com/
+RegExp=(?siU)<span class="bold">IP Address:</span>.*<span>(.*)</span>.*<span class="bold">Country:</span>.*<img src="(.*)">(.*)</span>.*<span class="bold">Country Code:</span>.*<span>(.*)\(
+```
+
+<p>Note that we want the first code <code>BR</code>, and not the second <code>(BRA)</code>, so we end our search at the <code>(</code> parentheses character. Be sure you <code>\</code> "escape" characters reserved in regular expression when you use them as a literal!</p>
+
+<p>So after the start/stop searches we already had on the RegExp option, we are adding:</p>
+
+<p><code>.*&lt;span class="bold"&gt;Country Code:&lt;/span&gt;.*&lt;span&gt;(.*)\(</code></p>
+
+<p>This will tell RegExp to skip everything until it sees <code>.*&lt;span class="bold"&gt;Country Code:&lt;/span&gt;.*&lt;span&gt;</code>, and capture everything until it sees <code>(</code> and put it in <code>StringIndex=4</code>.</p>
 
 <h3>And so on...</h3>
 
@@ -303,8 +334,8 @@ StringIndex=3
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
-URL=http://www.tell-my-ip.com/index.html
-RegExp=(?siU)<td.*>Your IP Address:</td><td>(.*)</td>.*<td>Country:</td>.*<img src="(.*)"> (.*)</td>.*<td>Region:</td><td>(.*)</td>.*<td>City:</td><td>(.*)</td>.*<td>Latitude:</td><td>(.*)</td>.*<td>Longitude:</td><td>(.*)</td>
+URL=https://www.geoiptool.com/
+RegExp=(?siU)<span class="bold">IP Address:</span>.*<span>(.*)</span>.*<span class="bold">Country:</span>.*<img src="(.*)">(.*)</span>.*<span class="bold">Country Code:</span>.*<span>(.*)\(.*<span class="bold">Region:</span>.*<span>(.*)</span>.*<span class="bold">City:</span>.*<span>(.*)</span>.*<span class="bold">Latitude:</span>.*<span>(.*)</span>.*<span class="bold">Longitude:</span>.*<span>(.*)</span>
 UpdateRate=3600
 ```
 
@@ -316,29 +347,29 @@ UpdateRate=3600
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
-StringIndex=4
+StringIndex=5
 
 [MeasureCity]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
-StringIndex=5
+StringIndex=6
 
 [MeasureLatitude]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
-StringIndex=6
+StringIndex=7
 
 [MeasureLongitude]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
-StringIndex=7
+StringIndex=8
 ```
 
 <div class="exampleprev">
-<a href="/tips/img/webparser-tutorial/WebParserAbout.jpg" data-fancybox><img src="/tips/img/webparser-tutorial/WebParserAbout.jpg"></a>
+<a href="/tips/img/webparser-tutorial/WebParserAbout.png" data-fancybox><img src="/tips/img/webparser-tutorial/WebParserAbout.png"></a>
 </div>
 
 <h2>The meters</h2>
@@ -350,42 +381,45 @@ StringIndex=7
 ``` ini
 [MeterBackground]
 Meter=Image
-W=300
-H=175
+W=320
+H=203
 SolidColor=20,20,20,255
 
 [MeterIPLabel]
 Meter=String
-X=5
+X=160
 Y=5
-W=280
+W=300
 H=15
 FontSize=11
 FontColor=255,225,181,255
 SolidColor=47,47,47,255
 Padding=5,5,5,5
+FontWeight=700
+StringAlign=Center
 AntiAlias=1
-Text=IP Address:
+Text=IP Address Information
 
 [MeterIP]
 Meter=String
 MeasureName=MeasureIP
-X=295
-Y=0r
-W=280
+X=160
+Y=3R
+W=300
 H=15
 FontSize=11
-FontColor=252,251,202,255
-SolidColor=0,0,0,1
+FontColor=255,225,181,255
+SolidColor=47,47,47,255
 Padding=5,5,5,5
-StringAlign=Right
+FontWeight=700
+StringAlign=Center
 AntiAlias=1
 
 [MeterCountryLabel]
 Meter=String
 X=5
 Y=3R
-W=280
+W=300
 H=15
 FontSize=11
 FontColor=255,225,181,255
@@ -415,7 +449,7 @@ AntiAlias=1
 [MeterCountryName]
 Meter=String
 MeasureName=MeasureCountryName
-X=295
+X=315
 Y=0r
 W=135
 H=15
@@ -431,7 +465,7 @@ AntiAlias=1
 Meter=String
 X=5
 Y=3R
-W=280
+W=300
 H=15
 FontSize=11
 FontColor=255,225,181,255
@@ -443,9 +477,9 @@ Text=Region:
 [MeterRegion]
 Meter=String
 MeasureName=MeasureRegion
-X=295
+X=315
 Y=0r
-W=280
+W=300
 H=15
 FontSize=11
 FontColor=252,251,202,255
@@ -458,7 +492,7 @@ AntiAlias=1
 Meter=String
 X=5
 Y=3R
-W=280
+W=300
 H=15
 FontSize=11
 FontColor=255,225,181,255
@@ -470,9 +504,9 @@ Text=City:
 [MeterCity]
 Meter=String
 MeasureName=MeasureCity
-X=295
+X=315
 Y=0r
-W=280
+W=300
 H=15
 FontSize=11
 FontColor=252,251,202,255
@@ -485,7 +519,7 @@ AntiAlias=1
 Meter=String
 X=5
 Y=3R
-W=280
+W=300
 H=15
 FontSize=11
 FontColor=255,225,181,255
@@ -497,9 +531,9 @@ Text=Latitude:
 [MeterLatitude]
 Meter=String
 MeasureName=MeasureLatitude
-X=295
+X=315
 Y=0r
-W=280
+W=300
 H=15
 FontSize=11
 FontColor=252,251,202,255
@@ -512,7 +546,7 @@ AntiAlias=1
 Meter=String
 X=5
 Y=3R
-W=280
+W=300
 H=15
 FontSize=11
 FontColor=255,225,181,255
@@ -524,9 +558,9 @@ Text=Longitude:
 [MeterLongitude]
 Meter=String
 MeasureName=MeasureLongitude
-X=295
+X=315
 Y=0r
-W=280
+W=300
 H=15
 FontSize=11
 FontColor=252,251,202,255
@@ -539,7 +573,7 @@ AntiAlias=1
 <p>You will end up with a final skin that looks like this.</p>
 
 <div class="exampleprev">
-<a href="/tips/img/webparser-tutorial/WebParserSkin.jpg" data-fancybox><img src="/tips/img/webparser-tutorial/WebParserSkin.jpg"></a>
+<a href="/tips/img/webparser-tutorial/WebParserSkin.png" data-fancybox><img src="/tips/img/webparser-tutorial/WebParserSkin.png"></a>
 </div>
 
 <p>You can download the completed .rmskin here:</p>
