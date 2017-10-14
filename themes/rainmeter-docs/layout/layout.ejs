@@ -5,16 +5,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=0.9, maximum-scale=0.9">
 	<meta name="og:image" content="https://www.rainmeter.net/img/media_image.png">
-	<meta name="og:site_name" content="Rainmeter">
+	<meta name="og:site_name" content="Rainmeter Docs - <%= page.title %>">
 	<meta name="og:type" content="website">
 
 	<!-- Page title  -->
 	<title><% if (page.title) { %><%= page.title %> - <% } %>Rainmeter</title>
 
 	<!-- Files need to be local for offline version of documentations -->
-	<%- css('css/bootstrap.min.css') %>
-	<%- css('css/rainmeter.css') %>
-	<%- css('css/jquery.fancybox.min.css') %>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/rainmeter.css">
+	<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
 
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
@@ -29,11 +29,11 @@
   <%- body %>
 
 	<!-- Javascript files  -->
-	<%- js('js/main.js') %>
-	<%- js('js/jquery-3.2.1.slim.min.js') %>
-	<%- js('js/bootstrap.min.js') %>
-	<%- js('js/ahk-sliding-panel.js') %>
-	<%- js('js/jquery.fancybox.min.js') %>
+	<script src="/js/main.js"></script>
+	<script src="/js/jquery-3.2.1.slim.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/ahk-sliding-panel.js"></script>
+	<script src="/js/jquery.fancybox.min.js"></script>
 
 	<!-- Script for the slideout menu on mobile -->
 	<script>
