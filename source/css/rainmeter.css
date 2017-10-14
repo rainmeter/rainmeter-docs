@@ -1,0 +1,709 @@
+/*
+ * Stylesheet for Rainmeter.net
+ * Requires: Bootstrap v4.0.0-beta
+ * Original creator: Marco Vockner (https://github.com/MarcoPixel/)
+ *.docs-content licensed under Creative Commons BY-NC-SA 3.0.
+ * 2017 - Rainmeter
+*/
+
+
+/* General styling  */
+
+body {
+  height: 100%;
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 15px;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #4f5c72;
+  background-color: #fff;
+  -ms-flex-direction: column;
+  overflow-x: hidden;
+}
+b {
+  font-weight: 600;
+}
+p {
+  line-height: 1.6em;
+  word-spacing: .05em;
+}
+footer {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: rgba(0,0,0,.2);
+  background-color: rgba(0,0,0,.03);
+}
+footer a {
+  font-weight: 600;
+  color: rgba(0, 0, 0, .35);
+}
+footer a:hover, footer a:focus {
+  text-decoration: none;
+}
+blockquote {
+  color: #868e96;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  margin-top: .8rem;
+  margin-bottom: .8rem;
+}
+.h1, h1 {
+  font-size: 2.5rem;
+  color: #004bad;
+}
+.h2, h2 {
+  font-size: 1.75rem;
+  padding-top: .4rem;
+  color: #004bad;
+}
+.h3, h3 {
+  font-size: 1.25rem;
+  padding-top: .6rem;
+  color: #354b60;
+}
+#content {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+.symbol {
+  font-size: 140%;
+  font-family: Arial, sans-serif;
+}
+@media (min-width: 991px) {
+  #content {
+    margin-top: 1rem;
+  }
+}
+.alert p {
+  margin-bottom: 0;
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1026px;
+  }
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  body {
+    display: block;
+    height: 100%;
+  }
+  .content {
+    /* Calculates the height of the page minus header and footer */
+    height: calc(100% - 88px - 93px);
+  }
+}
+
+/* Navbar */
+
+.navbar {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  padding: 1.5rem 0 !important;
+  background-color: rgb(25, 81, 155);
+}
+.navbar button:focus {
+  outline: none;
+}
+.navbar .dropdown-divider {
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, .4);
+}
+.navbar li>a {
+  font-size: 1.2rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+}
+.navbar li>a:hover {
+  color: rgba(255, 255, 255, .85) !important;
+}
+.navbar-nav {
+  margin-top: .5rem;
+}
+.navbar-brand {
+  padding: 0;
+}
+.navbar-brand img {
+  width: 201px;
+  image-rendering: -webkit-optimize-contrast;
+}
+@media (min-width: 992px) {
+  .navbar ul>li>a {
+    font-size: 1rem;
+    padding-right: 0 !important;
+    padding-left: 2.5rem !important;
+  }
+}
+@media (max-width: 991px) {
+  .navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+/* Docs side navigation */
+
+.docs-nav {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: .92rem;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: -20rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 20rem;
+  height: 100vh;
+  transform: translateZ(0);
+  background-color: #fff;
+  box-shadow: 2px 0 45px 0 rgba(0, 0, 0, .05);
+  backface-visibility: hidden;
+}
+@media (min-width: 991px) {
+  .docs-nav {
+    position: relative;
+    z-index: initial;
+    left: 0;
+    display: block;
+    overflow-y: visible;
+    max-width: 25%;
+    height: 100%;
+    box-shadow: none;
+  }
+}
+.docs-nav h4, .docs-nav h4 a {
+  color: #06387a;
+}
+.docs-nav-block {
+  padding-left: 0;
+}
+.docs-nav-block .hide {
+  display: none;
+}
+.docs-nav-block .active {
+  font-weight: 600;
+  position: relative;
+  left: -1px;
+  color: #19519b;
+  border-left: 3px solid #19519b;
+}
+.docs-nav-block .expander {
+  position: absolute;
+  top: 0rem;
+  left: 0;
+  float: left;
+  width: 2.5rem;
+  height: 1.8rem;
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNhMGE5YjIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSIgdHJhbnNmb3JtPSdyb3RhdGUoMjcwIDEyIDEyKSc+PC9wb2x5bGluZT48L3N2Zz4NCg==');
+  background-repeat: no-repeat;
+  background-position: 1rem .25rem;
+}
+.docs-nav-block .expander.open {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNhMGE5YjIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=');
+  background-repeat: no-repeat;
+}
+.docs-nav-block .active~.expander {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxOTUxOUIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSIgdHJhbnNmb3JtPSdyb3RhdGUoMjcwIDEyIDEyKSc+PC9wb2x5bGluZT48L3N2Zz4NCg==');
+}
+.docs-nav-block .active~.expander.open {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxOTUxOUIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=');
+}
+.docs-nav-block a {
+  display: block;
+  padding-top: .15rem;
+  padding-bottom: .15rem;
+  padding-left: 2.5rem;
+  color: #7e8b8c;
+  border-left: 1px solid rgba(0, 0, 0, .05);
+}
+.docs-nav-block li {
+  position: relative;
+  display: block;
+}
+.docs-nav-block li>ul {
+  padding: 0;
+}
+.docs-nav-block ul a {
+  padding-left: 4rem;
+}
+.docs-nav-block ul li>ul a {
+  padding-left: 5rem;
+}
+.docs-nav-block ul li .expander {
+  left: 1.5rem;
+}
+.docs-nav .closeButton {
+  position: absolute;
+  top: 13.5px;
+  right: 15px;
+  cursor: pointer;
+}
+.docs-nav-button {
+  position: absolute;
+  z-index: 4;
+  display: block;
+  width: 100%;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1);
+}
+.docs-nav-button.sticky {
+  position: fixed;
+  top: 0;
+}
+.docs-nav-button svg {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.docs-nav-button a {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+@media (min-width: 991px) {
+  .docs-nav-button, .docs-nav .closeButton {
+    display: none;
+  }
+  .docs-content {
+    margin-top: 0;
+  }
+}
+
+/*
+** Example preview image
+*/
+
+.exampleprev {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: .74rem;
+  display: inline-block;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  padding: .5rem;
+  border: 1px solid #ddd;
+  border-radius: .25rem;
+  background-color: #fcfcfc;
+}
+.exampleprev.full-mobile {
+  width: 100%;
+}
+.exampleprev.float-left {
+  margin-right: 1.5rem;
+}
+.exampleprev.float-right {
+  margin-left: 1.5rem;
+}
+.exampleprev * {
+  margin: 0;
+  padding: 0;
+}
+.exampleprev p {
+  margin-top: .4rem;
+  text-align: left;
+}
+.exampleprev img {
+  line-height: 1;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+  border: 0;
+}
+.center .exampleprev {
+  display: block;
+  width: 70%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.center .exampleprev img {
+  max-width: 100%;
+}
+
+@media (min-width: 991px) {
+  .exampleprev,
+  .exampleprev.full-mobile {
+    width: auto;
+  }
+  .exampleprev.thumbnail {
+    max-width: 33%;
+  }
+}
+/*
+** Code
+*/
+
+code {
+  color: #4155bd;
+  background-color: #f7f7f9;
+}
+pre {
+  font-size: .75rem;
+  line-height: 1.125rem;
+  display: block;
+  overflow-y: auto;
+  max-height: 22rem;
+  margin: 0;
+  padding: .8rem;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: .25rem;
+  background-color: #f7f7f9;
+  -webkit-tab-size: 4;
+}
+div.line {
+  min-height: 18px;
+}
+.noscroll pre {
+  overflow-y: visible;
+  max-height: none;
+}
+.highlight {
+  position: relative;
+}
+.noscroll, .highlight {
+  margin: 0 0 20px 0;
+}
+.noscroll .highlight {
+  margin-bottom: 0;
+}
+.highlight table {
+  width: 100%;
+}
+.highlight a {
+  font-size: .9rem;
+  font-weight: 600;
+  position: absolute;
+  top: 0;
+  right: 17px;
+  margin: 0;
+  padding: .3rem .6rem;
+  background-color: #f7f7f9;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+.highlight > a:nth-of-type(2){
+  border-right: 0px;
+}
+.highlight a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+pre code {
+  padding: 0;
+  color: inherit;
+  border: 0;
+  background-color: transparent;
+}
+
+/* Documentation option block */
+
+.docs-content {
+  margin-top: 4.5rem;
+}
+@media (min-width: 991px) {
+  .docs-content {
+    margin-top: 0;
+  }
+}
+.docs-content dt.sub {
+  background-color: #4b607a;
+}
+.docs-content dt {
+  font-size: .82rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  width: 100%;
+  padding: .15rem .6rem;
+  color: #fff;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  background-color: #2a6d9b;
+  background-size: 150%;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, .1);
+}
+.docs-content dt:target {
+  background-color: #e09028;
+}
+.docs-content dt code {
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+}
+.docs-content dt code b {
+  color: #fff;
+}
+.docs-content dt small {
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 90%;
+  line-height: 1.5rem;
+  float: right;
+  opacity: .9;
+}
+.docs-content dd {
+  font-size: .88em;
+  line-height: 1.6em;
+  padding: .4rem .6rem;
+  word-spacing: .05em;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-top: 0 solid transparent;
+  border-bottom-right-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .05);
+}
+.docs-content ul {
+  margin-top: .4rem;
+  margin-bottom: .4rem;
+}
+.docs-content ul li {
+  margin-top: .2rem;
+  margin-bottom: .2rem;
+}
+.docs-content dd dd {
+  font-size: 1em;
+}
+.docs-content dd h2 {
+  padding-top: 0;
+}
+.docs-content dd p {
+  margin-bottom: .2rem;
+}
+.docs-content dd ul>li {
+  margin-bottom: .2rem;
+}
+.docs-content a.spoiler {
+  font-weight: bold;
+  cursor: pointer;
+  color: #0056b3!important;
+}
+.docs-content a.spoiler:hover {
+  text-decoration: underline;
+}
+.docs-content .dd_value {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #036eb9;
+}
+
+/* Getting started pagination */
+
+.docs-pagination {
+  width: 100%;
+  margin-top: 3rem;
+}
+.docs-pagination .btn {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+@media (min-width: 768px) {
+  .docs-pagination .btn {
+    width: auto;
+  }
+}
+
+/* Release notes */
+
+.badge {
+  font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+}
+.badge-added {
+  color: rgb(255, 255, 255);
+  background-color: rgb(56, 181, 93);
+}
+.badge-changed {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 129, 200);
+}
+.badge-fixed {
+  color: rgb(255, 255, 255);
+  background-color: rgb(245, 136, 38);
+}
+.badge-removed {
+  color: rgb(255, 255, 255);
+  background-color: rgb(242, 37, 14);
+}
+.badge-release {
+  color: rgb(255, 255, 255);
+  background-color: rgb(109, 103, 174);
+}
+.release-notes .feature {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+.release-notes .revision {
+  padding-top: 1rem;
+}
+.release-notes h2 {
+  margin-top: 2.5rem;
+}
+.release-notes ul {
+  padding-left: 0;
+  list-style-position: outside;
+  list-style-type: none;
+}
+.release-notes li {
+  position: relative;
+  margin-left: 5rem;
+  padding-bottom: .5rem;
+  color: rgb(114, 121, 127);
+}
+.release-notes b {
+  color: rgb(33, 37, 41);
+}
+.release-notes .badge {
+  position: absolute;
+  top: .25rem;
+  left: -5rem;
+  width: 4rem;
+  margin-right: .5rem;
+}
+
+/*
+** highlight.js github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+*/
+
+pre .comment, pre .template_comment, pre .diff .header, pre .javadoc {
+  font-style: italic;
+  color: #998;
+}
+pre .attr, pre .keyword, pre .css .rule .keyword, pre .winutils, pre .javascript .title, pre .nginx .title, pre .subst, pre .request, pre .status {
+  font-weight: bold;
+  color: #333;
+}
+pre .number, pre .hexcolor, pre .ruby .constant {
+  color: #099;
+}
+pre .string, pre .tag .value, pre .phpdoc, pre .tex .formula {
+  color: #d14;
+}
+pre .title, pre .id, pre .coffeescript .params, pre .scss .preprocessor, pre .section {
+  font-weight: bold;
+  color: #900;
+}
+pre .javascript .title, pre .lisp .title, pre .clojure .title, pre .subst {
+  font-weight: normal;
+}
+pre .class .title, pre .haskell .type, pre .vhdl .literal, pre .tex .command {
+  font-weight: bold;
+  color: #458;
+}
+pre .tag, pre .tag .title, pre .rules .property, pre .django .tag .keyword {
+  font-weight: normal;
+  color: #000080;
+}
+pre .attribute, pre .variable, pre .lisp .body {
+  color: #008080;
+}
+pre .regexp {
+  color: #009926;
+}
+pre .symbol, pre .ruby .symbol .string, pre .lisp .keyword, pre .tex .special, pre .prompt {
+  color: #990073;
+}
+pre .built_in, pre .lisp .title, pre .clojure .built_in {
+  color: #0086b3;
+}
+pre .preprocessor, pre .pragma, pre .pi, pre .doctype, pre .shebang, pre .cdata {
+  font-weight: bold;
+  color: #999;
+}
+pre .deletion {
+  background: #fdd;
+}
+pre .addition {
+  background: #dfd;
+}
+pre .diff .change {
+  background: #0086b3;
+}
+pre .chunk {
+  color: #aaa;
+}
+
+/*
+** Interactive SVG Bézier Curve and Arc examples
+*/
+
+#svg {
+  display: inline;
+  float: left;
+  width: 510px;
+  height: 500px;
+  border: 1px solid #000;
+  background-color: #fff;
+}
+#svg_code {
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 1em;
+  display: block;
+  overflow: auto;
+  width: 510px;
+  margin: 0;
+  padding: .2rem .4rem;
+  color: #555;
+  border-radius: .25rem;
+  background-color: #f7f7f9;
+}
+input[type=range][orient=vertical] {
+  position: absolute;
+  width: 28px;
+  height: 500px;
+  writing-mode: bt-lr;
+  /* IE */
+  -webkit-appearance: slider-vertical;
+  /* WebKit */
+}
+input[type=range]::-moz-range-thumb {
+  -moz-transform: scaleX(-1);
+}
+.arc_pos {
+  position: relative;
+  left: 0;
+  display: block;
+  text-align: right;
+}
+table#quickjump {
+  width: 80%;
+}
+table#quickjump td {
+  width: 33%;
+}
+.spoiler {
+  font-weight: bold;
+  cursor: pointer;
+}
+.docs-index .card {
+  width: 100%;
+  margin-bottom: .75rem;
+  transition: all .2s ease-in-out;
+  text-decoration: none;
+  color: #808080;
+}
+.docs-index .card:hover {
+  color: #0058cc;
+  border-color: #0058cc!important;
+}
+.docs-index .card-title {
+  margin-top: 0;
+  color: #0058cc;
+}
+.docs-index .card-body p {
+  margin: 0;
+}

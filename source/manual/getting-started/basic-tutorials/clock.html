@@ -1,5 +1,5 @@
 ---
-layout: manual
+layout: docs
 permalink: manual/getting-started/basic-tutorials/clock/
 title: 'Clock'
 ---
@@ -55,8 +55,8 @@ FontSize=40
 
 <p>So let's load our new skin and take a look at where we stand. From the <a href="!user-interface/manage/#SkinsTab">Manage</a> dialog, find the <b>Clock.ini</b> entry in the list and click on the <b>Load</b> button on the upper right.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/clock/ClockImage01.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/clock/ClockImage01.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/clock/ClockImage01.jpg"></a>
 </div>
 
 <p>Drag the skin anywhere on the screen you like. Rainmeter will remember the position any time you load this skin in the future. You can also right-click the skin to change other <a href="!user-interface/context-menus/">skin options</a> as desired.</p>
@@ -110,8 +110,8 @@ FontColor=255,231,135,255
 
 </p>In addition, we want this meter to have a different color. So, we are "overriding" the <code>FontColor=255,245,207,255</code> option we set in the <b>[TextStyle]</b> MeterStyle, by specifically setting <code>FontColor=255,231,135,255</code> for this meter.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/clock/ClockImage02.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/clock/ClockImage02.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/clock/ClockImage02.jpg"></a>
 </div>
 
 <p>Save and refresh the skin to see the changes.</p>
@@ -165,16 +165,16 @@ Text=%1 %2, %3
 
 <p>Since we want to use the value of three different measures in this meter, we use the <a href="!meters/string/#MeasureName">MeasureName</a> option to define all three measures as being bound to this meter. Then we can use the <a href="!meters/string/#Text">Text</a> option with <b>%1 %2, %3</b> to display each of the three measure values, including adding a hard coded comma for formatting.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/clock/ClockImage03.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/clock/ClockImage03.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/clock/ClockImage03.jpg"></a>
 </div>
 
 <p>Save and refresh the skin to see the changes.</p>
 
 <p style="clear: both;">Now you can see why we wanted to right-align our string meters. As the time changes and becomes longer and shorter, we don't want the position of the meters to change. We want to keep things lined up and tidy. The following image demonstrates how it looks when the time is much longer.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/clock/ClockImage04.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/clock/ClockImage04.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/clock/ClockImage04.jpg"></a>
 </div>
 
 <p style="clear: both;">Let's add a background image like we did in the earlier tutorial, by going up above all the existing meters and adding a new Image meter.</p>
@@ -195,8 +195,8 @@ StringAlign=Right
 AntiAlias=1
 ```
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/clock/ClockImage05.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/clock/ClockImage05.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/clock/ClockImage05.jpg"></a>
 </div>
 
 <p>Save and refresh the skin to see the changes. Congratulations!  Nice looking clock skin.</p>
@@ -225,13 +225,13 @@ MouseLeaveAction=[!SetOption MeasureTime Format "%#I:%M"][!UpdateMeasure Measure
 
 <p>When we move the mouse away from the meter, we are using the same combination of bangs to set the format back to 12-Hour time and update things.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/clock/ClockImage06.jpg" class="lightbox thumbnail">
-	<p>Mouse Off</p>	
+<div class="exampleprev float-left thumbnail full-mobile">
+	<a href="!img/getting-started/basic-tutorials/clock/ClockImage06.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/clock/ClockImage06.jpg"></a>
+	<p>Mouse Off</p>
 </div>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/clock/ClockImage07.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail full-mobile">
+	<a href="!img/getting-started/basic-tutorials/clock/ClockImage07.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/clock/ClockImage07.jpg"></a>
 	<p>Mouse Over</p>
 </div>
 
@@ -363,7 +363,8 @@ Y=0R
 FontSize=13
 ```
 
-<p style="clear: both;">&nbsp;</p>
-
-<div class="right"><p><a href="!getting-started/basic-tutorials/system/">Continue to: System &raquo;</a></p> </div>
-<p><a href="!getting-started/basic-tutorials/clock/">&laquo; Back to: Clock</a></p>
+<div class="docs-pagination">
+	<hr class="mt-4"/>
+	<a class="btn btn-outline-primary float-right" href="!getting-started/basic-tutorials/system/">Continue to: System &raquo;</a>
+	<a class="btn btn-outline-secondary float-left" href="!getting-started/basic-tutorials/launcher/">&laquo; Back to: Launcher</a>
+</div>

@@ -1,5 +1,5 @@
 ---
-layout: manual-beta
+layout: docs
 permalink: manual-beta/getting-started/basic-tutorials/system/
 title: 'System'
 ---
@@ -11,7 +11,7 @@ title: 'System'
 
 <div class="center">
 	<div class="exampleprev">
-		<img src="!img/getting-started/basic-tutorials/system/SystemImage01.jpg" class="lightbox">
+		<a href="!img/getting-started/basic-tutorials/system/SystemImage01.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage01.jpg"></a>
 	</div>
 </div>
 
@@ -55,8 +55,8 @@ SolidColor=#AlmostBlack#
 
 <p>So let's load our new skin and take a look at where we stand. From the <a href="!user-interface/manage/#SkinsTab">Manage</a> dialog, find the <b>System.ini</b> entry in the list and click on the <b>Load</b> button on the upper right.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage02.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage02.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage02.jpg"></a>
 </div>
 
 <p style="clear: both;">Not much to look at just yet...</p>
@@ -89,8 +89,8 @@ AntiAlias=1
 
 <p>Refresh the skin so we can see what it is doing as we walk through the options.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage03.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage03.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage03.jpg"></a>
 </div>
 
 <p style="clear: both;">What the <b>Roundline</b> meter does is draw a line that rotates around the center of a circle defined by the <a href="!meters/general-options/#WH">W and H</a> options of the meter. In this case, we have defined the size of the meter (and thus the circle) as <b>40x40 pixels</b>. Keep in mind that this defines a circle that has a total width of 40 pixels, and a width from the <b>center</b> to the edge as 20 pixels.</p>
@@ -149,8 +149,8 @@ AntiAlias=1
 
 <p>What we are doing here is creating another Roundline meter, at the same <a href="!meters/general-options/#XY">X and Y</a> position as the one that comes after, but behind it. All of the options in <b>[MeterCPUCircleBack]</b> are the same as those in <b>[MeterCPUCircle]</b>, with the exception that there is no <a href="!meters/general-options/#MeasureName">MeasureName</a> option to "bind" a measure to the meter. Roundline will by default use a value of <b>100%</b> in this case, in effect allowing us to draw a full circle that we can use as a background. Oh, we also used a different variable for the color of the line. Refresh the skin to see the change.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage04.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage04.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage04.jpg"></a>
 </div>
 
 <p style="clear: both;">Your entire skin code should now look like this:</p>
@@ -229,8 +229,8 @@ Text=%1%
 
 <p>Save and refresh the skin to see your new meter.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage05.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage05.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage05.jpg"></a>
 </div>
 
 <p style="clear: both;">You know, it would be nice if the color of that text changed when the CPU usage hits some value we define. What we can do is change the color to "red" if the value is at or above 25%, and back to "blue" if it is below that value.</p>
@@ -253,8 +253,8 @@ IfBelowAction=[!SetOption MeterCPUPercent FontColor #LightBlue#][!UpdateMeter *]
 <li>If the value of the measure falls below 25, use the <a href="!bangs/#SetOption">!SetOption</a> bang to change the <b>FontColor</b> option on the meter to the value of the variable <b>#LightBlue#</b> we defined earlier in <b>[Variables]</b>, in effect changing it back to the original color.</li>
 </ul>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage06.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage06.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage06.jpg"></a>
 </div>
 
 <h2 style="clear: both;">Line meter</h2>
@@ -281,8 +281,8 @@ SolidColor=#DarkBlue#
 
 <p>The <a href="!meters/line/">Line meter</a> is pretty self-explanatory, you "bind" one or more measures to the meter with <a href="!meters/general-options/#MeasureName">MeasureName</a>, and then use options like <a href="!meters/line/#LineWidth">LineWidth</a> and <a href="!meters/line/#LineColor">LineColor</a> to control how the meter looks. The line is plotted over time on a graph that is defined by the <a href="!meters/general-options/#WH">W and H</a> options of the meter. The additional <a href="!meters/line/#HorizontalLines">HorizontalLines</a> and <a href="!meters/line/#HorizontalLineColor">HorizontalLineColor</a> options draw the background lines on the graph, in the desired color. Finally, we set a <a href="!meters/general-options/#SolidColor">SolidColor</a> option on the meter to define a overall background color. Refresh the skin and have a look. Let it run for a while so you can see the movement of the line.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage07.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage07.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage07.jpg"></a>
 </div>
 
 <p style="clear: both;">We should put a label on the Line meter, so it is clear what it is measuring. We have looked at the <a href="!meters/string/">String</a> meter previously, so let's just add one and take a look at the result.</p>
@@ -300,8 +300,8 @@ AntiAlias=1
 Text=CPU
 ```
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage08.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage08.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage08.jpg"></a>
 </div>
 
 <h2 style="clear: both;">Measuring a hard drive</h2>
@@ -407,8 +407,8 @@ Text=#CurrentDrive#
 
 <p>Note that these are pretty much identical to the meters we created earlier to show the CPU usage as a circular <a href="!meters/roundline/">Roundline</a> meter. We bind the active Roundline meter <b>[MeterDriveCircle]</b> to the measure <b>[MeasureDriveUsed]</b> to display the amount of "used" space, and instead of showing any measured value inside the circle in <b>[MeterDriveCircleLabel]</b>, we simply create a label with the value of the current drive letter we created in the variable <b>#CurrentDrive#</b>. We again set <code>DynamicVariables=1</code> on this label meter. We will see why shortly. Save and refresh the skin to see how we are doing.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage09.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage09.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage09.jpg"></a>
 </div>
 
 <p style="clear: both;">Finally, we can create a nice background to match the one behind the Line meter we created in <b>[MeterCPULine]</b>, by simply creating an <a href="!meters/image/">Image</a> meter with a <a href="!meters/general-options/#SolidColor">SolidColor</a> and no <a href="!meters/general-options/#MeasureName">MeasureName</a> option, then some <a href="!meters/string/">String</a> meters to display the other drive space information, <b>total</b> and <b>free</b>. Add the following meters to the bottom of the skin. Save and refresh.</p>
@@ -481,8 +481,8 @@ Text=%1B
 
 <p>One new option we have used in two of these meters should be explained. The <a href="!measures/freediskspace/">FreeDiskSpace</a> measure obtains the space values from the drive in <b>bytes</b>. For most of us, that is going to be a really huge and long number, (my one-terabyte C: drive has a total of 1000097181696 bytes for instance) and probably not one we want to display on a skin. The <a href="!meters/string/#AutoScale">AutoScale</a> option on the string meter will automatically scale the number to <b>megabytes</b>, <b>gigabytes</b>, <b>terabytes</b> etc. and append the appropriate <b>M / G / T</b> label to the end. We have added an extra hard-coded <b>B</b> at the end of the text, so it will display as for instance: <b>931 GB</b>. Let's take a look.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage10.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage10.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage10.jpg"></a>
 </div>
 
 <h2 style="clear: both;">What about those dynamic variables?</h2>
@@ -527,13 +527,13 @@ MouseLeaveAction=[!SetVariable CurrentDrive #Drive1#][!UpdateMeasure *][!UpdateM
 
 <p>So we are finally there... Great job!  Here are two shots of your final skin, the first with the mouse away from the skin and the second with the mouse over the skin.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage10.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage10.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage10.jpg"></a>
 	<p>Mouse Off</p>
 </div>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/system/SystemImage11.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/system/SystemImage11.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/system/SystemImage11.jpg"></a>
 	<p>Mouse Over</p>
 </div>
 
@@ -768,7 +768,7 @@ AntiAlias=1
 Text=%1B
 ```
 
-<p style="clear: both;">&nbsp;</p>
-
-<div class="right"><p><!--<a href="!getting-started/basic-tutorials/weather/">--><span style="color:gray; font-weight:normal">Continue to: Weather &raquo;</span><!--</a>--></p> </div>
-<p><a href="!getting-started/basic-tutorials/clock/">&laquo; Back to: Clock</a></p>
+<div class="docs-pagination">
+	<hr class="mt-4"/>
+	<a class="btn btn-outline-secondary float-left" href="!getting-started/basic-tutorials/clock/">&laquo; Back to: Clock</a>
+</div>

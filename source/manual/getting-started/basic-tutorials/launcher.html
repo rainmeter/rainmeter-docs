@@ -1,5 +1,5 @@
 ---
-layout: manual
+layout: docs
 permalink: manual/getting-started/basic-tutorials/launcher/
 title: 'Launcher'
 ---
@@ -51,7 +51,7 @@ Meter=String
 <li><a href="!meters/string/#FontColor">FontColor</a>: The <a href="!skins/option-types/#Color">color</a> for the text.</li>
 <li><a href="!meters/string/#StringStyle">StringStyle</a>: Controls some style options for the string. We are using a <b>Bold</b> style.</li>
 <li><a href="!meters/general-options/#AntiAlias">AntiAlias</a>: Does font smoothing on the text, to improve the display quality.</li>
-</ul>
+</ul></p>
 
 <p>Then we are setting the <a href="!meters/string/#Text">Text</a> option of the meter with <code>Text=Notepad</code>, defining the string of text we wish to display. String meters can also use the value of <a href="!meters/string/#MeasureName">Measures</a> as the text to display, we will go into that in more detail in a future tutorial.</p>
 
@@ -64,8 +64,8 @@ Meter=String
 
 <p>So let's load our new skin and take a look at where we stand. From the <a href="!user-interface/manage/#SkinsTab">Manage</a> dialog, find the <b>Launcher.ini</b> entry in the list and click on the <b>Load</b> button on the upper right.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/launcher/LauncherImage01.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/launcher/LauncherImage01.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage01.jpg"></a>
 </div>
 
 <p>Drag the skin anywhere on the screen you like. Rainmeter will remember the position any time you load this skin in the future. You can also right-click the skin to change other <a href="!user-interface/context-menus/">skin options</a> as desired.</p>
@@ -93,8 +93,8 @@ LeftMouseUpAction=["MSPaint.exe"]
 
 <p>The important changes here are in the <a href="!meters/general-options/#XY">X and Y</a> options for the meter. Remember that <b>X</b> and <b>Y</b> set the position of a meter in the context of the overall skin. Note that we are using <b>relative positioning</b> to set the <b>X</b> option zero pixels relative to the left of the <b>previous meter</b>, (in effect the same <b>X</b> as before) and the <b>Y</b> option two pixels relative to the botton of the previous meter. We could also have specifically set the value of <b>X</b> and <b>Y</b> to some hard-coded value, but using relative positioning is often much easier when laying out a skin's meters.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/launcher/LauncherImage02.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/launcher/LauncherImage02.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage02.jpg"></a>
 </div>
 
 <p>We have changed the <code>Text</code> and <code>LeftMouseUpAction</code> options for our second application, and we can now use <b>Manage</b> and the <b>Refresh</b> button at the upper right to see our changes in action. Note that you can also right-click the skin on the screen and say <b>Refresh skin</b>.</p>
@@ -122,8 +122,8 @@ In Windows Explorer, create a new folder under <b>Skins\Tutorials\</b> called <b
 <li>In this <b>Skins\Tutorials\@Resources\</b> folder, create a new folder called <b>Images</b>. Download and copy the image below into that <b>Skins\Tutorials\@Resources\Images</b> folder.</li>
 </ul>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/launcher/calc.png" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/launcher/calc.png" data-fancybox><img src="!img/getting-started/basic-tutorials/launcher/calc.png"></a>
 </div>
 
 <p style="clear: both;">Now let's go back to our skin code. We have set the <a href="!meters/image/#ImageName">ImageName</a> option to use the built-in <code>#@#</code> shortcut for the <b>@Resources</b> folder, and the sub-folder of <b>Images</b> where we put our <b>calc.png</b> image file. The Image meter will load and display this image.</p>
@@ -142,8 +142,8 @@ Y=2R
 
 <p>Then, just as with the String meters above, set the <b>LeftMouseUpAction</b> option to <code>LeftMouseUpAction=["Calc.exe"]</code> so that the Windows Calculator is launched when the image is clicked.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/launcher/LauncherImage03.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/launcher/LauncherImage03.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage03.jpg"></a>
 </div>
 
 <p>Save your changes and refresh the skin. Click on the image to launch Windows Calculator.</p>
@@ -167,8 +167,8 @@ LeftMouseUpAction=["Calc.exe"]
 
 <p>Notice that we have used the <a href="!meters/general-options/#XY">X and Y</a> options to set the position of the meter lined up just to the right of the previous meter (the Image meter), and six pixels below the top of it. That will align the meter more or less centered to the right of the image of the calculator. We add the same <b>LeftMouseAction</b> that the Image meter has, so you can click on either to launch the application. Just for fun, we also changed the <b>FontColor</b> of the string.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/launcher/LauncherImage04.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/launcher/LauncherImage04.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage04.jpg"></a>
 </div>
 
 <p>Save your changes and refresh the skin.</p>
@@ -205,15 +205,16 @@ LeftMouseUpAction=["C:\Windows\System32\Notepad.exe"]
 
 <p>We have set a specific <a href="!meters/general-options/#WH">W and H</a> (width and height) so the meter is large enough to hold all the others, and no <a href="!meters/general-options/#XY">X and Y</a> options. This is so the meter will be at the far left and top of the overall skin. We then set <code>SolidColor=60,60,60,255</code>, which in the absence of any <code>ImageName</code> on an Image meter will simply draw a square or rectangle based on the size of the <b>W</b> and <b>H</b> options.</p>
 
-<div class="exampleprev floatleft">
-	<img src="!img/getting-started/basic-tutorials/launcher/LauncherImage05.jpg" class="lightbox thumbnail">
+<div class="exampleprev float-left thumbnail">
+	<a href="!img/getting-started/basic-tutorials/launcher/LauncherImage05.jpg" data-fancybox><img src="!img/getting-started/basic-tutorials/launcher/LauncherImage05.jpg"></a>
 </div>
 
 <p>Save your changes and refresh the skin.</p>
 
 <p style="clear: both;">Good job! You now have a pretty functional launcher skin that you can add items to, (just follow the patterns you used above) change string or image format options and positioning to modify to your tastes, and end up with something that is both functional and shows off your creativity.</p>
 
-<p style="clear: both;">&nbsp;</p>
-
-<div class="right"><p><a href="!getting-started/basic-tutorials/clock/">Continue to: Clock &raquo;</a></p> </div>
-<p><a href="!getting-started/basic-tutorials/index/">&laquo; Back to: Basic Tutorials</a></p>
+<div class="docs-pagination">
+	<hr class="mt-4"/>
+	<a class="btn btn-outline-primary float-right" href="!getting-started/basic-tutorials/clock/">Continue to: Clock &raquo;</a>
+	<a class="btn btn-outline-secondary float-left" href="!getting-started/basic-tutorials/index/">&laquo; Back to: Basic Tutorials</a>
+</div>

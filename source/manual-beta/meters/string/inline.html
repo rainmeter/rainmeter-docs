@@ -1,5 +1,5 @@
 ---
-layout: manual-beta
+layout: docs
 permalink: manual-beta/meters/string/inline/
 title: 'Inline Options'
 ---
@@ -23,19 +23,19 @@ title: 'Inline Options'
 <dl>
 	<dt id="InlineSetting"><code>InlineSetting</code>, <code>InlineSetting2</code>, <code>InlineSetting3</code>... </dt>
 	<dd>
-		<p>This takes the form of the <span class="dd_value">setting name</span> to be added, a <b>|</b> (pipe) character, and the value for the setting.</p>
+		<p>This takes the form of the <span class="dd_value">setting name</span> to be added, a (pipe) character, and the value for the setting.</p>
 
 		<p>Example: <code>InlineSetting=Size | 12</code></p>
 
 		<p>Supported settings:</p>
 		<ul>
-			<li><span class="dd_value" id="InlineFace">Face</span> <b>|</b> <em>font family name</em>.<br/>
+			<li><span class="dd_value" id="InlineFace">Face</span> <em>font family name</em>.<br/>
 			This uses the same values as the setting for FontFace on the meter.<br/><br/></li>
-			<li><span class="dd_value" id="InlineSize">Size</span> <b>|</b> <em>numeric point size</em>.<br/>
+			<li><span class="dd_value" id="InlineSize">Size</span> <em>numeric point size</em>.<br/>
 			This uses the same values as the setting for FontSize on the meter.<br/><br/></li>
-			<li><span class="dd_value" id="InlineColor">Color</span> <b>|</b> <em>rrr,ggg,bbb,aaa or RRGGBBAA color code</em>.<br/>
+			<li><span class="dd_value" id="InlineColor">Color</span> <em>rrr,ggg,bbb,aaa or RRGGBBAA color code</em>.<br/>
 			This uses the same values as the setting for FontColor on the meter.<br/><br/></li>
-			<li><span class="dd_value" id="InlineWeight">Weight</span> <b>|</b> <em>numeric value in the range 1-999.</em>.<br/>
+			<li><span class="dd_value" id="InlineWeight">Weight</span> <em>numeric value in the range 1-999.</em>.<br/>
 			The following are common values and their meanings. If the value is supported by the font family, it will be used. If not, the closest value that is supported by the font family will be used.<br/><br/>
 			<b>100</b> - Thin (Hairline)<br/>
 			<b>200</b> - Extra Light (Ultra Light)<br/>
@@ -49,14 +49,14 @@ title: 'Inline Options'
 			<b>950</b> - Extra Black (Ultra Black)<br/><br/>
 			If the font does not support any additional weights, then 500 and below will use the font's normal weight, and 600 and above will simulate a bold effect.<br/><br/></li>
 
-			<li><span class="dd_value" id="InlineCase">Case</span> <b>|</b> <em>One of the following string case options:</em><br/><br/>
+			<li><span class="dd_value" id="InlineCase">Case</span> <em>One of the following string case options:</em><br/><br/>
 
 			<b>Lower</b> - All characters lower case<br/>
 			<b>Upper</b> - All characters upper case<br/>
 			<b>Proper</b> - First character of each word upper case, the balance lower case<br/>
 			<b>Sentence</b> - First character of each sentence upper case, the balance lower case<br/><br/></li>
 
-			<li><span class="dd_value" id="InlineCharacterSpacing">CharacterSpacing</span> <b>|</b> <em>Leading | Trailing | Minimum Advance Width</em><br/>
+			<li><span class="dd_value" id="InlineCharacterSpacing">CharacterSpacing</span> <em>Leading | Trailing | Minimum Advance Width</em><br/>
 			Defines the inter-character spacing for part or all of the string. <b>Leading</b> and <b>Trailing</b> may be any positive or negative integer or fractional number. The value is based on DIP (Device-Independent-Pixels), and does not have to be an integer. <b>Minimum Advance Width</b> must be a positive integer. Any value may be set to an asterisk <b>*</b> to ignore.<br/><br/>
 			Example:<br/><br/>
 			<code>InlineSetting=CharacterSpacing | 2 | 2</code><br/>
@@ -69,7 +69,7 @@ title: 'Inline Options'
 			<li><span class="dd_value" id="InlineStrikethrough">Strikethrough</span><br/>
 			Used to <del>Strikethrough</del> characters in part or all of the string. No parameter required.<br/><br/></li>
 
-			<li><span class="dd_value" id="InlineShadow">Shadow</span> <b>|</b> <em>X Offset | Y Offset | Blur Amount | Color</em><br/>
+			<li><span class="dd_value" id="InlineShadow">Shadow</span> <em>X Offset | Y Offset | Blur Amount | Color</em><br/>
 			Used to create a <span style="text-shadow: 1px 1px #A3A3A3;">Drop Shadow</span> on all or part of the string.<br/><br/>
 			<em>X Offset</em> - Number of positive (right) or negative (left) pixels to offset the shadow from the string.<br/>
 			<em>Y Offset</em> - Number of positive (below) or negative (above) pixels to offset the shadow from the string.<br/>
@@ -82,7 +82,7 @@ title: 'Inline Options'
 			<b>Note:</b> The shadow effect does not change the size or position of the overall meter, and you should ensure that the meter is sized and positioned appropriately to display the shadow without clipping. The overall amount that the shadow effect impacts the desired meter size is a function the font size, the offset amounts and the blur amount.<br/><br/>
 			</li>
 
-			<li><span class="dd_value" id="InlineStretch">Stretch</span> <b>|</b> <em>one of 9 numeric compressed / expanded values if supported by the font.</em><br/>
+			<li><span class="dd_value" id="InlineStretch">Stretch</span> <em>one of 9 numeric compressed / expanded values if supported by the font.</em><br/>
 			The following values can be set. If the value is supported by the font family, it will be used. If not, the closest value that is supported by the font family will be used.<br/><br/>
 			<b>1</b> - Ultra-Condensed<br/>
 			<b>2</b> - Extra-Condensed<br/>
@@ -94,7 +94,7 @@ title: 'Inline Options'
 			<b>8</b> - Extra-Expanded<br/>
 			<b>9</b> - Ultra-Expanded<br/><br/>
 			<b>Note:</b> There are relatively few fonts that support alternative stretch values for glyphs. In many cases the <b>CharacterSpacing</b> setting might be a better choice to get a similar "wide" or "compressed" effect.<br/><br/></li>
-			<li><span class="dd_value" id="InlineTypography">Typography</span> <b>|</b> <em>one of 80 Typography codes.</em><br/>
+			<li><span class="dd_value" id="InlineTypography">Typography</span> <em>one of 80 Typography codes.</em><br/>
 			Used to select alternative glyphs in a font, these must be explicitly supported by the font being used. A few common examples might be:<br/><br/>
 			<b>smcp</b> - Small Capitals<br/>
 			<b>onum</b> - Old Style Figures<br/>
@@ -105,10 +105,10 @@ title: 'Inline Options'
 			<b>ss02</b> - Stylistic Set 2<br/><br/>
 			Note that a few Typography codes support an additional second parameter which is a numeric index to a variant of the code. If that is required, the format <code>Typography | code | index</code> should be used.<br/><br/>
 			A full list of supported codes can be found at <a href="/tips/font-features">Font Features</a><br/><br/></li>
-			<li><span class="dd_value" id="InlineGradientColor">GradientColor</span> <b>|</b> <em>Angle | Color ; Percentage | Color ; Percentage | ...</em><br/>
+			<li><span class="dd_value" id="InlineGradientColor">GradientColor</span> <em>Angle | Color ; Percentage | Color ; Percentage | ...</em><br/>
 			Defines a color gradient, at any angle, to be used on the selected text. This can consist of two or more colors as desired, with percentage points being used to define transition points for each color.<br/><br/>
 
-			This takes the form of the <b>Angle</b> for the gradient in degrees, a <b>|</b> pipe character, then a series of <b>Color codes</b>, a <b>;</b> semi-colon, and a <b>Percentage</b> from 0.0 to 1.0 to define the position of the color in the text. Each series of <b>Color ; Percentage</b> are separated by a <b>|</b> pipe character.<br/><br/>
+			This takes the form of the <b>Angle</b> for the gradient in degrees, a pipe character, then a series of <b>Color codes</b>, a <b>;</b> semi-colon, and a <b>Percentage</b> from 0.0 to 1.0 to define the position of the color in the text. Each series of <b>Color ; Percentage</b> are separated by a pipe character.<br/><br/>
 
 			Example:<br/><br/>
 			<code>InlineSetting=GradientColor | 180 | 255,0,0,255 ; 0.0 | 0,255,0,255 ; 0.5 | 0,0,255,255 ; 1.0</code><br/><br/>
@@ -217,5 +217,5 @@ InlinePattern8=GreenToYellow</b><br/>
 We are defining a GradientColor for the word "GreenToYellow" that will transition from 57,204,79,255 (green) to 250,247,157,255 (yellow) at an angle of 180 degrees (left to right).<br/><br/></p>
 
 <div class="exampleprev">
-	<p><img src="!img/meters/inline/InlineExample1.jpg"/></p>
+	<img src="!img/meters/inline/InlineExample1.jpg"/>
 </div>

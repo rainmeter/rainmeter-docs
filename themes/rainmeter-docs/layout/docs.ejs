@@ -1,0 +1,59 @@
+<!-- Get current path and set it as an variable -->
+<%
+  var currentFolder = page.path.match(/[^/]*/).toString();
+  if (currentFolder == 'manual') {
+    var currentTitle = '4.0 Manual'
+  }
+  else if (currentFolder == 'manual-beta') {
+    var currentTitle = '4.1 Beta Manual'
+  }
+  else if (currentFolder == 'tips') {
+    var currentTitle = 'Tips & Tricks'
+  }
+  else if (currentFolder == 'snippets') {
+    var currentTitle = 'Snippets'
+  }
+  else if (currentFolder == 'developers') {
+    var currentTitle = 'Developers'
+  }
+  else if (currentFolder == 'history') {
+    var currentTitle = 'Version History'
+  }
+  else {
+    var currentTitle = 'Docs'
+  }
+%>
+
+<!-- Include navbar -->
+<%- partial('_partial/navigation') %>
+<div id="content">
+    <div id="nav-button" class="docs-nav-button">
+      <div class="container d-flex flex-row align-items-center">
+      <svg onclick="openNavMenu()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <a onclick="openNavMenu()">Open navigation</a>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="row">
+
+      <!-- Sidenav -->
+      <div id="menu" class="docs-nav col-12 col-lg-3">
+        <%- partial('_partial/sidenav') %>
+      </div>
+
+      <!-- Content -->
+      <div class="docs-content col-12 col-lg-9">
+        <h1 class="page-title"><%- page.title %></h1>
+        <hr />
+        <!-- Include content and Replace "!" in every url with correct path -->
+        <%- page.content.replace(/<(.*?)(href|src)="!(.*?)"/g, '<$1$2="/' + currentFolder + '/$3"') %>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Include Footer -->
+<%- partial('_partial/footer') %>
