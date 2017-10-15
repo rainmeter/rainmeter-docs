@@ -79,7 +79,7 @@ function toggleClass(elem, className) {
 		var selectA = document.createElement('a');
 		selectA.innerHTML = 'Select all';
 
-		// Force the 'Select ALl' button to use the same color as 'Download' button via bootstrap
+		// Force the 'Select All' button to use the same color as 'Download' button via bootstrap
 		selectA.href= 'javascript:void(0);';
 
 		var pre = div.getElementsByTagName('pre')[0];
