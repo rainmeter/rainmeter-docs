@@ -82,7 +82,14 @@ function toggleClass(elem, className) {
 		var pre = div.getElementsByTagName('pre')[0];
 		var scrollWidth = pre.offsetWidth - pre.clientWidth;
 
-		selectA.style.right = scrollWidth + 1 + 'px';
+		selectA.style.right = scrollWidth + 'px';
+		if (scrollWidth > 2) {
+			selectA.style.borderRight = 0;
+		}
+		else {
+			selectA.style.borderRight = '.05rem';
+			selectA.style.borderTopRightRadius = '.25rem';
+		}
 
 		selectA.style.top += 1 + 'px';
 

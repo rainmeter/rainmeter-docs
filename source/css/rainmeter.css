@@ -396,14 +396,11 @@ div.line {
   font-weight: 600;
   position: absolute;
   top: 0;
-  right: 17px;
-  margin: 0;
+  margin-right: .095rem;
   padding: .3rem .6rem;
   background-color: #f7f7f9;
-  border-top: 1px solid rgba(0,0,0,0.05);
-}
-.highlight > a:nth-of-type(2){
-  border-right: 0px;
+  border: 1px solid #e5e5e5;
+  overflow: visible;
 }
 .highlight a:hover {
   cursor: pointer;
