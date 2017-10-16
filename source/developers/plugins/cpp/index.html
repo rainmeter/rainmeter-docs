@@ -150,7 +150,7 @@ PLUGIN_EXPORT void ExecuteBang(void* data, LPCWSTR args)
 		<p><b>Returns</b>: A string to replace the section variable with (as a LPCWSTR). If a nullptr is returned, the variable will not be replaced and remain unchanged.</p>
 		<h3>Example:</h3>
 ``` cpp
-PLUGIN_EXPORT LPCWSTR SomeFunction(void* rm, const int argc, const WCHAR* argv[] argv)
+PLUGIN_EXPORT LPCWSTR SomeFunction(void* data, const int argc, const WCHAR* argv[])
 {
 	Measure measure = (Measure)data;
 	if (argc > 0)
