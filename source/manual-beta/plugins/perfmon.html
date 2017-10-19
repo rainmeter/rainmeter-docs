@@ -46,7 +46,7 @@ title: 'PerfMon plugin'
 Update=1000
 BackgroundMode=2
 SolidColor=0,0,0,255
-
+ 
 [MeasureProcessCount]
 ; Measures the number of processes running.
 Measure=Plugin
@@ -54,7 +54,7 @@ Plugin=PerfMon
 PerfMonObject=System
 PerfMonCounter=Processes
 PerfMonDifference=0
-
+ 
 [MeasureDiskAccess]
 ; Measures disk access of the C: drive.
 Measure=Plugin
@@ -62,7 +62,7 @@ Plugin=PerfMon
 PerfMonObject=LogicalDisk
 PerfMonCounter=Disk Bytes/sec
 PerfMonInstance=C:
-
+ 
 [MeterProcessCount]
 Meter=String
 MeasureName=MeasureProcessCount
@@ -72,7 +72,7 @@ W=200
 H=20
 FontColor=255,255,255,255
 Text=Total processes: %1
-
+ 
 [MeterDiskAccess]
 Meter=String
 MeasureName=MeasureDiskAccess

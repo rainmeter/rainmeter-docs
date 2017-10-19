@@ -103,7 +103,7 @@ SetFontBig=[!SetOption SomeMeter FontSize "15"][!UpdateMeter SomeMeter][!Redraw]
 ``` ini
 [Variables]
 U=[!UpdateMeasure MeasureChangeFont][!UpdateMeter *][!Redraw]
-
+ 
 [MeasureChangeFont]
 Measure=Plugin
 Plugin=ActionTimer
@@ -158,12 +158,12 @@ SetFontBig=[!SetOption SomeMeter FontSize "15"]#U#
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [Variables]
 W=15
 U=[!UpdateMeasureGroup Sizers][!UpdateMeter MeterText][!Redraw]
 Size=8
-
+ 
 [MeasureSizeUp]
 Measure=Plugin
 Plugin=ActionTimer
@@ -178,7 +178,7 @@ IfTrueAction2=[!SetOption MeterText Text "Changing"]#U#
 IfCondition3=#Size# = 60
 IfTrueAction3=[!SetOption MeterText Text "BIG"]#U#
 DynamicVariables=1
-
+ 
 [MeasureSizeDown]
 Measure=Plugin
 Plugin=ActionTimer
@@ -193,7 +193,7 @@ IfTrueAction2=[!SetOption MeterText Text "Changing"]#U#
 IfCondition3=#Size# = 60
 IfTrueAction3=[!SetOption MeterText Text "BIG"]#U#
 DynamicVariables=1
-
+ 
 [MeterText]
 Meter=String
 W=400
