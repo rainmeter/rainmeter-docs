@@ -54,19 +54,19 @@ title: 'Nesting Variables'
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [Variables]
 Var1=One
 Var2=Two
-
+ 
 [MeasureStringOne]
 Measure=String
 String="I'm the first Measure"
-
+ 
 [MeasureStringTwo]
 Measure=String
 String="I'm the second Measure"
-
+ 
 [MeterTest1]
 Meter=String
 FontSize=13
@@ -77,19 +77,19 @@ Padding=5,5,5,5
 AntiAlias=1
 Text=[&MeasureString[#Var1]]#CRLF#[&MeasureString[#Var2]]
 DynamicVariables=1
-
+ 
 [MeasureNum3]
 Measure=Calc
 Formula=3
-
+ 
 [MeasureNum4]
 Measure=Calc
 Formula=4
-
+ 
 [MeasureString3]
 Measure=String
 String="I'm the third Measure"
-
+ 
 [MeasureString4]
 Measure=String
 String="I'm the fourth Measure"
@@ -112,7 +112,7 @@ DynamicVariables=1
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [MeasureRandom]
 Measure=Calc
 Formula=Random
@@ -120,27 +120,27 @@ LowBound=1
 HighBound=5
 UpdateRandom=1
 UniqueRandom=1
-
+ 
 [Measure1]
 Measure=String
 String="I'm One"
-
+ 
 [Measure2]
 Measure=String
 String="I'm Two"
-
+ 
 [Measure3]
 Measure=String
 String="I'm Three"
-
+ 
 [Measure4]
 Measure=String
 String="I'm Four"
-
+ 
 [Measure5]
 Measure=String
 String="I'm Five"
-
+ 
 [MeterTest1]
 Meter=String
 FontSize=13
@@ -158,14 +158,14 @@ DynamicVariables=1
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [Variables]
 XPos1=15
 XPos2=10
 XPos3=30
 XPos4=100
 XPos5=0
-
+ 
 [MeasureRandom]
 Measure=Calc
 Formula=Random
@@ -173,7 +173,7 @@ LowBound=1
 HighBound=5
 UpdateRandom=1
 UniqueRandom=1
-
+ 
 [MeterTest1]
 Meter=String
 X=[#XPos[&MeasureRandom]]
