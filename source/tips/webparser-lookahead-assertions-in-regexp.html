@@ -63,37 +63,37 @@ RegExp="(?siU)(?(?=.*<Item>).*<Name>(.*)</Name>)(?(?=.*<Item>).*<Name>(.*)</Name
 ``` ini
 [Rainmeter]
 DynamicWindowSize=1
-
+ 
 [Variables]
 Get=(?(?=.*<Item>).*<Name>(.*)</Name>)
-
+ 
 [MeasureParent]
 Measure=Plugin
 Plugin=WebParser
 URL=file://#CURRENTPATH#Test.html
 RegExp="(?siU)#Get##Get##Get#"
-
+ 
 [MeasureChild1]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureParent]
 StringIndex=1
 Substitute="":"No Moe!"
-
+ 
 [MeasureChild2]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureParent]
 StringIndex=2
 Substitute="":"No Moe!"
-
+ 
 [MeasureChild3]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureParent]
 StringIndex=3
 Substitute="":"No Moe!"
-
+ 
 [MeterChild1]
 Meter=String
 MeasureName=MeasureChild1
@@ -101,7 +101,7 @@ FontSize=10
 FontColor=255,255,255,255
 AntiAlias=1
 Text=Item 1: %1
-
+ 
 [MeterChild2]
 Meter=String
 MeasureName=MeasureChild2
@@ -110,7 +110,7 @@ FontSize=10
 FontColor=255,255,255,255
 AntiAlias=1
 Text=Item 2: %1
-
+ 
 [MeterChild3]
 Meter=String
 MeasureName=MeasureChild3

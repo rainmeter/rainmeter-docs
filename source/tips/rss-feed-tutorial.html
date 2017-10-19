@@ -17,7 +17,7 @@ title: 'RSS Feed Tutorial'
 	<description>This is an example of an RSS feed</description>
 	<link>http://www.someexamplerssdomain.com/main.html</link>
 	<lastBuildDate>Mon, 06 Sep 2009 16:45:00 +0000 </lastBuildDate>
-
+ 
 	<item>
 		<title>Example entry</title>
 		<description>Here is some text containing an interesting description.</description>
@@ -281,25 +281,25 @@ Measure=Plugin
 Plugin=WebParser
 URL=http://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>
-
+ 
 [MeasureSiteTitle]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=1
-
+ 
 [MeasureSiteLink]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=2
-
+ 
 [MeasureSiteBuildDate]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=3
-
+ 
 [MeterSiteTitle]
 Meter=String
 MeasureName=MeasureSiteTitle
@@ -329,13 +329,13 @@ Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=4
-
+ 
 [MeasureItem1Link]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=5
-
+ 
 [MeasureItem1Date]
 Measure=Plugin
 Plugin=WebParser
@@ -359,13 +359,13 @@ Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=7
-
+ 
 [MeasureItem2Link]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=8
-
+ 
 [MeasureItem2Date]
 Measure=Plugin
 Plugin=WebParser
@@ -387,7 +387,7 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
-
+ 
 [Variables]
 Item=.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 ```
@@ -499,19 +499,19 @@ Item=(?(?=.*<item>).*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
-
+ 
 [Variables]
 Item=(?(?=.*<item>).*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubDate>)
 Sub="^\s+":"","<!\[CDATA\[":"","\]\]>":"","!\[CDATA\[":"","\]\]":""
-
+ 
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
 URL=http://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>#Item##Item##Item##Item##Item#
-
+ 
 ;Site info
-
+ 
 [MeasureSiteTitle]
 Measure=Plugin
 Plugin=WebParser
@@ -520,21 +520,21 @@ StringIndex=1
 DecodeCharacterReference=1
 RegExpSubstitute=1
 Substitute=#Sub#
-
+ 
 [MeasureSiteLink]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=2
-
+ 
 [MeasureSiteDate]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=3
-
+ 
 ;Item 1 info
-
+ 
 [MeasureItem1Title]
 Measure=Plugin
 Plugin=WebParser
@@ -543,21 +543,21 @@ StringIndex=4
 DecodeCharacterReference=1
 RegExpSubstitute=1
 Substitute=#Sub#
-
+ 
 [MeasureItem1Link]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=5
-
+ 
 [MeasureItem1Date]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=6
-
+ 
 ;Item 2 info
-
+ 
 [MeasureItem2Title]
 Measure=Plugin
 Plugin=WebParser
@@ -566,21 +566,21 @@ StringIndex=7
 DecodeCharacterReference=1
 RegExpSubstitute=1
 Substitute=#Sub#
-
+ 
 [MeasureItem2Link]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=8
-
+ 
 [MeasureItem2Date]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=9
-
+ 
 ;Item 3 info
-
+ 
 [MeasureItem3Title]
 Measure=Plugin
 Plugin=WebParser
@@ -589,21 +589,21 @@ StringIndex=10
 DecodeCharacterReference=1
 RegExpSubstitute=1
 Substitute=#Sub#
-
+ 
 [MeasureItem3Link]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=11
-
+ 
 [MeasureItem3Date]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=12
-
+ 
 ;Item 4 info
-
+ 
 [MeasureItem4Title]
 Measure=Plugin
 Plugin=WebParser
@@ -612,21 +612,21 @@ StringIndex=13
 DecodeCharacterReference=1
 RegExpSubstitute=1
 Substitute=#Sub#
-
+ 
 [MeasureItem4Link]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=14
-
+ 
 [MeasureItem4Date]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=15
-
+ 
 ;Item 5 info
-
+ 
 [MeasureItem5Title]
 Measure=Plugin
 Plugin=WebParser
@@ -635,21 +635,21 @@ StringIndex=16
 DecodeCharacterReference=1
 RegExpSubstitute=1
 Substitute=#Sub#
-
+ 
 [MeasureItem5Link]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=17
-
+ 
 [MeasureItem5Date]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=18
-
+ 
 ;MeterStyles
-
+ 
 [TextStyle]
 X=5
 Y=3R
@@ -662,15 +662,15 @@ SolidColor=0,0,0,1
 ClipString=1
 AntiAlias=1
 ToolTipWidth=300
-
+ 
 ;Meters
-
+ 
 [MeterBackground]
 Meter=Image
 W=300
 H=255
 SolidColor=50,50,50,255
-
+ 
 [MeterSite]
 Meter=String
 MeasureName=MeasureSiteTitle
@@ -682,7 +682,7 @@ StringStyle=Bold
 LeftMouseUpAction=["[MeasureSiteLink]"]
 ToolTipText=%1#CRLF#[MeasureSiteDate]
 DynamicVariables=1
-
+ 
 [MeterItem1]
 Meter=String
 MeasureName=MeasureItem1Title
@@ -691,7 +691,7 @@ Y=10R
 LeftMouseUpAction=["[MeasureItem1Link]"]
 ToolTipText=%1#CRLF#[MeasureItem1Date]
 DynamicVariables=1
-
+ 
 [MeterItem2]
 Meter=String
 MeasureName=MeasureItem2Title
@@ -699,7 +699,7 @@ MeterStyle=TextStyle
 LeftMouseUpAction=["[MeasureItem2Link]"]
 ToolTipText=%1#CRLF#[MeasureItem2Date]
 DynamicVariables=1
-
+ 
 [MeterItem3]
 Meter=String
 MeasureName=MeasureItem3Title
@@ -707,7 +707,7 @@ MeterStyle=TextStyle
 LeftMouseUpAction=["[MeasureItem3Link]"]
 ToolTipText=%1#CRLF#[MeasureItem3Date]
 DynamicVariables=1
-
+ 
 [MeterItem4]
 Meter=String
 MeasureName=MeasureItem4Title
@@ -715,7 +715,7 @@ MeterStyle=TextStyle
 LeftMouseUpAction=["[MeasureItem4Link]"]
 ToolTipText=%1#CRLF#[MeasureItem4Date]
 DynamicVariables=1
-
+ 
 [MeterItem5]
 Meter=String
 MeasureName=MeasureItem5Title
@@ -739,7 +739,7 @@ DynamicVariables=1
 	<link href="http://example.org/" />
 	<id>urn:uuid:60a76c80-d399-11d9-b91C-0003939e0af6</id>
 	<updated>2003-12-13T18:30:02Z</updated>
-
+ 
 	<entry>
 		<title>Atom-Powered Robots Run Amok</title>
 		<link href="http://example.org/2003/12/13/atom03" />
@@ -782,11 +782,11 @@ DynamicVariables=1
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-gb">
 <link rel="self" type="application/atom+xml" href="http://forum.rainmeter.net/feed.php" />
-
+ 
 <title>Rainmeter Forums</title>
 <link href="//forum.rainmeter.net/index.php" />
 <updated>2013-06-28T10:02:44-05:00</updated>
-
+ 
 <author><name><![CDATA[Rainmeter Forums]]></name></author>
 <id>http://forum.rainmeter.net/feed.php</id>
 <entry>
@@ -796,7 +796,7 @@ DynamicVariables=1
 <id>http://forum.rainmeter.net/viewtopic.php?p=89161#p89161</id>
 <link href="//forum.rainmeter.net/viewtopic.php?p=89161#p89161"/>
 <title type="html"><![CDATA[Bugs &amp; Feature Suggestions • Re: Rainmeter in the taskbar]]></title>
-
+ 
 <content type="html"><![CDATA[
 You can pl...<p>Statistics: Posted by <a href="">Virginityrocks</a> — Fri Jun 28, 2013 10:02 am</p>]]></content>
 </entry>
@@ -807,7 +807,7 @@ You can pl...<p>Statistics: Posted by <a href="">Virginityrocks</a> — Fri Jun 
 <id>http://forum.rainmeter.net/viewtopic.php?p=89160#p89160</id>
 <link href="//forum.rainmeter.net/viewtopic.php?p=89160#p89160"/>
 <title type="html"><![CDATA[Bugs &amp; Feature Suggestions • Re: Empty &quot;blank&quot; characters not showing when using UseD2D=1]]></title>
-
+ 
 <content type="html"><![CDATA[
 It's a leg...<p>Statistics: Posted by <a href="">Virginityrocks</a> — Fri Jun 28, 2013 9:31 am</p>]]></content>
 </entry>
@@ -818,7 +818,7 @@ It's a leg...<p>Statistics: Posted by <a href="">Virginityrocks</a> — Fri Jun 
 <id>http://forum.rainmeter.net/viewtopic.php?p=89159#p89159</id>
 <link href="//forum.rainmeter.net/viewtopic.php?p=89159#p89159"/>
 <title type="html"><![CDATA[Bugs &amp; Feature Suggestions • Feature Request: Stay on top when computer locked]]></title>
-
+ 
 <content type="html"><![CDATA[
 I have a s...<p>Statistics: Posted by <a href="">vandey</a> — Fri Jun 28, 2013 8:56 am</p>]]></content>
 </entry>
@@ -829,7 +829,7 @@ I have a s...<p>Statistics: Posted by <a href="">vandey</a> — Fri Jun 28, 2013
 <id>http://forum.rainmeter.net/viewtopic.php?p=89158#p89158</id>
 <link href="//forum.rainmeter.net/viewtopic.php?p=89158#p89158"/>
 <title type="html"><![CDATA[Bugs &amp; Feature Suggestions • Re: Empty &quot;blank&quot; characters not showing when using UseD2D=1]]></title>
-
+ 
 <content type="html"><![CDATA[
 i am prett...<p>Statistics: Posted by <a href="">moshi</a> — Fri Jun 28, 2013 8:40 am</p>]]></content>
 </entry>
@@ -840,7 +840,7 @@ i am prett...<p>Statistics: Posted by <a href="">moshi</a> — Fri Jun 28, 2013 
 <id>http://forum.rainmeter.net/viewtopic.php?p=89157#p89157</id>
 <link href="//forum.rainmeter.net/viewtopic.php?p=89157#p89157"/>
 <title type="html"><![CDATA[Help: Rainmeter Skins • Re: Image ABOVE text]]></title>
-
+ 
 <content type="html"><![CDATA[
 ikarus1969...<p>Statistics: Posted by <a href="">psyco</a> — Fri Jun 28, 2013 7:23 am</p>]]></content>
 </entry>
@@ -851,7 +851,7 @@ ikarus1969...<p>Statistics: Posted by <a href="">psyco</a> — Fri Jun 28, 2013 
 <id>http://forum.rainmeter.net/viewtopic.php?p=89156#p89156</id>
 <link href="//forum.rainmeter.net/viewtopic.php?p=89156#p89156"/>
 <title type="html"><![CDATA[Help: Rainmeter Skins • Re: IP Location Map]]></title>
-
+ 
 <content type="html"><![CDATA[
 what about...<p>Statistics: Posted by <a href="">ikarus1969</a> — Fri Jun 28, 2013 6:18 am</p>]]></content>
 </entry>
@@ -862,7 +862,7 @@ what about...<p>Statistics: Posted by <a href="">ikarus1969</a> — Fri Jun 28, 
 <id>http://forum.rainmeter.net/viewtopic.php?p=89155#p89155</id>
 <link href="//forum.rainmeter.net/viewtopic.php?p=89155#p89155"/>
 <title type="html"><![CDATA[General Discussion • A thank you note.]]></title>
-
+ 
 <content type="html"><![CDATA[
 As I alway...<p>Statistics: Posted by <a href="">alexandeu</a> — Fri Jun 28, 2013 5:04 am</p>]]></content>
 </entry>
@@ -873,7 +873,7 @@ As I alway...<p>Statistics: Posted by <a href="">alexandeu</a> — Fri Jun 28, 2
 <id>http://forum.rainmeter.net/viewtopic.php?p=89154#p89154</id>
 <link href="//forum.rainmeter.net/viewtopic.php?p=89154#p89154"/>
 <title type="html"><![CDATA[Help: Rainmeter Application • Re: Email settings folder path...c:/where?]]></title>
-
+ 
 <content type="html"><![CDATA[
 Quote:Does...<p>Statistics: Posted by <a href="">moshi</a> — Fri Jun 28, 2013 4:41 am</p>]]></content>
 </entry>
@@ -884,7 +884,7 @@ Quote:Does...<p>Statistics: Posted by <a href="">moshi</a> — Fri Jun 28, 2013 
 <id>http://forum.rainmeter.net/viewtopic.php?p=89153#p89153</id>
 <link href="//forum.rainmeter.net/viewtopic.php?p=89153#p89153"/>
 <title type="html"><![CDATA[Help: Rainmeter Skins • Re: IP Location Map]]></title>
-
+ 
 <content type="html"><![CDATA[
 The soluti...<p>Statistics: Posted by <a href="">Frostschaden</a> — Fri Jun 28, 2013 3:57 am</p>]]></content>
 </entry>
@@ -895,7 +895,7 @@ The soluti...<p>Statistics: Posted by <a href="">Frostschaden</a> — Fri Jun 28
 <id>http://forum.rainmeter.net/viewtopic.php?p=89152#p89152</id>
 <link href="//forum.rainmeter.net/viewtopic.php?p=89152#p89152"/>
 <title type="html"><![CDATA[Help: Rainmeter Skins • Re: Image ABOVE text]]></title>
-
+ 
 <content type="html"><![CDATA[
 Change the...<p>Statistics: Posted by <a href="">ikarus1969</a> — Fri Jun 28, 2013 3:37 am</p>]]></content>
 </entry>
@@ -908,7 +908,7 @@ Change the...<p>Statistics: Posted by <a href="">ikarus1969</a> — Fri Jun 28, 
 [Variables]
 Item=(?(?=.*<entry>).*<entry>.*<updated>(.*)</updated>.*<link.*"(.*)".*<title.*>(.*)</title>)
 Sub="^\s+":"","<!\[CDATA\[":"","\]\]>":"","!\[CDATA\[":"","\]\]":""
-
+ 
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser

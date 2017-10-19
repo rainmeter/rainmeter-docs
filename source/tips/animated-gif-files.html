@@ -40,30 +40,29 @@ Disadvantages: A bit more hard drive space, and a bit more CPU usage.</em></p>
 ``` ini
 ; Note - You will need to get and install ImageMagick from:
 ; http://www.imagemagick.org/script/binary-releases.php
-
+ 
 ; Convert your .gif image to a "Bitmap" with the following in a cmd.exe command prompt window:
 ; convert -coalesce "C:\PathToInput\InputName.gif" "C:\PathToOutput\OutputName.png"
-
+ 
 [Rainmeter]
 Update=100
-
+ 
 [Metadata]
 Name=GIFFrames
 Author=Rainmeter Team
 Information=Displays a deconstructed .gif file (individual frames) as if it was a .gif file || Instructions: See .ini file for how to get and use ImageMagick
 Version=Jan 16, 2016
 License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
-
+ 
 [ImageNumberCalc]
 Measure=Calc
 Formula=Counter % 8
-
+ 
 [ImageMeter]
 Meter=Image
 ImageName=#@#ImagesFrames\Loading-[ImageNumberCalc].png
 AntiAlias=1
 DynamicVariables=1
-
 ```
 
 <h3>Method Two: Converting a .gif to a multiple frame "Bitmap" image</h3>
@@ -92,24 +91,24 @@ This may include options to size with W and H, AntiAlias, Rotate, Transformation
 ``` ini
 ; Note - You will need to get and install ImageMagick from:
 ; http://www.imagemagick.org/script/binary-releases.php
-
+ 
 ; Convert your .gif image to a "Bitmap" with the following in a cmd.exe command prompt window:
 ; convert -coalesce +append "C:\PathToInput\InputName.gif" "C:\PathToOutput\OutputName.png"
-
+ 
 [Rainmeter]
 Update=100
-
+ 
 [Metadata]
 Name=GIFBitmap
 Author=The Rainmeter Team
 Information=Displays a "Bitmap" made from a .gif file using ImageMagick to convert a .gif to a multi-frame bitmap image. || Instructions: See .ini file for how to get and use ImageMagick
 Version=Jan 16, 21016
 License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
-
+ 
 [MeasureAnimation]
 Measure=Calc
 Formula=Counter % 8
-
+ 
 [MeterAnimation]
 Meter=BitMap
 MeasureName=MeasureAnimation

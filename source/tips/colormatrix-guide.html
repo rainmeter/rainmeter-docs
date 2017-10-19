@@ -17,15 +17,15 @@ ColorMatrix5=0; 0; 0; 0; 1
 <p>The following shows the actual matrix values of the brightness, contrast, and saturation.</p>
 ``` txt
 Brightness Matrix    Contrast Matrix         Saturation Matrix
-
+ 
      R G B A W           R G B A W            R   G   B   A   W
-
+ 
  R  [1 0 0 0 0]      R  [c 0 0 0 0]      R  [sr+s sr  sr  0   0]
  G  [0 1 0 0 0]      G  [0 c 0 0 0]      G  [ sg sg+s sg  0   0]
  B  [0 0 1 0 0]      B  [0 0 c 0 0]      B  [ sb  sb sb+s 0   0]
  A  [0 0 0 1 0]      A  [0 0 0 1 0]      A  [ 0   0   0   1   0]
  W  [b b b 0 1]      W  [t t t 0 1]      W  [ 0   0   0   0   1]
-
+ 
  b = brightness      c = contrast         s  = saturation
                      t = (1.0 - c) / 2.0  sr = (1 - s) * lumR
  Legend                                   sg = (1 - s) * lumG
@@ -44,24 +44,24 @@ Brightness Matrix    Contrast Matrix         Saturation Matrix
 <p>From the above information, we can calculate the proper color matrix to transform a given image. To use all three matrices, we need to multiply them together into one single transformation matrix (using matrix multiplication). The result of multiplication is as follows:</p>
 ``` txt
      R G B A W            R G B A W             R   G   B   A   W
-
+ 
  R  [1 0 0 0 0]       R  [c 0 0 0 0]       R  [sr+s sr  sr  0   0]
  G  [0 1 0 0 0]       G  [0 c 0 0 0]       G  [ sg sg+s sg  0   0]
  B  [0 0 1 0 0]   X   B  [0 0 c 0 0]   X   B  [ sb  sb sb+s 0   0]
  A  [0 0 0 1 0]       A  [0 0 0 1 0]       A  [ 0   0   0   1   0]
  W  [b b b 0 1]       W  [t t t 0 1]       W  [ 0   0   0   0   1]
-
+ 
 Brightness Matrix     Contrast Matrix          Saturation Matrix
-
-
+ 
+ 
                         R      G      B      A      W
-
+ 
                  R  [c(sr+s) c(sr)  c(sr)    0      0   ]
                  G  [ c(sg) c(sg+s) c(sg)    0      0   ]
          ===>    B  [ c(sb)  c(sb) c(sb+s)   0      0   ]
                  A  [   0      0      0      1      0   ]
                  W  [  t+b    t+b    t+b     0      1   ]
-
+ 
                            Transformation Matrix
 ```
 
@@ -81,47 +81,47 @@ Default value:<br>
 Brightness=-0.2
 Contrast=1.2
 Saturation=1.5
-
+ 
 [b]
 Measure=Calc
 Formula=#Brightness#
-
+ 
 [c]
 Measure=Calc
 Formula=#Contrast#
-
+ 
 [s]
 Measure=Calc
 Formula=#Saturation#
-
+ 
 [t+b]
 Measure=Calc
 Formula=((1.0-c)/2)+b
-
+ 
 [c(sr)]
 Measure=Calc
 Formula=c*((1-s)*0.3086)
-
+ 
 [c(sg)]
 Measure=Calc
 Formula=c*((1-s)*0.6094)
-
+ 
 [c(sb)]
 Measure=Calc
 Formula=c*((1-s)*0.0820)
-
+ 
 [c(sr+s)]
 Measure=Calc
 Formula=c*(((1-s)*0.3086)+s)
-
+ 
 [c(sg+s)]
 Measure=Calc
 Formula=c*(((1-s)*0.6094)+s)
-
+ 
 [c(sb+s)]
 Measure=Calc
 Formula=c*(((1-s)*0.0820)+s)
-
+ 
 [Image]
 Meter=Image
 ImageName=cats.jpg
@@ -264,7 +264,7 @@ ColorMatrix1=0.25;0.25;0.25;0;0
 ColorMatrix2=0.5;0.5;0.5;0;0
 ColorMatrix3=0.125;0.125;0.125;0;0
 ColorMatrix5=0.2;0.2;0.2;0;1
-
+ 
 [OldPaper]
 Meter=Image
 ImageName=ColorMatrixOldPaper.jpg

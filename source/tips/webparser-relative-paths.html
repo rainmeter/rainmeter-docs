@@ -24,7 +24,7 @@ title: 'WebParser: Relative Paths'
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [MeasureImageLocation]
 Measure=Plugin
 Plugin=WebParser
@@ -33,7 +33,7 @@ Url=http://forum.rainmeter.net/
 RegExp=(?siU)&lt;img src="(.*)"
 StringIndex=1
 FinishAction=[!CommandMeasure MeasureImageDownload "Update"] 
-
+ 
 [MeasureImageDownload]
 Measure=Plugin
 Plugin=WebParser
@@ -42,7 +42,7 @@ Url=http://forum.rainmeter.net/[&MeasureImageLocation]
 StringIndex=1
 DynamicVariables=1
 Download=1
-
+ 
 [MeterDisplayImage]
 Meter=IMAGE
 MeasureName=MeasureImageDownload

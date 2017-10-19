@@ -65,7 +65,7 @@ Formula=cCounter%#MaxNumber#+1
 ``` ini
 [Rainmeter]
 LeftMouseUpAction=!SetVariable Reset 0
-
+ 
 [cCounter]
 Measure=Calc
 Formula=(cCounter+1)*#Reset#
@@ -81,7 +81,7 @@ DynamicVariables=1
 [Rainmeter]
 MouseOverAction=!DisableMeasure cCounter
 MouseLeaveAction=!EnableMeasure cCounter
-
+ 
 [cCounter]
 Measure=Calc
 Formula=cCounter+1
@@ -106,7 +106,7 @@ IfEqualAction=!DisableMeasure #CURRENTSECTION#
 [Rainmeter]
 MouseOverAction=!SetVariable Pause 0
 MouseLeaveAction=!SetVariable Pause 1
-
+ 
 [cCounter]
 Measure=Calc
 Formula=cCounter+#Pause#
@@ -166,7 +166,7 @@ Formula=(cCounter-1+(#MaxNumber#+1))%(#MaxNumber#+1)
 [cCounter]
 Measure=Calc
 Formula=cCounter%#MaxNumber#+1
-
+ 
 [MeterImage]
 Meter=Image
 MeasureName=cCounter
@@ -178,23 +178,23 @@ ImageName=#@#Images/%1.png
 ``` ini
 [Variables]
 MaxNumber=3
-
+ 
 [cCounter]
 Measure=Calc
 Formula=cCounter%#MaxNumber#+1
-
+ 
 [Measure1]
 Measure=String
 String=This is the first measure.
-
+ 
 [Measure2]
 Measure=String
 String=This is the second measure.
-
+ 
 [Measure3]
 Measure=String
 String=This is the third measure.
-
+ 
 [MeterString]
 Meter=String
 MeasureName=Measure1
