@@ -63,21 +63,21 @@ title: 'Loop measure'
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [MeasureLoop1]
 Measure=Loop
 StartValue=37
 EndValue=59
 Increment=1
 LoopCount=0
-
+ 
 [MeasureLoop2]
 Measure=Loop
 StartValue=10
 EndValue=0
 Increment=-1
 LoopCount=1
-
+ 
 [MeterLoop1]
 Meter=String
 MeasureName=MeasureLoop1
@@ -92,7 +92,7 @@ Padding=5,5,5,5
 AntiAlias=1
 LeftMouseUpAction=[!TogglePauseMeasure MeasureLoop1]
 MiddleMouseUpAction=[!CommandMeasure MeasureLoop1 "Reset"]
-
+ 
 [MeterLoop2]
 Meter=String
 MeasureName=MeasureLoop2
@@ -116,26 +116,26 @@ MiddleMouseUpAction=[!CommandMeasure MeasureLoop2 "Reset"]
 Update=500
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [Variables]
 Start=0
 End=10
 Incr=1
-
+ 
 [MeasureLoop]
 Measure=Loop
 StartValue=#Start#
 EndValue=#End#
 Increment=#Incr#
 LoopCount=1
-
+ 
 [MeasurePingPong]
 Measure=Calc
 IfCondition=MeasureLoop = #End#
 IfTrueAction=[!SetOption MeasureLoop InvertMeasure 1][!UpdateMeasure MeasureLoop]
 IfCondition2=MeasureLoop = #Start#
 IfTrueAction2=[!SetOption MeasureLoop InvertMeasure 0][!UpdateMeasure MeasureLoop]
-
+ 
 [MeterLoop]
 Meter=String
 MeasureName=MeasureLoop
