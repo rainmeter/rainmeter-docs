@@ -112,7 +112,7 @@ Variables = {
 	FriLocation = 'the bar',
 	SatLocation = 'the beach',
 }
-
+ 
 function nested(line)
 	return (string.gsub(line, '&#37;b{}', function(input)
 		local newline = nested(string.match(input, '^{(.-)}$'))
@@ -123,7 +123,7 @@ function nested(line)
 		end
 	end))
 end
-
+ 
 SomeString = nested('On {LongDay} Jane goes to {{ShortDay}Location}.')
 ```
 
@@ -161,7 +161,7 @@ function Replace(input)
 	end
 	))
 end
-
+ 
 SomeLine = Replace('[&SomeMeasure[#SomeVariable[&SomeMeter:X]]]')
 ```
 
@@ -179,10 +179,10 @@ function SomeFunction(InputExpression, FuncTbl)
 			end
 		end))
 	end
-	
+	 
 	return nested(InputExpression, nested)
 end
-
+ 
 Variables = {
 	LongDay = os.date('&#37;A'),
 	ShortDay = os.date('&#37;a'),
@@ -194,6 +194,6 @@ Variables = {
 	FriLocation = 'the bar',
 	SatLocation = 'the beach',
 }
-
+ 
 SomeString = SomeFunction('On {LongDay} Jane goes to {{ShortDay}Location}.', Variables)
 ```

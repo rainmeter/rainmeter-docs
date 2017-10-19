@@ -13,7 +13,7 @@ function AutoScale(num, idp)
 	local places = idp or 0
 	local scale = ""
 	local scaled = 0
-
+ 
 	for i, v in ipairs(scales) do
 		if (num < (1024 ^ i)) or (i == #scales) then
 			scale = v
@@ -21,10 +21,10 @@ function AutoScale(num, idp)
 			break
 		end
 	end
-
+ 
 	return scaled, scale
 end
-
+ 
 function Round(num, idp)
 	assert(tonumber(num), 'Round expects a number.')
 	local mult = 10 ^ (idp or 0)

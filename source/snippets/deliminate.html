@@ -12,15 +12,15 @@ title: 'Deliminate'
 ``` lua
 function SplitString(inString, inDelimiter)
 	assert(inDelimiter:len() == 1, 'SplitString: Delimiter may only be a single character')
-
+ 
 	local outTable = {}
-
+ 
 	for matchedString in inString:gmatch('[^%' .. inDelimiter .. ']+') do
 		table.insert(outTable, matchedString)
 	end
-
+ 
 	return outTable
-	
+ 
 end
 ```
 </div>
@@ -33,13 +33,13 @@ end
 <div class="noscroll">
 ``` lua
 function SplitString(inString, inPattern)
-
+ 
 	local outTable = {}
 	local findPattern = '(.-)' .. inPattern
 	local lastEnd = 1
-	
+ 
 	local currentStart, currentEnd, foundString = inString:find(findPattern, 1)
-	
+ 
 	while currentStart do
 		if currentStart ~= 1 or foundString ~= '' then
 			table.insert(outTable, foundString)
@@ -47,14 +47,14 @@ function SplitString(inString, inPattern)
 		lastEnd = currentEnd + 1
 		currentStart, currentEnd, foundString = inString:find(findPattern, lastEnd)
 	end
-	
+ 
 	if lastEnd <= #inString then
 		foundString = inString:sub(lastEnd)
 		table.insert(outTable, foundString)
 	end
-
+ 
 	return outTable
-
+ 
 end
 ```
 </div>

@@ -10,17 +10,17 @@ title: 'Parse File Path'
 function ParseFilePath(s)
 	assert(type(s) == 'string', 'ParseFilePath: string expected, got ' .. type(s) .. '.')
 	local t = {}
-
+ 
 	for Piece in s:gmatch('[^\\]+') do
 		table.insert(t, Piece)
 	end
-
+ 
 	-- VOLUME
 	if #t > 0 then
 		local UNCprefix = s:match('^(\\\\)') or ''
 		t.Vol = UNCprefix .. t[1] .. '\\'
 	end
-
+ 
 	-- NAME
 	if #t > 1 then
 		-- DETECT FOLDER OR SEPARATE EXTENSION
@@ -32,12 +32,12 @@ function ParseFilePath(s)
 			t.Name = t[#t]
 		end
 	end
-
+ 
 	-- FOLDER
 	if #t > 2 then
 		t.Dir = table.concat(t, '\\', 2, #t-1) .. '\\'
 	end
-
+ 
 	return t
 end
 ```

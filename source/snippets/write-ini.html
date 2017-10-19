@@ -13,10 +13,10 @@ title: 'Write INI'
 ``` lua
 function WriteIni(inputtable, filename)
 	assert(type(inputtable) == 'table', ('WriteIni must receive a table. Received %s instead.'):format(type(inputtable)))
-
+ 
 	local file = assert(io.open(filename, 'w'), 'Unable to open ' .. filename)
 	local lines = {}
-
+ 
 	for section, contents in pairs(inputtable) do
 		table.insert(lines, ('\[%s\]'):format(section))
 		for key, value in pairs(contents) do
@@ -24,7 +24,7 @@ function WriteIni(inputtable, filename)
 		end
 		table.insert(lines, '')
 	end
-
+ 
 	file:write(table.concat(lines, '\r\n'))
 	file:close()
 end

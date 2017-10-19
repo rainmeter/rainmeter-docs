@@ -9,7 +9,7 @@ title: 'Format Seconds Into Time Intervals'
 ``` lua
 
 local weeks, days, hours, minutes, seconds = FormatSeconds(secondsValue)
-
+ 
 function FormatSeconds(secondsArg)
 	local weeks = math.floor(secondsArg / 604800)
 	local remainder = secondsArg % 604800
@@ -19,7 +19,7 @@ function FormatSeconds(secondsArg)
 	local remainder = remainder % 3600
 	local minutes = math.floor(remainder / 60)
 	local seconds = remainder % 60
-
+ 
 	return weeks, days, hours, minutes, seconds
 end
 ```

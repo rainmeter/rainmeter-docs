@@ -11,15 +11,15 @@ function ConvertTemp(num, toScale)
 	assert(tonumber(num), 'ConvertTemp expects a number.')
 	assert((toScale == 'c') or (toScale == 'f'),
 		'ConvertTemp expects c or f as the scale to convert to.')
-
+ 
 	local outTemp = 0
-
+ 
 	if toScale == 'c' then
 		outTemp = Round((5 / 9) * (num - 32))
 	else
 		outTemp = Round((9 / 5) * num + 32)
 	end
-
+ 
 	return outTemp
 end
 
