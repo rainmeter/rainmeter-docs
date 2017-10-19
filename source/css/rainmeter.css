@@ -594,7 +594,7 @@ pre code {
 }
 .release-notes .badge {
   position: absolute;
-  top: .25rem;
+  top: .175rem;
   left: -5rem;
   width: 4rem;
   margin-right: .5rem;
