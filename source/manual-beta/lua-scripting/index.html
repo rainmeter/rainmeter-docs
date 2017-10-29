@@ -69,18 +69,20 @@ end
 
 <p>Actions that are needed to "set up" the script, such as declaring global variables, should be done in the Initialize function.</p>
 
-<p><span  id="dofile"><b>Using dofile</b></span></p>
+<p><span  id="dofile"><b>Using dofile and loadfile</b></span></p>
 
 <p>The <a href="http://www.lua.org/manual/5.1/manual.html#pdf-dofile">dofile function</a> can be used to include libraries or other snippets of Lua code. You must specify a full path to the dofile, using the syntax <code>dofile('C:\PathToDoFile\SomeLua.lua')</code>. Use the <a href="#GetVariable">GetVariable</a> function if you want to use the #@# variable shortcut to the @Resources folder for the current config, or <a href="#MakePathAbsolute">MakePathAbsolute</a> if you want to have the .lua file be relative to the current skin folder.</a>
 
 ``` lua
-function Initalize()
+function Initialize()
 	dofile(SKIN:GetVariable('@')..'MyDoFiles\\toolkit.lua')
 	dofile(SKIN:MakePathAbsolute('toolkit.lua'))
 end
 ```
 
 <p><b>Note:</b> While a dofile you call can be anywhere on your system, be aware that if you do not put the dofile .lua file somewhere in the path to the current config, you won't be able to distribute it with your skin as a .rmskin package. A .rmskin package can only distribute the contents of a single root config folder.</p>
+
+<p>The <code>loadfile()</code> function works much the same as the <code>dofile()</code> function, using the same syntax. The difference is that dofile will load the external .lua code, and execute it when it is loaded. loadfile will simply load the external .lua file, which is likely what you want if you are loading a file that consists of a library of functions you will call later.</p>
 
 <h2 id="Update">Update</h2>
 
