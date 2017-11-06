@@ -88,14 +88,14 @@ ImageName=%1-%2.png
 Update=1000
 AccurateText=1
 DynamicWindowSize=1
-
+ 
 [Metadata]
 Name=ExampleMeterImage
 Author=The Rainmeter Team
 Information=Example of the Image meter
 License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
 Version=1.0
-
+ 
 [MeterBackground]
 Meter=Image
 ImageName=#@#Images\Background.jpg
@@ -103,7 +103,7 @@ W=200
 H=200
 GreyScale=1
 ImageTint=171,54,3,150
-
+ 
 [MeasureMyPictures]
 Measure=Plugin
 Plugin=QuotePlugin
@@ -111,7 +111,7 @@ PathName=#@#\Pictures
 Subfolders=0
 FileFilter=*.jpg;*.gif;*.bmp;*.png
 UpdateDivider=10
-
+ 
 [MeterShowPicture]
 Meter=Image
 MeasureName=MeasureMyPictures
@@ -138,12 +138,10 @@ LeftMouseUpAction=[!Refresh]
 		<p>MaskImageName can be a full path and name of any supported image file, or just the name of the file if the <a href="#MaskImagePath">MaskImagePath</a> option is used, or the image file is in the current skin folder.</p>
 
 		<p>If MaskImageName is defined, then <code>W</code> and <code>H</code> define the size of the mask image, and the size of the meter. Whatever is defined as the primary image with ImageName or MeasureName is then masked into the mask image, displaying in any non-transparent areas of MaskImageName using a "fill" method that sizes and crops the image to fit while preserving the aspect ratio.</p>
-		
+
 		<p>If <em>either</em> the primary image or mask image has areas of transparency or partial transparency, those "alpha channel" values are applied to the final image. When both images have a shared area with full or partial transparency, the "most transparent" value is applied.</p> 
 
 		<p><b>Notes:</b></p>
-
-		<p>The Mask Image functionality is only available on systems supporting D2D. It will not work on Windows XP, or if D2D is turned off in the Rainmeter settings.</p>
 
 		<p>MaskImageName cannot be bound to the meter from a measure with MeasureName<em>N</em> and %1, %2 etc.</p>
 

@@ -39,7 +39,7 @@ title: 'ActionTimer plugin'
 
 <p>While ActionTimer is very CPU efficient, it is not "free". The actions are executed by the plugin in a separate thread from the rest of the Rainmeter skin, allowing the skin to continue to process normally while the plugin actions are executing, with the plugin communicating with the skin via window "messages" to the Rainmeter message queue. This allows the plugin to instruct the skin to "do this now", much as a MouseOverAction is recognized and acted upon immediately.</p>
 
-<p>Some care must be taken however, not to overwhelm the message queue. Things done with ActionTimer in general should be short targeted actions, like a meter transition or short animation. Ensure that there is at least some "wait" time between actions, so Rainmeter has time to handle other messages in the message queue. In addition, keep in mind that <code>!Redraw</code> actions can be relatively CPU expensive, particularly if a lot of image resizing is involved.</p> 
+<p>Some care must be taken however, not to overwhelm the message queue. Things done with ActionTimer in general should be short targeted actions, like a meter transition or short animation. Ensure that there is at least some "wait" time between actions, so Rainmeter has time to handle other messages in the message queue. In addition, keep in mind that <code>!Redraw</code> actions can be relatively CPU expensive, particularly if a lot of image resizing is involved.</p>
 
 <p>ActionTimer does not support, and should not be used, to do anything "endless" or otherwise of a very long duration combined with a very rapid update. If the Rainmeter message queue becomes overwhelmed, the skin can get laggy and unresponsive to mouse actions you might take.</p>
 
@@ -76,7 +76,7 @@ title: 'ActionTimer plugin'
 		<p><code>ActionList1=Repeat FirstAction, 5, 20 | Wait 5 | SecondAction</code><br>
 		Execute everything defined in the <em>FirstAction</em> option 20 times, with a wait of 5 milliseconds between each execution of <em>FirstAction</em>. Wait 5 milliseconds, and execute everything defined in the <em>SecondAction</em> option.</p>
 	</dd>
-	
+
 	<dt id="Action"><code><em>Action</em></code> <small><code>Any unique name=[!bang or command]</code></small></dt>
 	<dd>
 		<p>These can be any unique name, in any order. They will contain the skin bangs or other actions that will be executed by the plugin when the named action is called by an <a href="#ActionList">ActionList</a>.</p>
@@ -103,7 +103,7 @@ SetFontBig=[!SetOption SomeMeter FontSize "15"][!UpdateMeter SomeMeter][!Redraw]
 ``` ini
 [Variables]
 U=[!UpdateMeasure MeasureChangeFont][!UpdateMeter *][!Redraw]
-
+ 
 [MeasureChangeFont]
 Measure=Plugin
 Plugin=ActionTimer
@@ -136,7 +136,7 @@ SetFontBig=[!SetOption SomeMeter FontSize "15"]#U#
 		<p><b>Example:</b></p>
 		<p><code>LeftMouseUpAction=[!CommandMeasure MeasureName "Execute 1"]</code></p>
 	</dd>
-	
+
 	<dt id="Stop"><code>Stop <em>ActionList number</em></code></dt>
 	<dd>
 		<p>Stop the correspondingly numbered <code>ActionList<em>N</em></code>.</p>
@@ -158,12 +158,12 @@ SetFontBig=[!SetOption SomeMeter FontSize "15"]#U#
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [Variables]
 W=15
 U=[!UpdateMeasureGroup Sizers][!UpdateMeter MeterText][!Redraw]
 Size=8
-
+ 
 [MeasureSizeUp]
 Measure=Plugin
 Plugin=ActionTimer
@@ -178,7 +178,7 @@ IfTrueAction2=[!SetOption MeterText Text "Changing"]#U#
 IfCondition3=#Size# = 60
 IfTrueAction3=[!SetOption MeterText Text "BIG"]#U#
 DynamicVariables=1
-
+ 
 [MeasureSizeDown]
 Measure=Plugin
 Plugin=ActionTimer
@@ -193,7 +193,7 @@ IfTrueAction2=[!SetOption MeterText Text "Changing"]#U#
 IfCondition3=#Size# = 60
 IfTrueAction3=[!SetOption MeterText Text "BIG"]#U#
 DynamicVariables=1
-
+ 
 [MeterText]
 Meter=String
 W=400

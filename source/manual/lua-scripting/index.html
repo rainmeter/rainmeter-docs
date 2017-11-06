@@ -74,7 +74,7 @@ end
 <p>The <a href="http://www.lua.org/manual/5.1/manual.html#pdf-dofile">dofile function</a> can be used to include libraries or other snippets of Lua code. You must specify a full path to the dofile, using the syntax <code>dofile('C:\PathToDoFile\SomeLua.lua')</code>. Use the <a href="#GetVariable">GetVariable</a> function if you want to use the #@# variable shortcut to the @Resources folder for the current config, or <a href="#MakePathAbsolute">MakePathAbsolute</a> if you want to have the .lua file be relative to the current skin folder.</a>
 
 ``` lua
-function Initalize()
+function Initialize()
 	dofile(SKIN:GetVariable('@')..'MyDoFiles\\toolkit.lua')
 	dofile(SKIN:MakePathAbsolute('toolkit.lua'))
 end
@@ -344,9 +344,8 @@ roundedNum = SKIN:ParseFormula('(Round('..numToRound..'))')
 <p>The following Lua features are not available in Rainmeter at this time:</p>
 
 <ul>
-	<li>The <a href="http://www.lua.org/manual/5.1/manual.html#5.2">coroutine</a> and <a href="http://www.lua.org/manual/5.1/manual.html#5.9">debug</a> libraries.</li>
 	<li>External compiled libraries, such as <a href="http://luacurl.luaforge.net/">LuaCURL</a>.</li>
-	<li>The <code><a href="http://www.lua.org/manual/5.1/manual.html#pdf-require">require</a></code>, <code>os.exit</code>, <code>os.setlocale</code>, <code>io.popen</code>, <code>collectgarbage</code>, <code>getfenv</code>, and <code>setfenv</code> functions.</li>
+	<li>The <code><a href="http://www.lua.org/manual/5.1/manual.html#pdf-require">require</a></code>, <code>os.exit</code>, <code>os.setlocale</code>, <code>io.popen</code>, and <code>collectgarbage</code> functions.</li>
 </ul>
 
 <h3 id="Deprecated">Deprecated Features</h3>

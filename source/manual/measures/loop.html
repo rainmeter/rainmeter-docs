@@ -11,7 +11,7 @@ title: 'Loop measure'
 
 <p>The measure will have a range that is the difference between <code>StartValue</code> and <code>EndValue</code> for use by meters requiring a <a href="!measures/#Percentage">percentage</a>. There cannot be a negative percentage, so the range will always be lowest value to highest value.</p>
 
-<p>Any dynamic change to any of the four measure options, or dynamically changing <a href="!measures/general-options/#InvertMeasure">InvertMeasure</a> on the measure, will cause the loop to be reset and start over with the new values.</p>
+<p>Any dynamic change to any of the four measure options, or dynamically changing <a href="!measures/general-options/#InvertMeasure">InvertMeasure</a> on the measure, will cause the loop to be reset and start over with the new values.</p> 
 
 <p><b>Note:</b> All options must be positive or negative whole numbers, or formulas that resolve to whole numbers. Fractional values will be truncated.</p>
 
@@ -50,9 +50,9 @@ title: 'Loop measure'
 	<dt id="CommandMeasureReset"><code>Reset</code></dt>
 	<dd>
 		<p>This will cause the measure to reset the loop and restart using the current values for all options.</p>
-		
+
 		<p>Example: <code>[!CommandMeasure MeasureName "Reset"]</code></p>
-		
+
 		<p><b>Note:</b> Any dynamic change to any of the four measure options, or dynamically changing <a href="!measures/general-options/#InvertMeasure">InvertMeasure</a> on the measure, will automatically perform a reset of the loop. This command would not be required.</p>
 	</dd>
 </dl>
@@ -63,21 +63,21 @@ title: 'Loop measure'
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [MeasureLoop1]
 Measure=Loop
 StartValue=37
 EndValue=59
 Increment=1
 LoopCount=0
-
+ 
 [MeasureLoop2]
 Measure=Loop
 StartValue=10
 EndValue=0
 Increment=-1
 LoopCount=1
-
+ 
 [MeterLoop1]
 Meter=String
 MeasureName=MeasureLoop1
@@ -92,7 +92,7 @@ Padding=5,5,5,5
 AntiAlias=1
 LeftMouseUpAction=[!TogglePauseMeasure MeasureLoop1]
 MiddleMouseUpAction=[!CommandMeasure MeasureLoop1 "Reset"]
-
+ 
 [MeterLoop2]
 Meter=String
 MeasureName=MeasureLoop2
@@ -116,26 +116,26 @@ MiddleMouseUpAction=[!CommandMeasure MeasureLoop2 "Reset"]
 Update=500
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [Variables]
 Start=0
 End=10
 Incr=1
-
+ 
 [MeasureLoop]
 Measure=Loop
 StartValue=#Start#
 EndValue=#End#
 Increment=#Incr#
 LoopCount=1
-
+ 
 [MeasurePingPong]
 Measure=Calc
 IfCondition=MeasureLoop = #End#
 IfTrueAction=[!SetOption MeasureLoop InvertMeasure 1][!UpdateMeasure MeasureLoop]
 IfCondition2=MeasureLoop = #Start#
 IfTrueAction2=[!SetOption MeasureLoop InvertMeasure 0][!UpdateMeasure MeasureLoop]
-
+ 
 [MeterLoop]
 Meter=String
 MeasureName=MeasureLoop

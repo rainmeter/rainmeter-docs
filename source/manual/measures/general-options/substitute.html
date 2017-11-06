@@ -12,7 +12,7 @@ title: 'Substitute'
 		<p>A list of comma delimited <code>"pattern":"replacement"</code> pairs. All occurrences of <code>pattern</code> in the <a href="!measures/#Values">measure string value</a> are replaced with <code>replacement</code>. For example, <code>"This":"That"</code> substitutes all occurrences of <em>This</em> with <em>That</em>.</p>
 
 		<p>If multiple <code>"pattern":"replacement"</code> pairs are specified, each substitution is attempted in the specified order. For example, <code>"This":"That","Here":"There"</code> first replaces all occurrences of <em>This</em> with <em>That</em> and then replaces all occurrences of <em>Here</em> with <em>There</em>.</p>
-		
+
 		<p>Each of the <code>"pattern":"replacement"</code> pairs are a separate action, and act on the <em>results</em> of the previous substitute pairs. For example, with <code>"1":"One","10":"Ten"</code>, all occurrences of <em>1</em> are replaced with <em>One</em>, but occurrences of <em>10</em> will not be replaced with <em>Ten</em>, because the first substitution already changed all <em>1</em> characters to <em>One</em>. For the desired behavior, the order can be reversed as <code>"10":"Ten","1":"One"</code>.</p>
 
 		<p>Instead of <code>"pattern":"replacement"</code>, single quotes can be used <em>either</em> around the pattern or the replacement. (i.e. <code>'pattern':"replacement"</code> or <code>"pattern":'replacement'</code>, but not <code>'pattern':'replacement'</code>) This can be useful when either the pattern or the replacement contains double quotes. For example, <code>'"':"double quote"</code> replaces all occurrences of <em>"</em> with <em>double quote</em>.</p>
@@ -23,7 +23,7 @@ title: 'Substitute'
 		<p>If set to <code>1</code>, <a href="!skins/option-types/#RegExp">Perl compatible regular expressions</a> can be used in the <code>pattern</code> part of <code>Substitute</code> pairs.</p>
 
 		<p>If captures are used in the pattern, (e.g. <code>(.+)</code>) they can be referenced in the <code>replacement</code> part using <code>\1</code>, (first capture) <code>\2</code>, (second capture) etc. The entire match can also be referenced with <code>\0</code>.</p>
-		
+
 		<p><b>Note:</b> With RegExpSubstitute, a (capture) may not return an empty string. Care should be taken when using <code>*</code> (zero or more) quantifiers or <code>(?(?=</code> (If/Then) lookahead tests, as a capture must either cause the entire regular expression to "fail", or return a value of some kind.</p>
 	</dd>
 </dl>
@@ -38,13 +38,13 @@ Substitute="2012":"Twenty Twelve","2013":"Twenty Thirteen"
 ; Assuming that the current year is 2012, the string value of [MeasureYear] will
 ; be "Twenty Twelve" (without quotes). Since Substitute only affects the string
 ; value, the number value of [MeasureYear] will continue to be 2012.
-
+ 
 [MeasureCalc1]
 Measure=Calc
 Formula=MeasureYear
 ; Since the number value of MeasureYear is used above, the value of [MeasureCalc1]
 ; will also be 2012.
-
+ 
 [MeasureCalc2]
 Measure=Calc
 Formula=[MeasureYear]
@@ -62,7 +62,7 @@ RegExpSubstitute=1
 Substitute="(\w+) (\w+) (\w+)":"\3, \1 \2","Rainy":"Yoda"
 ; Reorders the sentence and then replaces Rainy with Yoda.
 ; The result is: Yoda, I am
-
+ 
 [MeasureEx2]
 Measure=String
 String=Hello, world!
@@ -70,7 +70,7 @@ RegExpSubstitute=1
 Substitute="^(.{0,5}).+$":"\1..."
 ; Truncates string by length (in this case 5) and appends "...".
 ; The result is: Hello...
-
+ 
 [MeasureEx3]
 Measure=String
 String=192.168.1.101

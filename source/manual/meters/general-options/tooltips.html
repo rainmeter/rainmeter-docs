@@ -22,7 +22,6 @@ title: 'Tooltips'
 		<p>To wrap the text on multiple lines, use the <a href="!variables/built-in-variables/#CRLF">#CRLF# variable</a>.</p>
 		<p>There are no text formatting options possible with ToolTipText. The font, colors and sizes are the ones built into the standard tooltip behavior in the Windows operating system.</p>
 		<p>On a String meter, numeric formatting options are forced to <code>AutoScale=1</code>, <code>Scale=1</code>, <code>NumOfDecimals=0</code>, <code>Percentual=0</code> on the tooltip when values from the meter are used with <code>%1</code>, <code>%2</code> etc. To have more control over numeric formatting, <a href="!variables/section-variables/#MeasureParameters">[SectionVariables]</a> should be used instead. Be sure to use <code>DynamicVariables=1</code> on the meter when section variables are used.</p>
-
 	</dd>
 
 	<dt id="ToolTipTitle"><code>ToolTipTitle</code></dt>
@@ -52,7 +51,7 @@ title: 'Tooltips'
 	<dt id="ToolTipWidth"><code>ToolTipWidth</code><small>Default: <code>1000</code></small></dt>
 	<dd>
 		<p>Maximum width for the tooltip. When the width is reached, the text will automatically wrap.</p>
-		
+
 		<p><b>Note:</b> As a <code>ToolTipTitle</code> cannot be wrapped, do not set this width less than the length of the title, or there could be unexpected results.</p>
 	</dd>
 
@@ -67,31 +66,31 @@ title: 'Tooltips'
 ``` ini
 [Rainmeter]
 Update=1000
-
+ 
 [MeasureCPU]
 Measure=CPU
-
+ 
 [MeasureCPUSpeed]
 Measure=Registry
 RegHKey=HKEY_LOCAL_MACHINE
 RegKey=HARDWARE\DESCRIPTION\System\CentralProcessor\0
 RegValue=~MHz
 UpdateDivider=-1
-
+ 
 [MeasureCPUName]
 Measure=Registry
 RegHKey=HKEY_LOCAL_MACHINE
 RegKey=HARDWARE\DESCRIPTION\System\CentralProcessor\0
 RegValue=ProcessorNameString
 UpdateDivider=-1
-
+ 
 [MeasureCPUIdentifier]
 Measure=Registry
 RegHKey=HKEY_LOCAL_MACHINE
 RegKey=HARDWARE\DESCRIPTION\System\CentralProcessor\0
 RegValue=Identifier
 UpdateDivider=-1
-
+ 
 [MeasureCPUText]
 Meter=String
 X=0
@@ -109,7 +108,7 @@ ToolTipType=1
 ToolTipIcon=INFO
 ToolTipText=[MeasureCPUName]#CRLF#[MeasureCPUIdentifier]#CRLF#Running at: [MeasureCPUSpeed] Mhz
 DynamicVariables=1
-
+ 
 [MeterCPU%]
 MeasureName=MeasureCPU
 Meter=String

@@ -36,12 +36,11 @@ title: 'RunCommand plugin'
 
 <h2>Options</h2>
 <dl>
-
 	<dt>General measure options</dt>
 	<dd>
 		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
-	
+
 	<dt id="Program"><code>Program</code> <small>Default: <code>%ComSpec% \U \C</code></small></dt>
 	<dd>
 		<p>The program to run. If not specified, the default value is the %ComSpec% environment variable (normally cmd.exe) with the parameters "\U" for Unicode pipe output and "\C" to close the Command Prompt window and exit the cmd.exe shell when finished.</p>
@@ -55,7 +54,7 @@ title: 'RunCommand plugin'
 	<dd>
 		<p>Command-line parameters. If no <code>Program</code> is specified, this option represents the entire command-line, which will be executed in the context of the default cmd.exe Command Prompt window as described above.</p>
 
-		<p><b>Note:</b> Care should be taken to properly "quote" commands with a path or parameters having spaces in values.</p> 
+		<p><b>Note:</b> Care should be taken to properly "quote" commands with a path or parameters having spaces in values.</p>
 
 		<p><b>Example:</b> <code>Parameter=wmic os get lastbootuptime</code>.</p>
 	</dd>
@@ -111,7 +110,6 @@ title: 'RunCommand plugin'
 	<dd>
 		<p>Timeout value in milliseconds. If positive, RunCommand will either "Close" the program if the <code>State</code> is other than <code>Hide</code> or "Kill" the program if the <code>State</code> is <code>Hide</code>. The default is -1, which means no timeout. Any <code>FinishAction</code> will run even if the program does not actually terminate (e.g. if closing "Notepad" and clicking "Cancel" when asked to save the document). It should be noted that this value is independent of any <code>Update</code> or <code>UpdateDivider</code> values in the skin.</p>
 	</dd>
-
 </dl>
 
 <p><b>Note:</b> Because Rainmeter strips any quotes from the start and end of an option if both exist, it is important to double double-quote the Program and Parameter options If the overall command or parameter requires both starting and ending quotes.</p>
@@ -161,7 +159,7 @@ title: 'RunCommand plugin'
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [MeasureRun]
 Measure=Plugin
 Plugin=RunCommand
@@ -171,7 +169,7 @@ OutputType=ANSI
 OutputFile=#CURRENTPATH#CPUName.txt
 RegExpSubstitute=1
 Substitute="Name.*#CRLF#":"","#CRLF#":""
-
+ 
 [MeterRun]
 Meter=String
 FontSize=11
@@ -181,7 +179,7 @@ Padding=5,5,5,5
 AntiAlias=1
 Text=Click to Run
 LeftMouseUpAction=[!CommandMeasure MeasureRun "Run"]
-
+ 
 [MeterResult]
 Meter=String
 MeasureName=MeasureRun

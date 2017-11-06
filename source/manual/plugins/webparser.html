@@ -23,7 +23,7 @@ Measure=Plugin
 Plugin=WebParser
 URL=[MeasureParent]
 StringIndex=1
-
+ 
 [MeasureChild2]
 Measure=Plugin
 Plugin=WebParser
@@ -119,7 +119,7 @@ StringIndex=2
 	<dt id="Download"><code>Download</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If <code>Download=1</code>, the <code>URL</code> is downloaded to Window's <code>TEMP</code> folder and the name to the file is returned as string value. The measure can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> on an <a href="!meters/image/">Image</a> meter to download images from a site and display them.</p>
-
+		
 		<p><b>Note:</b> When used on a <a href="#ParentChild">child</a> measure, the download itself is treated as a <a href="#ParentChild">parent</a> function, and any <a href="#FinishAction">FinishAction</a> on the measure will be executed if the download succeeds, and any <a href="#OnDownloadErrorAction">OnDownloadErrorAction</a> on the measure will be executed if the download fails.</p>
 	</dd>
 
@@ -130,6 +130,7 @@ StringIndex=2
 		<p>A folder <code>DownloadFile</code> will be created in the <a href="!variables/built-in-variables/#CURRENTPATH">current folder</a>, and the defined relative path and file name will be created under that. It is not possible to specify an absolute path.</p>
 
 		<p><b>Note:</b> This file is <b>not</b> a temporary file so it is <b>not</b> deleted after unloading a skin or exiting Rainmeter.</p>
+
 	</dd>
 
 	<dt id="ErrorString"><code>ErrorString</code></dt>
@@ -147,14 +148,14 @@ StringIndex=2
 
 	<dt id="ForceReload"><code>ForceReload</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		 <p>WebParser reads the resource only if it has been modified since last read. This can be overridden with <code>ForceReload=1</code>.</p>
+		<p>WebParser reads the resource only if it has been modified since last read. This can be overridden with <code>ForceReload=1</code>.</p>
 	</dd>
-	
+
 	<dt id="CodePage"><code>CodePage</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Specifies the <a href="http://en.wikipedia.org/wiki/Code_page">code page</a> of the downloaded URL=http:// web page or external file read with URL=file://.</p>
 
-		 <p>Most web sites on the web today are encoded with the Unicode UTF-8 standard. This is the default for WebParser, and it will seamlessly handle the site. No CodePage option is needed.</p>
+		<p>Most web sites on the web today are encoded with the Unicode UTF-8 standard. This is the default for WebParser, and it will seamlessly handle the site. No CodePage option is needed.</p>
 
 		<p>However, there may be some older web sites that are encoded in a language / character set specific way. On a web site, the encoding used can generally be determined by viewing the raw HTML source and checking the "charset" meta value in the "head" section of the page. (i.e. meta charset="UTF-8")</p>
 
@@ -209,7 +210,6 @@ StringIndex=2
 
 		<p><b>Example:</b> <code>Header=Cache-Control: no-cache</code></p>
 	</dd>
-
 </dl>
 
 <h2 id="ActionOptions">Action Options</h2>
@@ -310,31 +310,31 @@ Update=1000
 DynamicWindowSize=1
 BackgroundMode=2
 SolidColor=0,0,0,255
-
+ 
 [MeasureRSSParent]
 Measure=Plugin
 Plugin=WebParser
 URL=http://slashdot.org/slashdot.rdf
 RegExp=(?siU)<title>(.*)</title>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>
-
+ 
 [MeasureRSSTitle]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureRSSParent]
 StringIndex=1
-
+ 
 [MeasureRSSItemTitle]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureRSSParent]
 StringIndex=2
-
+ 
 [MeasureRSSItemLink]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureRSSParent]
 StringIndex=3
-
+ 
 [MeterRSSTitle]
 Meter=String
 MeasureName=MeasureRSSTitle
@@ -342,7 +342,7 @@ FontSize=14
 FontColor=222,255,227,255
 StringStyle=Bold
 AntiAlias=1
-
+ 
 [MeterRSSItemTitle]
 Meter=String
 MeasureName=MeasureRSSItemTitle
@@ -362,54 +362,54 @@ DynamicVariables=1
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [Variables]
 Item=.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubDate>.*role="author".*>(.*)<.*<media:thumbnail url="(.*)"
-
+ 
 [MeasureDA]
 Measure=Plugin
 Plugin=WebParser
 URL=http://backend.deviantart.com/rss.xml?q=in%3Acustomization%2Fskins%2Fsysmonitor%2Frainmeter+sort%3Atime&type=deviation
 RegExp=(?siU)#Item##Item##Item##Item#
 UpdateRate=300
-
+ 
 [MeasureTitle1]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=1
-
+ 
 [MeasureLink1]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=2
-
+ 
 [MeasurePubDate1]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=3
-
+ 
 [MeasureAuthor1]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=4
-
+ 
 [MeasureImage1]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 Download=1
 StringIndex=5
-
+ 
 [MeasureTitle2]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=6
-
+ 
 [MeasureLink2]
 Measure=Plugin
 Plugin=WebParser
@@ -421,89 +421,89 @@ Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=8
-
+ 
 [MeasureAuthor2]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=9
-
+ 
 [MeasureImage2]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 Download=1
 StringIndex=10
-
+ 
 [MeasureTitle3]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=11
-
+ 
 [MeasureLink3]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=12
-
+ 
 [MeasurePubDate3]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=13
-
+ 
 [MeasureAuthor3]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=14
-
+ 
 [MeasureImage3]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 Download=1
 StringIndex=15
-
+ 
 [MeasureTitle4]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=16
-
+ 
 [MeasureLink4]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=17
-
+ 
 [MeasurePubDate4]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=18
-
+ 
 [MeasureAuthor4]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 StringIndex=19
-
+ 
 [MeasureImage4]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureDA]
 Download=1
 StringIndex=20
-
+ 
 [MeterBackground]
 Meter=Image
 W=106
 H=306
 SolidColor=10,20,30,255
 LeftMouseUpAction=["http://browse.deviantart.com/customization/skins/sysmonitor/rainmeter/?order=5"]
-
+ 
 [MeterImage1]
 Meter=Image
 MeasureName=MeasureImage1
@@ -518,7 +518,7 @@ ToolTipType=1
 ToolTipText=[MeasureAuthor1]#CRLF#[MeasurePubDate1]
 LeftMouseUpAction=["[MeasureLink1]"]
 DynamicVariables=1
-
+ 
 [MeterImage2]
 Meter=Image
 MeasureName=MeasureImage2
@@ -533,7 +533,7 @@ ToolTipType=1
 ToolTipText=[MeasureAuthor2]#CRLF#[MeasurePubDate2]
 LeftMouseUpAction=["[MeasureLink2]"]
 DynamicVariables=1
-
+ 
 [MeterImage3]
 Meter=Image
 MeasureName=MeasureImage3
@@ -548,7 +548,7 @@ ToolTipType=1
 ToolTipText=[MeasureAuthor3]#CRLF#[MeasurePubDate3]
 LeftMouseUpAction=["[MeasureLink3]"]
 DynamicVariables=1
-
+ 
 [MeterImage4]
 Meter=Image
 MeasureName=MeasureImage4

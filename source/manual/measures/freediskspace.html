@@ -54,7 +54,6 @@ title: 'FreeDiskSpace measure'
 	<dd>
 		If set to 1, user specific disk quotas in Windows are obeyed. If set to 0, user account specific disk quotas are ignored when obtaining free or used space on the disk.
 	</dd>
-
 </dl>
 
 <h2>Example</h2>
@@ -62,30 +61,30 @@ title: 'FreeDiskSpace measure'
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
-
+ 
 [MeasureDiskLabel]
 Measure=FreeDiskSpace
 Drive=C:
 Label=1
 UpdateDivider=5
-
+ 
 [MeasureTotalDiskSpace]
 Measure=FreeDiskSpace
 Drive=C:
 Total=1
 UpdateDivider=5
-
+ 
 [MeasureFreeDiskSpace]
 Measure=FreeDiskSpace
 Drive=C:
 UpdateDivider=5
-
+ 
 [MeasureUsedDiskSpace]
 Measure=FreeDiskSpace
 Drive=C:
 InvertMeasure=1
 UpdateDivider=5
-
+ 
 [MeterDriveInfo]
 Meter=String
 MeasureName=MeasureDiskLabel

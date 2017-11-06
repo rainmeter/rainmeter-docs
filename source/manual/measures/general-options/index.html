@@ -17,14 +17,14 @@ title: 'General Measure Options'
 		<p>Frequency at which the measure value is updated. The <a href="!skins/rainmeter-section/#Update"><code>Update</code></a> option in the [Rainmeter] section of the skin is multiplied by the specified value to determine how often the measure is updated.</p>
 
 		<p><b>Example:</b> If <code>Update=1000</code> (in the [Rainmeter] section) and <code>UpdateDivider=30</code>, the measure is updated every 30 seconds.</p>
-		
+
 		<p>If <code>UpdateDivider=-1</code> or any negative number, then the measure is only updated once when the skin is loaded or refreshed.</p>
 	</dd>
 
 	<dt id="OnUpdateAction"><code>OnUpdateAction</code></dt>
 	<dd>
 		<p><a href="!skins/option-types/#Action">Action</a> to execute each time the measure is updated.</p>
-		
+
 		<p><b>Note:</b> This may be based on the values in <a href="!skins/rainmeter-section/#Update">Update</a> in the [Rainmeter] section and any <a href="#UpdateDivider">UpdateDivider</a> on the measure, or if the measure is updated with a <a href="!bangs/#Measure">Measure Bang</a> or other relevant bang.</p>
 	</dd>
 

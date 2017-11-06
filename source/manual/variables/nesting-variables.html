@@ -1,0 +1,199 @@
+---
+layout: docs
+permalink: manual/variables/nesting-variables/
+title: 'Nesting Variables'
+---
+
+<p>There may be times when you want to embed or 'nest' variables within variables. This might include any combination of  <a href="!variables/">#Variables#</a>, <a href="!variables/built-in-variables/">#Built-InVariables#</a>, <a href="!variables/section-variables/">[SectionVariables]</a> or <a href="https://docs.rainmeter.net/manual-beta/variables/mouse-variables/">$MouseVariables$</a>.</p>
+
+<p>So for instance, the goal might be to have things like:</p>
+<p>
+<code>Text=#MyVar#MyOtherVar##</code><br/>
+<code>Text=#MyVar[MyMeasure]#</code><br/>
+<code>Text=[MyMeasure#MyVar#]</code><br/>
+<code>Text=[MyMeasure[MyOtherMeasure]]</code><br/>
+</p>
+
+<p>This creates ambiguities that simply can't be reliably parsed and understood by Rainmeter, and can't work.</p>
+
+<p>Rainmeter solves this by having an alternative form of these variables. These function exactly as their normal counterparts do, but can successfully be nested.<p>
+
+<h2>The alternative 'nesting' form of the variables</h2>
+
+<p><table class="table-striped">
+	<tr><td><b>[#VarName]</b></td><td>&nbsp;&nbsp;&nbsp;</td><td>Replaces: #VarName#</td></tr>
+	<tr><td><b>[&MeasureName]</b></td><td>&nbsp;&nbsp;&nbsp;</td><td>Replaces: [MeasureName]</td></tr>
+	<tr><td><b>[$MouseVar]</b></td><td>&nbsp;&nbsp;&nbsp;</td><td>Replaces: $MouseVar$</td></tr>
+</table></p><br/>
+
+<p>So our examples above would look like:</p>
+<p>
+<code>Text=[#MyVar[#MyOtherVar]]</code><br/>
+<code>Text=[#MyVar[&MyMeasure]]</code><br/>
+<code>Text=[&MyMeasure[#MyVar]]</code><br/>
+<code>Text=[&MyMeasure[&MyOtherMeasure]]</code><br/>
+</p>
+
+<p><b>Notes:</b></p>
+
+<p>Unless you are in fact 'nesting' variables within variables, there is no other benefit to using these instead of the normal syntax. It is not suggested that this in any way 'deprecates' the current style of using variables in your skin. This is an 'alternative' way, that simply allows for nesting to be successful. Use them all the time, or use them just when needed, that is a matter of personal preference.</p>
+
+<p>Do note however, that any use of <a href="!lua-scripting/inline-lua/">Inline Lua</a> in measures or meters will always require that this Nesting Variables syntax be used, as by its nature as a [SectionVariable], Inline Lua will generally require nesting of other variables or section variables in the parameters.</p>
+
+<p>All the same rules for when <code>DynamicVaribles=1</code> is required where these are used still apply. Consider each component of the nested variable. If any of them require dynamic variables to successfully get the current value, then it must be used. In general, ANY nested variable that contains <code>[&MeasureName]</code> is likely to require <code>DynamicVaribles=1</code> when used in measures or meters.</p>
+
+<p>If you are <a href="!variables/#Escape">escaping a variable</a> and need to use the nested form, the syntax is:</p>
+
+<p><b>[#*VarName*]<br/>
+[&*MeasureName*]</b></p>
+
+<h2>Examples</h2>
+
+``` ini
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+ 
+[Variables]
+Var1=One
+Var2=Two
+ 
+[MeasureStringOne]
+Measure=String
+String="I'm the first Measure"
+ 
+[MeasureStringTwo]
+Measure=String
+String="I'm the second Measure"
+ 
+[MeterTest1]
+Meter=String
+FontSize=13
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=[&MeasureString[#Var1]]#CRLF#[&MeasureString[#Var2]]
+DynamicVariables=1
+ 
+[MeasureNum3]
+Measure=Calc
+Formula=3
+ 
+[MeasureNum4]
+Measure=Calc
+Formula=4
+ 
+[MeasureString3]
+Measure=String
+String="I'm the third Measure"
+ 
+[MeasureString4]
+Measure=String
+String="I'm the fourth Measure"
+
+[MeterTest2]
+Meter=String
+Y=10R
+FontSize=13
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=[&MeasureString[&MeasureNum3]]#CRLF#[&MeasureString[&MeasureNum4]]
+DynamicVariables=1
+```
+
+``` ini
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+ 
+[MeasureRandom]
+Measure=Calc
+Formula=Random
+LowBound=1
+HighBound=5
+UpdateRandom=1
+UniqueRandom=1
+ 
+[Measure1]
+Measure=String
+String="I'm One"
+ 
+[Measure2]
+Measure=String
+String="I'm Two"
+ 
+[Measure3]
+Measure=String
+String="I'm Three"
+ 
+[Measure4]
+Measure=String
+String="I'm Four"
+ 
+[Measure5]
+Measure=String
+String="I'm Five"
+ 
+[MeterTest1]
+Meter=String
+FontSize=13
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=[&Measure[&MeasureRandom]]
+DynamicVariables=1
+```
+
+``` ini
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+ 
+[Variables]
+XPos1=15
+XPos2=10
+XPos3=30
+XPos4=100
+XPos5=0
+ 
+[MeasureRandom]
+Measure=Calc
+Formula=Random
+LowBound=1
+HighBound=5
+UpdateRandom=1
+UniqueRandom=1
+ 
+[MeterTest1]
+Meter=String
+X=[#XPos[&MeasureRandom]]
+FontSize=13
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=Hello World
+DynamicVariables=1
+```
+
+<h2 id="DownloadExamples">Download Examples</h2>
+
+<p>You can download the above examples as a .rmskin.</p>
+
+<div float="left">
+
+</div>
+<div class="exampleprev">
+	<a href="!examples/ExampleNesting.rmskin"><img src="!img/nesting-variables/ExampleNesting.png"></a>
+</div>

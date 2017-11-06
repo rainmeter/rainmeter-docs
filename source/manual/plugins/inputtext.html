@@ -7,7 +7,7 @@ title: 'InputText plugin'
 
 <p>InputText works by defining a series of commands, which can be triggered by any "action" string (this includes mouse actions, conditional actions in a Calc measure, and other commands in an InputText measure, including the same measure). When triggered, a free-floating text input box is created to gather user input at the specified points in the command series. When all input has been submitted, the commands are carried out.</p>
 
-<p>Additional help and examples for InputText can be found on the Rainmeter forums at <a href="//forum.rainmeter.net/viewtopic.php?p=98462#p98462">Working with InputText</a>.</p> 
+<p>Additional help and examples for InputText can be found on the Rainmeter forums at <a href="//forum.rainmeter.net/viewtopic.php?p=98462#p98462">Working with InputText</a>.</p>
 
 <p><b>Note:</b> InputText is incompatible with skins set to <a href="!settings/skin-sections/#AlwaysOnTop">Stay Topmost</a>, or <code>AlwaysOnTop=2</code>, as the conflict between the input field, which requires "focus", and the constant attempts by the skin to stay on "top", in front of the input field, will not allow InputText to function correctly.</p>
 
@@ -18,7 +18,7 @@ title: 'InputText plugin'
 		<p><a href="!skins/option-types/#Action">Actions</a> to execute when the plugin is triggered. The macro string <code>$UserInput$</code> will be replaced by whatever the user types into it.</p>
 
 		<p><code>Command1=[!SetVariable SomeVar "$UserInput$"]</code></p>
-		
+
 		<p>If the macro string <code>$UserInput$</code> is repeated in a command series, multiple input boxes will be created in sequence. However, a single value input by the user can be used multiple times in different bangs in the same command series by using the string value of the InputText [MeasureName] as a <a href="!variables/section-variables/#MeasureParameters">section variable</a>.</p>
 
 		<p><code>Command1=[!WriteKeyValue Variables SomeVar "$UserInput$"]</code><br/>
@@ -141,18 +141,18 @@ OnRefreshAction=[!CommandMeasure MeasureInputText "ExecuteBatch 1-4"]
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
-
+ 
 [Variables]
 FirstVar=!WriteKeyValue
 SecondVar=!SetVariable
 FontSize=14
-
+ 
 [MeterBackground]
 Meter=Image
 SolidColor=1E3A69FF
 W=250
 H=105
-
+ 
 [MeasureInput]
 Measure=Plugin
 Plugin=InputText
@@ -170,7 +170,7 @@ Command1=!WriteKeyValue Variables FirstVar "$UserInput$" "#CURRENTPATH#InputText
 Command2=!Refresh #CURRENTCONFIG#
 Command3=!SetVariable SecondVar "$UserInput$" Y=40 DefaultValue="Change Me Too!"
 Command4=["$UserInput$"] Y=75 DefaultValue="Text file path and name"
-
+ 
 [MeterWriteKeyValue]
 Meter=String
 X=5
@@ -180,7 +180,7 @@ FontColor=255,255,255,255
 AntiAlias=1
 Text=#FirstVar#
 LeftMouseUpAction=!CommandMeasure "MeasureInput" "ExecuteBatch 1-2"
-
+ 
 [MeterSetVariable]
 Meter=String
 X=5
@@ -191,7 +191,7 @@ AntiAlias=1
 DynamicVariables=1
 Text=#SecondVar#
 LeftMouseUpAction=!CommandMeasure "MeasureInput" "ExecuteBatch 3"
-
+ 
 [MeterOpenEditor]
 Meter=String
 X=5

@@ -35,7 +35,7 @@ title: 'Uptime measure'
 	<dd>
 		If set to <code>1</code> and if <code>%4</code> (days) is not used in the <code>Format</code> option, <code>%3</code> (hours) is incremented by days * 24. Set to <code>0</code> to disable this behaviour.
 	</dd>
-	
+
 	<dt id="SecondsValue"><code>SecondsValue</code></dt>
 	<dd>
 		This will override the default behavior of the measure. Instead of measuring the time since the last restart of the system, this option will define a number of seconds. The Format option can then be used to format that number of seconds to days, hours, minutes and/or seconds as desired.<br/><br/>
@@ -48,7 +48,7 @@ SecondsValue=[SomeMeasureName]
 Format="%4!i!d %3!i!h %2!i!m %1!i!s"
 DynamicVariables=1
 ```
-	</dd>
+	</dd>	
 </dl>
 
 <h2>Example</h2>
@@ -57,11 +57,11 @@ DynamicVariables=1
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [MeasureUptime]
 Measure=Uptime
 Format="%4!i! days, %3!i! hours, %2!i! minutes %1!i! seconds"
-
+ 
 [MeterUptime]
 Meter=String
 MeasureName=MeasureUptime

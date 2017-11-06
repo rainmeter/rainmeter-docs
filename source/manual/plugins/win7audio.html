@@ -43,12 +43,12 @@ Plugin=Win7AudioPlugin
 
 	<dt id="SetOutputIndex"><code>!CommandMeasure "MeasureWin7Audio" "SetOutputIndex <em>index</em>"</code></dt>
 	<dd>
-		 Set a specific device with <code><em>index</em></code>. This depends on your system setup and number of output devices.
+		Set a specific device with <code><em>index</em></code>. This depends on your system setup and number of output devices.
 	</dd>
 
 	<dt id="ToggleMute"><code>!CommandMeasure "MeasureWin7Audio" "ToggleMute"</code></dt>
 	<dd>
-		 Toggle the mute state.
+		Toggle the mute state.
 	</dd>
 
 	<dt id="SetVolume"><code>!CommandMeasure "MeasureWin7Audio" "SetVolume <em>x</em>"</code></dt>
@@ -58,7 +58,7 @@ Plugin=Win7AudioPlugin
 
 	<dt id="ChangeVolume"><code>!CommandMeasure "MeasureWin7Audio" "ChangeVolume <em>x</em>"</code></dt>
 	<dd>
-		 Change the volume by <code><em>x</em></code> percent. Use negative numbers to lower volume. This disables mute.
+		Change the volume by <code><em>x</em></code> percent. Use negative numbers to lower volume. This disables mute.
 	</dd>
 </dl>
 
@@ -69,12 +69,12 @@ Plugin=Win7AudioPlugin
 BackgroundMode=2
 SolidColor=0,0,0,150
 Update=1000
-
+ 
 ; Returns the name of the current sound device and percent volume level
 [MeasureWin7Audio]
 Measure=Plugin
 Plugin=Win7AudioPlugin
-
+ 
 ; Display the current sound device name
 [MeterDeviceName]
 Meter=String
@@ -89,7 +89,7 @@ FontColor=255,255,255,255
 StringAlign=LEFT
 AntiAlias=1
 ClipString=1
-
+ 
 ; Toggle to the next installed sound device (wraps back to first)
 [MeterChangeDevice]
 Meter=String
@@ -101,7 +101,7 @@ X=220
 Y=-3
 Text="+"
 LeftMouseUpAction=!CommandMeasure "MeasureWin7Audio" "ToggleNext"
-
+ 
 ; Change the volume down by 10%
 [MeterVolumeDown]
 Meter=String
@@ -113,7 +113,7 @@ X=0
 Y=20
 Text="<<"
 LeftMouseUpAction=!CommandMeasure "MeasureWin7Audio" "ChangeVolume -10"
-
+ 
 [MeasureVolBarBackground]
 Measure=Calc
 Formula=1
@@ -126,7 +126,7 @@ W=60
 H=6
 X=25
 Y=29
-
+ 
 ; Displays the current volume percentage on a Bar meter
 [MeterCurrentVolumeBar]
 Meter=Bar
@@ -136,7 +136,7 @@ W=60
 H=6
 X=25
 Y=29
-
+ 
 ; Change the volume up by 10%
 [MeterVolumeUp]
 Meter=String
@@ -148,7 +148,7 @@ X=83
 Y=20
 Text=">>"
 LeftMouseUpAction=!CommandMeasure "MeasureWin7Audio" "ChangeVolume 10"
-
+ 
 ; Displays the percentage volume level as text
 [MeterVolPercent]
 Meter=String
@@ -163,7 +163,7 @@ StringAlign=Center
 AntiAlias=1
 Text=[MeasureWin7Audio:]%
 DynamicVariables=1
-
+ 
 ; Toggles "mute" for the current device
 [MeterVolToggleMute]
 Meter=String
@@ -176,7 +176,7 @@ StringAlign=Left
 AntiAlias=1
 Text=MUTE
 LeftMouseUpAction=!CommandMeasure "MeasureWin7Audio" "ToggleMute"
-
+ 
 ; Set volume for current device to 50%
 [MeterVolSet50%]
 Meter=String

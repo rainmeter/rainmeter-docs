@@ -24,7 +24,6 @@ title: 'String meter'
 		<p>Text to display. If <code>MeasureName</code> is specified, <code>Text</code> will default to the value of the measure.</p>
 
 		<p>The values of the measure(s) specified with <code>MeasureName</code> can be used with the <code>%<em>N</em></code> syntax as follows:</p>
-
 ``` ini
 MeasureName=SomeMeasure
 MeasureName2=SomeMeasure2
@@ -57,7 +56,7 @@ Text=This is text containing %1 and %2.
 
 	<dt id="FontFace"><code>FontFace</code> <small>Default: <code>Arial</code></small></dt>
 	<dd>
-		<p>Family name of the font to use for the text. The font must either be installed in Windows directly or must be <a href="!skins/resources-folder/#Fonts">loaded at runtime</a>.</p>
+		<p>Family name of the font to use for the text. The font must either be installed in Windows directly or be <a href="!skins/resources-folder/#Fonts">loaded at runtime</a>.</p>
 
 		<p><b>See also:</b> <a href="/tips/fonts-guide/">Fonts Guide</a>.</p>
 	</dd>
@@ -70,6 +69,23 @@ Text=This is text containing %1 and %2.
 	<dt id="FontColor"><code>FontColor</code> <small>Default: <code>0,0,0,255</code></small></dt>
 	<dd>
 		<p><a href="!skins/option-types/#Color">Color</a> of the font.</p>
+	</dd>
+
+	<dt id="FontWeight"><code>FontWeight</code></dt>
+	<dd>
+		<p>The weight of the font in the range 1-999.</p>
+		<p>The following are common values and their meanings. If the value is supported by the font family, it will be used. If not, the closest value that is supported by the font family will be used.<br/><br/>
+		<b>100</b> - Thin (Hairline)<br/>
+		<b>200</b> - Extra Light (Ultra Light)<br/>
+		<b>300</b> - Light<br/>
+		<b>400</b> - Regular (Normal)<br/>
+		<b>500</b> - Medium<br/>
+		<b>600</b> - Semi Bold (Demi Bold)<br/>
+		<b>700</b> - Bold<br/>
+		<b>800</b> - Extra Bold (Ultra Bold)<br/>
+		<b>900</b> - Black (Heavy)<br/>
+		<b>950</b> - Extra Black (Ultra Black)<br/><br/>
+		If the font does not support any additional weights, then 500 and below will use the font's normal weight, and 600 and above will simulate a bold effect.</p>
 	</dd>
 
 	<dt id="StringAlign"><code>StringAlign</code> <small>Default: <code>Left</code></small></dt>
@@ -86,6 +102,7 @@ Text=This is text containing %1 and %2.
 	<dt id="StringStyle"><code>StringStyle</code> <small>Default: <code>Normal</code></small></dt>
 	<dd>
 		<p>Style of the string. Valid values are <code>Normal</code>, <code>Bold</code>, <code>Italic</code>, and <code>BoldItalic</code>.</p>
+		<p><b>Note:</b> This option is for the most part deprecated and replaced by the far more powerful functionality in the <a href="#FontWeight">FontWeight</a> option above. It should only be used in new skins to obtain the <em>Italic</em> effect, and should not be used to control the weight attributes.</p>
 	</dd>
 
 	<dt id="StringCase"><code>StringCase</code> <small>Default: <code>None</code></small></dt>
@@ -180,18 +197,18 @@ Text=This is text containing %1 and %2.
 Update=1000
 AccurateText=1
 DynamicWindowSize=1
-
+ 
 [Metadata]
 Name=ExampleMeterString
 Author=The Rainmeter Team
 Information=Example of the String meter
 License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
 Version=1.0
-
+ 
 [MeasureDate]
 Measure=Time
 Format=%A, %b %#d, %Y
-
+ 
 [MeterDate]
 Meter=String
 MeasureName=MeasureDate
@@ -204,7 +221,7 @@ StringEffect=Shadow
 FontEffectColor=0,0,0,255
 AntiAlias=1
 Text=Today is: %1
-
+ 
 [MeterText1]
 Meter=String
 X=0
@@ -213,7 +230,7 @@ FontColor=197,239,252,255
 FontSize=12
 AntiAlias=1
 Text=Relative to bottom of previous meter
-
+ 
 [MeterText2]
 Meter=String
 X=300
@@ -222,11 +239,12 @@ W=300
 H=20
 StringAlign=Right
 FontColor=255,255,255,255
-StringStyle=Italic
 FontSize=14
+FontWeight=400
+StringStyle=Italic
 AntiAlias=1
 Text=Right justified italic text
-
+ 
 [MeterText3]
 Meter=String
 X=150
@@ -235,23 +253,23 @@ W=300
 H=20
 StringAlign=Center
 FontColor=252,245,197,255
-StringStyle=Bold
 FontSize=14
+FontWeight=700
 AntiAlias=1
 Text=Centered bold text
-
+ 
 [MeterText4]
 Meter=String
 X=0
 Y=10R
 W=200
 H=50
-ClipString=1
 FontColor=197,252,223,255
-StringStyle=Bold
 FontSize=14
+FontWeight=700
+ClipString=1
 AntiAlias=1
-Text=This text will wrap due to ClipString=1
+Text="This text will wrap due to ClipString=1"
 ```
 
 <div class="exampleprev">

@@ -52,7 +52,7 @@ title: 'IfMatchActions'
 Update=1000
 AccurateText=1
 DynamicWindowSize=1
-
+ 
 [MeasureDate]
 Measure=Time
 Format=%A, %B %#d, %Y
@@ -60,7 +60,7 @@ IfMatch=Saturday|Sunday
 IfMatchAction=[!SetOption MeterDayofWeek Text "The date is [MeasureDate]#CRLF#It's a weekend"]
 IfNotMatchAction=[!SetOption MeterDayofWeek Text "The date is [MeasureDate]#CRLF#It's a weekday"]
 IfMatchMode=1
-
+ 
 [MeterDayofWeek]
 Meter=String
 FontSize=13

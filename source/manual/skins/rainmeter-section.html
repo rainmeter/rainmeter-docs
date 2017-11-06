@@ -22,7 +22,7 @@ title: '[Rainmeter] section'
 
 	<dt id="DefaultUpdateDivider"><code>DefaultUpdateDivider</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		<p>Default number of updates at which skin measure and meter values are updated. The <a href="#Update">Update</a> option is multiplied by the specified value to determine how often measures and meters are updated.</p>
+		<p>Default number of updates at which skin measure and meter values are updated. The <a href="#Update">Update</a> option is multiplied by the specified value to determine how often measures and meters are updated.
 
 		<p>Example: If <code>Update=1000</code> and <code>DefaultUpdateDivider=30</code>, then by default all measures and meters are updated every 30 seconds.</p>
 
@@ -99,6 +99,18 @@ title: '[Rainmeter] section'
 	<dt id="Group"><code>Group</code></dt>
 	<dd>
 		<p>Defines a group or series of groups that the skin belongs to. For more information please see the <a href="!groups/">Groups</a> page.</p>
+	</dd>
+</dl>
+
+	<dt id="SelectedColor"><code>SelectedColor</code><small>Default: <code>(see below)</code></small></dt>
+	<dd>
+		<p>A <a href="!skins/option-types/#Color">color code</a> used to define the color and transparency of the overlay when a skin is selected in a <a href="!arranging-skins/#Multiple">Drag Group</a>. If this option is not defined, the default setting <a href="!settings/rainmeter-section/#SelectedColor">SelectedColor</a> option is used.</p>
+		<p><b>Note:</b> This option will override any default <a href="!settings/rainmeter-section/#SelectedColor">SelectedColor</a>.</p>
+	</dd>
+
+	<dt id="DragGroup"><code>DragGroup</code></dt>
+	<dd>
+		<p>A group or series of <a href="!arranging-skins/#Multiple">Drag Groups</a> that the skin belongs to. So if any skin is selected, any skins in the same DragGroup will automatically be selected as well.</p>
 	</dd>
 </dl>
 
@@ -210,10 +222,10 @@ Update=1000
 Blur=1
 BlurRegion=1,10,10,190,50
 ; BlurRegion creates a rectangle starting at 10 pixels from the left, 10 pixels down from the top, and ending at 190 pixels to the right, 50 pixels from the top.
-
+ 
 BlurRegion2=3,10,70,80,110
 BlurRegion3=2,10,130,190,170,15
-
+ 
 [Background]
 Meter=Image
 W=200

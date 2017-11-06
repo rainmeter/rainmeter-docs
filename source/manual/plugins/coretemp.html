@@ -3,7 +3,7 @@ layout: docs
 permalink: manual/plugins/coretemp/
 title: 'CoreTemp plugin'
 ---
-<p><code>Plugin=CoreTemp</code> retrieves infromation from the <a href="http://www.alcpu.com/CoreTemp/">CoreTemp</a> application. The CoreTemp application <b>must</b> be running in the background.</p>
+<p><code>Plugin=CoreTemp</code> retrieves infromation from the <a href="http://www.alcpu.com/CoreTemp/">CoreTemp</a> application. The latest CoreTemp application <b>must</b> be running in the background.</p>
 
 <p><b>Note:</b> If the value of the measure is to be used in a meter which requires a <a href="!measures/#Percentage">percentage</a>, then appropriate <a href="!measures/general-options/#MinValue">MinValue</a> and/or <a href="!measures/general-options/#MaxValue">MaxValue</a> options must be added to the measure.</p>
 
@@ -11,26 +11,37 @@ title: 'CoreTemp plugin'
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		All <a href="!measures/general-options/">general measure options</a> are valid.
+		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
 
-	<dt id="CoreTempType"><code>CoreTempType</code></dt>
+	<dt id="CoreTempType"><code>CoreTempType</code> <small>Default: <code>MaxTemperature</code></small></dt>
 	<dd>
-		Defines the information to measure. Valid values are:
+		<p>Defines the information to measure. Valid values are:</p>
+
+		<p><b>CPU</b></p>
 		<ul>
-		<li><code>Temperature</code>: Current temperature. <code>CoreTempIndex</code> must also be specified.</li>
-		<li><code>MaxTemperature</code>: Current temperature of the hottest of all cores.</li>
-		<li><code>BusSpeed</code>: Bus frequency.</li>
-		<li><code>BusMultiplier</code>: Bus multiplier.</li>
 		<li><code>CpuName</code>: CPU model name.</li>
-		<li><code>CpuSpeed</code>: Core frequency.</li>
-		<li><code>TjMax</code>: Maximum allowed temperature. <code>CoreTempIndex</code> must also be specified.</li>
-		<li><code>Load</code>: Core load as percentage. <code>CoreTempIndex</code> must also be specified.</li>
-		<li><code>Vid</code>: Voltage value.</li>
+		<li><code>CpuSpeed</code>: CPU frequency.</li>
+		<li><code>MaxTemperature</code>: Current temperature of the hottest of all cores.</li>
+		<li><code>BusSpeed</code>: FSB bus frequency.</li>
+		<li><code>BusMultiplier</code>: Current FSB bus multiplier.</li>
+		<li><code>Vid</code>: Voltage Identifier value.</li>
+		<li><code>Tdp</code>: Thermal Design Power temperature.</li>
+		<li><code>Power</code>: Current power consumption of the CPU.<br/><em>Not all CPU models support this value.</em></li>
+		</ul>
+
+		<br/><p><b>Core</b></p>
+		<p>These option values use <code>CoreTempIndex</code> to define a specific CPU core.</p>
+		<ul>
+		<li><code>Temperature</code>: Current indexed core temperature.</li>
+		<li><code>TjMax</code>: Maximum allowed indexed core temperature.</li>
+		<li><code>CoreBusMultiplier</code>: Current FSB multiplier for the indexed core.</li>
+		<li><code>CoreSpeed</code>: Current indexed core frequency.<br/><em>This is a calculation based on the BusSpeed for the CPU times the CoreBusMultiplier.</em></li>
+		<li><code>Load</code>: Current indexed core usage as a percentage.</li>
 		</ul>
 	</dd>
 
-	<dt id="CoreTempIndex"><code>CoreTempIndex</code></dt>
+	<dt id="CoreTempIndex"><code>CoreTempIndex</code> <small>Default: <code>0</code></small></dt>
 	<dd>Zero-based index of the core to measure. The first core is <code>0</code>, the second core is <code>1</code>, etc.</dd>
 </dl>
 
@@ -40,23 +51,23 @@ title: 'CoreTemp plugin'
 Update=1000
 BackgroundMode=2
 SolidColor=0,0,0,255
-
+ 
 [MeasureMaxTemp]
 Measure=Plugin
 Plugin=CoreTemp
 CoreTempType=MaxTemperature
-
+ 
 [MeasureCore1Temp]
 Measure=Plugin
 Plugin=CoreTemp
 CoreTempType=Temperature
 CoreTempIndex=0
-
+ 
 [MeasureCpuSpeed]
 Measure=Plugin
 Plugin=CoreTemp
 CoreTempType=CpuSpeed
-
+ 
 [MeterMaxTemp]
 Meter=String
 MeasureName=MeasureMaxTemp
@@ -66,7 +77,7 @@ W=200
 H=20
 FontColor=255,255,255,255
 Text="Max Temp: %1°C"
-
+ 
 [MeterCore1Temp]
 Meter=String
 MeasureName=MeasureCore1Temp
@@ -76,7 +87,7 @@ W=200
 H=20
 FontColor=255,255,255,255
 Text="Core 1 Temp: %1°C"
-
+ 
 [MeterCpuSpeed]
 Meter=String
 MeasureName=MeasureCpuSpeed

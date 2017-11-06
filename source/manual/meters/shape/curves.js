@@ -36,7 +36,7 @@
 		// event handlers
 		svg.onmousedown = svg.onmousemove = svg.onmouseup = Drag;
 		svg.ontouchstart = svg.ontouchmove = svg.ontouchend = Drag;
-
+		
 		DrawSVG();
 	}
 
@@ -67,7 +67,7 @@
 		// show code
 		if (code) {
 			var d1 = point.p1.x + "," + point.p1.y + "," + point.p2.x +
-			"," + point.p2.y + "," + point.c1.x + "," + point.c1.y + "," +
+			"," + point.p2.y + "," + point.c1.x + "," + point.c1.y + "," + 
 			(point.c2 ? point.c2.x + "," + point.c2.y + "," : "") + 
 			(fill ? "1" : "0");
 			code.textContent = 'Shape=Curve '+ d1;

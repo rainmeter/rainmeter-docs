@@ -53,13 +53,13 @@ FontSize=(2 > 1 ? 42 : 666)
 ; Paths relative to the current skin folder:
 ImageName=lolcat.png
 ImageName=..\lolcat.png
-
+ 
 ; Absolute path:
 ImageName=C:\lolcats\lolcat.png
-
+ 
 ; Path to the current skin folder:
 ImageName=#CURRENTPATH#lolcat.png
-
+ 
 ; Path to the @Resources\Images folder under the root config of the current skin:
 ImageName=#@#Images\lolcat.png
 
@@ -90,7 +90,7 @@ SolidColor=FF0000
 ; Single bang:
 LeftMouseUpAction=!HideMeter SomeMeter
 LeftMouseUpAction=[!HideMeter SomeMeter]
-
+ 
 ; Multiple bangs:
 LeftMouseUpAction=[!HideMeter SomeMeter][!HideMeter SomeOtherMeter]
 ```
@@ -100,13 +100,13 @@ LeftMouseUpAction=[!HideMeter SomeMeter][!HideMeter SomeOtherMeter]
 ; These two lines are equivalent:
 LeftMouseUpAction=[!HideMeter SomeMeter]
 LeftMouseUpAction=[!HideMeter "SomeMeter"]
-
+ 
 ; These two are NOT equivalent. The first line will cause an error due to the spaces
 ; in the parameters while the second will properly set the value of SomeVariable
 ; to: I think, therefore I am
 LeftMouseUpAction=[!SetVariable SomeVariable I think, therefore I am]
 LeftMouseUpAction=[!SetVariable SomeVariable "I think, therefore I am"]
-
+ 
 ; These two may or may not be equivalent depending on the value of the #ImageFile#
 ; variable. If #ImageFile# contains spaces, the first line will fail. In uncertain
 ; cases, it is always best to use quotes as in the second line.
@@ -119,7 +119,7 @@ LeftMouseUpAction=[!SetWallpaper "#ImageFile#"]
 ``` ini
 LeftMouseUpAction=["C:\Windows\Notepad.exe" MyFile.txt]
 ; Runs Notepad.exe and loads the file MyFile.txt.
-
+ 
 LeftMouseUpAction=["https://forum.rainmeter.net"]
 ; Opens the URL in the default web browser.
 ```
@@ -144,16 +144,28 @@ LeftMouseUpAction=[!Log """Bob said "hello" to Susan"""]
 ``` ini
 LeftMouseUpAction=!SetOption SomeMeter FontSize #VarName#
 ; The FontSize option for SomeMeter will be set to the current value of the variable.
-
+ 
 LeftMouseUpAction=!SetOption SomeMeter FontSize #*VarName*#
 ; The FontSize option for SomeMeter will be set to the the string "#VarName#"
-
+ 
 LeftMouseUpAction=!SetOption SomeMeter FontSize [MeasureName]
 ; The FontSize option for SomeMeter will be set to the current value of the measure.
-
+ 
 LeftMouseUpAction=!SetOption SomeMeter FontSize [*MeasureName*]
 ; The FontSize option for SomeMeter will be set to the string "[MeasureName]".
 ```
+
+<p>Normal variables<br/>
+<ul>
+	<li><code>#*VarName*#</code></li>
+	<li><code>[*MeasureName*]</code></li>
+</ul></p>
+
+<p>Nested variables<br/>
+<ul>
+	<li><code>[#*VarName*]</code></li>
+	<li><code>[&*MeasureName*]</code></li>
+</ul></p>
 
 <h2 id="RegExp">Regular expression options</h2>
 

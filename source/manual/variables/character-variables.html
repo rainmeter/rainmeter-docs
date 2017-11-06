@@ -1,0 +1,124 @@
+---
+layout: docs
+permalink: manual/variables/character-variables/
+title: 'Character Reference Variables'
+---
+
+<p>Often you will want to use a symbol in your skin design, perhaps for a media player like <span class="symbol" style="font-size: 120%;">&#9654;&#xFE0E;</span> or <span class="symbol">&#9208;&#xFE0E;</span>, a language character like <span class="symbol">&#3468;&#xFE0E;</span> or <span class="symbol">&#20075;&#xFE0E;</span>, or other UI elements like <span class="symbol">&#8635;&#xFE0E;</span> or <span class="symbol">&#9745;&#xFE0E;</span> or even just a degree symbol like <span class="symbol">°&#xFE0E;</span>.</p>
+
+<p>You can use an <a href="!meters/image/">Image meter</a> with a .png of the image you want, however that can mean an extra meter in your skin code, and another file that you need to include when you distribute your skin. In addition, changing the color or size of the image can be problematic. An alternative is to use <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> characters in a <a href="!meters/string/">String meter</a>.</p>
+
+<p>While you can simply copy and paste a Unicode character into your skin code, there are some issues with that:</p>
+
+<ul>
+<li>You must be sure to <a href="https://docs.rainmeter.net/tips/unicode-in-rainmeter/">encode</a> your skin .ini file as UTF-16 Little Endian.</li>
+<li>While the font you are using for your skin may support the character(s), the font in your text editor may not. This can make it hard to work on your skin.</li>
+<li>The majority of the 65,536 Unicode characters and symbols below (U+FFFE), the <a href="https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane">Basic Multilingual Plane</a>, are well supported in popular fonts you will use. Characters above (U+FFFE) are not as well supported by fonts and not supported at all in Rainmeter. That is where an "icon" font like FontAwesome comes in, more on that in a bit.</li>
+</ul>
+
+<h2 id="UsingCharacterVariables">Using Character Variables in Rainmeter</h2>
+
+<p>The syntax for creating a plain-text reference to a Unicode text or symbol character is:</p>
+
+<ul>
+<li><b>[\x2622]</b> : hexadecimal Unicode value. Allowed range is x0-xFFFE.</li>
+<li><b>[\9762]</b> : decimal Unicode value. Allowed range is 0-65536.</li>
+<li>In this example, either variant will produce the <span class="symbol">&#9762;&#xFE0E;</span> character.</li>
+</ul>
+
+<p>Example: <code>Text=Caution, radioactivity [\x2622] ahead!</code></p>
+
+<p>These are font characters like any other, and can be modified with FontSize, FontColor and other effects.</p>
+
+<p>Character Reference Variables use the nested variables syntax of a <code>[</code> followed by some variable identifier, <code>\</code> in this case, and a value followed by an ending <code>]</code>. This means they can be nested with other variables and section variables using this syntax.</p>
+
+<p>Examples: <code>Text=[\[&MeasureName]]</code> or <code>Text=[\[#VariableName]]</code></p>
+
+<h2 id="FindingValues">Finding those Unicode values</h2>
+
+<p>There are two general ways to find characters and symbols to use in your skins:</p>
+
+<p><b>Standard Unicode characters in the Basic Multilingual Plane</b> as defined by the <a href="https://en.wikipedia.org/wiki/Unicode_Consortium">Unicode Consortium</a>. One good reference to these can be found at <a href="https://unicode-table.com/en/"><b>Unicode Character Table</b></a>. Simply select a desired character, and for example with our <span class="symbol">&#9762;&#xFE0E;</span> above, it will display both the Unicode (U+2622) and HTML (&amp;#9762;) values for the character. It is up to you whether you want to use hex or decimal, although hex may be more common outside of HTML. Then use those numeric values in the syntax described above.</p>
+
+<p>Most quality fonts, certainly most of the popular ones that are included with Windows, as well as ones available from <a href="https://fonts.google.com/">Google Fonts</a> and other resources, will support the majority of these characters. There should be no need to install or use any special font, other than what is visually pleasing for your skin design.</p>
+
+<p><b>An "icon" font.</b> Again, since the use of characters outside the Basic Multilingual Plane, above xFFFE, is not supported by many fonts, and not at all by Rainmeter, it may be useful to look at using a specialized "icon" font, which will map many new, unusual, and popular symbols into the allowed range. They often also have unique images that can be of use in your skins.</p>
+
+<p>While there are a lot of these types of fonts available, here are a few popular examples:</p>
+
+<ul>
+<li><b>FontAwesome</b><br/>
+Download site: <a href="http://fontawesome.io">http://fontawesome.io</a><br/>
+Reference site: <a href="http://fontawesome.io/cheatsheet/">http://fontawesome.io/cheatsheet/</a><br/></li>
+<li><b>Google Material Icons</b><br/>
+Download site: <a href="https://github.com/google/material-design-icons/tree/master/iconfont">https://github.com/google/material-design-icons/tree/master/iconfont</a><br/>
+Reference site: <a href="https://material.io/icons/">https://material.io/icons/</a><br/></li>
+<li><b>IcoFont</b><br/>
+Download site: <a href="http://icofont.com/">http://icofont.com/</a><br/>
+Reference site: <a href="http://icofont.com/">http://icofont.com/</a><br/></li>
+<li><b>Elegant Icon</b><br/>
+Download site: <a href="https://www.elegantthemes.com/blog/resources/elegant-icon-font">https://www.elegantthemes.com/blog/resources/elegant-icon-font</a><br/>
+Reference site: <a href="https://www.elegantthemes.com/blog/resources/elegant-icon-font">https://www.elegantthemes.com/blog/resources/elegant-icon-font</a><br/></li>
+<li><b>IonIcons</b><br/>
+Download site: <a href="http://ionicons.com/">http://ionicons.com/</a><br/>
+Reference: See CheatSheet.html in the archive.</li>
+</ul>
+
+<p>Again, select a desired character to obtain either the Unicode or HTML character values. Use those numeric values with the syntax above in Rainmeter.</p>
+
+<p>The difference is that using these fonts will require that you place the font .ttf or .otf file in the <a href="!skins/resources-folder/#Fonts">@Resources\Fonts</a> folder in the root config of your skin, and use the family name of the font with the <a href="!meters/string/#FontFace">FontFace</a> option in a String meter to display them.</p>
+
+<h2 id="Example">Example</h2>
+<a href="!examples/ExampleCharacterVariables.rmskin" class="download"></a>
+``` ini
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+ 
+; These should work with any decent font
+; https://unicode-table.com/en/
+; https://en.wikipedia.org/wiki/Unicode
+ 
+; These require that the appropriate font be in @Resources\Fonts
+; They are all there in this skin if you want / need them
+; http://fontawesome.io/cheatsheet/
+; https://material.io/icons/
+; https://github.com/google/material-design-icons/tree/master/iconfont
+; http://icofont.com/
+ 
+; Note that Rainmeter (and most fonts) only supports characters below [\65534] or [\xfffe]
+; This is the Basic Multilingual Plane in Unicode
+; https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane
+ 
+[Variables]
+; One way to keep track of what's what is to use Variables to name characters you use
+fa-Raindrop=[\xf043]
+u-Degree=[\x00B0]
+ 
+[MeterChars]
+Meter=String
+; Use any font you like for text and most Unicode characters
+;FontFace=Fira Sans
+FontSize=20
+FontWeight=500
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+; Use the font family name for fonts that have specialized characters
+; Note that | means "or" in InlinePattern
+InlineSetting=Face | FontAwesome
+InlinePattern=[\xf0e7]|#fa-Raindrop#|[\xf241]|[\x26C6]|[\xf0a9]
+InlineSetting2=Color | 242,216,162,255
+InlinePattern2=[\xf0e7]
+InlineSetting3=Color | 162,204,242,255
+InlinePattern3=[\xf043]
+InlineSetting4=Color | 242,104,104,255
+InlinePattern4=[\xf0a9]
+Text=Hello [\x27BD] [\xf0e7] #fa-Raindrop# [\xf241] [\xf0a9] #u-Degree# World
+```
+
+<div class="exampleprev">
+	<a href="!img/character-variables/ExampleCharacterVariables.png" data-fancybox><img src="!img/character-variables/ExampleCharacterVariables.png"></a>
+</div>

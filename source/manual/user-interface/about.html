@@ -29,14 +29,15 @@ title: 'About'
 
 <p>When opened, the list displays the last 20 messages logged by Rainmeter. While left open, the log continues to add new messages to the top of the list.</p>
 
-<p>The log has three columns of information:</p>
+<p>The log has four columns of information:</p>
 <ul>
 <li><b>Type</b>: The category of message:<br>&nbsp;<br>
 <b>Error</b> - An error impacting the functionality of Rainmeter or a skin.<br>
 <b>Warning</b> - An warning that some functionality is outside of normal parameters.<br>
 <b>Notice</b> - Normal activity logged to provide information about the success of some action.<br>
 <b>Debug</b> - Messages generated when Rainmeter or a skin is in <a href="!user-interface/manage/#SettingsTab">Debug mode</a>.<br>&nbsp;</li>
-<li><b>Time</b>: The system time in Hours:Minutes:Seconds.Milliseconds.</li>
+<li><b>Time</b>: The system time when the message was logged in <code>Hours:Minutes:Seconds.Milliseconds</code>.</li>
+<li><b>Source</b>: The source of the log message (if available) in the form of <code>Config\Skin.ini - [Section]</code>.</li>
 <li><b>Message</b>: The text of the log message. Select a line and hit <b>CTRL-C</b> to copy the message to the Windows clipboard.</li>
 </ul>
 
@@ -52,17 +53,20 @@ title: 'About'
 <a href="!img/user-interface/About02.png" data-fancybox><img src="!img/user-interface/About02.png"></a>
 </div>
 
-<p>Extremely powerful tool displaying real-time information about currently active skins. The tab displays a list of currently active skin <a href="!skins/#Config">config</a> names in the panel on the left. Selecting one from the list will update important information about the skin in real time, in the panel on the right.</p>
+<p>Extremely powerful tool displaying real-time information about currently active skins. The tab displays a list of currently active skin <a href="!skins/#Config">config</a> names in the panel on the left. Selecting one from the list will display important information about the skin in real time, in the panel on the right.</p>
 
 <ul>
 <li><b>Measures</b>: Information about <a href="!measures/">measures</a> in the selected skin.<br>&nbsp;<br>
 <b>Name</b> - The name of the measure.<br>
 <b>Range</b> - The current <a href="!measures/general-options/#MinValue">MinValue</a> and <a href="!measures/general-options/#MaxValue">MaxValue</a> values for the measure, expressed as a range of values.<br>
-<b>Value</b> - The current <a href="!measures/#Values">string value</a> of the measure. Select a line and hit <b>CTRL-C</b> to copy the value to the Windows clipboard.<br>&nbsp;</li>
+<b>Number</b> - The current <a href="!measures/#Values">number value</a> of the measure.<br>
+<b>String</b> - The current <a href="!measures/#Values">string value</a> of the measure.<br><br>
+The line will reflect the current <a href="!measures/general-options/#Disabled">Disabled</a> or <a href="!measures/general-options/#Paused">Paused</a> state of the measure using color highlighting, with <span class="grayscale">disabled measures grayed out</span>, and <span class="yellowback">paused measures having a yellow background</span>.<br><br>
+The range, number or string values may be separately copied to the Windows clipboard by right clicking the line. Note that while the information displayed in the panel is limited to 512 characters, the entire measure value will be copied.<br><br></li>
 
 <li><b>Variables</b>: Information about <a href="!variables/">variables</a> in the selected skin.<br>&nbsp;<br>
 <b>Name</b> - The name of the variable.<br>
-<b>Value</b> - The current value of the variable. Select a line and hit <b>CTRL-C</b> to copy the value to the Windows clipboard.</li>
+<b>Value</b> - The current value of the variable. The value may be copied to the clipboard by right-clicking.</li>
 </ul>
 
 <h2 id="PluginsTab">The Plugins tab</h2>

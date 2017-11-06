@@ -13,7 +13,7 @@ title: 'Formulas'
 <li>In a Bang: <code>LeftMouseUpAction=[!SetOption SomeMeter W "((2.5 + 100) * 2)"]</code></li>
 </ul>
 
-<p>There are a few place where formulas are not allowed. These are primarily places where the option value is assumed to be a string and only a string. In those cases, the characters used in a formula are treated as any other string character. A few examples are:</p>
+<br/><p>There are a few place where formulas are not allowed. These are primarily places where the option value is assumed to be a string and only a string. In those cases, the characters used in a formula are treated as any other string character. A few examples are:</p>
 
 <ul>
 <li>The <code>Text</code> option of a String meter.</li>
@@ -23,7 +23,7 @@ title: 'Formulas'
 <li><code>TootipText</code> or <code>TooltipTitle</code> options.</li>
 </ul>
 
-<p>While formulas can be used in the [Variables] section of a skin, be aware that the [Variables] section itself does not resolve the formula. If you have a variable <code>MyVar=(5 * 2)</code>, then the value of #MyVar# is not "10", but literally "(5 * 2)". However, if you then use the variable in an option that does allow formulas, that option itself will do the math, as in <code>X=#MyVar#</code> in a meter.</p>
+<br/><p>While formulas can be used in the [Variables] section of a skin, be aware that the [Variables] section itself does not resolve the formula. If you have a variable <code>MyVar=(5 * 2)</code>, then the value of #MyVar# is not "10", but literally "(5 * 2)". However, if you then use the variable in an option that does allow formulas, that option itself will do the math, as in <code>X=#MyVar#</code> in a meter.</p>
 
 <p>Mathematical formulas must be entirely enclosed in (parentheses) to alert Rainmeter that it is a formula, unless they are being used in the <a href="!measures/calc/#Formula">Formula</a> option of a <a href="!measures/calc/">Calc</a> measure or in a <a href="!measures/general-options/ifconditions/">IfCondition</a> option, where the function is always assumed to be a formula, and the enclosing parentheses are optional.</p>
 
@@ -69,6 +69,7 @@ title: 'Formulas'
 	<li><code>Atan(<em>x</em>)</code>: The principal arc tangent of x, in the interval [-PI/2,+PI/2] radians.</li>
 	<li><code>Atan2(<em>y</em>, <em>x</em>)</code>: The principal arc tangent in the interval [-PI,+PI] radians between points <em>y</em> and <em>x</em> in the Cartesian plane. The sign of the elements determines the quadrant.</li>
 	<li><code>Rad(<em>x</em>)</code>: Converts <em>x</em> degrees to radians.</li>
+	<li><code>Deg(<em>x</em>)</code>: Converts <em>x</em> radians to degrees.</li>
 	<li><code>Abs(<em>x</em>)</code>: Absolute value of <em>x</em>.</li>
 	<li><code>Neg(<em>x</em>)</code>: Negative value of <em>x</em>.</li>
 	<li><code>Exp(<em>x</em>)</code>: Returns <em>e</em><sup>x</sup>.</li>
@@ -110,7 +111,7 @@ title: 'Formulas'
 [Measure]
 Measure=Calc
 Formula=5
-
+ 
 [Meter]
 Meter=String
 X=([Measure] < 6 ? 0 : 10)
@@ -122,7 +123,7 @@ DynamicVariables=1
 [Measure]
 Measure=Calc
 Formula=2
-
+ 
 [Meter]
 Meter=String
 X=([Measure] < 1 ? 99 : ([Measure] < 2 ? 98 : ([Measure] < 3 ? 97 : 96)))

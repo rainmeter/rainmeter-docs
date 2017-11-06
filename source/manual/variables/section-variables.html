@@ -3,7 +3,7 @@ layout: docs
 permalink: manual/variables/section-variables/
 title: 'Section Variables'
 ---
-<p><a href="!measures/">Measures</a> and <a href="!meters/">meters</a> can be referenced as <a href="!variables/">variables</a>. These are called <b>section variables</b>, and they can provide several kinds of information about the meter or measure.</p>
+<p><a href="!measures/">Measures</a> and <a href="!meters/">meters</a> can be referenced as <a href="!variables/">variables</a>. These are called <b>section variables</b>, and they can provide several kinds of information about the meter or measure. Lua scripts can also be called inline and most will work right out of the box and plugins can also add support but will be on a more case by case basis</p>
 
 <h2 id="Usage">Usage</h2>
 
@@ -20,7 +20,7 @@ title: 'Section Variables'
 <h2 id="MeterParameters">Meter Parameters</h2>
 
 <dl>
-	<dt id="MeterNone">None.</dt>
+	<dt id="MeterNone">None</dt>
 	<dd>
 		<p>Section variables for meters have no value without a parameter.</p>
 	</dd>
@@ -43,7 +43,7 @@ title: 'Section Variables'
 <h2 id="MeasureParameters">Measure Parameters</h2>
 
 <dl>
-	<dt id="MeasureNone">None.<small>Example: <code>[MeasureName]</code></small></dt>
+	<dt id="MeasureNone">None<small>Example: <code>[MeasureName]</code></small></dt>
 	<dd>
 		<p>If no parameters are given, the measure's <a href="!measures/#Values">string value</a> is provided.</p>
 	</dd>
@@ -81,7 +81,7 @@ title: 'Section Variables'
 	<dd>
 		<p>The measure's string value will be treated as a <a href="!skins/option-types/#RegExp">PCRE Regular Expression</a> pattern, and all regular expression <a href="http://www.regular-expressions.info/characters.html">reserved characters</a>, which are <code>.</code><code>^</code><code>$</code><code>*</code><code>+</code><code>?</code><code>(</code><code>)</code><code>[</code><code>{</code><code>\</code><code>|</code>, will be "escaped" with <code>\</code></a>.</p>
 	</dd>
-	
+
 	<dt id="EncodeURL"><code>:EncodeURL</code><small>Example: <code>[MeasureName:EncodeURL]</code></small></dt>
 	<dd>
 		<p>The measure's string value will be <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL-Encoded</a>.</p>

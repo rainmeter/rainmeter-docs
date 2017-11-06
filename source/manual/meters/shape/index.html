@@ -128,7 +128,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 					<ul>
 						<li><code>CenterX</code> (required): X coordinate of the center of the ellipse.</li>
 						<li><code>CenterY</code> (required): Y coordinate of the center of the ellipse.</li>
-						<li><code>RadiusX</code> (required): Radius of the ellipse. If used with the optional  'RadiusY', this will represent the radius on the X-axis.</li>
+						<li><code>RadiusX</code> (required): Radius of the ellipse. If used with the optional 'RadiusY', this will represent the radius on the X-axis.</li>
 						<li><code>RadiusY</code> (optional): Radius of the ellipse on the Y-axis.</li>
 					</ul>
 				</p>
@@ -267,7 +267,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 						<li><code>SetRoundJoin</code> (optional): Values are 0 or 1. Use the default or defined value of <a href="#StrokeLineJoin">StrokeLineJoin</a> (0 - default) to join angled segments, or use a Round (1) line join.</li>
 						<li><code>SetNoStroke</code> (optional): Values are 0 or 1. Use the default or defined value of <a href="#StrokeWidth">StrokeWidth</a> (0 - default), or do not draw a stroke (1). This does not change the open or closed nature of the shape.<br/><br/></li>
 						Following the final definition of the path segments, a path may or may not create a fully enclosed shape. This can be controlled by optionally ending the definition with:<br/><br/>
-						<li><code>ClosePath</code> (optional): Values are 0 or 1. Leave the shape open (0 - default) or automatically close (1) the shape by drawing a line segment from the final ending point to the starting point.</li>
+						<li><code>ClosePath</code> (optional): Values are 0 or 1. Leave the shape open (0 - default) or automatically close (1) the shape by drawing a line segment from the final ending point to the starting point.</li>	
 					</ul>
 
 				<p><b>Examples:</b></p>
@@ -278,7 +278,7 @@ X=1
 Y=1
 Shape=Path MyPath | StrokeWidth 2 | Stroke Color 41,4,2,255 | Fill Color 87,149,212,255
 MyPath=20,0 | LineTo 150,0 | LineTo 170,20 | LineTo 170,60 | LineTo 150,80 | LineTo 20,80 | LineTo 0,60 | LineTo 0,20 | ClosePath 1
-
+ 
 [MeterShape2]
 Meter=Shape
 X=1
@@ -292,6 +292,15 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 
 			<p>Closed shapes are automatically filled with the default white fill color. Open shapes are not filled by default, although in both instances this may be changed or forced with a <a href="#Fill">Fill</a> attribute modifier on the shape.</p>
 
+			</dd>
+
+			<dt id="Path1" class="sub"><code>Path1</code> <small>Parameters: (See Path above)</small></dt>
+			<dd>
+			<p>Path1 is an alternative form of the Path shape, using all the same parameters. It will use a different form of the <a href="https://www.w3.org/TR/SVG/painting.html#FillProperties">SVG fill-rule</a> when the shape is filled with a color or gradient. This determines what parts of a shape with intersecting segments are "inside" the shape and what are "outside", for purposes of filling the shape with the defined color or gradient.</p>
+
+			<p><b>Path</b>: This uses an <b>even-odd</b> fill rule. The "insideness" of a point in the shape is determined by imagining a ray from that point to infinity in any direction and counting the number of path segments from the given shape that the ray crosses. If this number is odd, the point is inside; if even, the point is outside.</p>
+
+			<p><b>Path1</b>: This uses a <b>non-zero</b> fill rule. The "insideness" of a point in the shape is determined by imagining a ray from that point to infinity in any direction and then examining the places where a segment of the shape crosses the ray. Starting with a count of zero, add one each time a path segment crosses the ray from left to right and subtract one each time a path segment crosses the ray from right to left. After counting the crossings, if the result is zero then the point is outside the path. Otherwise, it is inside.</p> 
 			</dd>
 
 			<dt id="Combine" class="sub"><code>Combine</code> <small>Parameters: <code><b>Shape<em>N</em> | ...</b></code></small></dt>
@@ -670,14 +679,14 @@ MyGradient2=0,0,20,20 | 155,200,232,255 ; 0.0 | 6,46,75,255 ; 1.0
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
-
+ 
 [MeterRectangle]
 Meter=Shape
 X=2
 Y=2
 Shape=Rectangle 0,0,100,100 | Extend MyModifiers1
 MyModifiers1=Fill Color 191,237,239,255 | StrokeWidth 4 | Stroke Color 46,115,31,255
-
+ 
 [MeterRotatedRectangle]
 Meter=Shape
 X=25R
@@ -685,49 +694,49 @@ Y=14r
 Shape=Rectangle 0,0,70,70 | Extend MyModifiers1, MyModifiers2
 MyModifiers1=Fill Color 191,237,239,255 | StrokeWidth 4 | Stroke Color 46,115,31,255
 MyModifiers2=Rotate 45
-
+ 
 [MeterRoundedRectangle]
 Meter=Shape
 X=10R
 Y=2
 Shape=Rectangle 0,0,100,100,20 | Extend MyModifiers1
 MyModifiers1=Fill Color 191,237,239,255 | StrokeWidth 4 | Stroke Color 46,115,31,255
-
+ 
 [MeterRoundedX]
 Meter=Shape
 X=10R
 Y=2
 Shape=Rectangle 0,0,100,100,40,20 | Extend MyModifiers1
 MyModifiers1=Fill Color 191,237,239,255 | StrokeWidth 4 | Stroke Color 46,115,31,255
-
+ 
 [MeterRoundedY]
 Meter=Shape
 X=10R
 Y=2
 Shape=Rectangle 0,0,100,100,20,40 | Extend MyModifiers1
 MyModifiers1=Fill Color 191,237,239,255 | StrokeWidth 4 | Stroke Color 46,115,31,255
-
+ 
 [MeterOvalWide]
 Meter=Shape
 X=10R
 Y=15r
 Shape=Rectangle 0,0,100,70,50 | Extend MyModifiers1
 MyModifiers1=Fill Color 191,237,239,255 | StrokeWidth 4 | Stroke Color 46,115,31,255
-
+ 
 [MeterOvalTall]
 Meter=Shape
 X=10R
 Y=2
 Shape=Rectangle 0,0,70,100,50 | Extend MyModifiers1
 MyModifiers1=Fill Color 191,237,239,255 | StrokeWidth 4 | Stroke Color 46,115,31,255
-
+ 
 [MeterEllipse]
 Meter=Shape
 X=10R
 Y=2
 Shape=Rectangle 0,0,100,100,50 | Extend MyModifiers1
 MyModifiers1=Fill Color 191,237,239,255 | StrokeWidth 4 | Stroke Color 46,115,31,255
-
+ 
 [MeterLine]
 Meter=Shape
 X=0
