@@ -124,24 +124,24 @@ A variant of the UTF-8 standard with a <a href="http://en.wikipedia.org/wiki/Byt
 [Rainmeter]
 Update=1000
 DynamicWindowSize=1
- 
+
 [MeasureRead]
 Measure=Calc
 Formula=1
 IfEqualValue=1
 IfEqualAction=[!CommandMeasure MeasureScript "Read()"][!UpdateMeter *][!Redraw]
- 
+
 [MeasureWrite]
 Measure=Calc
 Formula=1
 IfEqualValue=1
 IfEqualAction=[!CommandMeasure MeasureScript "Write()"]
- 
+
 [MeasureScript]
 Measure=Script
 ScriptFile=#CURRENTPATH#LuaUTF8.lua
 UpdateDivider=-1
- 
+
 [MeterUTF8]
 Meter=String
 FontSize=12
@@ -155,44 +155,44 @@ AntiAlias=1
 <p>LuaUTF8.lua (encoded in UTF-16 LE):<br/>
 ``` lua
 function Initialize()
- 
+
 end
- 
+
 function Read()
 	local FilePath = SKIN:MakePathAbsolute('TestIn.txt')
- 
+
 	local File = io.open(FilePath, 'r')
- 
+
 	if not File then
 		print('LuaUTF8: unable to open file for read at ' .. FilePath)
 		return
 	end
- 
+
 	local Contents = {}
 	for Line in File:lines() do
 		table.insert(Contents, Line)
 	end
- 
+
 	File:close()
- 
+
 	SKIN:Bang('!SetOption', 'MeterUTF8', 'Text', Contents[1])
 end
 
 function Write()
 	local FilePath = SKIN:MakePathAbsolute('TestOut.txt')
- 
+
 	local File = io.open(FilePath, 'w')
- 
+
 	if not File then
 		print('LuaUTF8: unable to open file for write at ' .. FilePath)
 		return
 	end
- 
+
 	local BOM = '\239\187\191'
- 
+
 	File:write(BOM)
 	File:write('Бешеные псы и англичане')
- 
+
 	File:close()
 end
 ```

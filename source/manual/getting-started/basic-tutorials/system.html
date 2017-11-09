@@ -158,7 +158,7 @@ AntiAlias=1
 ``` ini
 [Rainmeter]
 Update=1000
- 
+
 [Variables]
 DarkBlue=27,63,107,255
 MediumBlue=92,135,209,255
@@ -168,10 +168,10 @@ AlmostBlack=40,40,40,255
 CurrentDrive=C:
 Drive1=C:
 Drive2=D:
- 
+
 [MeasureCPU]
 Measure=CPU
- 
+
 [MeterBackground]
 Meter=Image
 X=0
@@ -179,7 +179,7 @@ Y=0
 W=185
 H=110
 SolidColor=#AlmostBlack#
- 
+
 [MeterCPUCircleBack]
 Meter=Roundline
 X=5
@@ -193,7 +193,7 @@ LineLength=20
 Solid=1
 LineColor=#MediumBlue#
 AntiAlias=1
- 
+
 [MeterCPUCircle]
 Meter=Roundline
 MeasureName=MeasureCPU
@@ -318,14 +318,14 @@ Total=1
 IgnoreRemovable=0
 DynamicVariables=1
 UpdateDivider=-1
- 
+
 [MeasureDriveFree]
 Measure=FreeDiskSpace
 Drive=#CurrentDrive#
 IgnoreRemovable=0
 DynamicVariables=1
 UpdateDivider=5
- 
+
 [MeasureDriveUsed]
 Measure=FreeDiskSpace
 Drive=#CurrentDrive#
@@ -374,7 +374,7 @@ LineLength=20
 Solid=1
 LineColor=#MediumBlue#
 AntiAlias=1
- 
+
 [MeterDriveCircle]
 Meter=Roundline
 MeasureName=MeasureDriveUsed
@@ -389,7 +389,7 @@ LineLength=20
 Solid=1
 LineColor=#LightBlue#
 AntiAlias=1
- 
+
 [MeterDriveCircleLabel]
 Meter=String
 FontFace=Segoe UI
@@ -421,7 +421,7 @@ Y=63
 W=130
 H=38
 SolidColor=#DarkBlue#
- 
+
 [MeterDriveTotalLabel]
 Meter=String
 FontFace=Segoe UI
@@ -434,7 +434,7 @@ StringAlign=Left
 AutoScale=1
 AntiAlias=1
 Text=Total:
- 
+
 [MeterDriveTotal]
 Meter=String
 MeasureName=MeasureDriveTotal
@@ -448,7 +448,7 @@ StringAlign=Right
 AutoScale=1
 AntiAlias=1
 Text=%1B
- 
+
 [MeterDriveFreeLabel]
 Meter=String
 FontFace=Segoe UI
@@ -463,7 +463,7 @@ StringStyle=Bold
 AutoScale=1
 AntiAlias=1
 Text=Free:
- 
+
 [MeterDriveFree]
 Meter=String
 MeasureName=MeasureDriveFree
@@ -542,7 +542,7 @@ MouseLeaveAction=[!SetVariable CurrentDrive #Drive1#][!UpdateMeasure *][!UpdateM
 ``` ini
 [Rainmeter]
 Update=1000
- 
+
 [Variables]
 DarkBlue=27,63,107,255
 MediumBlue=92,135,209,255
@@ -552,14 +552,14 @@ AlmostBlack=40,40,40,255
 CurrentDrive=C:
 Drive1=C:
 Drive2=D:
- 
+
 [MeasureCPU]
 Measure=CPU
 IfAboveValue=24
 IfAboveAction=[!SetOption MeterCPUPercent FontColor #LightRed#][!UpdateMeter *][!Redraw]
 IfBelowValue=25
 IfBelowAction=[!SetOption MeterCPUPercent FontColor #LightBlue#][!UpdateMeter *][!Redraw]
- 
+
 [MeasureDriveTotal]
 Measure=FreeDiskSpace
 Drive=#CurrentDrive#
@@ -567,14 +567,14 @@ Total=1
 IgnoreRemovable=0
 DynamicVariables=1
 UpdateDivider=-1
- 
+
 [MeasureDriveFree]
 Measure=FreeDiskSpace
 Drive=#CurrentDrive#
 IgnoreRemovable=0
 DynamicVariables=1
 UpdateDivider=5
- 
+
 [MeasureDriveUsed]
 Measure=FreeDiskSpace
 Drive=#CurrentDrive#
@@ -582,7 +582,7 @@ InvertMeasure=1
 IgnoreRemovable=0
 DynamicVariables=1
 UpdateDivider=5
- 
+
 [MeterBackground]
 Meter=Image
 X=0
@@ -592,7 +592,7 @@ H=110
 SolidColor=#AlmostBlack#
 MouseOverAction=[!SetVariable CurrentDrive #Drive2#][!UpdateMeasure *][!UpdateMeter *][!Redraw]
 MouseLeaveAction=[!SetVariable CurrentDrive #Drive1#][!UpdateMeasure *][!UpdateMeter *][!Redraw]
- 
+
 [MeterCPUCircleBack]
 Meter=Roundline
 X=5
@@ -606,7 +606,7 @@ LineLength=20
 Solid=1
 LineColor=#MediumBlue#
 AntiAlias=1
- 
+
 [MeterCPUCircle]
 Meter=Roundline
 MeasureName=MeasureCPU
@@ -621,7 +621,7 @@ LineLength=20
 Solid=1
 LineColor=#LightBlue#
 AntiAlias=1
- 
+
 [MeterCPUPercent]
 Meter=String
 MeasureName=MeasureCPU
@@ -634,7 +634,7 @@ StringAlign=CenterCenter
 StringStyle=Bold
 AntiAlias=1
 Text=%1%
- 
+
 [MeterCPULine]
 Meter=Line
 MeasureName=MeasureCPU
@@ -648,7 +648,7 @@ LineWidth=1
 HorizontalLines=1
 HorizontalLineColor=#AlmostBlack#
 SolidColor=#DarkBlue#
- 
+
 [MeterCPUText]
 Meter=String
 FontFace=Segoe UI
@@ -659,7 +659,7 @@ Y=4
 StringStyle=Bold
 AntiAlias=1
 Text=CPU
- 
+
 [MeterDriveCircleBack]
 Meter=Roundline
 X=5
@@ -673,7 +673,7 @@ LineLength=20
 Solid=1
 LineColor=#MediumBlue#
 AntiAlias=1
- 
+
 [MeterDriveCircle]
 Meter=Roundline
 MeasureName=MeasureDriveUsed
@@ -688,7 +688,7 @@ LineLength=20
 Solid=1
 LineColor=#LightBlue#
 AntiAlias=1
- 
+
 [MeterDriveCircleLabel]
 Meter=String
 FontFace=Segoe UI
@@ -702,7 +702,7 @@ Percentual=1
 AntiAlias=1
 DynamicVariables=1
 Text=#CurrentDrive#
- 
+
 [MeterDriveBack]
 Meter=Image
 X=49
@@ -710,7 +710,7 @@ Y=63
 W=130
 H=38
 SolidColor=#DarkBlue#
- 
+
 [MeterDriveTotalLabel]
 Meter=String
 FontFace=Segoe UI
@@ -723,7 +723,7 @@ StringAlign=Left
 AutoScale=1
 AntiAlias=1
 Text=Total:
- 
+
 [MeterDriveTotal]
 Meter=String
 MeasureName=MeasureDriveTotal
@@ -737,7 +737,7 @@ StringAlign=Right
 AutoScale=1
 AntiAlias=1
 Text=%1B
- 
+
 [MeterDriveFreeLabel]
 Meter=String
 FontFace=Segoe UI
@@ -752,7 +752,7 @@ StringStyle=Bold
 AutoScale=1
 AntiAlias=1
 Text=Free:
- 
+
 [MeterDriveFree]
 Meter=String
 MeasureName=MeasureDriveFree

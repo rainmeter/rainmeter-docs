@@ -46,19 +46,19 @@ Contains the current X and Y position of the mouse as a percentage relative to t
 ``` ini
 [Rainmeter]
 LeftMouseUpAction=[!SetOptionGroup Coordinates Text "Click the square!"][!UpdateMeterGroup Coordinates][!Redraw]
- 
+
 [Background]
 Meter=Image
 SolidColor=0,0,150
 W=150
 H=225
- 
+
 [CoordinateA]
 Meter=String
 FontColor=255,255,255
 Text=Click the square!
 Group=Coordinates
- 
+
 [RedSquare]
 Meter=Image
 SolidColor=255,0,0
@@ -68,14 +68,14 @@ W=100
 H=100
 LeftMouseUpAction=[!SetOption CoordinateA Text "($MouseX$, $MouseY$)"][!UpdateMeter CoordinateA][!Redraw]
 MouseActionCursorName=Cross
- 
+
 [CoordinateB]
 Meter=String
 FontColor=255,255,255
 Text=Click the square!
 Group=Coordinates
 Y=20R
- 
+
 [GreenSquare]
 Meter=Image
 SolidColor=0,255,0

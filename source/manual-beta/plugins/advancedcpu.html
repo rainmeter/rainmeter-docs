@@ -42,12 +42,12 @@ Update=1000
 DynamicWindowSize=1
 BackGroundMode=2
 SolidColor=0,0,0,255
- 
+
 ;Measure maximum CPU time for use in MaxValue in other measures
 [MeasureCPUMax]
 Measure=Plugin
 Plugin=AdvancedCPU
- 
+
 ;Measure current CPU usage with MaxValue set
 [MeasureCPU]
 Measure=Plugin
@@ -55,14 +55,14 @@ Plugin=AdvancedCPU
 CPUExclude=Idle
 MaxValue=[MeasureCPUMax]
 DynamicVariables=1
- 
+
 ;Measure Name of top process
 [MeasureTopName]
 Measure=Plugin
 Plugin=AdvancedCPU
 CPUExclude=Idle
 TopProcess=2
- 
+
 ;Measure CPU usage of top process with MaxValue set
 [MeasureTop%]
 Measure=Plugin
@@ -71,7 +71,7 @@ CPUExclude=Idle
 TopProcess=1
 MaxValue=[MeasureCPUMax]
 DynamicVariables=1
- 
+
 ;Show current CPU usage as a percentage
 [MeterCPU]
 Meter=String
@@ -84,7 +84,7 @@ Percentual=1
 NumOfDecimals=2
 DynamicVariables=1
 Text=CPU Usage: %1
- 
+
 ;Show name of top process
 [MeterTopName]
 Meter=String
@@ -93,7 +93,7 @@ Y=2R
 FontColor=255,255,255,255
 FontSize=12
 AntiAlias=1
- 
+
 ;Show CPU usage of top process as a percentage
 [MeterTop%]
 Meter=String

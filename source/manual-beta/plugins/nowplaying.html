@@ -133,10 +133,10 @@ title: 'NowPlaying plugin'
 Update=1000
 BackgroundMode=2
 SolidColor=0,0,0,255
- 
+
 ; MeasurePlayer is the main measure.
 ; MeasureArtist and MeasureAlbum are secondary measures.
- 
+
 [MeasurePlayer]
 Measure=Plugin
 Plugin=NowPlaying
@@ -145,20 +145,20 @@ PlayerName=iTunes
 PlayerType=TITLE
 ; PlayerPath, TrackChangeAction, and DisableLeadingZero are valid here on
 ; the main measure only.
- 
+
 [MeasureArtist]
 Measure=Plugin
 Plugin=NowPlaying
 ; Secondary measures specify the name of the main measure on PlayerName.
 PlayerName=[MeasurePlayer]
 PlayerType=ARTIST
- 
+
 [MeasureAlbum]
 Measure=Plugin
 Plugin=NowPlaying
 PlayerName=[MeasurePlayer]
 PlayerType=ALBUM
- 
+
 [MeterPrev]
 Meter=String
 X=5
@@ -166,7 +166,7 @@ Y=5
 FontColor=FFFF00
 Text="Prev"
 LeftMouseUpAction=[!CommandMeasure "MeasurePlayer" "Previous"]
- 
+
 [MeterNext]
 Meter=String
 X=20R
@@ -174,7 +174,7 @@ Y=5
 FontColor=FFFF00
 Text="Next"
 LeftMouseUpAction=[!CommandMeasure "MeasurePlayer" "Next"]
- 
+
 [MeterTitle]
 Meter=String
 MeasureName=MeasurePlayer
@@ -184,7 +184,7 @@ W=400
 H=20
 FontColor=255,255,255,255
 Text="Title: %1"
- 
+
 [MeterArtist]
 Meter=String
 MeasureName=MeasureArtist
@@ -194,7 +194,7 @@ W=400
 H=20
 FontColor=255,255,255,255
 Text="Artist: %1"
- 
+
 [MeterAlbum]
 Meter=String
 MeasureName=MeasureAlbum

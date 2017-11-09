@@ -71,7 +71,7 @@ Interface=Best
 MinValue=0
 MaxValue=(33.12 * 1048576)
 AverageSize=5
- 
+
 [MeasureNetOut]
 Measure=NetOut
 Interface=Best
@@ -101,37 +101,37 @@ AccurateText=1
 LeftMouseUpAction=[!SetClip "[MeasureIPWeb]"][Play "#@#Sounds\Copy.wav"]
 MouseOverAction=[!SetOption MeterWANIPText Text "[MeasureIPLan]"][!UpdateMeter MeterWANIPText][!Redraw]
 MouseLeaveAction=[!SetOption MeterWANIPText Text ""][!UpdateMeter MeterWANIPText][!Redraw]
- 
+
 [Metadata]
 Name=NetTraffic
 Author=JSMorley
 Information=Description:|Network Information
 Version=Aug 31, 2013
 License=Creative Commons Attribution-Non-Commercial-Share Alike 3.0
- 
+
 [Variables]
 ;Set these for sure
 ;http://speedtest.net
 MaxDownloadMbits=33.82
 MaxUploadMbits=4.85
- 
+
 ;Set this if needed
 Interface=Best
- 
+
 Font=Trebuchet MS
 LabelColor=220,220,220
 ValueColor=255,254,222,255
 ImagePath=#@#Images\
- 
+
 [MeterAllBackground]
 Meter=Image
 W=170
 H=78
 SolidColor=20,20,20,255
 SolidColor2=23,46,29,255
- 
+
 ;[GATHER Network]=================================
- 
+
 [MeasureNetwork]
 Measure=Plugin
 Plugin=WebParser.dll
@@ -141,37 +141,37 @@ UpdateRate=30
 ForceReload=1
 StringIndex=1
 FinishAction=!EnableMeasure MeasureNetworkLua #CURRENTCONFIG#
- 
+
 [MeasureNetIn]
 Measure=NetIn
 Interface=#Interface#
 MinValue=0
 MaxValue=(#MaxDownloadMbits# * 1048576)
 AverageSize=5
- 
+
 [MeasureInDelay]
 Measure=Calc
 Formula=MeasureNetIn
- 
+
 [MeasureNetOut]
 Measure=NetOut
 Interface=#Interface#
 MinValue=0
 MaxValue=(#MaxUploadMbits# * 1048576)
 AverageSize=5
- 
+
 [MeasureOutDelay]
 Measure=Calc
 Formula=MeasureNetOut
- 
+
 ;[Network WEB IP]=================================
- 
+
 [MeasureIPLan]
 Measure=Plugin
 Plugin=Plugins\SysInfo.dll
 SysInfoType=IP_ADDRESS
 SysInfoData=Best
- 
+
 [MeasureIPWeb]
 Measure=Plugin
 Plugin=Plugins\WebParser.dll
@@ -179,7 +179,7 @@ Url=http://checkip.dyndns.org
 RegExp="(?siU)Address: (.*)</body>"
 StringIndex=1
 UpdateRate=-1
- 
+
 [MeterIPLabel]
 Meter=String
 X=10
@@ -191,7 +191,7 @@ StringStyle=Normal
 StringAlign=Left
 AntiAlias=1
 Text="IP:"
- 
+
 [MeterWANIPText]
 Meter=String
 MeasureName=MeasureIPWeb
@@ -204,9 +204,9 @@ FontSize=11
 StringStyle=Normal
 StringAlign=Right
 AntiAlias=1
- 
+
 ;[Network TRAFFIC IMAGE]========================
- 
+
 [MeterNetworkImage]
 Meter=IMAGE
 ImageName=#ImagePath#NetworkError.png
@@ -215,14 +215,14 @@ Y=26r
 W=30
 H=30
 AntiAlias=1
- 
+
 [MeasureNetworkLua]
 Measure=Script
 ScriptFile=NetTraffic.lua
 Disabled=1
- 
+
 ;[Network INBOUND TRAFFIC]========================
- 
+
 [MeterNetInPre]
 Meter=String
 X=50
@@ -234,7 +234,7 @@ StringStyle=Normal
 StringAlign=Left
 AntiAlias=1
 Text="DN:"
- 
+
 [MeterNetInText]
 MeasureName=MeasureInDelay
 Meter=String
@@ -249,7 +249,7 @@ AntiAlias=1
 AutoScale=1
 NumOfDecimals=1
 Text="%1B"
- 
+
 [MeterNetInBar]
 Meter=Bar
 MeasureName=MeasureNetIn
@@ -260,9 +260,9 @@ H=2
 BarColor=104,199,128,255
 SolidColor=60,60,60,255
 BarOrientation=Horizontal
- 
+
 ;[Network OUTBOUND TRAFFIC]=======================
- 
+
 [MeterNetOUTPre]
 Meter=String
 X=50
@@ -274,7 +274,7 @@ StringStyle=Normal
 StringAlign=Left
 AntiAlias=1
 Text="UP:"
- 
+
 [MeterNetOutText]
 MeasureName=MeasureOutDelay
 Meter=String
@@ -289,7 +289,7 @@ AntiAlias=1
 AutoScale=1
 NumOfDecimals=1
 Text="%1B"
- 
+
 [MeterNetOutBar]
 Meter=Bar
 MeasureName=MeasureNetOut

@@ -66,31 +66,31 @@ title: 'Tooltips'
 ``` ini
 [Rainmeter]
 Update=1000
- 
+
 [MeasureCPU]
 Measure=CPU
- 
+
 [MeasureCPUSpeed]
 Measure=Registry
 RegHKey=HKEY_LOCAL_MACHINE
 RegKey=HARDWARE\DESCRIPTION\System\CentralProcessor\0
 RegValue=~MHz
 UpdateDivider=-1
- 
+
 [MeasureCPUName]
 Measure=Registry
 RegHKey=HKEY_LOCAL_MACHINE
 RegKey=HARDWARE\DESCRIPTION\System\CentralProcessor\0
 RegValue=ProcessorNameString
 UpdateDivider=-1
- 
+
 [MeasureCPUIdentifier]
 Measure=Registry
 RegHKey=HKEY_LOCAL_MACHINE
 RegKey=HARDWARE\DESCRIPTION\System\CentralProcessor\0
 RegValue=Identifier
 UpdateDivider=-1
- 
+
 [MeasureCPUText]
 Meter=String
 X=0
@@ -108,7 +108,7 @@ ToolTipType=1
 ToolTipIcon=INFO
 ToolTipText=[MeasureCPUName]#CRLF#[MeasureCPUIdentifier]#CRLF#Running at: [MeasureCPUSpeed] Mhz
 DynamicVariables=1
- 
+
 [MeterCPU%]
 MeasureName=MeasureCPU
 Meter=String

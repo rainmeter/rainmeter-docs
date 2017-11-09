@@ -10,7 +10,7 @@ title: 'Inline Lua'
 <p>As with any [SectionVariable], these will be resolved, in this case executed, when the skin is loaded, and on each update of the measure or meter containing them. As with any [SectionVariable], <code>DynamicVariables=1</code> must be used on any measure or meter containing them.</p>
 
 <h2 id="CallingAFunction">Calling a Function()</h2>
- 
+
 <p>Functions in a Lua script may be executed "inline", by using a call to a single function() within the Lua script, with optional parameters.</p>
 
 <p>The Lua function will be executed, using the provided parameters, and the single number or string value returned by the function() in the Lua script will replace the [Section Variable] where it is used.</p>
@@ -107,18 +107,18 @@ end
 Update=1000
 AccurateText=1
 DynamicWindowSize=1
- 
+
 [MeasureGetUserName]
 Measure=Plugin
 Plugin=SysInfo
 SysInfoType=USER_NAME
 UpdateDivider=-1
- 
+
 [MeasureScript]
 Measure=Script
 ScriptFile=SimpleLua.lua
 Disabled=1
- 
+
 [MeterWelcome]
 Meter=String
 FontSize=20
@@ -148,7 +148,7 @@ DynamicVariables=1
 
 ``` lua
 function GetWelcome(inArg)
- 
+
 	hourOfDay = tonumber(os.date('%H'))
  	
 	if hourOfDay < 12 then
@@ -158,11 +158,11 @@ function GetWelcome(inArg)
 	else
 		greetingText = 'Good Evening'
 	end
- 
+
 	welcomeText = greetingText..', '..inArg
- 
+
 	return welcomeText
- 
+
 end
 ```
 
@@ -183,11 +183,11 @@ end
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
- 
+
 ; Demonstrates combining executing some Lua based on an "action"
 ; in the skin, with some inline Lua section variables to get 
 ; different parts of the result.
- 
+
 [MeasureScript]
 Measure=Script
 ScriptFile=FlipCoin.lua
@@ -196,7 +196,7 @@ ScriptFile=FlipCoin.lua
 ; "host" for the .lua file we use with !CommandMeasure and
 ; inline Lua later on.
 Disabled=1
- 
+
 [MeterFlip]
 Meter=String
 FontSize=13
@@ -212,7 +212,7 @@ Text=Flip Coin
 ; FlipCoin() function in the Lua, which will get a random number between 0 and 1, 
 ; and set the value of the coin to "heads" or "tails".
 LeftMouseUpAction=[!CommandMeasure MeasureScript "FlipCoin()"][!UpdateMeterGroup Coins][!Redraw]
- 
+
 [MeterCoin]
 Meter=String
 Group=Coins
@@ -225,13 +225,13 @@ AntiAlias=1
 ; Now we use an inline Lua section variable to ask for the current value,
 ; 'Heads' or 'Tails' of the coin, by asking for the current value of the 
 ; variable flipText in the Lua.
- 
+
 ; This will get that value, which was created and changed by FlipCoin() and
 ; is global, and replace the inline Lua section variable in the Text
 ; option of the meter.
 Text=It's [&MeasureScript:flipText]
 DynamicVariables=1
- 
+
 [MeterTotal]
 Meter=String
 Group=Coins
@@ -248,7 +248,7 @@ AntiAlias=1
 ; inline Lua section variable in the Text option.
 Text=Total Flips: [&MeasureScript:totalFlips]
 DynamicVariables=1
- 
+
 [MeterCount]
 Meter=String
 Group=Coins
@@ -275,20 +275,20 @@ math.randomseed(tonumber(tostring(os.time()):reverse():sub(1,6)))
 -- Since the skin will be asking for these variables before the FlipCoin() function is ever
 -- called, we need to set these to some initial value in the global scope, so they are not
 -- initially nil, which would raise an error.
- 
+
 flipText = 'None'
 headsCount = 0
 tailsCount = 0   
 totalFlips = 0
- 
+
 function FlipCoin()
- 
+
    flipNumber = math.random(0, 1)
- 
+
    -- When we "flip the coin", the variables we want are set by the function, and
    -- since they are not defined as local, they will be available in the global scope
    -- when we ask for them with the inline Lua in the skin.
- 
+
    if flipNumber == 0 then
       flipText = 'Heads'
       headsCount = headsCount + 1
@@ -296,7 +296,7 @@ function FlipCoin()
       flipText = 'Tails'
       tailsCount = tailsCount + 1
    end
- 
+
    totalFlips = headsCount + tailsCount
 
 end
@@ -313,14 +313,14 @@ end
 Update=1000
 AccurateText=1
 DynamicWindowSize=1
- 
+
 [Variables]
 MainLang=English
- 
+
 [MeasureDay]
 Measure=Time
 Format=%w
- 
+
 [MeasureScript]
 Measure=Script
 ScriptFile=TranslateDay.lua
@@ -328,11 +328,11 @@ ScriptFile=TranslateDay.lua
 ; in the .lua file, so there is no need to enable this measure. In this case, it's
 ; just a "host" for the function() in the script we will call "inline" later.
 Disabled=1
- 
+
 [MeterBack]
 Meter=Shape
 Shape=Rectangle 0.5,0.5,220,110,12 | Fill Color 47,47,47,255 | StrokeWidth 1.5 | Stroke Color 150,150,150,255
- 
+
 [MeterHeader]
 Meter=String
 X=10
@@ -347,7 +347,7 @@ AntiAlias=1
 ; in the value of the Text option.
 Text=[&MeasureScript:TranslateHeader('[#MainLang])']
 DynamicVariables=1
- 
+
 [MeterLang1]
 Meter=String
 X=10
@@ -360,12 +360,12 @@ AntiAlias=1
 ; by our [MeasureScript] measure, pass it the day of the week as a number, and 
 ; the string 'Language'. It will "return" the result and replace that in the value
 ; of the Text option.
- 
+
 ; Note that [&MeasureDay] represents a number and we pass it as a number. The value of
 ; the variable [#MainLang] is a string, and we pass it as a string with single quotes.
 Text=[#MainLang]:		[&MeasureScript:TranslateDayOfWeek([&MeasureDay], '[#MainLang]')]
 DynamicVariables=1
- 
+
 [MeterLang2]
 Meter=String
 X=0r
@@ -380,7 +380,7 @@ AntiAlias=1
 ; it it used in. So "English" before, and "French" here...
 Text=French:		[&MeasureScript:TranslateDayOfWeek([&MeasureDay], 'French')]
 DynamicVariables=1
- 
+
 [MeterLang3]
 Meter=String
 X=0r
@@ -397,7 +397,7 @@ DynamicVariables=1
 
 ``` lua
 function Initialize()
- 
+
 	translateToday = {
 	english = 'Today is',
 	german = 'Heute ist',
@@ -405,7 +405,7 @@ function Initialize()
 	spanish = 'Hoy es',
 	russian = 'Cегодня'
 	}
- 
+
 	translateDays = {
 	english = {'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'},
 	german = {'Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'},
@@ -413,19 +413,19 @@ function Initialize()
 	spanish = {'domingo','lunes','martes','mercredi','miércoles','viernes','sábado'},
 	russian = {'воскресенье','понедельник','вторник','среда','четверг','пятница'}
 	}
- 
+
 end
- 
+
 function TranslateHeader(langArg)
- 
+
 	return translateToday[string.lower(langArg)]
- 
+
 end
- 
+
 function TranslateDayOfWeek(dayArg, langArg)
- 
+
 	return translateDays[string.lower(langArg)][dayArg+1]
- 
+
 end
 ```
 

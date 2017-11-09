@@ -11,7 +11,7 @@ title: 'Switch'
 
 ``` lua
 Variable = 'Match1'
- 
+
 if Variable:lower() == 'match1' then
 	result = 'Example text.'
 elseif Variable:lower() == 'match2' then
@@ -25,13 +25,13 @@ end
 
 ``` lua
 Variable = 'Match1'
- 
+
 Table = switch{
 	match1 = function(tbl) return tbl[2] end,
 	match2 = function(tbl) return tbl[2] end,
 	default = function(tbl) return 'No match found' end,
 }
- 
+
 result = Table:case(Variable:lower(), 'Example text.')
 ```
 
@@ -40,7 +40,7 @@ result = Table:case(Variable:lower(), 'Example text.')
 -- Emulates a switch statement.
 -- The functions in the switch table receive a table as a parameter.
 -- The first index of the table is the match itself.
- 
+
 function switch(tbl) -- Used to emulate a switch statement
 	tbl.case = function(...)
 		local t = table.remove(arg,1)

@@ -10,17 +10,17 @@ title: 'SortRandom'
 function SortRandom(input)
 	assert(type(input) == 'table', ('SortRandom must receive a table. Received %s instead.'):format(type(input)))
 	math.randomseed(tonumber(tostring(os.time()):reverse():sub(1,6)))
- 
+
 	local temp, newinput = {}, {}
- 
+
 	for _, v in pairs(input) do
 		table.insert(newinput, v)
 	end
- 
+
 	while #newinput > 0 do
 		table.insert(temp, table.remove(newinput, math.random(1, #newinput)))
 	end
- 
+
 	return temp
 end
 ```

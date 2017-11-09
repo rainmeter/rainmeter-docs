@@ -26,19 +26,19 @@ title: 'WebParser: Debugging RegExp'
 Update=1000
 AccurateText=1
 DynamicWindowSize=1
- 
+
 [MeasureSite]
 Measure=Plugin
 Plugin=WebParser
 URL=http://www.tell-my-ip.com/index.html
 RegExp=(?siU)<td.*>Your IP Address.*<td>(.*)</td>
- 
+
 [MeasureIP]
 Measure=Plugin
 Plugin=WebParser
 URL=[MeasureSite]
 StringIndex=1
- 
+
 [MeterIP]
 Meter=String
 MeasureName=MeasureIP
@@ -92,7 +92,7 @@ Measure=Plugin
 Plugin=WebParser
 URL=http://www.tell-my-ip.com/index.html
 RegExp=(?siU)<td.*>Your IP Address.*<td>(.*)</td>
- 
+
 [MeasureIP]
 Measure=Plugin
 Plugin=WebParser

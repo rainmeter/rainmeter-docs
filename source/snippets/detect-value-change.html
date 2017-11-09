@@ -11,14 +11,14 @@ function Initialize()
 	Old = nil
 	-- If the "Old" value starts as nil, the change action will always fire on the first update.
 end
- 
+
 function Update()
 	local New = SKIN:GetVariable('SomeVariable')
 	-- or
 	local New = SKIN:GetMeasure('SomeMeasure'):GetValue()
 	-- or
 	local New = SELF:GetOption('SomeOption')
- 
+
 	if Old ~= New then
 		-- do stuff
 		Old = New

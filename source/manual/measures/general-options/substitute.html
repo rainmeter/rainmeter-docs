@@ -38,13 +38,13 @@ Substitute="2012":"Twenty Twelve","2013":"Twenty Thirteen"
 ; Assuming that the current year is 2012, the string value of [MeasureYear] will
 ; be "Twenty Twelve" (without quotes). Since Substitute only affects the string
 ; value, the number value of [MeasureYear] will continue to be 2012.
- 
+
 [MeasureCalc1]
 Measure=Calc
 Formula=MeasureYear
 ; Since the number value of MeasureYear is used above, the value of [MeasureCalc1]
 ; will also be 2012.
- 
+
 [MeasureCalc2]
 Measure=Calc
 Formula=[MeasureYear]
@@ -62,7 +62,7 @@ RegExpSubstitute=1
 Substitute="(\w+) (\w+) (\w+)":"\3, \1 \2","Rainy":"Yoda"
 ; Reorders the sentence and then replaces Rainy with Yoda.
 ; The result is: Yoda, I am
- 
+
 [MeasureEx2]
 Measure=String
 String=Hello, world!
@@ -70,7 +70,7 @@ RegExpSubstitute=1
 Substitute="^(.{0,5}).+$":"\1..."
 ; Truncates string by length (in this case 5) and appends "...".
 ; The result is: Hello...
- 
+
 [MeasureEx3]
 Measure=String
 String=192.168.1.101

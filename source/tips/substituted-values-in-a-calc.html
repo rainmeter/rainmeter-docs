@@ -10,11 +10,11 @@ title: 'Substituted Values in a Calc'
 Measure=Calc
 Formula=12345
 Substitute="2":"22","4":"7"
- 
+
 [GetDirectValue]
 Measure=Calc
 Formula=InitialValue
- 
+
 [GetSubstitutedValue]
 Measure=Calc
 Formula=[InitialValue]
@@ -33,7 +33,7 @@ URL=http://www.somesite.com/logs/status.xml
 RegExp="(?siU)<status>(.*)</status>"
 StringIndex=1
 Substitute="Running":"1","Offline":"0"
- 
+
 [MeasureCheckStatus]
 Measure=Calc
 Formula=[MeasureGetStatus]
@@ -42,12 +42,12 @@ IfEqualAction=[!ShowMeter MeterGreenLight][!HideMeter MeterRedLight]
 IfBelowValue=1
 IfBelowAction=[!ShowMeter MeterRedLight][!HideMeter MeterGreenLight]
 DynamicVariables=1
- 
+
 [MeterGreenLight]
 Meter=Image
 ImageName=GreenLight.png
 Hidden=1
- 
+
 [MeterRedLight]
 Meter=Image
 ImageName=RedLight.png

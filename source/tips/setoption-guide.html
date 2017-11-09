@@ -46,7 +46,7 @@ MouseLeaveAction=[!SetOption MeterOne FontColor 255,0,0,255][!SetOption MeterOne
 ``` ini
 [TextStyle]
 FontColor=255,0,0,255
- 
+
 [MeterOne]
 Meter=String
 MeterStyle=TextStyle
@@ -61,7 +61,7 @@ MouseLeaveAction=[!SetOption MeterOne FontColor ""][!SetOption MeterOne StringSt
 ``` ini
 [Variables]
 MyColor=255,255,255,255
- 
+
 [MeterOne]
 Meter=String
 Text="Hello World"
@@ -87,11 +87,11 @@ DynamicVariables=1
 [MeasureTime1]
 Measure=Time
 Format=%S
- 
+
 [MeasureTime2]
 Measure=Time
 Format=%M
- 
+
 [MeterOne]
 Meter=String
 Text=[MeasureTime1]
@@ -104,11 +104,11 @@ LeftMouseUpAction=!SetOption MeterOne Text [MeasureTime2]
 [MeasureTime1]
 Measure=Time
 Format=%S
- 
+
 [MeasureTime2]
 Measure=Time
 Format=%M
- 
+
 [MeterOne]
 Meter=String
 Text=[MeasureTime1]

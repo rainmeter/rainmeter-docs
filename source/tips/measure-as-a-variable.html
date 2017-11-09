@@ -73,11 +73,11 @@ DynamicVariables=1
 Measure=Calc
 Formula=1
 Substitute="1":"2"
- 
+
 [MeasureB]
 Measure=Calc
 Formula=MeasureA+3
- 
+
 [MeasureC]
 Measure=Calc
 Formula=[MeasureA]+3
@@ -96,7 +96,7 @@ URL=http://www.somesite.com/logs/status.xml
 RegExp="(?siU)<status>(.*)</status>"
 StringIndex=1
 Substitute="Running":"1","Offline":"0"
- 
+
 [MeasureCheckStatus]
 Measure=Calc
 Formula=[MeasureGetStatus]
