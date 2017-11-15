@@ -33,9 +33,9 @@ p {
 footer {
   font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 600;
-  font-size: 1rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  font-size: 0.8rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   color: rgba(0,0,0,.2);
   background-color: rgba(0,0,0,.03);
 }
@@ -73,7 +73,6 @@ blockquote {
   margin-bottom: 1rem;
   flex: 1;
 }
-
 .symbol {
   font-size: 140%;
   font-family: Arial, sans-serif;
@@ -275,6 +274,11 @@ blockquote {
 .docs-nav-button a {
   margin-left: 1rem;
   cursor: pointer;
+}
+#panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 @media (min-width: 991px) {
   .docs-nav-button, .docs-nav .closeButton {
