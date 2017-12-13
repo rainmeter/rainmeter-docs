@@ -1,0 +1,54 @@
+---
+layout: docs
+permalink: manual-beta/@vault-folder/
+title: '@Vault Folder'
+---
+<p>Rainmeter encourages people to create and distribute their own skins, either created from scratch or modified from other skins you may download and install. In order to facilitate this for authors, Rainmeter supports an @Vault folder located in the Skins folder of your Rainmeter installation.</p>
+
+<p>The purpose of the @Vault folder is to have a standard, central place to store things you might want to use when creating your own .rmskins for distribution. Primarily this will be 3rd-party plugins, but it can be fonts or sounds or images or anything else that you want to "keep handy" to help you create skin distributions.</p>
+
+<h2 id="VaultPlugins">Storing 3rd-party Rainmeter plugins</h2>
+
+<p><b>Automatically</b></p>
+
+<p>By default, the Skin Installer for Rainmeter will automatically store both 32bit and 64bit versions of any plugins that are installed on your system by a .rmskin. These will be stored in @Vault\Plugins. The plugin will be stored there in a subfolder with the plugin version number (if there is one) and the name of the plugin .dll file. 
+
+<p>So for instance:</p>
+<p><code>..Documents\Rainmeter\Skins\@Vault\Plugins\CursorColor\1.3.0.0\32bit\CursorColor.dll</code><br/>
+<code>..Documents\Rainmeter\Skins\@Vault\Plugins\CursorColor\1.3.0.0\64bit\CursorColor.dll</code></p>
+
+<p>If a newer version of a plugin is installed by a .rmskin, a second folder will be created with the new version number. Both versions will be kept.</p>
+
+<p>The benefit this brings is that when you are creating a .rmskin, and need both 32bit and 64bit versions of a plugin .dll, You know right where to find them.</p>
+
+<p>In the past, if you installed a .rmskin with a 3rd-party plugin, and you later wanted to use that plugin in a skin you are distributing, you either had to depend on the skin author to provide the 32bit and 64bit versions of the plugin somewhere in the skin folders, or rename the .rmskin to .zip and extract the plugin .dll files manually. You also needed to be careful that you kept track of the latest version of the plugin, as there may be different versions in different .rmskin files over time.</p>
+
+<p>Now, if you ever install a .rmskin with a 3rd-party plugin, you automatically have a known place to find the latest version of the 32bit and 64bit .dll files. Simply browse to @Vault when you are creating your .rmskin, and find the latest version of the .dll files you need.</p>
+
+<p><b>Manually</b></p>
+
+<p>No doubt you have installed .rmskins in the past that had 3rd-party plugins in them. While the single appropriate 32bit or 64bit version of the plugin .dll file was installed in your Rainmeter, you might want to store those plugins in @Vault for future use. That is easy to do.</p>
+
+<p>Simply find and install the .rmskin again. However, there is no need to actually "install" anything. The plugin or the skin itself. Simply uncheck all the boxes in the Skin Installer dialog, for the skin name(s), the plugin name(s) and "Load included skins".</p>
+
+<div class="exampleprev">
+	<a href="!img/@vault-folder/@vault-folder1.png" data-fancybox><img src="!img/@vault-folder/@vault-folder1.png"></a>
+</div>
+
+<p>When you click on the Install button in the dialog, nothing will actually be installed, but the plugin .dll files will be properly stored in the @Vault\Plugins folder. Do this with any .rmskins you have created or downloaded in the past, and you will have a central, reliable, current, storehouse of all the 3rd-party plugins you may want to use in the future.<p>
+
+<h2 id="VaultOther">Storing other resources</h2>
+
+<p>The @Vault folder can also be used as a general purpose storehouse for other resources you might use in your skins. For instance, you might have a particular font file that you like to use in your skins, or some .wav sound files, weather icon .png files, or even snippets of Lua code you want to reuse.</p>
+
+<p>While you must include these things in the skin folders you create for distribution in your .rmskin, the @Vault folder does offer a place to keep copies of things like this you use all the time and want to "keep handy".</p>
+
+<p>Simply create folders with any names you like under the @Vault folder to store these items.</p>
+
+<p><code>..Documents\Rainmeter\Skins\@Vault\MyFonts\FiraSans.ttf</code><br/>
+<code>..Documents\Rainmeter\Skins\@Vault\MySounds\Alarm.wav</code><br/>
+<code>..Documents\Rainmeter\Skins\@Vault\MyLuaScripts\ConvertFtoC.lua</code></p>
+
+
+
+
