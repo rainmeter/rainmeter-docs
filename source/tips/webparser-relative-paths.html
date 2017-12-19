@@ -30,7 +30,7 @@ Measure=Plugin
 Plugin=WebParser
 UpdateRate=1800
 Url=http://forum.rainmeter.net/
-RegExp=(?siU)&lt;img src="(.*)"
+RegExp=(?siU)<img src="(.*)"
 StringIndex=1
 FinishAction=[!CommandMeasure MeasureImageDownload "Update"] 
 
