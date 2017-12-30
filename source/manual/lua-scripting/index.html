@@ -57,6 +57,8 @@ MyOption=Hello, world!
 
 <p>All statements must be passed as a single parameter in the bang. Because single-quotes (<code>'</code>) and double-quotes (<code>"</code>) are both valid string containers in Lua, while only double-quotes are recognized in Rainmeter, single quotes are recommended when passing strings with !CommandMeasure.</p>
 
+<p><b>Note:</b> The !Delay bang in Rainmeter is not supported in Lua.</p>
+
 <h2 id="Initialize">Initialize</h2>
 
 <p>If the <b>Initialize</b> function is defined in any script, the function is called one time (without parameters) when the skin is activated or <a href="!skins/#Refresh">refreshed</a>. This happens even if the script measure is <a href="!measures/general-options/#Disabled">disabled</a>. If the script file is changed by a <a href="!bangs/#SetOption">!SetOption</a> bang, the new script's Initialize function is called as well.</p>
