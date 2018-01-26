@@ -41,6 +41,9 @@ ImageName=%1-%2.png
 ; %1 and %2 will be replaced by the string values of SomeMeasure and
 ; SomeMeasure2, respectively.
 ```
+
+		<p><b>Note:</b> When <code>ImageName</code> is hard-coded with an image file name, the image will be loaded and "cached", to avoid reloading the image from disk on every meter update. If there is an external process that is changing the image file, while leaving the name the same, use <code>DynamicVariables=1</code> on the meter to force the image to be reloaded from disk on every meter update.</p>
+
 	</dd>
 
 	<dt id="PreserveAspectRatio"><code>PreserveAspectRatio</code> <small>Default: <code>0</code></small></dt>
