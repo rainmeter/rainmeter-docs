@@ -31,13 +31,17 @@ StringIndex=2
 
 <p><b>Note:</b> More information and examples for WebParser can be found at <a href="/tips/webparser-tutorial/">WebParser Tutorial</a> and <a href="/tips/rss-feed-tutorial/">RSS/Atom Feed Tutorial</a>.</p>
 
-<p><b>Note: WebParser was previously a <em>plugin</em> measure, and in many existing skins you will see the syntax:</b></p>
+<span id="NotAPlugin"><p><b>Note: WebParser was previously a <em>plugin</em> measure, and in many existing skins you might see the syntax:</b></p></span>
 ``` ini
 [MeasureParent]
 Measure=Plugin
 Plugin=WebParser
+or
+Plugin=WebParser.dll
+or
+Plugin=Plugins\WebParser.dll
 ```
-<p>WebParser will work exactly the same with either form, and changing existing skins to the new measure form is entirely optional. New skins created going forward should use <code>Measure=WebParser</code> for accuracy and clarity.</p>
+<p>WebParser will work exactly the same with either form, and changing existing skins to the new measure form is entirely optional. New skins created going forward should use the correct <code>Measure=WebParser</code> syntax for accuracy and clarity.</p>
 
 <h2>Options</h2>
 <dl>
