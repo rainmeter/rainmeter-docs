@@ -1,67 +1,10 @@
 ---
 layout: docs
 permalink: manual-beta/plugins/mediakey/
-title: 'MediaKey plugin'
+title: 'Redirect to measures'
 ---
-<p><code>Plugin=MediaKey</code> sends various keystrokes found on multimedia keyboards. It works with Spotify, Zune, foobar, and Windows Media Player. The plugin is controlled by the <a href="!bangs/#CommandMeasure">!CommandMeasure bang</a>.</p>
-
-<h2>Options</h2>
-<dl>
-	<dt>General measure options</dt>
-	<dd>
-		All <a href="!measures/general-options/">general measure options</a> are valid.
-	</dd>
-</dl>
-
-<h2>Bangs</h2>
-<p>To control keystrokes on multimedia keyboards, use the <a href="!bangs/#CommandMeasure">!CommandMeasure</a> bang. In the examples below <code><em>MeasureMediaKey</em></code> is the section name for the MediaKey measure. Your <a href="!skins/#Format">section name</a> may differ.</p>
-<dl>
-	<dt id="NextTrack"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "NextTrack"</code></dt>
-	<dd>
-		Moves to the next track in the list.
-	</dd>
-
-	<dt id="PrevTrack"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "PrevTrack"</code></dt>
-	<dd>
-		Moves to the previous track in the list.
-	</dd>
-
-	<dt id="Stop"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "Stop"</code></dt>
-	<dd>
-		Stop playback.
-	</dd>
-
-	<dt id="PlayPause"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "PlayPause"</code></dt>
-	<dd>
-		Plays/Pause playback.
-	</dd>
-
-	<dt id="VolumeMute"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "VolumeMute"</code></dt>
-	<dd>
-		Mutes the sound.
-	</dd>
-
-	<dt id="VolumeDown"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "VolumeDown"</code></dt>
-	<dd>
-		Decreases volume.
-	</dd>
-
-	<dt id="VolumeUp"><code>!CommandMeasure "<em>MeasureMediaKey</em>" "VolumeUp"</code></dt>
-	<dd>
-		Increases volume.
-	</dd>
-</dl>
-
-<h2>Example</h2>
-``` ini
-[MeasureMediaKey]
-Measure=Plugin
-Plugin=MediaKey
-
-[MeterMute]
-Meter=String
-SolidColor=0,0,0,255
-FontColor=255,255,255,255
-Text=Mute
-LeftMouseUpAction=!CommandMeasure "MeasureMediaKey" "VolumeMute"
-```
+<script>
+   currentLocation = window.location;
+   newPath = currentLocation.pathname.replace('/plugins/', '/measures/');
+   location.replace(currentLocation.protocol+'//'+currentLocation.hostname+newPath+currentLocation.hash);
+</script>
