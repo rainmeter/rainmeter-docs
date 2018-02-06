@@ -39,7 +39,7 @@ UpdateDivider=-1
 
 <h3>What about UpdateRate?</h3>
 
-<p>UpdateDivider is an option available to <em>all</em> meters and measures. <a href="/manual/plugins/webparser/#UpdateRate">UpdateRate</a>, on the other hand, is only available with the WebParser and Ping plugins. For the purpose of this example, let us use a plugin measure using WebParser.</p>
+<p>UpdateDivider is an option available to <em>all</em> meters and measures. <a href="/manual/measures/webparser/#UpdateRate">UpdateRate</a>, on the other hand, is only available with the WebParser and Ping plugins. For the purpose of this example, let us use a plugin measure using WebParser.</p>
 
 <p>UpdateRate essentially states how often the WebParser should connect to the internet to download the specified URL. The general formula for this is in seconds is as follows: (Update x UpdateDivider x UpdateRate / 1000).</p>
 
@@ -49,8 +49,7 @@ UpdateDivider=-1
 
 ``` ini
 [MeasureMailCount]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=https://username:pasword@gmail.google.com/gmail/feed/atom
 RegExp="(?siU)<fullcount>(.*)</fullcount>"
 StringIndex=1
