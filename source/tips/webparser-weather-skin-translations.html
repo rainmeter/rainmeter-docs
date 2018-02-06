@@ -7,8 +7,7 @@ title: 'WebParser: Weather Skin Translations'
 <p>This actually pretty simple to do. First find the measure or measures (often in a weather skin there will be 3 - 5 of them) which are returning the "weather conditions" text. It will look something like this:</p>
 ``` ini
 [MeasureCurrentWeatherConditions]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureYahooWeather]
 StringIndex=34
 ```
@@ -17,8 +16,7 @@ StringIndex=34
 
 ``` ini
 [MeasureYahooWeather]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 UpdateRate=600
 URL=http://weather.yahooapis.com/forecastrss?p=#Location#&u=#Unit#
 RegExp=(?siU)<title>.*- (.*)</title>.*<link>(.*)/\*(.*)</link>.*<description>(.*)</description>.*<language>(.*)</language>.*<lastBuildDate>(.*)</lastBuildDate>.*<yweather:location city="(.*)".*region="(.*)".*country="(.*)".*<yweather:units temperature="(.*)".*distance="(.*)".* pressure="(.*)".*speed="(.*)".*<yweather:wind chill="(.*)".*direction="(.*)".*speed="(.*)".*<yweather:atmosphere humidity="(.*)".* visibility="(.*)".*pressure="(.*)".* rising="(.*)".*<yweather:astronomy sunrise="(.*)".*sunset="(.*)".*<title>(.*)</title>.*<width>(.*)</width>.*<height>(.*)</height>.*<link>(.*)</link>.*<url>(.*)</url>.*<title>(.*)</title>.*<geo:lat>(.*)</geo:lat>.*<geo:long>(.*)</geo:long>.*<link>(.*)/\*(.*)</link>.*<pubDate>(.*)</pubDate>.*<yweather:condition text="(.*)".*code="(.*)".*temp="(.*)".*date="(.*)".*<img src="(.*)".*Current Conditions:</b><br />(.*)<BR />.*Forecast:</b><BR />(.*)<br />.*(.*)<br />.*<a href="(.*)/\*(.*)">.*provided by <a href="(.*)" >(.*)</a>.*<yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*<yweather:forecast day="(.*)".*date="(.*)".*low="(.*)".*high="(.*)".*text="(.*)".*code="(.*)".*
@@ -27,8 +25,7 @@ RegExp=(?siU)<title>.*- (.*)</title>.*<link>(.*)/\*(.*)</link>.*<description>(.*
 <p><em>Followed by something like this later on in the skin:</em></p>
 ``` ini
 [MeasureCurrentWeatherConditions]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureYahooWeather]
 StringIndex=34
 ```

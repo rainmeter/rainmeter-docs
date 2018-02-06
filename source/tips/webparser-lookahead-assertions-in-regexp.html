@@ -28,8 +28,7 @@ title: 'WebParser: Lookahead Assertions in RegExp'
 
 ``` ini
 [MeasureParent]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=file://#CURRENTPATH#MyFile.html
 RegExp="(?siU)<Item>.*<Name>(.*)</Name>.*<Item>.*<Name>(.*)</Name>.*<Item>.*<Name>(.*)</Name>.*"
 ```
@@ -68,28 +67,24 @@ DynamicWindowSize=1
 Get=(?(?=.*<Item>).*<Name>(.*)</Name>)
 
 [MeasureParent]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=file://#CURRENTPATH#Test.html
 RegExp="(?siU)#Get##Get##Get#"
 
 [MeasureChild1]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureParent]
 StringIndex=1
 Substitute="":"No Moe!"
 
 [MeasureChild2]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureParent]
 StringIndex=2
 Substitute="":"No Moe!"
 
 [MeasureChild3]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureParent]
 StringIndex=3
 Substitute="":"No Moe!"

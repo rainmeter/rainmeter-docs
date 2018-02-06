@@ -3,9 +3,9 @@ layout: docs
 permalink: tips/webparser-using-stringindex2/
 title: 'WebParser: Using StringIndex2'
 ---
-<p>One of less obvious features of the WebParser Plugin is the capability that the option <code>StringIndex2=</code> brings to simplify skins retrieving repetitive data like an RSS or weather feed.</p>
+<p>One of less obvious features of the WebParser measure is the capability that the option <code>StringIndex2=</code> brings to simplify skins retrieving repetitive data like an RSS or weather feed.</p>
 
-<p>From the <a href="/manual/plugins/webparser/#StringIndex2">Manual</a>:</p>
+<p>From the <a href="/manual/measures/webparser/#StringIndex2">Manual</a>:</p>
 
 <p><b>StringIndex2</b><br>
 The second string index is used when using a <code>RegExp</code> in a measure that uses data from another WebParser measure (i.e. the <code>URL</code> points to a parent measure. In this case the <code>StringIndex</code> defines the index of the result of the parent measure's <code>RegExp</code> and the <code>StringIndex2</code> defines the index of this measure's <code>RegExp</code> (i.e. it defines the string that the measure returns).</p>
@@ -21,27 +21,23 @@ Item=.*<item>(.*)</item>
 Sub="<![CDATA[":"","]]>":""
 
 [MeasureSite]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=http://feeds.gawker.com/lifehacker/full
 RegExp="(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
 
 [MeasureMainTitle]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 StringIndex=1
 Substitute=#Sub#
 
 [MeasureMainLink]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 StringIndex=2
 
 [MeasureItem1Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 RegExp="(?siU)<title>(.*)</title>"
 StringIndex=3
@@ -49,16 +45,14 @@ StringIndex2=1
 Substitute=#Sub#
 
 [MeasureItem1Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 RegExp="(?siU)<link>(.*)</link>"
 StringIndex=3
 StringIndex2=1
 
 [MeasureItem2Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 RegExp="(?siU)<title>(.*)</title>"
 StringIndex=4
@@ -66,16 +60,14 @@ StringIndex2=1
 Substitute=#Sub#
 
 [MeasureItem2Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 RegExp="(?siU)<link>(.*)</link>"
 StringIndex=4
 StringIndex2=1
 
 [MeasureItem3Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 RegExp="(?siU)<title>(.*)</title>"
 StringIndex=5
@@ -83,8 +75,7 @@ StringIndex2=1
 Substitute=#Sub#
 
 [MeasureItem3Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 RegExp="(?siU)<link>(.*)</link>"
 StringIndex=5
@@ -160,8 +151,7 @@ Item=.*<item>(.*)</item>
 <p>Then we use WebParser to go get the information from the site.</p>
 ``` ini
 [MeasureSite]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=http://feeds.gawker.com/lifehacker/full
 RegExp="(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
 ```
@@ -171,8 +161,7 @@ RegExp="(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
 <p>Now let's skip the measures for the main title and link, they are done the normal way. Let's move down to this measure:</p>
 ``` ini
 [MeasureItem1Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 RegExp="(?siU)<title>(.*)</title>"
 StringIndex=3
@@ -189,8 +178,7 @@ Substitute=#Sub#
 <p>We can repeat this process to get the link of the first item:</p>
 ``` ini
 [MeasureItem1Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 RegExp="(?siU)<link>(.*)</link>"
 StringIndex=3
@@ -202,8 +190,7 @@ StringIndex2=1
 <p>It might be obvious by now, but when we want to carry on with the second &lt;item&gt; from the feed, we use:</p>
 ``` ini
 [MeasureItem2Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 Url=[MeasureSite]
 RegExp="(?siU)<title>(.*)</title>"
 StringIndex=4

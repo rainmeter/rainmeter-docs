@@ -26,8 +26,7 @@ DynamicWindowSize=1
 AccurateText=1
 
 [MeasureImageLocation]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 UpdateRate=1800
 Url=http://forum.rainmeter.net/
 RegExp=(?siU)<img src="(.*)"
@@ -35,8 +34,7 @@ StringIndex=1
 FinishAction=[!CommandMeasure MeasureImageDownload "Update"] 
 
 [MeasureImageDownload]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 UpdateRate=1800
 Url=http://forum.rainmeter.net/[&MeasureImageLocation]
 StringIndex=1

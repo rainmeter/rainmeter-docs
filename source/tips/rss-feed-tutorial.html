@@ -3,9 +3,9 @@ layout: docs
 permalink: tips/rss-feed-tutorial/
 title: 'RSS Feed Tutorial'
 ---
-<p>One of the most common uses of the <a href="/manual/plugins/webparser/">WebParser plugin</a> in Rainmeter is to create a skin to parse and display information from an RSS or Atom feed.<p>
+<p>One of the most common uses of the <a href="/manual/measures/webparser/">WebParser measure</a> in Rainmeter is to create a skin to parse and display information from an RSS or Atom feed.<p>
 
-<p>This guide is not intended as a general purpose <a href="/tips/webparser-tutorial/">tutorial for the WebParser plugin</a>, nor does it attempt to explore all that regular expressions can do.  A great deal of additional help is available at <a href="/manual/skins/option-types/#RegExp">Regular Expression Options</a>.</p>
+<p>This guide is not intended as a general purpose <a href="/tips/webparser-tutorial/">tutorial for the WebParser measure</a>, nor does it attempt to explore all that regular expressions can do.  A great deal of additional help is available at <a href="/manual/skins/option-types/#RegExp">Regular Expression Options</a>.</p>
 
 <p>RSS and Atom feeds follow certain patterns that make them fairly easy to parse. While there are differences between the RSS and Atom standards, which we will touch on a bit later, let's use a simple RSS output to outline how they are laid out.</p>
 
@@ -246,8 +246,7 @@ DynamicWindowSize=1
 
 ``` ini
 [MeasureSite]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=http://feeds.bbci.co.uk/news/rss.xml
 ```
 
@@ -257,8 +256,7 @@ URL=http://feeds.bbci.co.uk/news/rss.xml
 
 ``` ini
 [MeasureSite]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=http://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>
 ```
@@ -277,26 +275,22 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 
 ``` ini
 [MeasureSite]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=http://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>
 
 [MeasureSiteTitle]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=1
 
 [MeasureSiteLink]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=2
 
 [MeasureSiteBuildDate]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=3
 
@@ -313,8 +307,7 @@ DynamicVariables=1
 
 ``` ini
 [MeasureSite]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=http://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 ```
@@ -325,20 +318,17 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 
 ``` ini
 [MeasureItem1Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=4
 
 [MeasureItem1Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=5
 
 [MeasureItem1Date]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=6
 ```
@@ -355,20 +345,17 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 
 ``` ini
 [MeasureItem2Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=7
 
 [MeasureItem2Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=8
 
 [MeasureItem2Date]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=9
 ```
@@ -396,8 +383,7 @@ Item=.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 
 ``` ini
 [MeasureSite]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=http://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>#Item#
 ```
@@ -416,12 +402,11 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 
 <p>An RSS or Atom feed can contain the HTML codes for some characters, ones that you would want to display as the actual character instead of the code. For instance, the raw data might contain the code <code>&amp;lt;</code> which is the <code>&lt;</code> character. You don't want to dislay the code, but the actual <code>&lt;</code>. 
 
-<p>If you add the option <a href="/manual/plugins/webparser/#DecodeCharacterReference">DecodeCharacterReference=1</a> to any or all desired <b>child</b> measures, Rainmeter will translate and display the correct character for the embedded HTML code.</p>
+<p>If you add the option <a href="/manual/measures/webparser/#DecodeCharacterReference">DecodeCharacterReference=1</a> to any or all desired <b>child</b> measures, Rainmeter will translate and display the correct character for the embedded HTML code.</p>
 
 ``` ini
 [MeasureItem1Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=4
 DecodeCharacterReference=1
@@ -437,8 +422,7 @@ DecodeCharacterReference=1
 
 ``` ini
 [MeasureItem1Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=4
 DecodeCharacterReference=1
@@ -461,8 +445,7 @@ Substitute="<![CDATA[":"","]]>":"","![CDATA[":"","]]":""
 
 ``` ini
 [MeasureItem1Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=4
 DecodeCharacterReference=1
@@ -505,16 +488,14 @@ Item=(?(?=.*<item>).*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.
 Sub="^\s+":"","<!\[CDATA\[":"","\]\]>":"","!\[CDATA\[":"","\]\]":""
 
 [MeasureSite]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=http://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>#Item##Item##Item##Item##Item#
 
 ;Site info
 
 [MeasureSiteTitle]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=1
 DecodeCharacterReference=1
@@ -522,22 +503,19 @@ RegExpSubstitute=1
 Substitute=#Sub#
 
 [MeasureSiteLink]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=2
 
 [MeasureSiteDate]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=3
 
 ;Item 1 info
 
 [MeasureItem1Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=4
 DecodeCharacterReference=1
@@ -545,22 +523,19 @@ RegExpSubstitute=1
 Substitute=#Sub#
 
 [MeasureItem1Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=5
 
 [MeasureItem1Date]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=6
 
 ;Item 2 info
 
 [MeasureItem2Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=7
 DecodeCharacterReference=1
@@ -568,22 +543,19 @@ RegExpSubstitute=1
 Substitute=#Sub#
 
 [MeasureItem2Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=8
 
 [MeasureItem2Date]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=9
 
 ;Item 3 info
 
 [MeasureItem3Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=10
 DecodeCharacterReference=1
@@ -591,22 +563,19 @@ RegExpSubstitute=1
 Substitute=#Sub#
 
 [MeasureItem3Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=11
 
 [MeasureItem3Date]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=12
 
 ;Item 4 info
 
 [MeasureItem4Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=13
 DecodeCharacterReference=1
@@ -614,22 +583,19 @@ RegExpSubstitute=1
 Substitute=#Sub#
 
 [MeasureItem4Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=14
 
 [MeasureItem4Date]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=15
 
 ;Item 5 info
 
 [MeasureItem5Title]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=16
 DecodeCharacterReference=1
@@ -637,14 +603,12 @@ RegExpSubstitute=1
 Substitute=#Sub#
 
 [MeasureItem5Link]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=17
 
 [MeasureItem5Date]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=[MeasureSite]
 StringIndex=18
 
@@ -910,8 +874,7 @@ Item=(?(?=.*<entry>).*<entry>.*<updated>(.*)</updated>.*<link.*"(.*)".*<title.*>
 Sub="^\s+":"","<!\[CDATA\[":"","\]\]>":"","!\[CDATA\[":"","\]\]":""
 
 [MeasureSite]
-Measure=Plugin
-Plugin=WebParser
+Measure=WebParser
 URL=http://forum.rainmeter.net/feed.php
 RegExp=(?siU)<title>(.*)</title>.*<link.*"(.*)".*<updated>(.*)</updated>#Item##Item##Item##Item##Item#
 ```
