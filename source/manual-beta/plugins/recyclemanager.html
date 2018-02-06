@@ -1,59 +1,10 @@
 ---
 layout: docs
 permalink: manual-beta/plugins/recyclemanager/
-title: 'RecycleManager plugin'
+title: 'Redirect to measures'
 ---
-<p><code>Plugin=RecycleManager</code> monitors the state of the recycle bin.</p>
-
-<h2>Options</h2>
-<dl>
-	<dt>General measure options</dt>
-	<dd>
-		All <a href="!measures/general-options/">general measure options</a> are valid.
-	</dd>
-
-	<dt id="RecycleType"><code>RecycleType</code> <small>Default: <code>Count</code></small></dt>
-	<dd>
-		Type of information to measure. Valid values are:
-		<ul>
-		<li><code>Count</code>: Number of files in the recycle bin.</li>
-		<li><code>Size</code>: Total size of the recycle bin in bytes.</li>
-		</ul>
-	</dd>
-</dl>
-
-<h2>Bangs</h2>
-<p>RecycleManager measures can be controlled with the <a href="!bangs/#CommandMeasure">!CommandMeasure bang</a> with the argument parameter being:</p>
-<ul>
-<li><code>OpenBin</code></li>
-<li><code>EmptyBin</code>: Empties the bin after confirmation.</li>
-<li><code>EmptyBinSilent</code>: Empties the bin silently without confirmation.</li>
-</ul>
-
-<h2>Example</h2>
-``` ini
-[Rainmeter]
-Update=1000
-BackgroundMode=2
-SolidColor=0,0,0,255
-
-[MeasureBinSize]
-Measure=Plugin
-Plugin=RecycleManager
-RecycleType=Size
-UpdateDivider=5
-
-[MeterBinSize]
-Meter=String
-MeasureName=MeasureBinSize
-X=5
-Y=5
-W=200
-H=20
-FontColor=255,255,255,255
-SolidColor=0,0,0,1
-AutoScale=1
-Text=Bin size: %1B
-LeftMouseUpAction=!CommandMeasure MeasureBinSize OpenBin
-RightMouseUpAction=!CommandMeasure MeasureBinSize EmptyBin
-```
+<script>
+   currentLocation = window.location;
+   newPath = currentLocation.pathname.replace('/plugins/', '/measures/');
+   location.replace(currentLocation.protocol+'//'+currentLocation.hostname+newPath+currentLocation.hash);
+</script>
