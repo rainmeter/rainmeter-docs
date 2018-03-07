@@ -136,26 +136,20 @@ end
 		<p><b>Example:</b> <code>MyVariable = SKIN:GetVariable('VariableName', 'n/a')</code></p>
 	</dd>
 
-	<dt id="Bang"><code>Bang</code> <small>Parameters: <code><b>Bang</b></code> or <code><b>BangName</b><em>, BangArg1, BangArg2, BangArgN</em></code></small></dt>
+	<dt id="Bang"><code>Bang</code> <small>Parameters: <code><b>BangName</b><em>, BangArg1, BangArg2, BangArgN</em></code></small></dt>
 	<dd>
-		<p>Executes a <a href="!bangs/">bang</a>. The bang can be constructed in one of two ways:</p>
-		<ol>
-			<li>
-				<p>The entire bang as a single string.</p>
-				<p><b>Example:</b> <code>SKIN:Bang('!SetOption "MeterName" "Text" "Hello, world!"')</code></p>
-				<p>Multiple bangs are valid using this method.</p>
-				<p><code>SKIN:Bang('[!UpdateMeter "MeterName"][!Redraw]')</code></p>
-			</li><br>
-			<li>
-				<p>Each bang parameter as a separate parameter in the function.</p>
-				<p><b>Example:</b> <code>SKIN:Bang('!SetOption', 'MeterName', 'Text', 'Hello, world!')</code></p>
-				<p>Multiple bangs must be separate using this method.</p>
-				<p><code>SKIN:Bang('!UpdateMeter', 'MeterName')</code><br>
-				<code>SKIN:Bang('!Redraw')</code></p>
-				<p><b>Note:</b> In spite of the need for a separate <code>SKIN:Bang()</code> function for each bang you want to use, this second method is strongly recommended. You will quickly find that the first method, using a single string to define the bang(s) will quickly become very complicated to properly quote if the bangs themselves contain strings that must be quoted.</p>
-				<p><b>Note:</b> The !Delay bang in Rainmeter is not supported in Lua.</p>
-			</li>
-		</ol>
+		<p>Executes a <a href="!bangs/">bang</a>. The bang will be executed by Rainmeter when control is returned from the script.</p>
+		<p>Each bang parameter is a separate parameter in the function.</p>
+		<p><b>Example:</b></p>
+```lua
+someVar = 12
+SKIN:Bang('!SetOption', 'MeterName', 'Text', 'Hello, world!')
+SKIN:Bang('!SetOption', 'MeterName', 'FontSize', someVar)
+SKIN:Bang('!UpdateMeter', 'MeterName')
+SKIN:Bang('!Redraw')
+```
+
+	<p><b>Note:</b> The !Delay bang in Rainmeter is not supported in Lua.</p>
 	</dd>
 
 	<dt id="MakePathAbsolute"><code>MakePathAbsolute</code> <small>Parameter: <code><b>File/Folder</b></code></small></dt>
