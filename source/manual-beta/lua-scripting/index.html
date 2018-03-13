@@ -203,7 +203,7 @@ roundedNum = SKIN:ParseFormula('(Round('..numToRound..'))')
 	<dt id="GetNumberOption"><code>GetNumberOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
 	<dd>
 		<p>Returns the current value of the named option as a number. If the option does not exist, or is not a valid number or <a href="!skins/option-types/#Number">formula</a>, returns the given default value, or <code>0</code> if no default is given.</p>
-		<p><b>Example:</b> <code>MyUpdateDivider = MyMeasure:GetNumberOption(UpdateDivider, 1)</code></p>
+		<p><b>Example:</b> <code>MyUpdateDivider = MyMeasure:GetNumberOption('UpdateDivider', 1)</code></p>
 	</dd>
 
 	<dt id="GetName"><code>GetName</code></dt>
