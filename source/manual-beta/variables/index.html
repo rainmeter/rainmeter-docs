@@ -13,23 +13,39 @@ title: 'Variables'
 
 ``` ini
 [Variables]
-Foo=This is a string!
-Bar=So is this!
+MyVar1=This is a string!
+MyVar2=So is this!
+Red=255
+Green=150
+Blue=0
+Alpha=90
 ```
 
 <h3 id="Using">Using Variables</h3>
 
-<p>Variable names are referenced in other options by surrounding the name with pound signs (<code>#</code>), as in <code>#Foo#</code>. When the skin is loaded, Rainmeter replaces the variable reference with the corresponding string. Variables are inserted "literally," which means they can be mixed with other variables or regular text.</p>
+<p>Variable names are referenced in other options in one of two ways:</p>
+
+<p>Normal variables syntax<br/>
+<ul>
+	<li><code>#VarName#</code></li>
+</ul></p>
+
+<p>Nested variables syntax<br/>
+<ul>
+	<li><code>[#VarName]</code></li>
+</ul></p>
+
+When the skin is loaded or refreshed, Rainmeter replaces the variable reference with the corresponding string. Variables are inserted "literally," which means they can be mixed with other variables or regular text.</p>
 
 ``` ini
-[MeterFoo]
+[MeterMyVar1]
 Meter=String
-Text=The value of my "Foo" variable is: #Foo#
+Text=The value of "MyVar1" is: #MyVar1#
 FontColor=#Red#,#Green#,#Blue#,#Alpha#
 
-[MeterBar]
+[MeterMyVar2]
 Meter=String
-Text=The value of my "Bar" variable is: #Bar#
+Text=The value of "MyVar2" is: #MyVar2#
 FontColor=#Red#,#Green#,#Blue#,#Alpha#
 ```
 
@@ -37,27 +53,29 @@ FontColor=#Red#,#Green#,#Blue#,#Alpha#
 
 ``` ini
 [Variables]
-Foo=rainmeter
-Bar=http://www.#Foo#.net/
+MyVar1=rainmeter
+MyVar2=http://www.#MyVar1#.net/
 ```
 
 <h3 id="Changing">Changing Variables</h3>
 
-<p>The <a href="!bangs/#WriteKeyValue">!WriteKeyValue</a> bang can be used to rewrite values in [Variables]. The skin must be <a href="!skins/#Refresh">refreshed</a> to apply changes made by !WriteKeyValue.</p>
+<p>The <a href="!bangs/#SetVariable">!SetVariable</a> bang can be used to change variable values <a href="#DynamicVariables">dynamically</a>. <b>!SetVariable can be used to create a variable that does not already exist in the [Variables] section.</b></p>
 
-	<blockquote><p><code>!WriteKeyValue "Variables" "Foo" "This is a new string!"</code></p></blockquote>
+	<blockquote><p><code>[!SetVariable "MyVar1" "This is a new string!"]</code></p></blockquote>
 
-<p>Alternatively, the <a href="!bangs/#SetVariable">!SetVariable</a> bang can be used to change variable values <a href="#DynamicVariables">dynamically</a>. !SetVariable can be used to create a variable that does not already exist in the [Variables] section.</p>
+<p>Alternatively, the <a href="!bangs/#WriteKeyValue">!WriteKeyValue</a> bang can be used to rewrite values in [Variables]. <b>The skin must be <a href="!skins/#Refresh">refreshed</a> to apply changes made by !WriteKeyValue.</b></p>
 
-	<blockquote><p><code>!SetVariable "Foo" "This is a new string!"</code></p></blockquote>
-
+	<blockquote><p><code>[!WriteKeyValue "Variables" "MyVar1" "This is a new string!"]</code></p></blockquote>
+	
 <h2 id="DynamicVariables">Dynamic Variables</h2>
 
 <p>A variable whose value changes while the skin is active is called a <b>dynamic variable</b>. Dynamic variables allow a skin to store, retrieve and display ever-changing information without <a href="!skins/#Refresh">refreshing</a> the skin.</p>
 
-<p>Dynamic variables can only be used in a <a href="!measures/">measure</a> or <a href="!meters/">meter</a> with the option <code>DynamicVariables=1</code>. Any <code>[MeasureName]</code> used in a bang as a <a href="!variables/section-variables/">Section Variable</a> is automatically dynamic, and <code>DynamicVariables=1</code> is not required.</p>
+<p>Dynamic variables can only be used in a <a href="!measures/">measure</a> or <a href="!meters/">meter</a> by setting the option <code>DynamicVariables=1</code>.</p>
 
-<p>In addition, there are some <a href="!plugins/">plugins</a> which do not support dynamic variables at this time. The following are sections where dynamic variables cannot be used:</p>
+<p>Note that any <code>[MeasureName]</code> used in a bang as a <a href="!variables/section-variables/">Section Variable</a> is automatically dynamic, and <code>DynamicVariables=1</code> is not required.</p>
+
+<p>In addition, there are some [Sections] and <a href="!plugins/">plugins</a> which do not support dynamic variables at this time. The following are sections where dynamic variables cannot be used:</p>
 
 <ul>
 	<li><a href="!skins/rainmeter-section/">[Rainmeter]</a></li>
