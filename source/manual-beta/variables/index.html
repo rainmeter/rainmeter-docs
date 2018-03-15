@@ -59,13 +59,13 @@ MyVar2=http://www.#MyVar1#.net/
 
 <h3 id="Changing">Changing Variables</h3>
 
-<p>The <a href="!bangs/#SetVariable">!SetVariable</a> bang can be used to change variable values <a href="#DynamicVariables">dynamically</a>. <b>!SetVariable can be used to create a variable that does not already exist in the [Variables] section.</b></p>
+<p>The <a href="!bangs/#SetVariable">!SetVariable</a> bang can be used to change variable values <a href="#DynamicVariables">dynamically</a>. <b>!SetVariable can also be used to create a variable that does not already exist in the [Variables] section.</b></p>
 
 	<blockquote><p><code>[!SetVariable "MyVar1" "This is a new string!"]</code></p></blockquote>
 
-<p>Alternatively, the <a href="!bangs/#WriteKeyValue">!WriteKeyValue</a> bang can be used to rewrite values in [Variables]. <b>The skin must be <a href="!skins/#Refresh">refreshed</a> to apply changes made by !WriteKeyValue.</b></p>
+<p>Alternatively, the <a href="!bangs/#WriteKeyValue">!WriteKeyValue</a> bang can be used to add or change values in [Variables]. <b>The skin must be <a href="!skins/#Refresh">refreshed</a> to apply changes made by !WriteKeyValue.</b></p>
 
-	<blockquote><p><code>[!WriteKeyValue "Variables" "MyVar1" "This is a new string!"]</code></p></blockquote>
+	<blockquote><p><code>[!WriteKeyValue "Variables" "MyVar2" "New value"]</code></p></blockquote>
 	
 <h2 id="DynamicVariables">Dynamic Variables</h2>
 
