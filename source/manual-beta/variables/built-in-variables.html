@@ -90,7 +90,8 @@ title: 'Built-In Variables'
 <dl>
 	<dt id="CRLF"><code>#CRLF#</code></dt>
 	<dd>
-		<p>Creates a <code>\n</code> newline control character where used. Useful in String measures or meters to create or display text on separate lines.</p>
+		<p>Creates a <code>\n</code> newline control character where used. Useful in String meters to create or display text on separate lines.</p>
+		<p>Example: <code>Text=Line1#CRLF#Line2</code><p><br/>
 		<p><b>Note:</b> The Windows standard <code>\r\n</code> (carriage return / linefeed) is not needed in String meters in Rainmeter, but it you wanted to obtain that, perhaps to write to some file, you would use the <a href="!variables/character-variables/">Character Reference Variables</a> syntax of <code>[\13][\10]</code>, which would be resolved to <code>\r\n</code>, or carriage return / linefeed.</p>
 	</dd>
 	<dt id="CURRENTSECTION"><code>#CURRENTSECTION#</code></dt>
