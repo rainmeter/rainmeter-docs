@@ -9,10 +9,9 @@
 		"version": "3.2.2"
 	},
 	"dependencies": {
-		"ejs": "^2.5.5",
 		"hexo": "3.2.2",
 		"hexo-renderer-ejs": "0.2.0",
 		"hexo-server": "0.2.0",
-		"uglify-js": "^2.6.0"
+		"npm": "^5.8.0"
 	}
 }
