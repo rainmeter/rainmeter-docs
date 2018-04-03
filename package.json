@@ -1,17 +1,19 @@
 {
-	"name": "hexo-rainmeter-docs",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"deploy": "./deploy.sh"
-	},
-	"hexo": {
-		"version": "3.2.2"
-	},
-	"dependencies": {
-		"hexo": "3.2.2",
-		"hexo-renderer-ejs": "0.2.0",
-		"hexo-server": "0.2.0",
-		"npm": "^5.8.0"
-	}
+  "name": "hexo-rainmeter-docs",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "./deploy.sh"
+  },
+  "hexo": {
+    "version": "3.2.2"
+  },
+  "dependencies": {
+    "hexo": "3.2.2",
+    "hexo-renderer-ejs": "0.2.0",
+    "hexo-server": "0.2.0",
+    "ejs": "^2.5.5",
+    "moment": "^2.19.3",
+    "uglify-js": "^2.6.0"
+  }
 }
