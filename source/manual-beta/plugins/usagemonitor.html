@@ -133,7 +133,7 @@ title: 'UsageMonitor plugin'
 	</dd>
 </dl>
 
-<h2>A note on number value vs. string value</h2>
+<h2 id="NumberVsString">A note on number value vs. string value</h2>
 
 <p>UsageMonitor will return both the current number value of the instance, and the string value of the name of the instance. There will always be distinct number and string values for the measure.</p>
 
@@ -169,7 +169,7 @@ Text=[MeasureHighestUsedRAM] : %1B
 
 <p>Note that other meters types, like Bar, Line, Roundline, Rotator, and other math-based meters will always use the number value of the measure, and nothing special needs to be done with those.</p>
 
-<h2>A note on performance</h2>
+<h2 id="Performance">A note on performance</h2>
 
 <p>UsageMonitor is very much more efficient in its use of CPU than the PerfMon and AdvancedCPU plugins. It is strongly recommended that this plugin be used exclusively in place of them. The difference in the CPU used, and how smoothly other things in Rainmeter work when this is running, is dramatic.</p>
 
@@ -179,7 +179,7 @@ Text=[MeasureHighestUsedRAM] : %1B
 
 <p>Individual Category threads are disposed of when no plugin measures in any skins are using them, and the plugin is entirely unloaded when no running skins have measures using it.</p>
 
-<h2>A note on localization</h2>
+<h2 id="Localization">A note on localization</h2>
 
 <p>UsageMonitor is fully localized for Category and Counter names, and should work without problems on any language used by Windows.</p>
 
