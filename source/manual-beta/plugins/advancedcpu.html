@@ -5,6 +5,11 @@ title: 'AdvancedCPU plugin'
 ---
 <p><code>Plugin=AdvancedCPU</code> measures CPU usage by processes.</p>
 
+<h2>Plugin Deprecated</h2>
+
+<p>This plugin has been deprecated, and should not be used in new skins.</p>
+<p>The <a href="!plugins/usagemonitor">UsageMonitor</a> plugin should be used in place of this.</p><br/>
+
 <p><b>Note:</b> The value is a calculation of process CPU time scaled by the number of CPU cores. In order to use the value as a <a href="!measures/#Percentage">percentage</a> in meters, it must have the <a href="!measures/general-options/#MaxValue">MaxValue</a> of the measure dynamically set to the current value of an AdvancedCPU measure which has no <code>CPUInclude</code> or <code>CPUExclude</code> options. See the <a href="#Example">Example</a> below.</p>
 
 <h2>Options</h2>
