@@ -10,7 +10,7 @@ title: 'UsageMonitor plugin'
 <p>Counters in Windows Performance Monitor have the following hierarchy:</p>
 
 <ul>
-<li><b>Category</b> - Counters are organized into related <em>categories</em> like "Process" or "Physical Disk"</li>
+<li><b>Category</b> - Counters are organized into related <em>categories</em> like "Process" or "Physical Disk". This is also referred to as Object in Perfmon.exe</li>
 <li><b>Counter</b> - Categories have individual <em>counters</em> like "%Processor Time" or "Bytes Read/sec"</li>
 <li>Instance - Counters may have individual <em>instances</em> like "Rainmeter" or "C"</li>
 </ul>
@@ -70,7 +70,7 @@ title: 'UsageMonitor plugin'
 
 	<dt id="Index"><code>Index</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-	<p>All instances for the counter are evaluated, totaled and sorted in an indexed list from highest value to lowest value. Index is used to return the total, or one of these indexed values, based on the position in the list.</p>
+	<p>All instances for the counter are evaluated, totaled and sorted in an indexed list from highest value to lowest value. Index is used to return the total, or one of these indexed values, based on the position in the list. This list will include all instances that are not defined in Blacklist on the measure.</p>
 	
 	<br/><p><code>Index=0</code><br/>This will always return the total of all instances, and the string "Total". This is the default for Index.</p>
 	<p><code>Index=1</code>, <code>Index=2</code> etc.<br/>This will return the value of the instance in that position in the sorted list, and the name of the corresponding instance as the string value.</p>
