@@ -5,7 +5,7 @@ title: 'UsageMonitor plugin'
 ---
 <p><code>Plugin=UsageMonitor</code> retrieves infromation from the <a href="http://technet.microsoft.com/en-us/library/dd744567.aspx">Windows Performance Monitor</a>.</p>
 
-<p>The Windows Performance Monitor exposes many counters, which monitor various kinds of system metrics in different categories, and tracks their usage. All available counters can be viewed using the Performance Monitor application. To open it, run Perfmon.exe.</p>
+<p>The Windows Performance Monitor exposes counters, which monitor various kinds of system metrics in different categories, and tracks their usage. All available counters can be viewed using the Performance Monitor application. To open it, run Perfmon.exe.</p>
 
 <p>Counters in Windows Performance Monitor have the following hierarchy:</p>
 
@@ -70,7 +70,7 @@ title: 'UsageMonitor plugin'
 
 	<dt id="Index"><code>Index</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-	<p>All instances for the counter are evaluated, totaled and sorted in an indexed list from highest value to lowest value. Index is used to return the total, or one of these indexed values, based on the position in the list. This list will include all instances that are not defined in Blacklist on the measure.</p>
+	<p>All instances for the counter are evaluated, totaled and sorted in an indexed list from highest value to lowest value. Index is used to return the total, or one of these indexed values based on the position in the list. This list will include all instances that are not excluded by a Blacklist on the measure.</p>
 	
 	<br/><p><code>Index=0</code><br/>This will always return the total of all instances, and the string "Total". This is the default for Index.</p>
 	<p><code>Index=1</code>, <code>Index=2</code> etc.<br/>This will return the value of the instance in that position in the sorted list, and the name of the corresponding instance as the string value.</p>
@@ -141,11 +141,11 @@ title: 'UsageMonitor plugin'
 
 <p>The plugin is always gathering data, and the measure is simply used to retrieve a single element of data from it. The plugin is not told "when to do its work" by the measure.</p> 
 
-<h2>A note on Localization</h2>
+<h2>A note on localization</h2>
 
 <p>UsageMonitor is fully localized for Category and Counter names, and should work without problems on any language used by Windows.</p>
 
-<p><b>However</b>, the way this works is that if you define the names of Category and Counter in English, they will automatically work with those names, no matter what language Perfmon is in on your system. This should be done with any skin you expect to distribute, so it will work without issue on any user's computer. If you define the names of Category and Counter in your language other than English, it will only work on your computer, or another computer using your language.</p>
+<p><b>However</b>, the way this works is that if you define the names of Category and Counter in English, they will automatically work with those names, no matter what language Perfmon is in on your system. This should be done with any skin you expect to distribute, so it will work without issue on any user's computer. If you define the names for Category and Counter in your language other than English, it will only work on your computer, or another computer using your language.</p>
 
 <p>If you need a reference to the Category and Counter names in English, it can be found on any Windows system in the Windows Registry, at:</p>
 
@@ -562,7 +562,7 @@ Y=3R
 
 <p><b>Note:</b></p>
 
-<p>While rare, it is possible for the database of "counters" that is maintained by Performance Monitor in Windows to become damaged, which will cause the UsageMonitor plugin to stop functioning correctly.</p>
+<p>While rare, it is possible for the database of counters that is maintained by Performance Monitor in Windows to become damaged, which will cause the UsageMonitor plugin to stop functioning correctly.</p>
 
 <p>In many cases, this can be corrected by "rebuilding" the database from the Windows command line.</p>
 
