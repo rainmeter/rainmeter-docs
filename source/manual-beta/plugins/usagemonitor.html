@@ -25,7 +25,7 @@ title: 'UsageMonitor plugin'
 <br/>
 <p>The measure will return the current <em>number</em> value of the instance, and the current <em>string</em> value of the name of the instance. So each measure will have distinct number and string values.</p>
 
-<p>The UsageMonitor plugin will optionally allow you to select common counters with a single <b>Alias</b>, rather than the specific, case-sensitive Category and Counter names. Additional Alias values may be supported over time.</p>
+<p>The UsageMonitor plugin will optionally allow you to select common counters with a single <b>Alias</b>, rather than the specific, case-sensitive Category and Counter names. <em>Additional Alias values may be supported over time.</em></p>
 
 <h2>Options</h2>
 <dl>
@@ -158,6 +158,9 @@ title: 'UsageMonitor plugin'
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
+SkinWidth=360
+BackgroundMode=2
+SolidColor=0,0,0,1
 
 [Variables]
 Browser=firefox
@@ -168,7 +171,6 @@ Measure=Plugin
 Plugin=UsageMonitor
 Alias=CPU
 Index=0
-Blacklist=_Total,Idle
 
 [MeasureMyApps]
 Measure=Plugin
@@ -327,9 +329,8 @@ AntiAlias=1
 DynamicVariables=1
 
 [RightStyle]
-X=350
+X=360
 StringAlign=Right
-StringCase=Proper
 
 [MeterCPULabel]
 Meter=String
@@ -462,7 +463,7 @@ MeasureName=TotalVRAMScaled
 Y=0r
 AutoScale=1
 NumOfDecimals=1
-Text=[TotalVRAM] : %1
+Text=[TotalVRAM] : %1B
 
 [MeterRainmeterIOLabel]
 Meter=String
@@ -477,7 +478,7 @@ MeasureName=RainmeterIOScaled
 Y=0r
 AutoScale=1
 NumOfDecimals=1
-Text=[RainmeterIO] : %1
+Text=[RainmeterIO] : %1B
 
 [MeterTopIOReadLabel]
 Meter=String
@@ -492,7 +493,7 @@ MeasureName=TopIOReadScaled
 Y=0r
 AutoScale=1
 NumOfDecimals=1
-Text=[TopIORead] : %1
+Text=[TopIORead] : %1B
 
 [MeterBrowserIOWriteLabel]
 Meter=String
@@ -507,7 +508,7 @@ MeasureName=BrowserIOWriteScaled
 Y=0r
 AutoScale=1
 NumOfDecimals=1
-Text=[BrowserIOWrite] : %1
+Text=[BrowserIOWrite] : %1B
 
 [MeterBrowserRAMLabel]
 Meter=String
@@ -522,7 +523,7 @@ MeasureName=BrowserRAMScaled
 Y=0r
 AutoScale=1
 NumOfDecimals=1
-Text=[BrowserRAM] : %1
+Text=[BrowserRAM] : %1B
 
 [MeterNetworkInLabel]
 Meter=String
@@ -537,7 +538,7 @@ MeasureName=NetworkInScaled
 Y=0r
 AutoScale=1
 NumOfDecimals=1
-Text=%1
+Text=%1B
 
 [MeterNetworkOutLabel]
 Meter=String
@@ -552,12 +553,13 @@ MeasureName=NetworkOutScaled
 Y=0r
 AutoScale=1
 NumOfDecimals=1
-Text=%1
+Text=%1B
 
 [MeterNetworkName]
 Meter=String
 MeterStyle=AllStyle
 Y=3R
+ClipString=1
 ```
 
 <p><b>Note:</b></p>
