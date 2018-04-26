@@ -175,7 +175,9 @@ Text=[MeasureHighestUsedRAM] : %1B
 
 <p>The way UsageMonitor works is to spawn a single separate thread, independent of Rainmeter, for each <b>Category</b> that is asked for by any measures in any skin, in all of Rainmeter. The plugin is then gathering information for that Category, once a second, and is not dependent on, nor reacts to, any setting for Update on the skin, or UpdateDivider on the measure. UpdateDivider should only be used on the measure if you want to control how often actions like OnChangeAction or OnUpdateAction are executed, or how often comparisons like IfCondition or IfMatch are done.</p>
 
-<p>The plugin is always gathering data, and the measure is simply used to retrieve a single element of data from it. The plugin is not told "when to do its work" by the measure.</p> 
+<p>The plugin is always gathering data, and the measure is simply used to retrieve a single element of data from it. The plugin is not told "when to do its work" by the measure.</p>
+
+<p>Individual Category threads are disposed of when no plugin measures in any skins are using them, and the plugin is entirely unloaded when no running skins have measures using it.</p>
 
 <h2>A note on localization</h2>
 
