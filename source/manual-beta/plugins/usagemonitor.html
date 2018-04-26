@@ -117,7 +117,7 @@ title: 'UsageMonitor plugin'
 	<dd>
 	<p>When set to <code>1</code>, this will return the value as a percentage of the _Total instance. This should be used with counters that don't return the raw value as a percentage.</p>
 	
-	<br/><p><b>Note:</b> This is never needed when using an Alias option, as the values are always returned in the same format as they are in the Perfmon.exe GUI when Alias is used. However, you may find you want this when using specific Category and Counter options.</p>
+	<br/><p><b>Note:</b> This is automatically set to <code>1</code> when <code>Alias=CPU</code> is used, but may be manually forced to <code>0</code> if desired.</p>
 	</dd>
 
 	<dt id="RawValue"><code>RawValue</code> <small>Default: <code>0</code></small></dt>
@@ -128,6 +128,8 @@ title: 'UsageMonitor plugin'
 	<dt id="PIDToName"><code>PIDToName</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 	<p>When set to <code>1</code>, this will lookup and return the text name of the process associated with any PID returned as the value of an instance.</p>
+	
+	<br/><p><b>Note:</b> This is automatically set to <code>1</code> when <code>Alias=GPU</code>, <code>Alias=VRAM</code>, or <code>Alias=VRAMSHARED</code> is used, but may be manually forced to <code>0</code> if desired.</p>
 	</dd>
 </dl>
 
