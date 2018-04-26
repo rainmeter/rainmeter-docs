@@ -75,7 +75,7 @@ title: 'UsageMonitor plugin'
 	<br/><p><code>Index=0</code><br/>This will always return the total of all instances, and the string "Total". This is the default for Index.</p>
 	<p><code>Index=1</code>, <code>Index=2</code> etc.<br/>This will return the value of the instance in that position in the sorted list, and the name of the corresponding instance as the string value.</p>
 	
-	<br/><p><b>Note:</b> Any Index which returns a current value of <code>0</code> will return an empty string as the string value. An instance with a value of <code>0</code> can't be sorted by value, and can't exist in this indexed list, as it is indistinguishable from all other instances that are <code>0</code>.
+	<br/><p><b>Note:</b> Any Index which returns a current value of <code>0</code> will return an empty string as the string value. An instance without a value can't be sorted, and can't exist in this indexed list, as it is indistinguishable from all other instances that are <code>0</code>.
 	</dd>
 	
 	<dt id="Name"><code>Name</code> <small>Default: <em>None</em></small></dt>
