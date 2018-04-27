@@ -83,7 +83,7 @@ title: 'UsageMonitor plugin'
 	<p>Returns the current value of a specifically named instance in the counter. This is case-sensitive.</p>
 	
 	<p><b>Note:</b> If Name is defined, then any Index option is ignored.</p>
-	<br/><p><b>Note:</b> It recommended to use <code>Index=0</code> rather than <code>Name=_Total</code> when you want the total value of a counter. The instance _Total may or may not exist.</p>
+	<br/><p><b>Note:</b> It recommended to use <code>Index=0</code> rather than <code>Name=_Total</code> when you want the total value of a counter. The instance _Total may or may not exist. However, there are some counters that are percentages of multiple system resources, and <code>Name=_Total</code> may be preferred to return the "average" percentage, rather than the "total".</p>
 	
 	<br><p><b>Examples:</b> <code>Name=Rainmeter</code>, <code>Name=chrome</code></p>
 	</dd>
