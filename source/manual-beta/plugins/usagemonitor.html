@@ -115,7 +115,9 @@ title: 'UsageMonitor plugin'
 	
 	<dt id="Percent"><code>Percent</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-	<p>When set to <code>1</code>, this will return the value as a percentage of the _Total instance. This should be used with counters that don't return the raw value as a percentage.</p>
+	<p>This should be set to <code>1</code> when the counter you are getting does not return the value as a percentage from 0-100, and it has a _Total instance, and you want to return the value as a percentage of the _Total instance.</p>
+	
+	<p>It will not work, and should not be used, if the counter has no _Total instance, or already returns the value as a percentage value from 0-100 in the perfmon GUI. Errors will be produced in the log.</p>
 	
 	<br/><p><b>Note:</b> This is automatically set to <code>1</code> when <code>Alias=CPU</code> is used, but may be manually forced to <code>0</code> if desired.</p>
 	</dd>
