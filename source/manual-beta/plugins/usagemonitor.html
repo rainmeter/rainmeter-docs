@@ -88,22 +88,22 @@ title: 'UsageMonitor plugin'
 	<br><p><b>Examples:</b> <code>Name=Rainmeter</code>, <code>Name=chrome</code></p>
 	</dd>
 	
-	<dt id="Blacklist"><code>Blacklist</code> <small>Default: <code>_Total,Idle</code></small></dt>
+	<dt id="Blacklist"><code>Blacklist</code> <small>Default: <code>_Total|Idle</code></small></dt>
 	<dd>
-	<p>A comma-separated list of specific instance names to be ignored by the measure. All other instances will be used. This is case-sensitive.</p>
+	<p>A list of specific instance names to be ignored by the measure. Instance names are separated with the | (pipe) character. All other instances will be used. This is case-sensitive.</p>
 	
 	<p><b>Note:</b> The instance names <code>_Total</code> and <code>Idle</code> are in the Blacklist by default. If you want to define other names, be sure to add these back in as well. Setting any Blacklist replaces the default.</p>
 	
-	<br><p><b>Example:</b> <code>Blacklist=_Total,Idle,dwm,csrss,svchost,lsass,system,spoolsv</code></p>
+	<br><p><b>Example:</b> <code>Blacklist=_Total|Idle|dwm|csrss|svchost|lsass|system|spoolsv</code></p>
 	</dd>
 	
 	<dt id="Whitelist"><code>Whitelist</code> <small>Default: <em>None</em></small></dt>
 	<dd>
-	<p>A comma-separated list of specific instance names to be used by the measure. All other instances will be ignored. This is case-sensitive.</p>
+	<p>A list of specific instance names to be used by the measure. Instance names are separated with the | (pipe) character. All other instances will be ignored. This is case-sensitive.</p>
 	
 	<p><b>Note:</b> If an instance name appears in both Blacklist and Whitelist, Whitelist will win, and the name will be used.</p>
 	
-	<br><p><b>Example:</b> <code>Whitelist=Rainmeter,firefox,hexchat</code></p>
+	<br><p><b>Example:</b> <code>Whitelist=Rainmeter|firefox|hexchat</code></p>
 	</dd>
 	
 	<dt id="Rollup"><code>Rollup</code> <small>Default: <code>1</code></small></dt>
@@ -117,7 +117,7 @@ title: 'UsageMonitor plugin'
 	<dd>
 	<p>This should be set to <code>1</code> when the counter you are getting does not return the value as a percentage from 0-100, and it has a _Total instance, and you want to return the value as a percentage of the _Total instance.</p>
 	
-	<br/><p>It will not work, and should not be used, if the counter has no _Total instance, or already returns the value as a percentage value from 0-100 in the perfmon GUI. Errors will be produced in the log.</p>
+	<br/><p>It will not work, and should not be used, if the counter has no _Total instance, or already returns the value as a percentage value from 0-100 in the perfmon GUI.</p>
 	
 	<br/><p><b>Note:</b> This is automatically set to <code>1</code> when <code>Alias=CPU</code> is used, but may be manually forced to <code>0</code> if desired.</p>
 	</dd>
@@ -217,14 +217,14 @@ Measure=Plugin
 Plugin=UsageMonitor
 Alias=CPU
 Index=1
-Whitelist=Rainmeter,#Browser#,hexchat,CCleaner64
+Whitelist=Rainmeter|#Browser#|hexchat|CCleaner64
 
 [MeasureTop1byAlias]
 Measure=Plugin
 Plugin=UsageMonitor
 Alias=CPU
 Index=1
-Blacklist=_Total,Idle,dwm,wmpnetwk,csrss,svchost,lsass,System,system,Memory Compression,wininit,RemindersServer,spoolsv,IpOverUsbSvc
+Blacklist=_Total|Idle|dwm|wmpnetwk|csrss|svchost|lsass|System|system|Memory Compression|wininit|RemindersServer|spoolsv|IpOverUsbSvc
 
 [MeasureTop1byCounter]
 Measure=Plugin
@@ -233,7 +233,7 @@ Category=Process
 Counter=% Processor Time
 Index=1
 Percent=1
-Blacklist=_Total,Idle,dwm,wmpnetwk,csrss,svchost,lsass,System,system,Memory Compression,wininit,RemindersServer,spoolsv,IpOverUsbSvc
+Blacklist=_Total|Idle|dwm|wmpnetwk|csrss|svchost|lsass|System|system|Memory Compression|wininit|RemindersServer|spoolsv|IpOverUsbSvc
 
 [MeasureRainmeter]
 Measure=Plugin
@@ -279,7 +279,7 @@ Alias=GPU
 Index=1
 MinValue=0
 MaxValue=100
-Blacklist=dwm,csrss
+Blacklist=dwm|csrss
 
 [TotalVRAM]
 Measure=Plugin

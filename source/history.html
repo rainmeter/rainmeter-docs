@@ -6,6 +6,16 @@ title: 'Version History'
 <p>This page includes a brief description of changes included in each publicly-released version of Rainmeter. For a complete, line-by-line history of Rainmeter's source code changes since version <a href="#0.14">0.14</a>, see the project <a href="https://github.com/rainmeter/rainmeter/commits/master">commit history on GitHub</a></p>
 <div class="release-notes">
 
+<h3 id="r3048">May 1, 2018 - Revision 3048</h3>
+<ul>
+	<li><span class="badge badge-changed">Changed</span><b>UsageMonitor:</b> Blacklist and Whitelist have been changed to use the <code>|</code> (pipe) character as the separator, instead of <code>,</code> (comma).</li>
+	<li><span class="badge badge-changed">Changed</span><b>UsageMonitor:</b> Forced <code>Alias=GPU</code> and all measures where <code>Percent=1</code> is used to set a MaxValue of 100 on the measure.</li>
+	<li><span class="badge badge-changed">Changed</span><b>UsageMonitor:</b> A problem with a particular counter in a category no longer will cause the entire category to fail to be read.</li>
+	<li><span class="badge badge-changed">Changed</span><b>UsageMonitor:</b> If <code>Percent=1</code> is incorrectly used with an counter that has no _Total instance, the actual value will be returned instead of zero.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>UsageMonitor:</b> Corrected a possible crash with measures that had PID translation automatically turned on such as <code>Alias=GPU</code>.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>UsageMonitor:</b> Corrected an issue with <code>PIDToName</code> when used with languages other than English.</li>
+</ul>
+
 <h3 id="r3043">April 26, 2018 - Revision 3043</h3>
 <ul>
 	<li><span class="badge badge-added">Added</span><b>UsageMonitor:</b> Added new UsageMonitor plugin to interact with the Windows Performance Monitor. This plugin will deprecate the existing AdvancedCPU and PerfMon plugins, and should be used in place of them going forward. Documentation for this new plugin is at <a href="https://docs.rainmeter.net/manual-beta/plugins/usagemonitor/">UsageMonitor</a>.</li>
