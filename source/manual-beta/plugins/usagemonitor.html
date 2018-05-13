@@ -19,7 +19,7 @@ title: 'UsageMonitor plugin'
 
 <ul>
 <li><b>Name</b><br/>This will be the specific (case sensitive) text name of a single given instance, and will return the current value for that specific instance of a counter.</li>
-<li><b>Index</b><br/>This will be either <code>Index=0</code>, which will always return the current total of all instances for a given counter, or <code>Index=N</code>, which will return the instance at the defined point in a sorted list of all instances, with their values ordered from most to least. So for example, <code>Index=1</code> would return the current value and name of the instance with the highest value for that counter.</li>
+<li><b>Index</b><br/>This will be either <code>Index=0</code>, which will always return the current total of all instances for a given counter, <code>Index=-1</code>, which will always return the current average of all instances for a given counter,or <code>Index=N</code>, which will return the instance at the defined point in a sorted list of all instances, with their values ordered from most to least. So for example, <code>Index=1</code> would return the current value and name of the instance with the highest value for that counter.</li>
 </ul>
 
 <br/>
@@ -73,6 +73,7 @@ title: 'UsageMonitor plugin'
 	<p>All instances for the counter are evaluated, totaled and sorted in an indexed list from highest value to lowest value. Index is used to return the total, or one of these indexed values based on the position in the list. This list will include all instances that are not excluded by a Blacklist on the measure.</p>
 	
 	<br/><p><code>Index=0</code><br/>This will always return the total of all instances, and the string "Total". This is the default for Index.</p>
+	<p><code>Index=-1</code><br/>This will always return the average of all instances, and the string "Average".</p>
 	<p><code>Index=1</code>, <code>Index=2</code> etc.<br/>This will return the value of the instance in that position in the sorted list, and the name of the corresponding instance as the string value.</p>
 	
 	<br/><p><b>Note:</b> Any Index which returns a current value of <code>0</code> will return an empty string as the string value. An instance without a value can't be sorted, and can't exist in this indexed list, as it is indistinguishable from all other instances that are <code>0</code>.
