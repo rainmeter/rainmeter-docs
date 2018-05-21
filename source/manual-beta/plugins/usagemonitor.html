@@ -194,6 +194,35 @@ Text=%1 : %2B
 
 
 <h2>Examples</h2>
+
+<p>Some common uses for the UsageMonitor plugin might be:</p>
+
+<p><b>Total CPU used</b></p>
+``` ini
+[MeasureCPU]
+Measure=Plugin
+Plugin=UsageMonitor
+Alias=CPU
+Index=0
+```
+<p><b>Top process CPU usage and name</b></p>
+``` ini
+[MeasureTop]
+Measure=Plugin
+Plugin=UsageMonitor
+Alias=CPU
+Index=1
+```
+<p><b>CPU usage for a given process name</b></p>
+``` ini
+[MeasureRainmeter]
+Measure=Plugin
+Plugin=UsageMonitor
+Alias=CPU
+Name=Rainmeter
+```
+<p><b>Various other examples</b></p>
+
 ``` ini
 [Rainmeter]
 Update=1000
