@@ -6,6 +6,14 @@ title: 'Version History'
 <p>This page includes a brief description of changes included in each publicly-released version of Rainmeter. For a complete, line-by-line history of Rainmeter's source code changes since version <a href="#0.14">0.14</a>, see the project <a href="https://github.com/rainmeter/rainmeter/commits/master">commit history on GitHub</a></p>
 <div class="release-notes">
 
+<h3 id="r3088">June 15, 2018 - Revision 3088</h3>
+<ul>
+	<li><span class="badge badge-added">Added</span><b>Languages:</b> Added Arabic to supported localization languages.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> Changed the file encoding of Rainmeter.ini from ANSI to UTF-16 LE (Unicode). Existing installations will be converted if needed when Rainmeter is started or Layouts are loaded.</li>
+	<li><span class="badge badge-changed">Changed</span><b>FileView plugin:</b> Relative paths are now supported with the ContextMenu command.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Manage dialog:</b> Removed the "Archive plugins to @Vault" option in the Settings dialog. This is not something most users will want to change.<br/><br/>Note: This can still be controlled if desired, by using the following in Rainmeter.data:<br/><code>[SkinInstaller]</code><br/><code>ArchivePlugins=0/1</code></li>
+</ul>
+
 <h3 id="r3074">June 1, 2018 - Revision 3074</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated the Korean language localizations.</li>
