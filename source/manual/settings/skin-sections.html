@@ -33,14 +33,15 @@ title: 'Skin sections'
 
 	<dt id="AlwaysOnTop"><code>AlwaysOnTop</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>Defines the Z-position of the skin. Valid values are:
+		<p>Defines the Z-position (front to back) of the skin. Valid values are:
 		<ul>
-		<li><code>2</code>: Always on top. The skin will be on top of all (including topmost) windows.</li>
-		<li><code>1</code>: On top. The skin will be on top of normal windows.</li>
-		<li><code>0</code>: Normal. The skin will stay visible when showing the desktop and will be brought to the foreground on click.</li>
-		<li><code>-1</code>: Bottom. The skin will stay behind other windows.</li>
-		<li><code>-2</code>: On desktop. Similar to <code>0</code> except that the skin will stick to the desktop and cannot be brought to the foreground.</li>
+		<li><code>2</code>: Stay Topmost. The skin will stay visible when showing the desktop {Win-D} and will <b>actively</b> stay on top of all other windows including other skins. Two Rainmeter skins both set to Stay Topmost should not overlap, as this creates a conflict, and they will "flicker". <a href="#LoadOrder">LoadOrder</a> has no effect with this setting.</li>
+		<li><code>1</code>: Topmost. The skin will stay visible when showing the desktop {Win-D} and stay on top of other normal application windows. Two Rainmeter skins both set to Topmost will change relative to each other on click. Overlapping skins can use <a href="#LoadOrder">LoadOrder</a> to control the initial relative position.</li>
+		<li><code>0</code>: Normal. The skin will stay visible when showing the desktop {Win-D} and will be brought to the foreground of all other normal windows, including other skins, on click. Overlapping skins can use <a href="#LoadOrder">LoadOrder</a> to control the initial relative position.</li>
+		<li><code>-1</code>: Bottom. The skin will <b>not</b> stay visible when showing the desktop {Win-D} and stay behind other normal application windows. Two Rainmeter skins both set to Bottom will <b>not</b> change relative to each other on click. Overlapping skins should use <a href="#LoadOrder">LoadOrder</a> to control relative position.</li>
+		<li><code>-2</code>: On Desktop. The skin will stay visible when showing the desktop {Win-D} and stay behind other normal application windows. Two Rainmeter skins both set to On Desktop will <b>not</b> change relative to each other on click. Overlapping skins should use <a href="#LoadOrder">LoadOrder</a> to control relative position.</li>
 		</ul></p>
+		<p><b>Note:</b> If another application window explicitly sets itself to "top" <b>after</b> a skin set to Topmost is loaded, the application window will be in front until the skin is clicked or refreshed. Using Stay Topmost can overcome this, but again, you must not have two skins set to Stay Topmost that overlap.</p>
 	</dd>
 
 	<dt id="Draggable"><code>Draggable</code> <small>Default: <code>1</code></small></dt>
