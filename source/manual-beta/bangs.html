@@ -672,7 +672,7 @@ title: 'Bangs'
 
 <p>A list of all supported mouse action names is below at <a href="#MouseActionNames">Mouse Action Names</a>.</p>
 
-<h3 id="Meter">Meter bangs</h3>
+<h3 id="MeterBangs">Meter bangs</h3>
 <dl>
 	<dt id="DisableMouseAction"><code>!DisableMouseAction</code> <small>Parameters: <code><b>Meter</b>, <b>MouseAction(s)</b>, <em>Config</em></code></small></dt>
 	<dd>
@@ -726,7 +726,7 @@ title: 'Bangs'
 	</dd>
 </dl>
 
-<h3 id="MeterGroup">Meter group bangs</h3>
+<h3 id="MeterGroupBangs">Meter group bangs</h3>
 <dl>
 	<dt id="DisableMouseActionGroup"><code>!DisableMouseActionGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b>, <em>Config</em></code></small></dt>
 	<dd>
@@ -736,7 +736,7 @@ title: 'Bangs'
 		<li><code>Group</code> (required): Name of a meter group to apply the change to.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
-	<p><b>Example:</b> <code>!DisableMouseActionGroup MyGroup "LeftMouseUpAction"</code></p>
+	<p><b>Example:</b> <code>!DisableMouseActionGroup "LeftMouseUpAction" MyGroup</code></p>
 	</dd>
 	
 	<dt id="ClearMouseActionGroup"><code>!ClearMouseActionGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b>, <em>Config</em></code></small></dt>
@@ -747,7 +747,7 @@ title: 'Bangs'
 		<li><code>Group</code> (required): Name of a meter group to apply the change to.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
-	<p><b>Example:</b> <code>!ClearMouseActionGroup MyGroup "MouseOverAction|MouseLeaveAction"</code></p>
+	<p><b>Example:</b> <code>!ClearMouseActionGroup "MouseOverAction|MouseLeaveAction" MyGroup</code></p>
 	</dd>
 	
 	<dt id="EnableMouseActionGroup"><code>!EnableMouseActionGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b>, <em>Config</em></code></small></dt>
@@ -758,7 +758,7 @@ title: 'Bangs'
 		<li><code>Group</code> (required): Name of a meter group to apply the change to.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
-	<p><b>Example:</b> <code>!EnableMouseActionGroup MyGroup "MouseOverAction|MouseLeaveAction"</code></p>
+	<p><b>Example:</b> <code>!EnableMouseActionGroup "MouseOverAction|MouseLeaveAction" MyGroup</code></p>
 	</dd>
 	
 	<dt id="ToggleMouseActionGroup"><code>!ToggleMouseActionGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b>, <em>Config</em></code></small></dt>
@@ -769,11 +769,11 @@ title: 'Bangs'
 		<li><code>Group</code> (required): Name of a meter group to apply the change to.</li>
 		<li><code>Config</code> (optional)</li>
 		</ul>
-	<p><b>Example:</b> <code>!ToggleMouseActionGroup MyGroup "*"</code></p>
+	<p><b>Example:</b> <code>!ToggleMouseActionGroup "*" MyGroup</code></p>
 	</dd>
 </dl>
 
-<h3 id="SkinGroup">Skin group bangs</h3>
+<h3 id="SkinGroupBangs">Skin group bangs</h3>
 <p><b>Note:</b> To effect changes to the [Rainmeter] section of the current skin, rather than a group of skins, simply use the meter bangs above, with <code>Rainmeter</code> defined as the Meter parameter.</p>
 <dl>
 	<dt id="DisableMouseActionSkinGroup"><code>!DisableMouseActionSkinGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b></code></small></dt>
@@ -783,7 +783,7 @@ title: 'Bangs'
 		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
 		<li><code>Group</code> (required): Name of a skin group to apply the change to.</li>
 		</ul>
-	<p><b>Example:</b> <code>!DisableMouseActionSkinGroup MySkinGroup "LeftMouseUpAction"</code></p>
+	<p><b>Example:</b> <code>!DisableMouseActionSkinGroup "LeftMouseUpAction" MySkinGroup</code></p>
 	</dd>
 	
 	<dt id="ClearMouseActionSkinGroup"><code>!ClearMouseActionSkinGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b></code></small></dt>
@@ -793,7 +793,7 @@ title: 'Bangs'
 		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
 		<li><code>Group</code> (required): Name of a skin group to apply the change to.</li>
 		</ul>
-	<p><b>Example:</b> <code>!ClearMouseActionSkinGroup MySkinGroup "MouseOverAction|MouseLeaveAction"</code></p>
+	<p><b>Example:</b> <code>!ClearMouseActionSkinGroup "MouseOverAction|MouseLeaveAction" MySkinGroup</code></p>
 	</dd>
 	
 	<dt id="EnableMouseActionSkinGroup"><code>!EnableMouseActionSkinGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b></code></small></dt>
@@ -803,7 +803,7 @@ title: 'Bangs'
 		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
 		<li><code>Group</code> (required): Name of a skin group to apply the change to.</li>
 		</ul>
-	<p><b>Example:</b> <code>!EnableMouseActionSkinGroup MySkinGroup "MouseOverAction|MouseLeaveAction"</code></p>
+	<p><b>Example:</b> <code>!EnableMouseActionSkinGroup "MouseOverAction|MouseLeaveAction" MySkinGroup</code></p>
 	</dd>
 	
 	<dt id="ToggleMouseActionSkinGroup"><code>!ToggleMouseActionSkinGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b></code></small></dt>
@@ -813,7 +813,7 @@ title: 'Bangs'
 		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
 		<li><code>Group</code> (required): Name of a skin group to apply the change to.</li>
 		</ul>
-	<p><b>Example:</b> <code>!ToggleMouseActionSkinGroup MySkinGroup "*"</code></p>
+	<p><b>Example:</b> <code>!ToggleMouseActionSkinGroup "*" MySkinGroup</code></p>
 	</dd>
 </dl>
 
