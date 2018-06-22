@@ -6,6 +6,13 @@ title: 'Version History'
 <p>This page includes a brief description of changes included in each publicly-released version of Rainmeter. For a complete, line-by-line history of Rainmeter's source code changes since version <a href="#0.14">0.14</a>, see the project <a href="https://github.com/rainmeter/rainmeter/commits/master">commit history on GitHub</a></p>
 <div class="release-notes">
 
+<h3 id="r3097">June 22, 2018 - Revision 3097</h3>
+<ul>
+	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> Added the full path to the currently running skin .ini file to the hidden window "title" of the config window. This is in support of plugins that may be written to use SendMessage() to detect if a particular config is running, and if so, to use the window title to retrieve the "variant" name of the running skin.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated the Chinese Traditional language localizations.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Rainmeter:</b> Corrected an issue where if Rainmeter was terminated, either due to a crash, or by using Task Manager, the Notification Area icon for Rainmeter would not be removed, and multiple "ghost" icons could result until you moved the cursor over them.</li>
+</ul>
+
 <h3 id="r3088">June 15, 2018 - Revision 3088</h3>
 <ul>
 	<li><span class="badge badge-added">Added</span><b>Languages:</b> Added Arabic to supported localization languages.</li>
