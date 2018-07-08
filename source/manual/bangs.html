@@ -12,6 +12,8 @@ title: 'Bangs'
 <li><a href="#Skin">Skin bangs</a></li>
 <li><a href="#Meter">Meter bangs</a></li>
 <li><a href="#Measure">Measure bangs</a></li>
+<li><a href="#MouseAction">Mouse Action state bangs</a></li>
+<li><a href="#Deprecated"><em>Deprecated bangs</a></em></li>
 </ul>
 
 <p>Bangs can also be used from the Windows command line as a parameter to the Rainmeter.exe executable. Example: <code>"C:\Program Files\Rainmeter\Rainmeter.exe" !RefreshApp</code>.</p>
@@ -439,7 +441,7 @@ title: 'Bangs'
 	<dd>
 		Overrides the setting of the <a href="!skins/rainmeter-section/#Update">Update</a> option in [Rainmeter] and immediately updates the skins in the specified group, all <a href="!measures/">measures</a> and <a href="!meters/">meters</a>. This does not override any UpdateDivider options on <a href="!measures/general-options/#UpdateDivider">measures</a> or <a href="!meters/general-options/#UpdateDivider">meters</a>.
 		<ul>
-		<li><code>Group</code> (required): Group to update.</li>
+		<li><code>Group</code> (required): Group to Update.</li>
 		</ul>
 	</dd>
 
@@ -654,6 +656,198 @@ title: 'Bangs'
 		<li><code>Config</code> (optional)</li>
 		</ul>
 	</dd>
+</dl>
+
+<h2 id="MouseAction">Mouse Action state bangs</h2>
+<p>These bangs set the state of mouse detection / action on one or more meters or the skin background.</p>
+<p>The states involved are:</p>
+<ul>
+<li><b>Enabled:</b> The actions defined on the meter or skin background are detected and executed normally.</li>
+<li><b>Disabled:</b> The actions defined on the meter or skin background are detected, but cause no change to the cursor, and take no action. This can be used to "block" mouse actions on meters or the skin behind, causing them to be ignored, while not taking any action itself.<br/><em>This is similar to using <code>!SetOption</code> to set the value of a mouse action to <code>[]</code> (an empty action).</em></li>
+<li><b>Cleared:</b> The actions defined on the meter or skin background are in effect "removed", and are not detected. This will allow mouse actions on meters or the skin background behind the meter to be detected and executed.<br/><em>This is similar to using <code>!SetOption</code> to set the value of a mouse action to <code>""</code> (an empty string).</em></li>
+</ul><br/>
+<p>When action(s) are either Disabled or Cleared, simply returning the state to Enabled, either explicitly or with a toggle, will return the actions to their original defined state, without having to re-define them in a <code>!SetOption</code>.</p>
+
+<p>Mouse actions on meters or the skin background can be set to an initial state of Disabled or Cleared by using the <a href="!skins/rainmeter-section/#OnRefreshAction">OnRefreshAction</a> action in the <code>[Rainmeter]</code> section of the skin.</p>
+
+<p>A list of all supported mouse action names is below at <a href="#MouseActionNames">Mouse Action Names</a>.</p>
+
+<h3 id="MeterBangs">Meter bangs</h3>
+<dl>
+	<dt id="DisableMouseAction"><code>!DisableMouseAction</code> <small>Parameters: <code><b>Meter</b>, <b>MouseAction(s)</b>, <em>Config</em></code></small></dt>
+	<dd>
+	<p>Disables the mouse action(s) defined in the MouseAction parameter.</p>
+		<ul>
+		<li><code>Meter</code> (required): Name of a meter or <code>*</code> (all) to apply the change to.</li>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	<p><b>Note:</b> Meter can also be the <code>[Rainmeter]</code> section.</p>
+	<p><b>Examples:</b><br/>
+	<code>!DisableMouseAction MyMeter "LeftMouseUpAction"</code><br/>
+	<code>!DisableMouseAction MyMeter "MouseOverAction|MouseLeaveAction"</code><br/>
+	<code>!DisableMouseAction Rainmeter "MouseScrollDownAction|MouseScrollUpAction"</code></p>
+	</dd>
+	
+	<dt id="ClearMouseAction"><code>!ClearMouseAction</code> <small>Parameters: <code><b>Meter</b>, <b>MouseAction(s)</b>, <em>Config</em></code></small></dt>
+	<dd>
+	<p>Clears the mouse action(s) defined in the MouseAction parameter.</p>
+		<ul>
+		<li><code>Meter</code> (required): Name of a meter or <code>*</code> (all) to apply the change to.</li>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	<p><b>Note:</b> Meter can also be the <code>[Rainmeter]</code> section.</p>
+	<p><b>Example:</b> <code>!ClearMouseAction MyMeter "MouseOverAction|MouseLeaveAction"</code></p>
+	</dd>
+	
+	<dt id="EnableMouseAction"><code>!EnableMouseAction</code> <small>Parameters: <code><b>Meter</b>, <b>MouseAction(s)</b>, <em>Config</em></code></small></dt>
+	<dd>
+	<p>Enables the original mouse action(s) defined in the MouseAction parameter.</p>
+		<ul>
+		<li><code>Meter</code> (required): Name of a meter or <code>*</code> (all) to apply the change to.</li>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	<p><b>Note:</b> Meter can also be the <code>[Rainmeter]</code> section.</p>
+	<p><b>Example:</b> <code>!EnableMouseAction MyMeter "MouseOverAction|MouseLeaveAction"</code></p>
+	</dd>
+	
+	<dt id="ToggleMouseAction"><code>!ToggleMouseAction</code> <small>Parameters: <code><b>Meter</b>, <b>MouseAction(s)</b>, <em>Config</em></code></small></dt>
+	<dd>
+	<p>Toggles the mouse action(s) defined in the MouseAction parameter between the enabled and disabled/cleared state. <b>Disabled</b> is the default toggle state, but will change to the Cleared state if the mouse action was cleared beforehand. In effect, this bang will remember the last non-enabled state, and use it to toggle between that and the Enabled state.</p>
+		<ul>
+		<li><code>Meter</code> (required): Name of a meter or <code>*</code> (all) to apply the change to.</li>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	<p><b>Note:</b> Meter can also be the <code>[Rainmeter]</code> section.</p>
+	<p><b>Example:</b> <code>!ToggleMouseAction MyMeter "*"</code></p>
+	</dd>
+</dl>
+
+<h3 id="MeterGroupBangs">Meter group bangs</h3>
+<dl>
+	<dt id="DisableMouseActionGroup"><code>!DisableMouseActionGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b>, <em>Config</em></code></small></dt>
+	<dd>
+	<p>Disables the mouse action(s) defined in the MouseAction parameter. Acts on a named Group of meters.</p>
+		<ul>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Group</code> (required): Name of a meter group to apply the change to.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	<p><b>Example:</b> <code>!DisableMouseActionGroup "LeftMouseUpAction" MyGroup</code></p>
+	</dd>
+	
+	<dt id="ClearMouseActionGroup"><code>!ClearMouseActionGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b>, <em>Config</em></code></small></dt>
+	<dd>
+	<p>Clears the mouse action(s) defined in the MouseAction parameter. Acts on a named Group of meters.</p>
+		<ul>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Group</code> (required): Name of a meter group to apply the change to.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	<p><b>Example:</b> <code>!ClearMouseActionGroup "MouseOverAction|MouseLeaveAction" MyGroup</code></p>
+	</dd>
+	
+	<dt id="EnableMouseActionGroup"><code>!EnableMouseActionGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b>, <em>Config</em></code></small></dt>
+	<dd>
+	<p>Enables the original mouse action(s) defined in the MouseAction parameter. Acts on a named Group of meters.</p>
+		<ul>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Group</code> (required): Name of a meter group to apply the change to.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	<p><b>Example:</b> <code>!EnableMouseActionGroup "MouseOverAction|MouseLeaveAction" MyGroup</code></p>
+	</dd>
+	
+	<dt id="ToggleMouseActionGroup"><code>!ToggleMouseActionGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b>, <em>Config</em></code></small></dt>
+	<dd>
+	<p>Toggles the mouse action(s) defined in the MouseAction parameter between the enabled and disabled/cleared state. <b>Disabled</b> is the default toggle state, but will change to the Cleared state if the mouse action was cleared beforehand. In effect, this bang will remember the last non-enabled state, and use it to toggle between that and the Enabled state. Acts on a named Group of meters.</p>
+		<ul>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Group</code> (required): Name of a meter group to apply the change to.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+	<p><b>Example:</b> <code>!ToggleMouseActionGroup "*" MyGroup</code></p>
+	</dd>
+</dl>
+
+<h3 id="SkinGroupBangs">Skin group bangs</h3>
+<p><b>Note:</b> To effect changes to the [Rainmeter] section of the current skin, rather than a group of skins, simply use the meter bangs above, with <code>Rainmeter</code> defined as the Meter parameter.</p>
+<dl>
+	<dt id="DisableMouseActionSkinGroup"><code>!DisableMouseActionSkinGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b></code></small></dt>
+	<dd>
+	<p>Disables the mouse action(s) defined in the MouseAction parameter. Acts on the <code>[Rainmeter]</code> section of a named Group of skins.</p>
+		<ul>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Group</code> (required): Name of a skin group to apply the change to.</li>
+		</ul>
+	<p><b>Example:</b> <code>!DisableMouseActionSkinGroup "LeftMouseUpAction" MySkinGroup</code></p>
+	</dd>
+	
+	<dt id="ClearMouseActionSkinGroup"><code>!ClearMouseActionSkinGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b></code></small></dt>
+	<dd>
+	<p>Clears the mouse action(s) defined in the MouseAction parameter. Acts on the <code>[Rainmeter]</code> section of a named Group of skins.</p>
+		<ul>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Group</code> (required): Name of a skin group to apply the change to.</li>
+		</ul>
+	<p><b>Example:</b> <code>!ClearMouseActionSkinGroup "MouseOverAction|MouseLeaveAction" MySkinGroup</code></p>
+	</dd>
+	
+	<dt id="EnableMouseActionSkinGroup"><code>!EnableMouseActionSkinGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b></code></small></dt>
+	<dd>
+	<p>Enables the original mouse action(s) defined in the MouseAction parameter. Acts on the <code>[Rainmeter]</code> section of a named Group of skins.</p>
+		<ul>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Group</code> (required): Name of a skin group to apply the change to.</li>
+		</ul>
+	<p><b>Example:</b> <code>!EnableMouseActionSkinGroup "MouseOverAction|MouseLeaveAction" MySkinGroup</code></p>
+	</dd>
+	
+	<dt id="ToggleMouseActionSkinGroup"><code>!ToggleMouseActionSkinGroup</code> <small>Parameters: <code><b>MouseAction(s)</b>, <b>Group</b></code></small></dt>
+	<dd>
+	<p>Toggles the mouse action(s) defined in the MouseAction parameter between the enabled and disabled/cleared state. <b>Disabled</b> is the default toggle state, but will change to the Cleared state if the mouse action was cleared beforehand. In effect, this bang will remember the last non-enabled state, and use it to toggle between that and the Enabled state. Acts on the <code>[Rainmeter]</code> section of a named Group of skins.</p>
+		<ul>
+		<li><code>MouseAction</code> (required): Name of one or more types of mouse actions or <code>*</code> (all) to apply the change to. Names are separated with the <code>|</code> (pipe) character.</li>
+		<li><code>Group</code> (required): Name of a skin group to apply the change to.</li>
+		</ul>
+	<p><b>Example:</b> <code>!ToggleMouseActionSkinGroup "*" MySkinGroup</code></p>
+	</dd>
+</dl>
+
+<dl>
+	<dt id="MouseActionNames"class="sub"><code>Mouse Action Names</code></dt>
+	<dd>
+	<p>A list of supported mouse action name(s) to be used in the <code>MouseAction</code> parameter of the above Mouse Action state bangs. Names are separated with the <code>|</code> (pipe) character. Use <code>*</code> to apply the change to all mouse actions.</code></p>
+	<ul>
+	<li>LeftMouseUpAction</li>
+	<li>LeftMouseDownAction</li>
+	<li>LeftMouseDoubleClickAction</li>
+	<li>RightMouseUpAction</li>
+	<li>RightMouseDownAction</li>
+	<li>RIghtMouseDoubleClickAction</li>
+	<li>MiddleMouseUpAction</li>
+	<li>MiddleMouseDownAction</li>
+	<li>MiddleMouseDoubleClickAction</li>
+	<li>X1MouseUpAction</li>
+	<li>X1MouseDownAction</li>
+	<li>X1MouseDoubleClickAction</li>
+	<li>X2MouseUpAction</li>
+	<li>X2MouseDownAction</li>
+	<li>X2MouseDoubleClickAction</li>
+	<li>MouseScrollUpAction</li>
+	<li>MouseScrollDownAction</li>
+	<li>MouseScrollLeftAction</li>
+	<li>MouseScrollRightAction</li>
+	<li>MouseOverAction</li>
+	<li>MouseLeaveAction</li>
+	</ul>
+	<p><b>Examples:</b><br/>
+	<code>!DisableMouseAction MyMeter "LeftMouseUpAction"</code><br/>
+	<code>!EnableMouseAction MyMeter "MouseOverAction|MouseLeaveAction"</code><br/>
+	<code>!ToggleMouseAction Rainmeter "MouseScrollDownAction|MouseScrollUpAction"</code></p>
 </dl>
 
 <h2 id="Deprecated">Deprecated bangs</h2>

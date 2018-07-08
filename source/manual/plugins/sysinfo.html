@@ -19,7 +19,8 @@ title: 'SysInfo plugin'
 		<h4 id="GeneralSystem">General system values</h4>
 		<ul>
 			<li><code>COMPUTER_NAME</code> : [String] The computer's name as specified in the system settings.</li>
-			<li><code>USER_NAME</code> : [String] The name of the current Windows user.</li>
+			<li><code>USER_NAME</code> : [String] The name of the current Windows user account.</li>
+			<li><code>USER_LOGONTIME</code> : [Number] A timestamp number (number of seconds since January 1, 1601) reflecting the date and time the current user account logged onto Windows. Use with a <a href="https://docs.rainmeter.net/manual/measures/time/">Time measure</a> to get a formatted string of the date/time, or subtract from the current time and use with an <a href="https://docs.rainmeter.net/manual/measures/uptime/">Uptime measure</a> to get a formatted string of the elapsed time.</li>			
 			<li><code>OS_VERSION</code> : [String] The version of Windows. E.g. <code>Windows 10.0</code>.</li>
 			<li><code>OS_BITS</code> : [Number] Returns whether the version of Windows is <code>32</code> or <code>64</code> bit.</li>
 			<li><code>PAGESIZE</code> : [Number] The size in bytes of the current contiguous page size allocated for system memory.</li>
