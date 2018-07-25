@@ -488,9 +488,9 @@ MyPath=0,0 | LineTo 200,0 | ArcTo 200,100 | CurveTo 0,0,100,100
 
 			<dt id="StrokeDashOffset" class="sub"><code>StrokeDashOffset</code> <small>Default: <code><b>0</b></code></small></dt>
 			<dd>
-				<p>Defines an offset in pixels where the first dash will start relative to the start of the shape.</p>
+				<p>Defines an offset where the first dash will start relative to the start of the shape. These are not numbers of pixels, but are a multiplication factor based on the StrokeWidth. So 0.0 would be none, 0.5 would be half the value of the SrokeWidth and 1.5 would be one and a half the value of the StrokeWidth</p>
 
-				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,2 | StrokeDashOffset 10</code></p>
+				<p><b>Example:</b> <code>Shape=Rectangle 0,0,100,100 | StrokeWidth 4 | StrokeDashes 2,2 | StrokeDashOffset 1.0</code></p>
 			</dd>
 		<dl>
 
