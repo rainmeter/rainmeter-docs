@@ -8,7 +8,7 @@ title: 'Win7Audio plugin'
 <p>The measure will return different "string" and "number" values.</p>
 
 <ul>
-<li><b>String:</b> The name of the current sound device. This will be used when the measure is bound to a <a href="!meters/string/">String</a> meter, or if the string <a href="!variables/section-variables/#MeasureNone">[SectionVariable]</a> value of the measure is used.</li>
+<li><b>String:</b> The name of the current sound device. This will be used when the measure is bound to a <a href="!meters/string/">String</a> meter, or if the string <a href="!variables/section-variables/#MeasureNone">[SectionVariable]</a> value of the measure is used.<br/><br/>If there is a problem detecting or interacting with the sound device, the following error strings are possible:<br/><code>ERROR - Getting Device Description</code><br/><code>ERROR - Getting Property</code><br/><code>ERROR - Getting Default Device</code><br/><br/></li>
 <li><b>Number:</b> The percentage (0-100) of current volume level. This will be used when the measure is bound to a meter which requires a <a href="!measures/#Percentage">percentage</a>. This numeric value can also be used in a String meter, by setting the <a href="!meters/string/#Text">Text</a> option of the meter to the numeric <a href="!variables/section-variables/#Colon">[SectionVariable:]</a> value of the measure.</li>
 </ul>
 
