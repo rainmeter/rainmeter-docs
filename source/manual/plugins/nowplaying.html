@@ -4,6 +4,7 @@ permalink: manual/plugins/nowplaying/
 title: 'Redirect to measures'
 ---
 <script>
+   // Redirects the old location for NowPlaying from plugins to measures. Do not remove
    currentLocation = window.location;
    newPath = currentLocation.pathname.replace('/plugins/', '/measures/');
    location.replace(currentLocation.protocol+'//'+currentLocation.hostname+newPath+currentLocation.hash);

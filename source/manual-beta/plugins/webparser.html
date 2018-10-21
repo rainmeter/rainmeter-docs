@@ -4,6 +4,7 @@ permalink: manual-beta/plugins/webparser/
 title: 'Redirect to measures'
 ---
 <script>
+   // Redirects the old location for WebParser from plugins to measures. Do not remove
    currentLocation = window.location;
    newPath = currentLocation.pathname.replace('/plugins/', '/measures/');
    location.replace(currentLocation.protocol+'//'+currentLocation.hostname+newPath+currentLocation.hash);

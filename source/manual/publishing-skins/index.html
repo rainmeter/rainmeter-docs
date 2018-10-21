@@ -1,0 +1,11 @@
+---
+layout: docs
+permalink: manual/publishing-skins/
+title: 'Redirect to distributing-skins'
+---
+<script>
+   // Redirects the old location for publishing-skins to distributing-skins. Do not remove
+   currentLocation = window.location;
+   newPath = currentLocation.pathname.replace('/publishing-skins/', '/distributing-skins/');
+   location.replace(currentLocation.protocol+'//'+currentLocation.hostname+newPath+currentLocation.hash);
+</script>

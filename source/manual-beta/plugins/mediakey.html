@@ -1,9 +1,10 @@
 ---
 layout: docs
-permalink: manual-beta/plugins/mediakey/
+permalink: manual/plugins/mediakey/
 title: 'Redirect to measures'
 ---
 <script>
+   // Redirects the old location for MediaKey from plugins to measures. Do not remove
    currentLocation = window.location;
    newPath = currentLocation.pathname.replace('/plugins/', '/measures/');
    location.replace(currentLocation.protocol+'//'+currentLocation.hostname+newPath+currentLocation.hash);
