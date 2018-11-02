@@ -15,8 +15,8 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="LogoLighter.svg"
-   inkscape:export-filename="C:\Users\Jeffrey\Documents\Graphics\Rainmeter Logos\RainmeterIconLogo\BlueOrangeTrans\LogoBlueOrangeTrans.png"
+   sodipodi:docname="logo_nav.svg"
+   inkscape:export-filename="C:\Users\Jeffrey\Documents\Graphics\Rainmeter Logos\RainmeterIconLogo\logo_nav_white.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
@@ -29,17 +29,17 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="42.461296"
+     inkscape:cx="78.847403"
      inkscape:cy="34.720676"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1599"
+     inkscape:window-height="915"
+     inkscape:window-x="94"
+     inkscape:window-y="40"
+     inkscape:window-maximized="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -59,7 +59,7 @@
      transform="translate(0,-280.33125)">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.12988949px;line-height:1.25;font-family:Aller;-inkscape-font-specification:'Aller Bold';letter-spacing:0px;word-spacing:0px;fill:#3384bc;fill-opacity:1;stroke:none;stroke-width:0.27824724;"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:11.12988949px;line-height:1.25;font-family:Aller;-inkscape-font-specification:'Aller Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.27824724;"
        x="10.808167"
        y="306.63397"
        id="text4558"
@@ -70,10 +70,10 @@
          id="tspan4556"
          x="10.808167"
          y="306.63397"
-         style="fill:#3384bc;fill-opacity:1;stroke-width:0.27824724;">Rainmeter</tspan></text>
+         style="fill:#ffffff;fill-opacity:1;stroke-width:0.27824724;">Rainmeter</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.14020252px;line-height:1.25;font-family:Aller;-inkscape-font-specification:'Aller Bold';letter-spacing:0px;word-spacing:0px;fill:#2a6d9b;fill-opacity:1;stroke:none;stroke-width:0.28228649"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.14020252px;line-height:1.25;font-family:Aller;-inkscape-font-specification:'Aller Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.28228649;"
        x="11.334353"
        y="315.21875"
        id="text4562"
@@ -84,9 +84,9 @@
          id="tspan4560"
          x="11.334353"
          y="315.21875"
-         style="font-size:4.14020252px;fill:#2a6d9b;fill-opacity:1;stroke-width:0.28228649">desktop customization tool</tspan></text>
+         style="font-size:4.14020252px;fill:#ffffff;fill-opacity:1;stroke-width:0.28228649;">desktop customization tool</tspan></text>
     <path
-       style="fill:#f0f0ff;fill-opacity:1;stroke:#3384bc;stroke-width:0.84174442;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ffffff;fill-opacity:0;stroke:#ffffff;stroke-width:0.84174442;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path3852-9"
        d="m 9.7578305,291.02228 c 0,2.30077 -2.0201864,4.18067 -4.4893037,4.18067 -2.4691165,0 -4.48930323,-1.8799 -4.48930323,-4.18067 0,-2.30077 4.48930323,-9.28725 4.48930323,-9.28725 0,0 4.4893037,6.98648 4.4893037,9.28725 z"
        class="st0"
@@ -94,7 +94,7 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
     <path
-       style="fill:#e09028;stroke-width:0.28058144"
+       style="fill:#ffffff;stroke-width:0.28058144;fill-opacity:1"
        id="path3854-7"
        d="m 5.3040465,290.48882 c -2.3503827,-1.61254 -3.1088751,-0.008 -3.1088751,-0.008 -0.054032,0.10766 -0.077483,0.2419 -0.077483,0.34593 0,1.61253 1.4303241,2.91296 3.2133735,2.91296 1.7830487,0 3.2419067,-1.30043 3.2419067,-2.91296 0,-0.10403 -0.027012,-0.20807 -0.027012,-0.33811 0,0 -0.9185405,1.61253 -3.2419073,0 z"
        class="st1"
