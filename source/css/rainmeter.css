@@ -110,7 +110,7 @@ blockquote {
 .navbar {
   font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   padding: 1.5rem 0 !important;
-  background-color: rgb(7,27,62);
+  background-color: rgb(18,58,111);
   z-index: 2;
 }
 .navbar button:focus {
