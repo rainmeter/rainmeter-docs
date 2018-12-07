@@ -12,12 +12,12 @@ title: 'Container'
 
 	<em>Think sliding content, a menu or launcher for instance, into view without needing to start outside the entire skin.</em><br/><br/></li>
 
-	<li>The content will be "masked" into any solid pixels in the container meter. So only the part of the content that is masked into a "solid" pixel in the container will be drawn.<br/><br/>
+	<li>The content will be "masked" into any solid pixels in the container meter. So only the part of the content that is masked into a solid pixel in the container will be drawn.<br/><br/>
 
 	<em>Think masking an image into a String meter, or an image into a Shape meter.</em><br/><br/></li>
 </ul>
 
-<p>Any "content" meter(s) will be positioned relative to the "container", and the "content" will only be drawn on solid pixels of the container. Any content that is positioned outside the container, or that is on a transparent pixel in the container, will not be drawn. Content outside the container is truncated, and in effect doesn't exist. It will not impact the size of the skin.</p>
+<p>Any "content" meter(s) will be positioned relative to the "container", and the content will only be drawn on solid pixels of the container. Any content that is positioned outside the container, or that is on a transparent pixel in the container, will not be drawn. Content outside the container is truncated, and in effect doesn't exist. It will not impact the size of the skin.</p>
 
 <p>Any meter type can be a "container" and any meter type can be "content".</p>
 
@@ -48,9 +48,14 @@ title: 'Container'
 
 <h2 id="Examples">Examples</h2>
 
-<p>While the code here is for a couple of simple skins that demonstrate using <code>Container</code>, the .rmskin at the end of this page is a much more robust suite of skins demonstrating several uses for the funtionality.</p>
+<p>While the example code here is for two simple skins that demonstrate using <code>Container</code>, you can download a suite of skins demonstrating several ways to use the funtionality.</p>
 
-<p><b>Sliding a "content" meter in and out of a "container" meter.</b></p>
+<div class="exampleprev">
+	<a href="!examples/ExamplesContainer.rmskin"><img src="!img/container/ExamplesContainer.png"></a>
+	<p><b>Download the .rmskin.</b></p>	
+</div>
+
+<br/><br/><p><b>Sliding a "content" meter in and out of a "container" meter.</b></p>
 ``` ini
 [Rainmeter]
 Update=1000
@@ -180,15 +185,6 @@ Container=MeterTemperatureMask
 ```
 <div class="exampleprev">
 	<p><img src="!img/container/NiceWeather.jpg"/></p>
-</div>
-
-<br/><br/><p><b>You can download the above examples, and several others, as a .rmskin.</b></p>
-
-<div float="left">
-
-</div>
-<div class="exampleprev">
-	<a href="!examples/ExamplesContainer.rmskin"><img src="!img/container/ExamplesContainer.png"></a>
 </div>
 
 </div>
