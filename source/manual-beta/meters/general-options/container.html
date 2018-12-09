@@ -31,11 +31,11 @@ title: 'Container'
 <h2 id="Usage">Usage Notes</h2>
 
 <ul>
-	<li>Meters that are "content" meters, that have the <code>Container</code> option on them, are positioned relative to the starting X and Y of the meter being used as a "container". Any X and Y on the first content meter in a container will in effect use the "r" relative positioning option, relative to their container. No actual "r" option is needed.<br/><br/>
+	<li>Meters that are "content" meters, that have the <code>Container</code> option on them, are positioned relative to the starting X and Y of the meter being used as a "container". Any X and Y on the first content meter in a container will in effect use the "r" relative positioning option, relative to their container. No actual "r" option is needed.</li>
 
 	<li>Meters that are "content" meters, and follow other content meters in a container, will be relative to each other. In this case, use the "r" and "R" options to position them relative to each other, as you normally would.</li>
 
-	<li>Meters that follow "content" meters, but are NOT content themselves, that have no Container option on them, will be relative to the first preceding meter that is not "content".</li>
+	<li>Meters that follow "content" meters, but are NOT content themselves, that have no Container option on them, will be relative to the last preceding meter that is not "content".<br/><br/></li>
 
 	<li>A meter being used as a "container" will NOT be drawn itself. In a sense, it is just the "shape" of its solid pixels that is being used. If you want the container meter itself to be visible, you will need to create a copy of the meter, not used as a container.</li>
 
