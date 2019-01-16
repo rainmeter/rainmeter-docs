@@ -75,6 +75,8 @@ Shape2=Rectangle 20,10,50,50 | Extend MySharedModifiers
 MySharedModifiers=Fill Color 0,0,0,255 | StrokeWidth 4 | Stroke Color 255,255,255,255
 ```
 
+<p><b>Note:</b> The <code>EndX</code> and <code>EndY</code> parameters in the Line shape, as well as in the Arc and Curve shapes, and the <code>LineTo</code>, <code>ArcTo</code>, <code>CurveTo</code> parameters in the Path shape, are <em>not inclusive</em>. The line is drawn <em>up to</em> the points defined by EndX and EndY. A line drawn from pixel 0 to pixel 100 will be drawn on pixels 0 through 99, and be 100 pixels in length.</p>
+
 <h2>Options</h2>
 <dl>
 	<dt>General meter options</dt>
@@ -154,9 +156,7 @@ Shape2=Rectangle 50,50,50,50,25 | Fill Color 255,255,255,255 | StrokeWidth 4
 						<li><code>EndY</code> (required): Y coordinate of the ending point of the line.</li>
 					</ul>
 				</p>
-
-				<p><b>Note:</b> The <code>EndX</code> and <code>EndY</code> parameters in the Line shape, as well as in the Arc and Curve shapes, and the <code>LineTo</code>, <code>ArcTo</code>, <code>CurveTo</code> parameters in the Path shape, are <em>not inclusive</em>. The line is drawn <em>up to</em> the points defined by EndX and EndY. A line drawn from pixel 0 to pixel 100 will be drawn on pixels 0 through 99, and be 100 pixels in length.</p><br/>
-
+				
 				<p><b>Example:</b><br/>
 					<code>Shape=Line 50,50,200,200</code><br/>
 				</p>
