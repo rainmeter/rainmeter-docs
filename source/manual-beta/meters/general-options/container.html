@@ -3,7 +3,7 @@ layout: docs
 permalink: manual-beta/meters/general-options/container/
 title: 'Container'
 ---
-<p>Define a meter to be used as a "container" for the "contents" of this meter.</p>
+<p>Define a meter to be used as a "container" for the "content" of this meter.</p>
 
 <p><b>The intent of this is two-fold:</b></p>
 
@@ -17,10 +17,6 @@ title: 'Container'
 	<em>Think masking an image into a String meter, or an image into a Shape meter.</em><br/><br/></li>
 </ul>
 
-<p>Any "content" meter(s) will be positioned relative to the "container", and the content will only be drawn on solid pixels of the container. Any content that is positioned outside the container, or that is on a transparent pixel in the container, will not be drawn. Content outside the container is truncated, and in effect doesn't exist. It will not impact the size of the skin.</p>
-
-<p>Any meter type can be a "container" and any meter type can be "content".</p>
-
 <dl>
 	<dt>Container <small><code>Any meter name</code></small></dt>
 	<dd>
@@ -30,20 +26,29 @@ title: 'Container'
 
 <h2 id="Usage">Usage Notes</h2>
 
+<b>Visibility</b><br/>
 <ul>
-	<li>Meters that are "content" meters, that have the <code>Container</code> option on them, are positioned relative to the starting X and Y of the meter being used as a "container". Any X and Y on the first content meter in a container will in effect use the "r" relative positioning option, relative to their container. No actual "r" option is needed.</li>
+<li>Content meters are "constrained" by the W and H boundaries of the container.</li>
+<li>Content outside the container is not drawn, and in effect doesn't exist.</li>
+<li>Content meters are only drawn on solid pixels of the container.</li>
+<li>Any transparency of both the container and the content are cumulative.</li>
+</ul>
 
-	<li>Meters that are "content" meters, and follow other content meters in a container, will be relative to each other. In this case, use the "r" and "R" options to position them relative to each other, as you normally would.</li>
+<b>Relativity</b><br/>
 
-	<li>Meters that follow "content" meters, but are NOT content themselves, that have no Container option on them, will be relative to the last preceding meter that is not "content".<br/><br/></li>
+<ul>
+<li>The first content meter in a container is automatically relative to the top left of the container.<br/>
+<em>"r" and "R" are ignored.</em></li>
+<li>Subsequent content meters in a container are relative to each other.<br/>
+<em>"r" and "R" are functional.</em></li>
+<li>Meters that are not content are relative to the immediately preceding meter that isn't content.</li>
+</ul>
 
-	<li>A meter being used as a "container" will NOT be drawn itself. In a sense, it is just the "shape" of its solid pixels that is being used. If you want the container meter itself to be visible, you will need to create a copy of the meter, not used as a container.</li>
+<b>Other Rules</b><br/>
 
-	<li>Any transparency on both the "container" and "content" meters will be taken into account. In effect they will both be "subtracted" from the opacity of the final result.<br/><br/>
-
-	<em>Although container meters are not drawn, everything else about them plays a role. The position, size, and opacity of the container are all factors in how the "content" is treated when placed in the container. If a pixel in the container is fully transparent, any pixel from the "content" placed there will also be fully transparent. That is the key to how the "masking" is done.</em><br/><br/></li>
-
-	<li>A "content" meter may NOT also be a "container" meter. In other words, you cannot "nest" containers inside of containers.</li>
+<ul>
+<li>Any meter type can be a container and any meter type can be content.</li>
+<li>Containers may not be "nested".</li>
 </ul>
 
 <h2 id="Examples">Examples</h2>
