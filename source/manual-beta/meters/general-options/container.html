@@ -28,9 +28,9 @@ title: 'Container'
 
 <b>Visibility</b><br/>
 <ul>
-<li>Content meters are "constrained" by the W and H boundaries of the container.<br/>
-<em>Content outside the container is not drawn, and in effect doesn't exist.</em></li>
-<li>Content meters are only drawn on solid pixels of the container.<br/>
+<li>Content is only drawn within the rectangular W and H boundaries of the container meter.<br/>
+<em>Content outside the container is truncated, and in effect doesn't exist.</em></li>
+<li>Content is only drawn on solid pixels of the container.<br/>
 <em>The container meter itself is not drawn, just the content.</em></li>
 <li>Any transparency of both the container and the content are cumulative.</li>
 </ul>
