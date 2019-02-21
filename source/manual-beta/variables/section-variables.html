@@ -32,16 +32,26 @@ title: 'Section Variables'
 	<dt id="XY"><code>:X</code>, <code>:Y</code><small>Example: <code>[MeterName:X]</code></small></dt>
 	<dd>
 		<p>The current <a href="!meters/general-options/#XY">X or Y position</a> of the meter.</p>
-		<p><b>Note:</b> This provides the "real" X or Y value, which is the position of the top-left corner of the meter area. This is always an integer, even if the meter has no X and Y <a href="!meters/general-options/#XY">options</a> set, or if the options use formulas, variables or relative positions.</p>
-
-		<p>This also means that for a <a href="!meters/string/">string meter</a> with <a href="!meters/string/#StringAlign">StringAlign</a> options, the value of <code>[MeterName:X]</code> and <code>[MeterName:Y]</code> may not be the same as the option values.</p>
+		<p><b>Notes:</b> This provides the "real" X or Y value, which is the position of the top-left corner of the meter area. This is always an integer, even if the meter has no X and Y <a href="!meters/general-options/#XY">options</a> set, or if the options use formulas, variables or relative positions.</p>
+		<p>The values for X or Y may be different than the values in the meter options if <a href="!meters/string/#StringAlign">StringAlign</a> is used on a <a href="!meters/string/">String meter</a>.</p>
 	</dd>
 
 	<dt id="WH"><code>:W</code>, <code>:H</code><small>Example: <code>[MeterName:W]</code></small></dt>
 	<dd>
 		<p>The current <a href="!meters/general-options/#WH">width or height</a> of the meter.</p>
-		<p><b>Note:</b> This provides the "real" W or H value. This is always an integer, even if the meter has no W and H <a href="!meters/general-options/#WH">options</a> set, or if the options use formulas or variables.</p>
+		<p><b>Notes:</b> This provides the "real" W or H value. This is always an integer, even if the meter has no W and H <a href="!meters/general-options/#WH">options</a> set, or if the options use formulas or variables.</p>
+		<p>The values for W or H may be different than the values in the meter options if <a href="!meters/general-options/#Padding">Padding</a> is used.</p>
 	</dd>
+
+	<dt id="XWYH"><code>:XW</code>, <code>:YH</code><small>Example: <code>[MeterName:XW]</code></small></dt>
+	<dd>
+		<p>The current <a href="!meters/general-options/#XY">X or Y position</a> and <a href="!meters/general-options/#WH">W or H width or height</a> of the meter added together. This will provide the current position of the <em>end</em> of the meter in the X+width or Y+height dimension.</p>
+		<p><em>This equates to, and can be used in place of, <code>X=([SomeMeter:X] + [SomeMeter:W])</code> or <code>X=([SomeMeter:Y] + [SomeMeter:H])</code> to position a meter relative to the end of another meter.</em></p>
+		<p><b>Notes:</b></p>
+		<p>This provides the "real" W or H value. This is always an integer, even if the meter has no X and Y <a href="!meters/general-options/#XY">options</a> or W and H <a href="!meters/general-options/#WH">options</a> set, or if the options use formulas or variables.</p>
+		<p>The values for X or Y may be different than the values in the meter options if <a href="!meters/string/#StringAlign">StringAlign</a> is used on a <a href="!meters/string/">String meter</a>.</p>
+		<p>The values for W or H may be different than the values in the meter options if <a href="!meters/general-options/#Padding">Padding</a> is used.</p>
+	</dd>	
 </dl>
 
 <h2 id="MeasureParameters">Measure Parameters</h2>
