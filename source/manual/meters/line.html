@@ -68,6 +68,15 @@ title: 'Line meter'
 	<dd>
 		If set to <code>1</code>, the meter is flipped vertically.
 	</dd>
+	
+	<dt id="TransformStroke"><code>TransformStroke</code> <small>Default: <code>Normal</code></small></dt>
+	<dd>
+		<p>Determines how the line (stroke) width is treated when <a href="!meters/general-options/#TransformationMatrix">TransformationMatrix</a> is used on the meter.</p>
+		<ul>
+		<li><code>Normal</code> (default) : The line width will be impacted by any scale or skew transforms from TransformationMatrix.</li>
+		<li><code>Fixed</code>  : The line width will not be impacted by any transforms from TransformationMatrix. The width will be fixed to the width defined in <a href="#LineWidth">LineWidth</a>.</li>
+		</ul>
+	</dd>
 </dl>
 
 <h2>Example</h2>

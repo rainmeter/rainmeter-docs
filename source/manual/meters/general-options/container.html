@@ -1,0 +1,196 @@
+---
+layout: docs
+permalink: manual/meters/general-options/container/
+title: 'Container'
+---
+<p>Define a meter to be used as a "container" for the "content" of this meter.</p>
+
+<p><b>The intent of this is two-fold:</b></p>
+
+<ul>
+	<li>A meter that has a Container option will in effect be put "inside" the container meter. It will be positioned relative to the container, and will be visibly constrained by it. Only the part of the content that is "inside" the container will be drawn.<br/><br/>
+
+	<em>Think sliding content, a menu or launcher for instance, into view without needing to start outside the entire skin.</em><br/><br/></li>
+
+	<li>The content will be "masked" into any solid pixels in the container meter. So only the part of the content that is masked into a solid pixel in the container will be drawn.<br/><br/>
+
+	<em>Think masking an image into a String meter, or an image into a Shape meter.</em><br/><br/></li>
+</ul>
+
+<dl>
+	<dt>Container <small><code>Any meter name</code></small></dt>
+	<dd>
+		<p>Name of a meter, of any type, to be used as a container for the content of this meter</p>
+		<p><b>Example:</b> <code>Container=SomeOtherMeter</code></p>
+	</dd>
+
+<h2 id="Usage">Usage Notes</h2>
+
+<b>Visibility</b><br/>
+<ul>
+<li>Content is only drawn within the rectangular W and H boundaries of the container meter.<br/>
+<em>Content outside the container is truncated, and in effect doesn't exist.</em></li>
+<li>Content is only drawn on solid pixels of the container.<br/>
+<em>The container meter itself is not drawn, just the content.</em></li>
+<li>Any transparency of both the container and the content is cumulative.</li>
+</ul>
+
+<b>Relativity</b><br/>
+
+<ul>
+<li>The first content meter in a container is automatically relative to the top left of the container.<br/>
+<em>"r" is assumed and "R" is ignored.</em></li>
+<li>Subsequent content meters in a container are relative to each other.<br/>
+<em>"r" and "R" function normally.</em></li>
+<li>Meters that are not content are relative to the immediately preceding meter that is not content.</li>
+</ul>
+
+<b>Other Rules</b><br/>
+
+<ul>
+<li>Any meter type can be a container and any meter type can be content.</li>
+<li>Containers may not be "nested".</li>
+</ul>
+
+<h2 id="Examples">Examples</h2>
+
+<p>While the example code here is for two simple skins that demonstrate using <code>Container</code>, you can download a suite of skins demonstrating several ways to use the funtionality.</p>
+
+<div class="exampleprev">
+	<a href="!examples/ExamplesContainer.rmskin"><img src="!img/container/ExamplesContainer.png"></a>
+	<p><b>Download the .rmskin.</b></p>	
+</div>
+
+<br/><br/><p><b>Sliding a "content" meter in and out of a "container" meter.</b></p>
+``` ini
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+
+[Variables]
+OffSet=130
+U=[!UpdateMeasure "MeasureSlideInOut"][!UpdateMeter *][!Redraw]
+
+[MeterSkinBack]
+Meter=Shape
+Shape=Rectangle 0.5,0.5,169,103,12 | Fill Color 47,47,47,255 | StrokeWidth 1.5 | Stroke Color 150,150,150,255
+X=0
+Y=0
+W=170
+H=104
+
+[MeterContainerVisible]
+Meter=Shape
+; A copy of the container meter, to provide visibility
+Shape=Rectangle 0,0,130,84,12 | Fill Color 255,47,47,255 | StrokeWidth 0
+X=20
+Y=10
+
+[MeterContainer]
+Meter=Shape
+; Meters used as a container will not be drawn. They are used as a "mask".
+; Create a copy of them, as above, to make them visible.
+Shape=Rectangle 0,0,130,84,12 | Fill Color 255,47,47,255 | StrokeWidth 0
+X=20
+Y=10
+MouseOverAction=[!CommandMeasure MeasureSlideInOut "Stop 2"][!CommandMeasure MeasureSlideInOut "Execute 1"]
+MouseLeaveAction=[!CommandMeasure MeasureSlideInOut "Stop 1"][!CommandMeasure MeasureSlideInOut "Execute 2"]
+
+[MeterString]
+Meter=String
+; This meter will be relative to the starting X and Y of its container.
+X=#OffSet#
+Y=33
+FontSize=13
+FontColor=255,255,255,255
+SolidColor=0,0,0,1
+FontWeight=400
+AntiAlias=1
+Text=Hello World!
+DynamicVariables=1
+MouseOverAction=[!SetOption MeterString FontColor "0,0,0,255"][!UpdateMeter *][!Redraw]
+MouseLeaveAction=[!SetOption MeterString FontColor "255,255,255,255"][!UpdateMeter *][!Redraw]
+LeftMouseUpAction=[!Log "Clicked me!"]
+Container=MeterContainer
+
+[MeasureSlideInOut]
+Measure=Plugin
+Plugin=ActionTimer
+ActionList1=Reset | Wait 1 | Repeat SlideIn, 30, 11
+SlideIn=[!SetVariable OffSet "(Clamp(#OffSet#-12,20,130))"]#U#
+ActionList2=Repeat SlideOut, 30, 11  | Wait 1 | Reset
+SlideOut=[!SetVariable OffSet "(Clamp(#OffSet#-12,-130,20))"]#U#
+Reset=[!SetVariable OffSet 130]#U#
+IgnoreWarnings=1
+DynamicVariables=1
+```
+<div class="exampleprev">
+	<p><img src="!img/container/HelloWorld.gif"/></p>
+</div>
+
+<br/><br/>
+
+<p><b>Masking an image "content" meter into a string "container" meter.</b></p>
+``` ini
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+
+[Variables]
+
+[MeterWeatherVisible]
+Meter=Image
+; We want to display the entire image, as well as the part
+; masked into the string, so we use this Image meter to
+; display our slightly muted image as a background.
+ImageName=#@#Images\NiceWeather.jpg
+W=400
+PreserveAspectRatio=1
+ImageTint=180,180,180,255
+
+[MeterTemperatureShadow]
+Meter=String
+; The actual text of this meter will be overlaid by the
+; string we are using as mask, but the shadow will
+; be displayed around it.
+X=90
+Y=50
+FontSize=120
+FontWeight=700
+FontColor=255,255,255,255
+InlineSetting=Shadow | 2 | 2 | 3.5 | 0,0,0,255
+AntiAlias=1
+Text=41°
+
+[MeterTemperatureMask]
+Meter=String
+X=90
+Y=50
+FontSize=120
+FontWeight=700
+; Note that no FontColor is needed, as long as it is fully opaque,
+; which the default FontColor for a String meter is.
+AntiAlias=1
+Text=41°
+
+[MeterWeatherMasked]
+Meter=Image
+ImageName=#@#Images\NiceWeather.jpg
+; Since we set an X and Y on the String meter, and this image
+; content will be relative to the start of that, we need to 
+; move the image up and left so it aligns the result with
+; the "visible" Image meter, and masks correctly into the
+; String meter.
+X=-90
+Y=-50
+W=400
+PreserveAspectRatio=1
+Container=MeterTemperatureMask
+```
+<div class="exampleprev">
+	<p><img src="!img/container/NiceWeather.jpg"/></p>
+</div>
+
+</div>
