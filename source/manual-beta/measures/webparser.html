@@ -98,6 +98,8 @@ Measure=WebParser
 		<p>In order to override the UpdateRate set on a WebParser measure, to have it connect to the site and download the data "right now", the <a href="#CommandMeasureUpdate">!CommandMeasure</a> bang must be used, with the name of the "parent" measure as the first parameter, and "Update" as the second.</p>
 
 		<p><code>LeftMouseUpAction=[!SetOption WebMeasure URL "http://SomeNewSite.com"][!CommandMeasure WebMeasure Update]</code></p>
+		
+		<p>More information on how <code>UpdateRate</code> works, and how you can best control WebParser measures, is at <a href="https://docs.rainmeter.net/tips/webparser-using-stringindex2/">WebParser: How UpdateRate Works</a>.</p>
 	</dd>
 
 	<dt id="DecodeCharacterReference"><code>DecodeCharacterReference</code> <small>Default: <code>0</code></small></dt>
@@ -284,6 +286,8 @@ Measure=WebParser
 		<p>This will cause a WebParser parent measure to override any current <a href="#UpdateRate">UpdateRate</a> setting, and immediately access and parse the resource defined in <code>URL</code>.</p>
 
 		<p>Example: <code>[!CommandMeasure MeasureName "Update"]</code></p>
+		
+		<p>More information on how <code>UpdateRate</code> works, and how you can best control WebParser measures, is at <a href="https://docs.rainmeter.net/tips/webparser-using-stringindex2/">WebParser: How UpdateRate Works</a>.</p>		
 	</dd>
 
 	<dt id="CommandMeasureReset"><code>Reset</code></dt>

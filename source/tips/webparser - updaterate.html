@@ -1,0 +1,53 @@
+---
+layout: docs
+permalink: tips/webparser-updaterate/
+title: 'WebParser: How UpdateRate Works'
+---
+<p>This guide is intended to explain how WebParser measures are controlled. When does the measure actually access and parse the remote resource defined in the <code>URL</code> option, and how do you control how often and when this happens.</p>
+
+<p><b>Let's start by defining how a WebParser parent measure operates:</b></p>
+
+<ul>
+<li>A Webparser parent measure always has an option called <a href="https://docs.rainmeter.net/manual/measures/webparser/#UpdateRate">UpdateRate</a> on it. If you don't set one explicitly,  it will default to 600. More on this in a second.</li>
+<li>When a WebParser parent measure is first loaded, or when the skin is refreshed. The plugin sets up an internal counter, let's just call it UpdateCounter. The name isn't important, it's not visible to the skin. The value of UpdateCounter is initialed to zero. This counter is a loop from zero to the value of the <code>UpdateRate</code> option on the measure.</li>
+<li>On each update of the measure, the plugin will evaluate the value of UpdateCounter, and if it is zero, it will access and parse the remote resource. This means it will always do so when the skin is first loaded or when refreshed.</li>
+<li>The plugin will then increment the value of UpdateCounter by one.</li>
+<li>If the value of the internal UpdateCounter is equal to the value set for <code>UpdateRate</code> on the measure, then the UpdateCounter loop resets to zero, and the cycle begins again. The remote resource is accessed and parsed, and the UpdateCounter is incremented by one.</li>
+</ul>
+
+<p>So in short, a WebParser parent measure does its work, accesses and parses the remote resource, every <code>UpdateRate</code> times that the measure is updated. By default, a WebParser parent measure will be updated on each update of the skin, controlled by the <a href="https://docs.rainmeter.net/manual/skins/rainmeter-section/#Update">Update</a> option in the [Rainmeter] section.</p>
+
+<p>This is why, with a default skin <code>Update</code> of 1000 milliseconds, and a default <code>UpdateRate</code> of 600 on the measure, a WebParser parent measure will access the remote resource every 10 minutes.</p>
+
+<p><code>1000 milliseconds equals 1 second, times 600 equals 600 seconds, which equals 10 minutes.</code></p>
+
+<p><b>Why do you NEVER use UpdateDivider on a WebParser measure?</b></p>
+
+<p>Normally, you would use the <a href="https://docs.rainmeter.net/manual/measures/general-options/#UpdateDivider">UpdateDivider</a> option to control how ofen a measure is updated. This is not recommended on WebParser measures, as it is far better to entirely control the rate that WebParser does its work with <code>UpdateRate</code>. Allow the WebParser parent measure to update, and thus increment the internal UpdateCounter on each skin <code>Update</code>, and set <code>UpdateRate</code> as needed to control things. With a skin <code>Update</code> of 1000, it's pretty easy. <code>UpdateRate</code> simply equates to "how many seconds?".</p>
+
+<p>All that using <code>UpdateDivider</code> will do is make it far more complex and confusing to get the timing right, and it is just not needed. This is because like all measures, WebParser will obey <code>UpdateDivider</code>, which makes the formula:</p>
+
+<p><code>Update times UpdateDivider times UpdateRate</code></p>
+
+<p><code>UpdateDivider</code> defaults to "1", and that is how it should always be left on WebParser measures. Multiplying a value by "1" has no impact. That is what you want.</p>
+
+<p><b>Why do you NEVER use an !UpdateMeasure bang on a WebParser measure?</b></p>
+
+<p>Normally, you would use an <a href="https://docs.rainmeter.net/manual/bangs/#UpdateMeasure">!UpdateMeasure</a> bang in an action to force a measure to update NOW, rather than waiting for the next normal update. This is not effective on WebParser measures, and should never be used.</p>
+
+<p>While using <code>!UpdateMeasure</code> will cause an immediate update of the measure, all that will do in the WebParser plugin is increment our internal UpdateCounter loop by one. Depending on where the plugin currently is in the  internal UpdateCounter loop, this might be from say 458 to 459, and you are only one measure update closer to your goal. If <ocde>UpdateRate</code> is the default 600, You still have 141 measure updates to go before anything happens.</p>
+
+<p><code>!UpdateMeasure</code> will not cause the plugin to immediately access the remote resource, and should never be used on WebParser measures.</p>
+
+<p><b>So how DO I update the measure immediately?</b></p>
+
+<p>You can do so, by using the <a href="https://docs.rainmeter.net/manual/bangs/#CommandMeasure">!CommandMeasure</a> bang to send an <a href="https://docs.rainmeter.net/manual/measures/webparser/#CommandMeasureUpdate">Update</a> command to the WebParser parent measure.</p>
+
+<p>Example: <code>LeftMouseUpAction=[!CommandMeasure MeasureName "Update"]</code></p>
+
+<p>What an action like <code>[!CommandMeasure MeasureName "Update"]</code> does is very simple. It immediately sets the value of our internal UpdateCounter in the plugin to zero. That will cause the plugin to immediately access and parse the remote resource, and start the cycle over. This is the only effective way to do this.</p>
+
+<p>&nbsp;</p>
+
+<p><b>Note:</b> All of this is about controlling WebParser "parent" measures. Never use ANY of this on WebParser "child" measures, as they are entirely controlled by their "parent". When the parent WebParser measure completes accessing and parsing the information you want, it will automatically "force" the values on each of its child measures, based on the StringIndex option on them. Child measures take no independent action, and are simply set by their parent measure. Only use <code>UpdateRate</code> and / or <code>[!CommandMeasure MeasureName "Update"]</code> on parent WebParser measures.</p>
+ 
