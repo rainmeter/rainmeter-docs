@@ -660,7 +660,7 @@ MyGradient2=0,0,20,20 | 155,200,232,255 ; 0.0 | 6,46,75,255 ; 1.0
 
 <p>The behavior of <a href="!mouse-actions/">Mouse Actions</a>, for actions like <code>LeftMouseUpAction</code>, <code>MouseOverAction</code>, <code>MouseScrollDownAction</code> and the others is a bit different on a Shape meter than other meters.</p>
 
-<p><b>In a Shape meter, the mouse is only detected on any solid part of the drawing created by any and all shapes in the meter. It is not dependent on any rectangular meter container. The mouse will be instead be detected on any solid pixel contained by the actual shape objects being drawn. The pixel may be solid due to the shape itself, a SolidColor option on the meter that has a W and H set, or solid pixels on a meter or skin background behind the Shape meter.</b></p>
+<p><b>In a Shape meter, the mouse is only detected on any solid part of the drawing created by any and all shapes in the meter. It is not dependent on any rectangular meter container. The mouse will instead be detected on any solid pixel created by the actual shape objects being drawn.</b></p>
 
 <p><b>The mouse will be detected on any solid part of the shapes even if the shapes extend outside the boundaries of the meter container.</b> This will be common with this meter type and is why we have changed the "target" of the mouse detection from the meter to the shapes. Quite often, there will be no W and H defined on the meter, and thus no meter container at all.</p>
 
