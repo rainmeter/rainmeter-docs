@@ -9,7 +9,7 @@ title: 'WebParser: How UpdateRate Works'
 
 <ul>
 <li>A Webparser parent measure always has an <a href="https://docs.rainmeter.net/manual/measures/webparser/#UpdateRate">UpdateRate</a> option on it. If you don't set one explicitly,  it will default to 600. More on this in a second.</li>
-<li>When a WebParser parent measure is first loaded, or when the skin is refreshed. The plugin sets up an internal counter, let's just call it UpdateCounter. The name isn't important, it's not visible to the skin. The value of UpdateCounter is initialed to zero. This counter is a loop from zero to the value of the <code>UpdateRate</code> option on the measure.</li>
+<li>When a WebParser parent measure is first loaded, or when the skin is refreshed. The plugin sets up an internal counter, let's just call it UpdateCounter. The name isn't important, it's not visible to the skin. The value of UpdateCounter is initialized to zero. This counter is a loop from zero to the value of the <code>UpdateRate</code> option on the measure.</li>
 <li>On each update of the measure, the plugin will evaluate the value of UpdateCounter, and if it is zero, it will access and parse the remote resource. This means it will always do so when the skin is first loaded or when refreshed.</li>
 <li>The plugin will then increment the value of UpdateCounter by one.</li>
 <li>If the value of the internal UpdateCounter is equal to the value set for <code>UpdateRate</code> on the measure, then the UpdateCounter loop resets to zero, and the cycle begins again. The remote resource is accessed and parsed, and the UpdateCounter is incremented by one.</li>
