@@ -204,11 +204,19 @@ Measure=WebParser
 		This will connect to the proxy server hostname or ip address and port defined. Port is often optional with proxy servers.</li>
 		</ul>
 
-		<p>This option can also be set in the <a href="!settings/#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
 		<p>The measure doesn't support any authentication, so <b>only</b> use proxy settings that do not require it.</p>
 		<p>This setting is applied when the measure is initialized on skin load / refresh, and cannot be changed dynamically.</p>
 
 		<p><b>Examples:</b> <code>ProxyServer=/none</code>, <code>ProxyServer=192.168.1.1:8080</code>, <code>ProxyServer=ProxyHostname.net</code></p>
+
+		<p>This option can also be set in the <a href="!settings/#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
+		
+``` ini
+[WebParser.dll]
+ProxyServer=localhost:8080
+UserAgent=Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0)
+```
+
 	</dd>
 
 	<dt id="UserAgent"><code>UserAgent</code> <small>Default: <code>Rainmeter WebParser plugin</code></small></dt>
@@ -217,8 +225,16 @@ Measure=WebParser
 
 		<p>If you want to find out what the User Agent String is for the browser you use, you can connect to <a href="https://www.whatismybrowser.com/detect/what-is-my-user-agent">WhatIsMyBrowser</a> in your browser and copy the string it returns. Other common User Agent String values can be found at <a href="http://www.useragentstring.com/pages/useragentstring.php">UserAgentString</a>.</p>
 
-		<p>This option can also be set in the <a href="!settings/#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
 		<p>This setting is applied when the measure is initialized on skin load / refresh, and cannot be changed dynamically.</p>
+		
+		<p>This option can also be set in the <a href="!settings/#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s).</p>
+		
+``` ini
+[WebParser.dll]
+ProxyServer=localhost:8080
+UserAgent=Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0)
+```
+
 	</dd>
 
 	<dt id="Header"><code>Header, Header2, Header3...</code></dt>
