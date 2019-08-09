@@ -7,7 +7,7 @@ title: 'Developers'
 
 <p><em>Note: Documentation for creating or modifying skins in Rainmeter can be found at <a href="/">Rainmeter Documentation</a>.</em></p>
 
-<p>The Rainmeter project is primarily written in <b>C++</b> using <b>Microsoft Visual Studio 2017</b>. In addition, custom plugins can be written and distributed separately from the official Rainmeter project using C++ or C#. This page assumes familiarity with Visual Studio and either C++ or C#.</p>
+<p>The Rainmeter project is primarily written in <b>C++</b> using <b>Microsoft Visual Studio 2019</b>. In addition, custom plugins can be written and distributed separately from the official Rainmeter project using C++ or C#. This page assumes familiarity with Visual Studio and either C++ or C#.</p>
 
 <h2 id="ProjectSourceCode">Project Source Code</h2>
 
@@ -15,7 +15,7 @@ title: 'Developers'
 
 <p>If you simply wish to obtain the source code to examine it or make a local change to how something works for your own use, you can simply download a .zip file from <a href="https://github.com/rainmeter/rainmeter/archive/master.zip">Download ZIP</a>.</p>
 
-<p>The only software you will need is <b>Microsoft Visual Studio 2017</b> or the free <b>Microsoft Visual Community</b> which can be obtained at <a href="http://www.visualstudio.com/downloads/download-visual-studio-vs">Download Visual Studio</a>. Be sure to download and apply any Visual Studio Updates when prompted.</p>
+<p>The only software you will need is <b>Microsoft Visual Studio 2019</b> or the free <b>Microsoft Visual Community</b> which can be obtained at <a href="http://www.visualstudio.com/downloads/download-visual-studio-vs">Download Visual Studio</a>. Be sure to download and apply any Visual Studio Updates when prompted.</p>
 
 <p>Create a folder containing the project code from the .zip file, and open <b>Rainmeter.sln</b> in Visual Studio. You can then set the desired <em>Solution Configuration</em> and <em>Solution Platforms</em> fields and build the solution to create Debug or Release versions in x32 or x64 architectures.</p>
 
@@ -37,7 +37,7 @@ title: 'Developers'
 
 <p>In order to create a full build of the Rainmeter installer, you will need one additional piece of software.</p>
 
-<p>Get and install NSIS version 3.01 or later from <a href="http://nsis.sourceforge.net/Download">NSIS Scriptable Install System</a> software on your PC.</p>
+<p>Get and install NSIS version 3.04 or later from <a href="http://nsis.sourceforge.net/Download">NSIS Scriptable Install System</a> software on your PC.</p>
 
 <p>Now you can simply run the <b>Build.bat</b> batch file in the Build folder of your local repository.  If there are any "not found" errors when you run the batch file, check the paths in the <code>Set</code> commands at the top of the file.</p>
 
@@ -56,7 +56,7 @@ set CERTKEY=certpassword
 
 <p><b>Note:</b> The Rainmeter Skin Installer program, which is used by end-users to install the skins containing your plugin, will not allow the same or older version of the plugin to overwrite a newer version. The means that it is critically important that every release of your plugin must have the "File version" number incremented. If you don't do this, your plugin will not be distributed.</p>
 
-<p>The only software you will need is <b>Microsoft Visual Studio 2017</b> or the free <b>Microsoft Visual Community</b> which can be obtained at <a href="http://www.visualstudio.com/downloads/download-visual-studio-vs">Download Visual Studio</a>. Be sure to download and apply any Visual Studio Updates when prompted.</p>
+<p>The only software you will need is <b>Microsoft Visual Studio 2019</b> or the free <b>Microsoft Visual Community</b> which can be obtained at <a href="http://www.visualstudio.com/downloads/download-visual-studio-vs">Download Visual Studio</a>. Be sure to download and apply any Visual Studio Updates when prompted.</p>
 
 <p>Then you will want to download the <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">Rainmeter Plugin SDK</a> to a folder on your PC. The SDK contains the API code needed to create plugins, as well as some starting and sample plugin code for C++ and C#:</p>
 
