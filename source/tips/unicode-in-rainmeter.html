@@ -91,11 +91,11 @@ A variant of the UTF-8 standard with a <a href="http://en.wikipedia.org/wiki/Byt
 
 <h3>Reading an external file with Unicode in Lua</h3>
 
-<p>To read an external file which will contain Unicode characters, you should encode the external file in UTF-8 with BOM. In Notepad++ that is UTF-8 with BOM, and in Notepad it is just UTF-8 (which always has a BOM).</p>
+<p>To read an external file which will contain Unicode characters, you should encode the external file as UTF-8 with BOM.</p>
 
 <p><i>You can do this UTF-8 without BOM, but I recommend against it. The reason is that there is literally no difference between a file encoded as ANSI with just "Hello world" in it and the same file encoded as UTF-8 without BOM. The first 128 characters of ANSI and the first 128 characters of UTF-8 are exactly the same, and it is only either the fact that the file already contains Unicode characters, or the BOM, that specifically identifies the encoding.</p>
 
-<p>The upshot of this is that any text editor opening this file will see it as ANSI. If you encode the file as UTF-8 without BOM, save it, and open it again, it will be ANSI. You won't be able to add Unicode characters to it until you change the encoding to UTF-8 again, add the Unicode characters while it is still open, and save it. Then when it is opened again, it will be seen as UTF-8. Adding the BOM to the file makes it unambiguously UTF-8, and will save a lot of head scratching by users trying to edit your files. In any case, the Windows Notepad.exe editor simply won't save a UTF-8 file without BOM. It always adds it when you save.</i></p>
+<p>The upshot of this is that any text editor opening this file will see it as ANSI. If you encode the file as UTF-8 without BOM, save it, and open it again, it will be ANSI. You won't be able to add Unicode characters to it until you change the encoding to UTF-8 again, add the Unicode characters while it is still open, and save it. Then when it is opened again, it will be seen as UTF-8. Adding the BOM to the file makes it unambiguously UTF-8, and will save a lot of head scratching by users trying to edit your files.</i></p>
 
 <p>Anyway, as long as your <b>.lua is encoded in UTF-16</b>, and the <b>external file is encoded in UTF-8</b>, there is nothing special you need to do to read in the file contents in Lua.</p>
 
