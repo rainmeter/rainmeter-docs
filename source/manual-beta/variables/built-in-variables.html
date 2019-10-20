@@ -96,7 +96,8 @@ title: 'Built-In Variables'
 	</dd>
 	<dt id="CURRENTSECTION"><code>#CURRENTSECTION#</code></dt>
 	<dd>
-		<p>The name of the section in which the variable is used. Provides a blank string if used in another context, such as <a href="!lua-scripting/#GetVariable">GetVariable</a> in a Lua script.</p>
+		<p>The name of the section in which the variable is used.</p>
+		<p><b>Note:</b> This can be used with <a href="!lua-scripting/#GetVariable">GetVariable</a> in an <a href="!lua-scripting/inline-lua/">Inline Lua</a> function to return the "calling" section that is accessing the function.</p>
 	</dd>
 	<dt id="CONFIGEDITOR"><code>#CONFIGEDITOR#</code></dt>
 	<dd>
