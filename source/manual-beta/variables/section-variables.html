@@ -3,11 +3,11 @@ layout: docs
 permalink: manual-beta/variables/section-variables/
 title: 'Section Variables'
 ---
-<p><a href="!measures/">Measures</a> and <a href="!meters/">meters</a> can be referenced as <a href="!variables/">variables</a>. These are called <b>section variables</b>, and they can provide several kinds of information about the meter or measure. Lua scripts can also be called inline and most will work right out of the box and plugins can also add support but will be on a more case by case basis</p>
+<p><a href="!measures/">Measures</a> and <a href="!meters/">meters</a> can be referenced as <a href="!variables/">variables</a>. These are called <b>section variables</b>, and they can provide several kinds of information about the meter or measure.</p>
 
 <h2 id="Usage">Usage</h2>
 
-<p>A meter or measure is referenced as a section variable by placing the section name in brackets (<code>[]</code>). The value provided by a section variable can be changed by adding <a href="#MeterParameters">parameters</a> after a colon (<code>:</code>). Multiple parameters are separated by commas (<code>,</code>). Spaces are allowed after a comma.</p>
+<p>A meter or measure is referenced as a section variable by placing the section name in brackets <code>[]</code>. Numeric values provided by a section variable can be modified by adding <a href="#MeterParameters">parameters</a> after a colon <code>:</code>. Multiple parameters are separated by commas <code>,</code>.</p>
 
 	<blockquote><p><code>[SectionName:P1,P2]</code></p></blockquote>
 
@@ -67,28 +67,34 @@ title: 'Section Variables'
 		<p>If a blank parameter is given, the measure's <a href="!measures/#Values">number value</a> is provided, with up to ten decimal places of precision.</p>
 	</dd>
 
-	<dt id="Decimals"><code>:n</code><small>Example: <code>[MeasureName:10]</code></small></dt>
+	<dt id="Decimals"><code>:n</code><small>Example: <code>[MeasureName:4]</code></small></dt>
 	<dd>
 		<p>The measure's <a href="!measures/#Values">number value</a>, with the number of <b>decimal places</b> given.</p>
 		<p><b>Multiple Parameters:</b> This parameter may be combined with <a href="#Scale">Scale</a> and <a href="#Percentual">Percentual</a>.</p>
+		<p>Example: <code>[MeasureName:/1024,4]</code></p>
+		<p>Example: <code>[MeasureName:%,4]</code></p>
 	</dd>
 
 	<dt id="Scale"><code>:/n</code><small>Example: <code>[MeasureName:/1024]</code></small></dt>
 	<dd>
 		<p>The measure's <a href="!measures/#Values">number value</a>, <b>scaled</b> by the divisor given.</p>
 		<p><b>Multiple Parameters:</b> This parameter may be combined with <a href="#Decimals">Decimals</a> and <a href="#Percentual">Percentual</a>.</p>
+		<p>Example: <code>[MeasureName:/1024,4]</code></p>
+		<p>Example: <code>[MeasureName:/1024,4,%]</code></p>
 	</dd>
 
 	<dt id="Percentual"><code>:%</code><small>Example: <code>[MeasureName:%]</code></small></dt>
 	<dd>
 		<p>The measure's <a href="!measures/#Values">number value</a>, as a <b>percentual</b> value.</p>
 		<p><b>Multiple Parameters:</b> This parameter may be combined with <a href="#Decimals">Decimals</a> and <a href="#Scale">Scale</a>.</p>
+		<p>Example: <code>[MeasureName:%,4]</code></p>
+		<p>Example: <code>[MeasureName:/1024,%]</code></p>
+		<p>Example: <code>[MeasureName:/1024,4,%]</code></p>
 	</dd>
 
 	<dt id="MinValueMaxValue"><code>:MinValue</code> <code>:MaxValue</code><small>Example: <code>[MeasureName:MaxValue]</code></small></dt>
 	<dd>
 		<p>The measure's <a href="!measures/general-options/#MinValue">MinValue</a> or <a href="!measures/general-options/#MaxValue">MaxValue</a> number value.</p>
-		<p><b>Multiple Parameters:</b> This parameter may be combined with <a href="#Decimals">Decimals</a> and <a href="#Scale">Scale</a>.</p>
 	</dd>
 
 	<dt id="EscapeRegExp"><code>:EscapeRegExp</code><small>Example: <code>[MeasureName:EscapeRegExp]</code></small></dt>
