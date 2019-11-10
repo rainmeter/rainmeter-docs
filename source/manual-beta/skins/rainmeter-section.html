@@ -15,7 +15,7 @@ title: '[Rainmeter] section'
 
 		<p>The lowest possible effective value for Update is "16". Some care should be taken to only use very low update rates (less than 100) when really needed, and to balance a low Update with <a href="#DefaultUpdateDivider">DefaultUpdateDivider</a>, or <a href="!measures/general-options/#UpdateDivider">UpdateDivider</a> on individual measures and meters, in order to keep the CPU usage by Rainmeter as low as possible.</p>
 
-		<p>Using <code>-1</code> will update the skin only once on load (or on refresh). The skin can then be manually updated using the <a href="!bangs/#Update">!Update bang</a>.</p>
+		<p>Using <code>-1</code> will update the skin only once on load (or on refresh). This is a good option when a skin is strictly controlled by mouse actions, like an application menu or launcher. The skin will never update, but will always react to any <a href="!mouse-actions/">mouse actions</a>, where you can use <a href="!bangs/#UpdateMeter">!UpdateMeter</a> and <a href="!bangs/#Redraw">!Redraw</a> to control when the skin is updated and redrawn.</p>
 
 		<p><b>Note:</b> While <code>Update=1000</code> will update the skin "once a second",  Update is not related to the system clock, and if a computer is busy or a complicated skin takes longer than the interval to complete a full update of the skin, updates can be unreliable in relation to elapsed time. Do not use the Update value to control clocks or other timing sensitive functions.</p>
 	</dd>
