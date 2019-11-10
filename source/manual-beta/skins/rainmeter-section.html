@@ -26,7 +26,7 @@ title: '[Rainmeter] section'
 
 		<p>Example: If <code>Update=1000</code> and <code>DefaultUpdateDivider=30</code>, then by default all measures and meters are updated every 30 seconds.</p>
 
-		<p>If <code>DefaultUpdateDivider=-1</code> or any negative number, then by default all measures and meters are only updated once when the skin is loaded or refreshed. This is a good option when a skin is strictly controlled by mouse actions, like an application menu or launcher. The skin will never update, but will always react to any <a href="!mouse-actions/">mouse actions</a>, where you can use <a href="!bangs/#UpdateMeter">!UpdateMeter</a> and <a href="!bangs/#Redraw">!Redraw</a> to control when the skin is updated and redrawn.</p>
+		<p>If <code>DefaultUpdateDivider=-1</code> or any negative number, then by default all measures and meters are only updated once when the skin is loaded or refreshed. This is a good option when a skin is mostly controlled by mouse actions, like an application menu or launcher. The skin will never update, but will always react to any <a href="!mouse-actions/">mouse actions</a>, where you can use <a href="!bangs/#UpdateMeter">!UpdateMeter</a> and <a href="!bangs/#Redraw">!Redraw</a> to control when the skin is updated and redrawn.</p>
 
 		<p><b>Note:</b> This option is designed to set a default UpdateDivider for all measures and meters in the skin. It can be overridden by setting <code>UpdateDivider</code> on individual measures or meters. This option should be used when a low <code>Update</code> is desired to support animations or other skin elements requiring rapid update, while avoiding having to manually set an UpdateDivider on a great many other measures and meters that do not need to be updated as quickly.</p>
 	</dd>
