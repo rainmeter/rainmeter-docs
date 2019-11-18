@@ -394,8 +394,8 @@ title: 'Bangs'
 	<dd>
 		Edits a skin .ini file using the text editor defined in <a href="!settings/rainmeter-section/#ConfigEditor">ConfigEditor</a> in Rainmeter settings, or the text editor associated with .ini files in Windows. The default will be Windows Notepad.exe. If no parameters are defined the current skin .ini file will be edited.
 		<ul>
-		<li><code>Config</code> (optional): The config containing the skin.</li>
-		<li><code>File</code> (optional): The .ini skin file in the config to edit.</li>
+		<li><code>Config</code> (optional): The config containing the skin.<br/>If this is used alone, it will edit the currently running skin .ini file in the defined config.</li>
+		<li><code>File</code> (optional): A specific .ini skin file in the defined config to edit.</li>
 		</ul>
 		<br><b>Example:</b> <code>!EditSkin "illustro\Clock" "Clock.ini"</code>
 	</dd>
