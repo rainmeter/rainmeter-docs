@@ -14,6 +14,8 @@ title: 'Inline Options'
 
 <p>Inline options are defined by pairs of InlineSetting ... InlineSetting<em>N</em> and InlinePattern ... InlinePattern<em>N</em> options on the meter. InlineSetting<em>N</em> defines the character formatting setting you wish to add or change, and the matching InlinePattern<em>N</em> uses regular expressions to define the part of the string you wish to change. These must be matching pairs, and there may not be missing <em>N</em> number postfixes in InlineSetting, which start with <em>2</em>.</p>
 
+<p>If a matching InlinePattern<em>N</em> is not used for an InlineSetting<em>N</em> option, then the entire text will recieve the setting.</p>
+
 <p>The inline formatting is applied to the final string as it will be displayed by the meter, reflecting the value of any measures bound to the meter with MeasureName<em>N</em>, any Text option on the meter, and any string manipulation applied with other meter options like StringCase, Percentual or NumOfDecimals.</p>
 
 <p>While not required, <code>AccurateText=1</code> should be set in the [Rainmeter] section of the skin, to ensure that the formatting is done on fonts using proper D2D font spacing and metrics.</p>
