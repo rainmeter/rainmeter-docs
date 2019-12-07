@@ -19,7 +19,7 @@ title: 'Histogram meter'
 		<p>Name of the primary (required) and secondary (optional) measures to use for the histogram. The measure(s) used must be able to return <a href="!measures/#Percentage">percentual values</a>.</p>
 	</dd>
 
-	<dt id="Autoscale"><code>Autoscale</code> <small>Default: <code>0</code></small></dt>
+	<dt id="AutoScale"><code>AutoScale</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the histogram is automatically scaled to show all the values.</p>
 	</dd>
@@ -67,6 +67,11 @@ title: 'Histogram meter'
 		<p><a href="!skins/option-types/#Path">Path</a> to the location of optional image used as the primary, secondary or both histograms.</p>
 	</dd>
 
+	<dt id="PrimaryGreyScale"><code>PrimaryGreyScale</code>, <code>SecondaryGreyScale</code>, <code>BothGreyScale</code></dt>
+	<dd>
+		<p>See <a href="!meters/general-options/image-options/#GreyScale">GreyScale</a>.</p>
+	</dd>
+
 	<dt id="ImageCrop"><code>PrimaryImageCrop</code>, <code>SecondaryImageCrop</code>, <code>BothImageCrop</code></dt>
 	<dd>
 		<p>See <a href="!meters/general-options/image-options/#ImageCrop">ImageCrop</a>.</p>
@@ -103,7 +108,7 @@ title: 'Histogram meter'
 <p>The following options have been deprecated and should not be used. They are still supported, but may be removed in future versions.</p>
 
 <ul>
-	<li><p><code>SecondaryMeasure</code><br>
+	<li><p><code>SecondaryMeasureName</code><br>
 		<a href="#MeasureName">MeasureName2</a> should be used to define an optional secondary measure for the meter.
 	</li>
 </ul>
