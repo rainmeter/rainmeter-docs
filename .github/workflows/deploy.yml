@@ -1,0 +1,55 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Clone repo
+        uses: actions/checkout@v1
+
+      - name: Setup SSH deploy key
+        run: |
+          ssh-agent >| ~/.ssh-agent.env
+          source ~/.ssh-agent.env >| /dev/null
+
+          mkdir -p ~/.ssh
+          echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==" >> ~/.ssh/known_hosts
+          KEY_FILE=~/.ssh/deploy_key
+          echo "${DEPLOY_SSH_PRIVATE_KEY}" | base64 --decode > $KEY_FILE
+          chmod 600 $KEY_FILE
+          ssh-add $KEY_FILE
+        env:
+          DEPLOY_SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_PRIVATE_KEY }}
+        shell: bash
+
+      - name: Cache ~/.npm
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Cache _ghpages.git
+        uses: actions/cache@v1
+        with:
+          path: _ghpages.git
+          key: gh-pages-${{ runner.os }}-${{ hashFiles('**/deploy.sh') }}
+
+      - name: Deploy
+        run: |
+          git config --global user.email "deploy@rainmeter.net"
+          git config --global user.name "Rainmeter Bot"
+
+          npm ci
+          source ~/.ssh-agent.env >| /dev/null
+          npm run deploy
+        shell: bash
