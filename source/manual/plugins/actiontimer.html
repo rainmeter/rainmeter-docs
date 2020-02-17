@@ -69,12 +69,15 @@ title: 'ActionTimer plugin'
 		This is used to create a pause or wait in milliseconds between each named <em>Action</em> or other component in the ActionList. There should always be a Wait of at least 1 millisecond between each ActionList component.</li>
 		<li>The pipe <code><b>|</b></code> character is used to separate each of the ActionList components.</li>
 		</ul>
-
+		
 		<p><b>Examples:</b></p>
 		<p><code>ActionList1=FirstAction | Wait 5 | SecondAction</code><br>
 		Execute everything defined in the <em>FirstAction</em> option, wait 5 milliseconds, and execute everything defined in the <em>SecondAction</em> option.</p>
 		<p><code>ActionList1=Repeat FirstAction, 5, 20 | Wait 5 | SecondAction</code><br>
 		Execute everything defined in the <em>FirstAction</em> option 20 times, with a wait of 5 milliseconds between each execution of <em>FirstAction</em>. Wait 5 milliseconds, and execute everything defined in the <em>SecondAction</em> option.</p>
+		
+		<br/><p><b>Note:</b> You can't use any (formulas) in an ActionList<em>[N]</em>.</p>
+		
 	</dd>
 
 	<dt id="Action"><code><em>Action</em></code> <small><code>Any unique name=[!bang or command]</code></small></dt>
