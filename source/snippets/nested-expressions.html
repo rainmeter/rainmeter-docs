@@ -7,7 +7,7 @@ title: 'Nested Expressions'
 
 <div class="noscroll">
 ``` lua
-'On ' .. os.date('&#37;A') .. ' Jane goes to ' .. Locations[os.date('&#37;a')] .. '.'
+'On ' .. os.date('%A') .. ' Jane goes to ' .. Locations[os.date('%a')] .. '.'
 ```
 </div>
 
@@ -15,7 +15,7 @@ title: 'Nested Expressions'
 
 <div class="noscroll">
 ``` lua
-'On {LongDay} Jane goes to {&#123;ShortDay&#125;Location}.'
+'On {LongDay} Jane goes to {{ShortDay}Location}.'
 ```
 </div>
 
@@ -33,12 +33,12 @@ end
 ```
 </div>
 
-<p>Now we need to start adding the bits that do all the work. What makes this all possible is the balanced expression matching capability of Lua. This would be the <code>&#37;b</code> pattern matching class. We use it by placing the beginning and ending characters after it. More detail can be found <a href="http://www.lua.org/pil/20.2.html">here</a>.</p>
+<p>Now we need to start adding the bits that do all the work. What makes this all possible is the balanced expression matching capability of Lua. This would be the <code>%b</code> pattern matching class. We use it by placing the beginning and ending characters after it. More detail can be found <a href="http://www.lua.org/pil/20.2.html">here</a>.</p>
 
 <div class="noscroll">
 ``` lua
 function nested(line)
-	return (string.gsub(line, '&#37;b{}', function(input)
+	return (string.gsub(line, '%b{}', function(input)
 		-- Do Something Here
 	end))
 end
@@ -50,7 +50,7 @@ end
 <div class="noscroll">
 ``` lua
 function nested(line)
-	return (string.gsub(line, '&#37;b{}', function(input)
+	return (string.gsub(line, '%b{}', function(input)
 		local newline = nested(string.match(input, '^{(.-)}$'))
 		-- Do Something Here
 	end))
@@ -65,12 +65,12 @@ end
 <div class="noscroll">
 ``` lua
 function nested(line)
-	return (string.gsub(line, '&#37;b{}', function(input)
+	return (string.gsub(line, '%b{}', function(input)
 		local newline = nested(string.match(input, '^{(.-)}$'))
 		if newline ~= '' then
 			return --Do Something Here
 		else
-			return string.format('{&#37;s}', newline)
+			return string.format('{%s}', newline)
 		end
 	end))
 end
@@ -82,12 +82,12 @@ end
 <div class="noscroll">
 ``` lua
 local nested = function(line, self)
-	return (string.gsub(line, '&#37;b{}', function(input)
+	return (string.gsub(line, '%b{}', function(input)
 		local newline = self(string.match(input, '^{(.-)}$'), self)
 		if newline ~= '' then
 			return -- Do Something Here
 		else
-			return string.format('{&#37;s}', newline)
+			return string.format('{%s}', newline)
 		end
 	end))
 end
@@ -102,8 +102,8 @@ SomeString = nested('{Variable{AnotherVariable}}', nested)
 
 ``` lua
 Variables = {
-	LongDay = os.date('&#37;A'),
-	ShortDay = os.date('&#37;a'),
+	LongDay = os.date('%A'),
+	ShortDay = os.date('%a'),
 	SunLocation = 'Church',
 	MonLocation = 'the Grocery Store',
 	TueLocation = 'the Salon',
@@ -114,12 +114,12 @@ Variables = {
 }
 
 function nested(line)
-	return (string.gsub(line, '&#37;b{}', function(input)
+	return (string.gsub(line, '%b{}', function(input)
 		local newline = nested(string.match(input, '^{(.-)}$'))
 		if Variables[newline] then
 			return Variables[newline]
 		else
-			return string.format('{&#37;s}', newline)
+			return string.format('{%s}', newline)
 		end
 	end))
 end
@@ -131,14 +131,14 @@ SomeString = nested('On {LongDay} Jane goes to {{ShortDay}Location}.')
 
 ``` lua
 function Replace(input)
-	return (string.gsub(input, '(&#37;b[])', function(line)
-		local newline = Replace(string.match(line, '^&#37;[(.-)]$'))
+	return (string.gsub(input, '(%b[])', function(line)
+		local newline = Replace(string.match(line, '^%[(.-)]$'))
 		local typ, name = string.match(newline, '(.)(.+)')
 		-- Establish an string to return in case we encounter an error
-		local ErrorString = string.format('[&#37;s]', newline)
+		local ErrorString = string.format('[%s]', newline)
 		-- Make allowance for escaped expression
-		if string.match(newline, '^&#37;*(.-)&#37;*$') then
-			return string.gsub(newline, '^&#37;*(.-)&#37;*$', '[&#37;1]')
+		if string.match(newline, '^%*(.-)%*$') then
+			return string.gsub(newline, '^%*(.-)%*$', '[%1]')
 		-- Measures / Meters
 		elseif typ == '&' then
 			-- Make allowance for section variables
@@ -146,7 +146,7 @@ function Replace(input)
 			-- Check if Measure / Meter exists
 			if SKIN:GetMeasure(section) or SKIN:GetMeter(section) then
 				-- Use existing function for maximum flexibility
-				return SKIN:ReplaceVariables(string.format('[&#37;s]', name))
+				return SKIN:ReplaceVariables(string.format('[%s]', name))
 			-- Measure / Meter does not exist
 			else
 				return ErrorString
@@ -170,12 +170,12 @@ SomeLine = Replace('[&SomeMeasure[#SomeVariable[&SomeMeter:X]]]')
 ``` lua
 function SomeFunction(InputExpression, FuncTbl)
 	local nested = function(line, self)
-		return (string.gsub(line, '&#37;b{}', function(input)
+		return (string.gsub(line, '%b{}', function(input)
 			local newline = self(string.match(input, '^{(.-)}$'), self)
 			if FuncTbl[newline] then
 				return FuncTbl[newline]
 			else
-				return string.format('{&#37;s}', newline)
+				return string.format('{%s}', newline)
 			end
 		end))
 	end
@@ -184,8 +184,8 @@ function SomeFunction(InputExpression, FuncTbl)
 end
 
 Variables = {
-	LongDay = os.date('&#37;A'),
-	ShortDay = os.date('&#37;a'),
+	LongDay = os.date('%A'),
+	ShortDay = os.date('%a'),
 	SunLocation = 'Church',
 	MonLocation = 'the Grocery Store',
 	TueLocation = 'the Salon',
