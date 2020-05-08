@@ -97,6 +97,23 @@ Text=This is text containing %1 and %2.
 		<li><code>LeftCenter</code>, <code>RightCenter</code>, <code>CenterCenter</code></li>
 		</ul>
 		<p>The string will be aligned using the values of the <code>X</code> and or <code>Y</code> settings as the anchor point. So to CenterCenter align a string within a meter with a width and height of 100, set <code>X=50</code>, <code>Y=50</code> and <code>StringAlign=CenterCenter</code>.</p>
+		
+		<br/><p><b>StringAlign=Left</b> (the default)<br/>
+		The string starts at X, and is drawn from there out to the right.<br/>
+		<em>The result is that the string <b>begins at X</b>, and ends where it ends based on the length of the string.</em><br/>
+		X ==========></p>
+
+		<p><b>StringAlign=Center</b><br/>
+		The string starts at X, and is drawn 1/2 back to the left, and 1/2 out to the right.<br/>
+		<em>The result is that the string is <b>centered on X</b>. It begins where it begins and ends where it ends based on the length of the string.</em><br/>
+		<=====X=====></p>
+
+		<p><b>StringAlignt=Right</b><br/>
+		The string starts at X, and is drawn from there back to the left.<br/>
+		<em>The result is that the string <b>ends at X</b>, and begins where it begins based on the length of the string.</em><br/>
+		<==========X</p>
+
+		<p>The only important thing to remember to use StringAlign is that it is <b>always</b> based on the value of X or Y. The String meter with StringAlign is the one case where X or Y doesn't really mean "starts at", but rather means "is anchored at". </p>
 	</dd>
 
 	<dt id="StringStyle"><code>StringStyle</code> <small>Default: <code>Normal</code></small></dt>
