@@ -15,15 +15,45 @@ title: 'Skin sections'
 
 	<dt id="WindowXY"><code>WindowX</code>, <code>WindowY</code></dt>
 	<dd>
-		<p>The X and Y position of the skin. A trailing <code>%</code> sign indicates that the value is a percentage of the screen width. A trailing <code>R</code> will make the position relative to the right edge of the screen instead of the left. A trailing <code>B</code> will make the position relative to the bottom edge of the screen instead of the top.</p>
-		<p>The <code>%</code> and <code>R</code> / <code>B</code> modifiers can be used together.</p>
-		<p>By default the position is relative to the <a href="!user-interface/manage/#Monitors">primary screen</a>. You can override this with <code>@<em>N</em></code> where <em>N</em> is 0 to 32 and denotes which screen to position the skin on (1-32) or the virtual desktop (0). The screen selection will apply to both WindowX and WindowY if the value is set on only one of them.</p>
+		<p>The X and Y position of the skin. The value is in pixels.</p>
+		
+		<br/><p>A trailing <code>%</code> sign indicates that the value is a percentage of the screen width.</p>
+		<p><code>WindowX=50%</code></p>
+		
+		<br/><p>A trailing <code>R</code> with <code>WindowX</code> will make the position relative to the right edge of the screen instead of the left.</p>
+		<p>A trailing <code>B</code> with <code>WindowY</code> will make the position relative to the bottom edge of the screen instead of the top.</p>
+		<p><code>WindowX=100R</code></p>
+		<p><code>WindowY=50B</code></p>
+		
+		<br/><p>The <code>%</code> and <code>R</code> / <code>B</code> modifiers can be used together.</p>
+		<p><code>WindowX=20%R</code></p>
+		
+		<br/><p>Both <code>WindowX</code> and <code>WindowY</code> will accept <a href="!formulas/">formulas</a>.<br/>
+		The formula must be enclosed in (parenthese), with any trailing <code>% / R / B</code> at the end, and outside the (parentheses).</p>
+		<p><code>WindowX=(100 / 2)%</code></p>
+		
+		<br/><p>By default the position is relative to the <a href="!user-interface/manage/#Monitors">primary screen</a>. You can override this with <code>@<em>N</em></code> where <em>N</em> is 0 to 32 and denotes which screen to position the skin on (1-32) or the virtual desktop (0). The screen selection will apply to both <code>WindowX</code> and <code>WindowY</code> if the value is set on only one of them.</p>
+		<p><code>WindowX@2=200</code></p>
 	</dd>
 
 	<dt id="AnchorXY"><code>AnchorX</code>, <code>AnchorY</code></dt>
 	<dd>
-		<p>By default WindowX and WindowY control the position of the upper left corner of the config window. AnchorX and AnchorY allow that anchor position to be changed. The Anchor can be defined in pixels from the upper left corner of the window or as a percentage of the config if % is used. If a letter R or B is added to AnchorX or AnchorY, then the position is relative to the right or bottom edge of the window.</p>
-		<p>As an example, by setting WindowX, WindowY, AnchorX and AnchorY all to 50% the config will be truly centered in the primary monitor regardless of screen resolution or aspect ratio.</p>
+		<p>By default <code>WindowX</code> and <code>WindowY</code> control the position of the upper left corner of the config window. <code>AnchorX</code> and <code>AnchorY</code> allow that anchor position to be changed. The value is in pixels.<p>
+
+		<br/><p>A trailing <code>%</code> sign indicates that the value is a percentage of the screen width.</p>
+		<p><code>AnchorX=50%</code></p>
+		
+		<br/><p>A trailing <code>R</code> with <code>AnchorX</code> will make the position relative to the right edge of the screen instead of the left.</p>
+		<p>A trailing <code>B</code> with <code>AnchorY</code> will make the position relative to the bottom edge of the screen instead of the top.</p>
+		<p><code>AnchorX=100R</code></p>
+		<p><code>AnchorY=50B</code></p>
+		
+		<br/><p>The <code>%</code> and <code>R</code> / <code>B</code> modifiers can be used together.</p>
+		<p><code>AnchorX=20%R</code></p>
+
+		<br/><p><code>AnchorX</code> and <code>AnchorY</code> will <b>not accept</b> formulas.</p>
+		
+		<br/><p>As an example, by setting <code>WindowX</code>, <code>WindowY</code>, <code>AnchorX</code> and <code>AnchorY</code> all to 50% the config will be truly centered in the primary monitor regardless of screen resolution or aspect ratio.</p>
 	</dd>
 
 	<dt id="SavePosition"><code>SavePosition</code> <small>Default: <code>1</code></small></dt>
