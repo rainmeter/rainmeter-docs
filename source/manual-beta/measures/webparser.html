@@ -243,6 +243,54 @@ UserAgent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Fire
 	</dd>
 </dl>
 
+
+	<dt id="Flags"><code>Flags</code> <small>Default: <code>Resync</code></small></dt>
+	<dd>
+		<p>Specifies one or more flags to be used by a parent WebParser measure. These flags control some aspects of how WebParser connects to the remote resource via HTTP/HTTPS.</p>
+		
+		<br/><p>Multiple flags are set by separating them with the <code>|</code> pipe character.</p>
+		
+		<br/><p>Supported <code>Flags</code> are:
+		
+		<ul>
+		<li><b>Resync</b><br/>
+		Only downloads if the resource has been modified since the last time it was downloaded. Otherwise the cache is used. This is the default if no Flags are set.</li>
+		<li><b>ForceReload</b><br/>
+		Forces a download of the requested resource from the origin server, not from the cache.</li>
+		<li><b>NoCookies</b><br/>
+		Does not add cookie headers to requests, and does not add any cookies set by the resource to the cookie database.
+		<li><b>NoCacheWrite</b><br/>
+		Does not add the returned resource data to the cache.</li>
+		<li><b>Hyperlink</b><br/>
+		Forces a download if there was no Expires time and no LastModified time returned from the server when determining whether to reload the item from the network.</li>
+		<li><b>TempFile</b><br/>
+		Causes a temporary file to be created if the file cannot be cached.</li>
+		<li><b>NoAuth</b><br/>
+		Does not attempt URL-based authentication.</li>
+		<li><b>PragmaNoCache</b><br/>
+		Forces the request to be resolved by the origin server, even if a cached copy exists on a proxy.</li>
+		<li><b>Secure</b><br/>
+		Uses secure transaction semantics. This translates to using Secure Sockets Layer/Private Communications Technology (SSL/PCT) and is only meaningful in HTTP requests.</li>
+		<li><b>IgnoreCertName</b><br/>
+		Disables checking of SSL/PCT-based certificates that are returned from the server against the host name given in the request. WinINet functions use a simple check against certificates by comparing for matching host names and simple wildcarding rules. Use with caution.</li>
+		<li><b>IgnoreCertDate</b><br/>
+		Disables checking of SSL/PCT-based certificates for proper validity dates. Use with caution.</li>
+		<li><b>IgnoreHTTPRedirect</b><br/>
+		Disables detection of this special type of redirect. When this flag is used, WinINet transparently allows redirects from HTTPS to HTTP URLs. Use with caution.</li>
+		<li><b>IgnoreHTTPSRedirect</b><br/>
+		Disables the detection of this special type of redirect. When this flag is used, WinINet transparently allows redirects from HTTP to HTTPS URLs. Use with caution.</li><br/>
+		</ul>
+
+
+``` ini
+[WebParserParentMeasure]
+Flags=ForceReload | NoCookie
+```
+
+	</dd>
+
+
+
 <h2 id="ActionOptions">Action Options</h2>
 
 <p>These options are only valid on <a href="#ParentChild">parent</a> measures that connect to a site or file with <code>URL</code>, and / or have a <code>RegExp</code> or <code>Download</code> option. They are not valid on <a href="#ParentChild">child</a> measures.</p>
