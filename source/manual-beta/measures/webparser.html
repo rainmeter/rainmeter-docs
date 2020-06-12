@@ -163,11 +163,6 @@ Measure=WebParser
 		<p><b>Note:</b> This option is set on the <a href="#ParentChild">parent</a> WebParser measure.</p>
 	</dd>
 
-	<dt id="ForceReload"><code>ForceReload</code> <small>Default: <code>0</code></small></dt>
-	<dd>
-		<p>WebParser reads the resource only if it has been modified since last read. This can be overridden with <code>ForceReload=1</code>.</p>
-	</dd>
-
 	<dt id="CodePage"><code>CodePage</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>Specifies the <a href="http://en.wikipedia.org/wiki/Code_page">code page</a> of the downloaded URL=http:// web page or external file read with URL=file://.</p>
@@ -289,7 +284,11 @@ Flags=ForceReload | NoCookie
 
 	</dd>
 
-
+	<dt id="ForceReload"><code>ForceReload</code> <small>Default: <code>0</code></small></dt>
+	<dd>
+		<p>WebParser reads the resource only if it has been modified since last read. This can be overridden with <code>ForceReload=1</code>.</p>
+		<p><b>Note:</b> This option has been deprecated in favor of the <a href="#Flags">Flags</a> option, and should not be used in new skins.</p>
+	</dd>
 
 <h2 id="ActionOptions">Action Options</h2>
 
