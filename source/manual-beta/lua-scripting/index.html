@@ -135,6 +135,43 @@ end
 		<p>Returns the current value of the named variable as a string. If the variable does not exist, returns the given default value, or <code>nil</code> if no default is given.</p>
 		<p><b>Example:</b> <code>MyVariable = SKIN:GetVariable('VariableName', 'n/a')</code></p>
 	</dd>
+	
+	<dt id="GetX"><code>GetX</code></dt>
+	<dd>
+		<p>Returns the current X position</a> of the skin window as a number.</p>
+		<p><b>Example:</b> <code>MyX = SKIN:GetX()</code></p>
+	</dd>
+
+	<dt id="GetY"><code>GetY</code></dt>
+	<dd>
+		<p>Returns the current Y position</a> of the skin window as a number.</p>
+		<p><b>Example:</b> <code>MyY = SKIN:GetY()</code></p>
+	</dd>
+
+	<dt id="GetW"><code>GetW</code></dt>
+	<dd>
+		<p>Returns the current W size</a> of the skin window as a number.</p>
+		<p><b>Example:</b> <code>MyW = SKIN:GetW()</code></p>
+	</dd>
+
+	<dt id="GetH"><code>GetH</code></dt>
+	<dd>
+		<p>Returns the current H size</a> of the skin window as a number.</p>
+		<p><b>Example:</b> <code>MyH = SKIN:GetH()</code></p>
+	</dd>
+	
+	<dt id="MoveWindow"><code>MoveWindow</code> <small>Parameters: <code><em><b>X</b>, <b>Y</b></em></code></small></dt>
+	<dd>
+		<p>Moves the skin window to the screen position defined by the integer <code>X</code> and <code>Y</code> parameters.</p>
+		<p><b>Example:</b> <code>SKIN:MoveWindow(200,100)</code></p>
+	</dd>
+	
+	<dt id="FadeWindow"><code>FadeWindow</code> <small>Parameters: <code><em><b>from</b>, <b>to</b></em></code></small></dt>
+	<dd>
+		<p>Fades the opacity of the skin window from a starting integer value to an ending integer value. The allowed values are from 255 (opaque) to 0 (transparent). Note that the mouse will not be detected with an opacity of 0 on a skin window.</p>
+		<p>The speed of the fade is controlled by the <a href="!settings/skin-sections/#FadeDuration">FadeDuration</a> setting for the skin.</p>
+		<p><b>Example:</b> <code>SKIN:FadeWindow(255,100)</code></p>
+	</dd>
 
 	<dt id="Bang"><code>Bang</code> <small>Parameters: <code><b>BangName</b><em>, BangArg1, BangArg2, BangArgN</em></code></small></dt>
 	<dd>
