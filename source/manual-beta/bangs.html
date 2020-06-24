@@ -245,6 +245,73 @@ title: 'Bangs'
 		</ul>
 		<br><b>Example:</b> <code>!Move "100" "100"</code>
 	</dd>
+	
+	<dt id="SetWindowPosition"><code>!SetWindowPosition</code> <small>Parameters: <code><b>WindowX, WindowY</b><em>, AnchorX, AnchorY, Config</em></code></small></dt>
+	<dd>
+		<p>Allows you to dynamically change the settings for <a href="!settings/skin-sections/#WindowXY">WindowX</a> and <a href="!settings/skin-sections/#WindowXY">WindowY</a>, as well as optionally <a href="!settings/skin-sections/#AnchorXY">AnchorX</a> and <a href="!settings/skin-sections/#AnchorXY">AnchorY</a> for the skin window.</p>
+		
+		<ul>
+		<li><code>WindowX</code> (required): New WindowX position.</li>
+		<li><code>WindowY</code> (required): New WindowY position.</li>
+		<li><code>AnchorX</code> (optional): New AnchorX position.</li>
+		<li><code>AnchorY</code> (optional): New AnchorY position.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+		
+		<br/><p><b>Example:</b> <code>!SetWindowPosition "100" "100" "10" "50"</code></p>
+
+		<br/><p>If <code>AnchorX</code> is specified, then <code>AnchorY</code> is required.</p>
+		
+		<br/><p><b>These notes are for both WindowX/Y and AnchorX/Y</b></p>
+		
+		<br/><p>Formulas are not allowed in the values if using any of the <code>R B % @</code> modifiers.</p>
+		
+		<br/><p>A trailing <code>%</code> sign indicates that the value is a percentage of the screen width, rather than pixels.</p>
+		<p><code>WindowX=50%</code></p>
+		
+		<br/><p>A trailing <code>R</code> with <code>WindowX</code> will make the position relative to the right edge of the screen instead of the left.</p>
+		<p>A trailing <code>B</code> with <code>WindowY</code> will make the position relative to the bottom edge of the screen instead of the top.</p>
+		<p><code>WindowX=100R</code></p>
+		<p><code>WindowY=50B</code></p>
+		
+		<br/><p>The <code>%</code> and <code>R</code> / <code>B</code> modifiers can be used together.</p>
+		<p><code>WindowX=20%R</code></p>
+		
+		<br/><p>Both <code>WindowX</code> and <code>WindowY</code> will accept <a href="!formulas/">formulas</a>.<br/>
+		The formula must be enclosed in (parenthese), with any trailing <code>% / R / B</code> at the end, and outside the (parentheses).</p>
+		<p><code>WindowX=(100 / 2)%</code></p>
+		
+		<br/><p>By default the position is relative to the <a href="!user-interface/manage/#Monitors">primary screen</a>. You can override this with <code>@<em>N</em></code> where <em>N</em> is 0 to 32 and denotes which screen to position the skin on (1-32) or the virtual desktop (0). The screen selection will apply to both <code>WindowX</code> and <code>WindowY</code> if the value is set on only one of them.</p>
+		<p><code>WindowX=200@2</code></p>		
+
+		</dd>
+	
+	<dt id="SetAnchor"><code>!SetAnchor</code> <small>Parameters: <code><b>AnchorX, AnchorY</b><em>, Config</em></code></small></dt>
+	<dd>
+		<p>Allows you to dynamically change the settings for <a href="!settings/skin-sections/#AnchorXY">AnchorX</a> and <a href="!settings/skin-sections/#AnchorXY">AnchorY</a> for the skin window.</p>
+		
+		<ul>
+		<li><code>AnchorX</code> (required): New AnchorX position.</li>
+		<li><code>AnchorY</code> (required): New AnchorY position.</li>
+		<li><code>Config</code> (optional)</li>
+		</ul>
+		<br/><p><b>Example:</b> <code>!SetAnchor "100" "100"</code></p>
+		
+		<br/><p>Formulas are not allowed in the values if using any of the <code>R B % @</code> modifiers.</p>
+		
+		<br/><p>A trailing <code>%</code> sign indicates that the value is a percentage of the config window width, rather than pixels.</p>
+		<p><code>AnchorX=50%</code></p>
+		
+		<br/><p>A trailing <code>R</code> with <code>AnchorX</code> will make the position relative to the right edge of the config window instead of the left.</p>
+		<p>A trailing <code>B</code> with <code>AnchorY</code> will make the position relative to the bottom edge of the config window instead of the top.</p>
+		<p><code>AnchorX=100R</code></p>
+		<p><code>AnchorY=50B</code></p>
+		
+		<br/><p>The <code>%</code> and <code>R</code> / <code>B</code> modifiers can be used together.</p>
+		<p><code>AnchorX=20%R</code></p>
+
+		<br/><p><b>As an example, by setting <code>WindowX</code>, <code>WindowY</code>, <code>AnchorX</code> and <code>AnchorY</code> all to 50% the config will be truly centered in the primary monitor regardless of screen resolution or aspect ratio.</b></p>
+	</dd>
 
 	<dt id="ActivateConfig"><code>!ActivateConfig</code> <small>Parameters: <code><b>Config</b><em>, File</em></code></small></dt>
 	<dd>
