@@ -9,7 +9,7 @@ title: 'Section Variables'
 
 <p>A meter or measure is referenced as a section variable by placing the section name in brackets <code>[]</code>. Numeric values provided by a section variable can be modified by adding <a href="#MeterParameters">parameters</a> after a colon <code>:</code>. Multiple parameters are separated by commas <code>,</code>.</p>
 
-	<blockquote><p><code>[SectionName:P1,P2]</code></p></blockquote>
+<blockquote><p><code>[SectionName:P1,P2]</code></p></blockquote>
 
 <p><b>Note:</b> Normal or <a href="!variables/#BuiltInVariables">built-in</a> variables take priority over section variables, which means that while they can be used within section variables, for example: <code>[#Foo#:#Bar#]</code>, the reverse, such as <code>#[Foo][Bar]#</code>, is not valid.</p>
 
@@ -51,7 +51,7 @@ title: 'Section Variables'
 		<p>This uses the "real" X/Y/W/H values. This is always an integer, even if the meter has no X and Y <a href="!meters/general-options/#XY">options</a> or W and H <a href="!meters/general-options/#WH">options</a> set, or if the options use formulas or variables.</p>
 		<p>The values for X or Y may be different than the values in the meter options if <a href="!meters/string/#StringAlign">StringAlign</a> is used on a <a href="!meters/string/">String meter</a>.</p>
 		<p>The values for W or H may be different than the values in the meter options if <a href="!meters/general-options/#Padding">Padding</a> is used.</p>
-	</dd>	
+	</dd>
 </dl>
 
 <h2 id="MeasureParameters">Measure Parameters</h2>
@@ -106,10 +106,15 @@ title: 'Section Variables'
 	<dt id="EncodeURL"><code>:EncodeURL</code><small>Example: <code>[MeasureName:EncodeURL]</code></small></dt>
 	<dd>
 		<p>The measure's string value will be <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL-Encoded</a>, also known as Percent Encoded.</p>
-		<p>This can be used to create a URL option for WebParser where there are "input" parts of the URL, such as <code>https://somesite.com?search=I live in München</code> where both the spaces, and the <code>ü</code> character are not allowed in a URL. You would want to encode <code>I live in München</code> as <code>I%20live%20in%20M%C3%BCnchen</code>.</p><br/>
-		<p><b>All characters except</b> <code>0123456789-.ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcedefghijklmnopqrstuvwxyz~</code> will be encoded in the string. Those are considered to be the standard URL-safe characters.</p><br/>
-		<p><b>Do NOT encode the entire URL</b>, as the URI like <code>http://</code>, <code>username@hostname.com</code>, <code>/paths</code>, or <code>:ports</code>, as well as characters like <code>:/?#[]@!$&amp;'()*+,;=</code> when used as delimiters or anchors, must not be encoded.</p><br/>
-		<p>Example: <code>URL=https://somesite.com?search=[&amp;MeasureName:EncodeURL]</code></p><br/>
+		<p>This can be used to create a URL option for WebParser where there are "input" parts of the URL, such as: <code>https://somesite.com?search=I live in München</code> where both the spaces, and the <code>ü</code> character are not allowed in a URL. You would want to encode <code>I live in München</code> as <code>I%20live%20in%20M%C3%BCnchen</code>.</p><br/>
+
+		<p><b>All characters except</b> <code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~</code> will be encoded in the string. Those are considered to be the standard URL-safe characters.</p><br/>
+
+		<p><b>Do <u>NOT</u> encode the entire URL</b>, since URLs contain specific characters that are used as delimiters and should not be encoded. These include: <code>:/?#[]@!$&amp;'()*+,;=</code>.<br/><br/>
+
+		<p>It is recommended to only encode specific query portions of the URL <b>after</b> the <code>protocol://host/path/</code>.<br/>
+		Example: <code>URL=https://somesite.com?search=[&amp;MeasureName:EncodeURL]</code></p>
+
 		<p><b>Note:</b> The <a href="!measures/webparser/#URL">URL option</a> of WebParser will automatically do much of this encoding when the URL is sent, so it might be rare that you need this parameter. it will be needed if you think the "input" part of your URL might contain text with literal <code>:/?#[]@!$&amp;'()*+,;=</code> characters, which WebParser will always treat as delimiter or anchor characters, and will never encode.</p>
 	</dd>
 

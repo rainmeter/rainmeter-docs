@@ -1,4 +1,4 @@
----
+﻿---
 layout: docs
 permalink: history/
 title: 'Version History'
@@ -11,19 +11,19 @@ title: 'Version History'
 <h3 id="r3401">August 19, 2020 - Revision 3401</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>EncodeURL:</b> Changed the <a href="https://docs.rainmeter.net/manual-beta/variables/section-variables/#EncodeURL">:EncodeURL</a> section variable parameter to always encode any character not in the "unreserved" set allowed by URL's.</li>
-	<li><span class="badge badge-changed">Changed</span><b>WebParser:</b> Changed the <a href="https://docs.rainmeter.net/manual-beta/measures/webparser/#URL">URL</a> option to automatically percent-encode any characters after the URI, hostname, and any path, that are not in the "unreserved" or "reserved" set allowed by URL's.</li>	
+	<li><span class="badge badge-changed">Changed</span><b>WebParser:</b> Changed the <a href="https://docs.rainmeter.net/manual-beta/measures/webparser/#URL">URL</a> option to automatically percent-encode any characters after the <code>protocol://host/path/</code> portion of the URL that are not in the "unreserved" or "reserved" set allowed by URL's.</li>
 </ul>
 
 <h3 id="r3400">August 1, 2020 - Revision 3400</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>WebParser:</b> Added a new <a href="https://docs.rainmeter.net/manual-beta/measures/webparser/#DecodeCodePoints">DecodeCodePoints</a> option to WebParser child measures, to decode Unicode code point values in the source like <code>\u00A7</code>, which would be <code>�</code>.</li>
+	<li><span class="badge badge-added">Added</span><b>WebParser:</b> Added a new <a href="https://docs.rainmeter.net/manual-beta/measures/webparser/#DecodeCodePoints">DecodeCodePoints</a> option to WebParser child measures, to decode Unicode code point values in the source like <code>\u00A7</code>, which would be <code>§</code>.</li>
 </ul>
-		
+
 <h3 id="r3399">July 28, 2020 - Revision 3398</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>NowPlaying:</b> Changed the download of lyrics to use the UTF-8 codepage to support Unicode.</li>
 </ul>
-		
+
 <h3 id="r3398">July 11, 2020 - Revision 3398</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>Rainmeter:</b> Corrected a bug, introduced in r3373, that could cause a fatal memory leak over time.</li>
@@ -67,7 +67,7 @@ title: 'Version History'
 <ul>
 	<li><span class="badge badge-added">Added</span><b>Ping plugin:</b> Added support for IPv6 addresses.</li>
 </ul>
-		
+
 <h3 id="r3350">May 13, 2020 - Revision 3350</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>InputText plugin:</b> Fixed an issue with FocusDismiss=0 when the text box was active and the skin was unloaded.</li>
@@ -77,7 +77,7 @@ title: 'Version History'
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>Skin Group:</b> Fixed a bug that broke how "deselecting" worked with groups of skins selected on the screen.</li>
 </ul>
-		
+
 <h3 id="r3348">April 17, 2020 - Revision 3348</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>OnFocusAction</b> Fixed a bug where LeftMouseDownAction was not properly recognizing that focus was given to the skin.</li>
@@ -99,7 +99,7 @@ title: 'Version History'
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>Bangs:</b> Changed <a href="https://docs.rainmeter.net/manual-beta/bangs/#EditSkin">!EditSkin</a> so it will now allow the "config" parameter alone, which will edit the skin .ini file currently running in the defined config folder. Change provided by user <a href="https://forum.rainmeter.net/memberlist.php?mode=viewprofile&u=31268">Yamajac</a>.</li>
 </ul>
-	
+
 <h3 id="r3333">November 16, 2019 - Revision 3333</h3>
 <ul>
 	<li><span class="badge badge-added">Added</span><b>Default Settings:</b> Added the ability to set <em>default / starting</em> values for the skin position and other options defined in the [ConfigName] sections in Rainmeter.ini. See <a href="https://docs.rainmeter.net/manual-beta/skins/rainmeter-section/defaults/">Default Settings</a> in the documentation for details.</li>
@@ -158,7 +158,7 @@ title: 'Version History'
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>Container:</b> Corrected an issue with meter X and Y relativity ("r" and "R") where it was possible to make a container meter relative to its own content, which would crash Rainmeter. See <a href="https://docs.rainmeter.net/manual-beta/meters/general-options/container/">Container</a> documentation for a clarification of the simple rules for the functionality.</li>
 </ul>
-		
+
 <h3 id="r3283">February 8, 2019 - Revision 3283</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>Container:</b> Corrected an issue with mouse detection when a meter was outside its container, and so not drawn, but mouse actions were still being detected on pixels made solid by other elements.</li>
@@ -171,7 +171,7 @@ title: 'Version History'
 	<li><span class="badge badge-fixed">Fixed</span><b>InlineSetting:</b> Corrected an issue with the Shadow effect in InlineSetting when the size of the meter or skin was dynamically increased.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>Installer:</b> If Rainmeter was previously installed to "Start with Windows", re-installing it with that box unchecked would not remove the shortcut from the Startup folder.</li>
 </ul>
-		
+
 <h3 id="r3277">January 19, 2019 - Revision 3277</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>AccurateText:</b> When <code>AccurateText=1</code> and the size of a meter was used in a dynamic way in a formula, any fractional amount of size was being rounded down, or truncated. This has been changed so fractional amounts are rounded up to the nearest whole pixel.</li>
@@ -184,7 +184,7 @@ title: 'Version History'
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>Shape meter:</b> Corrected an issue where shapes that were rotated and then combined were not being rotated properly.</li>
 </ul>
-		
+
 <h3 id="r3271">December 19, 2018 - Revision 3271</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>Container:</b> Fixed a bug in r3270 that broke the Container meter functionality.</li>
@@ -195,7 +195,7 @@ title: 'Version History'
 	<li><span class="badge badge-fixed">Fixed</span><b>Skin Installer:</b> Corrected an issue where skins and layouts that were selected to load after the instation of a .rmskin were often not being loaded.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>Image meter:</b> Fixed a bug with ImageCrop not drawing properly.</li>			
 </ul>
-		
+
 <h3 id="r3266">November 30, 2018 - Revision 3266</h3>
 <ul>
 	<li><span class="badge badge-added">Added</span><b>Container:</b> Added a new <a href="https://docs.rainmeter.net/manual-beta/meters/general-options/container/">Container</a> option to all meter types. This will allow you to place the contents of a meter inside another meter, acting as both a "container" and a "mask". See the documentation for important details and a .rmskin with several examples.</li>
@@ -221,13 +221,13 @@ title: 'Version History'
 	<li><span class="badge badge-fixed">Fixed</span><b>Line meter:</b> Corrected an issue where the offset of the line could be off by a few pixels.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Localization:</b> Updated the Bulgarian and Czech languages.</li>
 </ul>
-		
+
 <h3 id="r3253">September 28, 2018 - Revision 3253</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>Manage dialog:</b> Corrected an issue where information in the dialog was not properly updated when a layout is loaded.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> Using the notification area tray icon will properly restore minimized Manage, About and New skin dialogs.</li>
 </ul>
-		
+
 <h3 id="r3250">September 25, 2018 - Revision 3250</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>Initial beta release with change from GDI+ to D2D and optional hardware acceleration.</b></li>
@@ -245,7 +245,7 @@ title: 'Version History'
 	<li><span class="badge badge-release">RC2</span><b>4.2 Release Candidate 2</b></li>
 	<li><span class="badge badge-changed">Changed</span><b>Usage Monitor plugin:</b> Additional error trapping and logging.</li>
 </ul>
-		
+
 <h3 id="r3108">July 1, 2018 - Revision 3108</h3>
 <ul>
 	<li><span class="badge badge-release">RC1</span><b>4.2 Release Candidate 1</b></li>
@@ -300,8 +300,6 @@ title: 'Version History'
 	<li><span class="badge badge-fixed">Fixed</span><b>UsageMonitor:</b> Corrected a problem where floating point number imprecision could result in a percentage being higher than 100%.</li>
 </ul>
 
-
-
 <h3 id="r3048">May 1, 2018 - Revision 3048</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>UsageMonitor:</b> Blacklist and Whitelist have been changed to use the <code>|</code> (pipe) character as the separator, instead of <code>,</code> (comma).</li>
@@ -318,7 +316,6 @@ title: 'Version History'
 </ul>
 
 <h3 id="r3040">April 19, 2018 - Revision 3040</h3>
-
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated the Malay, Chinese Simplified, and Japanese localizations.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> Prevent a skin from updating as it is in the process of closing, which could potentially crash.</li>
@@ -327,7 +324,6 @@ title: 'Version History'
 </ul>
 
 <h3 id="r3027">February 8, 2018 - Revision 3029</h3>
-
 <ul>
 	<li><span class="badge badge-added">Added</span><b>InputText:</b> Added support for <code>InputNumber</code> and <code>InputLimit</code> as inline command overrides.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Meter:</b> Fixed a rare bug causing Padding to not be included in the meter's W/H if the values for both padding and W/H were equal.</li>
@@ -367,7 +363,7 @@ title: 'Version History'
 <ul>
 	<li><span class="badge badge-release">Final</span><b>4.1 Final Release</b></li>
 </ul>
-	
+
 <h3 id="r2983">November 5, 2017 - Revision 2983</h3>
 <ul>
 	<li><span class="badge badge-release">RC3</span><b>4.1 Release Candidate 3</b></li>
@@ -383,7 +379,6 @@ title: 'Version History'
 	<li><span class="badge badge-fixed">Fixed</span><b>Rainmeter:</b> Corrected an issue caused by the new Fall Creators Update (1709) of Windows 10 which resulted in some improper skin redrawing when part of a skin was dragged above the top of the screen.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>Actions:</b> Corrected an issue caused in an earlier beta that created an error log message when a null action <code>[]</code> was used to capture a mouse click without doing anything.</li>
 </ul>
-
 
 <h3 id="r2947">October 18, 2017 - Revision 2947</h3>
 <ul>
@@ -880,6 +875,7 @@ All of the above additions and changes are related to new functionality for gett
 </ul>
 
 <h2 id="3.1">Rainmeter 3.1</h2><hr />
+
 <h3 id="r2290">May 25, 2014 - Revision 2290</h3>
 <ul>
   <li><span class="badge badge-release">Release</span><b>3.1 Release Version</b></li>
@@ -1651,8 +1647,8 @@ changed with !SetOption/!SetVariable.</li>
   <li><span class="badge badge-fixed">Fixed</span><b>Rainmeter: </b>Fixed a bug in "Manage" that did not allow negative numbers to be entered for "LoadOrder".</li>
   <li><span class="badge badge-removed">Removed</span><b>Rainmeter: </b>Removed support for using Rainmeter.dll as a LiteStep modual. This was required to support Localization project.</li>
 </ul>
-
 </div>
+
 <h2 id="2.1">Rainmeter 2.1</h2><hr />
 
 <h3 id="r959">September 18, 2011 <small>(r959)</small></h3>
