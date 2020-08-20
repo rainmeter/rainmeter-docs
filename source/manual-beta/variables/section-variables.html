@@ -110,10 +110,10 @@ title: 'Section Variables'
 
 		<p><b>All characters except</b> <code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~</code> will be encoded in the string. Those are considered to be the standard URL-safe characters.</p><br/>
 
-		<p><b>Do <u>NOT</u> encode the entire URL</b>, since URLs contain specific characters that are used as delimiters and should not be encoded. These include: <code>:/?#[]@!$&amp;'()*+,;=</code>.<br/><br/>
+		<p><b>Do <u>NOT</u> encode the entire URL</b>, since URLs contain specific characters that are used as delimiters and should not be encoded. These delimiters include: <code>:/?#[]@!$&amp;'()*+,;=</code>.<br/>
 
 		<p>It is recommended to only encode specific query portions of the URL <b>after</b> the <code>protocol://host/path/</code>.<br/>
-		Example: <code>URL=https://somesite.com?search=[&amp;MeasureName:EncodeURL]</code></p>
+		Example: <code>URL=https://somesite.com?search=[&amp;MeasureName:EncodeURL]</code></p><br/>
 
 		<p><b>Note:</b> The <a href="!measures/webparser/#URL">URL option</a> of WebParser will automatically do much of this encoding when the URL is sent, so it might be rare that you need this parameter. it will be needed if you think the "input" part of your URL might contain text with literal <code>:/?#[]@!$&amp;'()*+,;=</code> characters, which WebParser will always treat as delimiter or anchor characters, and will never encode.</p>
 	</dd>
