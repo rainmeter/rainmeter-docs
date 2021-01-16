@@ -41,6 +41,8 @@ title: 'IfMatchActions'
 	<dt id="IfMatchMode"><code>IfMatchMode</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the evaluation of the match will execute the appropriate actions in IfMatchAction or IfNotMatchAction on every update of the measure.</p>
+		
+		<p>This option changes the behavior from "becomes true or false" to "is true or false".</p>
 
 		<p><b>Note:</b> Care should be taken not to create an infinite loop in the actions.  In particular, <code>!Refresh</code>, <code>!Update</code> and <code>!UpdateMeasure #CURRENTSECTION#</code> should generally be avoided when <code>IfMatchMode=1</code>.</p>
 	</dd>
