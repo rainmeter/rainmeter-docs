@@ -96,9 +96,15 @@ title: 'Distributing Skins (.rmskin)'
 			Some skins have one or more <a href="!skins/include-option/">include files</a> to store <a href="!variables/">variables</a> that can be changed by the user. If a user is reinstalling or upgrading a skin that they already have in their library, they will most likely want to preserve their existing preferences. You may specify these files in your skin package, so that the existing variable values are used instead of the defaults in the package.</p>
 
 		<p>Specify the file location starting with the root config folder, e.g. <code>illustro\Clock\Variables.inc</code>. You may specify multiple files by separating them with pipes (<code>|</code>), e.g. <code>illustro\Clock\Variables.inc | illustro\Feeds\Variables.inc</code>.</p>
+
+		<p><b>Note:</b> This option is not compatible with the <a href="#MergeSkins">Merge skins</a> option.</p>
 	</li>
-	<li id="MergeSkins"><p><b>Merge skins</b><br>
-		If selected, the Skin Installer will not remove any existing files found in the user's Skins directory. (Normally, the root config folder is removed and replaced with the version in the skin package.) This can be used to install an "expansion" or a "patch" to a previously-installed skin, without duplicating unchanged files.</p></li>
+	<li id="MergeSkins">
+		<p><b>Merge skins</b><br>
+			If selected, the Skin Installer will not remove any existing files found in the user's Skins directory. (Normally, the root config folder is removed and replaced with the version in the skin package.) This can be used to install an "expansion" or a "patch" to a previously-installed skin, without duplicating unchanged files.</p>
+
+		<p><b>Note:</b> This option is not compatible with the <a href="VariablesFiles">Variables files</a> option.</p>
+	</li>
 </ul>
 
 <p>Finally, click <b>Create package</b> to complete the process. It may take several seconds to create the package, depending on the size of your skin. The file will be saved in your <a href="#SavePackageTo">chosen location</a> as <em>Name_Version.rmskin</em> (using the "Name" and "Version" fields that you entered in the first step).</p>
