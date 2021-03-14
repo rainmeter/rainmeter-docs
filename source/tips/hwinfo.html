@@ -1,0 +1,339 @@
+---
+layout: docs
+permalink: tips/hwinfo/
+title: 'Using HWiNFO with Rainmeter'
+---
+<h2>Overview</h2>
+
+<p>As of version 7.0 of the HWiNFO hardware sensor monitoring tool, the software has changed to require purchasing a yearly "Pro" license in order to use the Shared Memory feature of the software that allowed it to interact with the HWiNFO plugin for Rainmeter. This would make distributing Rainmeter skins to end-users problematic at best.</p>
+
+<p>Martin Malik, the author of HWiNFO, has graciously worked with us to find a solution that will allow the software to be used for personal, non-commercial use in Rainmeter without having to purchase a license, while keeping his ability to monetize his application when used by commercial entities.</p>
+
+<p>The approach consists of tweaking a feature of HWiNFO that was implemented years ago to support using the software with the now long-dead Windows Sidebar gadgets. This allows you to output the current values of one or more sensors to the Windows Registry, where it can be easily accessed using the Registry measure in Rainmeter. A distinct HWiNFO plugin for Rainmeter is no longer required.</p>
+
+<h2>Setting up HWiNFO</h2>
+
+<p>The end-user of a skin will need to do some setup work with HWiNFO before using the skin. The first thing will be to get <b>version 7.01 or later</b> (beta or release) of the software from <a href="https://www.hwinfo.com/">HWiNFO Home</a>. Install the software and run it.</p>
+
+<p>Then using the "Settings" option from the Windows Notification Area tray icon, configure HWiNFO with these recommended options. Note that Shared Memory Support is not required and should be left turned off:</p>
+
+<div class="exampleprev">
+<img src="/tips/img/hwinfo/HWiNFO1.png" width="600"/>
+</div>
+
+<p><br/>Close the Settings dialog, and again using the Windows Notification Area tray icon, select "Sensors", and then click on the "Configure Sensors" button at the bottom of the Sensor Status dialog.</p>
+
+<div class="exampleprev">
+<img src="/tips/img/hwinfo/HWiNFO2.png" width="600"/>
+</div>
+
+<p><br/>Select the "HWiNFO Gadget" tab on the Sensor Settings dialog.</p>
+
+<p>This will list all of the sensors that HWiNFO is monitoring for your hardware. What is on this list will obviously vary from computer to computer! Be sure the checkbox for "Enable reporting to Gadget" is selected.</p>
+
+<div class="exampleprev">
+<img src="/tips/img/hwinfo/HWiNFO3.png" width="600"/>
+</div>
+
+<p><br/>Now scroll through the list, and one at a time, select the sensor elements you wish to output to Rainmeter. For each one, check the box "Report value in Gadget", and make a note of the "Index" value that is created for each. More on that in a minute...</p>
+
+<div class="exampleprev">
+<img src="/tips/img/hwinfo/HWiNFO4.png" width="600"/>
+</div>
+
+<p><br/>Click on "Ok" and you are done! You can close the Sensor Status dialog. HWiNFO will minimize to the Windows Notification Area, and will continue to run in the background.</p>
+
+<h2>Using the values in a skin</h2>
+
+<p>The hard work is behind you! Using the values in a skin is actually really simple. What happens is that HWiNFO will output the current values for all of the sensor elements you selected to the Windows Registry. This will be done each time HWiNFO "polls" your sensors, which by default is every 2000ms or every 2 seconds. <em>This can be changed in the settings for HWiNFO, but I don't particularly recommend changing it. You don't want HWiNFO using more resources than it needs to.</em></p>
+
+<p>For each sensor element, four registry entries will be created and updated.</p>
+<ul>
+<li><b>Sensor<em>N</em></b> : This will contain the name of the top level sensor.</li>
+<li><b>Label<em>N</em></b> : This will contain the name of the individual sensor element.</li>
+<li><b>Value<em>N</em></b> : This will contain a formatted version of the number value.<br/>
+Formatting will include commas for thousands separators, and the text value for the unit of measure.<br/>
+Example: <code>4,198 MHz</code></li>
+<li><b>ValueRaw<em>N</em></b> : This will contain a raw, unformatted version of the number value.<br/>
+Example: <code>4198</code></li>
+</ul>
+
+<p>Now for those values for <em>N</em>. That will be that "Index" number that was assigned to each sensor element when you configured HWiNFO. Those numbers can be obtained by opening a <code>cmd.exe</code> Command Prompt, and typing in:<br/><br/><code>reg query HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB</code>.<br/><br/>That will produce a listing like this:<p>
+
+<div class="exampleprev">
+<img src="/tips/img/hwinfo/HWiNFO5.png" width="600"/>
+</div>
+
+
+<p><br/>So all you need to do is create <a href="https://docs.rainmeter.net/manual/measures/registry/">Registry measures</a> to obtain each of those values you want to display in your skin.</p>
+
+<p>The values are stored in the registry in <code>HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB</code>.</p>
+
+``` ini
+[Measure0Sensor]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Sensor0
+
+[Measure0Label]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Label0
+
+[Measure0ValueFormatted]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Value0
+
+[Measure0ValueRaw]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=ValueRaw0
+```
+
+<p>That's really all there is to it! No plugin, no hideous and complicated hex numbers. Just go get the value you want.</p>
+
+<h2>Some Notes and Tips</h2>
+
+<p>It might occur to you that "writing" to the Windows Registry every 2 seconds might be working your hard drive a bit. This really isn't the case. Windows is very clever about how it manages the Registry and changes are actually just stored in a memory copy of the hive, and only written to the physical disk periodically, and / or when you shut down Windows. This approach is very easy indeed on your hard drive.</p>
+
+<p>The old Rainmeter plugin for HWiNFO allowed you to obtain distinct values for "Current", "Minimum", "Maximum" and "Average" for each sensor element. Only the "current" value is possible with this interface. Of course every Registry measure will have an implied "Range" of the MinValue and MaxValue based on what has happened while the skin is running. Those can be used with <code>[MeasureName:MaxValue]</code>. I demonstrate this in my example skin.</p>
+
+<p>This interface does not support monitoring "remote computers". If you need to have a computer monitor one or more other computers on a network, this is the kind of functionality that requires that you purchase the "Pro" version of HWiNFO.</p>
+
+<p>Many of the sensor elements HWiNFO will monitor have really bizarre, mysterious, or otherwise incomprehensible names. As you are going through the list on the main Sensor Status dialog, holding your mouse over the element will provide a really nice tooltip explanation of what the sensor means.<p>
+
+<p>Those names can be changed by you! Simply right click any sensor element in the Sensor Status dialog and "Rename" it to something that makes more sense to you. Those changes will be carried through into the interface and into your skins.</p>
+
+<h2>Example Skin</h2>
+
+<a href="/tips/examples/HWiNFO_New.rmskin" class="download"></a>
+``` ini
+[Rainmeter]
+Update=1000
+DynamicWindowSize=1
+AccurateText=1
+
+[Variables]
+
+[Measure0Sensor]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Sensor0
+UpdateDivider=-1
+RegExpSubstitute=1
+Substitute="^.*]:":""
+
+[Measure0Label]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Label0
+UpdateDivider=-1
+
+[Measure0ValueRaw]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=ValueRaw0
+
+[Measure1Label]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Label1
+UpdateDivider=-1
+
+[Measure1ValueRaw]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=ValueRaw1
+
+[Measure2Label]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Label2
+UpdateDivider=-1
+
+[Measure2ValueRaw]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=ValueRaw2
+
+[Measure3Label]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Label3
+UpdateDivider=-1
+
+[Measure3ValuePretty]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Value3
+
+[Measure4Sensor]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Sensor4
+UpdateDivider=-1
+RegExpSubstitute=1
+Substitute="^.*]:":""
+
+[Measure4Label]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Label4
+UpdateDivider=-1
+
+[Measure4ValueRaw]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=ValueRaw4
+
+[Measure5Label]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Label5
+UpdateDivider=-1
+
+[Measure5ValuePretty]
+Measure=Registry
+RegHKey=HKEY_CURRENT_USER
+RegKey=SOFTWARE\HWiNFO64\VSB
+RegValue=Value5
+
+[MeterCPUName]
+Meter=String
+W=390
+MeasureName=Measure0Sensor
+FontSize=12
+FontWeight=600
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=CPU - %1
+
+[MeterCPUSpeed]
+Meter=String
+W=390
+Y=15R
+MeasureName=Measure0Label
+MeasureName2=Measure0ValueRaw
+FontSize=12
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+DynamicVariables=1
+Text=%1 - %2 MHz : Max - [Measure0ValueRaw:MaxValue] MHz
+
+[MeterCPULoad]
+Meter=String
+W=390
+Y=10R
+MeasureName=Measure1Label
+MeasureName2=Measure1ValueRaw
+FontSize=12
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=%1 - %2%
+
+[MeterCPUTemperature]
+Meter=String
+W=390
+Y=5R
+MeasureName=Measure2Label
+MeasureName2=Measure2ValueRaw
+FontSize=12
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=%1 - %2 °C
+
+[MeterCPUFanSpeed]
+Meter=String
+W=390
+Y=5R
+MeasureName=Measure3Label
+MeasureName2=Measure3ValuePretty
+FontSize=12
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=%1 - %2
+
+[MeterGPUName]
+Meter=String
+W=390
+Y=15R
+MeasureName=Measure4Sensor
+FontSize=12
+FontWeight=600
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=GPU - %1
+
+[MeterGPUTemperature]
+Meter=String
+W=390
+Y=10R
+MeasureName=Measure4Label
+MeasureName2=Measure4ValueRaw
+FontSize=12
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=%1 - %2 °C
+
+[MeterGPUFanSpeed]
+Meter=String
+W=390
+Y=5R
+MeasureName=Measure5Label
+MeasureName2=Measure5ValuePretty
+FontSize=12
+FontWeight=400
+FontColor=255,255,255,255
+SolidColor=47,47,47,255
+Padding=5,5,5,5
+AntiAlias=1
+Text=%1 - %2
+```
+
+<div class="exampleprev">
+<img src="/tips/img/hwinfo/HWiNFOExample.png" width="600"/>
+</div>
+
+<p><br/><b>Bonus!</b> Included with that .rmskin is a little <code>ShowReg</code> skin that will create a scrollable listing of the Registry entries for HWiNFO. Something like this might help your end-users find those Index numbers they will need.</p>
+
+<div class="exampleprev">
+<img src="/tips/img/hwinfo/HWiNFO1.gif" width="600"/>
+</div>
+
