@@ -101,7 +101,7 @@ RegValue=ValueRaw0
 
 <p>It might occur to you that "writing" to the Windows Registry every 2 seconds might be working your hard drive a bit. This really isn't the case. Windows is very clever about how it manages the Registry and changes are actually just stored in a memory copy of the hive, and only written to the physical disk periodically, and / or when you shut down Windows. This approach is very easy indeed on your hard drive.</p>
 
-<p>The old Rainmeter plugin for HWiNFO allowed you to obtain distinct values for "Current", "Minimum", "Maximum" and "Average" for each sensor element. Only the "current" value is possible with this interface. Of course every Registry measure will have an implied "Range" of the MinValue and MaxValue based on what has happened while the skin is running. Those can be used with <code>[MeasureName:MaxValue]</code>. I demonstrate this in my example skin.</p>
+<p>The old Rainmeter plugin for HWiNFO allowed you to obtain distinct values for "Current", "Minimum", "Maximum" and "Average" for each sensor element. Only the "current" value is possible with this interface. These values can be calculated in the skin, which I demonstate in the <code>MinMaxAvg</code> skin in the example .rmskin below.</p>
 
 <p>This interface does not support monitoring "remote computers". If you need to have a computer monitor one or more other computers on a network, this is the kind of functionality that requires that you purchase the "Pro" version of HWiNFO.</p>
 
