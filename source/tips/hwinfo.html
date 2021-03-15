@@ -119,107 +119,130 @@ DynamicWindowSize=1
 AccurateText=1
 
 [Variables]
+; * Skin Authors
+; The easiest way to do this is to create variables for each of the values you 
+; will be using in the skin. Give them easy to understand variable names.
+; * Skin Users
+; Using cmd.exe run:
+; reg query HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB
+; That will create a list of all the sensor elements you are "outputting" from HWiNFO
+; Find the Index number for each of the elements you want to use and set the variables accordingly
+; Note that if you later go back into HWiNFO and add or remove elements to "output",
+; these Index numbers will change!
 
-[Measure0Sensor]
+CPUNameIndex=0
+CPU0SpeedIndex=0
+CPUUsageIndex=8
+CPUTempIndex=10
+CPUFanIndex=14
+GPUNameIndex=26
+GPUTempIndex=26
+GPUFanIndex=27
+
+; Measures
+
+[MeasureCPUNameSensor]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=Sensor0
+RegValue=Sensor#CPUNameIndex#
 UpdateDivider=-1
 RegExpSubstitute=1
 Substitute="^.*]:":""
 
-[Measure0Label]
+[MeasureCPU0SpeedLabel]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=Label0
+RegValue=Label#CPU0SpeedIndex#
 UpdateDivider=-1
 
-[Measure0ValueRaw]
+[MeasureCPU0SpeedValueRaw]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=ValueRaw0
+RegValue=ValueRaw#CPU0SpeedIndex#
 
-[Measure1Label]
+[MeasureCPUUsageLabel]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=Label1
+RegValue=Label#CPUUsageIndex#
 UpdateDivider=-1
 
-[Measure1ValueRaw]
+[MeasureCPUUsageValueRaw]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=ValueRaw1
+RegValue=ValueRaw#CPUUsageIndex#
 
-[Measure2Label]
+[MeasureCPUTempLabel]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=Label2
+RegValue=Label#CPUTempIndex#
 UpdateDivider=-1
 
-[Measure2ValueRaw]
+[MeasureCPUTempValueRaw]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=ValueRaw2
+RegValue=ValueRaw#CPUTempIndex#
 
-[Measure3Label]
+[MeasureCPUFanLabel]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=Label3
+RegValue=Label#CPUFanIndex#
 UpdateDivider=-1
 
-[Measure3ValuePretty]
+[MeasureCPUFanValuePretty]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=Value3
+RegValue=Value#CPUFanIndex#
 
-[Measure4Sensor]
+[MeasureGPUNameSensor]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=Sensor4
+RegValue=Sensor#GPUNameIndex#
 UpdateDivider=-1
 RegExpSubstitute=1
 Substitute="^.*]:":""
 
-[Measure4Label]
+[MeasureGPUTempLabel]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=Label4
+RegValue=Label#GPUTempIndex#
 UpdateDivider=-1
 
-[Measure4ValueRaw]
+[MeasureGPUTempValueRaw]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=ValueRaw4
+RegValue=ValueRaw#GPUTempIndex#
 
-[Measure5Label]
+[MeasureGPUFanLabel]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=Label5
+RegValue=Label#GPUFanIndex#
 UpdateDivider=-1
 
-[Measure5ValuePretty]
+[MeasureGPUFanValuePretty]
 Measure=Registry
 RegHKey=HKEY_CURRENT_USER
 RegKey=SOFTWARE\HWiNFO64\VSB
-RegValue=Value5
+RegValue=Value#GPUFanIndex#
+
+; Meters
 
 [MeterCPUName]
 Meter=String
 W=390
-MeasureName=Measure0Sensor
+MeasureName=MeasureCPUNameSensor
 FontSize=12
 FontWeight=600
 FontColor=255,255,255,255
@@ -228,12 +251,12 @@ Padding=5,5,5,5
 AntiAlias=1
 Text=CPU - %1
 
-[MeterCPUSpeed]
+[MeterCPU0Speed]
 Meter=String
 W=390
 Y=15R
-MeasureName=Measure0Label
-MeasureName2=Measure0ValueRaw
+MeasureName=MeasureCPU0SpeedLabel
+MeasureName2=MeasureCPU0SpeedValueRaw
 FontSize=12
 FontWeight=400
 FontColor=255,255,255,255
@@ -241,14 +264,14 @@ SolidColor=47,47,47,255
 Padding=5,5,5,5
 AntiAlias=1
 DynamicVariables=1
-Text=%1 - %2 MHz : Max - [Measure0ValueRaw:MaxValue] MHz
+Text=%1 - %2 MHz : Max - [MeasureCPU0SpeedValueRaw:MaxValue] MHz
 
-[MeterCPULoad]
+[MeterCPUUsage]
 Meter=String
 W=390
 Y=10R
-MeasureName=Measure1Label
-MeasureName2=Measure1ValueRaw
+MeasureName=MeasureCPUUsageLabel
+MeasureName2=MeasureCPUUsageValueRaw
 FontSize=12
 FontWeight=400
 FontColor=255,255,255,255
@@ -257,12 +280,12 @@ Padding=5,5,5,5
 AntiAlias=1
 Text=%1 - %2%
 
-[MeterCPUTemperature]
+[MeterCPUTemp]
 Meter=String
 W=390
 Y=5R
-MeasureName=Measure2Label
-MeasureName2=Measure2ValueRaw
+MeasureName=MeasureCPUTempLabel
+MeasureName2=MeasureCPUTempValueRaw
 FontSize=12
 FontWeight=400
 FontColor=255,255,255,255
@@ -275,8 +298,8 @@ Text=%1 - %2 °C
 Meter=String
 W=390
 Y=5R
-MeasureName=Measure3Label
-MeasureName2=Measure3ValuePretty
+MeasureName=MeasureCPUFanLabel
+MeasureName2=MeasureCPUFanValuePretty
 FontSize=12
 FontWeight=400
 FontColor=255,255,255,255
@@ -289,7 +312,7 @@ Text=%1 - %2
 Meter=String
 W=390
 Y=15R
-MeasureName=Measure4Sensor
+MeasureName=MeasureGPUNameSensor
 FontSize=12
 FontWeight=600
 FontColor=255,255,255,255
@@ -298,12 +321,12 @@ Padding=5,5,5,5
 AntiAlias=1
 Text=GPU - %1
 
-[MeterGPUTemperature]
+[MeterGPUTemp]
 Meter=String
 W=390
 Y=10R
-MeasureName=Measure4Label
-MeasureName2=Measure4ValueRaw
+MeasureName=MeasureGPUTempLabel
+MeasureName2=MeasureGPUTempValueRaw
 FontSize=12
 FontWeight=400
 FontColor=255,255,255,255
@@ -316,8 +339,8 @@ Text=%1 - %2 °C
 Meter=String
 W=390
 Y=5R
-MeasureName=Measure5Label
-MeasureName2=Measure5ValuePretty
+MeasureName=MeasureGPUFanLabel
+MeasureName2=MeasureGPUFanValuePretty
 FontSize=12
 FontWeight=400
 FontColor=255,255,255,255
