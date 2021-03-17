@@ -117,27 +117,28 @@ RegValue=ValueRaw0
 Update=1000
 DynamicWindowSize=1
 AccurateText=1
+ContextTitle=Display Sensors
+ContextAction=[!ActivateConfig "HWiNFO_New\ShowReg" "ShowReg.ini"]
 
 [Variables]
 ; * Skin Authors
 ; The easiest way to do this is to create variables for each of the values you 
 ; will be using in the skin. Give them easy to understand variable names.
 ; * Skin Users
-; Using cmd.exe run:
-; reg query HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB
-; That will create a list of all the sensor elements you are "outputting" from HWiNFO
+; Right click this skin and select "Display Sensors"
+; That will create a list of all the sensor elements you are "outputting" from HWiNFO in your default browser.
 ; Find the Index number for each of the elements the skin needs and set the variables accordingly.
 ; Note that if you later go back into HWiNFO and add or remove elements to "output",
 ; these Index numbers will change!
 
-CPUNameIndex=0
-CPU0SpeedIndex=0
-CPUUsageIndex=8
-CPUTempIndex=10
-CPUFanIndex=14
-GPUNameIndex=26
-GPUTempIndex=26
-GPUFanIndex=27
+CPUNameIndex=15
+CPU0SpeedIndex=15
+CPUUsageIndex=58
+CPUTempIndex=102
+CPUFanIndex=149
+GPUNameIndex=198
+GPUTempIndex=198
+GPUFanIndex=207
 
 ; Measures
 
@@ -356,10 +357,10 @@ Text=%1 - %2
 
 <p><br/><b>Bonus Skins!</b></p>
 
-<p>Included with that .rmskin is a little <code>ShowReg</code> skin that will create a scrollable listing of the Registry entries for HWiNFO. Something like this might help your end-users find those Index numbers they will need.</p>
+<p>Included with that .rmskin is a little <code>ShowReg</code> skin that will create a listing of the Registry entries for HWiNFO and open it in your default browser. Something like this might help your end-users find those Index numbers they will need.</p>
 
 <div class="exampleprev">
-<img src="/tips/img/hwinfo/HWiNFO1.gif" width="600"/>
+<img src="/tips/img/hwinfo/HWiNFOExample3.png" width="600"/>
 </div>
 
 <p><br/>Also included is an example <code>MinMaxAvg</code> skin showing how you can get and use the Minimum, Maximum, and Average values in your skins.</p>
