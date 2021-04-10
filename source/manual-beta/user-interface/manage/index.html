@@ -196,6 +196,48 @@ title: 'Manage'
 
 <p>The current Rainmeter state will be replaced with the named layout. If Rainmeter is not running, it will be started.</p>
 
+<h2 id="GameModeTab">The Game mode tab</h2>
+
+<p>Game mode is used to unload some or all skins when running a full-screen game, in order to save Rainmeter CPU and GPU resources while playing.</p>
+
+<p>This can be configured to be <em>automatically</em> triggered by checking the <code>Full-screen games</code> box, which will automatically enter Game mode when any full-screen D3D game is active on the primary monitor.</p>
+
+<p>In addition, one or more processes of your choice that are not full-screen D3D games can be entered one process per line in the <code>Additional process list</code> text box, and when any of those processes are running, game mode will be triggered.</p>
+
+<div class="exampleprev">
+<a href="!img/user-interface/GameMode01.png" data-fancybox><img src="!img/user-interface/GameMode01.png"></a>
+</div>
+
+<h3 id="GameModeStart">On start</h3>
+
+<p>What happens when Game mode starts is controlled by the <code>On start</code> pulldown. This can be set to the default <code>Unload all skins</code> or any defined <a href="#LayoutsTab">Layout</a> that you create.</p>
+
+<div class="exampleprev">
+<a href="!img/user-interface/GameMode02.png" data-fancybox><img src="!img/user-interface/GameMode02.png"></a>
+</div>
+
+<h3 id="GameModeStop">On stop</h3>
+
+<p>What happens when Game mode stops is controlled by the <code>On stop</code> pulldown. This can be set to the default <code>Load current layout</code>, which will load the skins that were running before Game mode was triggered, or any defined <a href="#LayoutsTab">Layout</a> that you create.</p>
+
+<div class="exampleprev">
+<a href="!img/user-interface/GameMode03.png" data-fancybox><img src="!img/user-interface/GameMode03.png"></a>
+</div>
+
+<p>Simply create the <a href="#LayoutsTab">Layouts</a> you want to use for Game mode <code>start</code> and <code>stop</code>, and select them from these pulldowns.</p>
+
+<div class="exampleprev">
+<a href="!img/user-interface/GameMode04.png" data-fancybox><img src="!img/user-interface/GameMode04.png"></a>
+</div>
+
+<p>Game mode can also be started and stopped manually, as well as fully configured, from the Rainemter tray icon context menu.</p>
+
+<div class="exampleprev">
+<a href="!img/user-interface/GameModeContext01.png" data-fancybox><img src="!img/user-interface/GameModeContext01.png"></a>
+</div>
+
+<p><em><b>Note</b> that if you manually start or stop Game mode, the checkboxes for automatic triggering will be turned off, and you will need to enable them again, either from the context menu, or from Manage.</em></p>
+
 <h2 id="SettingsTab">The Settings tab</h2>
 
 <p>This tab has some high level settings for the Rainmeter application, as well as controls for Rainmeter's logging capability.</p>
