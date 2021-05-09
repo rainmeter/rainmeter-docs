@@ -32,7 +32,7 @@ hexo generate
 # Run PostCSS
 echo -e "${YELLOW}3/3:${WHITE} Run PostCSS${SET}"
 cd $PUBLIC_DIR
-postcss css/style.css --replace --verbose
+postcss css/rainmeter.css --replace --verbose
 
 echo -e "${YELLOW}INFO:${WHITE} Script finished, will close in 5 seconds...${SET}"
 sleep 5

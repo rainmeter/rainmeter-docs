@@ -43,7 +43,7 @@ hexo generate
 # Run PostCSS
 echo -e "${YELLOW}4/5:${WHITE} Run PostCSS${SET}"
 cd $PUBLIC_DIR
-postcss css/style.css --replace --verbose
+postcss css/rainmeter.css --replace --verbose
 
 # Deploy to Github Pages
 echo -e "${YELLOW}5/5:${WHITE} Deploy to Github Pages${SET}"
