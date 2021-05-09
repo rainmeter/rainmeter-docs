@@ -5,10 +5,19 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse justify-content-end" id="mainNavigation">
-			<ul class="navbar-nav order-12"><% for (var i in theme.menu){ %>
-				<li class="nav-item <% if (i == 'Documentation')  { %>active<% } %>"><a class="nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li><% } %>
-				<div class="dropdown-divider"></div>
-			</ul>
+			<ul class="navbar-nav order-12">
+                <% for (var i in theme.menu){ %>
+					<% if (theme.menu[i].external === true) { %>
+                		<li class="nav-item>">
+                    		<a class="nav-link" href="<%- theme.menu[i].url %>"><%= i %></a>
+                		</li>
+					<% } else { %>
+						<li class="nav-item <%= is_current(theme.menu[i].url) ? 'active' : '' %>">
+                    		<a class="nav-link" href="<%- url_for(theme.menu[i].url) %>"><%= i %></a>
+                		</li>
+					<% } %>
+                <% } %>
+                <div class="dropdown-divider"></div>
 		</div>
 	</div>
 </nav>

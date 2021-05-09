@@ -1,20 +1,31 @@
 {
-  "name": "hexo-rainmeter-docs",
+  "name": "rainmeter-docs",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "deploy": "./deploy.sh"
-  },
   "hexo": {
-    "version": "3.8.0"
+    "version": "5.4.0"
+  },
+  "scripts": {
+    "start": "hexo server --log",
+    "generate": "hexo generate",
+    "build": "./build.sh",
+    "deploy": "./deploy.sh",
+    "clean": "./clean.sh"
   },
   "dependencies": {
-    "hexo": "3.8.0",
-    "hexo-renderer-ejs": "0.2.0",
-    "hexo-server": "0.2.0",
-    "cryptiles": "^4.1.2",
-    "ejs": "^2.5.5",
-    "moment": "^2.19.3",
-    "uglify-js": "^2.6.0"
+    "bootstrap": "4.6.0",
+    "ejs": "3.1.6",
+    "hexo": "5.4.0",
+    "hexo-renderer-ejs": "1.0.0",
+    "hexo-renderer-scss": "1.2.0",
+    "hexo-server": "2.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.2.5",
+    "browserslist": "^4.6.0",
+    "cssnano": "5.0.2",
+    "gh-pages": "3.1.0",
+    "postcss": "8.2.14",
+    "postcss-cli": "8.3.1"
   }
 }
