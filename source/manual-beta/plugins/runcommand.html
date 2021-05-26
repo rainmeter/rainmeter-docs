@@ -163,12 +163,13 @@ AccurateText=1
 [MeasureRun]
 Measure=Plugin
 Plugin=RunCommand
-Parameter=wmic cpu get Name
+Program=PowerShell
+Parameter=(Get-CimInstance -ClassName Win32_Processor -Property Name).Name
 State=Hide
 OutputType=ANSI
 OutputFile=#CURRENTPATH#CPUName.txt
 RegExpSubstitute=1
-Substitute="Name.*#CRLF#":"","#CRLF#":""
+Substitute="\s+#CRLF#":""
 
 [MeterRun]
 Meter=String
@@ -188,15 +189,14 @@ FontSize=14
 FontColor=255,255,255,255
 AntiAlias=1
 ```
-<p>This example will run the program wmic.exe, which is in the Windows %PATH% and thus needs no path on the command itself.</p>
-<p>The wmic.exe program will use the parameters of "cpu get Name". The program will be run in a "hidden" cmd.exe Command Prompt window, and nothing visible will happen.</p>
-<p>In effect this is really executing <code>"%windir%\system32\cmd.exe \U \C" "wmic cpu get Name"</code>.</p>
-<p>The output of the wmic.exe program (the "name" of your CPU in this case) will be written to STDOUT in the hidden cmd.exe Command Prompt window, which will be captured by the plugin and set as the string value of the [MeasureRun] measure.</p>
-<p><em>The Substitute option is being used to strip off some extra label information and linefeeds that are output by the program.</em></p>
-<p>Additionally, the file defined in OutputFile will contain the entire output of the wmic command, which in this example might be:</p>
+<p>This example will run the program powershell.exe, which is in the Windows %PATH% and thus needs no path on the command itself.</p>
+<p>PowerShell will use the parameter of "(Get-CimInstance -ClassName Win32_Processor -Property Name).Name". The program will be run in a "hidden" PowerShell Command Prompt window, and nothing visible will happen.</p>
+<p>The output of the PowerShell program (the "name" of your CPU in this case) will be written to STDOUT in the hidden PowerShell window, which will be captured by the plugin and set as the string value of the [MeasureRun] measure.</p>
+<p><em>The Substitute option is being used to strip off some trailing spaces and a linefeed in the output.</em></p>
+<p>Additionally, the file defined in OutputFile will contain the entire output of the command, which in this example might be:</p>
 
 ``` txt
 Name
-Intel Core i7 920 @ 3.20GHz
+AMD Ryzen 7 2700X Eight-Core Processor
 ```
 <p>Additional parsing of this file could be done with the WebParser plugin or String measures if you wanted for instance to obtain multiple separate values from the single command output.</p>
