@@ -133,11 +133,15 @@ Powershell .ps1 script file:
 <pre>
 # This Powershell script does not need to be opened "As Administrator", as the command is evelated in the script. Pass it the name of the setup executable as a parameter.
 
-$installerARG=$args[0]
+param(
+	[Parameter(Mandatory)]
+	[string]
+	$InstallerPath
+)
 
 Write-Host Installing Rainmeter...
 
-Start-Process -FilePath $installerARG -ArgumentList "/S /LANGUAGE=1033 /PORTABLE=0 /VERSION=64 /AUTOSTARTUP=1 /D=`"C:\Program Files\Rainmeter`"" -verb runas
+Start-Process -FilePath $InstallerPath -ArgumentList "/S /LANGUAGE=1033 /PORTABLE=0 /VERSION=64 /AUTOSTARTUP=1 /D=`"$($env:ProgramFiles)\Rainmeter`"" -verb runas
 
 Write-Host Waiting 2 seconds...
 
@@ -145,7 +149,7 @@ Start-Sleep -s 2
 
 Write-Host Starting Rainmeter...
 
-Start-Process -FilePath "C:\Program Files\Rainmeter\Rainmeter.exe" -WorkingDirectory "C:\Program Files\Rainmeter"
+Start-Process -FilePath "$($env:ProgramFiles)\Rainmeter\Rainmeter.exe" -WorkingDirectory "$($env:ProgramFiles)\Rainmeter"
 
 Start-Sleep -s 1
 
