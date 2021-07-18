@@ -45,13 +45,109 @@ title: 'Installing Rainmeter'
 <code>C:\Program Files\Rainmeter</code></p>
 
 <p><b>Skins folder:</b><br>
-<code>C:\Users\YourName\Documents\Rainmeter\Skins</code> <sup>1</sup></p>
+<code>C:\Users\YourName\Documents\Rainmeter\Skins</code></p>
 
 <p><b>Settings and Layouts folder:</b><br>
-<code>C:\Users\YourName\Appdata\Roaming\Rainmeter</code> <sup>1</sup></p>
-
-<p class="footnote">1. "YourName" is an example.</p>
+<code>C:\Users\YourName\Appdata\Roaming\Rainmeter</code></p>
 
 <h2 id="PortableInstallation">Portable Installation</h2>
 
 <p>To run Rainmeter from a single folder, so it can be copied to another computer or run directly from a removable drive, select <b>Portable installation</b> during the install process and browse to the desired installation folder. No changes to the Windows Registry or Start menu will be made. All program, skins and settings folders and files will remain in the selected program folder.</p>
+
+<h2 id="SilentInstallation">Silent Installation</h2>
+
+<p>Rainmeter can be installed "silently" from a command prompt, either a <b>cmd.exe</b> command window or a <b>Powershell</b> window.</p>
+
+<p><i>This feature has been designed to support using the <a href="https://docs.microsoft.com/en-us/windows/package-manager/winget/">WinGet - Windows Package Manager</a> service that is going to soon be widely available in Windows. Rainmeter is not yet supported in the WinGet repository, but will be added as soon as the WinGet application and repository are available and reliable.</i></p>
+
+<h3 id="Notes">Notes</h3>
+<p><b>Important!</b> If you are doing a "Standard Installation", the command prompt must be opened <b>As Administrator</b>. This is because Rainmeter will be installed in your <code>Program Files</code> folder in Windows, and that is a protected folder requiring administrator access to write to. The installer will simply immediately fail if elevated access is not present.<br/><br/>
+If an error occurs, a file named "Rainmeter.SilentInstall.log" is created on the desktop with information on the problem. If the desktop cannot be written to, the log file will be written to the user folder i.e. <code>C:\Users\YourName</code>.<br/><br/>
+The Silent Install will exit Rainmeter prior to running, and will NOT restart Rainmeter when done. You will need to manually restart Rainmeter, or create some clever batch file that does both. (a couple of simple examples below)</p>
+
+<h3 id="Parameters">Parameters</h3>
+<p>In order to install or update Rainmeter from the command line, execute the installer .exe using one or more of the following case-sensitive parameters on the command line:</p>
+
+<ul>
+<li><code>/S</code> : Required - This tells the installer to execute without opening the normal installation dialog. This is the "silent" in "Silent Install".</li>
+</ul>
+
+<p></p>
+
+<ul>
+<li><code>/PORTABLE=</code> : Optional - This can be set to either the default <code>/PORTABLE=0</code> or <code>/PORTABLE=1</code>. If a "portable" installation is done, the <code>/D=</code> destination folder must be set.</li>
+<li><code>/AUTOSTARTUP=</code> : Optional - This will tell the installer whether or not to add a shortcut to Rainmeter in the Startup folder for your Windows account. On a new installation, this will default to <code>/AUTOSTARTUP=1</code>. On an upgrade of an existing installation, it will default to the current setting, but may be overridden.<br>
+<i>This setting is ignored on a "portable" install, as no registry changes are made and no icons are created with a portable installation.</i></li>
+<li><code>/VERSION=</code> : Optional - This should be set to either <code>/VERSION=64</code> or <code>/VERSION=32</code>, depending on the architecture of the Windows version you are running. On a new installation, this will default to <code>/VERSION=64</code> on 64-bit Windows and <code>/VERSION=32</code> on 32-bit Windows. On an upgrade installation, it will default to the current setting, but may be overridden.</li>
+<li><code>/LANGUAGE=</code> : Optional - If defined as a <a href="https://www.rainmeter.net/localization/#Status">4-digit numeric code</a>, this sets the installer language and saves it to the registry. Any subsequent non-silent GUI installations will use this language for the installer. Also, on new installations, this language will be saved to Rainmeter.ini as the installed language - but ONLY on new installations. This will default to <code>/LANGUAGE=1033</code> (English) on new installations.</li>
+</ul>
+
+<p></p>
+
+<ul>
+<li><code>/D=</code> : Optional - Defines the installation folder. This is required for "portable" installations. On a new installation this will default to the <code>Program Files</code> (generally C:\Program Files) folder for the account. On an upgrade installation it will default to the current location. Do not use a "relative" path to the folder.<br/><br/>
+<b>Important!</b> If defined, <code>/D=</code> must be the LAST parameter on the command line.</li>
+</ul>
+
+<p></p>
+
+<h3 id="Examples">Examples</h3>
+<pre>
+Rainmeter-4.4-r3502-beta.exe /S /AUTOSTARTUP=1 /D=C:\Program Files\Rainmeter
+Rainmeter-4.4-r3502-beta.exe /S
+Rainmeter-4.4-r3502-beta.exe /PORTABLE=1 /D=C:\MyRainmeter
+</pre>
+
+<p></p>
+
+cmd.exe .bat batch file:
+<pre>
+rem This batch file must be executed "As Administrator" in a cmd.exe window
+rem Pass it the name of the setup executable as a parameter
+
+@echo off
+
+echo Installing Rainmeter...
+
+rem If you are updating Rainmeter in standard mode, only the /S parameter is really required
+
+rem %1 /S /LANGUAGE=1033 /PORTABLE=0 /VERSION=64 /AUTOSTARTUP=1 /D=C:\Program Files\Rainmeter
+%1 /S
+
+echo Waiting 2 seconds...
+
+timeout 2 > NUL
+
+echo Starting Rainmeter...
+
+start "" "C:\Program Files\Rainmeter\Rainmeter.exe"
+
+timeout 1 > NUL
+
+exit
+</pre>
+
+<p></p>
+
+Powershell .ps1 script file:
+<pre>
+# This Powershell script does not need to be opened "As Administrator", as the command is evelated in the script. Pass it the name of the setup executable as a parameter.
+
+$installerARG=$args[0]
+
+Write-Host Installing Rainmeter...
+
+Start-Process -FilePath $installerARG -ArgumentList "/S /LANGUAGE=1033 /PORTABLE=0 /VERSION=64 /AUTOSTARTUP=1 /D=`"C:\Program Files\Rainmeter`"" -verb runas
+
+Write-Host Waiting 2 seconds...
+
+Start-Sleep -s 2
+
+Write-Host Starting Rainmeter...
+
+Start-Process -FilePath "C:\Program Files\Rainmeter\Rainmeter.exe" -WorkingDirectory "C:\Program Files\Rainmeter"
+
+Start-Sleep -s 1
+
+stop-process -Id $PID
+</pre>
