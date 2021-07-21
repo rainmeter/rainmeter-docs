@@ -61,9 +61,9 @@ title: 'Installing Rainmeter'
 <p><i>This feature has been designed to support using the <a href="https://docs.microsoft.com/en-us/windows/package-manager/winget/">WinGet - Windows Package Manager</a> service that is going to soon be widely available in Windows. Rainmeter is not yet supported in the WinGet repository, but will be added as soon as the WinGet application and repository are available and reliable.</i></p>
 
 <h3 id="Notes">Notes</h3>
-<p><b>Important!</b> If you are doing a "Standard Installation", the command prompt must be opened <b>As Administrator</b>. This is because Rainmeter will be installed in your <code>Program Files</code> folder in Windows, and that is a protected folder requiring administrator access to write to. The installer will simply immediately fail if elevated access is not present.<br/><br/>
+<p><b>Important!</b>In order to have the installation be entirely "silent", the command prompt window must be run "As Administrator". If not, the installer will open a UAC confirmation diaog when run.<br/><br/>
 If an error occurs, a file named "Rainmeter.SilentInstall.log" is created on the desktop with information on the problem. If the desktop cannot be written to, the log file will be written to the user folder i.e. <code>C:\Users\YourName</code>.<br/><br/>
-The Silent Install will exit Rainmeter prior to running, and will NOT restart Rainmeter when done. You will need to manually restart Rainmeter, or create some clever batch file that does both. (a couple of simple examples below)</p>
+The Silent Install will exit Rainmeter when it is executed, and will restart Rainmeter when complete, if Rainmeter was running when the installation started.</p>
 
 <h3 id="Parameters">Parameters</h3>
 <p>In order to install or update Rainmeter from the command line, execute the installer .exe using one or more of the following case-sensitive parameters on the command line:</p>
@@ -78,6 +78,7 @@ The Silent Install will exit Rainmeter prior to running, and will NOT restart Ra
 <li><code>/PORTABLE=</code> : Optional - This can be set to either the default <code>/PORTABLE=0</code> or <code>/PORTABLE=1</code>. If a "portable" installation is done, the <code>/D=</code> destination folder must be set.</li>
 <li><code>/AUTOSTARTUP=</code> : Optional - This will tell the installer whether or not to add a shortcut to Rainmeter in the Startup folder for your Windows account. On a new installation, this will default to <code>/AUTOSTARTUP=1</code>. On an upgrade of an existing installation, it will default to the current setting, but may be overridden.<br>
 <i>This setting is ignored on a "portable" install, as no registry changes are made and no icons are created with a portable installation.</i></li>
+<li><code>/RESTART=</code> : Optional - By default, Rainmeter will restart after the installation if it was running when the installation was started. This option can override this behavior with <code>/RESTART=1</code> (restart Rainmeter when done), or <code>/RESTART=0</code> (do not restart Rainmeter when done).</li>
 <li><code>/VERSION=</code> : Optional - This should be set to either <code>/VERSION=64</code> or <code>/VERSION=32</code>, depending on the architecture of the Windows version you are running. On a new installation, this will default to <code>/VERSION=64</code> on 64-bit Windows and <code>/VERSION=32</code> on 32-bit Windows. On an upgrade installation, it will default to the current setting, but may be overridden.</li>
 <li><code>/LANGUAGE=</code> : Optional - If defined as a <a href="https://www.rainmeter.net/localization/#Status">4-digit numeric code</a>, this sets the installer language and saves it to the registry. Any subsequent non-silent GUI installations will use this language for the installer. Also, on new installations, this language will be saved to Rainmeter.ini as the installed language - but ONLY on new installations. This will default to <code>/LANGUAGE=1033</code> (English) on new installations.</li>
 </ul>
@@ -94,64 +95,8 @@ The Silent Install will exit Rainmeter prior to running, and will NOT restart Ra
 <h3 id="Examples">Examples</h3>
 <pre>
 Rainmeter-4.4-r3502-beta.exe /S /AUTOSTARTUP=1 /D=C:\Program Files\Rainmeter
-Rainmeter-4.4-r3502-beta.exe /S
+Rainmeter-4.4-r3502-beta.exe /S /RESTART=1
 Rainmeter-4.4-r3502-beta.exe /PORTABLE=1 /D=C:\MyRainmeter
 </pre>
 
-<p></p>
 
-cmd.exe .bat batch file:
-<pre>
-rem This batch file must be executed "As Administrator" in a cmd.exe window
-rem Pass it the name of the setup executable as a parameter
-
-@echo off
-
-echo Installing Rainmeter...
-
-rem If you are updating Rainmeter in standard mode, only the /S parameter is really required
-
-rem %1 /S /LANGUAGE=1033 /PORTABLE=0 /VERSION=64 /AUTOSTARTUP=1 /D=C:\Program Files\Rainmeter
-%1 /S
-
-echo Waiting 2 seconds...
-
-timeout 2 > NUL
-
-echo Starting Rainmeter...
-
-start "" "C:\Program Files\Rainmeter\Rainmeter.exe"
-
-timeout 1 > NUL
-
-exit
-</pre>
-
-<p></p>
-
-Powershell .ps1 script file:
-<pre>
-# This Powershell script does not need to be opened "As Administrator", as the command is evelated in the script. Pass it the name of the setup executable as a parameter.
-
-param(
-	[Parameter(Mandatory)]
-	[string]
-	$InstallerPath
-)
-
-Write-Host Installing Rainmeter...
-
-Start-Process -FilePath $InstallerPath -ArgumentList "/S /LANGUAGE=1033 /PORTABLE=0 /VERSION=64 /AUTOSTARTUP=1 /D=`"$($env:ProgramFiles)\Rainmeter`"" -verb runas
-
-Write-Host Waiting 2 seconds...
-
-Start-Sleep -s 2
-
-Write-Host Starting Rainmeter...
-
-Start-Process -FilePath "$($env:ProgramFiles)\Rainmeter\Rainmeter.exe" -WorkingDirectory "$($env:ProgramFiles)\Rainmeter"
-
-Start-Sleep -s 1
-
-stop-process -Id $PID
-</pre>
