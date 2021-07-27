@@ -87,16 +87,20 @@ The Silent Install will exit Rainmeter when it is executed, and will restart Rai
 
 <ul>
 <li><code>/D=</code> : Optional - Defines the installation folder. This is required for "portable" installations. On a new installation this will default to the <code>Program Files</code> (generally C:\Program Files) folder for the account. On an upgrade installation it will default to the existing location. Do not use a "relative" path to the folder.<br/><br/>
-<b>Important!</b> If defined, <code>/D=</code> must be the LAST parameter on the command line.</li>
+<b>Important!</b> If defined, <code>/D=</code> must be the LAST parameter on the command line. Do not surround the path with quotes.</li>
 </ul>
 
 <p></p>
 
-<h3 id="Examples">Examples</h3>
+<h3 id="SilentExamples">Examples</h3>
 <pre>
-Rainmeter-4.4-r3502-beta.exe /S /AUTOSTARTUP=1 /D=C:\Program Files\Rainmeter
-Rainmeter-4.4-r3502-beta.exe /S /RESTART=1
-Rainmeter-4.4-r3502-beta.exe /PORTABLE=1 /D=C:\MyRainmeter
+Rainmeter-4.4-r3506-beta.exe /S /AUTOSTARTUP=1 /D=C:\Program Files\Rainmeter
+Rainmeter-4.4-r3506-beta.exe /S /RESTART=1
+Rainmeter-4.4-r3506-beta.exe /S /PORTABLE=1 /D=C:\MyRainmeter
 </pre>
 
+<h2 id="WingetInstallation">Winget Installation</h2>
 
+<p>Starting with <a href="https://github.com/rainmeter/rainmeter/releases/tag/v4.4.0.3507">Rainmeter 4.4.0.3507 (beta)</a>, you can now install the latest <b>beta</b> version of Rainmeter from the <b>cmd.exe</b> command line (or powershell) using the <a href="https://docs.microsoft.com/en-us/windows/package-manager/winget/">Windows Package Manager</a> or <code>winget</code>.</p>
+
+<p>Usage: <code>winget install rainmeter-beta</code></p>
