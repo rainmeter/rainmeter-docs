@@ -86,16 +86,22 @@ The Silent Install will exit Rainmeter when it is executed, and will restart Rai
 <p></p>
 
 <ul>
-<li><code>/D=</code> : Optional - Defines the installation folder. This is required for "portable" installations. On a new installation this will default to the <code>Program Files</code> (generally C:\Program Files) folder for the account. On an upgrade installation it will default to the existing location. Do not use a "relative" path to the folder.<br/><br/>
-<b>Important!</b> If defined, <code>/D=</code> must be the LAST parameter on the command line. Do not surround the path with quotes.</li>
+<li><code>/D=</code> : Defines the installation folder.<br/>
+<ul>
+<li>This is <em>required</em> for "portable" installations. It is <em>ignored</em> on "normal" installations.</li>
+<li>When installing in "normal" mode this is ignored, and will be forced to the <code>%PROGRAMFILES%</code> (generally C:\Program Files) folder for the account, in a \Rainmeter subfolder.</li>
+<li>When installing in "portable" mode, the full path to the desired location is required.</li>
+<li><b>Important!</b> If defined, <code>/D=</code> must be the LAST parameter on the command line.</li>
+</ul>
+
 </ul>
 
 <p></p>
 
 <h3 id="SilentExamples">Examples</h3>
 <pre>
-Rainmeter-4.4-r3506-beta.exe /S /AUTOSTARTUP=1 /D=C:\Program Files\Rainmeter
-Rainmeter-4.4-r3506-beta.exe /S /RESTART=1
+Rainmeter-4.4-r3506-beta.exe /S /AUTOSTARTUP=0 /VERSION=32
+Rainmeter-4.4-r3506-beta.exe /S /RESTART=0
 Rainmeter-4.4-r3506-beta.exe /S /PORTABLE=1 /D=C:\MyRainmeter
 </pre><br/>
 
@@ -103,9 +109,21 @@ Rainmeter-4.4-r3506-beta.exe /S /PORTABLE=1 /D=C:\MyRainmeter
 
 <p>You can install or upgrade the latest version of Rainmeter from a <b>cmd.exe</b> or <b>Powershell</b> command prompt window using the <a href="https://docs.microsoft.com/en-us/windows/package-manager/winget/">Windows Package Manager</a> with the <code>WinGet</code> command.</p>
 
+<p>If the <b>cmd.exe</b> or <b>Powershell</b> command prompt window is run "As Administrator", the installation will be entirely "silent". If not, Windows will display a UAC (User Account Control) confirmation dialog when executed.</p>
+
 <p>WinGet comes with Windows 11, but must be downloaded and installed from <a href="https://github.com/microsoft/winget-cli/releases">WinGet Releases</a> on Windows 10.</p>
+
+
 
 <h3 id="Usage">Usage</h3>
 
 <p><code>winget install "Rainmeter (beta)"</code><br/>
-<code>winget upgrade "Rainmeter (beta)"</code></p>
+This will force a new or overlay install of Rainmeter. It will use the currently defined or default <a href="#SilentInstallation">Silent Installation</a> parameters listed above.</p>
+
+<p><code>winget upgrade "Rainmeter (beta)"</code><br/>
+This will only install Rainmeter if a newer version than what is currently installed is available. It will use the currently defined or default <a href="#SilentInstallation">Silent Installation</a> parameters listed above.</p>
+
+<p><code>winget install "Rainmeter (beta)" --override "/S /PORTABLE=1 /D=E:\MyRainmeter"</code><br/>
+Using the <code>--override</code> parameter on the WinGet command line will allow for setting any of the <a href="#SilentInstallation">Silent Installation</a> parameters listed above. Enclose the string of parameters in "quotes". <em>Don't forget to use the <code>/S</code> parameter when overriding the default behavior.</em></p>
+<p><b>Note:</b> The "upgrade" command is not supported with a "portable" installation of Rainmeter. Always use "install" and the <code>--override</code> parameter with a "portable" installation of Rainmeter.</p>
+
