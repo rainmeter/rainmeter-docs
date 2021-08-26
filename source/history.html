@@ -6,16 +6,27 @@ title: 'Version History'
 <p>This page includes a brief description of changes included in each publicly released version of Rainmeter. For a complete, line-by-line history of Rainmeter's source code changes since version <a href="#0.14">0.14</a>, see the project <a href="https://github.com/rainmeter/rainmeter/commits/master">commit history on GitHub</a></p>
 <div class="release-notes">
 
+<h2 id="4.5">Rainmeter 4.5</h2><hr />
+
+<h3 id="r3517">August 26, 2021 - Revision 3517</h3>
+<ul>
+  <li><span class="badge badge-release">Release</span><b> 4.5 Initial Release</b></li>
+  <li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added Auto Update to keep the version of Rainmeter current. See <a  href="https://docs.rainmeter.net/manual/installing-rainmeter/auto-update/">Auto Update</a> documentation for details.</li>
+	<li><span class="badge badge-added">Added</span><b>Languages:</b> Added localization strings for Norwegian.</li>
+	<li><span class="badge badge-added">Added</span><b>Languages:</b> Added localization strings for Thai.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated localization strings for Turkish.</li>
+</ul>
+
 <h2 id="4.4">Rainmeter 4.4</h2><hr />
 
 <h3 id="r3508">July 27, 2021 - Revision 3508</h3>
 <ul>
-	<li><span class="badge badge-fixed">Fixed</span><b>Installer:</b> Fixed a problem with the installer detecting and using the correct value for /AUTOSTARTUP when it is not specified on the commmand line.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Installer:</b> Fixed a problem with the installer detecting and using the correct value for /AUTOSTARTUP when it is not specified on the command line.</li>
 </ul>
 
 <h3 id="r3507">July 27, 2021 - Revision 3507</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Installer:</b> Added support for beta installations via <a href="https://docs.microsoft.com/en-us/windows/package-manager/winget/">winget</a>. See <a href="https://docs.rainmeter.net/manual-beta/installing-rainmeter/#WingetInstallation">Winget Installation</a> for details.</li>
+	<li><span class="badge badge-added">Added</span><b>Installer:</b> Added support for beta installations via <a href="https://docs.microsoft.com/en-us/windows/package-manager/winget/">winget</a>. See <a href="https://docs.rainmeter.net/manual/installing-rainmeter/#WingetInstallation">Winget Installation</a> for details.</li>
 </ul>
 
 <h3 id="r3506">July 22, 2021 - Revision 3506</h3>
@@ -25,13 +36,13 @@ title: 'Version History'
 
 <h3 id="r3504">July 21, 2021 - Revision 3504</h3>
 <ul>
-	<li><span class="badge badge-changed">Changed</span><b>Installer:</b> Changed the silent installer so it can be run without Administrator privileges. A UAC confirmation prompt will be opened. To run entirely "silently", open the command window "As Administrator". Rainmeter will now retart after the installation is complete. See <a href="https://docs.rainmeter.net/manual-beta/installing-rainmeter/#SilentInstallation">Silent Installation</a> for details.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Installer:</b> Changed the silent installer so it can be run without Administrator privileges. A UAC confirmation prompt will be opened. To run entirely "silently", open the command window "As Administrator". Rainmeter will now retart after the installation is complete. See <a href="https://docs.rainmeter.net/manual/installing-rainmeter/#SilentInstallation">Silent Installation</a> for details.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated localization strings for Spanish (Modern).</li>
 </ul>
 
 <h3 id="r3502">July 18, 2021 - Revision 3502</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Installer:</b> Added the ability to do a "Silent Install" of Rainmeter from the command line. See <a href="https://docs.rainmeter.net/manual-beta/installing-rainmeter/#SilentInstallation">Silent Installation</a> for details.</li>
+	<li><span class="badge badge-added">Added</span><b>Installer:</b> Added the ability to do a "Silent Install" of Rainmeter from the command line. See <a href="https://docs.rainmeter.net/manual/installing-rainmeter/#SilentInstallation">Silent Installation</a> for details.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated localization strings for Hungarian and Portuguese (Brazil).</li>
 </ul>
 
@@ -118,19 +129,19 @@ title: 'Version History'
 		
 <h3 id="r3403">August 24, 2020 - Revision 3403</h3>
 <ul>
-	<li><span class="badge badge-changed">Changed</span><b>Process:</b> Changed the  <a href="https://docs.rainmeter.net/manual-beta/measures/process">Process</a> functionality from a plugin to an internal measure. This also corrects an issue with "timing" when instances of Process was used in multiple skins.</li>
-	<li><span class="badge badge-fixed">Fixed</span><b>InlineSetting:</b> Corrected an issue where a dynamic change to the offsets or blur of <a href="https://docs.rainmeter.net/manual-beta/meters/string/inline/#InlineShadow">InlineSetting=Shadow</a> was not being applied.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Process:</b> Changed the  <a href="https://docs.rainmeter.net/manual/measures/process">Process</a> functionality from a plugin to an internal measure. This also corrects an issue with "timing" when instances of Process was used in multiple skins.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>InlineSetting:</b> Corrected an issue where a dynamic change to the offsets or blur of <a href="https://docs.rainmeter.net/manual/meters/string/inline/#InlineShadow">InlineSetting=Shadow</a> was not being applied.</li>
 </ul>
 
 <h3 id="r3401">August 19, 2020 - Revision 3401</h3>
 <ul>
-	<li><span class="badge badge-changed">Changed</span><b>EncodeURL:</b> Changed the <a href="https://docs.rainmeter.net/manual-beta/variables/section-variables/#EncodeURL">:EncodeURL</a> section variable parameter to always encode any character not in the "unreserved" set allowed by URL's.</li>
-	<li><span class="badge badge-changed">Changed</span><b>WebParser:</b> Changed the <a href="https://docs.rainmeter.net/manual-beta/measures/webparser/#URL">URL</a> option to automatically percent-encode any characters after the <code>protocol://host/path/</code> portion of the URL that are not in the "unreserved" or "reserved" set allowed by URL's.</li>
+	<li><span class="badge badge-changed">Changed</span><b>EncodeURL:</b> Changed the <a href="https://docs.rainmeter.net/manual/variables/section-variables/#EncodeURL">:EncodeURL</a> section variable parameter to always encode any character not in the "unreserved" set allowed by URL's.</li>
+	<li><span class="badge badge-changed">Changed</span><b>WebParser:</b> Changed the <a href="https://docs.rainmeter.net/manual/measures/webparser/#URL">URL</a> option to automatically percent-encode any characters after the <code>protocol://host/path/</code> portion of the URL that are not in the "unreserved" or "reserved" set allowed by URL's.</li>
 </ul>
 
 <h3 id="r3400">August 1, 2020 - Revision 3400</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>WebParser:</b> Added a new <a href="https://docs.rainmeter.net/manual-beta/measures/webparser/#DecodeCodePoints">DecodeCodePoints</a> option to WebParser child measures, to decode Unicode code point values in the source like <code>\u00A7</code>, which would be <code>§</code>.</li>
+	<li><span class="badge badge-added">Added</span><b>WebParser:</b> Added a new <a href="https://docs.rainmeter.net/manual/measures/webparser/#DecodeCodePoints">DecodeCodePoints</a> option to WebParser child measures, to decode Unicode code point values in the source like <code>\u00A7</code>, which would be <code>§</code>.</li>
 </ul>
 
 <h3 id="r3399">July 28, 2020 - Revision 3398</h3>
@@ -145,8 +156,8 @@ title: 'Version History'
 
 <h3 id="r3397">July 3, 2020 - Revision 3397</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>SysInfo plugin:</b> Added new <code>LAST_SLEEP_TIME</code> and <code>LAST_WAKE_TIME</code> measurements to the <a href="https://docs.rainmeter.net/manual-beta/plugins/sysinfo/#SysInfoType">SysInfoType</a> option.</li>
-	<li><span class="badge badge-fixed">Fixed</span><b>Skin Packager:</b> Corrected an issue with the <code>Variables files</code> functionality of the <a href="https://docs.rainmeter.net/manual-beta/distributing-skins/#SkinPackager">Skin Packager</a> when an empty value was used for variable.</li>
+	<li><span class="badge badge-added">Added</span><b>SysInfo plugin:</b> Added new <code>LAST_SLEEP_TIME</code> and <code>LAST_WAKE_TIME</code> measurements to the <a href="https://docs.rainmeter.net/manual/plugins/sysinfo/#SysInfoType">SysInfoType</a> option.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Skin Packager:</b> Corrected an issue with the <code>Variables files</code> functionality of the <a href="https://docs.rainmeter.net/manual/distributing-skins/#SkinPackager">Skin Packager</a> when an empty value was used for variable.</li>
 </ul>
 
 <h3 id="r3382">June 24, 2020 - Revision 3382</h3>
@@ -161,14 +172,14 @@ title: 'Version History'
 
 <h3 id="r3373">June 23, 2020 - Revision 3373</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Bangs:</b> Added a new <a href="https://docs.rainmeter.net/manual-beta/bangs/#SetWindowPosition">!SetWindowPosition</a> bang to allow for dynamically setting the <code>WindowX</code> and <code>WindowY</code> position, and optionally <code>AnchorX</code> and <code>AnchorY</code> anchor settings for a skin window.</li>
-	<li><span class="badge badge-added">Added</span><b>Bangs:</b> Added a new <a href="https://docs.rainmeter.net/manual-beta/bangs/#SetAnchor">!SetAnchor</a> bang to allow for dynamically setting the <code>AnchorX</code> and <code>AnchorY</code> anchor settings for a skin window.</li>
+	<li><span class="badge badge-added">Added</span><b>Bangs:</b> Added a new <a href="https://docs.rainmeter.net/manual/bangs/#SetWindowPosition">!SetWindowPosition</a> bang to allow for dynamically setting the <code>WindowX</code> and <code>WindowY</code> position, and optionally <code>AnchorX</code> and <code>AnchorY</code> anchor settings for a skin window.</li>
+	<li><span class="badge badge-added">Added</span><b>Bangs:</b> Added a new <a href="https://docs.rainmeter.net/manual/bangs/#SetAnchor">!SetAnchor</a> bang to allow for dynamically setting the <code>AnchorX</code> and <code>AnchorY</code> anchor settings for a skin window.</li>
 </ul>
 
 <h3 id="r3360">June 11, 2020 - Revision 3360</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Rainmeter:</b> You can now hold down <code>CTRL</code> while starting Rainmeter to load in <a href=https://docs.rainmeter.net/manual-beta/user-interface//#SafeStart">Safe Start</a> mode.</li>
-	<li><span class="badge badge-added">Added</span><b>WebParser:</b> Added a <code>Flags</code> option to parent WebParser measures to enable setting some flags that change the behavior of WebParser when connecting to a remote resource. Details at <a href="https://docs.rainmeter.net/manual-beta/measures/webparser/#Flags">Flags documentation.</a></li>
+	<li><span class="badge badge-added">Added</span><b>Rainmeter:</b> You can now hold down <code>CTRL</code> while starting Rainmeter to load in <a href=https://docs.rainmeter.net/manual/user-interface//#SafeStart">Safe Start</a> mode.</li>
+	<li><span class="badge badge-added">Added</span><b>WebParser:</b> Added a <code>Flags</code> option to parent WebParser measures to enable setting some flags that change the behavior of WebParser when connecting to a remote resource. Details at <a href="https://docs.rainmeter.net/manual/measures/webparser/#Flags">Flags documentation.</a></li>
 	<li><span class="badge badge-changed">Changed</span><b>Fileview Plugin:</b> Made some internal changes that should improve performance.</li>
 </ul>
 
@@ -205,18 +216,18 @@ title: 'Version History'
 
 <h3 id="r3338">November 19, 2019 - Revision 3338</h3>
 <ul>
-	<li><span class="badge badge-changed">Changed</span><b>Bangs:</b> Added <code>Span</code> to the list of available <em>Position</em> parameter values for the <a href="https://docs.rainmeter.net/manual-beta/bangs/#SetWallpaper">!SetWallpaper bang</a>. This is only supported with Windows 10, and will cause the wallpaper to be spanned across multiple monitors.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Bangs:</b> Added <code>Span</code> to the list of available <em>Position</em> parameter values for the <a href="https://docs.rainmeter.net/manual/bangs/#SetWallpaper">!SetWallpaper bang</a>. This is only supported with Windows 10, and will cause the wallpaper to be spanned across multiple monitors.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>Bangs:</b> Corrected an issue with the !EditSkin bang that would not support config names of one-character.</li>
 </ul>
 
 <h3 id="r3335">November 18, 2019 - Revision 3335</h3>
 <ul>
-	<li><span class="badge badge-changed">Changed</span><b>Bangs:</b> Changed <a href="https://docs.rainmeter.net/manual-beta/bangs/#EditSkin">!EditSkin</a> so it will now allow the "config" parameter alone, which will edit the skin .ini file currently running in the defined config folder. Change provided by user <a href="https://forum.rainmeter.net/memberlist.php?mode=viewprofile&u=31268">Yamajac</a>.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Bangs:</b> Changed <a href="https://docs.rainmeter.net/manual/bangs/#EditSkin">!EditSkin</a> so it will now allow the "config" parameter alone, which will edit the skin .ini file currently running in the defined config folder. Change provided by user <a href="https://forum.rainmeter.net/memberlist.php?mode=viewprofile&u=31268">Yamajac</a>.</li>
 </ul>
 
 <h3 id="r3333">November 16, 2019 - Revision 3333</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Default Settings:</b> Added the ability to set <em>default / starting</em> values for the skin position and other options defined in the [ConfigName] sections in Rainmeter.ini. See <a href="https://docs.rainmeter.net/manual-beta/skins/rainmeter-section/defaults/">Default Settings</a> in the documentation for details.</li>
+	<li><span class="badge badge-added">Added</span><b>Default Settings:</b> Added the ability to set <em>default / starting</em> values for the skin position and other options defined in the [ConfigName] sections in Rainmeter.ini. See <a href="https://docs.rainmeter.net/manual/skins/rainmeter-section/defaults/">Default Settings</a> in the documentation for details.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>Game mode:</b> Corrected an issue when a skin was loaded just prior to Game mode being turned on.</li>	
 </ul>
 
@@ -262,15 +273,15 @@ title: 'Version History'
 
 <h3 id="r3294">February 21, 2019 - Revision 3294</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Section Variables:</b> Added new <code>[SomeMeter:XW]</code> and <code>[SomeMeter:YH]</code> <a href="https://docs.rainmeter.net/manual-beta/variables/section-variables/#XWYH">section variables</a> to allow make a meter relative to the end of another meter without requiring <code>X=([SomeMeter:X] + [SomeMeter:W])</code> as a formula.</li>
+	<li><span class="badge badge-added">Added</span><b>Section Variables:</b> Added new <code>[SomeMeter:XW]</code> and <code>[SomeMeter:YH]</code> <a href="https://docs.rainmeter.net/manual/variables/section-variables/#XWYH">section variables</a> to allow make a meter relative to the end of another meter without requiring <code>X=([SomeMeter:X] + [SomeMeter:W])</code> as a formula.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Localization:</b> Updated the Swedish language.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>AudioLevel plugin:</b> Fixed an incompatibility with the Nahimic audio driver.</li>
-	<li><span class="badge badge-fixed">Fixed</span><b>NowPlaying:</b> Corrected an old issue with the <code>Lyrics</code> <a href="https://docs.rainmeter.net/manual-beta/measures/nowplaying/#PlayerType">PlayerType</a> option.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>NowPlaying:</b> Corrected an old issue with the <code>Lyrics</code> <a href="https://docs.rainmeter.net/manual/measures/nowplaying/#PlayerType">PlayerType</a> option.</li>
 </ul>
 
 <h3 id="r3288">February 15, 2019 - Revision 3288</h3>
 <ul>
-	<li><span class="badge badge-fixed">Fixed</span><b>Container:</b> Corrected an issue with meter X and Y relativity ("r" and "R") where it was possible to make a container meter relative to its own content, which would crash Rainmeter. See <a href="https://docs.rainmeter.net/manual-beta/meters/general-options/container/">Container</a> documentation for a clarification of the simple rules for the functionality.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Container:</b> Corrected an issue with meter X and Y relativity ("r" and "R") where it was possible to make a container meter relative to its own content, which would crash Rainmeter. See <a href="https://docs.rainmeter.net/manual/meters/general-options/container/">Container</a> documentation for a clarification of the simple rules for the functionality.</li>
 </ul>
 
 <h3 id="r3283">February 8, 2019 - Revision 3283</h3>
@@ -312,12 +323,12 @@ title: 'Version History'
 
 <h3 id="r3266">November 30, 2018 - Revision 3266</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Container:</b> Added a new <a href="https://docs.rainmeter.net/manual-beta/meters/general-options/container/">Container</a> option to all meter types. This will allow you to place the contents of a meter inside another meter, acting as both a "container" and a "mask". See the documentation for important details and a .rmskin with several examples.</li>
+	<li><span class="badge badge-added">Added</span><b>Container:</b> Added a new <a href="https://docs.rainmeter.net/manual/meters/general-options/container/">Container</a> option to all meter types. This will allow you to place the contents of a meter inside another meter, acting as both a "container" and a "mask". See the documentation for important details and a .rmskin with several examples.</li>
 </ul>
 
 <h3 id="r3260">October 16, 2018 - Revision 3260</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Line meter:</b> Added a new <a href="https://docs.rainmeter.net/manual-beta/meters/line/#TransformStroke">TransformStroke</a> option, which determines how the line (stroke) width is treated when <a href="https://docs.rainmeter.net/manual-beta/meters/general-options/#TransformationMatrix">TransformationMatrix</a> is used on the meter.</li>
+	<li><span class="badge badge-added">Added</span><b>Line meter:</b> Added a new <a href="https://docs.rainmeter.net/manual/meters/line/#TransformStroke">TransformStroke</a> option, which determines how the line (stroke) width is treated when <a href="https://docs.rainmeter.net/manual/meters/general-options/#TransformationMatrix">TransformationMatrix</a> is used on the meter.</li>
 </ul>
 
 <h3 id="r3258">October 14, 2018 - Revision 3258</h3>
@@ -403,7 +414,7 @@ title: 'Version History'
 
 <h3 id="r3064">May 13, 2018 - Revision 3064</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Bangs:</b> Added several new bangs to allow "disabling" and "enabling" mouse actions on meters or the skin background. Documentation at <a href="https://docs.rainmeter.net/manual-beta/bangs/#MouseAction">Mouse Action state bangs</a>.</li>
+	<li><span class="badge badge-added">Added</span><b>Bangs:</b> Added several new bangs to allow "disabling" and "enabling" mouse actions on meters or the skin background. Documentation at <a href="https://docs.rainmeter.net/manual/bangs/#MouseAction">Mouse Action state bangs</a>.</li>
 	<li><span class="badge badge-changed">Changed</span><b>About dialog:</b> Changed the About / Version dialog to add the version number for Windows 10 (e.g. 1709, 1803) and the language and language code number currently being used in both Rainmeter and Windows. (e.g. English (1033)) Changed the references to the various paths and the Rainmeter.ini file to be clickable links.</li>
 	<li><span class="badge badge-changed">Changed</span><b>UsageMonitor:</b> Added <code>Index=-1</code> to return the "average" of the instances of a counter, instead of the "sum total". The string value returned when this is used is now <code>Average</code> instead of <code>Total</code>.</li>
 	<li><span class="badge badge-changed">Changed</span><b>UsageMonitor:</b> Improved logging when <code>Percent=1</code> is incorrectly used.</li>
@@ -426,7 +437,7 @@ title: 'Version History'
 
 <h3 id="r3043">April 26, 2018 - Revision 3043</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>UsageMonitor:</b> Added new UsageMonitor plugin to interact with the Windows Performance Monitor. This plugin will deprecate the existing AdvancedCPU and PerfMon plugins, and should be used in place of them going forward. Documentation for this new plugin is at <a href="https://docs.rainmeter.net/manual-beta/plugins/usagemonitor/">UsageMonitor</a>.</li>
+	<li><span class="badge badge-added">Added</span><b>UsageMonitor:</b> Added new UsageMonitor plugin to interact with the Windows Performance Monitor. This plugin will deprecate the existing AdvancedCPU and PerfMon plugins, and should be used in place of them going forward. Documentation for this new plugin is at <a href="https://docs.rainmeter.net/manual/plugins/usagemonitor/">UsageMonitor</a>.</li>
 </ul>
 
 <h3 id="r3040">April 19, 2018 - Revision 3040</h3>
@@ -446,20 +457,20 @@ title: 'Version History'
 
 <h3 id="r3018">December 20, 2017 - Revision 3018</h3>
 <ul>
-	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> The <a href="https://docs.rainmeter.net/manual-beta/@vault-folder/">@Vault\Plugins</a> folder will now be automatically created if it does not exist when Rainmeter starts.</li>
-	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> The <a href="https://docs.rainmeter.net/manual-beta/@vault-folder/">@Vault\Plugins</a> folder will no longer be scanned and treated as a normal skins folder in the config list in Manage.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> The <a href="https://docs.rainmeter.net/manual/@vault-folder/">@Vault\Plugins</a> folder will now be automatically created if it does not exist when Rainmeter starts.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> The <a href="https://docs.rainmeter.net/manual/@vault-folder/">@Vault\Plugins</a> folder will no longer be scanned and treated as a normal skins folder in the config list in Manage.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated the Spanish Modern localizations.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>AudioLevel Plugin:</b> Corrected a bug that was not properly calculating a "device timeout" value.</li>
 </ul>
 
 <h3 id="r3011">December 13, 2017 - Revision 3011</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added support for @Vault folder. See <a href="https://docs.rainmeter.net/manual-beta/@vault-folder/">@Vault Folder</a> for details.</li>
+	<li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added support for @Vault folder. See <a href="https://docs.rainmeter.net/manual/@vault-folder/">@Vault Folder</a> for details.</li>
 </ul>
 
 <h3 id="r3004">December 11, 2017 - Revision 3004</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>SysInfo:</b> Added a new <code>USER_LOGONTIME</code> SysInfoType value to the <a href="https://docs.rainmeter.net/manual-beta/plugins/sysinfo/#SysInfoType">SysInfo plugin</a>. This is a timestamp number (number of seconds since January 1, 1601) reflecting the date and time the current user account logged onto Windows. Use with a <a href="https://docs.rainmeter.net/manual/measures/time/">Time measure</a> to get a formatted string of the date/time, or subtract from the current time and use with an <a href="https://docs.rainmeter.net/manual/measures/uptime/">Uptime measure</a> to get a formatted string of the elapsed time.</li>
+	<li><span class="badge badge-added">Added</span><b>SysInfo:</b> Added a new <code>USER_LOGONTIME</code> SysInfoType value to the <a href="https://docs.rainmeter.net/manual/plugins/sysinfo/#SysInfoType">SysInfo plugin</a>. This is a timestamp number (number of seconds since January 1, 1601) reflecting the date and time the current user account logged onto Windows. Use with a <a href="https://docs.rainmeter.net/manual/measures/time/">Time measure</a> to get a formatted string of the date/time, or subtract from the current time and use with an <a href="https://docs.rainmeter.net/manual/measures/uptime/">Uptime measure</a> to get a formatted string of the elapsed time.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>NowPlaying:</b> Improved CPU usage when using the latest versions of the iTunes player.</li>
 </ul>
 
@@ -537,8 +548,8 @@ title: 'Version History'
 
 <h3 id="r2873">September 11, 2017 - Revision 2873</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Variables:</b> Added Character Reference Variables to allow plain-text coding of Unicode characters and symbols, as well as icons from specialized fonts like FontAwesome. See <a href="https://docs.rainmeter.net/manual-beta/variables/character-variables/">Character Reference Variables</a> for details.</li>
-  <li><span class="badge badge-changed">Changed</span><b> About Dialog:</b> Major improvements to the Skins panel. Now shows both the "number" and "string" value of measures, and indicates when a measure is either disabled, paused, or both. See <a href="https://docs.rainmeter.net/manual-beta/user-interface/about/#SkinsTab">Skins Tab</a> for details.</li>
+  <li><span class="badge badge-added">Added</span><b> Variables:</b> Added Character Reference Variables to allow plain-text coding of Unicode characters and symbols, as well as icons from specialized fonts like FontAwesome. See <a href="https://docs.rainmeter.net/manual/variables/character-variables/">Character Reference Variables</a> for details.</li>
+  <li><span class="badge badge-changed">Changed</span><b> About Dialog:</b> Major improvements to the Skins panel. Now shows both the "number" and "string" value of measures, and indicates when a measure is either disabled, paused, or both. See <a href="https://docs.rainmeter.net/manual/user-interface/about/#SkinsTab">Skins Tab</a> for details.</li>
   <li><span class="badge badge-changed">Changed</span><b> PCRE:</b> Added UCP support to the regular expression library, to enable \X \P \p in expressions.</li>
   <li><span class="badge badge-changed">Changed</span><b> Plugin API:</b> Made some updates and corrections to the Rainmeter Plugin API. Plugin authors should re-base or download the current <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">Rainmeter Plugin SDK</a>.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> NowPlaying:</b> Corrected a long-standing problem with NowPlaying not reacting properly to changes in the state of "shuffle" and "repeat" in iTunes.</li>
@@ -552,8 +563,8 @@ title: 'Version History'
 
 <h3 id="r2851">August 23, 2017 - Revision 2851</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Lua Scripting:</b> Added inline Lua section variables, to support an inline return of a value from Lua with a function() call or by retrieving a variable. See <a href="https://docs.rainmeter.net/manual-beta/lua-scripting/inline-lua/">Inline Lua</a> for details.</li>
-  <li><span class="badge badge-added">Added</span><b> Rainmeter:</b> Added an alternative nesting variables syntax, to enable nesting variables, section variables, and mouse variables inside each other. See <a href="https://docs.rainmeter.net/manual-beta/variables/nesting-variables/">Nesting Variables</a> for details.</li>
+  <li><span class="badge badge-added">Added</span><b> Lua Scripting:</b> Added inline Lua section variables, to support an inline return of a value from Lua with a function() call or by retrieving a variable. See <a href="https://docs.rainmeter.net/manual/lua-scripting/inline-lua/">Inline Lua</a> for details.</li>
+  <li><span class="badge badge-added">Added</span><b> Rainmeter:</b> Added an alternative nesting variables syntax, to enable nesting variables, section variables, and mouse variables inside each other. See <a href="https://docs.rainmeter.net/manual/variables/nesting-variables/">Nesting Variables</a> for details.</li>
   <li><span class="badge badge-added">Added</span><b> Net measures:</b> Added a new <code>UseBits</code> option to return the value of NetIn / NetOut / NetTotal measures in bits rather than the default bytes.</li>
   <li><span class="badge badge-changed">Changed</span><b> AudioLevel:</b> Increased the size of the buffer for DeviceList from 512 to 4096.</li>
   <li><span class="badge badge-changed">Changed</span><b> Languages:</b> Updated the ChineseTraditional language.</li>
@@ -568,7 +579,7 @@ title: 'Version History'
 
 <h3 id="r2824">July 7, 2017 - Revision 2824</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Rainmeter:</b> Drag Groups can now be created by selecting skins while holding CTRL-ALT, and dragging one skin, or nudging with the arrow keys will move all selected skins. See <a href="https://docs.rainmeter.net/manual-beta/arranging-skins/#Multiple">Multiple Skins</a> for details.</li>
+  <li><span class="badge badge-added">Added</span><b> Rainmeter:</b> Drag Groups can now be created by selecting skins while holding CTRL-ALT, and dragging one skin, or nudging with the arrow keys will move all selected skins. See <a href="https://docs.rainmeter.net/manual/arranging-skins/#Multiple">Multiple Skins</a> for details.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Formulas:</b> Corrected a missing BitwiseXOR formula operator.</li>
 </ul>
 
@@ -579,8 +590,8 @@ title: 'Version History'
 
 <h3 id="r2821">June 29, 2017 - Revision 2821</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Bangs:</b> New <a href="https://docs.rainmeter.net/manual-beta/bangs/#EditSkin">!EditSkin</a> bang. Opens the current or a specified skin .ini file in the text editor defined in <a href="https://docs.rainmeter.net/manual-beta/settings/rainmeter-section/#ConfigEditor">ConfigEditor</a> in the Rainmeter settings, or associated with .ini files in Windows. The default will be Windows Notepad.exe.</li>
-  <li><span class="badge badge-added">Added</span><b> Built-in variables:</b> New <a href="https://docs.rainmeter.net/manual-beta/variables/built-in-variables/#CONFIGEDITOR">#CONFIGEDITOR#</a> variable. The path and executable for the text editor defined in <a href="https://docs.rainmeter.net/manual-beta/settings/rainmeter-section/#ConfigEditor">ConfigEditor</a> in Rainmeter settings, or the text editor associated with .ini files in Windows. The default will be Windows Notepad.exe.</li>
+  <li><span class="badge badge-added">Added</span><b> Bangs:</b> New <a href="https://docs.rainmeter.net/manual/bangs/#EditSkin">!EditSkin</a> bang. Opens the current or a specified skin .ini file in the text editor defined in <a href="https://docs.rainmeter.net/manual/settings/rainmeter-section/#ConfigEditor">ConfigEditor</a> in the Rainmeter settings, or associated with .ini files in Windows. The default will be Windows Notepad.exe.</li>
+  <li><span class="badge badge-added">Added</span><b> Built-in variables:</b> New <a href="https://docs.rainmeter.net/manual/variables/built-in-variables/#CONFIGEDITOR">#CONFIGEDITOR#</a> variable. The path and executable for the text editor defined in <a href="https://docs.rainmeter.net/manual/settings/rainmeter-section/#ConfigEditor">ConfigEditor</a> in Rainmeter settings, or the text editor associated with .ini files in Windows. The default will be Windows Notepad.exe.</li>
   <li><span class="badge badge-changed">Changed</span><b> Rainmeter:</b> When dragging skins, temporarily enable the 'Show window contents while dragging' system option if disabled in Windows, to allow skins to draw during dragging and use the snapping feature.</li>
 </ul>
 
@@ -598,29 +609,29 @@ title: 'Version History'
 
 <h3 id="r2806">June 1, 2017 - Revision 2806</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Bangs:</b> Added new !FadeDuration and !FadeDurationGroup bangs to set the <a href="https://docs.rainmeter.net/manual-beta/settings/skin-sections/#FadeDuration">FadeDuration</a> in milliseconds when activating/deactivating a skin, using the fade-in / fade-out effects on mouse over, or when the <a href="https://docs.rainmeter.net/manual-beta/bangs/#ShowHideToggleFade">fade bangs</a> are used.</li>
+  <li><span class="badge badge-added">Added</span><b> Bangs:</b> Added new !FadeDuration and !FadeDurationGroup bangs to set the <a href="https://docs.rainmeter.net/manual/settings/skin-sections/#FadeDuration">FadeDuration</a> in milliseconds when activating/deactivating a skin, using the fade-in / fade-out effects on mouse over, or when the <a href="https://docs.rainmeter.net/manual/bangs/#ShowHideToggleFade">fade bangs</a> are used.</li>
   <li><span class="badge badge-changed">Changed</span><b> NowPlaying:</b> Changed the measure values for Progress and SetPosition to use floating point numbers instead of integers for increased accuracy.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Shape meter:</b> Corrected a possible crash or unexpected behavior when Combined shapes were defined before their component shapes in the meter. The order of the options in the meter are now of no consequence, as it is with all other meter and measure options.</li>
 </ul>
 
 <h3 id="r2793">May 10, 2017 - Revision 2793</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Formulas:</b> Added new <a href="https://docs.rainmeter.net/manual-beta/formulas/#Functions">Deg</a> math function to convert radians to degrees.</li>
+  <li><span class="badge badge-added">Added</span><b> Formulas:</b> Added new <a href="https://docs.rainmeter.net/manual/formulas/#Functions">Deg</a> math function to convert radians to degrees.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Shape meter:</b> Fix invalid radial gradient on combined shapes.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Installer:</b> Fixed Rainmeter installer to support Windows Server 2008 R2, which is functionally analogous to Windows 7.</li>
 </ul>
 
 <h3 id="r2787">April 21, 2017 - Revision 2787</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> String meter:</b> Added new <a href="https://docs.rainmeter.net/manual-beta/meters/string/#FontWeight">FontWeight</a> option. This will effectively deprecate StringStyle.</li>
-  <li><span class="badge badge-added">Added</span><b> Shape meter:</b> Added Path1 alternative of the Path shape. It will use a different form of the <a href="https://www.w3.org/TR/SVG/painting.html#FillProperties">SVG fill-rule</a> when the shape is filled with a color or gradient. This determines what parts of a shape with intersecting segments are "inside" the shape and what are "outside", for purposes of filling the shape with the defined color or gradient. See <a href="https://docs.rainmeter.net/manual-beta/meters/shape/#Path1">Path1 shape</a> for details.</li>
-  <li><span class="badge badge-added">Added</span><b> CoreTemp plugin:</b> The author of both the <a href="http://www.alcpu.com/CoreTemp/">CoreTemp application</a> and Rainmeter plugin, Arthur Liberman, added CPU core-specific values to the data available in the plugin. See <a href="https://docs.rainmeter.net/manual-beta/plugins/coretemp/">CoreTemp plugin</a> for details.</li>
-  <li><span class="badge badge-changed">Changed</span><b> Bitmap meter:</b> Changed the allowable measure value when <a href="https://docs.rainmeter.net/manual-beta/meters/bitmap/#BitmapExtend">BitmapExtend=1</a> from a C-language int data type (2,147,483,647 maximum) to int64 (9,223,372,036,854,775,807 maximum).</li>
+  <li><span class="badge badge-added">Added</span><b> String meter:</b> Added new <a href="https://docs.rainmeter.net/manual/meters/string/#FontWeight">FontWeight</a> option. This will effectively deprecate StringStyle.</li>
+  <li><span class="badge badge-added">Added</span><b> Shape meter:</b> Added Path1 alternative of the Path shape. It will use a different form of the <a href="https://www.w3.org/TR/SVG/painting.html#FillProperties">SVG fill-rule</a> when the shape is filled with a color or gradient. This determines what parts of a shape with intersecting segments are "inside" the shape and what are "outside", for purposes of filling the shape with the defined color or gradient. See <a href="https://docs.rainmeter.net/manual/meters/shape/#Path1">Path1 shape</a> for details.</li>
+  <li><span class="badge badge-added">Added</span><b> CoreTemp plugin:</b> The author of both the <a href="http://www.alcpu.com/CoreTemp/">CoreTemp application</a> and Rainmeter plugin, Arthur Liberman, added CPU core-specific values to the data available in the plugin. See <a href="https://docs.rainmeter.net/manual/plugins/coretemp/">CoreTemp plugin</a> for details.</li>
+  <li><span class="badge badge-changed">Changed</span><b> Bitmap meter:</b> Changed the allowable measure value when <a href="https://docs.rainmeter.net/manual/meters/bitmap/#BitmapExtend">BitmapExtend=1</a> from a C-language int data type (2,147,483,647 maximum) to int64 (9,223,372,036,854,775,807 maximum).</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Bangs:</b> Fixed an issue when the config parameter of a bang contained a leading or trailing slash.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> InputText plugin:</b> Fixed a possible Rainmeter crash if an input box is open and the skin is deactivated.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Shape meter:</b> Fixed a possible Rainmeter crash if the starting point of a Path shape was invalid.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Bitmap meter:</b> Fixed an issue where BitmapExtend=1 would not increase the meters width and/or height, which would cause the meter to ignore DynamicWindowSize and draw outside its bounds and possibly truncate outside the skin window.</li>
-  <li><span class="badge badge-fixed">Fixed</span><b> Bitmap meter:</b> Fixed an issue where the <a href="https://docs.rainmeter.net/manual-beta/meters/general-options/#Padding">Padding</a> height values on the meter would be ignored in some situations.</li>
+  <li><span class="badge badge-fixed">Fixed</span><b> Bitmap meter:</b> Fixed an issue where the <a href="https://docs.rainmeter.net/manual/meters/general-options/#Padding">Padding</a> height values on the meter would be ignored in some situations.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> InlineSetting:</b> Corrected an issue where Rainmeter could crash in some cases when an initial empty string was received by a meter using InlineSetting.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Shape meter:</b> Fixed an issue where certain gradients would not display correctly if there were multiple gradients in a shape meter.</li>
 </ul>
@@ -634,7 +645,7 @@ title: 'Version History'
 
 <h3 id="r2731">December 19, 2016 - Revision 2731</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> New Skin dialog:</b> This new dialog is opened with the Create new skin button in Manage, or by using the context menus on existing folders. This will allow you to add new root-level folders and skin file, or add folders or files to skins. See <a href="https:</b>//docs.rainmeter.net/manual-beta/user-interface/manage/new-skin/">New Skin</a> for details.</li>
+  <li><span class="badge badge-added">Added</span><b> New Skin dialog:</b> This new dialog is opened with the Create new skin button in Manage, or by using the context menus on existing folders. This will allow you to add new root-level folders and skin file, or add folders or files to skins. See <a href="https:</b>//docs.rainmeter.net/manual/user-interface/manage/new-skin/">New Skin</a> for details.</li>
 </ul>
 
 <h3 id="r2722">December 4, 2016 - Revision 2722</h3>
@@ -646,27 +657,27 @@ title: 'Version History'
 <ul>
   <li><span class="badge badge-added">Added</span><b> InputText plugin:</b> Added InputLimit (default 0) option to limit the number of characters input.</li>
   <li><span class="badge badge-added">Added</span><b> InputText plugin:</b> Added InputNumber (default 0) option to force numeric-only input.</li>
-  <li><span class="badge badge-added">Added</span><b> Manage:</b> Add a <a href="http://docs.rainmeter.net/manual-beta/user-interface/manage/#CreateNewSkin">Create new skin</a> button to the top of the skins list. This will create a new root-level config / skin using a skin template you can edit. The new skin will be selected in Manage and opened in your text editor.</li>
+  <li><span class="badge badge-added">Added</span><b> Manage:</b> Add a <a href="http://docs.rainmeter.net/manual/user-interface/manage/#CreateNewSkin">Create new skin</a> button to the top of the skins list. This will create a new root-level config / skin using a skin template you can edit. The new skin will be selected in Manage and opened in your text editor.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Shape meter:</b> Corrected an issue where using TransformationMatrix on a Shape meter would cause incorrect mouse detection.</li>
 </ul>
 
 <h3 id="r2708">November 20, 2016 - Revision 2708</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Shape meter:</b> Added new Path shape to the Shape Meter.See the documentation at: <a href="https://docs.rainmeter.net/manual-beta/meters/shape/">Shape Meter</a>.</li>
+  <li><span class="badge badge-added">Added</span><b> Shape meter:</b> Added new Path shape to the Shape Meter.See the documentation at: <a href="https://docs.rainmeter.net/manual/meters/shape/">Shape Meter</a>.</li>
   <li><span class="badge badge-changed">Changed</span><b> Shape meter:</b> All measurements in "pixels" in the definition of shapes are now Device Independent Pixels, and may be fractional (i.e 10.25 or 0.75) for precision.</li>
   <li><span class="badge badge-changed">Changed</span><b> Shape meter:</b> Anchor points in the Scale and Skew transform modifiers now default to the center of the shape, rather than the top-left.</li>
 </ul>
 
 <h3 id="r2690">November 13, 2016 - Revision 2690</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Shape meter:</b> Added new Ellipse, Line, Arc and Curve shapes to the Shape meter. See the documentation at: <a href="https://docs.rainmeter.net/manual-beta/meters/shape/">Shape Meter</a>.</li>
+  <li><span class="badge badge-added">Added</span><b> Shape meter:</b> Added new Ellipse, Line, Arc and Curve shapes to the Shape meter. See the documentation at: <a href="https://docs.rainmeter.net/manual/meters/shape/">Shape Meter</a>.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> String meter:</b> Fixed a problem parsing the <code>*</code> (skip) parameter in the CharacterSpacing feature of InlineSetting.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Rainmeter:</b> Corrected an issue parsing options that use the pipe <code>|</code> character as a separator, if they also contained a formula that used the <code>||</code> Logical OR operator.</li>
 </ul>
 
 <h3 id="r2679">November 6, 2016 - Revision 2679</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Shape meter:</b> Draws shapes using Vector graphics. Rectangle and Combine shapes, as well as all Attribute and Transform modifiers implemented in this first beta. See the documentation at: <a href="https://docs.rainmeter.net/manual-beta/meters/shape/">Shape Meter</a>.</li>
+  <li><span class="badge badge-added">Added</span><b> Shape meter:</b> Draws shapes using Vector graphics. Rectangle and Combine shapes, as well as all Attribute and Transform modifiers implemented in this first beta. See the documentation at: <a href="https://docs.rainmeter.net/manual/meters/shape/">Shape Meter</a>.</li>
   <li><span class="badge badge-changed">Changed</span><b> String meter:</b> Changed the number of degrees of angle in InlineSetting Gradients to allow fractional numbers. (e.g. 45.5).</li>
   <li><span class="badge badge-fixed">Fixed</span><b> About dialog:</b> Corrected an issue where tabs were not being correctly displayed in the Log and Skins panels.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> RunCommand plugin:</b> Corrected a rare issue when the command is run by OnCloseAction, where Rainmeter would unexpectedly terminate and the command not execute.</li>
@@ -682,7 +693,7 @@ title: 'Version History'
 <ul>
   <li><span class="badge badge-fixed">Fixed</span><b> Illustro skins:</b> Changed the remote site used to get the user's WAN IP address in the Network.ini skin.</li>
   <li><span class="badge badge-changed">Changed</span><b> Lua scripting:</b> Corrected an issue where anything defined in the Initialize() function of a Lua script was treated as "global" across all skins using Lua, which could cause "bleeding" of defined variables between skins, or between script measures in a single skin. Each Lua measure will now run in an entirely separate local context.</li>
-  <li><span class="badge badge-changed">Changed</span><b> Lua scripting:</b> The above change to the context of each Lua measure in a skin has allowed for the use of the Lua <a href="https://docs.rainmeter.net/manual-beta/lua-scripting/#dofile">dofile function</a> in your scripts. Some changes were made to the standard Lua dofile functionality to support Unicode characters in a file path, and to improve error logging.</li>
+  <li><span class="badge badge-changed">Changed</span><b> Lua scripting:</b> The above change to the context of each Lua measure in a skin has allowed for the use of the Lua <a href="https://docs.rainmeter.net/manual/lua-scripting/#dofile">dofile function</a> in your scripts. Some changes were made to the standard Lua dofile functionality to support Unicode characters in a file path, and to improve error logging.</li>
 </ul>
 
 <h3 id="r2618">July 13, 2016 - Revision 2618</h3>
@@ -692,14 +703,14 @@ title: 'Version History'
 
 <h3 id="r2617">July 12, 2016 - Revision 2617</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> String meter:</b> Added <a href="https://docs.rainmeter.net/manual-beta/meters/string/inline/#InlineShadow">Shadow</a> InlineSetting type to String meter Inline options. This will allow you to add a drop shadow to all or part of a string.</li>
+  <li><span class="badge badge-added">Added</span><b> String meter:</b> Added <a href="https://docs.rainmeter.net/manual/meters/string/inline/#InlineShadow">Shadow</a> InlineSetting type to String meter Inline options. This will allow you to add a drop shadow to all or part of a string.</li>
 </ul>
 
 <h3 id="r2613">June 1, 2016 - Revision 2613</h3>
 <ul>
   <li><span class="badge badge-fixed">Fixed</span><b> String meter:</b> Corrected an issue where <code>ClipString=1</code> was not working correctly if <code>W</code> (width) was defined without defining <code>H</code> (height).</li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual-beta/plugins/webparser/#UserAgent">UserAgent</a> option to allow setting a custom User Agent String on a WebParser parent measure.</li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual-beta/plugins/webparser/#Header">Header1, Header2, Header3...</a> option to allow setting custom HTTP Header Fields on a WebParser parent measure.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual/plugins/webparser/#UserAgent">UserAgent</a> option to allow setting a custom User Agent String on a WebParser parent measure.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual/plugins/webparser/#Header">Header1, Header2, Header3...</a> option to allow setting custom HTTP Header Fields on a WebParser parent measure.</li>
 </ul>
 
 <h3 id="r2607">March 22, 2016 - Revision 2607</h3>
@@ -717,19 +728,19 @@ title: 'Version History'
 
 <h3 id="r2599">March 17, 2016 - Revision 2599</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> String meter:</b> Added <a href="https://docs.rainmeter.net/manual-beta/meters/string/inline/#InlineCase">Case</a> InlineSetting type to String meter Inline options. This will allow you to set the string case to one of <code>Lower</code>, <code>Upper</code>, <code>Proper</code>, or <code>Sentence</code> for all or part of the displayed text.</li>
+  <li><span class="badge badge-added">Added</span><b> String meter:</b> Added <a href="https://docs.rainmeter.net/manual/meters/string/inline/#InlineCase">Case</a> InlineSetting type to String meter Inline options. This will allow you to set the string case to one of <code>Lower</code>, <code>Upper</code>, <code>Proper</code>, or <code>Sentence</code> for all or part of the displayed text.</li>
   <li><span class="badge badge-changed">Changed</span><b> Language:</b> Updates to Chinese Traditional language.</li>
 </ul>
 
 <h3 id="r2593">March 12, 2016 - Revision 2593</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added <a href="https://docs.rainmeter.net/manual-beta/plugins/sysinfo/#Network">DOMAINWORKGROUP</a> SysInfoType value to the SysInfo plugin. This will return either the "domain" or "workgroup" set for the system.</li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual-beta/plugins/webparser/#LogSubstringErrors">LogSubstringErrors</a> parent measure option.</li>
+  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added <a href="https://docs.rainmeter.net/manual/plugins/sysinfo/#Network">DOMAINWORKGROUP</a> SysInfoType value to the SysInfo plugin. This will return either the "domain" or "workgroup" set for the system.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual/plugins/webparser/#LogSubstringErrors">LogSubstringErrors</a> parent measure option.</li>
 </ul>
 
 <h3 id="r2589">March 6, 2016 - Revision 2589</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Bangs:</b> Added <a href="https://docs.rainmeter.net/manual-beta/bangs/#AutoSelectScreen">AutoSelectScreen</a> and <a href="https://docs.rainmeter.net/manual-beta/bangs/#AutoSelectScreenGroup">AutoSelectScreenGroup</a> bangs.</li>
+  <li><span class="badge badge-added">Added</span><b> Bangs:</b> Added <a href="https://docs.rainmeter.net/manual/bangs/#AutoSelectScreen">AutoSelectScreen</a> and <a href="https://docs.rainmeter.net/manual/bangs/#AutoSelectScreenGroup">AutoSelectScreenGroup</a> bangs.</li>
 </ul>
 
 <h3 id="r2587">February 17, 2016 - Revision 2587</h3>
@@ -775,9 +786,9 @@ title: 'Version History'
 <h3 id="r2493">December 27, 2015 - Revision 2493</h3>
 <ul>
   <li><span class="badge badge-release">Release</span><b>Release Candidate 1</b></li>
-  <li><span class="badge badge-added">Added</span><b> ActionTimer:</b> Added the ActionTimer plugin to the Rainmeter build. This plugin can be used to support animations and meter transitions. Details and examples can be found at <a href="https://docs.rainmeter.net/manual-beta/plugins/actiontimer/">ActionTimer Plugin</a> and <a href="https://forum.rainmeter.net/viewtopic.php?p=112669#p112669">ActionTimer forum post</a>.</li>
-  <li><span class="badge badge-added">Added</span><b> RunCommand:</b> Added the RunCommand plugin to the Rainmeter build. This plugin can be used to execute and obtain values from external commands and programs. Details and examples can be found at <a href="https://docs.rainmeter.net/manual-beta/plugins/runcommand/">RunCommand Plugin</a> and <a href="https://forum.rainmeter.net/viewtopic.php?p=92974#p92974">RunCommand forum post</a>.</li>
-  <li><span class="badge badge-changed">Changed</span><b> Time measure:</b> Added some additional Time measure <a href="https://docs.rainmeter.net/manual-beta/measures/time/#FormatCodes">Format Codes</a>, made possible by the upgrade of the Rainmeter project to Visual Studio 2015. This also corrects some issues with existing codes like %p.</li>
+  <li><span class="badge badge-added">Added</span><b> ActionTimer:</b> Added the ActionTimer plugin to the Rainmeter build. This plugin can be used to support animations and meter transitions. Details and examples can be found at <a href="https://docs.rainmeter.net/manual/plugins/actiontimer/">ActionTimer Plugin</a> and <a href="https://forum.rainmeter.net/viewtopic.php?p=112669#p112669">ActionTimer forum post</a>.</li>
+  <li><span class="badge badge-added">Added</span><b> RunCommand:</b> Added the RunCommand plugin to the Rainmeter build. This plugin can be used to execute and obtain values from external commands and programs. Details and examples can be found at <a href="https://docs.rainmeter.net/manual/plugins/runcommand/">RunCommand Plugin</a> and <a href="https://forum.rainmeter.net/viewtopic.php?p=92974#p92974">RunCommand forum post</a>.</li>
+  <li><span class="badge badge-changed">Changed</span><b> Time measure:</b> Added some additional Time measure <a href="https://docs.rainmeter.net/manual/measures/time/#FormatCodes">Format Codes</a>, made possible by the upgrade of the Rainmeter project to Visual Studio 2015. This also corrects some issues with existing codes like %p.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> WebParser:</b> Corrected an issue where WebParser could not read a local file if it was locked open by some other process.</li>
   <li><span class="badge badge-changed">Changed</span><b> Rainmeter Project:</b> Upgraded the project to use the latest Visual Studio 2015 for development.</li>
 </ul>
@@ -823,8 +834,8 @@ title: 'Version History'
 
 <h3 id="r2423">July 31, 2015 - Revision 2423</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> String meter:</b> Added new <a href="/manual-beta/meters/string/inline">Inline Options</a> features to the String meter. This will allow "inline" formatting of part or all of a string, and adds several new formatting options including a color gradient.</li>
-  <li><span class="badge badge-added">Added</span><b> SysInfo plugin:</b> Added <code>SysInfoType=PAGESIZE</code> to the <a href="/manual-beta/plugins/sysinfo">SysInfo</a> plugin.</li>
+  <li><span class="badge badge-added">Added</span><b> String meter:</b> Added new <a href="/manual/meters/string/inline">Inline Options</a> features to the String meter. This will allow "inline" formatting of part or all of a string, and adds several new formatting options including a color gradient.</li>
+  <li><span class="badge badge-added">Added</span><b> SysInfo plugin:</b> Added <code>SysInfoType=PAGESIZE</code> to the <a href="/manual/plugins/sysinfo">SysInfo</a> plugin.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Plugin API:</b> Corrected a bug, introduced in r2416, which caused some threaded plugins to fail when sending a FinishAction to Rainmeter.</li>
 </ul>
 
@@ -847,15 +858,15 @@ title: 'Version History'
 
 <h3 id="r2410">April 29, 2015 - Revision 2410</h3>
 <ul>
-  <li><span class="badge badge-changed">Changed</span><b> Net measures:</b> Changed the values accepted for the <a href="/manual-beta/measures/net#Interface">Interface</a> option to accept new values of "Best", which will automatically use the active network interface, or a string value of the name of the desired Network Interface Controller (NIC).</li>
-  <li><span class="badge badge-changed">Changed</span><b> SysInfo plugin:</b> Changed the values accepted for the <a href="/manual-beta/plugins/sysinfo#SysInfoData">SysInfoData</a> option with network related <a href="/manual-beta/plugins/sysinfo#Network">SysInfoType</a> options to accept new values of "Best", which will automatically use the active network interface, or a string value of the name of the desired Network Interface Controller (NIC).</li>
+  <li><span class="badge badge-changed">Changed</span><b> Net measures:</b> Changed the values accepted for the <a href="/manual/measures/net#Interface">Interface</a> option to accept new values of "Best", which will automatically use the active network interface, or a string value of the name of the desired Network Interface Controller (NIC).</li>
+  <li><span class="badge badge-changed">Changed</span><b> SysInfo plugin:</b> Changed the values accepted for the <a href="/manual/plugins/sysinfo#SysInfoData">SysInfoData</a> option with network related <a href="/manual/plugins/sysinfo#Network">SysInfoType</a> options to accept new values of "Best", which will automatically use the active network interface, or a string value of the name of the desired Network Interface Controller (NIC).</li>
   <li><span class="badge badge-changed">Changed</span><b> About / Log:</b> Changed the Time column in the About / Log panel to use the current time in Hours, Minutes, Seconds and Milliseconds rather than elapsed time since Rainmeter was started.</li>
 </ul>
 
 <h3 id="r2402">April 6, 2015 - Revision 2402</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Loop:</b> Added new <a href="/manual-beta/measures/loop">Loop</a> measure. This will create a looping counter between two numbers.</li>
-  <li><span class="badge badge-added">Added</span><b> NowPlaying:</b> Added a value of <code>Genre</code> to the <a href="/manual-beta/plugins/nowplaying#PlayerType">PlayerType</a> option. This option value is currently supported with the AIMP, CAD, iTunes, WMP and WinAmp <a href="/manual-beta/plugins/nowplaying#PlayerName">PlayerName</a> values.</li>
+  <li><span class="badge badge-added">Added</span><b> Loop:</b> Added new <a href="/manual/measures/loop">Loop</a> measure. This will create a looping counter between two numbers.</li>
+  <li><span class="badge badge-added">Added</span><b> NowPlaying:</b> Added a value of <code>Genre</code> to the <a href="/manual/plugins/nowplaying#PlayerType">PlayerType</a> option. This option value is currently supported with the AIMP, CAD, iTunes, WMP and WinAmp <a href="/manual/plugins/nowplaying#PlayerName">PlayerName</a> values.</li>
 </ul>
 
 <h2 id="3.2">Rainmeter 3.2.1</h2><hr />
@@ -875,8 +886,8 @@ title: 'Version History'
 <h3 id="r2383">March 15, 2015 - Revision 2383</h3>
 <ul>
   <li><span class="badge badge-release">Release</span><b>Release Candidate 1</b></li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual-beta/plugins/webparser/#OnDownloadErrorAction">OnDownloadErrorAction</a> to WebParser measures to allow taking an action when a remote file defined by <code>Download=1</code> fails to download or can't be saved locally.</li>
-  <li><span class="badge badge-changed">Changed</span><b> Rainmeter:</b> Added the value <code>~100</code> to both Manage and the skin context menus to support setting the transparency of a skin to an opacity of <code>1</code>, which is invisible but will still react to the mouse. This can be used in conjunction with the <a href="/manual-beta/user-interface/manage/#SkinSettings">fade in / fade out / on hover</a> capabilities.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual/plugins/webparser/#OnDownloadErrorAction">OnDownloadErrorAction</a> to WebParser measures to allow taking an action when a remote file defined by <code>Download=1</code> fails to download or can't be saved locally.</li>
+  <li><span class="badge badge-changed">Changed</span><b> Rainmeter:</b> Added the value <code>~100</code> to both Manage and the skin context menus to support setting the transparency of a skin to an opacity of <code>1</code>, which is invisible but will still react to the mouse. This can be used in conjunction with the <a href="/manual/user-interface/manage/#SkinSettings">fade in / fade out / on hover</a> capabilities.</li>
 </ul>
 
 <h3 id="r2380">March 9, 2015 - Revision 2380</h3>
@@ -891,10 +902,10 @@ title: 'Version History'
 
 <h3 id="r2378">March 2, 2015 - Revision 2378</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual-beta/plugins/webparser/#OnConnectErrorAction">OnConnectErrorAction</a> to WebParser parent measures to allow taking an action when a site or file resource cannot be connected to.</li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual-beta/plugins/webparser/#OnRegExpErrorAction">OnRegExpErrorAction</a> to WebParser parent measures to allow taking an action when parsing a site or file resource with <code>RegExp</code> (regular expression) fails.</li>
-  <li><span class="badge badge-changed">Changed</span><b> WebParser:</b> Changed the <a href="/manual-beta/plugins/webparser/#FinishAction">FinishAction</a> to not be executed when parsing a site or file resource with <code>RegExp</code> (regular expression) fails AND an <code>OnRegExpErrorAction</code> is defined on the measure.</li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added a new <a href="/manual-beta/plugins/webparser/#CommandMeasureReset">Reset</a> command, used with the <a href="/manual-beta/bangs/#CommandMeasure">!CommandMeasure</a> bang, to reset all values in the WebParser parent and related child measures to their initial empty values.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual/plugins/webparser/#OnConnectErrorAction">OnConnectErrorAction</a> to WebParser parent measures to allow taking an action when a site or file resource cannot be connected to.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual/plugins/webparser/#OnRegExpErrorAction">OnRegExpErrorAction</a> to WebParser parent measures to allow taking an action when parsing a site or file resource with <code>RegExp</code> (regular expression) fails.</li>
+  <li><span class="badge badge-changed">Changed</span><b> WebParser:</b> Changed the <a href="/manual/plugins/webparser/#FinishAction">FinishAction</a> to not be executed when parsing a site or file resource with <code>RegExp</code> (regular expression) fails AND an <code>OnRegExpErrorAction</code> is defined on the measure.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added a new <a href="/manual/plugins/webparser/#CommandMeasureReset">Reset</a> command, used with the <a href="/manual/bangs/#CommandMeasure">!CommandMeasure</a> bang, to reset all values in the WebParser parent and related child measures to their initial empty values.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Math:</b> Corrected a problem when a comma-separated, multi-argument math function was used in a formula in a comma-separated, multi-argument option. For instance using <code>Clamp(x,low,high)</code> in the arguments for <code>FontColor=rrr,ggg,bbb,aaa</code>.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Skin Installer:</b> Changed the Skin Packager to only allow inclusion of a valid 400x60 .bmp file as a custom header in a .rmskin. Improperly sized custom images were causing visual problems in the Skin Installer user interface.</li>
 </ul>
@@ -907,24 +918,24 @@ title: 'Version History'
 
 <h3 id="r2371">February 18, 2015 - Revision 2371</h3>
 <ul>
-  <li><span class="badge badge-changed">Changed</span><b> Time:</b> Changed the <a href="/manual-beta/measures/time#TimeStamp">TimeStamp</a> option to allow a formatted date / time string as input.</li>
-  <li><span class="badge badge-added">Added</span><b> Time:</b> Added new <a href="/manual-beta/measures/time#TimeStampFormat">TimeStampFormat</a> and <a href="/manual-beta/measures/time#TimeStampLocale">TimeStampLocale</a> options to support the changes to TimeStamp above.</li>
-  <li><span class="badge badge-added">Added</span><b> Time:</b> Added new <a href="/manual-beta/measures/time#FormatLocale">FormatLocale</a> option to support formatting a Time measure in any defined language / locale.</li>
-  <li><span class="badge badge-added">Added</span><b> UpTime:</b> Added a new <a href="/manual-beta/measures/uptime#SecondsValue">SecondsValue</a> option to allow formatting any defined number of seconds into "days, hours, minutes, seconds" as desired. This will override the default behavior of the UpTime measure.</li>
-  <li><span class="badge badge-added">Added</span><b> Section Variables:</b> Added a new <a href="/manual-beta/variables/section-variables#Timestamp">:Timestamp</a> section variable measure modifier. This will return the Windows timestamp value of the named Time measure, and overcomes a limitation with getting and using this number when a Time measure has a Format option.<br/><br/>
+  <li><span class="badge badge-changed">Changed</span><b> Time:</b> Changed the <a href="/manual/measures/time#TimeStamp">TimeStamp</a> option to allow a formatted date / time string as input.</li>
+  <li><span class="badge badge-added">Added</span><b> Time:</b> Added new <a href="/manual/measures/time#TimeStampFormat">TimeStampFormat</a> and <a href="/manual/measures/time#TimeStampLocale">TimeStampLocale</a> options to support the changes to TimeStamp above.</li>
+  <li><span class="badge badge-added">Added</span><b> Time:</b> Added new <a href="/manual/measures/time#FormatLocale">FormatLocale</a> option to support formatting a Time measure in any defined language / locale.</li>
+  <li><span class="badge badge-added">Added</span><b> UpTime:</b> Added a new <a href="/manual/measures/uptime#SecondsValue">SecondsValue</a> option to allow formatting any defined number of seconds into "days, hours, minutes, seconds" as desired. This will override the default behavior of the UpTime measure.</li>
+  <li><span class="badge badge-added">Added</span><b> Section Variables:</b> Added a new <a href="/manual/variables/section-variables#Timestamp">:Timestamp</a> section variable measure modifier. This will return the Windows timestamp value of the named Time measure, and overcomes a limitation with getting and using this number when a Time measure has a Format option.<br/><br/>
 All of the above additions and changes are related to new functionality for getting and using date / time information in skins. As well as support for Language / Locale values in Time measures. Details and examples can be found at <a href="//forum.rainmeter.net/viewtopic.php?f=114&t=20398">Change Announcements</a>.</li>
 </ul>
 
 <h3 id="r2360">February 8, 2015 - Revision 2360</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Time:</b> Added several <a href="/manual-beta/measures/time#TimeStamp">TimeStamp</a> options to obtain Daylight Savings Time information for the local computer.</li>
-  <li><span class="badge badge-added">Added</span><b> SysInfo plugin:</b> Added several <a href="/manual-beta/plugins/sysinfo#TimeZoneValues">SysInfoType</a> option values to obtain Time Zone and Daylight Savings Time information for the local computer.</li>
+  <li><span class="badge badge-added">Added</span><b> Time:</b> Added several <a href="/manual/measures/time#TimeStamp">TimeStamp</a> options to obtain Daylight Savings Time information for the local computer.</li>
+  <li><span class="badge badge-added">Added</span><b> SysInfo plugin:</b> Added several <a href="/manual/plugins/sysinfo#TimeZoneValues">SysInfoType</a> option values to obtain Time Zone and Daylight Savings Time information for the local computer.</li>
 </ul>
 
 <h3 id="r2357">February 1, 2015 - Revision 2357</h3>
 <ul>
   <li><span class="badge badge-added">Added</span><b> Formulas:</b> Added Atan2(y, x) math function. Returns the radians of arc tangent between points Y and X in the Cartesian plane. The sign of the elements determines the quadrant.</li>
-  <li><span class="badge badge-added">Added</span><b> FileView:</b> Added a new <em>PathToFile</em> value for the <a href="/manual-beta/plugins/fileview#Type">Type</a> child measure option. This will return just the path the file, including a trailing "\".</li>
+  <li><span class="badge badge-added">Added</span><b> FileView:</b> Added a new <em>PathToFile</em> value for the <a href="/manual/plugins/fileview#Type">Type</a> child measure option. This will return just the path the file, including a trailing "\".</li>
 </ul>
 
 <h3 id="r2355">January 27, 2015 - Revision 2355</h3>
@@ -934,7 +945,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2353">January 25, 2015 - Revision 2353</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Context Menu:</b> Added <a href="/manual-beta/user-interface/context-menus#RainmeterContextMenus">Favorites</a> functionality to the Rainmeter and Skins context menus. Also added support for making a skin a "Favorite" in the <a href="/manual-beta/user-interface/manage#SkinsTab">Manage</a> dialog.</li>
+  <li><span class="badge badge-added">Added</span><b> Context Menu:</b> Added <a href="/manual/user-interface/context-menus#RainmeterContextMenus">Favorites</a> functionality to the Rainmeter and Skins context menus. Also added support for making a skin a "Favorite" in the <a href="/manual/user-interface/manage#SkinsTab">Manage</a> dialog.</li>
   <li><span class="badge badge-added">Added</span><b> WifiStatus:</b> Added support for the 802.11ac protocol.</li>
   <li><span class="badge badge-changed">Changed</span><b> Context Menu:</b> Moved "Open folder" and "Disable dragging" options to the top of the Skins context menu for easier access.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Regular Expressions:</b> Fixed a recursion bug in the PCRE regular expression library that could cause a crash of Rainmeter in rare cases.</li>
@@ -948,7 +959,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2325">September 16, 2014 - Revision 2325</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Skins:</b> Added a new <a href="/manual-beta/skins/rainmeter-section/#DefaultUpdateDivider">DefaultUpdateDivider</a> option to the [Rainmeter] section of skins.</li>
+  <li><span class="badge badge-added">Added</span><b> Skins:</b> Added a new <a href="/manual/skins/rainmeter-section/#DefaultUpdateDivider">DefaultUpdateDivider</a> option to the [Rainmeter] section of skins.</li>
 </ul>
 
 <h3 id="r2318">September 9, 2014 - Revision 2318</h3>
@@ -958,7 +969,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2317">September 9, 2014 - Revision 2317</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Plugins:</b> Added new AudioLevel plugin by author dgrace to the Rainmeter build. This will allow for real-time VU-Meter and Spectrum Analyzer visualizations of sound output. See <a href="/manual-beta/plugins/audiolevel">AudioLevel plugin</a> for full documentation and example skins.</a></li>
+  <li><span class="badge badge-added">Added</span><b> Plugins:</b> Added new AudioLevel plugin by author dgrace to the Rainmeter build. This will allow for real-time VU-Meter and Spectrum Analyzer visualizations of sound output. See <a href="/manual/plugins/audiolevel">AudioLevel plugin</a> for full documentation and example skins.</a></li>
   <li><span class="badge badge-fixed">Fixed</span><b> AudioLevel plugin:</b> Fixed an issue with the <code>Format</code> child measure option that was not returning a Unicode string value.</li>
 </ul>
 
@@ -975,7 +986,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2308">August 21, 2014 - Revision 2308</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Image:</b> New Mask Image functionality added. See <a href="/manual-beta/meters/image#MaskImage">Image - Mask Image</a> for documentation, and <a href="//forum.rainmeter.net/viewtopic.php?p=103408#p103408">Change Announcements</a> for more details.</li>
+  <li><span class="badge badge-added">Added</span><b> Image:</b> New Mask Image functionality added. See <a href="/manual/meters/image#MaskImage">Image - Mask Image</a> for documentation, and <a href="//forum.rainmeter.net/viewtopic.php?p=103408#p103408">Change Announcements</a> for more details.</li>
   <li><span class="badge badge-changed">Changed</span><b> Rainmeter:</b> Updated Metadata and removed AppVersion from default illustro skins.</li>
   <li><span class="badge badge-changed">Changed</span><b> About:</b> Prevent invalid plugins from showing up on Plugins tab in Manage.</li>
 </ul>
@@ -1004,29 +1015,29 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2282">February 23, 2014 - Revision 2282</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added new IDLE_TIME <a href="/manual-beta/plugins/sysinfo/#SysInfoType">SysInfoType</a> option. This will return the number of seconds since the last user input (mouse or keyboard) to the operating system.</li>
+  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added new IDLE_TIME <a href="/manual/plugins/sysinfo/#SysInfoType">SysInfoType</a> option. This will return the number of seconds since the last user input (mouse or keyboard) to the operating system.</li>
 </ul>
 
 <h3 id="r2280">February 16, 2014 - Revision 2280</h3>
 <ul>
   <li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> Added the Windows version and bit architecture to the About / Version dialog.</li>
-  <li><span class="badge badge-fixed">Fixed</span><b>Rainmeter:</b> Corrected that separators were not displayed with the <a href="/manual-beta/bangs/#SkinCustomMenu">!SkinCustomMenu</a> bang.</li>
+  <li><span class="badge badge-fixed">Fixed</span><b>Rainmeter:</b> Corrected that separators were not displayed with the <a href="/manual/bangs/#SkinCustomMenu">!SkinCustomMenu</a> bang.</li>
 </ul>
 
 <h3 id="r2269">February 9, 2014 - Revision 2269</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> FileView:</b> Added support for opening the Windows properties or context menu dialogs for file or folder objects. Details at <a href="/manual-beta/plugins/fileview/#OtherCommands">FileView - Other Commands</a>.</li>
-  <li><span class="badge badge-added">Added</span><b> Rainmeter:</b> Added <a href="/manual-beta/bangs/#SkinCustomMenu">!SkinCustomMenu</a> bang to display only user-defined <a href="/manual-beta/skins/rainmeter-section/#Context">context menu</a> items instead of the normal skin context menu.</a></li>
+  <li><span class="badge badge-added">Added</span><b> FileView:</b> Added support for opening the Windows properties or context menu dialogs for file or folder objects. Details at <a href="/manual/plugins/fileview/#OtherCommands">FileView - Other Commands</a>.</li>
+  <li><span class="badge badge-added">Added</span><b> Rainmeter:</b> Added <a href="/manual/bangs/#SkinCustomMenu">!SkinCustomMenu</a> bang to display only user-defined <a href="/manual/skins/rainmeter-section/#Context">context menu</a> items instead of the normal skin context menu.</a></li>
 </ul>
 
 <h3 id="r2255">January 5, 2014 - Revision 2255</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual-beta/measures/string/">String</a> measure type, used to create and manipulate string values.</li>
-  <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual-beta/measures/general-options/ifmatchactions/">IfMatchAction</a> options for taking actions based on a regular expression comparison with the measure's string value. See <a href="//forum.rainmeter.net/viewtopic.php?f=113&amp;t=17421">Change Announcements</a> for details and examples.</li>
-  <li><span class="badge badge-added">Added</span><b> Section Variables:</b> New <a href="/manual-beta/variables/section-variables/#EscapeRegExp">:EscapeRegExp</a> measure section variable parameter. This will return the string value of the measure with all regular expression <a href="http://www.regular-expressions.info/characters.html">reserved characters</a> escaped.</li>
-  <li><span class="badge badge-added">Added</span><b> Section Variables:</b> New <a href="/manual-beta/variables/section-variables/#EncodeURL">:EncodeURL</a> measure section variable parameter. This will return the string value of the measure as a <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL-encoded</a> string.</li>
+  <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual/measures/string/">String</a> measure type, used to create and manipulate string values.</li>
+  <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual/measures/general-options/ifmatchactions/">IfMatchAction</a> options for taking actions based on a regular expression comparison with the measure's string value. See <a href="//forum.rainmeter.net/viewtopic.php?f=113&amp;t=17421">Change Announcements</a> for details and examples.</li>
+  <li><span class="badge badge-added">Added</span><b> Section Variables:</b> New <a href="/manual/variables/section-variables/#EscapeRegExp">:EscapeRegExp</a> measure section variable parameter. This will return the string value of the measure with all regular expression <a href="http://www.regular-expressions.info/characters.html">reserved characters</a> escaped.</li>
+  <li><span class="badge badge-added">Added</span><b> Section Variables:</b> New <a href="/manual/variables/section-variables/#EncodeURL">:EncodeURL</a> measure section variable parameter. This will return the string value of the measure as a <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL-encoded</a> string.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> WebParser:</b> A problem in some cases with properly handling [&amp;MeasureName] variables on the URL option.</li>
-  <li><span class="badge badge-changed">Changed</span><b> Calc:</b> Due to possible impacts on system resources, <a href="/manual-beta/measures/calc/#UniqueRandom">UniqueRandom</a> now has a limit of 65535, defined by the difference between LowBound and HighBound.</li>
+  <li><span class="badge badge-changed">Changed</span><b> Calc:</b> Due to possible impacts on system resources, <a href="/manual/measures/calc/#UniqueRandom">UniqueRandom</a> now has a limit of 65535, defined by the difference between LowBound and HighBound.</li>
 </ul>
 
 <h3 id="r2218">December 23, 2013 - Revision 2218</h3>
@@ -1042,7 +1053,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2209">December 22, 2013 - Revision 2209</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added new LAN_CONNECTIVITY and INTERNET_CONNECTIVITY <a href="/manual-beta/plugins/sysinfo/#SysInfoType">SysInfoType</a> options. Measure will return "1" on success and "-1" on failure.</li>
+  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added new LAN_CONNECTIVITY and INTERNET_CONNECTIVITY <a href="/manual/plugins/sysinfo/#SysInfoType">SysInfoType</a> options. Measure will return "1" on success and "-1" on failure.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Calc:</b> Fixed repeating log error message when Random function HighBound is smaller than LowBound.</li>
   <li><span class="badge badge-changed">Changed</span><b> Tooltip:</b> ToolTipIcon option now allows a relative path to the image.</li>
   <li><span class="badge badge-changed">Changed</span><b> Language:</b> Updates to localization language strings.</li>
@@ -1050,7 +1061,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2187">November 10, 2013 - Revision 2187</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual-beta/measures/general-options/ifconditions/">IfConditions</a> functionality added.  This is a powerful extension to the concepts provided in IfActions, allowing multiple tests and actions, both "true" and "false" testing, and the ability to use logical AND and OR operators in the conditions. See <a href="//forum.rainmeter.net/viewtopic.php?p=94135#p94135">Change Announcements</a> for details and example skins.</li>
+  <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual/measures/general-options/ifconditions/">IfConditions</a> functionality added.  This is a powerful extension to the concepts provided in IfActions, allowing multiple tests and actions, both "true" and "false" testing, and the ability to use logical AND and OR operators in the conditions. See <a href="//forum.rainmeter.net/viewtopic.php?p=94135#p94135">Change Announcements</a> for details and example skins.</li>
 </ul>
 
 <h2 id="3.0.2">Rainmeter 3.0.2</h2><hr />
@@ -1114,12 +1125,12 @@ All of the above additions and changes are related to new functionality for gett
 <h3 id="r2085">August 26, 2013 - Revision 2085</h3>
 <ul>
   <li><span class="badge badge-added">Added</span><b> About:</b> Added a "Clear" button to the About / Log panel to remove the current contents of the log displayed in the panel.</li>
-  <li><span class="badge badge-changed">Changed</span><b> Bangs:</b> Added "Config" and "File" parameters to the <a href="/manual-beta/bangs/#Manage">!Manage</a> bang. This will allow opening the Manage / Skin panel with the desired config and / or skin .ini file automatically selected in the list.</li>
+  <li><span class="badge badge-changed">Changed</span><b> Bangs:</b> Added "Config" and "File" parameters to the <a href="/manual/bangs/#Manage">!Manage</a> bang. This will allow opening the Manage / Skin panel with the desired config and / or skin .ini file automatically selected in the list.</li>
 </ul>
 
 <h3 id="r2081">August 18, 2013 - Revision 2081</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Calc:</b> Added a new <a href="/manual-beta/measures/calc/#UniqueRandom">UniqueRandom</a> option. If set to 1, any measure using the random constant and UpdateRandom will not repeat until all values between and including LowBound and HighBound have been used. Note that any dynamic change to LowBound or HighBound will reset the tracking of values. See <a href="//forum.rainmeter.net/viewtopic.php?p=91109#p91109">Change Announcements</a> for an example skin.</li>
+  <li><span class="badge badge-added">Added</span><b> Calc:</b> Added a new <a href="/manual/measures/calc/#UniqueRandom">UniqueRandom</a> option. If set to 1, any measure using the random constant and UpdateRandom will not repeat until all values between and including LowBound and HighBound have been used. Note that any dynamic change to LowBound or HighBound will reset the tracking of values. See <a href="//forum.rainmeter.net/viewtopic.php?p=91109#p91109">Change Announcements</a> for an example skin.</li>
 </ul>
 
 <h3 id="r2076">August 12, 2013 - Revision 2076</h3>
@@ -1136,7 +1147,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2047">August 4, 2013 - Revision 2047</h3>
 <ul>
-  <li><span class="badge badge-changed">Changed</span><b> WebParser:</b> WebParser now supports <a href="/manual-beta/variables/#DynamicVariables">Dynamic Variables</a>. See <a href="//forum.rainmeter.net/viewtopic.php?p=90521#p90521">Change Announcements</a> for <b>important:</b> details.</li>
+  <li><span class="badge badge-changed">Changed</span><b> WebParser:</b> WebParser now supports <a href="/manual/variables/#DynamicVariables">Dynamic Variables</a>. See <a href="//forum.rainmeter.net/viewtopic.php?p=90521#p90521">Change Announcements</a> for <b>important:</b> details.</li>
   <li><span class="badge badge-changed">Changed</span><b> Rainmeter:</b> Important improvements made to the D2D (Direct2D) rendering option for Rainmeter. See <a href="//forum.rainmeter.net/viewtopic.php?p=90520#p90520">Change Announcements</a> for <b>important:</b> details.</li>
   <li><span class="badge badge-added">Added</span><b> Manage Dialog:</b> Added "UseD2D" option in the Manage / Settings Tab. If checked, all skins are refreshed using D2D (Direct2D) rendering. The option is disabled on systems that do not support D2D. Windows 7 with the latest <a href="http://www.microsoft.com/en-us/download/details.aspx?id=36805">Platform Update</a> or Windows 8 is required.</li>
   <li><span class="badge badge-added">Added</span><b> Rainmeter:</b> Added AccurateText option in the [Rainmeter] section of skins. When AccurateText=0 (default) and UseD2D=0, inaccurate GDI+ measuring of text is used. When AccurateText=1 and UseD2D=0, Accurate measuring occurs similar to D2D. When AccurateText=0 and UseD2D=1, D2D adds padding to the text similar to GDI+. When AccurateText=1 and UseD2D=1, Accurate measuring occurs using D2D.</li>
@@ -1145,8 +1156,8 @@ All of the above additions and changes are related to new functionality for gett
 <h3 id="r2022">July 21, 2013 - Revision 2022</h3>
 <ul>
   <li><span class="badge badge-removed">Removed</span><b> String meter:</b> Due to problems and inconsistent behavior, removed the ability to include trailing spaces on the Text option that was added in previous betas. See the new Padding option for an alternative solution.</li>
-  <li><span class="badge badge-added">Added</span><b> Meters:</b> Added <a href="/manual-beta/meters/general-options/#Padding">Padding</a>=<i>left,top,right,bottom</i> option to meters. Allows adding pixels around any or all sides a meter. The width and height of the meter will dynamically be adjusted to the new size.</li>
-  <li><span class="badge badge-added">Added</span><b> Measures:</b> Added <a href="/manual-beta/measures/general-options/#Paused">Paused</a>=<i>0/1</i> option to measures. This allows setting the "paused" state of a measure, in addition to the !PauseMeasure/!UnpauseMeasure/!TogglePauseMeasure bangs previously added.</li>
+  <li><span class="badge badge-added">Added</span><b> Meters:</b> Added <a href="/manual/meters/general-options/#Padding">Padding</a>=<i>left,top,right,bottom</i> option to meters. Allows adding pixels around any or all sides a meter. The width and height of the meter will dynamically be adjusted to the new size.</li>
+  <li><span class="badge badge-added">Added</span><b> Measures:</b> Added <a href="/manual/measures/general-options/#Paused">Paused</a>=<i>0/1</i> option to measures. This allows setting the "paused" state of a measure, in addition to the !PauseMeasure/!UnpauseMeasure/!TogglePauseMeasure bangs previously added.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> !SetWallpaper:</b> Improved performance when setting the wallpaper with large images.</li>
   <li><span class="badge badge-changed">Changed</span><b> Button meter:</b> Changed the mouse <i>over</i> behavior to ignore transparent areas of the image, to match the mouse <i>click</i> behavior.</li>
 </ul>
@@ -1154,7 +1165,7 @@ All of the above additions and changes are related to new functionality for gett
 <h3 id="r2012">July 14, 2013 - Revision 2012</h3>
 <ul>
   <li><span class="badge badge-changed">Changed</span><b> String meter:</b> Trailing spaces are displayed in the Text option if the value is enclosed in quotes. This was previously changed in D2D, and now has the same behavior in GDI+.</li>
-  <li><span class="badge badge-added">Added</span><b> !PauseMeasure:</b> New <a href="/manual-beta/bangs/#PauseMeasure">!PauseMeasure</a>, <a href="/manual-beta/bangs/#PauseMeasure">!UnpauseMeasure</a>, and <a href="/manual-beta/bangs/#PauseMeasure">!TogglePauseMeasure</a> bangs. This is similar to a disabled measure, however the measure retains its current value instead of changing to 0. Group versions of these bangs also added.</li>
+  <li><span class="badge badge-added">Added</span><b> !PauseMeasure:</b> New <a href="/manual/bangs/#PauseMeasure">!PauseMeasure</a>, <a href="/manual/bangs/#PauseMeasure">!UnpauseMeasure</a>, and <a href="/manual/bangs/#PauseMeasure">!TogglePauseMeasure</a> bangs. This is similar to a disabled measure, however the measure retains its current value instead of changing to 0. Group versions of these bangs also added.</li>
   <li><span class="badge badge-changed">Changed</span><b> !SetWallpaper:</b> Changed the problem that an image file set with !SetWallpaper would be locked in Windows.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Rainmeter:</b> Fix for a problem with !DeactivateConfig in a OnCloseAction that could cause high CPU usage.</li>
 </ul>
@@ -1185,7 +1196,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r1950">June 9, 2013 - Revision 1950</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b>Rainmeter:</b> New <a href="/manual-beta/meters/general-options/image-options/#ImagePath">ImagePath</a> option added to General Image Options. This replaces the Path option on Image meters, and extends the functionality to all other meters that support images. <i>Note that Histogram uses PrimaryImagePath, SecondaryImagePath and BothImagePath due to the fact that the Histogram meter has an optional secondary measure binding.</i></li>
+  <li><span class="badge badge-added">Added</span><b>Rainmeter:</b> New <a href="/manual/meters/general-options/image-options/#ImagePath">ImagePath</a> option added to General Image Options. This replaces the Path option on Image meters, and extends the functionality to all other meters that support images. <i>Note that Histogram uses PrimaryImagePath, SecondaryImagePath and BothImagePath due to the fact that the Histogram meter has an optional secondary measure binding.</i></li>
 </ul>
 
 <h3 id="r1946">June 4, 2013 - Revision 1946</h3>
@@ -1309,8 +1320,8 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r1767">January 21, 2013 - Revision 1767</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added new <a href="/manual-beta/variables/mouse-variables/">Mouse Variables</a>.</li>
-  <li><span class="badge badge-added">Added</span><b> FileView:</b> Added new <a href="/manual-beta/plugins/fileview/#FinishAction">FinishAction</a> option to the plugin.
+  <li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added new <a href="/manual/variables/mouse-variables/">Mouse Variables</a>.</li>
+  <li><span class="badge badge-added">Added</span><b> FileView:</b> Added new <a href="/manual/plugins/fileview/#FinishAction">FinishAction</a> option to the plugin.
 </ul>
 
 <h3 id="r1761">January 15, 2013 - Revision 1761</h3>
@@ -1320,9 +1331,9 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r1758">January 13, 2013 - Revision 1758</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> FileView:</b> Added new <a href="/manual-beta/plugins/fileview/">FileView plugin</a>.</li>
-  <li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added new OnUpdateAction command to <a href="/manual-beta/skins/rainmeter-section/#OnUpdateAction">Skins</a>, <a href="/manual-beta/meters/general-options/#OnUpdateAction">Meters</a> and <a href="/manual-beta/measures/general-options/#OnUpdateAction">Measures</a>.</li>
-  <li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added new OnChangeAction command to <a href="/manual-beta/measures/general-options/#OnChangeAction">Measures</a>.</li>
+  <li><span class="badge badge-added">Added</span><b> FileView:</b> Added new <a href="/manual/plugins/fileview/">FileView plugin</a>.</li>
+  <li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added new OnUpdateAction command to <a href="/manual/skins/rainmeter-section/#OnUpdateAction">Skins</a>, <a href="/manual/meters/general-options/#OnUpdateAction">Meters</a> and <a href="/manual/measures/general-options/#OnUpdateAction">Measures</a>.</li>
+  <li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added new OnChangeAction command to <a href="/manual/measures/general-options/#OnChangeAction">Measures</a>.</li>
 </ul>
 
 <h3 id="r1748">January 6, 2013 - Revision 1748</h3>

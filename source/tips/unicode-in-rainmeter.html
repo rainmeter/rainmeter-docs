@@ -40,7 +40,7 @@ A variant of the UTF-8 standard with a <a href="http://en.wikipedia.org/wiki/Byt
 
 <ul>
 <li><b>UTF-16 LE</b> (Windows Notepad.exe)</li>
-<li><b>UCS-2 LE BOM</b> (Notepad++)</li>
+<li><b>UTF-16 LE BOM</b> (Notepad++)</li>
 <li><b>UTF-16 LE</b> (Sublime Text)</li>
 </ul>
 
@@ -58,7 +58,7 @@ A variant of the UTF-8 standard with a <a href="http://en.wikipedia.org/wiki/Byt
 
 <p>If you are going to be creating a local text file containing Unicode characters that you want to parse with WebParser using the <code>URL=File://SomeFile.txt</code> URL option, you can encode this file as UTF-16. However, there is another step required in Rainmeter to have this work correctly.</p>
 
-<p>As noted above, WebParser assumes all resources it accesses (web sites or files) are encoded in the web-standard UTF-8. When parsing a local file encoded in UTF-16, you must set a <code>Codepage=1200</code> option on the parent WebParser measure reading the file. Using the <a href="/manual-beta/measures/webparser/#CodePage">Codepage</a> of 1200 will tell WebParser that the resource is encoded as UTF-16.</p>
+<p>As noted above, WebParser assumes all resources it accesses (web sites or files) are encoded in the web-standard UTF-8. When parsing a local file encoded in UTF-16, you must set a <code>Codepage=1200</code> option on the parent WebParser measure reading the file. Using the <a href="/manual/measures/webparser/#CodePage">Codepage</a> of 1200 will tell WebParser that the resource is encoded as UTF-16.</p>
 
 <p>An alternative is to encode the file as UTF-8. This will allow WebParser to read the file correctly without any Codepage setting. I tend to recommend using UTF-16 however, as I prefer the relative simplicity of just encoding all files in UTF-16 in Rainmeter if Unicode is desired. (The only exception then will be some rare cases with Lua scripting involving reading/writing external files, as noted below.)</p>
 

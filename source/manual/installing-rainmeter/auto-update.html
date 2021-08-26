@@ -1,0 +1,56 @@
+---
+layout: docs
+permalink: manual/installing-rainmeter/auto-update/
+title: 'Auto Updating Rainmeter'
+---
+<p>By default, Rainmeter will automatically stay updated to the most recent release version of the software.</p>
+
+<p>This is optional. While it is certainly easier to leave this feature enabled and allow Rainmeter to automatically stay current with the latest version, you might prefer to go to the Rainmeter site at <a href="https://www.rainmeter.net">https://www.rainmeter.net</a>, read any release notes for the latest version, and decide if you want to manually download and install it or not.</p>
+
+<p>This can be controlled by changing the states of two checkboxes in the Rainmeter <a href="https://docs.rainmeter.net/manual/user-interface/manage/#SettingsTab">Settings</a> dialog:</p>
+
+<div style="clear: both;"></div>
+
+<div class="exampleprev">
+<a href="!img/installing-rainmeter/AutoUpdate03.png"  data-fancybox><img src="!img/installing-rainmeter/AutoUpdate03.png"></a>
+</div>
+
+<ul>
+<li><b>Check for updates</b>: When started, Rainmeter will check for a newer version. A notification will be raised to alert the user to the new version, and clicking on the notification will take the user to <a href="https://www.rainmeter.net">https://www.rainmeter.net</a> in the default browser, where the new version can be manually downloaded and installed if desired.</li>
+<li><b>Automatically install updates</b>: If both this checkbox and "Check for updates" are enabled, Rainmeter will automatically download and install any new version of the software it finds when started. If "Check for updates" is not checked, this setting is disabled and ignored.</li>
+</ul>
+
+<h2 id="AutoUpdate">How Auto Update Works</h2>
+
+<ol>
+<li>When Rainmeter is started, it will check for the presence of a newer version of the software online.</li><br/>
+<li>If a newer version is found, it is <b>automatically downloaded in the background</b> and stored locally.<br/><br/><b>This new version will automatically be installed the next time Rainmeter is started.</b></li><br/>
+<li>A Windows notification will be raised, alerting the user that a new version is ready to install.
+<div class="exampleprev">
+<a href="!img/installing-rainmeter/AutoUpdate01.png"  data-fancybox><img src="!img/installing-rainmeter/AutoUpdate01.png"></a>
+</div>
+<br/>Clicking on this notification will restart Rainmeter, which will install the new version automatically.</li><br/>
+<li>The Rainmeter context menu will also indicate that a new version is ready to install.
+<div class="exampleprev">
+<a href="!img/installing-rainmeter/AutoUpdate02.png"  data-fancybox><img src="!img/installing-rainmeter/AutoUpdate02.png"></a>
+</div>
+<br/>Clicking on this notification will restart Rainmeter, which will install the new version automatically.</li><br/>
+<li>Any restart of Rainmeter in the normal course of events will install the new version automatically.</li><br/>
+<li>Once the new version is installed, the local copy of the downloaded installer will be removed.</li>
+</ol>
+
+<h2 id="AutoUpdateNotes">Some Notes</h2>
+
+<p>This automatic update is done by downloading from the certificate-secured Rainmeter repository on <a href="https://github.com/rainmeter/rainmeter/releases">GitHub</a>, and is further protected by comparing remote and local versions of the SHA-256 security checksum of the downloaded installer before installation.</p>
+
+<p>The installer is temporarily downloaded and stored in an <code>Updates</code> folder in the Rainmeter settings folder, either in the user's ..AppData\Rainmeter folder (normal installation) or the program folder (portable installation). This folder is automatically removed when the installation is complete.</p>
+
+<p>Information about the new version to install is stored in the <code>Rainmeter.data</code> file, either in the user's ..AppData\Rainmeter folder (normal installation) or the program folder (portable installation). This information is automatically removed when the installation is complete.</p>
+
+<p>The installer will be executed silently, preserving all the choices made when the software was last manually installed. No installation dialog will be seen, however Windows will prompt with a UAC (User Account Control) dialog to ask for permission to write to your Program Files folder. Rainmeter will fail to install if you do not allow this.</p>
+
+
+
+
+ 
+

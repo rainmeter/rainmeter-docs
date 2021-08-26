@@ -1,0 +1,67 @@
+---
+layout: docs
+permalink: manual/measures/process/
+title: 'Process measure'
+---
+<p><code>Measure=Process</code> measures the running state of a process.</p>
+
+<p>The measure's <a href="!measures/#Values">value</a> will be:
+<ul>
+<li><code>1</code> : The specified <code>ProcessName</code> is running.</li>
+<li><code>-1</code> : The specified <code>ProcessName</code> is not running.</li>
+</ul>
+</p>
+
+<h2 id="NotAPlugin">Note: Process was previously a <em>plugin</em> measure.</h2>
+<p>In many existing skins you might see the syntax:</p>
+``` ini
+[MeasureParent]
+Measure=Plugin
+Plugin=Process
+or
+Plugin=Process.dll
+or
+Plugin=Plugins\Process.dll
+```
+<p>Process still works with those forms, and changing existing skins to the new <code>Measure=Process</code> syntax is entirely optional. However, new skins created going forward should use the correct syntax for accuracy and clarity. Process is a measure, and not a plugin.</p>
+
+``` ini
+[MeasureParent]
+Measure=Process
+```
+
+<h2>Options</h2>
+<dl>
+	<dt>General measure options</dt>
+	<dd>
+		All <a href="!measures/general-options/">general measure options</a> are valid.
+	</dd>
+
+	<dt id="ProcessName"><code>ProcessName</code></dt>
+	<dd>
+		Name of the process (e.g. <code>Firefox.exe</code>).
+	</dd>
+</dl>
+
+<h2>Example</h2>
+``` ini
+[Rainmeter]
+Update=1000
+BackgroundMode=2
+SolidColor=0,0,0,255
+
+[MeasureProcess]
+Measure=Process
+ProcessName=Notepad.exe
+Substitute="-1":"not running","1":"running"
+
+[MeterProcess]
+Meter=String
+MeasureName=MeasureProcess
+X=5
+Y=5
+W=200
+H=20
+FontColor=255,255,255,255
+Text=Notepad.exe is %1.
+```
