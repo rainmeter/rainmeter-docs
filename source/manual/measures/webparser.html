@@ -235,10 +235,15 @@ ProxyServer=localhost:8080
 
 ``` ini
 [WebParserParentMeasure]
-UserAgent=Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0
+UserAgent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36 Edg/92.0.902.84
 ```
 
 		<p>This option can also be set in the <a href="!settings/#RainmeterData">Rainmeter.data</a> file. If set there, it will be used as the global setting for all WebParser measures unless overridden in an individual measure(s). This must be set in a <code>[WebParser.dll]</code> section in Rainmeter.data.</p>
+		
+``` ini
+[WebParser.dll]
+UserAgent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36 Edg/92.0.902.84
+```
 
 	</dd>
 
