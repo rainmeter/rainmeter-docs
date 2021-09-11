@@ -8,7 +8,31 @@ title: 'Version History'
 
 <h2 id="4.5">Rainmeter 4.5</h2><hr />
 
-<h3 id="r3517">August 26, 2021 - Revision 3518</h3>
+<h3 id="r3538">September 11, 2021 - Revision 3538</h3>
+<ul>
+  <li><span class="badge badge-release">Release</span><b> 4.5.1 Release</b></li>
+  <li><span class="badge badge-fixed">Fixed</span><b>ToolTip:</b> Fixed a mouse detection issue with ToolTip inside a Container meter.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>SysInfo:</b> Fixed an inconsistency with how an empty string value is returned for <code>SysInfoType=IP_ADDRESS</code>.</li>
+	<li><span class="badge badge-changed">Changed</span><b>SysInfo:</b> Corrected About/Version and SysInfo to properly see the right version on Windows 11.</li>
+	<li><span class="badge badge-changed">Changed</span><b>SysInfo:</b> SysInfo is now a "measure" instead of a "plugin".</li>
+	<li><span class="badge badge-added">Added</span><b>SysInfo:</b> Added several new <code>SysInfoType</code> values:<br/><br/>
+	ADAPTER_ALIAS<br/>
+	ADAPTER_GUID<br/>
+	ADAPTER_STATE<br/>
+	ADAPTER_STATUS<br/>
+	ADAPTER_TRANSMIT_SPEED<br/>
+	ADAPTER_RECEIVE_SPEED<br/>
+	GATEWAY_ADDRESS_V4<br/>
+	GATEWAY_ADDRESS_V6<br/>
+	INTERNET_CONNECTIVITY_V4<br/>
+	INTERNET_CONNECTIVITY_V6<br/>
+	LAN_CONNECTIVITY_V4<br/>
+	LAN_CONNECTIVITY_V6<br/>
+	MAC_ADDRESS<br/><br/>
+	See <a href="https://docs.rainmeter.net/manual/plugins/sysinfo/">SysInfo Measure</a> for details.</li>
+</ul>
+
+<h3 id="r3518">August 26, 2021 - Revision 3518</h3>
 <ul>
   <li><span class="badge badge-release">Release</span><b> 4.5.0 Initial Release</b></li>
   <li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added Auto Update to keep the version of Rainmeter current. See <a  href="https://docs.rainmeter.net/manual/installing-rainmeter/auto-update/">Auto Update</a> documentation for details.</li>
