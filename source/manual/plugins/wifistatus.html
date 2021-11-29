@@ -1,67 +1,11 @@
 ---
 layout: docs
 permalink: manual/plugins/wifistatus/
-title: 'WiFiStatus plugin'
+title: 'Redirect to measures'
 ---
-<p><code>Plugin=WiFiStatus</code> can be used to display various attributes of visible wireless networks in your area.</p>
-
-<h2>Options</h2>
-<dl>
-	<dt>General measure options</dt>
-	<dd>
-		All <a href="!measures/general-options/">general measure options</a> are valid.
-	</dd>
-
-
-	<dt id="WiFiInfoType"><code>WiFiInfoType</code></dt>
-	<dd>
-		<p>This defines what is measured. This option is <b>required</b>. Valid values are:</p>
-		<ul>
-			<li><code>SSID</code>: The broadcast name for your current connection. When trying to connect, you may see a 'connecting...' or 'authorizing...' next to the name, but only if your update speed is around 2 seconds.</li>
-			<li><code>Quality</code>: Percentage value of the maximum dBm signal strength for your current connection.</li>
-			<li><code>Encryption</code>: The cipher algorithm being used for your current connection. Possible values are: <code>NONE</code>, <code>WEP40</code>, <code>TKIP</code>, <code>AES</code>, <code>WEP104</code>, <code>WPA_GROUP</code>, and <code>WEP</code>. An unknown algorithm will return <code>???</code>.</li>
-			<li><code>AUTH</code>: The authentication algorithm being used for your current connection. Possible values are: <code>Open</code>, <code>Shared</code>, <code>WPA-NONE</code>, <code>WPA-Enterprise</code>, <code>WPA-Personal</code>, <code>WPA2-Enterprise</code>, and <code>WPA2-Personal</code>. An unknown algorithm will return <code>???</code>.</li>
-			<li><code>PHY</code>: The supported bands for your connection (<b>not</b> your adapter). Possible values are <code>802.11a</code>, <code>802.11ac</code>, <code>802.11ad</code>, <code>802.11ax</code>, <code>802.11b</code>, <code>802.11g</code>, <code>802.11n</code>, <code>DSSS</code>, <code>FHSSS</code>, and <code>IR-Band</code>. An unknown band will return <code>???</code>.</li>
-			<li><code>List</code>: Returns a list of all visible networks. The list is automatically separated by line-breaks <code>\n</code>, so each network appears on a separate line. It will also display the <code>PHY</code>, <code>Encryption</code>, and <code>AUTH</code> algorithms next the the network <code>SSID</code>.</li>
-		</ul>
-	</dd>
-
-	<dt id="WiFiIntfID"><code>WiFiIntfID</code> <small>Default: <code>0</code></small></dt>
-	<dd>
-		Only use this if you have more than 1 wireless interface adapter (which may include any bluetooth or infrared receivers). If you do not get any response from the measure with this value at <code>0</code>, then try other values starting from <code>1</code>, then <code>2</code> and so on.
-	</dd>
-
-	<dt id="WiFiListStyle"><code>WiFiListStyle</code> <small>Default: <code>0</code></small></dt>
-	<dd>
-		<p>This allows you to control what information appears along with the names of all visible networks when <code>WiFiInfoType=List</code>. Valid values are:</p>
-		<ul>
-			<li><code>0</code>: SSID.</li>
-			<li><code>1</code>: SSID @band.</li>
-			<li><code>2</code>: SSID (Encryption:Authentication).</li>
-			<li><code>3</code>: SSID @band (Encryption:Authentication).</li>
-		</ul>
-	</dd>
-
-	<dt id="WiFiListLimit"><code>WiFiListLimit</code> <small>Default: <code>5</code></small></dt>
-	<dd>
-		<p>Allows you to control the number of networks that are will be displayed when used with <code>WiFiInfoType=List</code>.</p>
-		<p><b>Note:</b> The list is sorted in descending order based on the signal quality of each network (i.e. strongest first, weakest last).</p>
-	</dd>
-</dl>
-
-<h2>Example</h2>
-
-``` ini
-[MeasureSSID]
-Measure=Plugin
-Plugin=WiFiStatus
-WiFiInfoType=SSID
-WiFiIntfID=0
-
-[MeasureNetworks]
-Measure=Plugin
-Plugin=WiFiStatus
-WiFiInfoType=LIST
-WiFiIntfID=0
-WiFiListStyle=3
-```
+<script>
+   // Redirects the old location for NowPlaying from plugins to measures. Do not remove
+   currentLocation = window.location;
+   newPath = currentLocation.pathname.replace('/plugins/', '/measures/');
+   location.replace(currentLocation.protocol+'//'+currentLocation.hostname+newPath+currentLocation.hash);
+</script>
