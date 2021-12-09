@@ -8,6 +8,13 @@ title: 'Version History'
 
 <h2 id="4.5">Rainmeter 4.5</h2><hr />
 
+<h3 id="r3581">December 9, 2021 - Revision 3581</h3>
+<ul>
+	<li><span class="badge badge-fixed">Fixed</span><b>WiFiStatus measure:</b> Corrected an error condition when the winlanapi.dll file used by WiFiStatus is not installed in Windows, as with recent Windows Server versions.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>NowPlaying:</b> Corrected a range-check issue that allowed the volume value for the CAD plugin to all outside of 0-100.</li>
+	<li><span class="badge badge-fixed">Changed</span><b>SysInfo measure:</b> Take into account the connection/operational status for finding the "best" interface when specifying the name of the adapter. This will also correct an issue with duplicate interface "names" in Windows.</li>
+</ul>
+		
 <h3 id="r3573">November 29, 2021 - Revision 3573</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>SysInfo:</b> Corrected an issue with the <code>NUM_MONITORS</code> value for <code>SysInfoType</code>.</li>
