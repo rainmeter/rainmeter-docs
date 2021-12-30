@@ -8,14 +8,23 @@ title: 'Version History'
 
 <h2 id="4.5">Rainmeter 4.5</h2><hr />
 
-<h3 id="r3581">December 9, 2021 - Revision 3581</h3>
+<h3 id="r3587">December 30, 2021 - 4.5.8 - Revision 3587</h3>
+<ul>
+	<li><span class="badge badge-fixed">Fixed</span><b>Registry:</b> Corrected a problem when the registry returned a string longer than 4096 characters.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Installer:</b> Fixed an issue when the user's locale language was not able to be detected, and Arabic was being selected by default.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Script:</b> Improved error logging when an invalid Lua script is used in a disabled Script measure.</li>
+	<li><span class="badge badge-added">Added</span><b>Skin/Meter:</b> Added <code>BevelColor</code> and <code>BevelColor2</code> to allow definition of colors when a bevel is set on the skin background or a meter.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated localization strings for Swedish.</li>
+</ul>
+
+<h3 id="r3581">December 9, 2021 - 4.5.7 - Revision 3581</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>WiFiStatus measure:</b> Corrected an error condition when the winlanapi.dll file used by WiFiStatus is not installed in Windows, as with recent Windows Server versions.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>NowPlaying:</b> Corrected a range-check issue that allowed the volume value for the CAD plugin to all outside of 0-100.</li>
 	<li><span class="badge badge-fixed">Changed</span><b>SysInfo measure:</b> Take into account the connection/operational status for finding the "best" interface when specifying the name of the adapter. This will also correct an issue with duplicate interface "names" in Windows.</li>
 </ul>
 		
-<h3 id="r3573">November 29, 2021 - Revision 3573</h3>
+<h3 id="r3573">November 29, 2021 - 4.5.6 - Revision 3573</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>SysInfo:</b> Corrected an issue with the <code>NUM_MONITORS</code> value for <code>SysInfoType</code>.</li>
 	<li><span class="badge badge-changed">Changed</span><b>WiFiStatus:</b> WiFiStatus was converted from a plugin to a measure.</li>
@@ -27,7 +36,7 @@ title: 'Version History'
 	<li><span class="badge badge-added">Added</span><b>WiFiStatus:</b> Added <code>WiFiInfoType</code> of <code>RXRATE</code> to measure the theoretical maximum receive speed in bits per second of the connection.</li>
 </ul>
 
-<h3 id="r3565">November 17, 2021 - Revision 3565</h3>
+<h3 id="r3565">November 17, 2021 - 4.5.5 - Revision 3565</h3>
 <ul>
 	<li><span class="badge badge-release">Release</span><b>4.5.5 Release</b></li>
 	<li><span class="badge badge-fixed">Fixed</span><b>NowPlaying:</b> Corrected some issues with <code>WinAmp</code> and <code>AIMP</code>media players.</li>
@@ -35,7 +44,7 @@ title: 'Version History'
 	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated localization strings for Czech.</li>
 	<li><span class="badge badge-added">Added</span><b>String meter:</b> Added <code>TrailingSpaces</code> option. When set to <code>1</code>, any <code>Text</code> option enclosed in "&nbsp;&nbsp;&nbsp;&nbsp;quotes&nbsp;&nbsp;&nbsp;&nbsp;" will display leading and trailing spaces.</li></ul>
 
-<h3 id="r3550">October 4, 2021 - Revision 3550</h3>
+<h3 id="r3550">October 4, 2021 - 4.5.4 - Revision 3550</h3>
 <ul>
 	<li><span class="badge badge-release">Release</span><b>4.5.4 Release</b></li>
 	<li><span class="badge badge-fixed">Fixed</span><b>Auto Update:</b> Corrected an issue with Auto Update with Windows 7.</li>
@@ -43,7 +52,7 @@ title: 'Version History'
 	<li><span class="badge badge-changed">Changed</span><b>Manage:</b> Disable Active Skins pull-down when no configs/skins are loaded.</li>
 </ul>
 
-<h3 id="r3546">September 24, 2021 - Revision 3546</h3>
+<h3 id="r3546">September 24, 2021 - 4.5.3 - Revision 3546</h3>
 <ul>
 	<li><span class="badge badge-release">Release</span><b>4.5.3 Release</b></li>
 	<li><span class="badge badge-fixed">Fixed</span><b>Measures:</b> Corrected potential errors in <code>IfCondition</code> and <code>Formula</code> when the name of a measure started with characters other than the ASCII alphanumeric a-z/A-Z/0-9. Measures names can now safely start with or contain any printable letter, number or <b>non-math</b> punctuation or symbol from the ASCII / Extended ASCII character set, and any Unicode "letter/word" character from any language.</li>
@@ -51,13 +60,13 @@ title: 'Version History'
 	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated localization strings for Indonesian, Polish and Vietnamese.</li>
 </ul>
 
-<h3 id="r3541">September 12, 2021 - Revision 3541</h3>
+<h3 id="r3541">September 12, 2021 - 4.5.2 - Revision 3541</h3>
 <ul>
 	<li><span class="badge badge-release">Release</span><b>4.5.2 Release</b></li>
 	<li><span class="badge badge-fixed">Fixed</span><b>Section variables:</b> Fixed an issue with the <a href="https://docs.rainmeter.net/manual/variables/section-variables/#EscapeRegExp">EscapeRegExp</a> and <a href="https://docs.rainmeter.net/manual/variables/section-variables/#EncodeURL">EncodeUrl</a> section variable measure parameters.</li>
 </ul>
 
-<h3 id="r3540">September 11, 2021 - Revision 3540</h3>
+<h3 id="r3540">September 11, 2021 - 4.5.1 - Revision 3540</h3>
 <ul>
 	<li><span class="badge badge-release">Release</span><b>4.5.1 Release</b></li>
 	<li><span class="badge badge-fixed">Fixed</span><b>ToolTip:</b> Fixed a mouse detection issue with ToolTip inside a Container meter.</li>
@@ -81,7 +90,7 @@ title: 'Version History'
 	See <a href="https://docs.rainmeter.net/manual/plugins/sysinfo/">SysInfo Measure</a> for details.</li>
 </ul>
 
-<h3 id="r3518">August 26, 2021 - Revision 3518</h3>
+<h3 id="r3518">August 26, 2021 - 4.5.0 - Revision 3518</h3>
 <ul>
 	<li><span class="badge badge-release">Release</span><b>4.5.0 Initial Release</b></li>
 	<li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added Auto Update to keep the version of Rainmeter current. See <a href="https://docs.rainmeter.net/manual/installing-rainmeter/auto-update/">Auto Update</a> documentation for details.</li>
