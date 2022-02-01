@@ -12,7 +12,7 @@ title: 'Registry measure'
 		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
 
-	<dt id="RegHKey"><code>RegHKey</code></dt>
+	<dt id="RegHKey"><code>RegHKey</code> <small>Default: <code>HKEY_CURRENT_USER</code></small></dt>
 	<dd>
 		<p>Name of the root key. Valid values are:<br/>
 		<ul>
@@ -43,6 +43,29 @@ title: 'Registry measure'
 			<li><code>REG_QWORD</code> (number): Represents a 64-bit unsigned integer.</li>
 			</p>
 	</dd>
+</dl>
+
+<h2 id="AlternativeBehavior">Alternative Behavior</h2>
+<dl>
+	<dt id="OutputType"><code>OutputType</code> <small>Default: <code>Value</code></small></dt>
+	<dd>
+		<p>Allows the default behavior where the named value is returned - to be changed - to return either a list of all subkeys for the defined key, or a list of all value names for the defined key. Valid values are:<br/>
+		<ul>
+			<li><code>Value</code><br/>
+			Retrieves the value defined by <code>RegKey</code>.</li>
+			<li><code>SubKeyList</code><br/>
+			Retrieves a list of subkey names under the key defined by <code>RegKey</code>. <em><code>RegValue</code> is ignored.</em></li>
+			<li><code>ValueList</code><br/>
+			Retrieves a list of value names under the key defined by <code>RegKey</code>. <em><code>RegValue</code> is ignored.</em></li>
+		</ul>
+		</p>
+	</dd>
+
+	<dt id="OutputDelimiter"><code>OutputDelimiter</code>  <small>Default: <code>\n (newline)</code></small></dt>
+	<dd>
+		<p>When the value of <code>OutputType</code> is set to <code>SubKeyList</code> or <code>ValueList</code>, or if the registry key value type is <code>REG_MULTI_SZ</code>, the character(s) defined will be used to delimit items in the list, instead of the default <a href="!variables/built-in-variables/#CRLF">newline</a>.</p>
+	</dd>
+</dl>
 
 <h2>Example</h2>
 ``` ini
@@ -69,22 +92,3 @@ FontColor=255,255,255,255
 Text="Version: %1"
 ```
 
-<h2 id="AlternativeBehavior">Alternative Behavior</h2>
-
-	<dt id="OutputType"><code>OutputType</code></dt>
-	<dd>
-		<p>Allows the default behavior where the named value is returned - to be changed - to return either a list of all subkeys for the defined key, or a list of all value names for the defined key. Valid values are:<br/>
-		<ul>
-			<li><code>SubKeyList</code><br/>
-			Retrieves a list of subkey names under the key defined by <code>RegKey</code>. <em><code>RegValue</code> is ignored.</em></li>
-			<li><code>ValueList</code><br/>
-			Retrieves a list of value names under the key defined by <code>RegKey</code>. <em><code>RegValue</code> is ignored.</em></li>
-		</ul>
-		</p>
-	</dd>
-
-	<dt id="OutputDelimiter"><code>OutputDelimiter</code></dt>
-	<dd>
-		<p>When the value of <code>OutputType</code> is set to <code>SubKeyList</code> or <code>ValueList</code>, or the registry key value type is <code>REG_MULTI_SZ</code>, the character(s) defined will be used to delimit items in the list, instead of the default newline.</p>
-	</dd>
-</dl>
