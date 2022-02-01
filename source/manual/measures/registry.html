@@ -9,12 +9,12 @@ title: 'Registry measure'
 <dl>
 	<dt>General measure options</dt>
 	<dd>
-		All <a href="!measures/general-options/">general measure options</a> are valid.
+		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
 
 	<dt id="RegHKey"><code>RegHKey</code></dt>
 	<dd>
-		Name of the root key. Valid values are:
+		<p>Name of the root key. Valid values are:<br/>
 		<ul>
 		<li><code>HKEY_CURRENT_CONFIG</code></li>
 		<li><code>HKEY_CURRENT_USER</code></li>
@@ -22,20 +22,20 @@ title: 'Registry measure'
 		<li><code>HKEY_CLASSES_ROOT</code></li>
 		<li><code>HKEY_PERFORMANCE_DATA</code></li>
 		<li><code>HKEY_DYN_DATA</code></li>
-		</ul>
+		</ul></p>
 	</dd>
 
 	<dt id="RegKey"><code>RegKey</code></dt>
 	<dd>
-		Name of the subkey.
+		<p>Name of the subkey.</p>
+		<p><b>Note:</b> Subkey names are case insensitive and delineated with <code>\</code> backslash characters.</p>
 	</dd>
 
 	<dt id="RegValue"><code>RegValue</code></dt>
 	<dd>
-		Name of the value. If not specified, the default value is retrieved.
-		<br><br><b>Note:</b> The three <a href="http://en.wikipedia.org/wiki/Windows_Registry">registry key value types</a> supported are <code>REG_SZ</code> (string), <code>REG_DWORD</code> (number) and <code>REG_BINARY</code> (number). If a <code>REG_SZ</code> string value is numeric, both the string and number <a href="!measures/#Values">measure values</a> will be set.
+		<p>Name of the value to return. If not specified, the default value is retrieved.</p>
+		<p><b>Note:</b> The <a href="http://en.wikipedia.org/wiki/Windows_Registry">registry key value types</a> supported are <code>REG_SZ</code> (string), <code>REG_MULTI_SZ</code> (string), <code>REG_DWORD</code> (number) and <code>REG_BINARY</code> (number). If a <code>REG_SZ</code> string value is numeric, both the string and number <a href="!measures/#Values">measure values</a> will be set.</p>
 	</dd>
-</dl>
 
 <h2>Example</h2>
 ``` ini
@@ -61,3 +61,23 @@ H=25
 FontColor=255,255,255,255
 Text="Version: %1"
 ```
+
+<h2 id="AlternativeBehavior">Alternative Behavior</h2>
+
+	<dt id="OutputType"><code>OutputType</code></dt>
+	<dd>
+		<p>Allows the default behavior where the named value is returned - to be changed - to return either a list of all subkeys for the defined key, or a list of all value names for the defined key. Valid values are:<br/>
+		<ul>
+			<li><code>SubKeyList</code><br/>
+			Retrieves a list of subkey names under the key defined by <code>RegKey</code>. <em><code>RegValue</code> is ignored.</em></li>
+			<li><code>ValueList</code><br/>
+			Retrieves a list of value names under the key defined by <code>RegKey</code>. <em><code>RegValue</code> is ignored.</em></li>
+		</ul>
+		</p>
+	</dd>
+
+	<dt id="OutputDelimiter"><code>OutputDelimiter</code></dt>
+	<dd>
+		<p>When the value of <code>OutputType</code> is set to <code>SubKeyList</code> or <code>ValueList</code>, or the registry key value type is <code>REG_MULTI_SZ</code>, the character(s) defined will be used to delimit items in the list, instead of the default newline.</p>
+	</dd>
+</dl>
