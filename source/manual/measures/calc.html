@@ -19,12 +19,12 @@ title: 'Calc measure'
 
 	<dt id="UpdateRandom"><code>UpdateRandom</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, the <a href="#Constants">random</a> constant is regenerated on each update cycle.
+		If set to <code>1</code>, the <a href="#Functions">Random</a> function is regenerated on each update cycle.
 	</dd>
 
 	<dt id="UniqueRandom"><code>UniqueRandom</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		If set to <code>1</code>, any measure using the <a href="#Constants">random</a> constant and <a href="#UpdateRandom">UpdateRandom</a> will not repeat until all values between and including <a href="#LowBound">LowBound</a> and <a href="#HighBound">HighBound</a> have been used.<br/><br/>
+		If set to <code>1</code>, any measure using the <a href="#Functions">Random</a> function and <a href="#UpdateRandom">UpdateRandom</a> will not repeat until all values between and including <a href="#LowBound">LowBound</a> and <a href="#HighBound">HighBound</a> have been used.<br/><br/>
 		Any dynamic change to <a href="#LowBound">LowBound</a> or <a href="#HighBound">HighBound</a> will reset the unique tracking of values.<br/><br/>
 		<b>Note:</b> UniqueRandom will only function if the difference between <code>LowBound</code> and <code>HighBound</code> is at most a 16bit unsigned integer, or 65535.
 
@@ -32,12 +32,12 @@ title: 'Calc measure'
 
 	<dt id="LowBound"><code>LowBound</code> <small>Default: <code>0.0</code></small></dt>
 	<dd>
-		Lower bound of the <a href="#Constants">random</a> constant.
+		Lower bound of the <a href="#Functions">Random</a> function.
 	</dd>
 
 	<dt id="HighBound"><code>HighBound</code> <small>Default: <code>100.0</code></small></dt>
 	<dd>
-		Upper bound of the <a href="#Constants">random</a> constant.<br/><br/>
+		Upper bound of the <a href="#Functions">Random</a> function.<br/><br/>
 		<b>Note:</b> The maximum value of <code>HighBound</code> is a 32bit signed integer, or 2147483647.
 	</dd>
 </dl>
