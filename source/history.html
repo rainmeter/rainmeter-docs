@@ -8,6 +8,19 @@ title: 'Version History'
 
 <h2 id="4.5">Rainmeter 4.5</h2><hr />
 
+<h3 id="r3616">March 2, 2022 - 4.5.12 - Revision 3616</h3>
+<ul>
+	<li><span class="badge badge-fixed">Fixed</span><b>Custom Plugin functions:</b> Matching leading and trailing quotes (double and single) will now be stripped from each parameter before being sent to the plugin.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Inline Lua:</b> Corrected a rare parsing issue when using the measure/meter <code>GetOption</code>.</li>
+	<li><span class="badge badge-added">Added</span><b>Lua GetOption:</b> The <code>GetOption</code> function for <a href="https://docs.rainmeter.net/manual/lua-scripting/#GetOption">measure</a> / <a href="https://docs.rainmeter.net/manual/lua-scripting/#GetOptionMeter">meter</a> objects will now accept an additional optional boolean parameter called <code>bReplaceMeasures</code>, that when <code>false</code> will not replace any section variables before retrieving that option.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Inline Lua:</b> Allow for parameter types <code>true</code>, <code>false</code>, and <code>nil</code> to be case-insensitive in the skin ini file (does not apply to the lua script).</li>
+	<li><span class="badge badge-added">Added</span><b>Inline Lua:</b> Added the parameter type <code>nil</code>.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Inline Lua:</b> Numeric parameters starting with <code>(</code> are now run through the Rainmeter math parser before being sent to the lua script.</li>
+	<li><span class="badge badge-changed">Changed</span><b>VS2022:</b> Updated the project to use the latest Visual Studio 2022 for development.</li>
+	<li><span class="badge badge-added">Added</span><b>MouseActionCursorName:</b> Added various cursor options.</li>
+	<li><span class="badge badge-removed">Removed</span><b>NowPlaying:</b> Removed LyricWikia parsing from <code>Lyrics</code> option.</li>
+</ul>
+
 <h3 id="r3607">February 12, 2022 - 4.5.11 - Revision 3607</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>Variables:</b> Corrected some anomalies when parsing complex nested variables.</li>
