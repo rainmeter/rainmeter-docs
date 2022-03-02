@@ -5,7 +5,7 @@ title: 'Inline Lua'
 ---
 <p>Lua scripting may be used "inline" in Rainmeter. This is done by using a call to a Lua script as a <a href="!variables/section-variables/">[SectionVariable]</a>, referencing the <a href="!measures/script/">Script measure</a> containing the <code>ScriptFile</code> option for the .lua file. The value returned by Lua will "replace" the inline Lua section variable where it is used.</p>
 
-<p>These may be used anywhere a [SectionVariable] is allowed. This can be in almost any options in <a href="!measures/">measures</a> or <a href="!meters/">meters</a>, and any <a href="!bangs/">bangs</a> in an <a href="!skins/option-types/#Action">action</a>.</p>
+<p>These may be used anywhere a [SectionVariable] is allowed. This can be in almost any option in <a href="!measures/">measures</a> or <a href="!meters/">meters</a>, and any <a href="!bangs/">bangs</a> in an <a href="!skins/option-types/#Action">action</a>.</p>
 
 <p>As with any [SectionVariable], these will be resolved, in this case executed, when the skin is loaded, and on each update of the measure or meter containing them. As with any [SectionVariable], <code>DynamicVariables=1</code> must be used on any measure or meter containing them.</p>
 
@@ -40,8 +40,9 @@ end
 
 <p><table class="table-striped">
 	<tr><td><b>Number</b></td><td>&nbsp;&nbsp;&nbsp;</td><td>Any number literal, formula or variable that resolves to a number.</td></tr>
-<tr><td><b>String</b></td><td>&nbsp;&nbsp;&nbsp;</td><td>Any 'string' literal, or variable that resolves to a string, enclosed in 'single quotes'.</td></tr>
-<tr><td><b>Boolean</b></td><td>&nbsp;&nbsp;&nbsp;</td><td>One of either <code>true</code> or <code>false</code>.</td></tr>
+	<tr><td><b>String</b></td><td>&nbsp;&nbsp;&nbsp;</td><td>Any 'string' literal, or variable that resolves to a string, enclosed in 'single quotes' or "double quotes".</td></tr>
+	<tr><td><b>Boolean</b></td><td>&nbsp;&nbsp;&nbsp;</td><td>One of either <code>true</code> or <code>false</code>.</td></tr>
+	<tr><td><b>nil</b></td><td>&nbsp;&nbsp;&nbsp;</td><td>Special type meaning "nothing". Often used to differentiate between having some data or no data.</td></tr>
 </table></p>
 
 <h2 id="RetrievingAVariable">Retrieving a Variable</h2>
@@ -73,13 +74,13 @@ end
 
 <p><code>DynamicVariables=1</code> MUST be set on any measures or meters where inlineLua is used.</p>
 
-<p>String values in parameters must be explicitly passed as strings to the Lua function, by enclosing them in 'single quotes'. Numbers or formulas may, and should, be passed without quotes, but any string passed without quoting will be seen by the Lua as a Lua variable name with a nil value, and will fail.</p>
+<p>String values in parameters must be explicitly passed as strings to the Lua function, by enclosing them in 'single quotes' or "double quotes". Numbers and formulas are required to be passed without quotes, but any string passed without quoting will be seen by the Lua as a Lua variable name with a nil value, and will fail. Like <a href="!formulas">other numeric options</a> in Rainmeter, formulas are also required to start with a <code>(</code>.</p>
 
 <p>The Lua <code>boolean</code> data type may be passed to the Lua function with <code>true</code> or <code>false</code>, and any <code>return</code> to Rainmeter of a boolean <code>true</code> will be 1 and <code>false</code> will be 0.</p>
 
 </p>Lua tables, <code>myTable[index]</code>, may not be directly used in a parameter to the Lua function, you will need to pass the table name and the index number or string as separate parameters and use them to access the table in Lua. However, the Lua may return a single value from a table with <code>return myTable[index]</code>. The <a href="#TranslateDay">TranslateDay</a> example below demonstrates this.</p>
 
-<p>The Lua <code>nil</code> data type, indicating that a value doesn't exist, may not be used in a parameter, nor returned to Rainmeter. In some cases, the <code>boolean</code> value of <code>false</code> may be used to indicate NOT, in place of <code>nil</code>.</p>
+<p>The Lua <code>nil</code> data type, indicating that a value doesn't exist, may be used in a parameter, but not as a return type to Rainmeter. In some cases, the <code>boolean</code> value of <code>false</code> may be used to indicate NOT, in place of <code>nil</code>.</p>
 
 <p><b>Important Final Note</b></p>
 
