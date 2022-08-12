@@ -152,7 +152,7 @@ PLUGIN_EXPORT void ExecuteBang(void* data, LPCWSTR args)
 ``` cpp
 PLUGIN_EXPORT LPCWSTR SomeFunction(void* data, const int argc, const WCHAR* argv[])
 {
-	Measure measure = (Measure)data;
+	Measure* measure = (Measure*)data;
 	if (argc > 0)
 	{
 		// Do something and return a value to replace variable with
