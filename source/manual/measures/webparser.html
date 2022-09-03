@@ -12,7 +12,7 @@ title: 'WebParser measure'
 ``` ini
 [MeasureParent]
 Measure=WebParser
-URL=http://SomeSite.com
+URL=https://SomeSite.com
 RegExp=(?siU)<Item>(.*)</Item>.*<Item>(.*)</Item>
 ```
 <p id="ParentChild">This example creates two <a href="#StringIndex">StringIndex</a> values in what is referred to as the "parent" WebParser measure. The information is generally used in subsequent "child" WebParser measures:</p>
@@ -58,15 +58,15 @@ Measure=WebParser
 
 	<dt id="URL"><code>URL</code></dt>
 	<dd>
-		<p><a href="http://en.wikipedia.org/wiki/Uniform_resource_locator">URL</a> to the site or file to be downloaded and parsed. If the name of another WebParser measure is used, e.g. <code>URL=[SomeMeasure]</code>, then the value of the <a href="#ParentChild">parent</a> measure is used, generally by referring to a specific <a href="#StringIndex">StringIndex</a> number.</p>
+		<p><a href="https://en.wikipedia.org/wiki/Uniform_resource_locator">URL</a> to the site or file to be downloaded and parsed. If the name of another WebParser measure is used, e.g. <code>URL=[SomeMeasure]</code>, then the value of the <a href="#ParentChild">parent</a> measure is used, generally by referring to a specific <a href="#StringIndex">StringIndex</a> number.</p>
 
-		<p id="Authentication">WebParser <b>cannot</b> use cookies or other session-based authentication, so it <b>cannot</b> be used to retrieve information from web sites requiring a login. However, Webparser <b>can</b> be used on sites which support <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP authentication</a>. E.g. <code>http://myname:mypassword@somesite.com</code>.</p>
+		<p id="Authentication">WebParser <b>cannot</b> use cookies or other session-based authentication, so it <b>cannot</b> be used to retrieve information from web sites requiring a login. However, Webparser <b>can</b> be used on sites which support <a href="https://en.wikipedia.org/wiki/Basic_access_authentication">HTTP authentication</a>. E.g. <code>https://myname:mypassword@somesite.com</code>.</p>
 
-		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="http://en.wikipedia.org/wiki/File_URI_scheme">URI scheme</a>. E.g. <code>URL=file://<a href="!variables/built-in-variables/#CURRENTPATH">#CURRENTPATH#</a>SomeFile.txt</code>. Note that this must be a fully qualified path to the file.</p>
+		<p id="Local">WebParser can read and parse local files on your computer by using the <code>file://</code> <a href="https://en.wikipedia.org/wiki/File_URI_scheme">URI scheme</a>. E.g. <code>URL=file://<a href="!variables/built-in-variables/#CURRENTPATH">#CURRENTPATH#</a>SomeFile.txt</code>. Note that this must be a fully qualified path to the file.</p>
 
 		<p>If you want to use the current value of a measure in a dynamic way as a <a href="!variables/section-variables/">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
 
-		<p>Example: <code>URL=http://somesite.com/[&WebMeasure]</code></p><br/>
+		<p>Example: <code>URL=https://somesite.com/[&WebMeasure]</code></p><br/>
 
 		<p><b>A note on URL encoding:</b> WebParser will automatically <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL-Encode</a>, also known as Percent Encoding, any characters <em>after</em> the <code>protocol://host/path/</code> portion of the URL that are <b>not</b> one of the following:<br/><br/>
 		Unreserved URL-safe characters:<br/><code>ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_.~</code><br/>Reserved URL-delimiter characters:<br/><code>!*'();:@&amp;=+$,/?%#[]</code></p><br/>
@@ -104,7 +104,7 @@ Measure=WebParser
 
 		<p>In order to override the UpdateRate set on a WebParser measure, to have it connect to the site and download the data "right now", the <a href="#CommandMeasureUpdate">!CommandMeasure</a> bang must be used, with the name of the "parent" measure as the first parameter, and "Update" as the second.</p>
 
-		<p><code>LeftMouseUpAction=[!SetOption WebMeasure URL "http://SomeNewSite.com"][!CommandMeasure WebMeasure Update]</code></p>
+		<p><code>LeftMouseUpAction=[!SetOption WebMeasure URL "https://SomeNewSite.com"][!CommandMeasure WebMeasure Update]</code></p>
 
 		<br/>
 		<p>More information on <code>UpdateRate</code> is at <a href="https://docs.rainmeter.net/tips/webparser-updaterate/">WebParser: How UpdateRate Works</a>.</p>
@@ -112,7 +112,7 @@ Measure=WebParser
 
 	<dt id="DecodeCharacterReference"><code>DecodeCharacterReference</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>Automatically decodes <a href="http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references">HTML Character References</a>. This will eliminate the need to use a <a href="!measures/general-options/substitute/"><code>Substitute</code></a> statement to translate character references like <code>&amp;quot;</code>, <code>&amp;amp;</code>, <code>&amp;lt;</code>, and <code>&amp;gt;</code> to the actual character. Valid values are:</p>
+		<p>Automatically decodes <a href="https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references">HTML Character References</a>. This will eliminate the need to use a <a href="!measures/general-options/substitute/"><code>Substitute</code></a> statement to translate character references like <code>&amp;quot;</code>, <code>&amp;amp;</code>, <code>&amp;lt;</code>, and <code>&amp;gt;</code> to the actual character. Valid values are:</p>
 		<ul>
 			<li><code>0</code>: Does nothing (default).</li>
 			<li><code>1</code>: Decodes both numeric character references and character entity references.</li>
@@ -178,7 +178,7 @@ Measure=WebParser
 
 	<dt id="CodePage"><code>CodePage</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>Specifies the <a href="http://en.wikipedia.org/wiki/Code_page">code page</a> of the downloaded URL=http:// web page or external file read with URL=file://.</p>
+		<p>Specifies the <a href="https://en.wikipedia.org/wiki/Code_page">code page</a> of the downloaded URL=https:// web page or external file read with URL=file://.</p>
 
 		<p>Most web sites on the web today are encoded with the Unicode UTF-8 standard. This is the default for WebParser, and it will seamlessly handle the site. No CodePage option is needed.</p>
 
@@ -195,7 +195,7 @@ Measure=WebParser
 
 		<p>In addition, there are times when an external local file to be parsed with URL=file:// will be encoded in other than the ANSI (really ASCII plus "extended ASCII" specific to the locale of the computer) encoding used as the default in most Windows-based text editors. Primarily this will be in Unicode UFT-16 LE. In this case, the <code>CodePage=1200</code> option must be used to tell WebParer how to interpret the resource being read.</p>
 
-		<p>Codepage definitions and more information can be found at <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx">Windows code pages</a>.</p>
+		<p>Codepage definitions and more information can be found at <a href="https://docs.microsoft.com/windows/win32/intl/code-page-identifiers">Windows code pages</a>.</p>
 
 		<p>Additional general help with Unicode encoding in Rainmeter can be found at <a href="//forum.rainmeter.net/viewtopic.php?p=92182#p92182">Character Encoding in Rainmeter</a>.</p>
 	</dd>
@@ -234,7 +234,7 @@ ProxyServer=localhost:8080
 	<dd>
 		<p>Specifies a custom <a href="https://en.wikipedia.org/wiki/User_agent">User Agent String</a> to be sent when the parent WebParser measure connects to a remote resource using HTTP(S).</p>
 
-		<p>If you want to find out what the User Agent String is for the browser you use, you can connect to <a href="https://www.whatismybrowser.com/detect/what-is-my-user-agent">WhatIsMyBrowser</a> in your browser and copy the string it returns. Other common User Agent String values can be found at <a href="http://www.useragentstring.com/pages/useragentstring.php">UserAgentString</a>.</p>
+		<p>If you want to find out what the User Agent String is for the browser you use, you can connect to <a href="https://www.whatismybrowser.com/detect/what-is-my-user-agent">WhatIsMyBrowser</a> in your browser and copy the string it returns. Other common User Agent String values can be found at <a href="https://www.useragentstring.com/pages/useragentstring.php">UserAgentString</a>.</p>
 
 		<p>This setting is applied when the measure is initialized on skin load / refresh, and cannot be changed dynamically.</p>
 
@@ -395,13 +395,13 @@ Flags=ForceReload | NoCookies
 
 <p>In order to have a dynamic change make WebParser parse the site "right now", you will use the <a href="#CommandMeasureUpdate">!CommandMeasure</a> bang with the "parent" WebParser measure as the first parameter, and "Update" as the second.</p>
 
-<p><code>LeftMouseUpAction=[!SetOption WebMeasure URL "http://SomeNewSite.com"][!CommandMeasure WebMeasure Update]</code></p>
+<p><code>LeftMouseUpAction=[!SetOption WebMeasure URL "https://SomeNewSite.com"][!CommandMeasure WebMeasure Update]</code></p>
 
 <p>If you dynamically change an option on a "child" WebParser measure that depends on a "parent" measure, (like StringIndex for instance) you MUST use !CommandMeasure with "Update", targeting the "parent" WebParser measure. The values of child WebParser measures are a function of the parent measure, and are only updated when the parent is. You should never use !CommandMeasure on a "child" measure.</p>
 
 <p>If you want to use the current value of a measure in a dynamic way as a <a href="!variables/section-variables/">Section Variable</a>, rather than as a reference to a "parent" WebParser measure, you must prefix the name of the measure with the <code>&</code> character.</p>
 
-<p><code>URL=http://SomeSite.com\[&WebMeasure]</code></p>
+<p><code>URL=https://SomeSite.com\[&WebMeasure]</code></p>
 
 <h2>Examples</h2>
 
@@ -417,7 +417,7 @@ SolidColor=0,0,0,255
 
 [MeasureRSSParent]
 Measure=WebParser
-URL=http://slashdot.org/slashdot.rdf
+URL=https://rss.slashdot.org/Slashdot/slashdotMain
 RegExp=(?siU)<title>(.*)</title>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>
 
 [MeasureRSSTitle]
@@ -468,7 +468,7 @@ Item=.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubDate>.*
 
 [MeasureDA]
 Measure=WebParser
-URL=http://backend.deviantart.com/rss.xml?q=in%3Acustomization%2Fskins%2Fsysmonitor%2Frainmeter+sort%3Atime&type=deviation
+URL=https://backend.deviantart.com/rss.xml?q=in%3Acustomization%2Fskins%2Fsysmonitor%2Frainmeter+sort%3Atime&type=deviation
 RegExp=(?siU)#Item##Item##Item##Item#
 UpdateRate=300
 
@@ -581,7 +581,7 @@ Meter=Image
 W=106
 H=306
 SolidColor=10,20,30,255
-LeftMouseUpAction=["http://browse.deviantart.com/customization/skins/sysmonitor/rainmeter/?order=5"]
+LeftMouseUpAction=["https://www.deviantart.com/rainmeter"]
 
 [MeterImage1]
 Meter=Image
