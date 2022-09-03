@@ -114,12 +114,12 @@ AntiAlias=1
 <p>By default, the <b>Roundline</b> meter will draw a single line from the center of the meter to the outside edge, pointing to the position represented by the value of the measure. We don't want a "pointer" in this case, but want to draw and fill a circle. There are few options we have used to control this.</p>
 
 <ul>
-<li><a href = "!meters/roundline#LineStart">LineStart</a>=15<br/>
+<li><a href="!meters/roundline#LineStart">LineStart</a>=15<br/>
 This tells the Roundline that we want the line to start 15 pixels from the center of the meter.</li>
-<li><a href = "!meters/roundline#LineLength">LineLength</a>=20<br/>
+<li><a href="!meters/roundline#LineLength">LineLength</a>=20<br/>
 This sets the overall length of the line to 20 pixels. Remember that our meter is 40 pixels wide in total, but only 20 pixels wide from the center to the outside edge.<br/><br/>
 The result of these two options is a line that starts 15 pixels from the center, and extends to the full 20 pixels defined as the length from the center to the edge. So in effect, a 5 pixel line at the outside edge.<br/><br/></li>
-<li><a href = "!meters/roundline#Solid">Solid</a>=1<br/>
+<li><a href="!meters/roundline#Solid">Solid</a>=1<br/>
 This option tells the Roundline that instead of a single line, we want the meter to "fill" from the position defined as 0% to the current value represented by the measure. So instead of a "pointer", we get a circle being filled as the value changes.</li>
 </ul>
 
