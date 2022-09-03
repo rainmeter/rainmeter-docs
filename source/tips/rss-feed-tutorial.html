@@ -15,13 +15,13 @@ title: 'RSS Feed Tutorial'
 <channel>
 	<title>RSS Title</title>
 	<description>This is an example of an RSS feed</description>
-	<link>http://www.someexamplerssdomain.com/main.html</link>
+	<link>https://www.someexamplerssdomain.com/main.html</link>
 	<lastBuildDate>Mon, 06 Sep 2009 16:45:00 +0000 </lastBuildDate>
 
 	<item>
 		<title>Example entry</title>
 		<description>Here is some text containing an interesting description.</description>
-		<link>http://www.wikipedia.org/</link>
+		<link>https://www.wikipedia.org/</link>
 		<pubDate>Mon, 06 Sep 2009 16:45:00 +0000 </pubDate>
 	</item>
 </channel>
@@ -34,7 +34,7 @@ title: 'RSS Feed Tutorial'
 
 <p>What we want to do is take some representative example of an RSS feed, and get that header title, link and last build date information, then a few "items", with their title, link and publication dates. Then we will build a simple skin to display our results.</p>
 
-<p>For our example of an RSS feed, let's use the feed from the site <a href="http://www.bbc.co.uk/news/">http://www.bbc.co.uk/news/</a>. The RSS feed is found at the URL <a href="http://feeds.bbci.co.uk/news/rss.xml">http://feeds.bbci.co.uk/news/rss.xml</a>. If we go to that URL in our web browser, we get HTML output that looks like this:</p>
+<p>For our example of an RSS feed, let's use the feed from the site <a href="https://www.bbc.co.uk/news/">https://www.bbc.co.uk/news/</a>. The RSS feed is found at the URL <a href="https://feeds.bbci.co.uk/news/rss.xml">https://feeds.bbci.co.uk/news/rss.xml</a>. If we go to that URL in our web browser, we get HTML output that looks like this:</p>
 
 ``` html
 <?xml version="1.0" encoding="UTF-8"?>
@@ -247,7 +247,7 @@ DynamicWindowSize=1
 ``` ini
 [MeasureSite]
 Measure=WebParser
-URL=http://feeds.bbci.co.uk/news/rss.xml
+URL=https://feeds.bbci.co.uk/news/rss.xml
 ```
 
 <p>The next thing we will need is the all-important <code>RegExp</code> option. Again, this guide is not a tutorial for the WebParser measure, nor a tutorial for <a href="/manual/skins/option-types/#RegExp">Regular Expressions</a>. However, at a high level what we want to do is use a regular expression in the "parent measure" to search the feed and capture parts of it into <code>StringIndex</code> numbers that we will use later in "child measures".</p>
@@ -257,7 +257,7 @@ URL=http://feeds.bbci.co.uk/news/rss.xml
 ``` ini
 [MeasureSite]
 Measure=WebParser
-URL=http://feeds.bbci.co.uk/news/rss.xml
+URL=https://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>
 ```
 
@@ -276,7 +276,7 @@ RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBu
 ``` ini
 [MeasureSite]
 Measure=WebParser
-URL=http://feeds.bbci.co.uk/news/rss.xml
+URL=https://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>
 
 [MeasureSiteTitle]
@@ -308,7 +308,7 @@ DynamicVariables=1
 ``` ini
 [MeasureSite]
 Measure=WebParser
-URL=http://feeds.bbci.co.uk/news/rss.xml
+URL=https://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 ```
 
@@ -384,7 +384,7 @@ Item=.*<item>.*<title>(.*)</title>.*<link>(.*)</link>.*<pubDate>(.*)</pubdate>
 ``` ini
 [MeasureSite]
 Measure=WebParser
-URL=http://feeds.bbci.co.uk/news/rss.xml
+URL=https://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>#Item#
 ```
 
@@ -489,7 +489,7 @@ Sub="^\s+":"","<!\[CDATA\[":"","\]\]>":"","!\[CDATA\[":"","\]\]":""
 
 [MeasureSite]
 Measure=WebParser
-URL=http://feeds.bbci.co.uk/news/rss.xml
+URL=https://feeds.bbci.co.uk/news/rss.xml
 RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>.*<lastBuildDate>(.*)</lastBuildDate>#Item##Item##Item##Item##Item#
 
 ;Site info
