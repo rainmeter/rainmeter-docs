@@ -34,13 +34,14 @@ title: 'Registry measure'
 	<dt id="RegValue"><code>RegValue</code></dt>
 	<dd>
 		<p>Name of the value to return. If not specified, the default value is retrieved.</p>
-		<p><b>Note:</b> The <a href="http://en.wikipedia.org/wiki/Windows_Registry">registry key value types</a> supported are:<br/>
+		<p><b>Note:</b> The <a href="https://en.wikipedia.org/wiki/Windows_Registry">registry key value types</a> supported are:<br/>
 		<ul>
 			<li><code>REG_SZ</code> (string): A string usually UTF-16LE encoded. If the string represents a number, both the string and number <a href="!measures/#Values">measure values</a> will be set.</li>
 			<li><code>REG_EXPAND_SZ</code> (string): An "expandable" string similar to <code>REG_SZ</code> that can contain <a href="https://en.wikipedia.org/wiki/Environment_variable">environment variables</a>.</li>
 			<li><code>REG_MULTI_SZ</code> (string): A series of strings separated by a null character. Rainmeter will convert any null separators to a <a href="!variables/built-in-variables/#CRLF">newline character</a>.</li>
 			<li><code>REG_DWORD</code> (number): Represents a 32-bit unsigned integer.</li>
 			<li><code>REG_QWORD</code> (number): Represents a 64-bit unsigned integer.</li>
+			<li><code>REG_BINARY</code> (string): Binary data in any form.</li>
 			</p>
 	</dd>
 </dl>
