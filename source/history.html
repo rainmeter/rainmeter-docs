@@ -153,7 +153,7 @@ title: 'Version History'
 
 <h3 id="r3507">July 27, 2021 - Revision 3507</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Installer:</b> Added support for beta installations via <a href="https://docs.microsoft.com/en-us/windows/package-manager/winget/">winget</a>. See <a href="https://docs.rainmeter.net/manual/installing-rainmeter/#WinGetInstallation">Winget Installation</a> for details.</li>
+	<li><span class="badge badge-added">Added</span><b>Installer:</b> Added support for beta installations via <a href="https://docs.microsoft.com/windows/package-manager/winget/">winget</a>. See <a href="https://docs.rainmeter.net/manual/installing-rainmeter/#WinGetInstallation">Winget Installation</a> for details.</li>
 </ul>
 
 <h3 id="r3506">July 22, 2021 - Revision 3506</h3>
@@ -1276,7 +1276,7 @@ All of the above additions and changes are related to new functionality for gett
 <ul>
   <li><span class="badge badge-changed">Changed</span><b> WebParser:</b> WebParser now supports <a href="/manual/variables/#DynamicVariables">Dynamic Variables</a>. See <a href="//forum.rainmeter.net/viewtopic.php?p=90521#p90521">Change Announcements</a> for <b>important:</b> details.</li>
   <li><span class="badge badge-changed">Changed</span><b> Rainmeter:</b> Important improvements made to the D2D (Direct2D) rendering option for Rainmeter. See <a href="//forum.rainmeter.net/viewtopic.php?p=90520#p90520">Change Announcements</a> for <b>important:</b> details.</li>
-  <li><span class="badge badge-added">Added</span><b> Manage Dialog:</b> Added "UseD2D" option in the Manage / Settings Tab. If checked, all skins are refreshed using D2D (Direct2D) rendering. The option is disabled on systems that do not support D2D. Windows 7 with the latest <a href="http://www.microsoft.com/en-us/download/details.aspx?id=36805">Platform Update</a> or Windows 8 is required.</li>
+  <li><span class="badge badge-added">Added</span><b> Manage Dialog:</b> Added "UseD2D" option in the Manage / Settings Tab. If checked, all skins are refreshed using D2D (Direct2D) rendering. The option is disabled on systems that do not support D2D. Windows 7 with the latest <a href="http://www.microsoft.com/download/details.aspx?id=36805">Platform Update</a> or Windows 8 is required.</li>
   <li><span class="badge badge-added">Added</span><b> Rainmeter:</b> Added AccurateText option in the [Rainmeter] section of skins. When AccurateText=0 (default) and UseD2D=0, inaccurate GDI+ measuring of text is used. When AccurateText=1 and UseD2D=0, Accurate measuring occurs similar to D2D. When AccurateText=0 and UseD2D=1, D2D adds padding to the text similar to GDI+. When AccurateText=1 and UseD2D=1, Accurate measuring occurs using D2D.</li>
 </ul>
 
@@ -2261,8 +2261,8 @@ changed with !SetOption/!SetVariable.</li>
 	<li>FIXED: LineColor did not use the values of Dynamic Variables in Meter=Line.</li>
 	<li>FIXED: Inconsistent numerical value via DynamicVariables. ( issue 130 )</li>
 	<li>FIXED: Problem with WebParser and "local files" with Cyrillic chars in the path. (issue 139)</li>
-	<li>The coded character set of the logfile is changed to UTF-8. (ccs=UTF-8) <a href="http://msdn.microsoft.com/en-us/library/yeby3zcb(VS.80).aspx">msdn.microsoft.com</a></li>
-	<li>"MS Shell Dlg 2" is now used for the ABOUT dialog box. <a href="http://support.microsoft.com/kb/282187">msdn.microsoft.com</a></li>
+	<li>The coded character set of the logfile is changed to UTF-8. (ccs=UTF-8) <a href="https://www.microsoft.com/download/details.aspx?id=55984">www.microsoft.com</a></li>
+	<li>"MS Shell Dlg 2" is now used for the ABOUT dialog box. <a href="https://docs.microsoft.com/windows/win32/intl/using-ms-shell-dlg-and-ms-shell-dlg-2">docs.microsoft.com</a></li>
 	<li>FIXED: Invalid error message box when DynamicVariables is 1 and FontSize is 0. (issue 126)</li>
 	<li>FIXED: Virtual Bytes usage for an x64 process with perfmon plugin does not display value greater than 4 GB ( issue 113 )</li>
 	<li>FIXED: A numeric value greater than 32bit can be now displayed when NumOfDecimals is 0 in Meter=STRING.</li>
