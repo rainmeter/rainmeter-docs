@@ -262,17 +262,17 @@
         <h1 class="page-title">Lua Scripting</h1>
         <hr />
         <!-- Include content and Replace "!" in every url with correct path -->
-        <p>Rainmeter has the ability to load and execute scripts in <b>Lua</b>, a <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Lua_(programming_language)">functional programming language</a>. Rainmeter includes the <a target="_blank" rel="noopener" href="http://www.lua.org/manual/5.1/manual.html#5">Lua 5.1 standard libraries</a>, which encompass a variety of powerful features.</p>
+        <p>Rainmeter has the ability to load and execute scripts in <b>Lua</b>, a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lua_(programming_language)">functional programming language</a>. Rainmeter includes the <a target="_blank" rel="noopener" href="https://www.lua.org/manual/5.1/manual.html#5">Lua 5.1 standard libraries</a>, which encompass a variety of powerful features.</p>
 
 <p>A <b>script</b> refers to a set of Lua functions that is associated with a <a href="/manual/measures/script/">script measure</a>. These functions may be executed when the skin <a href="#Initialize">loads</a>, when it <a href="#Update">updates</a>, or <a href="#CommandMeasure">on command</a>.</p>
 
 <p>This page details the Rainmeter-specific modifications and new functions that have been added to Rainmeter's built-in Lua environment. More documentation for Lua itself is available at:</p>
 
 <ul>
-	<li><a target="_blank" rel="noopener" href="http://www.lua.org/manual/5.1/">Lua 5.1 Reference Manual</a></li>
-	<li><a target="_blank" rel="noopener" href="http://lua-users.org/wiki/LuaTutorial">Lua Tutorial</a></li>
+	<li><a target="_blank" rel="noopener" href="https://www.lua.org/manual/5.1/">Lua 5.1 Reference Manual</a></li>
+	<li><a target="_blank" rel="noopener" href="https://lua-users.org/wiki/LuaTutorial">Lua Tutorial</a></li>
 	<li><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/lua/index.htm">Learning Lua</a></li>
-	<li><em><a target="_blank" rel="noopener" href="http://www.lua.org/pil/">Programming in Lua</a></em> by Roberto Ierusalimschy</li>
+	<li><em><a target="_blank" rel="noopener" href="https://www.lua.org/pil/">Programming in Lua</a></em> by Roberto Ierusalimschy</li>
 </ul>
 
 <p>The rest of this page assumes a basic knowledge of the Lua language.</p>
@@ -317,7 +317,7 @@
 
 <p><span  id="dofile"><b>Using dofile</b></span></p>
 
-<p>The <a target="_blank" rel="noopener" href="http://www.lua.org/manual/5.1/manual.html#pdf-dofile">dofile function</a> can be used to include libraries or other snippets of Lua code. You must specify a full path to the dofile, using the syntax <code>dofile('C:\PathToDoFile\SomeLua.lua')</code>. Use the <a href="#GetVariable">GetVariable</a> function if you want to use the #@# variable shortcut to the @Resources folder for the current config, or <a href="#MakePathAbsolute">MakePathAbsolute</a> if you want to have the .lua file be relative to the current skin folder.</a>
+<p>The <a target="_blank" rel="noopener" href="https://www.lua.org/manual/5.1/manual.html#pdf-dofile">dofile function</a> can be used to include libraries or other snippets of Lua code. You must specify a full path to the dofile, using the syntax <code>dofile('C:\PathToDoFile\SomeLua.lua')</code>. Use the <a href="#GetVariable">GetVariable</a> function if you want to use the #@# variable shortcut to the @Resources folder for the current config, or <a href="#MakePathAbsolute">MakePathAbsolute</a> if you want to have the .lua file be relative to the current skin folder.</a>
 
 <figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Initialize</span><span class="params">()</span></span></span><br><span class="line">	<span class="built_in">dofile</span>(SKIN:GetVariable(<span class="string">&#x27;@&#x27;</span>)..<span class="string">&#x27;MyDoFiles\\toolkit.lua&#x27;</span>)</span><br><span class="line">	<span class="built_in">dofile</span>(SKIN:MakePathAbsolute(<span class="string">&#x27;toolkit.lua&#x27;</span>))</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
@@ -341,7 +341,7 @@
 
 <h2 id="Log">Log</h2>
 
-<p>Lua errors are logged in the <a href="/manual/user-interface/about/">About</a> window. The <a target="_blank" rel="noopener" href="http://www.lua.org/manual/5.1/manual.html#pdf-print">print</a> function may also be used to write strings to the log. This can provide helpful feedback when writing or troubleshooting a script.</p>
+<p>Lua errors are logged in the <a href="/manual/user-interface/about/">About</a> window. The <a target="_blank" rel="noopener" href="https://www.lua.org/manual/5.1/manual.html#pdf-print">print</a> function may also be used to write strings to the log. This can provide helpful feedback when writing or troubleshooting a script.</p>
 
 <p><code>print('The current value of MyVariable is: ' .. MyVariable)</code></p>
 

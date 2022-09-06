@@ -124,7 +124,7 @@
         <h1 class="page-title">Convert Time</h1>
         <hr />
         <!-- Include content and Replace "!" in every url with correct path -->
-        <p>This function converts <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Unix_time">Unix epoch</a> timestamps into Windows <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/System_time#Operating_systems">FILETIME</a> timestamps (in seconds) or vice versa.</p>
+        <p>This function converts <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Unix_time">Unix epoch</a> timestamps into Windows <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/System_time#Operating_systems">FILETIME</a> timestamps (in seconds) or vice versa.</p>
 
 <div class="noscroll">
 <figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ConvertTime</span><span class="params">(n, To)</span></span></span><br><span class="line">	<span class="keyword">local</span> Formats = &#123;</span><br><span class="line">		Unix    = <span class="number">-1</span></span><br><span class="line">		Windows = <span class="number">1</span></span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> Formats[To] <span class="keyword">and</span> n + <span class="number">11644473600</span> * Formats[To] <span class="keyword">or</span> <span class="literal">nil</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
