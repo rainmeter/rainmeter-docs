@@ -94,12 +94,12 @@ title: 'Skin sections'
 	<dt id="AlphaValue"><code>AlphaValue</code> <small>Default: <code>255</code></small></dt>
 	<dd>
 		<p>Sets the transparency of the skin. Valid values range from <code>0</code> (fully transparent) to <code>255</code> (fully visible).</p>
-		<p><b>Note:</b> A setting of <code>0</code> (fully transparent) will not allow detection of the mouse on the skin, and the <a href="#HideOnMouseOver">HideOnMouseOver</a> option will have no effect. To have a skin be invisible but react to the mouse, a minimum setting of <code>1</code> should be used here. When changed using the <code>Transparency</code> setting in the <a href="!user-interface/manage/ ">Manage</a> interface, a range of percentages is offered, but corresponding numeric values are stored.</p>
+		<p><b>Note:</b> A setting of <code>0</code> (fully transparent) will not allow detection of the mouse on the skin, and the <a href="#HideOnMouseOver">HideOnMouseOver</a> option will have no effect. To have a skin be invisible but react to the mouse, a minimum setting of <code>1</code> should be used here. When changed using the <code>Transparency</code> setting in the <a href="!user-interface/manage/">Manage</a> interface, a range of percentages is offered, but corresponding numeric values are stored.</p>
 	</dd>
 
-	<dt id="HideOnMouseOver"><code>HideOnMouseOver</code> <small>Default: <code>0</code></small></dt>
+	<dt id="OnHover"><code>OnHover</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>Controls the transparency of the skin when the mouse is moved on and off of it. This works in conjunction with the setting in <a href="#AlphaValue">AlphaValue</a>. This can be also be set with the <code>On hover</code> setting in the <a href="!user-interface/manage/ ">Manage</a> interface. To temporarily disable this behavior, hold CTRL down when moving the cursor.</p>
+		<p>Controls the transparency of the skin when the mouse is moved on and off of it. This works in conjunction with the setting in <a href="#AlphaValue">AlphaValue</a>. This can be also be set with the <code>On hover</code> setting in the <a href="!user-interface/manage/">Manage</a> interface. To temporarily disable this behavior, hold CTRL down when moving the cursor.</p>
 		<ul>
 		<li><code>0</code> (Do Nothing - default) : No action is taken.</li>
 		<li><code>1</code> (Hide) : Skin will fade between the value in <code>AlphaValue</code> and hidden. If no <code>AlphaValue</code> is defined, it will simply fade between fully visible and hidden.</li>
@@ -110,7 +110,7 @@ title: 'Skin sections'
 
 	<dt id="FadeDuration"><code>FadeDuration</code> <small>Default: <code>250</code></small></dt>
 	<dd>
-		<p>Defines the length of the fade duration in milliseconds when <a href="#HideOnMouseOver">HideOnMouseOver</a> is used, activating/deactivating the skin, or when the <a href="!bangs/#ShowHideToggleFade">fade bangs</a> are used.</p>
+		<p>Defines the length of the fade duration in milliseconds when <a href="#OnHover">OnHover</a> is used, activating/deactivating the skin, or when the <a href="!bangs/#ShowHideToggleFade">fade bangs</a> are used.</p>
 	</dd>
 
 	<dt id="ClickThrough"><code>ClickThrough</code> <small>Default: <code>0</code></small></dt>

@@ -5,7 +5,7 @@ title: 'Default Settings'
 ---
 <p>These options allow you to set <em>default</em> / <em>starting</em> values for the <a href="!settings/skin-sections/">[ConfigName] options in Rainmeter.ini</a>.</p>
 
-<p>This will provide a way to have <em>starting</em> values for these settings, without having to create and distribute a <a href="!manage/#LayoutsTab">Layout</a>, or use <a href="!bangs/#Skin">Skin !Bangs</a> to force a starting position or other behaviors.</p>
+<p>This will provide a way to have <em>starting</em> values for these settings, without having to create and distribute a <a href="!user-interface/manage/#LayoutsTab">Layout</a>, or use <a href="!bangs/#Skin">Skin !Bangs</a> to force a starting position or other behaviors.</p>
 
 <p>These option values will be used for the skin if the [ConfigName] section <b>does not exist in Rainmeter.ini</b>. Once used, they will be set as the persistent values for the [ConfigName] in Rainmeter.ini.</p>
 
@@ -19,7 +19,7 @@ title: 'Default Settings'
 
 <p>These cannot not be used to <em>persistently force</em> a particular setting for a skin. If you want a skin to for instance be centered on the screen, and STAY centered on the screen, this should be done with <a href="!bangs/#Skin">Skin !Bangs</a>, so the position is set each time the skin is loaded or refreshed.</p>
 
-<p>If you have multiple skins in a "suite" of related skins, and want them to all be loaded at once, with starting positions and other settings that you define, it is recommended that you continue to use a <a href="!manage/#LayoutsTab">Layout</a> in your .rmskin. These options will be unwieldy and clutter up your skin code if used to position several related skins.</p>
+<p>If you have multiple skins in a "suite" of related skins, and want them to all be loaded at once, with starting positions and other settings that you define, it is recommended that you continue to use a <a href="!user-interface/manage/#LayoutsTab">Layout</a> in your .rmskin. These options will be unwieldy and clutter up your skin code if used to position several related skins.</p>
 
 <h2>Options</h2>
 <dl>
@@ -72,12 +72,12 @@ title: 'Default Settings'
 	<dt id="DefaultAlphaValue"><code>DefaultAlphaValue</code> <small>Default: <code>255</code></small></dt>
 	<dd>
 		<p>Sets the transparency of the skin. Valid values range from <code>0</code> (fully transparent) to <code>255</code> (fully visible).</p>
-		<p><b>Note:</b> A setting of <code>0</code> (fully transparent) will not allow detection of the mouse on the skin, and the <a href="#HideOnMouseOver">HideOnMouseOver</a> option will have no effect. To have a skin be invisible but react to the mouse, a minimum setting of <code>1</code> should be used here. When changed using the <code>Transparency</code> setting in the <a href="!user-interface/manage/ ">Manage</a> interface, a range of percentages is offered, but corresponding numeric values are stored.</p>
+		<p><b>Note:</b> A setting of <code>0</code> (fully transparent) will not allow detection of the mouse on the skin, and the <a href="#HideOnMouseOver">HideOnMouseOver</a> option will have no effect. To have a skin be invisible but react to the mouse, a minimum setting of <code>1</code> should be used here. When changed using the <code>Transparency</code> setting in the <a href="!user-interface/manage/">Manage</a> interface, a range of percentages is offered, but corresponding numeric values are stored.</p>
 	</dd>
 
-	<dt id="DefaultHideOnMouseOver"><code>DefaultHideOnMouseOver</code> <small>Default: <code>0</code></small></dt>
+	<dt id="DefaultOnHover"><code>DefaultOnHover</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>Controls the transparency of the skin when the mouse is moved on and off of it. This works in conjunction with the setting in <a href="#AlphaValue">AlphaValue</a>. This can be also be set with the <code>On hover</code> setting in the <a href="!user-interface/manage/ ">Manage</a> interface. To temporarily disable this behavior, hold CTRL down when moving the cursor.</p>
+		<p>Controls the transparency of the skin when the mouse is moved on and off of it. This works in conjunction with the setting in <a href="#AlphaValue">AlphaValue</a>. This can be also be set with the <code>On hover</code> setting in the <a href="!user-interface/manage/">Manage</a> interface. To temporarily disable this behavior, hold CTRL down when moving the cursor.</p>
 		<ul>
 		<li><code>0</code> (Do Nothing - default) : No action is taken.</li>
 		<li><code>1</code> (Hide) : Skin will fade between the value in <code>AlphaValue</code> and hidden. If no <code>AlphaValue</code> is defined, it will simply fade between fully visible and hidden.</li>
@@ -88,7 +88,7 @@ title: 'Default Settings'
 
 	<dt id="DefaultFadeDuration"><code>DefaultFadeDuration</code> <small>Default: <code>250</code></small></dt>
 	<dd>
-		<p>Defines the length of the fade duration in milliseconds when <a href="#HideOnMouseOver">HideOnMouseOver</a> is used, activating/deactivating the skin, or when the <a href="!bangs/#ShowHideToggleFade">fade bangs</a> are used.</p>
+		<p>Defines the length of the fade duration in milliseconds when <a href="!settings/skin-sections/#OnHover">OnHover</a> is used, activating/deactivating the skin, or when the <a href="!bangs/#ShowHideToggleFade">fade bangs</a> are used.</p>
 	</dd>
 
 	<dt id="DefaultClickThrough"><code>DefaultClickThrough</code> <small>Default: <code>0</code></small></dt>
