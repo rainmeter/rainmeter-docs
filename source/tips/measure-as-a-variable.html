@@ -60,7 +60,7 @@ DynamicVariables=1
 	</li>
 
 	<li>
-	<p><b>Formatting.</b> Some measures return a formatted string value that is meant for display, but not for calculations. For example, the <a href="/manual/measures/time/">Time</a> measure gives a string value with hours, minutes and seconds ("HH:MM:SS"), which is how a real person would want to see the time, but which makes no sense in a math equation. The number value gives the raw <a href="http://msdn.microsoft.com/en-us/library/ms724284(VS.85).aspx">Windows timestamp</a>, which <em>can</em> be used by a Calc measure, e.g. to calculate the difference between two dates.</p>
+	<p><b>Formatting.</b> Some measures return a formatted string value that is meant for display, but not for calculations. For example, the <a href="/manual/measures/time/">Time</a> measure gives a string value with hours, minutes and seconds ("HH:MM:SS"), which is how a real person would want to see the time, but which makes no sense in a math equation. The number value gives the raw <a href="https://docs.microsoft.com/windows/win32/api/minwinbase/ns-minwinbase-filetime">Windows timestamp</a>, which <em>can</em> be used by a Calc measure, e.g. to calculate the difference between two dates.</p>
 
 	<p>There may be cases in which you would want to use a formatted string value in a Calc formula, but these would likely be rare and unorthodox.</p>
 	</li>
@@ -92,7 +92,7 @@ DynamicVariables=1
 [MeasureGetStatus]
 Measure=Plugin
 Plugin=Plugins\WebParser.dll
-URL=http://www.somesite.com/logs/status.xml
+URL=https://www.somesite.com/logs/status.xml
 RegExp="(?siU)<status>(.*)</status>"
 StringIndex=1
 Substitute="Running":"1","Offline":"0"

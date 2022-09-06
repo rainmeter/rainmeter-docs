@@ -15,7 +15,7 @@ title: 'Developers'
 
 <p>If you simply wish to obtain the source code to examine it or make a local change to how something works for your own use, you can simply download a .zip file from <a href="https://github.com/rainmeter/rainmeter/archive/master.zip">Download ZIP</a>.</p>
 
-<p>The only software you will need is <b>Microsoft Visual Studio 2019</b> or the free <b>Microsoft Visual Community</b> which can be obtained at <a href="http://www.visualstudio.com/downloads/download-visual-studio-vs">Download Visual Studio</a>. Be sure to download and apply any Visual Studio Updates when prompted.</p>
+<p>The only software you will need is <b>Microsoft Visual Studio 2019</b> or the free <b>Microsoft Visual Community</b> which can be obtained at <a href="https://visualstudio.microsoft.com/downloads/">Download Visual Studio</a>. Be sure to download and apply any Visual Studio Updates when prompted.</p>
 
 <p>Create a folder containing the project code from the .zip file, and open <b>Rainmeter.sln</b> in Visual Studio. You can then set the desired <em>Solution Configuration</em> and <em>Solution Platforms</em> fields and build the solution to create Debug or Release versions in x32 or x64 architectures.</p>
 
@@ -23,11 +23,11 @@ title: 'Developers'
 
 <p>To do any serious work on the project source code, or to get involved in the development of Rainmeter, you will want to create a local repository and install a couple of tools to help manage your copy of the project.</p>
 
-<p>First, you will want to install a local copy of the <a href="http://git-scm.com">Git version control</a> software on your PC. This can be obtained from <a href="http://git-scm.com/downloads">Download Git</a>.</p>
+<p>First, you will want to install a local copy of the <a href="https://git-scm.com">Git version control</a> software on your PC. This can be obtained from <a href="https://git-scm.com/downloads">Download Git</a>.</p>
 
-<p>Then, unless you are a fan of the Windows cmd.exe command line, it can be useful to install a Windows front-end client to help manage your Git repositories. There are several options for that, two of the more popular are <a href="https://code.google.com/p/tortoisegit/wiki/Download">TortoiseGit for Windows</a> and <a href="http://windows.github.com/">GitHub for Windows</a>.
+<p>Then, unless you are a fan of the Windows cmd.exe command line, it can be useful to install a Windows front-end client to help manage your Git repositories. There are several options for that, two of the more popular are <a href="https://code.google.com/p/tortoisegit/wiki/Download">TortoiseGit for Windows</a> and <a href="https://desktop.github.com/">GitHub Desktop</a>.
 
-<p>To create your repository of the project code, first create an account on <a href="https://github.com">GitHub.com</a>. Then from the <a href="https://github.com/rainmeter/rainmeter">Rainmeter Repository on GitHub</a> you can fork the project to your account. Now you can use either the Git command line or the Windows front-end client you installed to <a href="http://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository">clone the repository</a> from your personal fork of the project on GitHub to a folder on your PC.</p>
+<p>To create your repository of the project code, first create an account on <a href="https://github.com">GitHub.com</a>. Then from the <a href="https://github.com/rainmeter/rainmeter">Rainmeter Repository on GitHub</a> you can fork the project to your account. Now you can use either the Git command line or the Windows front-end client you installed to <a href="https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository">clone the repository</a> from your personal fork of the project on GitHub to a folder on your PC.</p>
 
 <h2 id="SubmitChanges">Submitting Code Changes</h2>
 
@@ -37,7 +37,7 @@ title: 'Developers'
 
 <p>In order to create a full build of the Rainmeter installer, you will need one additional piece of software.</p>
 
-<p>Get and install NSIS version 3.04 or later from <a href="http://nsis.sourceforge.net/Download">NSIS Scriptable Install System</a> software on your PC.</p>
+<p>Get and install NSIS version 3.04 or later from <a href="https://nsis.sourceforge.io/Download">NSIS Scriptable Install System</a> software on your PC.</p>
 
 <p>Now you can simply run the <b>Build.bat</b> batch file in the Build folder of your local repository.  If there are any "not found" errors when you run the batch file, check the paths in the <code>Set</code> commands at the top of the file.</p>
 
@@ -56,7 +56,7 @@ set CERTKEY=certpassword
 
 <p><b>Note:</b> The Rainmeter Skin Installer program, which is used by end-users to install the skins containing your plugin, will not allow the same or older version of the plugin to overwrite a newer version. The means that it is critically important that every release of your plugin must have the "File version" number incremented. If you don't do this, your plugin will not be distributed.</p>
 
-<p>The only software you will need is <b>Microsoft Visual Studio 2019</b> or the free <b>Microsoft Visual Community</b> which can be obtained at <a href="http://www.visualstudio.com/downloads/download-visual-studio-vs">Download Visual Studio</a>. Be sure to download and apply any Visual Studio Updates when prompted.</p>
+<p>The only software you will need is <b>Microsoft Visual Studio 2019</b> or the free <b>Microsoft Visual Community</b> which can be obtained at <a href="https://visualstudio.microsoft.com/downloads/">Download Visual Studio</a>. Be sure to download and apply any Visual Studio Updates when prompted.</p>
 
 <p>Then you will want to download the <a href="https://github.com/rainmeter/rainmeter-plugin-sdk">Rainmeter Plugin SDK</a> to a folder on your PC. The SDK contains the API code needed to create plugins, as well as some starting and sample plugin code for C++ and C#:</p>
 
@@ -82,7 +82,7 @@ An example plugin demonstrating how to implement functions to use as section var
 
 <h2 id="SendMessage">Using SendMessage with External Applications</h2>
 
-<p>The Rainmeter window message API can be used to query or control Rainmeter from external applications. The examples are for C++ and <a href="http://www.autoitscript.com/site/autoit/">AutoIt</a>, but similar functionality is available from any programming platform that can send window messages to running applications.</p>
+<p>The Rainmeter window message API can be used to query or control Rainmeter from external applications. The examples are for C++ and <a href="https://www.autoitscript.com/site/autoit/">AutoIt</a>, but similar functionality is available from any programming platform that can send window messages to running applications.</p>
 
 <h3>Query</h3>
 
