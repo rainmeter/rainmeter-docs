@@ -8,6 +8,23 @@ title: 'Version History'
 
 <h2 id="4.5">Rainmeter 4.5</h2><hr />
 
+<h3 id="r3663">September 6, 2022 - 4.5.14 - Revision 3663</h3>
+<ul>
+	<li><span class="badge badge-changed">Changed</span><b>Lua:</b> Allow the Lua Update() function to return 2 values (number and string). The order is unimportant. Example: <code>return 'twenty-five', 25</code><br/>Suggested by user <b>@deathcrafter</b>.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Rainmeter:</b> Fixed a typo in Internet.cpp (Issue <a href="https://github.com/rainmeter/rainmeter/pull/306">#306</a>).<br/>Submitted by user <b>@redstarbird</b>.</li>
+	<li><span class="badge badge-changed">Changed</span><b>String meter/Inline shadow:</b> Treat the shadow drawing surface as the size of the meter itself instead of using the underlying bitmap of the skin's bounds (in case SkinWidth/Height is truncating the drawing of the meter).</li>
+	<li><span class="badge badge-changed">Changed</span><b>C# Plugins:</b> Use latest ilasm.exe in DLLExporter (Issue <a href="https://github.com/rainmeter/rainmeter/pull/310">#310</a>)<br/>This fixes assembly errors when using latest .NET Framework libraries in your plugin.<br/>Submitted by user <b>@deathcrafter</b>.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Rainmeter.ini:</b> Add an extra empty line before appending a new section at the end of the settings file. Note: This is for newly added sections, not existing sections.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> Convert font enumeration from Gdiplus to DirectWrite.<br/>		Note: This is just for logging purposes and does not change any font loading for the String meter. In general, this will log more font families since font faces will now be included in the list. Also: In debug mode, this will also enumerate any fonts loaded with LocalFont and the fonts in "@Resources\Fonts" folder when a skin loads. This will help skin authors find the correct font name to use with the FontFace option.</li>
+	<li><span class="badge badge-changed">Changed</span><b>MathParser:</b> Increased base conversion limitations. See <a href="https://forum.rainmeter.net/viewtopic.php?t=41135#p209189">Forum Thread</a> for details.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Dialogs:</b> Fix icon loading. See <a href="https://forum.rainmeter.net/viewtopic.php?t=41131">Forum Thread</a> for details.</li>
+	<li><span class="badge badge-changed">Changed</span><b>GameMode:</b> Tweak the logic when Rainmeter exits while in game mode. See <a href="https://forum.rainmeter.net/viewtopic.php?t=41099">Forum Thread</a> for details.</li>
+	<li><span class="badge badge-changed">Changed</span><b>SkinInstaller:</b> Adjust the enabled/disabled state of some GUI elements.<br/>The "Load included layout" / "Load included skins" checkbox will now become disabled and unchecked if the entire group (Skins or Layouts) is unchecked. This prevents the attempted loading of a non-installed skin/layout once Rainmeter re-starts. Note: The last checked state of the "Load included layout" / "Load included skins" checkbox will be remembered in case any of the Skins/Layout groups checkboxes get enabled again. This "remembering" only happens while the SkinInstaller is open, and is NOT persistent. The "Install" button will now be disabled if all items in the list are unchecked.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Skin:</b> Fixed issue where the incorrect monitor was selected when using the monitor flag on WindowY only (not defined on WindowX). See <a href="https://forum.rainmeter.net/viewtopic.php?t=40881">Forum Thread</a> for details.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>GeneralImage:</b> Fixed "ImageCrop" formula parsing. See <a href="https://forum.rainmeter.net/viewtopic.php?t=40682#p207510">Forum Thread</a> for details.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Rainmeter:</b> Fixed bug with random number generators.</li>
+</ul>
+
 <h3 id="r3632">March 24, 2022 - 4.5.13 - Revision 3632</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>About dialog / Plugins tab:</b> Fix Unicode issue in the path when gathering plugin information.</li>
