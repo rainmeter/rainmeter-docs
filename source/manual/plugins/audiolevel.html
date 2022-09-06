@@ -7,7 +7,7 @@ title: 'AudioLevel plugin'
 
 <p>AudioLevel will monitor, filter and analyze the amplitude (volume level) of sound input or output on the default or defined device and channels. The value returned will be a number from 0.0 to 1.0, which will be treated as a <a href="/manual/measures#Percentage">percentage</a> for use in meters.</p>
 
-<p>This can be used to create a volume level <a href="http://en.wikipedia.org/wiki/VU_meter">VU Meter</a> for defined channels, or optionally can filter the audio stream into distinct <a href="http://en.wikipedia.org/wiki/Audio_frequency">frequency</a> bands to create a <a href="http://en.wikipedia.org/wiki/Spectrum_analyzer">Spectrum Analyzer</a>.</p>
+<p>This can be used to create a volume level <a href="https://en.wikipedia.org/wiki/VU_meter">VU Meter</a> for defined channels, or optionally can filter the audio stream into distinct <a href="https://en.wikipedia.org/wiki/Audio_frequency">frequency</a> bands to create a <a href="https://en.wikipedia.org/wiki/Spectrum_analyzer">Spectrum Analyzer</a>.</p>
 
 <p><em>The plugin monitors the amplitude of the post-mixer signal at a Windows audio endpoint. (i.e. sound card speaker output, USB audio interface, headphone port, microphone input) It does this by creating a <a href="https://docs.microsoft.com/windows/win32/coreaudio/wasapi">WASAPI</a> capture client in <a href="https://docs.microsoft.com/windows/win32/coreaudio/loopback-recording">loopback mode</a>. The capture client streams audio data to the plugin where it can be filtered and measured. The resulting volume level is returned by the plugin for use in Rainmeter measures and meters.</em></p>
 
@@ -80,7 +80,7 @@ Type=RMS
 
 	<h3 id="RMSOptions">RMS options</h3>
 
-	<p>RMS is a way of calculating the average of values over a period of time, using the mathematical algorithm <a href="http://en.wikipedia.org/wiki/Root_mean_square">Root Mean Square</a>. The signal value (amplitude) is squared, averaged over a period of time, then the square root of the result is calculated. The result is a value, that when squared, is related (proportional) to the effective power of the signal.</p>
+	<p>RMS is a way of calculating the average of values over a period of time, using the mathematical algorithm <a href="https://en.wikipedia.org/wiki/Root_mean_square">Root Mean Square</a>. The signal value (amplitude) is squared, averaged over a period of time, then the square root of the result is calculated. The result is a value, that when squared, is related (proportional) to the effective power of the signal.</p>
 
 	<p>This is the most meaningful way of measuring audio volume levels in a skin.</p>
 
@@ -128,7 +128,7 @@ Type=RMS
 
 	<h3 id="FFTOptions">FFT options</h3>
 
-	<p>FFT options transform the signal from the time domain to the frequency domain, with <code>FTTSize</code> determining how many points you get back in the frequency domain. This is done by analyzing the audio stream into a linear-based number of points using the mathematical algorithm <a href="http://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform</a>.</p>
+	<p>FFT options transform the signal from the time domain to the frequency domain, with <code>FTTSize</code> determining how many points you get back in the frequency domain. This is done by analyzing the audio stream into a linear-based number of points using the mathematical algorithm <a href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">Fast Fourier Transform</a>.</p>
 
 	<p>This frequency information can then optionally be extrapolated into logarithm-based <code>Bands</code> to distinctly measure by frequency in the ranges that are the most useful for spectrum display, based on the way humans detect changes in sound.</p>
 
@@ -147,7 +147,7 @@ Type=RMS
 
 	<dt id="FFTOverlap"><code>FFTOverlap</code> <small>Default: <code>0</code></small></dt>
 	<dd>
-		<p>Optionally, the FFT can be windowed to overlap successive sections. A <a href="http://en.wikipedia.org/wiki/Hann_function">Hann</a> function is used to shape the data before the FFT is applied. Typical values are half the FFTSize. Increasing this value will lower the latency between the audio and the measure's response, at the cost of extra CPU.</p>
+		<p>Optionally, the FFT can be windowed to overlap successive sections. A <a href="https://en.wikipedia.org/wiki/Hann_function">Hann</a> function is used to shape the data before the FFT is applied. Typical values are half the FFTSize. Increasing this value will lower the latency between the audio and the measure's response, at the cost of extra CPU.</p>
 	</dd>
 
 	<dt id="FFTAttack"><code>FFTAttack</code> <small>Default: <code>300</code></small></dt>

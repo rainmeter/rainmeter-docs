@@ -28,7 +28,7 @@ AccurateText=1
 [MeasureImageLocation]
 Measure=WebParser
 UpdateRate=1800
-Url=http://forum.rainmeter.net/
+Url=https://forum.rainmeter.net/
 RegExp=(?siU)<img src="(.*)"
 StringIndex=1
 FinishAction=[!CommandMeasure MeasureImageDownload "Update"] 
@@ -36,7 +36,7 @@ FinishAction=[!CommandMeasure MeasureImageDownload "Update"]
 [MeasureImageDownload]
 Measure=WebParser
 UpdateRate=1800
-Url=http://forum.rainmeter.net/[&MeasureImageLocation]
+Url=https://forum.rainmeter.net/[&MeasureImageLocation]
 StringIndex=1
 DynamicVariables=1
 Download=1
