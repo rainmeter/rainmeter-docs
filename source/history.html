@@ -149,7 +149,7 @@ title: 'Version History'
 	LAN_CONNECTIVITY_V4<br/>
 	LAN_CONNECTIVITY_V6<br/>
 	MAC_ADDRESS<br/><br/>
-	See <a href="https://docs.rainmeter.net/manual/plugins/sysinfo/">SysInfo Measure</a> for details.</li>
+	See <a href="https://docs.rainmeter.net/manual/measures/sysinfo/">SysInfo Measure</a> for details.</li>
 </ul>
 
 <h3 id="r3518">August 26, 2021 - 4.5.0 - Revision 3518</h3>
@@ -300,7 +300,7 @@ title: 'Version History'
 
 <h3 id="r3397">July 3, 2020 - Revision 3397</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>SysInfo plugin:</b> Added new <code>LAST_SLEEP_TIME</code> and <code>LAST_WAKE_TIME</code> measurements to the <a href="https://docs.rainmeter.net/manual/plugins/sysinfo/#SysInfoType">SysInfoType</a> option.</li>
+	<li><span class="badge badge-added">Added</span><b>SysInfo plugin:</b> Added new <code>LAST_SLEEP_TIME</code> and <code>LAST_WAKE_TIME</code> measurements to the <a href="https://docs.rainmeter.net/manual/measures/sysinfo/#SysInfoType">SysInfoType</a> option.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>Skin Packager:</b> Corrected an issue with the <code>Variables files</code> functionality of the <a href="https://docs.rainmeter.net/manual/distributing-skins/#SkinPackager">Skin Packager</a> when an empty value was used for variable.</li>
 </ul>
 
@@ -322,7 +322,7 @@ title: 'Version History'
 
 <h3 id="r3360">June 11, 2020 - Revision 3360</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Rainmeter:</b> You can now hold down <code>CTRL</code> while starting Rainmeter to load in <a href=https://docs.rainmeter.net/manual/user-interface//#SafeStart">Safe Start</a> mode.</li>
+	<li><span class="badge badge-added">Added</span><b>Rainmeter:</b> You can now hold down <code>CTRL</code> while starting Rainmeter to load in <a href=https://docs.rainmeter.net/manual/user-interface/#SafeStart">Safe Start</a> mode.</li>
 	<li><span class="badge badge-added">Added</span><b>WebParser:</b> Added a <code>Flags</code> option to parent WebParser measures to enable setting some flags that change the behavior of WebParser when connecting to a remote resource. Details at <a href="https://docs.rainmeter.net/manual/measures/webparser/#Flags">Flags documentation.</a></li>
 	<li><span class="badge badge-changed">Changed</span><b>Fileview Plugin:</b> Made some internal changes that should improve performance.</li>
 </ul>
@@ -609,12 +609,12 @@ title: 'Version History'
 
 <h3 id="r3011">December 13, 2017 - Revision 3011</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added support for @Vault folder. See <a href="https://docs.rainmeter.net/manual/@vault-folder/">@Vault Folder</a> for details.</li>
+	<li><span class="badge badge-added">Added</span><b>Rainmeter:</b> Added support for @Vault folder. See <a href="https://docs.rainmeter.net/manual/distributing-skins/vault-folder/">@Vault Folder</a> for details.</li>
 </ul>
 
 <h3 id="r3004">December 11, 2017 - Revision 3004</h3>
 <ul>
-	<li><span class="badge badge-added">Added</span><b>SysInfo:</b> Added a new <code>USER_LOGONTIME</code> SysInfoType value to the <a href="https://docs.rainmeter.net/manual/plugins/sysinfo/#SysInfoType">SysInfo plugin</a>. This is a timestamp number (number of seconds since January 1, 1601) reflecting the date and time the current user account logged onto Windows. Use with a <a href="https://docs.rainmeter.net/manual/measures/time/">Time measure</a> to get a formatted string of the date/time, or subtract from the current time and use with an <a href="https://docs.rainmeter.net/manual/measures/uptime/">Uptime measure</a> to get a formatted string of the elapsed time.</li>
+	<li><span class="badge badge-added">Added</span><b>SysInfo:</b> Added a new <code>USER_LOGONTIME</code> SysInfoType value to the <a href="https://docs.rainmeter.net/manual/measures/sysinfo/#SysInfoType">SysInfo plugin</a>. This is a timestamp number (number of seconds since January 1, 1601) reflecting the date and time the current user account logged onto Windows. Use with a <a href="https://docs.rainmeter.net/manual/measures/time/">Time measure</a> to get a formatted string of the date/time, or subtract from the current time and use with an <a href="https://docs.rainmeter.net/manual/measures/uptime/">Uptime measure</a> to get a formatted string of the elapsed time.</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>NowPlaying:</b> Improved CPU usage when using the latest versions of the iTunes player.</li>
 </ul>
 
@@ -789,7 +789,7 @@ title: 'Version History'
 
 <h3 id="r2731">December 19, 2016 - Revision 2731</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> New Skin dialog:</b> This new dialog is opened with the Create new skin button in Manage, or by using the context menus on existing folders. This will allow you to add new root-level folders and skin file, or add folders or files to skins. See <a href="https:</b>//docs.rainmeter.net/manual/user-interface/manage/new-skin/">New Skin</a> for details.</li>
+  <li><span class="badge badge-added">Added</span><b> New Skin dialog:</b> This new dialog is opened with the Create new skin button in Manage, or by using the context menus on existing folders. This will allow you to add new root-level folders and skin file, or add folders or files to skins. See <a href="https://docs.rainmeter.net/manual/user-interface/manage/new-skin/">New Skin</a> for details.</li>
 </ul>
 
 <h3 id="r2722">December 4, 2016 - Revision 2722</h3>
@@ -853,8 +853,8 @@ title: 'Version History'
 <h3 id="r2613">June 1, 2016 - Revision 2613</h3>
 <ul>
   <li><span class="badge badge-fixed">Fixed</span><b> String meter:</b> Corrected an issue where <code>ClipString=1</code> was not working correctly if <code>W</code> (width) was defined without defining <code>H</code> (height).</li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual/plugins/webparser/#UserAgent">UserAgent</a> option to allow setting a custom User Agent String on a WebParser parent measure.</li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual/plugins/webparser/#Header">Header1, Header2, Header3...</a> option to allow setting custom HTTP Header Fields on a WebParser parent measure.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual/measures/webparser/#UserAgent">UserAgent</a> option to allow setting a custom User Agent String on a WebParser parent measure.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual/measures/webparser/#Header">Header1, Header2, Header3...</a> option to allow setting custom HTTP Header Fields on a WebParser parent measure.</li>
 </ul>
 
 <h3 id="r2607">March 22, 2016 - Revision 2607</h3>
@@ -878,8 +878,8 @@ title: 'Version History'
 
 <h3 id="r2593">March 12, 2016 - Revision 2593</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added <a href="https://docs.rainmeter.net/manual/plugins/sysinfo/#Network">DOMAINWORKGROUP</a> SysInfoType value to the SysInfo plugin. This will return either the "domain" or "workgroup" set for the system.</li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual/plugins/webparser/#LogSubstringErrors">LogSubstringErrors</a> parent measure option.</li>
+  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added <a href="https://docs.rainmeter.net/manual/measures/sysinfo/#Network">DOMAINWORKGROUP</a> SysInfoType value to the SysInfo plugin. This will return either the "domain" or "workgroup" set for the system.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added <a href="https://docs.rainmeter.net/manual/measures/webparser/#LogSubstringErrors">LogSubstringErrors</a> parent measure option.</li>
 </ul>
 
 <h3 id="r2589">March 6, 2016 - Revision 2589</h3>
@@ -979,7 +979,7 @@ title: 'Version History'
 <h3 id="r2423">July 31, 2015 - Revision 2423</h3>
 <ul>
   <li><span class="badge badge-added">Added</span><b> String meter:</b> Added new <a href="/manual/meters/string/inline">Inline Options</a> features to the String meter. This will allow "inline" formatting of part or all of a string, and adds several new formatting options including a color gradient.</li>
-  <li><span class="badge badge-added">Added</span><b> SysInfo plugin:</b> Added <code>SysInfoType=PAGESIZE</code> to the <a href="/manual/plugins/sysinfo">SysInfo</a> plugin.</li>
+  <li><span class="badge badge-added">Added</span><b> SysInfo plugin:</b> Added <code>SysInfoType=PAGESIZE</code> to the <a href="/manual/measures/sysinfo">SysInfo</a> plugin.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Plugin API:</b> Corrected a bug, introduced in r2416, which caused some threaded plugins to fail when sending a FinishAction to Rainmeter.</li>
 </ul>
 
@@ -1003,14 +1003,14 @@ title: 'Version History'
 <h3 id="r2410">April 29, 2015 - Revision 2410</h3>
 <ul>
   <li><span class="badge badge-changed">Changed</span><b> Net measures:</b> Changed the values accepted for the <a href="/manual/measures/net#Interface">Interface</a> option to accept new values of "Best", which will automatically use the active network interface, or a string value of the name of the desired Network Interface Controller (NIC).</li>
-  <li><span class="badge badge-changed">Changed</span><b> SysInfo plugin:</b> Changed the values accepted for the <a href="/manual/plugins/sysinfo#SysInfoData">SysInfoData</a> option with network related <a href="/manual/plugins/sysinfo#Network">SysInfoType</a> options to accept new values of "Best", which will automatically use the active network interface, or a string value of the name of the desired Network Interface Controller (NIC).</li>
+  <li><span class="badge badge-changed">Changed</span><b> SysInfo plugin:</b> Changed the values accepted for the <a href="/manual/measures/sysinfo/#SysInfoData">SysInfoData</a> option with network related <a href="/manual/measures/sysinfo/#Network">SysInfoType</a> options to accept new values of "Best", which will automatically use the active network interface, or a string value of the name of the desired Network Interface Controller (NIC).</li>
   <li><span class="badge badge-changed">Changed</span><b> About / Log:</b> Changed the Time column in the About / Log panel to use the current time in Hours, Minutes, Seconds and Milliseconds rather than elapsed time since Rainmeter was started.</li>
 </ul>
 
 <h3 id="r2402">April 6, 2015 - Revision 2402</h3>
 <ul>
   <li><span class="badge badge-added">Added</span><b> Loop:</b> Added new <a href="/manual/measures/loop">Loop</a> measure. This will create a looping counter between two numbers.</li>
-  <li><span class="badge badge-added">Added</span><b> NowPlaying:</b> Added a value of <code>Genre</code> to the <a href="/manual/plugins/nowplaying#PlayerType">PlayerType</a> option. This option value is currently supported with the AIMP, CAD, iTunes, WMP and WinAmp <a href="/manual/plugins/nowplaying#PlayerName">PlayerName</a> values.</li>
+  <li><span class="badge badge-added">Added</span><b> NowPlaying:</b> Added a value of <code>Genre</code> to the <a href="/manual/measures/nowplaying#PlayerType">PlayerType</a> option. This option value is currently supported with the AIMP, CAD, iTunes, WMP and WinAmp <a href="/manual/measures/nowplaying#PlayerName">PlayerName</a> values.</li>
 </ul>
 
 <h2 id="3.2">Rainmeter 3.2.1</h2><hr />
@@ -1030,7 +1030,7 @@ title: 'Version History'
 <h3 id="r2383">March 15, 2015 - Revision 2383</h3>
 <ul>
   <li><span class="badge badge-release">Release</span><b>Release Candidate 1</b></li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual/plugins/webparser/#OnDownloadErrorAction">OnDownloadErrorAction</a> to WebParser measures to allow taking an action when a remote file defined by <code>Download=1</code> fails to download or can't be saved locally.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual/measures/webparser/#OnDownloadErrorAction">OnDownloadErrorAction</a> to WebParser measures to allow taking an action when a remote file defined by <code>Download=1</code> fails to download or can't be saved locally.</li>
   <li><span class="badge badge-changed">Changed</span><b> Rainmeter:</b> Added the value <code>~100</code> to both Manage and the skin context menus to support setting the transparency of a skin to an opacity of <code>1</code>, which is invisible but will still react to the mouse. This can be used in conjunction with the <a href="/manual/user-interface/manage/#SkinSettings">fade in / fade out / on hover</a> capabilities.</li>
 </ul>
 
@@ -1046,10 +1046,10 @@ title: 'Version History'
 
 <h3 id="r2378">March 2, 2015 - Revision 2378</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual/plugins/webparser/#OnConnectErrorAction">OnConnectErrorAction</a> to WebParser parent measures to allow taking an action when a site or file resource cannot be connected to.</li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual/plugins/webparser/#OnRegExpErrorAction">OnRegExpErrorAction</a> to WebParser parent measures to allow taking an action when parsing a site or file resource with <code>RegExp</code> (regular expression) fails.</li>
-  <li><span class="badge badge-changed">Changed</span><b> WebParser:</b> Changed the <a href="/manual/plugins/webparser/#FinishAction">FinishAction</a> to not be executed when parsing a site or file resource with <code>RegExp</code> (regular expression) fails AND an <code>OnRegExpErrorAction</code> is defined on the measure.</li>
-  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added a new <a href="/manual/plugins/webparser/#CommandMeasureReset">Reset</a> command, used with the <a href="/manual/bangs/#CommandMeasure">!CommandMeasure</a> bang, to reset all values in the WebParser parent and related child measures to their initial empty values.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual/measures/webparser/#OnConnectErrorAction">OnConnectErrorAction</a> to WebParser parent measures to allow taking an action when a site or file resource cannot be connected to.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added new <a href="/manual/measures/webparser/#OnRegExpErrorAction">OnRegExpErrorAction</a> to WebParser parent measures to allow taking an action when parsing a site or file resource with <code>RegExp</code> (regular expression) fails.</li>
+  <li><span class="badge badge-changed">Changed</span><b> WebParser:</b> Changed the <a href="/manual/measures/webparser/#FinishAction">FinishAction</a> to not be executed when parsing a site or file resource with <code>RegExp</code> (regular expression) fails AND an <code>OnRegExpErrorAction</code> is defined on the measure.</li>
+  <li><span class="badge badge-added">Added</span><b> WebParser:</b> Added a new <a href="/manual/measures/webparser/#CommandMeasureReset">Reset</a> command, used with the <a href="/manual/bangs/#CommandMeasure">!CommandMeasure</a> bang, to reset all values in the WebParser parent and related child measures to their initial empty values.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Math:</b> Corrected a problem when a comma-separated, multi-argument math function was used in a formula in a comma-separated, multi-argument option. For instance using <code>Clamp(x,low,high)</code> in the arguments for <code>FontColor=rrr,ggg,bbb,aaa</code>.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Skin Installer:</b> Changed the Skin Packager to only allow inclusion of a valid 400x60 .bmp file as a custom header in a .rmskin. Improperly sized custom images were causing visual problems in the Skin Installer user interface.</li>
 </ul>
@@ -1067,13 +1067,13 @@ title: 'Version History'
   <li><span class="badge badge-added">Added</span><b> Time:</b> Added new <a href="/manual/measures/time#FormatLocale">FormatLocale</a> option to support formatting a Time measure in any defined language / locale.</li>
   <li><span class="badge badge-added">Added</span><b> UpTime:</b> Added a new <a href="/manual/measures/uptime#SecondsValue">SecondsValue</a> option to allow formatting any defined number of seconds into "days, hours, minutes, seconds" as desired. This will override the default behavior of the UpTime measure.</li>
   <li><span class="badge badge-added">Added</span><b> Section Variables:</b> Added a new <a href="/manual/variables/section-variables#Timestamp">:Timestamp</a> section variable measure modifier. This will return the Windows timestamp value of the named Time measure, and overcomes a limitation with getting and using this number when a Time measure has a Format option.<br/><br/>
-All of the above additions and changes are related to new functionality for getting and using date / time information in skins. As well as support for Language / Locale values in Time measures. Details and examples can be found at <a href="//forum.rainmeter.net/viewtopic.php?f=114&t=20398">Change Announcements</a>.</li>
+All of the above additions and changes are related to new functionality for getting and using date / time information in skins. As well as support for Language / Locale values in Time measures. Details and examples can be found at <a href="https://forum.rainmeter.net/viewtopic.php?f=114&t=20398">Change Announcements</a>.</li>
 </ul>
 
 <h3 id="r2360">February 8, 2015 - Revision 2360</h3>
 <ul>
   <li><span class="badge badge-added">Added</span><b> Time:</b> Added several <a href="/manual/measures/time#TimeStamp">TimeStamp</a> options to obtain Daylight Savings Time information for the local computer.</li>
-  <li><span class="badge badge-added">Added</span><b> SysInfo plugin:</b> Added several <a href="/manual/plugins/sysinfo#TimeZoneValues">SysInfoType</a> option values to obtain Time Zone and Daylight Savings Time information for the local computer.</li>
+  <li><span class="badge badge-added">Added</span><b> SysInfo plugin:</b> Added several <a href="/manual/measures/sysinfo/#TimeZoneValues">SysInfoType</a> option values to obtain Time Zone and Daylight Savings Time information for the local computer.</li>
 </ul>
 
 <h3 id="r2357">February 1, 2015 - Revision 2357</h3>
@@ -1130,7 +1130,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2308">August 21, 2014 - Revision 2308</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Image:</b> New Mask Image functionality added. See <a href="/manual/meters/image#MaskImage">Image - Mask Image</a> for documentation, and <a href="//forum.rainmeter.net/viewtopic.php?p=103408#p103408">Change Announcements</a> for more details.</li>
+  <li><span class="badge badge-added">Added</span><b> Image:</b> New Mask Image functionality added. See <a href="/manual/meters/image#MaskImage">Image - Mask Image</a> for documentation, and <a href="https://forum.rainmeter.net/viewtopic.php?p=103408#p103408">Change Announcements</a> for more details.</li>
   <li><span class="badge badge-changed">Changed</span><b> Rainmeter:</b> Updated Metadata and removed AppVersion from default illustro skins.</li>
   <li><span class="badge badge-changed">Changed</span><b> About:</b> Prevent invalid plugins from showing up on Plugins tab in Manage.</li>
 </ul>
@@ -1159,7 +1159,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2282">February 23, 2014 - Revision 2282</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added new IDLE_TIME <a href="/manual/plugins/sysinfo/#SysInfoType">SysInfoType</a> option. This will return the number of seconds since the last user input (mouse or keyboard) to the operating system.</li>
+  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added new IDLE_TIME <a href="/manual/measures/sysinfo/#SysInfoType">SysInfoType</a> option. This will return the number of seconds since the last user input (mouse or keyboard) to the operating system.</li>
 </ul>
 
 <h3 id="r2280">February 16, 2014 - Revision 2280</h3>
@@ -1177,7 +1177,7 @@ All of the above additions and changes are related to new functionality for gett
 <h3 id="r2255">January 5, 2014 - Revision 2255</h3>
 <ul>
   <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual/measures/string/">String</a> measure type, used to create and manipulate string values.</li>
-  <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual/measures/general-options/ifmatchactions/">IfMatchAction</a> options for taking actions based on a regular expression comparison with the measure's string value. See <a href="//forum.rainmeter.net/viewtopic.php?f=113&amp;t=17421">Change Announcements</a> for details and examples.</li>
+  <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual/measures/general-options/ifmatchactions/">IfMatchAction</a> options for taking actions based on a regular expression comparison with the measure's string value. See <a href="https://forum.rainmeter.net/viewtopic.php?f=113&amp;t=17421">Change Announcements</a> for details and examples.</li>
   <li><span class="badge badge-added">Added</span><b> Section Variables:</b> New <a href="/manual/variables/section-variables/#EscapeRegExp">:EscapeRegExp</a> measure section variable parameter. This will return the string value of the measure with all regular expression <a href="https://www.regular-expressions.info/characters.html">reserved characters</a> escaped.</li>
   <li><span class="badge badge-added">Added</span><b> Section Variables:</b> New <a href="/manual/variables/section-variables/#EncodeURL">:EncodeURL</a> measure section variable parameter. This will return the string value of the measure as a <a href="http://www.blooberry.com/indexdot/html/topics/urlencoding.htm">URL-encoded</a> string.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> WebParser:</b> A problem in some cases with properly handling [&amp;MeasureName] variables on the URL option.</li>
@@ -1197,7 +1197,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2209">December 22, 2013 - Revision 2209</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added new LAN_CONNECTIVITY and INTERNET_CONNECTIVITY <a href="/manual/plugins/sysinfo/#SysInfoType">SysInfoType</a> options. Measure will return "1" on success and "-1" on failure.</li>
+  <li><span class="badge badge-added">Added</span><b> SysInfo:</b> Added new LAN_CONNECTIVITY and INTERNET_CONNECTIVITY <a href="/manual/measures/sysinfo/#SysInfoType">SysInfoType</a> options. Measure will return "1" on success and "-1" on failure.</li>
   <li><span class="badge badge-fixed">Fixed</span><b> Calc:</b> Fixed repeating log error message when Random function HighBound is smaller than LowBound.</li>
   <li><span class="badge badge-changed">Changed</span><b> Tooltip:</b> ToolTipIcon option now allows a relative path to the image.</li>
   <li><span class="badge badge-changed">Changed</span><b> Language:</b> Updates to localization language strings.</li>
@@ -1205,7 +1205,7 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2187">November 10, 2013 - Revision 2187</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual/measures/general-options/ifconditions/">IfConditions</a> functionality added.  This is a powerful extension to the concepts provided in IfActions, allowing multiple tests and actions, both "true" and "false" testing, and the ability to use logical AND and OR operators in the conditions. See <a href="//forum.rainmeter.net/viewtopic.php?p=94135#p94135">Change Announcements</a> for details and example skins.</li>
+  <li><span class="badge badge-added">Added</span><b> Measures:</b> New <a href="/manual/measures/general-options/ifconditions/">IfConditions</a> functionality added.  This is a powerful extension to the concepts provided in IfActions, allowing multiple tests and actions, both "true" and "false" testing, and the ability to use logical AND and OR operators in the conditions. See <a href="https://forum.rainmeter.net/viewtopic.php?p=94135#p94135">Change Announcements</a> for details and example skins.</li>
 </ul>
 
 <h2 id="3.0.2">Rainmeter 3.0.2</h2><hr />
@@ -1274,13 +1274,13 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2081">August 18, 2013 - Revision 2081</h3>
 <ul>
-  <li><span class="badge badge-added">Added</span><b> Calc:</b> Added a new <a href="/manual/measures/calc/#UniqueRandom">UniqueRandom</a> option. If set to 1, any measure using the random constant and UpdateRandom will not repeat until all values between and including LowBound and HighBound have been used. Note that any dynamic change to LowBound or HighBound will reset the tracking of values. See <a href="//forum.rainmeter.net/viewtopic.php?p=91109#p91109">Change Announcements</a> for an example skin.</li>
+  <li><span class="badge badge-added">Added</span><b> Calc:</b> Added a new <a href="/manual/measures/calc/#UniqueRandom">UniqueRandom</a> option. If set to 1, any measure using the random constant and UpdateRandom will not repeat until all values between and including LowBound and HighBound have been used. Note that any dynamic change to LowBound or HighBound will reset the tracking of values. See <a href="https://forum.rainmeter.net/viewtopic.php?p=91109#p91109">Change Announcements</a> for an example skin.</li>
 </ul>
 
 <h3 id="r2076">August 12, 2013 - Revision 2076</h3>
 <ul>
-  <li><span class="badge badge-changed">Changed</span><b> Script:</b> We have now added support for Unicode characters in Lua scripting. There are some limitations, see <a href="//forum.rainmeter.net/viewtopic.php?p=90816#p90816">Change Announcements</a> for important details.</li>
-  <li><span class="badge badge-changed">Changed</span><b> Direct2D:</b> There have been many fixes and improvements for compatibility with the new UseD2D / Direct2D functionality and older skins. See <a href="//forum.rainmeter.net/viewtopic.php?p=90817#p90817">Change Announcements</a> for details.</li>
+  <li><span class="badge badge-changed">Changed</span><b> Script:</b> We have now added support for Unicode characters in Lua scripting. There are some limitations, see <a href="https://forum.rainmeter.net/viewtopic.php?p=90816#p90816">Change Announcements</a> for important details.</li>
+  <li><span class="badge badge-changed">Changed</span><b> Direct2D:</b> There have been many fixes and improvements for compatibility with the new UseD2D / Direct2D functionality and older skins. See <a href="https://forum.rainmeter.net/viewtopic.php?p=90817#p90817">Change Announcements</a> for details.</li>
 </ul>
 
 <h3 id="r2050">August 4, 2013 - Revision 2050</h3>
@@ -1291,8 +1291,8 @@ All of the above additions and changes are related to new functionality for gett
 
 <h3 id="r2047">August 4, 2013 - Revision 2047</h3>
 <ul>
-  <li><span class="badge badge-changed">Changed</span><b> WebParser:</b> WebParser now supports <a href="/manual/variables/#DynamicVariables">Dynamic Variables</a>. See <a href="//forum.rainmeter.net/viewtopic.php?p=90521#p90521">Change Announcements</a> for <b>important:</b> details.</li>
-  <li><span class="badge badge-changed">Changed</span><b> Rainmeter:</b> Important improvements made to the D2D (Direct2D) rendering option for Rainmeter. See <a href="//forum.rainmeter.net/viewtopic.php?p=90520#p90520">Change Announcements</a> for <b>important:</b> details.</li>
+  <li><span class="badge badge-changed">Changed</span><b> WebParser:</b> WebParser now supports <a href="/manual/variables/#DynamicVariables">Dynamic Variables</a>. See <a href="https://forum.rainmeter.net/viewtopic.php?p=90521#p90521">Change Announcements</a> for <b>important:</b> details.</li>
+  <li><span class="badge badge-changed">Changed</span><b> Rainmeter:</b> Important improvements made to the D2D (Direct2D) rendering option for Rainmeter. See <a href="https://forum.rainmeter.net/viewtopic.php?p=90520#p90520">Change Announcements</a> for <b>important:</b> details.</li>
   <li><span class="badge badge-added">Added</span><b> Manage Dialog:</b> Added "UseD2D" option in the Manage / Settings Tab. If checked, all skins are refreshed using D2D (Direct2D) rendering. The option is disabled on systems that do not support D2D. Windows 7 with the latest <a href="https://www.microsoft.com/download/details.aspx?id=36805">Platform Update</a> or Windows 8 is required.</li>
   <li><span class="badge badge-added">Added</span><b> Rainmeter:</b> Added AccurateText option in the [Rainmeter] section of skins. When AccurateText=0 (default) and UseD2D=0, inaccurate GDI+ measuring of text is used. When AccurateText=1 and UseD2D=0, Accurate measuring occurs similar to D2D. When AccurateText=0 and UseD2D=1, D2D adds padding to the text similar to GDI+. When AccurateText=1 and UseD2D=1, Accurate measuring occurs using D2D.</li>
 </ul>
@@ -2139,7 +2139,7 @@ changed with !SetOption/!SetVariable.</li>
 	<li>Fixed: FolderInfo.dll did not support relative paths (thanks to elestel).</li>
 	<li>Fixed: TrayMeasure didn't work with Measure=PLUGIN.</li>
 	<li>Fixed: Bug created by an earlier revision which impacted using "X/Y=xxR" in some cases.</li>
-	<li>Issue was identified in <a href="//forum.rainmeter.net/viewtopic.php?f=5&amp;t=4059&amp;p=39475#p39461">Forum Thread</a>.</li>
+	<li>Issue was identified in <a href="https://forum.rainmeter.net/viewtopic.php?f=5&amp;t=4059&amp;p=39475#p39461">Forum Thread</a>.</li>
 	<li>Fixed: Bug in Rainstaller that prevented an author from distributing both 32bit and 64bit versions of a PLUGIN.</li>
 	<li>Added ScaleMargins to Image meter.</li>
 	<li>Changed !RainmeterPluginBang to allow specifying only MeasureName.</li>
