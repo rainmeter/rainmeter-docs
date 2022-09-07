@@ -24,7 +24,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
 
 	<!-- Site icon -->
-	<link rel="shortcut icon" href="//www.rainmeter.net/favicon.ico">
+	<link rel="shortcut icon" href="https://www.rainmeter.net/favicon.ico">
 
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -36,7 +36,7 @@
 <!-- Include navbar -->
 <nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
 	<div class="container">
-		<a class="navbar-brand" href="https://docs.rainmeter.net"><img src="\img\logo_nav.png" alt=""></a>
+		<a class="navbar-brand" href="https://docs.rainmeter.net"><img src="/img/logo_nav.png" alt=""></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -136,7 +136,7 @@
 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[Rainmeter]</span></span><br><span class="line"><span class="attr">Update</span>=<span class="number">1000</span></span><br><span class="line"><span class="attr">DynamicWindowSize</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">AccurateText</span>=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="section">[MeasureImageLocation]</span></span><br><span class="line"><span class="attr">Measure</span>=WebParser</span><br><span class="line"><span class="attr">UpdateRate</span>=<span class="number">1800</span></span><br><span class="line"><span class="attr">Url</span>=https://forum.rainmeter.net/</span><br><span class="line"><span class="attr">RegExp</span>=(?siU)&lt;img src=<span class="string">&quot;(.*)&quot;</span></span><br><span class="line"><span class="attr">StringIndex</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">FinishAction</span>=[!CommandMeasure MeasureImageDownload <span class="string">&quot;Update&quot;</span>] </span><br><span class="line"></span><br><span class="line"><span class="section">[MeasureImageDownload]</span></span><br><span class="line"><span class="attr">Measure</span>=WebParser</span><br><span class="line"><span class="attr">UpdateRate</span>=<span class="number">1800</span></span><br><span class="line"><span class="attr">Url</span>=https://forum.rainmeter.net/[&amp;MeasureImageLocation]</span><br><span class="line"><span class="attr">StringIndex</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">DynamicVariables</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">Download</span>=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="section">[MeterDisplayImage]</span></span><br><span class="line"><span class="attr">Meter</span>=IMAGE</span><br><span class="line"><span class="attr">MeasureName</span>=MeasureImageDownload</span><br><span class="line"><span class="attr">W</span>=<span class="number">200</span></span><br><span class="line"><span class="attr">PreserveAspectRatio</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 <p>Here we are using the first Measure [MeasureImageLocation] to get the relative path and filename of the image.</p>
-<p>Then we use the second Measure [MeasureImageDownload] to combine the known URL and the information in a <a href="//forum.rainmeter.net/viewtopic.php?f=111&t=16210">dynamic way</a> [&MeasureImageLocation] to create a fully loaded Measure which will succeed in downloading the image... Then we just display it.</p>
+<p>Then we use the second Measure [MeasureImageDownload] to combine the known URL and the information in a <a href="https://forum.rainmeter.net/viewtopic.php?f=111&t=16210">dynamic way</a> [&MeasureImageLocation] to create a fully loaded Measure which will succeed in downloading the image... Then we just display it.</p>
 
       </div>
 
@@ -150,7 +150,7 @@
   <div class="container">
     <div class="row">
       <div class="col-6">Made with ❤ by the community.</div>
-      <div class="col-6 text-right text-md-right">Icons by <a target="_blank" rel="noopener" href="http://www.freepik.com" alt="Freepik">Freepik</a> and <a target="_blank" rel="noopener" href="https://feathericons.com/" alt="feathericons">feathericons.com</a></div>
+      <div class="col-6 text-right text-md-right">Icons by <a target="_blank" rel="noopener" href="https://www.freepik.com" alt="Freepik">Freepik</a> and <a target="_blank" rel="noopener" href="https://feathericons.com/" alt="feathericons">feathericons.com</a></div>
     </div>
   </div>
 </footer>
