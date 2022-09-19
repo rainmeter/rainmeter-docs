@@ -8,6 +8,17 @@ title: 'Version History'
 
 <h2 id="4.5">Rainmeter 4.5</h2><hr />
 
+<h3 id="r3678">September 19, 2022 - 4.5.15 - Revision 3678</h3>
+<ul>
+	<li><span class="badge badge-fixed">Fixed</span><b>WifiStatus:</b> Corrected an issue with a missing .dll Windows file that could cause crashing on Windows Server systems.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Measures:</b> In debug mode, display a warning log message when the MinValue and MaxValue are the same or if MaxValue is less than MinValue.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Histogram / Line meters:</b> Corrected some issues with MinValue/MaxValue being properly applied to the meters.</li>
+	<li><span class="badge badge-added">Added</span><b>SysInfo:</b> Added "SysInfoType=OS_PRODUCT_NAME". This retrieves "ProductName" from the registry from "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion". Note that this entry is currently incorrect in all versions of Windows 11, and Rainmeter will correct for this and return the proper value.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Platform detection:</b> The "Version" value that is used for the About/Version dialog and the log has been changed to show the non-numerical "DisplayVersion" over the "ReleaseId" from the registry. (for instance: 21H2 rather than 2009). Also, added detection of "Windows Server 2022".</li>
+	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated localization strings for Finnish, Portuguese (Brazil), Italian.</li>
+</ul>
+
+
 <h3 id="r3663">September 6, 2022 - 4.5.14 - Revision 3663</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>Lua Scripting:</b> Allow the Lua Update() function to return 2 values (number and string). The order is unimportant. Example: <code>return 'twenty-five', 25</code><br/>Suggested by user <b>@deathcrafter</b>.</li>
