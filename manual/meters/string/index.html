@@ -314,9 +314,9 @@
 		<p><b>See also:</b> <a href="/tips/fonts-guide/">Fonts Guide</a>.</p>
 	</dd>
 
-	<dt id="FontSize"><code>FontSize</code> <small>Default: <code>10</code></small></dt>
+	<dt id="FontSize"><code>FontSize</code> <small>Default: <code>10.0</code></small></dt>
 	<dd>
-		<p>Size of the font in points. This is an integer value, with decimal values rounded down.</p>
+		<p>Size of the font in points. Whole, half, and fractional points are accepted. E.g. <code>FontSize=8.5</code>.</p>
 	</dd>
 
 	<dt id="FontColor"><code>FontColor</code> <small>Default: <code>0,0,0,255</code></small></dt>
@@ -346,8 +346,8 @@
 		<p>Horizontal and vertical alignment of the string within the meter. Valid values are:</p>
 		<ul>
 		<li><code>Left</code>, <code>Right</code>, <code>Center</code> (or <code>LeftTop</code>, <code>RightTop</code>, <code>CenterTop</code>)</li>
-		<li><code>LeftBottom</code>, <code>RightBottom</code>, <code>CenterBottom</code></li>
 		<li><code>LeftCenter</code>, <code>RightCenter</code>, <code>CenterCenter</code></li>
+		<li><code>LeftBottom</code>, <code>RightBottom</code>, <code>CenterBottom</code></li>
 		</ul>
 		<p>The string will be aligned using the values of the <code>X</code> and or <code>Y</code> settings as the anchor point. So to CenterCenter align a string within a meter with a width and height of 100, set <code>X=50</code>, <code>Y=50</code> and <code>StringAlign=CenterCenter</code>.</p>
 		
