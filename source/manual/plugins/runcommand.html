@@ -41,9 +41,9 @@ title: 'RunCommand plugin'
 		<p>All <a href="!measures/general-options/">general measure options</a> are valid.</p>
 	</dd>
 
-	<dt id="Program"><code>Program</code> <small>Default: <code>%ComSpec% \U \C</code></small></dt>
+	<dt id="Program"><code>Program</code> <small>Default: <code>%ComSpec% /U /C</code></small></dt>
 	<dd>
-		<p>The program to run. If not specified, the default value is the %ComSpec% environment variable (normally cmd.exe) with the parameters "\U" for Unicode pipe output and "\C" to close the Command Prompt window and exit the cmd.exe shell when finished.</p>
+		<p>The program to run. If not specified, the default value is the %ComSpec% environment variable (normally cmd.exe) with the parameters "/U" for Unicode pipe output and "/C" to close the Command Prompt window and exit the cmd.exe shell when finished.</p>
 
 		<p>Generally it is best to leave this undefined and use the <code>Parameter</code> option to define the command and parameters to be executed. Command-line program will simply cause Windows to first execute cmd.exe anyway, to create the Command Prompt environment the program must run in. <em>Basic "DOS" commands like "dir" or "copy" don't have any .exe "program" to run in any case, and are simply internal functions of cmd.exe.</em></p>
 
@@ -98,7 +98,7 @@ title: 'RunCommand plugin'
 		<li>ANSI</li>
 		</ul>
 
-		<p><b>Note:</b> Although by default cmd.exe will be executed with the \U (UTF-16 Unicode) parameter, that does not mean that any program executed in the Command Prompt window will necessarily produce output in UTF-16. While most internal Windows commands like "dir" will produce UTF-16 output, a great many command-line programs will produce ANSI output. If you get gibberish characters returned by the measure, setting <code>OutputType=ANSI</code> will often correct the issue.</p>
+		<p><b>Note:</b> Although by default cmd.exe will be executed with the /U (UTF-16 Unicode) parameter, that does not mean that any program executed in the Command Prompt window will necessarily produce output in UTF-16. While most internal Windows commands like "dir" will produce UTF-16 output, a great many command-line programs will produce ANSI output. If you get gibberish characters returned by the measure, setting <code>OutputType=ANSI</code> will often correct the issue.</p>
 	</dd>
 
 	<dt id="StartInFolder"><code>StartInFolder</code> <small>Default: <code>Skin folder</code></small></dt>
