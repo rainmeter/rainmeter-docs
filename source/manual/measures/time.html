@@ -206,12 +206,14 @@ title: 'Time measure'
 <li><code>%X</code>: Time representation for system or defined locale. (e.g. "22:55:03")</li>
 <li><code>%y</code>: Year without century (00 - 99).</li>
 <li><code>%Y</code>: Year with century.</li>
-<li><code>%z</code>: ISO 8601 offset from UTC in timezone. (e.g. "-0500")</li>
-<li><code>%Z</code>: Time zone name. These are for the system locale, and cannot be modified using <code>FormatLocale</code>. (e.g. "Eastern Standard Time")</li>
+<li><code>%z</code>: ISO 8601 offset from UTC in timezone (e.g. "-0500"). See "Note" below.</li>
+<li><code>%Z</code>: Time zone name. These are for the system locale, and cannot be modified using <code>FormatLocale</code> (e.g. "Eastern Standard Time"). See "Note" below.</li>
 <li><code>%%</code>: Percent sign.</li>
 <li><code>locale-date</code>: Default system date for the system locale. This code cannot be modified by using <code>TimeStampLocale</code> or <code>FormatLocale</code>.</li>
 <li><code>locale-time</code>: Default system time for the system locale. This code cannot be modified by using <code>TimeStampLocale</code> or <code>FormatLocale</code>.</li>
 </ul>
+
+<p><b>Note:</b> <code>%z</code> and <code>%Z</code> cannot be used in the <a href="#TimeStampFormat">TimeStampFormat</a> option.</p>
 
 <p><b>#</b> modifier: Removes leading zeros in the following numeric codes:<br/>
 <code>%#d, %#H, %#I, %#j, %#m, %#M, %#S, %#U, %#w, %#W, %#y, %#Y</code></p>
