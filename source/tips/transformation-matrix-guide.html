@@ -248,7 +248,7 @@ TransformationMatrix=0.86602;0.5;-0.5;0.86602;63.3975;-36.6025
 ```
 <p>You'll notice that the telltale bottom row makes this new matrix look suspiciously like a transformation matrix. Well, that's because it is. It turns out that multiplying two transformation matrices together just makes a new one! And, if you followed the derivation, this new, single matrix is the exact same as doing one transformation, then the other. If you plug in the values in Rainmeter, you'll get something like this:</p>
 ``` ini
-TransformationMatrix=1.9318;-0.5176;0.5176; 1.9318;-157.0034;-18.1255<br>
+TransformationMatrix=1.9318;-0.5176;0.5176; 1.9318;-157.0034;-18.1255
 ```
 <p>Try it out. Your square will do exactly what it was meant to. First it will rotate itself, with the top-left corner as the center of rotation, then the square doubles in size, keeping the top-right corner where it is.</p>
 <p>This technique will work with any two transformations. In fact, if you wanted to transform it a third time, you just need to multiply a third matrix. It all works as long as the order is preserved.</p>
