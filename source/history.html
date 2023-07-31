@@ -14,15 +14,16 @@ title: 'Version History'
 	<li><span class="badge badge-changed">Changed</span><b>Game Mode:</b> Allow <a href="https://docs.rainmeter.net/manual/bangs/#Quit">!Quit</a> bang to work from the command line while in Game Mode.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated localization strings for Vietnamese, Swedish, Portuguese (Portugal), Estonian, Greek, Hungarian.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Inline lua:</b> Increase stack size if needed.</li>
-	<li><span class="badge badge-changed">Changed</span><b>Update Check:</b> Added minimum Windows checking when updating, to prevent Rainmeter from downloading a new Rainmeter version that is incompatible with the users system.</li>
+	<li><span class="badge badge-added">Added</span><b>Update Check:</b> Added minimum Windows checking when updating, to prevent Rainmeter from downloading a new Rainmeter version that is incompatible with the users system.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Mouse Actions:</b> Fix skin meter <a href="https://docs.rainmeter.net/manual/mouse-actions/#MouseLeaveAction">MouseLeaveAction</a> being delayed when skin is draggable and global dragging is disabled</li>
 	<li><span class="badge badge-fixed">Fixed</span><b>Manage Dialog:</b> Fix dialog global draggable checkbox not updating state when toggling via tray icon.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Default illustro Suite:</b> Update Network.ini. Code change provided by user <b>nek7u</b>.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> Fix cursor changing to a hand when a meter has a mouse wheel action. Code change provided by user <b>Joehuu</b>.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Rainmeter:</b> Fixed an issue with <a href="https://docs.rainmeter.net/manual/skins/rainmeter-section/#OnWakeAction">OnWakeAction</a> on systems that utilize Connected Standby.</li>
-	<li><span class="badge badge-changed">Changed</span><b>WiFi Status:</b> Added <a href="https://docs.rainmeter.net/manual/measures/wifistatus/#WiFiInfoType">WiFiInfoType</a> support for Wifi 7 (802.11be).</li>
+	<li><span class="badge badge-added">Added</span><b>WiFi Status:</b> Added <a href="https://docs.rainmeter.net/manual/measures/wifistatus/#WiFiInfoType">WiFiInfoType</a> support for Wifi 7 (802.11be).</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Skin Installer:</b> Fixed an issue where 64-bit plugins were installed when a 32-bit version of Rainmeter was installed on 64-bit version of Windows.</li>
 </ul>
-		
+
 <h3 id="r3700">December 24, 2022 - 4.5.17 - Revision 3700</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>String meter:</b> <code>FontSize</code> and <code>InlineSetting=Size</code> now accept floating point (i.e. decimal) values.</li>
@@ -51,7 +52,6 @@ title: 'Version History'
 	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated localization strings for Finnish, Portuguese (Brazil), Italian.</li>
 </ul>
 
-
 <h3 id="r3663">September 6, 2022 - 4.5.14 - Revision 3663</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>Lua Scripting:</b> Allow the Lua Update() function to return 2 values (number and string). The order is unimportant. Example: <code>return 'twenty-five', 25</code><br/>Suggested by user <b>@deathcrafter</b>.</li>
@@ -78,7 +78,7 @@ title: 'Version History'
 	<li><span class="badge badge-changed">Changed</span><b>Settings:</b> Deprecated "HideOnMouseOver" and replaced with "OnHover" in Rainmeter.ini.</li>
 	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated localization strings for Serbian and Indonesian.</li>
 </ul>
-		
+
 <h3 id="r3616">March 2, 2022 - 4.5.12 - Revision 3616</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>Custom Plugin functions:</b> Matching leading and trailing quotes (double and single) will now be stripped from each parameter before being sent to the plugin.</li>
@@ -129,7 +129,7 @@ title: 'Version History'
 	<li><span class="badge badge-fixed">Fixed</span><b>NowPlaying:</b> Corrected a range-check issue that allowed the volume value for the CAD plugin to all outside of 0-100.</li>
 	<li><span class="badge badge-fixed">Changed</span><b>SysInfo measure:</b> Take into account the connection/operational status for finding the "best" interface when specifying the name of the adapter. This will also correct an issue with duplicate interface "names" in Windows.</li>
 </ul>
-		
+
 <h3 id="r3573">November 29, 2021 - 4.5.6 - Revision 3573</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>SysInfo:</b> Corrected an issue with the <code>NUM_MONITORS</code> value for <code>SysInfoType</code>.</li>
