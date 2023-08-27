@@ -234,8 +234,8 @@ roundedNum = SKIN:ParseFormula('(Round('..numToRound..'))')
 
 	<dt id="GetOption"><code>GetOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
 	<dd>
-		<p>Returns the current value of the named option as a string. If the option does not exist, returns the given default value, or <code>''</code> if no default is given.</p>
-		<p><b>Example:</b> <code>MyGroup = MyMeasure:GetOption('Group', 'None')</code></p>
+		<p>Returns the current value of the named option as a string. If the option does not exist, returns the given default value, or '' if no default is given. If the optional boolean parameter bReplaceMeasures is provided, when set to false it will not replace any section variables before retrieving that option.</p>
+		<p><b>Example:</b> <code>MySolidColor = MyMeter:GetOption('SolidColor', '000000')</code></p>
 	</dd>
 
 	<dt id="GetNumberOption"><code>GetNumberOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
