@@ -232,11 +232,12 @@ roundedNum = SKIN:ParseFormula('(Round('..numToRound..'))')
 		<p><b>Example:</b> <code>MyMeasureValue = MyMeasure:GetStringValue()</code></p>
 	</dd>
 
-	<dt id="GetOption"><code>GetOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
+	<dt id="GetOption"><code>GetOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default, bReplaceMeasures</em></code></small></dt>
 	<dd>
-		<p>Returns the current value of the named option as a string. If the option does not exist, returns the given default value, or '' if no default is given. If the optional boolean parameter bReplaceMeasures is provided, when set to false it will not replace any section variables before retrieving that option.</p>
-		<p><b>Example:</b> <code>MySolidColor = MyMeter:GetOption('SolidColor', '000000')</code></p>
+		<p>Returns the current value of the named option as a string. If the option does not exist, returns the given default value, or <code>''</code> if no default is given. If the optional boolean parameter <code>bReplaceMeasures</code> is provided, when set to <code>false</code> it will not replace any section variables before retrieving that option.</p>
+		<p><b>Example:</b> <code>MyGroup = MyMeasure:GetOption('Group', 'None')</code></p>
 	</dd>
+
 
 	<dt id="GetNumberOption"><code>GetNumberOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
 	<dd>
@@ -298,10 +299,9 @@ roundedNum = SKIN:ParseFormula('(Round('..numToRound..'))')
 <p>A <code>Meter</code> object is created using <a href="#GetMeter">GetMeter</a>. It creates a handle to a specific <a href="!meters/">meter</a> in the skin, which can then be used with the following functions to act on the meter.</p>
 <p><b>Example:</b> <code>MyMeter = SKIN:GetMeter('MeterName')</code></p>
 
-<dl>
-	<dt id="GetOptionMeter"><code>GetOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default</em></code></small></dt>
+	<dt id="GetOptionMeter"><code>GetOption</code> <small>Parameters: <code><b>OptionName</b><em>, Default, bReplaceMeasures</em></code></small></dt>
 	<dd>
-		<p>Returns the current value of the named option as a string. If the option does not exist, returns the given default value, or <code>''</code> if no default is given.</p>
+		<p>Returns the current value of the named option as a string. If the option does not exist, returns the given default value, or <code>''</code> if no default is given. If the optional boolean parameter <code>bReplaceMeasures</code> is provided, when set to <code>false</code> it will not replace any section variables before retrieving that option.</p>
 		<p><b>Example:</b> <code>MySolidColor = MyMeter:GetOption('SolidColor', '000000')</code></p>
 	</dd>
 
