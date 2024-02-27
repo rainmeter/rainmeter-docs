@@ -3,8 +3,9 @@ layout: docs
 permalink: tips/launching-windows-special-folders/
 title: 'Launching Windows Special Folders'
 ---
-<p><em>Tip by kenz0 and JSMorley</em></p>
+<p><em>Tip by kenz0, JSMorley and the community</em></p>
 <p>Windows has many "special folders" like "My Computer" and "Recycle Bin" that are not part of the normal folder system you can specify with a "path" on an action in Rainmeter, or launch differently then they appear in Explorer. </p>
+<h2 id="WindowsShellCommands">Windows Shell: commands</h2>
 <p>These folders can be accessed by using the Windows <code>Shell:</code> command and the CLSID identifier codes that Windows assigns to these folders in the Windows Registry. If you know the codes, you can launch these with ease.</p>
 
 ``` txt
@@ -268,8 +269,9 @@ W=38
 H=38
 LeftMouseDownAction=["Shell:My Pictures"]
 ```
+
+<h2 id="GeneralShortcutCommands">General Shortcut Commands</h2>
 <p>Another way to access certain special Windows folders and functions is by knowing and using some commands Windows supports:</p>
-<p><b>General Shortcut Commands:</b></p>
 <ul>
 <li><b>My Computer with C drive selected</b><br>
 explorer.exe /select,c</li>
@@ -313,8 +315,51 @@ LeftMouseUpAction=[sndvol32.exe /tray Normal]
 ``` ini
 LeftMouseUpAction=[shell:Desktop]
 ```
-<p><em>If a space is included, you need to enclose with double quotes. e.g. ["shell:Start Menu"]</em></p>
+<p><em>If a space is included, you need to enclose with double quotes. e.g. <code>["shell:Start Menu"]</code></em></p>
 <p><em>You can send multiple commands simultaneously by surrounding each command in brackets.</em></p>
 ``` ini
 LeftMouseUpAction=[shell:Desktop][shell:SendTo]["shell:Start Menu"]
+```
+
+<h2 id="WindowsUWPAppsCommands">Windows UWP Apps Commands</h2>
+<h3>Launching UWP "apps"</h3>
+<p><b>Note:</b> These commands exist only from Windows 8 onwards.</p>
+<p>Since Windows 8, Microsoft introduced a new software enviourment known as UWP (formerly known as Metro-style apps). These can be run using the <code>Shell:AppsFolder</code> command, along with special parameters.</p>
+
+<p>The command should take the form of <code><b>Shell:AppsFolder\</b>FolderName<b>!</b>ShortCutName</code>.</p>
+<p>The necesary info for lunching an app are:</p>
+<ul>
+	<li>The Folder name</li>
+	<ul>
+		<li>Found by opening the <em>"C:\Users\YourName\AppData\Local\Packages"</em> folder</li>
+	</ul>
+	<li>The Shortcut name</li>
+	<ul>
+		<li>Found by opening the <code><em>Shell:AppsFolder</em></code> folder (to get there, put that path into Windows Run), creating a Desktop shortcut of the app you want and inspecting its proprieties.</li>
+		<li><b>Note:</b> The majority of the time, the Shortcut name will be <code>App</code>, there are exceptions however, like for the Calendar app.</li>
+	</ul>
+</ul>
+
+<br></br>
+<p>So, to get the necesary info you will have to:</p>
+<ul>
+	<li>Open the folder <em>"C:\Users\YourName\AppData\Local\Packages"</em></li>
+	<li>Find the application you want, and copy that "folder"'s name.</li>
+	<li>Inside the folder, copy the name of the "shortcut" (usually "App" with applications included with Windows)</li>
+	<li>Put the two on a shell command of <code><b>Shell:AppsFolder\</b>FolderName<b>!</b>ShortCutName</code></li>
+</ul>
+<p>An example for the Camera app would be:</p>
+<ul>
+	<li>The folder name is <em>"Microsoft.WindowsCamera_8wekyb3d8bbwe"</em></li>
+	<li>The shortcut name inside the folder is "App"</li>
+</ul>
+``` ini
+LeftMouseUpAction=["Shell:AppsFolder\Microsoft.WindowsCamera_8wekyb3d8bbwe!App"]
+```
+
+<h3>Lunching Windows Settings app</h3>
+<p>To launch the Settings app and tabs within it, use the <code>ms-settings:</code> URI scheme. All the URIs can be found <a href="https://learn.microsoft.com/en-us/windows/uwp/launch-resume/launch-settings-app#ms-settings-uri-scheme-reference">here</a>.</p>
+``` ini
+LeftMouseUpAction=[ms-settings:]
+LeftMouseUpAction=[ms-settings:bluetooth]
 ```
