@@ -1,0 +1,205 @@
+---
+layout: post
+permalink: troubleshoot/
+title: 'Troubleshoot'
+---
+
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+    // check if the URL has a hash
+	var hash = window.location.hash;
+    if (!hash) return;
+
+	// the following code just gets the "data-target" value in the children of the element that has the hash
+    var target = document.querySelector(hash);
+    if (!target) return;
+
+    var dataTarget = target.querySelector("[data-target]");
+    if (!dataTarget) return;
+
+    var collapseTarget = document.querySelector(dataTarget.getAttribute("data-target"));
+    if (!collapseTarget) return;
+
+    $(collapseTarget).collapse("show");
+});
+</script>
+
+<style>
+.card-header {
+  padding: .50rem 1.25rem;
+}
+</style>
+
+<h1>Troubleshoot</h1>
+<p>Oftentimes, you may run into problems while using Rainmeter. This page tries to detail most common problems and solutions for how to fix them.</p>
+<p>Since Rainmeter is ever-changing, problems and solutions on this page may change or be removed, make sure you are using the latest version, as that is what the solutions on this page assume.</p>
+<p>Rainmeter will run on Windows 7 (<a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB976932">Service Pack 1</a> and <a href="https://www.microsoft.com/download/details.aspx?id=36805">Platform Update</a> required) and above. <a href="https://support.microsoft.com/en-us/topic/the-net-framework-4-7-1-offline-installer-for-windows-2a7d0d5e-92f2-b12d-aed4-4f5d14c8ef0c">.NET Framework 4.7.1</a> and above needs to be installed to use Rainmeter, the last update for Windows 7, as well as Windows 8 and above, have the .NET Framework pre-installed.</p>
+<p><b>Note:</b> Entries can be selected with <b>CTRL-Click</b> to add an <b>#anchor</b> to the URL. This makes it easy to link to a specific part of a page. Try it below.</p>
+
+<h1>TEMPORARY LIST</h1>
+<p>All the entries that will be added in the next commits</p>
+<ul>
+	<li>Rainmeter is crashing on start / Rainmeter Icon dissapears when hovering over it.</li>
+	<li>Skin looks blurry</li>
+	<li>Unable to install Rainmeter</li>
+	<li>Unable to install Rainmeter skins</li>
+	<li>Edit skin dosen't work</li>
+	<li>AudioLevel (everything)</li>
+	<li>Skins show bigger/lower usage than actual CPU Usage in Task Manager</li>
+	<li>"Rainmeter.dll load error 126."</li>
+</ul>
+
+<!-- 
+	The code for the accordion is from https://getbootstrap.com/docs/4.0/components/collapse/#accordion-example .
+	To make it work with CTRL-Click without modifying the code in the main.ejs file, we add our own `id` to `h5`.
+	The <script> above takes care of squeezing the right chord when the page is refreshed.
+ -->
+<div id="accordion">
+	<div class="card">
+		<div class="card-header" id="headingOne">
+			<h5 class="mb-0" id="test">
+				<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+					aria-controls="collapseOne">
+					Rainmeter is crashing on start / Rainmeter Icon dissapears when hovering over it.
+				</button>
+			</h5>
+		</div>
+		<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+			<div class="card-body">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingTwo">
+			<h5 class="mb-0" id="test2">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+					aria-expanded="false" aria-controls="collapseTwo">
+					Skins look blurry
+				</button>
+			</h5>
+		</div>
+		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+			<div class="card-body">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingThree">
+			<h5 class="mb-0">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+					aria-expanded="false" aria-controls="collapseThree">
+					Collapsible Group Item #3
+				</button>
+			</h5>
+		</div>
+		<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+			<div class="card-body">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingFour">
+			<h5 class="mb-0">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour"
+					aria-expanded="false" aria-controls="collapseFour">
+					Collapsible Group Item #3
+				</button>
+			</h5>
+		</div>
+		<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+			<div class="card-body">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingFive">
+			<h5 class="mb-0">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive"
+					aria-expanded="false" aria-controls="collapseFive">
+					Collapsible Group Item #3
+				</button>
+			</h5>
+		</div>
+		<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+			<div class="card-body">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingSix">
+			<h5 class="mb-0">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix"
+					aria-expanded="false" aria-controls="collapseSix">
+					Collapsible Group Item #3
+				</button>
+			</h5>
+		</div>
+		<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+			<div class="card-body">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingSeven">
+			<h5 class="mb-0">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven"
+					aria-expanded="false" aria-controls="collapseSeven">
+					Collapsible Group Item #3
+				</button>
+			</h5>
+		</div>
+		<div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+			<div class="card-body">
+				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+			</div>
+		</div>
+	</div>
+</div>
+<br>
