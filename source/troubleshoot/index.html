@@ -5,29 +5,35 @@ title: 'Troubleshoot'
 ---
 
 <script>
-window.addEventListener("DOMContentLoaded", function() {
-    // check if the URL has a hash
-	var hash = window.location.hash;
-    if (!hash) return;
+	// this script opens the necesary section when the #hash is in the URL
 
-	// the following code just gets the "data-target" value in the children of the element that has the hash
-    var target = document.querySelector(hash);
-    if (!target) return;
+	window.addEventListener("DOMContentLoaded", function () {
+		// check if the URL has a hash
+		var hash = window.location.hash;
+		if (!hash) return;
 
-    var dataTarget = target.querySelector("[data-target]");
-    if (!dataTarget) return;
+		// the following code just gets the "data-target" value in the children of the element that has the hash
+		var target = document.querySelector(hash);
+		if (!target) return;
 
-    var collapseTarget = document.querySelector(dataTarget.getAttribute("data-target"));
-    if (!collapseTarget) return;
+		var dataTarget = target.querySelector("[data-target]");
+		if (!dataTarget) return;
 
-    $(collapseTarget).collapse("show");
-});
+		var collapseTarget = document.querySelector(dataTarget.getAttribute("data-target"));
+		if (!collapseTarget) return;
+
+		$(collapseTarget).collapse("show");
+	});
 </script>
 
 <style>
-.card-header {
-  padding: .50rem 1.25rem;
-}
+	.card-header {
+		padding: .50rem 1.25rem;
+	}
+
+	.btn {
+		white-space: normal !important;
+	}
 </style>
 
 <h1>Troubleshoot</h1>
@@ -36,28 +42,32 @@ window.addEventListener("DOMContentLoaded", function() {
 <p>Rainmeter will run on Windows 7 (<a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB976932">Service Pack 1</a> and <a href="https://www.microsoft.com/download/details.aspx?id=36805">Platform Update</a> required) and above. <a href="https://support.microsoft.com/en-us/topic/the-net-framework-4-7-1-offline-installer-for-windows-2a7d0d5e-92f2-b12d-aed4-4f5d14c8ef0c">.NET Framework 4.7.1</a> and above needs to be installed to use Rainmeter, the last update for Windows 7, as well as Windows 8 and above, have the .NET Framework pre-installed.</p>
 <p><b>Note:</b> Entries can be selected with <b>CTRL-Click</b> to add an <b>#anchor</b> to the URL. This makes it easy to link to a specific part of a page. Try it below.</p>
 
-<h1>TEMPORARY LIST</h1>
-<p>All the entries that will be added in the next commits</p>
-<ul>
-	<li>Rainmeter is crashing on start / Rainmeter Icon dissapears when hovering over it.</li>
-	<li>Skin looks blurry</li>
-	<li>Unable to install Rainmeter</li>
-	<li>Unable to install Rainmeter skins</li>
-	<li>Edit skin dosen't work</li>
-	<li>AudioLevel (everything)</li>
-	<li>Skins show bigger/lower usage than actual CPU Usage in Task Manager</li>
-	<li>"Rainmeter.dll load error 126."</li>
-</ul>
+<!-- 
+TEMPORARY LIST
+All the entries that will be added in the next commits
+	✅ Rainmeter is crashing on start / Rainmeter Icon dissapears when hovering over it.
+	✅ Skin looks blurry
+	✅ Unable to install Rainmeter skins
+	✅ Edit skin dosen't work
+	✅ Usage Monitor Crashing
+	Unable to install Rainmeter
+	AudioLevel (everything)
+	Skins show bigger/lower usage than actual CPU Usage in Task Manager
+	"Rainmeter.dll load error 126."
+	✅ How to report Rainmeter crashes
+-->
 
 <!-- 
 	The code for the accordion is from https://getbootstrap.com/docs/4.0/components/collapse/#accordion-example .
 	To make it work with CTRL-Click without modifying the code in the main.ejs file, we add our own `id` to `h5`.
 	The <script> above takes care of squeezing the right chord when the page is refreshed.
- -->
+	The `id` and `data-target` are arbitrary, just following the example.
+-->
+
 <div id="accordion">
 	<div class="card">
 		<div class="card-header" id="headingOne">
-			<h5 class="mb-0" id="test">
+			<h5 class="mb-0" id="RainmeterCrashing">
 				<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
 					aria-controls="collapseOne">
 					Rainmeter is crashing on start / Rainmeter Icon dissapears when hovering over it.
@@ -66,138 +76,174 @@ window.addEventListener("DOMContentLoaded", function() {
 		</div>
 		<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
 			<div class="card-body">
-				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				<p>Occasionally when Rainmeter is starting up, it will crash immediately (or after a period of freezing).</p>
+				<p>This can happen due to various reasons, including:</p>
+				<ol>
+					<li><b>Attempting to load a "bad" skin</b> - which may contain things such as infinite update loops, actual Rainmeter bugs, broken plugins etc.</li>
+					<li><b>The setting config file gets corrupted</b></li>
+					<!--- I couldn't make corrupted PerfMon be a link more easily -->
+					<li><b>Windows problems</b> - this includes faulty Windows Installation, faulty .NET installations, faulty drivers,	<a style="color:#007bff;" onclick="$('#collapseFive').collapse()">corrupted Performance Monitor counters database</a>, missing winlanapi.dll dependency (only on Windows Server) etc.</li>
+				</ol>
+				<p>If this is happening, a solution is opening Rainmeter using <a href="../manual/user-interface/#SafeStart">Safe Start</a>. You can hold down the <code>CTRL</code> key while running the shortcut or .exe for Rainmeter, and it will offer to <b>Safe Start</b> Rainmeter.</p>
+				<p>What this will do is unload all active skins, and load the default Illustro Layout that comes with Rainmeter.</p>
+				<p>This does not remove or in any way harm the skins you have, but simply loads the default Illustro Layout. Your current setup will be saved as a Layout in @Backup.</p>
 			</div>
 		</div>
 	</div>
 
 	<div class="card">
 		<div class="card-header" id="headingTwo">
-			<h5 class="mb-0" id="test2">
+			<h5 class="mb-0" id="SkinsBlurry">
 				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
 					aria-expanded="false" aria-controls="collapseTwo">
-					Skins look blurry
+					Rainmeter skins displaying at "wrong size" / are blurry
 				</button>
 			</h5>
 		</div>
 		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 			<div class="card-body">
-				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				<p>You may spot a skin looking blurry, or a skin set to be sized exactly your display resolution but ended being larger than you thought.</p>
+				<p>This is a Windows issue caused by the default DPI setting.</p>
+				<p>By default, Windows set your DPI to 125%, which makes all Windows Forms bigger, unless specified not to on an individual app basis.</p>
+				<p>Regarding whether you want to change your system-wide DPI or Rainmeter-specific DPI, you can either:</p>
+				<ul>
+					<li><b>Change the Rainmeter Specific DPI</b></li>
+					<p>To change Rainmeter to ignore this and use 100% DPI, find the "shortcut" for Rainmeter, which you will find in your Startup folder in Windows:</p>
+					<div class="exampleprev">
+						<a href="./img/DPI2.jpg" data-fancybox><img src="./img/DPI2.jpg"></a>
+					</div>
+					<p>Right-click that shortcut, and select "Properties". Under Properties, select the "Compatibility" tab, and do this:</p>
+					<div class="exampleprev">
+						<a href="./img/DPI1.jpg" data-fancybox><img src="./img/DPI1.jpg"></a>
+					</div>
+					<div class="exampleprev">
+						<a href="./img/DPI3.jpg" data-fancybox><img src="./img/DPI3.jpg"></a>
+					</div>
+					<p>Restart Rainmeter using the shortcut.</p>
+					<p>Note that there are a couple of places in Rainmeter that won't be effected by this, since they are things that are not actually created and rendered by Rainmeter, but by Windows itself. These are the FontSize in InputText fields, and the size of context menus in skins. These will always use the DPI setting in Windows.</p>
+					<li><b>Change system-wide DPI</b></li>
+					<p>The setting for DPI is done in the Setting panels in Windows.</p>
+					<div class="exampleprev">
+						<a href="./img/DPI4.jpg" data-fancybox><img src="./img/DPI4.jpg"></a>
+					</div>
+				</ul>
 			</div>
 		</div>
 	</div>
 
 	<div class="card">
 		<div class="card-header" id="headingThree">
-			<h5 class="mb-0">
+			<h5 class="mb-0" id="UnableToInstallRainmeterSkins">
 				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
 					aria-expanded="false" aria-controls="collapseThree">
-					Collapsible Group Item #3
+					Unable to install Rainmeter skins
 				</button>
 			</h5>
 		</div>
 		<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 			<div class="card-body">
-				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				<ul>
+					<p>Microsoft updates are causing more problems with installing Rainmeter skins. Here are some of the main culprits:</p>
+					<li><b>Controlled Folder Access</b></li>
+						<p>In order to react to the recent bout of "ransomware" attacks, where some malware encrypts some of your personal files, and offers to unencrypt them for a payment, Windows has added a new optional feature, <a href="https://www.howtogeek.com/329532/how-to-protect-your-files-from-ransomware-with-windows-defenders-controlled-folder-access/">Controlled Folder Access</a>.</p>
+						<p>What this does is "protect" certain personal folders that have been the target of these "ransomware" attacks like: Documents, Music, Videos, Pictures, Favorites, Desktop.</p>
+						<p>If this feature is turned on, no applications will be allowed to write to these folders, unless they are "whitelisted" in the security settings for the feature. There are some well trusted applications (almost all of them those owned by Microsoft itself) that are automatically whitelisted, but all others will need to be added if you want them to be able to write to these folders.</p>
+						<p>In order to use Rainmeter with this feature turned on, the following program files will need to be whitelisted:</p>
+						<ul>
+							<li><p><code>C:\Program Files\Rainmeter\Rainmeter.exe</code></p></li>
+							<li><p><code>C:\Program Files\Rainmeter\SkinInstaller.exe</code></p></li>
+						</ul>
+						<p>Otherwise, Rainmeter.exe will not be able to write to the <code>..Documents\Rainmeter\Skins</code> folder, and will be unusable. In addition, you must whitelist SkinInstaller.exe or it will not be able to install .rmskins to your skins folder, and you will not be able to save .rmskin files you create to the default Desktop location.</p>
+				
+					<li><b>OneDrive</b></li>
+						<p>Windows 10 defaulted the User Profile folders to the OneDrive storage folder, while this may be great for personal use, the OneDrive folder revokes write/read permission during syncing or "when phoning home" and stops Rainmeter from creating / modifying skin files and folders.</p>
+						<p>To rectify this, you need to add/change the <code><a href="../manual/settings/rainmeter-section/#SkinPath">SkinPath</a></code> option, inside the settings file.</p>
+						<p>To get to the settings file:</p>
+						<ul>
+							<li><b>From inside Rainmeter:</b> Open the Manage Window or right click the Tray Icon, click <i>Edit Settings</i>.</li>
+							<li><b>From outside Rainmeter:</b> Press WIN+R and type <code>%AppData%\Rainmeter\rainmeter.ini</code> to open the Settings file.</li>
+						</ul>
+						<br>
+						<p>Now, either modify the existing value for that option or add it under [Rainmeter]. <b>The path should not be another folder on OneDrive or any Program Files folder on any of the volumes.</b></p>
+				</ul>
 			</div>
 		</div>
 	</div>
 
 	<div class="card">
 		<div class="card-header" id="headingFour">
-			<h5 class="mb-0">
+			<h5 class="mb-0" id="EditSkinEditSettingsNotWorking">
 				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour"
 					aria-expanded="false" aria-controls="collapseFour">
-					Collapsible Group Item #3
+					Edit skin/Edit settings button dosen't work
 				</button>
 			</h5>
 		</div>
 		<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
 			<div class="card-body">
-				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				<p>When you click either of those buttons, Rainmeter searches for the executable associated with the .ini file format and attempts to launch it. If the executable exist inside a protected folder (which it dose in Windows 11), Rainmeter's attempt to launch the executable errors out due to a lack of permissions.</p>
+				<p>You need to change/add the <code><a href="../manual/settings/rainmeter-section/#ConfigEditor">ConfigEditor</a></code> option in the settings file, ironically, since the Edit settings button doesn't work, we'll have to open the file manually ourselves.</p>
+				<p>Press WIN+R and type <code>%AppData%\Rainmeter\rainmeter.ini</code> to open the Settings file. After that, either modify the existing line or add ConfigEditor so it looks like <code>ConfigEditor=C:\WINDOWS\system32\notepad.exe</code></p>
+				<p>Restart Rainmeter and now Edit Skin should work.</p>
 			</div>
 		</div>
 	</div>
 
 	<div class="card">
 		<div class="card-header" id="headingFive">
-			<h5 class="mb-0">
+			<h5 class="mb-0" id="CorruptedPerformanceMonitor">
 				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive"
 					aria-expanded="false" aria-controls="collapseFive">
-					Collapsible Group Item #3
+					Corrupted Performance Monitor counters database
 				</button>
 			</h5>
 		</div>
 		<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
 			<div class="card-body">
-				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				<p>While rare, it is possible for the database of counters that is maintained by Performance Monitor in Windows to become damaged, which will cause the UsageMonitor plugin to stop functioning correctly.</p>
+				<p>In many cases, this can be corrected by "rebuilding" the database from the Windows command line.</p>
+				<p>Run cmd.exe, being sure to run "As administrator". At the command line, enter the following commands in order:</p>
+				``` dos
+				cd c:\windows\system32
+				lodctr /R
+				cd c:\windows\sysWOW64
+				lodctr /R
+				```
+				<p>You should see the following results:</p>
+				<p><code>Info: Successfully rebuilt performance counter setting from system backup store</code></p>
 			</div>
 		</div>
 	</div>
 
 	<div class="card">
 		<div class="card-header" id="headingSix">
-			<h5 class="mb-0">
+			<h5 class="mb-0" id="ReportCrashing">
 				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix"
 					aria-expanded="false" aria-controls="collapseSix">
-					Collapsible Group Item #3
+					How to report if Rainmeter crashes
 				</button>
 			</h5>
 		</div>
 		<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
 			<div class="card-body">
-				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-			</div>
-		</div>
-	</div>
-
-	<div class="card">
-		<div class="card-header" id="headingSeven">
-			<h5 class="mb-0">
-				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven"
-					aria-expanded="false" aria-controls="collapseSeven">
-					Collapsible Group Item #3
-				</button>
-			</h5>
-		</div>
-		<div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
-			<div class="card-body">
-				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-				moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-				Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-				shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-				proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-				aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+				<ul>
+					<li><b>If Rainmeter crashes without warning</b></li>
+					<p>Use the Event Viewer, which usually logs events that have taken place, such as a failure to start a component or to complete an action.</p>
+					<p>Open up Event Viewer > on the left side, open the Windows Logs folder > chose Application > wait for it to load > look for the most recent Error and click on it > see if it's related to Rainmeter.exe > click the area of the text and inspect it.</p>
+					<p>Note that this is only orientative, most of the time, errors that appear here are those related to Out of Memory Access..</p>
+					<p>To fix these errors, most people have reinstalled Rainmeter, reinstalled skins, reinstalled plugins or have run System File Checker.</p>
+					<li><b>Creating a crash dump</b></li>
+					<p>You can help the devs by <a href="https://helgeklein.com/blog/2018/10/creating-an-application-crash-dump/">creating a crash dump file</a>. If you do, please:</p>
+					<ul>
+						<li>Verify first that you are running the latest version of Rainmeter (try also the latest beta version if one is available)</li>
+						<li>Make sure that you are able to reproduce the crash</li>
+						<li>Check the forum to make sure that the crash hasn't been reported already (you can add more context or info if needed)</li>
+						<li>If the crash hasn't been reported earlier describe the exact steps how it can be reproduced</li>
+						<li>Write your system configuration (operating system, etc), what skins you are using and provide a download link to the dmp file</li>
+					</ul>
+					<br>
+					<p>If you do so, please report them in the <a href="https://forum.rainmeter.net/viewforum.php?f=14">Bugs & Feature Suggestions</a> over on the <a href="https://forum.rainmeter.net/">Rainmeter Forum</a>.</p>
+				</ul>
 			</div>
 		</div>
 	</div>
