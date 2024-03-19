@@ -57,6 +57,7 @@ All the entries that will be added in the next commits
 	✅ Edit skin dosen't work
 	✅ Usage Monitor Crashing
 	✅ Rainmeter Skin Installer format files not working
+	✅ Windows shows that Rainmeter takes up a lot of space when installed.
 	Unable to install Rainmeter
 	AudioLevel (everything)
 	Skins show bigger/lower usage than actual CPU Usage in Task Manager
@@ -133,6 +134,35 @@ All the entries that will be added in the next commits
 						<a href="./img/DPI4.jpg" data-fancybox><img src="./img/DPI4.jpg"></a>
 					</div>
 				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingInstallationHuge">
+			<h5 class="mb-0" id="InstallationHuge">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseInstallationHuge"
+					aria-expanded="false" aria-controls="collapseInstallationHuge">
+					Windows shows that Rainmeter takes up a lot of space when installed.
+				</button>
+			</h5>
+		</div>
+		<div id="collapseInstallationHuge" class="collapse" aria-labelledby="headingInstallationHuge" data-parent="#accordion">
+			<div class="card-body">
+				<p>Occasionally when the Rainmeter app is installed, inside the <em>Settings  > Apps > Apps & features</em> menu it will show that it takes up GBs, TBs or other absurd high values of storage space used. It's impossible for Rainmeter to genuinely take up this amount of storage space.</p>
+				<p>This is an effect caused by how Windows gathers the necesary information - to show the used space - and an error that the user might have caused. This problem dose not affect how Rainmeter functions.</p>
+				<p>Typically, users experiencing this issue have altered the default installation path of Rainmeter, without assigning a dedicated folder for it. The Rainmeter installer evaluates the directory structure of the chosen installation location and records that overall size in the system registry.</p>
+				<p>As refference, Rainmeter's combined size of the installer, the Program Files folder and the Skins folder when first installed is less than 10 MB.</p>
+				<br>
+				<p>If you are experiencing one of these issues, do the following:</p>
+				<ol>
+					<li>Perform an uninstall of Rainmeter. You do not need to uninstall any skins. If you cannot run the uninstaller, perform a <a href="/tips/clean-rainmeter-uninstall/">Clean Uninstall</a>.</li>
+					<li>Re-download the latest release version of <a href="https://www.rainmeter.net/">Rainmeter</a>. You may want to save the installer in a different location than the previous downloaded version that did not work.</li>
+					<li>Run the installer. Select the "Standard installation". <b>Make sure</b> it installs to the <code>C:\Program Files\Rainmeter\</code> folder.</li>
+					<li>Verify the "size" of all the contents in the <code>C:\Program Files\Rainmeter\</code> folder (you can right-click on the Rainmeter folder using Windows Explorer and select "Properties"). It should be less than 10 MB.</li>					
+				</ol>
+				<br>
+				<p>If you are still experiencing the issue after completing these steps, <a href="https://forum.rainmeter.net/viewtopic.php?f=14&t=34591&p=171330">please report back to us!</a></p>
 			</div>
 		</div>
 	</div>
