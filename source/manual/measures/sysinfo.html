@@ -128,18 +128,26 @@ Measure=SysInfo
 	<dd>
 		<p>An additional selector option that can be used to define an instance for some <a href="#SysInfoType">SysInfoType</a> values.</p>
 
+		<br>
+		
 		<p><b>Network Interface Controller</b></p>
 		<p>For <code>SysInfoType</code> values related to network information, this will identify the network interface controller (NIC) to use.<p>
 		<p>This can be defined in one of several ways:
 		<ul>
 			<li>The string value <code>Best</code>, which will automatically detect the active interface. If not specified, this is the default.</li>
-			<li>The description (name) of the network interface controller. For example, <code>Qualcomm Wireless Network Adapter</code>.</li>
+			<li>The name of the network interface controller. For example, <code>Qualcomm AR938x Wireless Network Adapter</code>.</li>
 			<li>The alias of the network interface. For example, <code>Ethernet</code> or <code>Wi-Fi 3</code>.</li>
 			<li>The index number of the network interface controller. This number can be found by starting Rainmeter with <a href="https://docs.rainmeter.net/manual/user-interface/manage/#Logging">Debug</a> turned on, but be aware that these numbers can change during normal usage of Windows.</li>
 		</ul></p>
+		
 		<p>Example: <code>SysInfoData=Best</code></p>
-		<p><b>Note:</b> When the option is set to <code>Best</code>, the function will select a "wired" network connection in preference to a "wireless" one, if both are active.</p>
-		<p>When the option is set to <code>Best</code>, <code>DynamicVariables=1</code> must be set on the measure if you want it to automatically react to changes in the active interface. This should be done if for instance you have a laptop or other computer that you switch between wired and wireless connections, or if you change your connection using a VPN.</p>
+		<p><b>Notes:</b></p>
+		<p>When the option is set to <code>Best</code>, the function will select a "wired" network connection in preference to a "wireless" one, if both are active.</p>
+		<p>When the option is set to <code>Best</code>, <code>DynamicVariables=1</code> must be set on the measure if you want it to automatically react to changes in the active interface. This should be done if for instance you have a laptop or other computer that you switch between wired and wireless connections.</p>
+
+		<p>Additional general help with finding your NIC can be found at <a href="/tips/finding-your-network-interface-for-sysInfo-and-net/">Finding your Network Interface for SysInfo and Net</a>.</p>
+
+		<br>
 
 		<p><b>Monitor number</b></p>
 		<p>For <code>SysInfoType</code> values related to monitor information, this will identify the monitor number to use.</p>

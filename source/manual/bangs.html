@@ -16,9 +16,18 @@ title: 'Bangs'
 <li><a href="#Deprecated"><em>Deprecated bangs</a></em></li>
 </ul>
 
-<p>Bangs can also be used from the Windows command line as a parameter to the Rainmeter.exe executable. Example: <code>"C:\Program Files\Rainmeter\Rainmeter.exe" !RefreshApp</code>.</p>
-
 <p><b>Note:</b> Many bangs have a <code>Config</code> parameter. Unless otherwise specified, valid values are the <a href="!skins/#Config">config name</a> of a currently loaded skin to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins. When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
+
+<h3>Command Line Arguments</h3>
+
+<p>Bangs can also be used from the Windows command line as a parameter to the Rainmeter.exe executable. Examples:</p>
+
+<ul>
+	<li><code>"C:\Program Files\Rainmeter\Rainmeter.exe" !RefreshApp</code></li>
+	<li><code>"C:\Program Files\Rainmeter\Rainmeter.exe" !SetVariable "textSize" "12" "illustro\Clock"</code></li>
+</ul>
+<p><b>Note:</b> Any variable of any kind, including <a href="manual/variables/built-in-variables/">Built-In Variables</a>, are not executed when calling Rainmeter from the command line. Likewise, the <code>Config</code> parameter is always required in places where it is treated as optional.</p>
+
 
 <h2 id="OS">Operating System bangs</h2>
 <dl>
@@ -97,7 +106,9 @@ title: 'Bangs'
 
 	<dt id="Quit"><code>!Quit</code></dt>
 	<dd>
-		Quits Rainmeter.
+		Quits Rainmeter.<br>
+		</br>
+		<b>Note:</b> This becomes the only bang that can be executed from the command line when <a href="!user-interface/manage/#GameModeTab">Game Mode</a> and <code>Unload all skins</code> is turned on.
 	</dd>
 
 	<dt id="Play"><code>Play</code> <small>Parameter: <code><b>SoundFile</b></code></small></dt>
@@ -158,9 +169,11 @@ title: 'Bangs'
 		<li><code>Section</code> (required): If the section does not exist in the file, a new section will be written at the end of the file.</li>
 		<li><code>Key</code> (required): If the key does not exist under the section, a new key will be written at the end of the section.</li>
 		<li><code>Value</code> (required): Value to be written. Any previous value will be overwritten.</li>
-		<li><code>FilePath</code> (optional): If not specified, the current skin file is used. The file must exist and must be located under either <code>#SKINSPATH#</code> or <code>#SETTINGSPATH#</code>.</li>
+		<li><code>FilePath</code> (optional*): If not specified, the current skin file is used. The file must exist and must be located under either <code>#SKINSPATH#</code> or <code>#SETTINGSPATH#</code>.</li>
 		</ul>
 		<br><b>Example:</b> <code>!WriteKeyValue Variables MyFontName Arial "#@#Variables.inc"</code>
+
+		<br><br><p>* <b>Note:</b> This option is required when executing the bang from the command line.</p>
 	</dd>
 </dl>
 
@@ -914,7 +927,7 @@ title: 'Bangs'
 </dl>
 
 <h2 id="Deprecated">Deprecated bangs</h2>
-<dl>
+	<dl>
 	<dt id="Execute"><code>!Execute</code></dt>
 	<dd>
 		The !Execute bang, used both to indicate multiple bangs in one statement and to execute external applications has been made optional. Do not use it in new skins.

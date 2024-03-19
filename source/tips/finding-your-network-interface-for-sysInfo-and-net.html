@@ -1,0 +1,188 @@
+layout: docs
+permalink: tips/finding-your-network-interface-for-sysInfo-and-net/
+title: 'Finding your Network Interface for SysInfo and Net'
+---
+<p><em>Tip by JSMorley</em></p>
+
+<p>As of Rainmeter 4.5, Rainmeter has changed how the <a href="/manual/measures/sysinfo/">SysInfo</a> measure network options and <a href="/manual/measures/net/">Net</a> (NetIn/NetOut/NetTotal) measures find the correct network interface / adapter to measure. This was done to make things more logical and consistent between the SysInfo and Net functionality, consolidate some internal coding for network functions, and increase efficiency of the code.</p>
+
+<p><b>If you simply want to measure information about the currently active network interface on your system, it's very simple:</b></p>
+
+<p><b>For <a href="/manual/measures/sysinfo/#Network">SysInfo</a> measures:</b></p>
+<p>Use: <code>SysInfoData=Best</code></p>
+
+```ini
+[MeasureLAN]
+Measure=SysInfo
+SysInfoType=IP_ADDRESS
+SysInfoData=Best
+DynamicVariables=1
+```
+
+<p><b>For <a href="/manual/measures/net/#Interface">Net</a> measures:</b></p>
+<p>Use: <code>Interface=Best</code></p>
+
+```ini
+[MeasureNetIn]
+Measure=NetIn
+Interface=Best
+DynamicVariables=1
+```
+
+<p>The option value of "Best" will detect and measure the currently active interface. For almost all cases, this is what you want.</p>
+
+<p><b>Note:</b> There are cases where the meaning of "Best" can change while the skin is running. Most commonly this will be if you have a system, like a laptop, that has both wired (Ethernet) and wireless (WiFi) connections, and you switch between them. Another common case is if you have VPN software, that creates a "tunnel adapter" when running. In order to have your skin react to these changes, you must set <code>DynamicVariables=1</code> on the measures.</p>
+
+<p><i>Setting <code>DynamicVariables=1</code> on the measures is recommended if you intend to "distribute" your skin, as while you might only have one network adapter, this may not be true of all your end-users.</i></p>
+
+<p>Note that "Best" is now the default for both SysInfo and Net measures.</p>
+
+<p><b>If you have two or more network interfaces that can be active at once:</b></p>
+
+<p>In this case you are going to want to create separate SysInfo and / or Net measures to measure each of the interfaces. You certainly are going to want to at least be specific about which interface to measure. The recommended way to do this is to use the name (Description) of the actual network adapter in the measures.</p>
+
+<p>There are many ways in Windows to find the Description of the network adapters, two ways are:</p>
+<ol>
+<li>Turn on <code><a href="/manual/user-interface/manage/#Logging">Debug mode</a></code> and <code>Log to file</code> in the Settings panel in Rainmeter, and restart the application.</li>
+
+<p>The information about all your network interfaces will be in the log that is created. Be sure to turn both of these off when you are done with them.</p>
+
+```txt
+DBUG (08:04:32.360) :  46: Name: Intel(R) Dual Band Wireless-AC 7265
+DBUG (08:04:32.361) :      Alias: Wi-Fi 3
+DBUG (08:04:32.363) :      GUID: {18A8D6A0-64F9-4803-B4C5-329309490987}
+DBUG (08:04:32.365) :      Type=Wireless(71), Hardware=Yes, Filter=No
+DBUG (08:04:32.366) :      IfIndex=4, State=Connected, Status=Up(1)
+```
+
+<p>Just copy and paste that "Name" information for use in the SysInfoData and / or Interface options.</p>
+
+```ini
+[MeasureLAN]
+Measure=SysInfo
+SysInfoType=IP_ADDRESS
+SysInfoData=Intel(R) Dual Band Wireless-AC 7265
+```
+
+<li>Perhaps a bit less cumbersome a way is to open a PowerShell (Windows Terminal) window and enter the following <code><a href="https://docs.microsoft.com/en-us/powershell/module/netadapter/get-netadapter">Get-NetAdapter</a></code> command: </li>
+<br>
+<code>Get-NetAdapter | format-table -property "InterfaceDescription", "InterfaceIndex" -HideTableHeaders</code>
+
+```ps1
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\JSMorley> Get-NetAdapter | format-table -property "InterfaceDescription", "InterfaceIndex" -HideTableHeaders
+
+TAP-NordVPN Windows Adapter V9                          20
+Intel(R) I211 Gigabit Network Connection                13
+NordLynx Tunnel                                         50
+Intel(R) Dual Band Wireless-AC 7265                      4
+Bluetooth Device (Personal Area Network) #2              3
+```
+<br>
+<p>There are other ways to format this PowerShell command to show more or less information as you like:</p>
+
+<code>Get-NetAdapter -Name * -IncludeHidden | format-list -property "Name", "InterfaceDescription", "InterfaceIndex"</code>
+
+```ps1
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\JSMorley> Get-NetAdapter -Name * -IncludeHidden | format-list -property "Name", "InterfaceDescription", "InterfaceIndex"
+
+
+Name                 : Local Area Connection* 8
+InterfaceDescription : WAN Miniport (IPv6)
+InterfaceIndex       : 25
+
+Name                 : Local Area Connection* 2
+InterfaceDescription : WAN Miniport (SSTP)
+InterfaceIndex       : 23
+
+Name                 : Local Area Connection* 7
+InterfaceDescription : WAN Miniport (IP)
+InterfaceIndex       : 22
+
+Name                 : Ethernet 2
+InterfaceDescription : TAP-NordVPN Windows Adapter V9
+InterfaceIndex       : 20
+
+Name                 : Local Area Connection* 9
+InterfaceDescription : WAN Miniport (Network Monitor)
+InterfaceIndex       : 19
+
+Name                 : Teredo Tunneling Pseudo-Interface
+InterfaceDescription :
+InterfaceIndex       : 18
+
+Name                 : Local Area Connection* 6
+InterfaceDescription : WAN Miniport (PPPOE)
+InterfaceIndex       : 17
+
+Name                 : Local Area Connection* 3
+InterfaceDescription : WAN Miniport (IKEv2)
+InterfaceIndex       : 16
+
+Name                 : Local Area Connection* 10
+InterfaceDescription : Microsoft Wi-Fi Direct Virtual Adapter #2
+InterfaceIndex       : 14
+
+Name                 : Ethernet
+InterfaceDescription : Intel(R) I211 Gigabit Network Connection
+InterfaceIndex       : 13
+
+Name                 : NordLynx
+InterfaceDescription : NordLynx Tunnel
+InterfaceIndex       : 50
+
+Name                 : Local Area Connection* 1
+InterfaceDescription : Microsoft Wi-Fi Direct Virtual Adapter
+InterfaceIndex       : 10
+
+Name                 : Local Area Connection* 4
+InterfaceDescription : WAN Miniport (L2TP)
+InterfaceIndex       : 8
+
+Name                 : Microsoft IP-HTTPS Platform Interface
+InterfaceDescription :
+InterfaceIndex       : 7
+
+Name                 : Local Area Connection* 5
+InterfaceDescription : WAN Miniport (PPTP)
+InterfaceIndex       : 6
+
+Name                 : Ethernet (Kernel Debugger)
+InterfaceDescription : Microsoft Kernel Debug Network Adapter
+InterfaceIndex       : 5
+
+Name                 : Wi-Fi 3
+InterfaceDescription : Intel(R) Dual Band Wireless-AC 7265
+InterfaceIndex       : 4
+
+Name                 : Bluetooth Network Connection 2
+InterfaceDescription : Bluetooth Device (Personal Area Network) #2
+InterfaceIndex       : 3
+
+Name                 : 6to4 Adapter
+InterfaceDescription :
+InterfaceIndex       : 2
+```
+<br>
+<p>Or if you want a full firehose of information about each interface:</p>
+
+<code>Get-NetAdapter -Name * -IncludeHidden | format-list -property *</code>
+
+</ol>
+
+<br>
+<p><b>Using the network interface / adapter "index" number:</b></p>
+
+<p>There is an interface index number that is created by Windows for each of your network interfaces. You can use this index number in the options for SysInfo and / or Net measures, but <b>caution!</b> These numbers are pretty dynamic in Windows and can change if you enable/disable networks. There is just no certainty that these numbers will remain constant over time.</p>
+
+<p>Getting these numbers is the same as getting the name (Description) shown above, just use the number found as <code>IfIndex</code> in the Rainmeter log, or <code>InterfaceIndex</code> in the PowerShell output.</p>
+
+<br>
+<p><b>A backwards compatibility concern:</b></p>
+
+<p>As originally written, the Net (NetIn/NetOut/NetTotal) measures will see an explicit index value of "0" as meaning "all". For systems with only one active interface, this sorta works well enough, and there may be skins out there that have Interface=0 or SysInfoData=0 on them. <b>Those skins should be changed going forward.</b> In most cases, it is recommended that they be changed to <code>Interface=Best</code> and <code>SysInfoData=Best</code>. <i>If you have SysInfoData=0 on any measure, Rainmeter is going to automatically change it to "Best", but will bark at you in the log...</i></p>
