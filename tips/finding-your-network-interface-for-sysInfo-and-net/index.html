@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Meta tags for proper character encoding and social media handling  -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=0.9, maximum-scale=0.9">
+	<meta itemprop="name" content="Finding your Network Interface for SysInfo and Net - Rainmeter Docs">
+	<meta property="og:title" content="Finding your Network Interface for SysInfo and Net - Rainmeter Docs">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://www.rainmeter.net">
+	<meta property="og:image" content="https://www.rainmeter.net/img/media_image.png">
+	<meta property="og:site_name" content="Rainmeter">
+	<meta property="og:locale" content="en_US" />
+
+	<!-- Page title  -->
+	<title>Finding your Network Interface for SysInfo and Net - Rainmeter Documentation</title>
+
+	<!-- Files need to be local for offline version of documentations -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/rainmeter.css">
+	<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
+
+	<!-- Site icon -->
+	<link rel="shortcut icon" href="https://www.rainmeter.net/favicon.ico">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+
+  <!-- Get current path and set it as a variable -->
+
+
+<!-- Include navbar -->
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+	<div class="container">
+		<a class="navbar-brand" href="https://docs.rainmeter.net"><img src="/img/logo_nav.png" alt=""></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-end" id="mainNavigation">
+			<ul class="navbar-nav order-12">
+                
+					
+                		<li class="nav-item>">
+                    		<a class="nav-link" href="//www.rainmeter.net/">Home</a>
+                		</li>
+					
+                
+					
+						<li class="nav-item ">
+                    		<a class="nav-link" href="../../index.html">Documentation</a>
+                		</li>
+					
+                
+					
+                		<li class="nav-item>">
+                    		<a class="nav-link" href="//rainmeter.net/discover">Discover</a>
+                		</li>
+					
+                
+					
+                		<li class="nav-item>">
+                    		<a class="nav-link" href="//forum.rainmeter.net/">Community</a>
+                		</li>
+					
+                
+                <div class="dropdown-divider"></div>
+		</div>
+	</div>
+</nav>
+
+<div id="content">
+    <div id="nav-button" class="docs-nav-button">
+      <div class="container d-flex flex-row align-items-center">
+      <svg onclick="openNavMenu()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <a onclick="openNavMenu()">Open navigation</a>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="row">
+
+      <!-- Sidenav -->
+      <div id="menu" class="docs-nav col-12 col-lg-3">
+        
+
+<h4 id="category"><a href="/tips">Tips &amp; Tricks</a></h4>
+<svg class="closeButton" onclick="closeNavMenu()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+<form id="search-form" method="get" action="https://www.google.com/search">
+  <input name="sitesearch" value="docs.rainmeter.net" type="hidden">
+  <input class="form-control" id="search" name="q" maxlength="255" size="16" placeholder="Search" type="text">
+</form>
+<hr />
+<nav id="sidenav" class="sidenav">
+<h4>Contents</h4>
+	<ul class="docs-nav-block">
+	<li><a class="active" href="/tips/#BeyondTheBasics">Beyond the Basics</a>
+	<li><a href="/tips/#GoodToKnow">Good To Know</a>
+	<li><a href="/tips/#GettingThingsDone">Getting Things Done</a>
+	</ul>
+
+	<h4>More</h4>
+	<ul class="docs-nav-block">
+	<li><a href="/manual/">Manual</a>
+	<li><a href="/snippets/">Snippets</a>
+	<li><a href="/developers/">Developers</a>
+	<li><a href="/history/">Version History</a>
+	</ul>
+
+</nav>
+
+      </div>
+
+      <!-- Content -->
+      <div class="docs-content col-12 col-lg-9">
+        <h1 class="page-title">Finding your Network Interface for SysInfo and Net</h1>
+        <hr />
+        <!-- Include content and Replace "!" in every url with correct path -->
+        <p><em>Tip by JSMorley</em></p>
+
+<p>As of Rainmeter 4.5, Rainmeter has changed how the <a href="/manual/measures/sysinfo/">SysInfo</a> measure network options and <a href="/manual/measures/net/">Net</a> (NetIn/NetOut/NetTotal) measures find the correct network interface / adapter to measure. This was done to make things more logical and consistent between the SysInfo and Net functionality, consolidate some internal coding for network functions, and increase efficiency of the code.</p>
+
+<p><b>If you simply want to measure information about the currently active network interface on your system, it's very simple:</b></p>
+
+<p><b>For <a href="/manual/measures/sysinfo/#Network">SysInfo</a> measures:</b></p>
+<p>Use: <code>SysInfoData=Best</code></p>
+
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[MeasureLAN]</span></span><br><span class="line"><span class="attr">Measure</span>=SysInfo</span><br><span class="line"><span class="attr">SysInfoType</span>=IP_ADDRESS</span><br><span class="line"><span class="attr">SysInfoData</span>=Best</span><br><span class="line"><span class="attr">DynamicVariables</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p><b>For <a href="/manual/measures/net/#Interface">Net</a> measures:</b></p>
+<p>Use: <code>Interface=Best</code></p>
+
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[MeasureNetIn]</span></span><br><span class="line"><span class="attr">Measure</span>=NetIn</span><br><span class="line"><span class="attr">Interface</span>=Best</span><br><span class="line"><span class="attr">DynamicVariables</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>The option value of "Best" will detect and measure the currently active interface. For almost all cases, this is what you want.</p>
+
+<p><b>Note:</b> There are cases where the meaning of "Best" can change while the skin is running. Most commonly this will be if you have a system, like a laptop, that has both wired (Ethernet) and wireless (WiFi) connections, and you switch between them. Another common case is if you have VPN software, that creates a "tunnel adapter" when running. In order to have your skin react to these changes, you must set <code>DynamicVariables=1</code> on the measures.</p>
+
+<p><i>Setting <code>DynamicVariables=1</code> on the measures is recommended if you intend to "distribute" your skin, as while you might only have one network adapter, this may not be true of all your end-users.</i></p>
+
+<p>Note that "Best" is now the default for both SysInfo and Net measures.</p>
+
+<p><b>If you have two or more network interfaces that can be active at once:</b></p>
+
+<p>In this case you are going to want to create separate SysInfo and / or Net measures to measure each of the interfaces. You certainly are going to want to at least be specific about which interface to measure. The recommended way to do this is to use the name (Description) of the actual network adapter in the measures.</p>
+
+<p>There are many ways in Windows to find the Description of the network adapters, two ways are:</p>
+<ol>
+<li>Turn on <code><a href="/manual/user-interface/manage/#Logging">Debug mode</a></code> and <code>Log to file</code> in the Settings panel in Rainmeter, and restart the application.</li>
+
+<p>The information about all your network interfaces will be in the log that is created. Be sure to turn both of these off when you are done with them.</p>
+
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">DBUG (08:04:32.360) :  46: Name: Intel(R) Dual Band Wireless-AC 7265</span><br><span class="line">DBUG (08:04:32.361) :      Alias: Wi-Fi 3</span><br><span class="line">DBUG (08:04:32.363) :      GUID: &#123;18A8D6A0-64F9-4803-B4C5-329309490987&#125;</span><br><span class="line">DBUG (08:04:32.365) :      Type=Wireless(71), Hardware=Yes, Filter=No</span><br><span class="line">DBUG (08:04:32.366) :      IfIndex=4, State=Connected, Status=Up(1)</span><br></pre></td></tr></table></figure>
+
+<p>Just copy and paste that "Name" information for use in the SysInfoData and / or Interface options.</p>
+
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[MeasureLAN]</span></span><br><span class="line"><span class="attr">Measure</span>=SysInfo</span><br><span class="line"><span class="attr">SysInfoType</span>=IP_ADDRESS</span><br><span class="line"><span class="attr">SysInfoData</span>=Intel(R) Dual Band Wireless-AC <span class="number">7265</span></span><br></pre></td></tr></table></figure>
+
+<li>Perhaps a bit less cumbersome a way is to open a PowerShell (Windows Terminal) window and enter the following <code><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/powershell/module/netadapter/get-netadapter">Get-NetAdapter</a></code> command: </li>
+<br>
+<code>Get-NetAdapter | format-table -property "InterfaceDescription", "InterfaceIndex" -HideTableHeaders</code>
+
+<figure class="highlight ps1"><table><tr><td class="code"><pre><span class="line">Windows PowerShell</span><br><span class="line">Copyright (C) Microsoft Corporation. All rights reserved.</span><br><span class="line"></span><br><span class="line"><span class="built_in">PS</span> C:\Users\JSMorley&gt; <span class="built_in">Get-NetAdapter</span> | <span class="built_in">format-table</span> <span class="literal">-property</span> <span class="string">&quot;InterfaceDescription&quot;</span>, <span class="string">&quot;InterfaceIndex&quot;</span> <span class="literal">-HideTableHeaders</span></span><br><span class="line"></span><br><span class="line">TAP<span class="literal">-NordVPN</span> Windows Adapter V9                          <span class="number">20</span></span><br><span class="line">Intel(<span class="built_in">R</span>) I211 Gigabit Network Connection                <span class="number">13</span></span><br><span class="line">NordLynx Tunnel                                         <span class="number">50</span></span><br><span class="line">Intel(<span class="built_in">R</span>) Dual Band Wireless<span class="literal">-AC</span> <span class="number">7265</span>                      <span class="number">4</span></span><br><span class="line">Bluetooth Device (Personal Area Network) <span class="comment">#2              3</span></span><br></pre></td></tr></table></figure>
+<br>
+<p>There are other ways to format this PowerShell command to show more or less information as you like:</p>
+
+<code>Get-NetAdapter -Name * -IncludeHidden | format-list -property "Name", "InterfaceDescription", "InterfaceIndex"</code>
+
+<figure class="highlight ps1"><table><tr><td class="code"><pre><span class="line">Windows PowerShell</span><br><span class="line">Copyright (C) Microsoft Corporation. All rights reserved.</span><br><span class="line"></span><br><span class="line"><span class="built_in">PS</span> C:\Users\JSMorley&gt; <span class="built_in">Get-NetAdapter</span> <span class="literal">-Name</span> * <span class="literal">-IncludeHidden</span> | <span class="built_in">format-list</span> <span class="literal">-property</span> <span class="string">&quot;Name&quot;</span>, <span class="string">&quot;InterfaceDescription&quot;</span>, <span class="string">&quot;InterfaceIndex&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Name                 : Local Area Connection* <span class="number">8</span></span><br><span class="line">InterfaceDescription : WAN Miniport (IPv6)</span><br><span class="line">InterfaceIndex       : <span class="number">25</span></span><br><span class="line"></span><br><span class="line">Name                 : Local Area Connection* <span class="number">2</span></span><br><span class="line">InterfaceDescription : WAN Miniport (SSTP)</span><br><span class="line">InterfaceIndex       : <span class="number">23</span></span><br><span class="line"></span><br><span class="line">Name                 : Local Area Connection* <span class="number">7</span></span><br><span class="line">InterfaceDescription : WAN Miniport (IP)</span><br><span class="line">InterfaceIndex       : <span class="number">22</span></span><br><span class="line"></span><br><span class="line">Name                 : Ethernet <span class="number">2</span></span><br><span class="line">InterfaceDescription : TAP<span class="literal">-NordVPN</span> Windows Adapter V9</span><br><span class="line">InterfaceIndex       : <span class="number">20</span></span><br><span class="line"></span><br><span class="line">Name                 : Local Area Connection* <span class="number">9</span></span><br><span class="line">InterfaceDescription : WAN Miniport (Network Monitor)</span><br><span class="line">InterfaceIndex       : <span class="number">19</span></span><br><span class="line"></span><br><span class="line">Name                 : Teredo Tunneling Pseudo<span class="literal">-Interface</span></span><br><span class="line">InterfaceDescription :</span><br><span class="line">InterfaceIndex       : <span class="number">18</span></span><br><span class="line"></span><br><span class="line">Name                 : Local Area Connection* <span class="number">6</span></span><br><span class="line">InterfaceDescription : WAN Miniport (PPPOE)</span><br><span class="line">InterfaceIndex       : <span class="number">17</span></span><br><span class="line"></span><br><span class="line">Name                 : Local Area Connection* <span class="number">3</span></span><br><span class="line">InterfaceDescription : WAN Miniport (IKEv2)</span><br><span class="line">InterfaceIndex       : <span class="number">16</span></span><br><span class="line"></span><br><span class="line">Name                 : Local Area Connection* <span class="number">10</span></span><br><span class="line">InterfaceDescription : Microsoft Wi<span class="literal">-Fi</span> Direct Virtual Adapter <span class="comment">#2</span></span><br><span class="line">InterfaceIndex       : <span class="number">14</span></span><br><span class="line"></span><br><span class="line">Name                 : Ethernet</span><br><span class="line">InterfaceDescription : Intel(<span class="built_in">R</span>) I211 Gigabit Network Connection</span><br><span class="line">InterfaceIndex       : <span class="number">13</span></span><br><span class="line"></span><br><span class="line">Name                 : NordLynx</span><br><span class="line">InterfaceDescription : NordLynx Tunnel</span><br><span class="line">InterfaceIndex       : <span class="number">50</span></span><br><span class="line"></span><br><span class="line">Name                 : Local Area Connection* <span class="number">1</span></span><br><span class="line">InterfaceDescription : Microsoft Wi<span class="literal">-Fi</span> Direct Virtual Adapter</span><br><span class="line">InterfaceIndex       : <span class="number">10</span></span><br><span class="line"></span><br><span class="line">Name                 : Local Area Connection* <span class="number">4</span></span><br><span class="line">InterfaceDescription : WAN Miniport (L2TP)</span><br><span class="line">InterfaceIndex       : <span class="number">8</span></span><br><span class="line"></span><br><span class="line">Name                 : Microsoft IP<span class="literal">-HTTPS</span> Platform Interface</span><br><span class="line">InterfaceDescription :</span><br><span class="line">InterfaceIndex       : <span class="number">7</span></span><br><span class="line"></span><br><span class="line">Name                 : Local Area Connection* <span class="number">5</span></span><br><span class="line">InterfaceDescription : WAN Miniport (PPTP)</span><br><span class="line">InterfaceIndex       : <span class="number">6</span></span><br><span class="line"></span><br><span class="line">Name                 : Ethernet (Kernel Debugger)</span><br><span class="line">InterfaceDescription : Microsoft Kernel Debug Network Adapter</span><br><span class="line">InterfaceIndex       : <span class="number">5</span></span><br><span class="line"></span><br><span class="line">Name                 : Wi<span class="literal">-Fi</span> <span class="number">3</span></span><br><span class="line">InterfaceDescription : Intel(<span class="built_in">R</span>) Dual Band Wireless<span class="literal">-AC</span> <span class="number">7265</span></span><br><span class="line">InterfaceIndex       : <span class="number">4</span></span><br><span class="line"></span><br><span class="line">Name                 : Bluetooth Network Connection <span class="number">2</span></span><br><span class="line">InterfaceDescription : Bluetooth Device (Personal Area Network) <span class="comment">#2</span></span><br><span class="line">InterfaceIndex       : <span class="number">3</span></span><br><span class="line"></span><br><span class="line">Name                 : <span class="number">6</span>to4 Adapter</span><br><span class="line">InterfaceDescription :</span><br><span class="line">InterfaceIndex       : <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<br>
+<p>Or if you want a full firehose of information about each interface:</p>
+
+<code>Get-NetAdapter -Name * -IncludeHidden | format-list -property *</code>
+
+</ol>
+
+<br>
+<p><b>Using the network interface / adapter "index" number:</b></p>
+
+<p>There is an interface index number that is created by Windows for each of your network interfaces. You can use this index number in the options for SysInfo and / or Net measures, but <b>caution!</b> These numbers are pretty dynamic in Windows and can change if you enable/disable networks. There is just no certainty that these numbers will remain constant over time.</p>
+
+<p>Getting these numbers is the same as getting the name (Description) shown above, just use the number found as <code>IfIndex</code> in the Rainmeter log, or <code>InterfaceIndex</code> in the PowerShell output.</p>
+
+<br>
+<p><b>A backwards compatibility concern:</b></p>
+
+<p>As originally written, the Net (NetIn/NetOut/NetTotal) measures will see an explicit index value of "0" as meaning "all". For systems with only one active interface, this sorta works well enough, and there may be skins out there that have Interface=0 or SysInfoData=0 on them. <b>Those skins should be changed going forward.</b> In most cases, it is recommended that they be changed to <code>Interface=Best</code> and <code>SysInfoData=Best</code>. <i>If you have SysInfoData=0 on any measure, Rainmeter is going to automatically change it to "Best", but will bark at you in the log...</i></p>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Include Footer -->
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-6">Made with ❤ by the community.</div>
+      <div class="col-6 text-right text-md-right">Icons by <a target="_blank" rel="noopener" href="https://www.freepik.com" alt="Freepik">Freepik</a> and <a target="_blank" rel="noopener" href="https://feathericons.com/" alt="feathericons">feathericons.com</a></div>
+    </div>
+  </div>
+</footer>
+
+
+
+	<!-- Javascript files  -->
+	<script src="/js/main.js"></script>
+	<script src="/js/jquery-3.2.1.slim.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/ahk-sliding-panel.js"></script>
+	<script src="/js/jquery.fancybox.min.js"></script>
+
+	<!-- Script for the slideout menu on mobile -->
+	<script>
+		// set slideout menu variables
+		var docsnav = new ahk_slideout({
+		  id: "menu",
+		  side: "left",
+		  width: "18rem",
+		  touch_boundary: "50",
+		  slide_time: "0.2"
+		})
+
+		// function to toggle menu
+		function openNavMenu() {
+		  docsnav.openMenu()
+		}
+		// function to close menu
+		function closeNavMenu() {
+		  docsnav.closeMenu()
+		}
+
+		// when scrolling below 90, add sticky class to nav-button
+		$(function() {
+		  var header = $("#nav-button");
+		  $(window).scroll(function() {
+		    var scroll = $(window).scrollTop();
+		    if (scroll >= 90) {
+		      header.addClass("sticky");
+		    } else {
+		      header.removeClass("sticky");
+		    }
+		  });
+		});
+	</script>
+
+</body>
+</html>
