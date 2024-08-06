@@ -8,6 +8,25 @@ title: 'Version History'
 
 <h2 id="4.5">Rainmeter 4.5</h2><hr />
 
+<h3 id="r3771">August 6, 2024 - 4.5.25 - Revision 3771</h3>
+<ul>
+	<li><span class="badge badge-fixed">Fixed</span><b>Application:</b> Change Rainmeter updater URL to use HTTPS, to prevent possible "Man in the Middle" attack.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Ping Plugin:</b> Fixed timing issue with FinishAction.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Command Handler:</b> Fixed issue with the !ToggleConfig bang.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>AudioLevel Plugin:</b> Fix first FFT band.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Logging:</b> Fix issue with log messages above 1024 characters.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>ConfigParser:</b> Fixed issue with @Include insertion position during recursive loading of ini files.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Skin:</b> Fixed issue with FadeDuration.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Rainmeter Build:</b> Changed build process and digital signing.</li>
+	<li><span class="badge badge-changed">Changed</span><b>System:</b> Added extra monitor debug information to the log.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Lua:</b> Prevent crash when calling a CRT function with an invalid parameter.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Logging:</b> Provide some generic debug information for invalid parameters in some cases.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Application:</b> Prevent renaming of Rainmeter.exe.</li>
+	<li><span class="badge badge-changed">Changed</span><b>ConfigParser:</b> Log potential self-references with nested variable parsing.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Bangs:</b> Improve logging in some cases.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Rainmeter Build:</b> Changed and automated deployment to WinGet.</li>
+</ul>
+
 <h3 id="r3727">July 31, 2023 - 4.5.18 - Revision 3727</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>Game Mode:</b> Show tray icon if all skins are unloaded.</li>
