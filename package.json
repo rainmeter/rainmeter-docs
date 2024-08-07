@@ -8,7 +8,9 @@
   "scripts": {
     "start": "hexo server --log",
     "generate": "hexo generate",
-    "build": "./build.sh",
+    "build": "npm run clean && npm run build:hexo && npm run build:css",
+    "build:hexo": "hexo generate",
+    "build:css": "postcss ./public/css/*.css --replace --verbose",
     "clean": "hexo clean"
   },
   "dependencies": {
