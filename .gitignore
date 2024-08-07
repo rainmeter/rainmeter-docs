@@ -1,5 +1,7 @@
 *debug.log
-_generated
+public/
+_generated/
+node_modules/
 _ghpages.git
 db.json
 node_modules

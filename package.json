@@ -3,28 +3,26 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "5.4.0"
+    "version": "5.4.2"
   },
   "scripts": {
     "start": "hexo server --log",
     "generate": "hexo generate",
     "build": "./build.sh",
-    "deploy": "./deploy.sh",
-    "clean": "./clean.sh"
+    "clean": "hexo clean"
   },
   "dependencies": {
-    "bootstrap": "4.6.0",
-    "ejs": "3.1.6",
-    "hexo": "5.4.0",
-    "hexo-renderer-ejs": "1.0.0",
-    "hexo-server": "2.0.0"
+    "bootstrap": "4.6.2",
+    "ejs": "3.1.10",
+    "hexo": "5.4.2",
+    "hexo-renderer-ejs": "2.0.0",
+    "hexo-server": "3.0.0"
   },
   "devDependencies": {
     "autoprefixer": "10.2.5",
-    "browserslist": "^4.6.0",
+    "browserslist": "4.23.3",
     "cssnano": "5.0.2",
-    "gh-pages": "3.1.0",
-    "postcss": "8.2.14",
-    "postcss-cli": "8.3.1"
+    "postcss": "8.4.41",
+    "postcss-cli": "11.0.0"
   }
 }
