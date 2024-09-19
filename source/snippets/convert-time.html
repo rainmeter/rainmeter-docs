@@ -9,7 +9,7 @@ title: 'Convert Time'
 ``` lua
 function ConvertTime(n, To)
 	local Formats = {
-		Unix    = -1
+		Unix    = -1,
 		Windows = 1
 		}
 	return Formats[To] and n + 11644473600 * Formats[To] or nil
