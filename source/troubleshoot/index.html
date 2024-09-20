@@ -1,0 +1,345 @@
+---
+layout: post
+permalink: troubleshoot/
+title: 'Troubleshoot'
+---
+
+<script>
+	// this script opens the necesary section when the #hash is in the URL
+
+	window.addEventListener("DOMContentLoaded", function () {
+		// check if the URL has a hash
+		var hash = window.location.hash;
+		if (!hash) return;
+
+		// the following code just gets the "data-target" value in the children of the element that has the hash
+		var target = document.querySelector(hash);
+		if (!target) return;
+
+		var dataTarget = target.querySelector("[data-target]");
+		if (!dataTarget) return;
+
+		var collapseTarget = document.querySelector(dataTarget.getAttribute("data-target"));
+		if (!collapseTarget) return;
+
+		//open it!
+		$(collapseTarget).collapse("show");
+	});
+</script>
+
+<style>
+	.card-header {
+		padding: .15rem .6rem;
+	}
+
+	.btn {
+		white-space: normal !important;
+	}
+</style>
+
+<h1>Troubleshoot</h1>
+<p>Oftentimes, you may run into problems while using Rainmeter. This page tries to detail the most common problems and solutions for how to fix them.</p>
+<p>Since Rainmeter is ever-changing, problems and solutions on this page may change or be removed, make sure you are using the latest version, as that is what the solutions on this page assume.</p>
+<p>A few important details are:</p>
+<ul>
+	<li><p>Rainmeter will run on Windows 7 (<a href="https://www.catalog.update.microsoft.com/Search.aspx?q=KB976932">Service Pack 1</a> and <a href="https://www.microsoft.com/download/details.aspx?id=36805">Platform Update</a> required) and above. Rainmeter is not available for non-Windows systems, including Mac OS and Linux, and there are no plans to support these operating systems;</p></li>
+	<li><p><a href="https://support.microsoft.com/en-us/topic/the-net-framework-4-7-1-offline-installer-for-windows-2a7d0d5e-92f2-b12d-aed4-4f5d14c8ef0c">.NET Framework 4.7.1</a> and above needs to be installed to use Rainmeter, the last update for Windows 7, as well as Windows 8 and above, have the .NET Framework pre-installed;</p></li>
+	<li><p>Rainmeter Standard Install destination should be the Program Files folder of your system drive (e.g. <code>C:\Program Files\Rainmeter</code>).</p></li>
+</ul>
+<p><b>Note:</b> Entries can be selected with <b>CTRL-Click</b> to add an <b>#anchor</b> to the URL. This makes it easy to link to a specific part of a page. Try it below.</p>
+
+<!-- 
+TEMPORARY LIST
+All the entries that will be added in the next commits
+	✅ Rainmeter is crashing on start / Rainmeter Icon dissapears when hovering over it.
+	✅ Skin looks blurry
+	✅ Unable to install Rainmeter skins
+	✅ Edit skin dosen't work
+	✅ Usage Monitor Crashing
+	✅ Rainmeter Skin Installer format files not working
+	✅ Windows shows that Rainmeter takes up a lot of space when installed.
+	Unable to install Rainmeter
+	AudioLevel (everything)
+	Skins show bigger/lower usage than actual CPU Usage in Task Manager
+	✅ "Rainmeter.dll load error 126."
+	✅ How to report Rainmeter crashes
+-->
+
+<!-- 
+	The code for the accordion is from https://getbootstrap.com/docs/4.0/components/collapse/#accordion-example .
+	To make it work with CTRL-Click without modifying the code in the main.ejs file, we add our own `id` to `h5`.
+	The <script> above takes care of squeezing the right chord when the page is refreshed.
+-->
+
+<div id="accordion">
+	<div class="card">
+		<div class="card-header" id="headingRainmeterCrashing">
+			<h5 class="mb-0" id="RainmeterCrashing">
+				<button class="btn btn-link" data-toggle="collapse" data-target="#collapseRainmeterCrashing" aria-expanded="true"
+					aria-controls="collapseRainmeterCrashing">
+					Rainmeter is crashing on start / Rainmeter Icon dissapears when hovering over it.
+				</button>
+			</h5>
+		</div>
+		<div id="collapseRainmeterCrashing" class="collapse" aria-labelledby="headingRainmeterCrashing" data-parent="#accordion">
+			<div class="card-body">
+				<p>Occasionally when Rainmeter is starting up, it will crash immediately (or after a period of freezing).</p>
+				<p>This can happen due to various reasons, including:</p>
+				<ol>
+					<li><b>Attempting to load a "bad" skin</b> - which may contain things such as infinite update loops, actual Rainmeter bugs, broken plugins etc. ;</li>
+					<!--- FIX: I couldn't make corrupted PerfMon be a link more easily and at the moment it opens only once -->
+					<li><b>Windows problems</b> - this includes faulty Windows Installation, faulty .NET installations, faulty drivers,	<a style="color:#007bff;" onclick="$('#collapseCorruptedPerformanceMonitor').collapse(); window.location.hash = 'CorruptedPerformanceMonitor'">corrupted Performance Monitor counters database</a>, missing winlanapi.dll dependency (only on Windows Server) etc. ;</li>
+					<li><b>The setting config file gets corrupted</b></li>
+					<li><b>Rainmeter problems</b> - faults in the code that lead to it crashing</li>
+				</ol>
+				<p>If this is happening, <u>a quick and easy solution is opening Rainmeter using <a href="/manual/user-interface/#SafeStart">Safe Start</a></u>. You can hold down the <code>CTRL</code> key while running the shortcut or .exe for Rainmeter, and it will offer to <b>Safe Start</b> Rainmeter. What this will do is unload all active skins, and load the default Illustro Layout that comes with Rainmeter. This does not remove or in any way harm the skins you have, but simply loads the default Illustro Layout. Your current setup will be saved as a Layout in @Backup.</p>
+				<p>Other solutions people have used are <a href="/tips/clean-rainmeter-uninstall/">reinstalling Rainmeter by doing a "clean" installation</a>, reinstalling Skins / Plugins, reinstalling <a href="https://support.microsoft.com/en-us/topic/the-net-framework-4-7-1-offline-installer-for-windows-2a7d0d5e-92f2-b12d-aed4-4f5d14c8ef0c">.NET Framework 4.7.1</a> (or the latest .NET Framework for the system) or have run <a href="https://support.microsoft.com/en-au/topic/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system-files-79aa86cb-ca52-166a-92a3-966e85d4094e">System File Checker</a> to check for corrupted system files.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingSkinsBlurry">
+			<h5 class="mb-0" id="SkinsBlurry">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSkinsBlurry"
+					aria-expanded="false" aria-controls="collapseSkinsBlurry">
+					Rainmeter skins displaying at "wrong size" / are blurry.
+				</button>
+			</h5>
+		</div>
+		<div id="collapseSkinsBlurry" class="collapse" aria-labelledby="headingSkinsBlurry" data-parent="#accordion">
+			<div class="card-body">
+				<p>You may spot a skin looking blurry, or a skin set to be sized exactly your display resolution but ended being larger than you thought.</p>
+				<p>This is a Windows issue caused by the default DPI setting.</p>
+				<p>By default, Windows set your DPI to 125%, which makes all Windows Forms bigger, unless specified not to on an individual app basis.</p>
+				<p>Regarding whether you want to change your system-wide DPI or Rainmeter-specific DPI, you can either:</p>
+				<ul>
+					<li><b>Change the Rainmeter Specific DPI</b></li>
+					<p>To change Rainmeter to ignore this and use 100% DPI, find the "shortcut" for Rainmeter, which you will find in your Startup folder in Windows:</p>
+					<div class="exampleprev">
+						<a href="./img/DPI2.jpg" data-fancybox><img src="./img/DPI2.jpg"></a>
+					</div>
+					<p>Right-click that shortcut, and select "Properties". Under Properties, select the "Compatibility" tab, and do this:</p>
+					<div class="exampleprev">
+						<a href="./img/DPI1.jpg" data-fancybox><img src="./img/DPI1.jpg"></a>
+					</div>
+					<div class="exampleprev">
+						<a href="./img/DPI3.jpg" data-fancybox><img src="./img/DPI3.jpg"></a>
+					</div>
+					<p>Restart Rainmeter using the shortcut.</p>
+					<p>Note that there are a couple of places in Rainmeter that won't be effected by this, since they are things that are not actually created and rendered by Rainmeter, but by Windows itself. These are the FontSize in InputText fields, and the size of context menus in skins. These will always use the DPI setting in Windows.</p>
+					<li><b>Change system-wide DPI</b></li>
+					<p>The setting for DPI is done in the Setting panels in Windows.</p>
+					<div class="exampleprev">
+						<a href="./img/DPI4.jpg" data-fancybox><img src="./img/DPI4.jpg"></a>
+					</div>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingInstallationHuge">
+			<h5 class="mb-0" id="InstallationHuge">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseInstallationHuge"
+					aria-expanded="false" aria-controls="collapseInstallationHuge">
+					Windows shows that Rainmeter takes up a lot of space when installed.
+				</button>
+			</h5>
+		</div>
+		<div id="collapseInstallationHuge" class="collapse" aria-labelledby="headingInstallationHuge" data-parent="#accordion">
+			<div class="card-body">
+				<p>Occasionally when the Rainmeter app is installed, inside the <em>Settings  > Apps > Apps & features</em> menu it will show that it takes up GBs, TBs or other absurd high values of storage space used. It's impossible for Rainmeter to genuinely take up this amount of storage space.</p>
+				<p>This is an effect caused by how Windows gathers the necesary information - to show the used space - and an error that the user might have caused. This problem dose not affect how Rainmeter functions.</p>
+				<p>Typically, users experiencing this issue have altered the default installation path of Rainmeter, without assigning a dedicated folder for it. The Rainmeter installer evaluates the directory structure of the chosen installation location and records that overall size in the system registry.</p>
+				<p>As refference, Rainmeter's combined size of the installer, the Program Files folder and the Skins folder when first installed is less than 10 MB.</p>
+				<br>
+				<p>If you are experiencing one of these issues, do the following:</p>
+				<ol>
+					<li>Perform an uninstall of Rainmeter. You do not need to uninstall any skins. If you cannot run the uninstaller, perform a <a href="/tips/clean-rainmeter-uninstall/">Clean Uninstall</a>.</li>
+					<li>Re-download the latest release version of <a href="https://www.rainmeter.net/">Rainmeter</a>. You may want to save the installer in a different location than the previous downloaded version that did not work.</li>
+					<li>Run the installer. Select the "Standard installation". <b>Make sure</b> it installs to the <code>C:\Program Files\Rainmeter\</code> folder.</li>
+					<li>Verify the "size" of all the contents in the <code>C:\Program Files\Rainmeter\</code> folder (you can right-click on the Rainmeter folder using Windows Explorer and select "Properties"). It should be less than 10 MB.</li>					
+				</ol>
+				<br>
+				<p>If you are still experiencing the issue after completing these steps, <a href="https://forum.rainmeter.net/viewtopic.php?f=14&t=34591&p=171330">please report back to us!</a></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingUnableToInstallSkinsFormat">
+			<h5 class="mb-0" id="UnableToInstallRainmeterSkinsFormat">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseUnableToInstallSkinsFormat"
+					aria-expanded="false" aria-controls="collapseUnableToInstallSkinsFormat">
+					Unable to install Rainmeter skins - Wrong file type.
+				</button>
+			</h5>
+		</div>
+		<div id="collapseUnableToInstallSkinsFormat" class="collapse" aria-labelledby="headingUnableToInstallSkinsFormat" data-parent="#accordion">
+			<div class="card-body">
+				<p>If the Rainmeter Skin Installer isn't associated with the .rmskin file format (because of Windows permissions, because you installed Portable Rainmeter or because you accidentally changed the executable with) or if you encounter a prompt asking <em>"How to open the file?"</em>, you will need to (re)associate the file type to the correct exectuable</p>
+				<p>Assuming Rainmeter Standard Install (and assuming it has been installed in the correct place, please check your Rainmeter Install Location and the destination below before running the command), the followings commands can be run in CMD to easily fix the issue:</p>
+				```cmd
+				FTYPE Rainmeter.SkinInstaller="C:\Program Files\Rainmeter\SkinInstaller.exe" %1
+				ASSOC .rmskin=skininstaller.exe
+				```
+				<p>In order to fix the problem manually, you will need to interact with the <em>"How to open the file?"</em> window, to do so:</p>
+				<!--- TODO: People will 100% not be able to follow these, add images -->
+				<ol>
+					<li>Right click the (.rmskin) file</li>
+					<li>Hover over Open with > Choose another app</li>
+					<li>Make sure the <em>Always use this app to open .rmskin files</em> box is ticked</li>
+					<li>Click <em>More apps ↓</em>, if <code>SkinInstaller.exe</code> is in the list, select it, if not, continue to the following step</li>
+					<li>Click <em>Look for another app on this PC</em></li>
+					<li>Go to the Rainmeter installation folder (Standard Install assumes <em>"C:\Program Files\Rainemeter"</em>)</li>
+					<li>Select <code>SkinInstaller.exe</code> (the only file with a green icon)</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingUnableToInstallSkinsSecurity">
+			<h5 class="mb-0" id="UnableToInstallRainmeterSkinsSecurity">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseUnableToInstallSkinsSecurity"
+					aria-expanded="false" aria-controls="collapseUnableToInstallSkinsSecurity">
+					Unable to install Rainmeter skins - Windows Security.
+				</button>
+			</h5>
+		</div>
+		<div id="collapseUnableToInstallSkinsSecurity" class="collapse" aria-labelledby="headingUnableToInstallSkinsSecurity" data-parent="#accordion">
+			<div class="card-body">
+				<p>If the Rainmeter Skin Installer is hanging infinitely when trying to install a skin, or if you got an error saying Rainmeter is unable to create a file when you first run the app, the problem is most likely caused by barriers Microsoft has taken in order to ensure secutiy on Windows. Some of the main culprits are:</p>
+				<ul>
+					<li><b>Controlled Folder Access</b></li>
+						<p>In order to react to the recent bout of "ransomware" attacks, where some malware encrypts some of your personal files, and offers to unencrypt them for a payment, Windows has added a new optional feature, <a href="https://www.howtogeek.com/329532/how-to-protect-your-files-from-ransomware-with-windows-defenders-controlled-folder-access/">Controlled Folder Access</a>.</p>
+						<p>What this does is "protect" certain personal folders that have been the target of these "ransomware" attacks like: Documents, Music, Videos, Pictures, Favorites, Desktop.</p>
+						<p>If this feature is turned on, no applications will be allowed to write to these folders, unless they are "whitelisted" in the security settings for the feature. There are some well trusted applications (almost all of them those owned by Microsoft itself) that are automatically whitelisted, but all others will need to be added if you want them to be able to write to these folders.</p>
+						<p>In order to use Rainmeter with this feature turned on, the following program files will need to be whitelisted:</p>
+						<ul>
+							<li><p><code>C:\Program Files\Rainmeter\Rainmeter.exe</code></p></li>
+							<li><p><code>C:\Program Files\Rainmeter\SkinInstaller.exe</code></p></li>
+						</ul>
+						<p>Otherwise, Rainmeter.exe will not be able to write to the <code>..Documents\Rainmeter\Skins</code> folder, and will be unusable. In addition, you must whitelist SkinInstaller.exe or it will not be able to install .rmskins to your skins folder, and you will not be able to save .rmskin files you create to the default Desktop location.</p>
+				
+					<li><b>OneDrive</b></li>
+						<p>Windows 10 defaulted the User Profile folders to the OneDrive storage folder, while this may be great for personal use, the OneDrive folder revokes write/read permission during syncing or "when phoning home" and stops Rainmeter from creating / modifying skin files and folders.</p>
+						<p>To rectify this, you need to add/change the <code><a href="/manual/settings/rainmeter-section/#SkinPath">SkinPath</a></code> option, inside the settings file.</p>
+						<p>To get to the settings file:</p>
+						<ul>
+							<li><b>From inside Rainmeter:</b> Open the Manage Window or right click the Tray Icon, click <i>Edit Settings</i>.</li>
+							<li><b>From outside Rainmeter:</b> Press WIN+R and type <code>%AppData%\Rainmeter\rainmeter.ini</code> to open the Settings file.</li>
+						</ul>
+						<br>
+						<p>Now, either modify the existing value for that option or add it under [Rainmeter]. <b>The path should not be another folder on OneDrive or any Program Files folder on any of the volumes.</b></p>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingEditSkinSettingsNotWorking">
+			<h5 class="mb-0" id="EditSkinSettingsNotWorking">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEditSkinSettingsNotWorking"
+					aria-expanded="false" aria-controls="collapseEditSkinSettingsNotWorking">
+					Edit skin / Edit settings button dosen't work.
+				</button>
+			</h5>
+		</div>
+		<div id="collapseEditSkinSettingsNotWorking" class="collapse" aria-labelledby="headingEditSkinSettingsNotWorking" data-parent="#accordion">
+			<div class="card-body">
+				<p>When you click either of those buttons, Rainmeter searches for the executable associated with the .ini file format and attempts to launch it. If the executable exist inside a protected folder (which it dose in Windows 11), Rainmeter's attempt to launch the executable errors out due to a lack of permissions.</p>
+				<p>You need to change the <code><a href="/manual/settings/rainmeter-section/#ConfigEditor">ConfigEditor</a></code> option.</p>
+				<p>To do so, right click the Rainmeter icon in your system tray, then select Manage. Navigate to the Settings tab, and next to Editor, selet "..." and choose a different editor, either choose <code>C:\WINDOWS\system32\notepad.exe</code> or an <a href="/tips/notepad-alternatives/">editor of your liking</a>.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingCorruptedPerformanceMonitor">
+			<h5 class="mb-0" id="CorruptedPerformanceMonitor">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseCorruptedPerformanceMonitor"
+					aria-expanded="false" aria-controls="collapseCorruptedPerformanceMonitor">
+					Corrupted Performance Monitor counters database / Any UsageMonitor skin crashes.
+				</button>
+			</h5>
+		</div>
+		<div id="collapseCorruptedPerformanceMonitor" class="collapse" aria-labelledby="headingCorruptedPerformanceMonitor" data-parent="#accordion">
+			<div class="card-body">
+				<p>While rare, it is possible for the database of counters that is maintained by Performance Monitor in Windows to become damaged, which will cause the UsageMonitor plugin to stop functioning correctly.</p>
+				<p>In many cases, this can be corrected by "rebuilding" the database from the Windows command line.</p>
+				<p>Run cmd.exe, being sure to run "As administrator". At the command line, enter the following commands in order:</p>
+				``` dos
+				cd c:\windows\system32
+				lodctr /R
+				cd c:\windows\sysWOW64
+				lodctr /R
+				```
+				<p>You should see the following results:</p>
+				<p><code>Info: Successfully rebuilt performance counter setting from system backup store</code></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingDllError126">
+			<h5 class="mb-0" id="RainmeterDllError126">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseDllError126"
+					aria-expanded="false" aria-controls="collapseDllError126">
+					"Rainmeter.dll load error 126."
+				</button>
+			</h5>
+		</div>
+		<div id="collapseDllError126" class="collapse" aria-labelledby="headingDllError126" data-parent="#accordion">
+			<div class="card-body">
+				<p>There are multiple reasons why this may appear:</p>
+				<ol>
+				<li><b>Your Rainmeter installation has the wrong bitness (running 64bit install on a 32bit System)</b></li>
+				<li><b>Your C++ libraries are missing/corrupted</b> - to fix this, make sure you have installed <a href="https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170">the correct Microsoft Visual C++ Redistributable</a> architecture for your system</li>
+				<br>
+				If Rainmeter starts up, but you still get the error, then:
+				<li><b>You have 2 Rainmeter instances in the list of apps when Windows Starts Up</b></li>
+				<ol>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-header" id="headingLast">
+			<h5 class="mb-0" id="ReportCrashing">
+				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseLast"
+					aria-expanded="false" aria-controls="collapseLast">
+					How to report if Rainmeter crashes.
+				</button>
+			</h5>
+		</div>
+		<div id="collapseLast" class="collapse" aria-labelledby="headingLast" data-parent="#accordion">
+			<div class="card-body">
+				<ul>
+					<li><b>If Rainmeter crashes without warning</b></li>
+					<p>Use the <a href="https://www.howtogeek.com/123646/htg-explains-what-the-windows-event-viewer-is-and-how-you-can-use-it/">Event Viewer</a>, which usually logs events that have taken place, such as a failure to start a component or to complete an action.</p>
+					<!--- TODO: This info is actually interesting and would be easier for the user
+						  to understand why crashes are happening, maybe copy it to the first section? -->
+					<p>Open up Event Viewer > on the left side, open the Windows Logs folder > chose Application > wait for it to load > look for the most recent Error and click on it > see if it's related to Rainmeter.exe > click the area of the text and inspect it.</p>
+					<p>Note that this is only orientative, most of the time, most errors that appear here are those related to Out of Memory Access, which usually represent values outside of it's allocated range, mostly due to invalid pointers from the way skins or plugins are configured.</p>
+					<!--- Adendum to the above, this part is especially useful -->
+					<p>It's important to understand the cause of the problems in order to know what steps to take forward. For example, if the Event Viewer reports a crash related to a (community-made) plugin, one step would be to fix the plugin by reinstalling the files it came with, or getting the latest version from the author, who might have fixed the error after being made aware of the problem.</p>
+					<p>Other solutions people have used are <a href="/tips/clean-rainmeter-uninstall/">reinstalling Rainmeter by doing a "clean" installation</a>, reinstalling Skins / Plugins, reinstalling <a href="https://support.microsoft.com/en-us/topic/the-net-framework-4-7-1-offline-installer-for-windows-2a7d0d5e-92f2-b12d-aed4-4f5d14c8ef0c">.NET Framework 4.7.1</a> (or the latest .NET Framework for the system) or have run <a href="https://support.microsoft.com/en-au/topic/use-the-system-file-checker-tool-to-repair-missing-or-corrupted-system-files-79aa86cb-ca52-166a-92a3-966e85d4094e">System File Checker</a> to check for corrupted system files.
+					<li><b>Creating a crash dump</b></li>
+					<p>You can help the devs by <a href="https://helgeklein.com/blog/2018/10/creating-an-application-crash-dump/">creating a crash dump file</a>. If you do, please:</p>
+					<ul>
+						<li>Verify first that you are running the latest version of Rainmeter (try also the latest beta version if one is available)</li>
+						<li>Make sure that you are able to reproduce the crash</li>
+						<li>Check the forum to make sure that the crash hasn't been reported already (you can add more context or info if needed)</li>
+						<li>If the crash hasn't been reported earlier describe the exact steps how it can be reproduced</li>
+						<li>Write your system configuration (operating system, etc), what skins you are using and provide a download link to the dmp file</li>
+					</ul>
+					<br>
+					<p>If you do so, please report them in the <a href="https://forum.rainmeter.net/viewforum.php?f=14">Bugs & Feature Suggestions</a> over on the <a href="https://forum.rainmeter.net/">Rainmeter Forum</a>.</p>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
