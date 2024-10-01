@@ -22,8 +22,8 @@ Sub="<![CDATA[":"","]]>":""
 
 [MeasureSite]
 Measure=WebParser
-Url=http://feeds.gawker.com/lifehacker/full
-RegExp="(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
+Url=https://www.howtogeek.com/feed/
+RegExp="(?siU)<channel>.*<title> (.*) </title>.*<link>(.*)</link>#Item##Item##Item#"
 
 [MeasureMainTitle]
 Measure=WebParser
@@ -152,7 +152,7 @@ Item=.*<item>(.*)</item>
 ``` ini
 [MeasureSite]
 Measure=WebParser
-Url=http://feeds.gawker.com/lifehacker/full
+Url=https://www.howtogeek.com/feed/
 RegExp="(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
 ```
 
