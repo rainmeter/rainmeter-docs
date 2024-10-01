@@ -228,7 +228,7 @@ UpdateRate=3600
 
 <p><code>.*&lttd width="40%"&gtIP Address:&lt/td&gt.*target="_blank"&gt(.*)&lt</code></p>
 
-<p>This will tell RegExp to skip everything until it finds <code>&lttd width="40%"&gtIP Address:&lt/td&gt.*target="_blank"</code> and then capture everything until it sees <code>&lt</code> and put it in <code>StringIndex=2</code>. The result in my example will be <code>68.100.86.32</code>.</p>
+<p>This will tell RegExp to skip everything until it finds <code>&lttd width="40%"&gtIP Address:&lt/td&gt.*target="_blank"&gt</code> and then capture everything until it sees <code>&lt</code> and put it in <code>StringIndex=2</code>. The result in my example will be <code>68.100.86.32</code>.</p>
 
 <h3>Creating the child measure for the the second StringIndex, the IP address value</h3>
 
@@ -264,7 +264,7 @@ RegExp=(?siU)<img src="/images/flags/(.*)".*<td width="40%">IP Address:</td>.*ta
 
 <p><code>.*&lttd&gtCity:&lt/td&gt.*&lttd&gt(.*)&lt/td&gt</code></p>
 
-<p>This will tell RegExp to skip everything until it sees <code>&lttd&gtCity:&lt/td&gt.*&lttd&gt</code> then capture everything until it sees <code>&lt/td&gt</code> and put it in <code>StringIndex=3</code>.</p>
+<p>This will tell RegExp to skip everything until it sees <code>&lttd&gtCity:&lt/td&gt.*&lttd&gt</code> then capture everything until it sees <code>&lt/td&gt</code> and put it in <code>StringIndex=3</code>. The result in my example will be <code>Fairfax</code>.</p>
 
 <h3>Creating the child measure for the the third StringIndex, the city name value</h3>
 
