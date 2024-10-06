@@ -93,7 +93,7 @@ DynamicVariables=1
 Measure=Plugin
 Plugin=Plugins\WebParser.dll
 URL=https://www.somesite.com/logs/status.xml
-RegExp="(?siU)<status>(.*)</status>"
+RegExp=(?siU)<status>(.*)</status>
 StringIndex=1
 Substitute="Running":"1","Offline":"0"
 
