@@ -173,7 +173,8 @@ Measure=WebParser
 	<dt id="LogSubstringErrors"><code>LogSubstringErrors</code><small>Default: <code>1</code></small></dt>
 	<dd>
 		<p>If set to "0", this will suppress logging of "Not enough substring" errors. This can be useful when for instance you are using <a href="https://docs.rainmeter.net/tips/webparser-lookahead-assertions-in-regexp/">lookahead assertions</a> in a regular expression, and missing (captures) should not be treated as an "error".</p>
-		<p><b>Note:</b> This option is set on the <a href="#ParentChild">parent</a> WebParser measure.</p>
+		<p><b>Note:</b> This option is set on a <a href="#ParentChild">parent</a> WebParser measure.</p>
+		<p><em>Any WebParser measure that has a <a href="#RegExp">RegExp</a> option is a "parent", although it can also be a "child" of another WebParser measure.</em></p>
 	</dd>
 
 	<dt id="CodePage"><code>CodePage</code> <small>Default: <code>0</code></small></dt>
