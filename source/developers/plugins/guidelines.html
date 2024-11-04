@@ -62,4 +62,4 @@ title: 'Plugin Guidelines'
 <h3 id="DisabledPaused">What do the <code>Disabled</code> and <code>Paused</code> options do in a plugin?</h3>
 <p>If either are set to <code>1</code>, they only affects the execution of the <a href="!plugin/cpp/#Update">Update</a> function. Rainmeter will still call the Initialize, Reload and Finalize functions.</p>
 <p>Ideally, plugins should do the bulk of the "work" in the Update function to minimize any processing and to take advantage of what the user expects when the options (and bangs for set options) are used.</p>
-<p>Avoid relying on the Update function to control threads if multi-threaidng.</p>
+<p>Avoid relying on the Update function to control threads if multi-threading.</p>
