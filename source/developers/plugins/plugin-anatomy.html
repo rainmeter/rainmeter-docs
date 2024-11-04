@@ -29,7 +29,7 @@ title: 'Anatomy of a Plugin'
   </p>
   <p>
     <h3 id="GetString"><i>GetString</i> (Optional)</h3>
-    Called as the string value of the measure is used in any meters or measures.<br>
+    Called as the string value of the measure is used in any meters (e.g. <code>MeasureName</code>) or measures, and "on-demand" in the <a href="/manual/user-interface/about/#SkinsTab">User Interface</a>.<br>
     Return the value you want to use as the string value of the measure here. You should do absolutely no processing here as it is possible to have this called multiple times an update. Instead calculate any values in update and just return them here.
   </p>
   <p>
