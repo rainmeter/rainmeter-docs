@@ -23,7 +23,7 @@ Sub="<![CDATA[":"","]]>":""
 [MeasureSite]
 Measure=WebParser
 Url=https://www.howtogeek.com/feed/
-RegExp="(?siU)<channel>.*<title> (.*) </title>.*<link>(.*)</link>#Item##Item##Item#"
+RegExp=(?siU)<channel>.*<title> (.*) </title>.*<link>(.*)</link>#Item##Item##Item#
 
 [MeasureMainTitle]
 Measure=WebParser
@@ -39,7 +39,7 @@ StringIndex=2
 [MeasureItem1Title]
 Measure=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<title>(.*)</title>"
+RegExp=(?siU)<title>(.*)</title>
 StringIndex=3
 StringIndex2=1
 Substitute=#Sub#
@@ -47,14 +47,14 @@ Substitute=#Sub#
 [MeasureItem1Link]
 Measure=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<link>(.*)</link>"
+RegExp=(?siU)<link>(.*)</link>
 StringIndex=3
 StringIndex2=1
 
 [MeasureItem2Title]
 Measure=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<title>(.*)</title>"
+RegExp=(?siU)<title>(.*)</title>
 StringIndex=4
 StringIndex2=1
 Substitute=#Sub#
@@ -62,14 +62,14 @@ Substitute=#Sub#
 [MeasureItem2Link]
 Measure=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<link>(.*)</link>"
+RegExp=(?siU)<link>(.*)</link>
 StringIndex=4
 StringIndex2=1
 
 [MeasureItem3Title]
 Measure=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<title>(.*)</title>"
+RegExp=(?siU)<title>(.*)</title>
 StringIndex=5
 StringIndex2=1
 Substitute=#Sub#
@@ -77,7 +77,7 @@ Substitute=#Sub#
 [MeasureItem3Link]
 Measure=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<link>(.*)</link>"
+RegExp=(?siU)<link>(.*)</link>
 StringIndex=5
 StringIndex2=1
 
@@ -153,7 +153,7 @@ Item=.*<item>(.*)</item>
 [MeasureSite]
 Measure=WebParser
 Url=https://www.howtogeek.com/feed/
-RegExp="(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
+RegExp=(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#
 ```
 
 <p>Notice we are doing something a bit different here. Instead of fully parsing the site into many, many StringIndexes on the main measure, we are just getting the main title and link for the site into StringIndexes 1 and 2, then getting the <em>entire</em> contents of each &lt;item&gt; into StringIndexes 3, 4 and 5.</p>
@@ -163,7 +163,7 @@ RegExp="(?siU)<title>(.*)</title>.*<link>(.*)</link>#Item##Item##Item#"
 [MeasureItem1Title]
 Measure=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<title>(.*)</title>"
+RegExp=(?siU)<title>(.*)</title>
 StringIndex=3
 StringIndex2=1
 Substitute=#Sub#
@@ -180,7 +180,7 @@ Substitute=#Sub#
 [MeasureItem1Link]
 Measure=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<link>(.*)</link>"
+RegExp=(?siU)<link>(.*)</link>
 StringIndex=3
 StringIndex2=1
 ```
@@ -192,7 +192,7 @@ StringIndex2=1
 [MeasureItem2Title]
 Measure=WebParser
 Url=[MeasureSite]
-RegExp="(?siU)<title>(.*)</title>"
+RegExp=(?siU)<title>(.*)</title>
 StringIndex=4
 StringIndex2=1
 Substitute=#Sub#
