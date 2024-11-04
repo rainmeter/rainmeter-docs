@@ -69,6 +69,10 @@ An example plugin that returns the Windows system version to a skin.</li>
 An example plugin demonstrating how to do "parent-child" functions in your plugin.</li>
 <li><b>PluginSectionVariables</b><br/>
 An example plugin demonstrating how to implement functions to use as section variables in your plugin.</li>
+<li><b>PluginRmExecute</b><br/>
+An example plugin demonstrating how to make an option be read and execute the bang within.</li>
+<li><b>PluginDataHandling</b><br/>
+An example plugin demonstrating how to keep data across functions calls and also storing data in the <a href="/manual/settings/#RainmeterData">Rainmeter.data</a> file for presistant access across skin reloads and even measures.</li>
 </ul>
 
 <p>To create a plugin, the simplest approach is to make a copy of and rename the PluginEmpty example folder and files.  Use GuidGen.exe from Visual Studio with <em>Format 4</em> to generate a new GUID  and add this and other appropriate changes to the .vcxproj or .csproj files. Open either <b>SDK-CPP.sln</b> (C++) or <b>SDK-CS.sln</b> (C#) in Visual Studio, add your new plugin project to the solution, develop your code in this template and build your plugin.  Be sure that you use the <em>Solution Configuration</em> and <em>Solution Platforms</em> fields and build both x32 and x64 architecture release versions of your plugin .dll before you distribute it.</p>
