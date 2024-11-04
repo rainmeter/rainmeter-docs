@@ -883,6 +883,15 @@ table#quickjump td {
   -webkit-animation-delay: 12s;
   animation-delay: 12s;
 }
+.floatingIcons li:nth-child(11) {
+  left: 70%;
+  width: 14rem;
+  height: 14rem;
+  -webkit-animation: animation2 22s infinite;
+  animation: animation2 22s infinite;
+  -webkit-animation-delay: 10s;
+  animation-delay: 10s;
+}
 @-webkit-keyframes animation1 {
   0% {
     -webkit-transform: translateY(0);
