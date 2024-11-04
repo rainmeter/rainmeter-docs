@@ -38,6 +38,10 @@ title: 'Anatomy of a Plugin'
     Incredibly useful for interacting with your plugin. Media playback plugins are a good example of using this, so then a skin could have a button to pause the music on command.
   </p>
   <p>
+    <h3 id="IntPtr"><i>IntPtr</i> (Optional)</h3>
+    Bridge between managed and unmanaged code, allowing retrieval of a string from a managed object and making it accessible as a null-terminated Unicode string in the unmanaged environment.
+  </p>
+  <p>
     <h3 id="SectionVariables"><i>SectionVariables</i> (Optional)</h3>
     Called whenever a section variables is used ex. <code>[pluginMeasure:func(arg1, arg2)]</code>.<br>
     While similar to ExecuteBang this has the added nicety of being able to return a value. Note that Rainmeter prevents these from being called before Initialization so data will be setup.
