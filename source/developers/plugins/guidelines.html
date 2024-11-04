@@ -58,3 +58,8 @@ title: 'Plugin Guidelines'
 <p>When making C# plugins you may notice references to IntPtr's and <a href="https://docs.microsoft.com/dotnet/framework/interop/interop-marshaling">Marshal</a> functions. Since Rainmeter is written in C++, variables are encoded differently, but don't be intimidated by them.</p>
 <p>An <a href="https://docs.microsoft.com/dotnet/api/system.intptr">IntPtr</a> is basically an integer that represents a <a href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointer</a> to some data, which is why you must deallocate data in finalize as well as recast it in every function. Also since strings are formatted differently in C++, you should pass your string to <a href="https://docs.microsoft.com/dotnet/api/system.runtime.interopservices.marshal.stringtohglobaluni">Marshal.StringToHGlobalUni</a> before returning it in <a href="!plugin/csharp/#GetString">GetString</a> or <a href="!plugin/csharp/#Custom">custom section variables</a>.</p>
 <p>Also the MarshalAs in ExecuteBang and SectionVariable examples just makes sure that you get a C# style string or string array out of the box.</p>
+
+<h3 id="DisabledPaused">What do the <code>Disabled</code> and <code>Paused</code> options do in a plugin?</h3>
+<p>If either are set to <code>1</code>, they only affects the execution of the <a href="!plugin/cpp/#Update">Update</a> function. Rainmeter will still call the Initialize, Reload and Finalize functions.</p>
+<p>Ideally, plugins should do the bulk of the "work" in the Update function to minimize any processing and to take advantage of what the user expects when the options (and bangs for set options) are used.</p>
+<p>Avoid relying on the Update function to control threads if multi-threading.</p>
