@@ -20,7 +20,8 @@ title: 'Anatomy of a Plugin'
   <p>
     <h3 id="Update"><i>Update</i></h3>
     Called on every update cycle of the measure.<br>
-    Return the value you want to use as the number value of the measure here. You should do anything that requires being run regularly here
+    Return the value you want to use as the number value of the measure here. You should do anything that requires being run regularly here.<br>
+    This is the only function affected by the <code>Disabled</code> and <code>Paused</code> options.
   </p>
   <p>
     <h3 id="Finalize"><i>Finalize</i></h3>
