@@ -32,7 +32,7 @@ title: 'General Measure Options'
 	<dd>
 		<p><a href="!skins/option-types/#Action">Action</a> to execute when the number or string value of the measure changes. The initial change from "nothing" to a value when the skin is loaded or refreshed is ignored.</p>
 
-		<p><b>Note:</b> With plugins that perform work in the background (e.g. <a href="!measures/webparser/">WebParser</a> and <a href="!plugins/fileview/">FileView</a>), the action will be executed on the first change when loading or refreshing the skin.</p>
+		<p><b>Note:</b> With plugins that perform work in the background (e.g. <a href="!measures/webparser/">WebParser</a> and <a href="!plugins/fileview/">FileView</a>), the action will be executed on the initial change caused by the completion of the action when loading or refreshing the skin.</p>
 	</dd>
 
 	<dt id="InvertMeasure"><code>InvertMeasure</code> <small>Default: <code>0</code></small></dt>
@@ -42,19 +42,19 @@ title: 'General Measure Options'
 		<p><b>Example:</b> With the <a href="!measures/freediskspace/">FreeDiskSpace</a> measure, this option can be used to measure the used disk space instead of the free disk space.</p>
 	</dd>
 
+	<dt id="MinValue"><code>MinValue</code> <small>Default: <code>0.0</code></small></dt>
+	<dd>
+		<p>The minimum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures/#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.</p>
+	</dd>
+	
 	<dt id="MaxValue"><code>MaxValue</code> <small>Default: <code>1.0</code></small></dt>
 	<dd>
 		<p>The maximum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures/#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.</p>
 	</dd>
 
-	<dt id="MinValue"><code>MinValue</code> <small>Default: <code>0.0</code></small></dt>
-	<dd>
-		<p>The minimum value of a measure. This is used to set a range of values for use in meters that require a <a href="!measures/#Percentage">percentual value</a>. The actual value of the measure will remain unchanged.</p>
-	</dd>
-
 	<dt id="AverageSize"><code>AverageSize</code> <small>Default: <code>1</code></small></dt>
 	<dd>
-		<p>If set, the measure value will be an average of the specified number of past actual values. This can be useful to create a smoother transition on some graphical meters.</p>
+		<p>If set, the measure value will be an average of the specified number of past actual values. This can be useful to create a smoother transition on some graphical meters using the measure value.</p>
 	</dd>
 
 	<dt id="DynamicVariables"><code>DynamicVariables</code> <small>Default: <code>0</code></small></dt>
@@ -67,11 +67,13 @@ title: 'General Measure Options'
 	<dt id="Disabled"><code>Disabled</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the measure value is never updated. A disabled measure always returns 0 as its value in numerical contexts (e.g. when used in a Calc formula or with IfActions), but may still return a previously obtained string value (e.g. when used in String meters).</p>
+		<p>This value can be dynamically changed as needed with either the <a href="!bangs/#SetOption">!SetOption</a> bang or the <a href="!bangs/#EnableDisableToggleMeasure">!EnableMeasure / !DisableMeasure / !ToggleMeasure</a> bangs.</p>
 	</dd>
 
 	<dt id="Paused"><code>Paused</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, the measure value is never updated. A paused measure will return its most recent number and/or string value.</p>
+		<p>This value can be dynamically changed as needed with either the <a href="!bangs/#SetOption">!SetOption</a> bang or the <a href="!bangs/#PauseMeasure">!UnpauseMeasure / !PauseMeasure / TogglePauseMeasure</a> bangs.</p>
 	</dd>
 
 	<dt id="Group"><code>Group</code></dt>
