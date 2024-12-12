@@ -98,7 +98,7 @@ title: 'RunCommand plugin'
 		<li>ANSI</li>
 		</ul>
 
-		<p><b>Note:</b> Although by default cmd.exe will be executed with the /U (UTF-16 Unicode) parameter, that does not mean that any program executed in the Command Prompt window will necessarily produce output in UTF-16. While most internal Windows commands like "dir" will produce UTF-16 output, a great many command-line programs will produce ANSI output. If you get gibberish characters returned by the measure, setting <code>OutputType=ANSI</code> will often correct the issue.</p>
+		<p><b>Note:</b> Although by default cmd.exe will be executed with the /U (UTF-16 Unicode) parameter, that does not mean that any program executed in the Command Prompt window will necessarily produce output in UTF-16. While most internal Windows commands like "dir" will produce UTF-16 output, a great many command-line programs will produce UTF-8 output. If you get gibberish characters returned by the measure, setting <code>OutputType=UTF8</code> or <code>ANSI</code> will often correct the issue.</p>
 	</dd>
 
 	<dt id="StartInFolder"><code>StartInFolder</code> <small>Default: <code>Skin folder</code></small></dt>
