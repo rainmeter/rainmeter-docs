@@ -58,7 +58,13 @@ Example: <code>4,198 MHz</code></li>
 Example: <code>4198</code></li>
 </ul>
 
-<p>Now for those values for <em>N</em>. That will be that "Index" number that was assigned to each sensor element when you configured HWiNFO. Those numbers can be obtained by opening a <code>cmd.exe</code> Command Prompt, and typing in:<br/><br/><code>reg query HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB</code><br/><br/>That will produce a listing like this:<p>
+<p>Now for those values for <em>N</em>. That will be that "Index" number that was assigned to each sensor element when you configured HWiNFO. Those numbers can be obtained by opening a <code>cmd.exe</code> Command Prompt, and typing in:<br/><br/>
+
+<code>reg query HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB</code><br/>
+or:<br/>
+<code>reg query HKEY_LOCAL_MACHINE\SOFTWARE\HWiNFO64\VSB</code></p>
+
+<p>That will produce a listing like this:</p>
 
 <div class="exampleprev">
 <img src="/tips/img/hwinfo/HWiNFO5.png" width="600"/>
@@ -67,7 +73,7 @@ Example: <code>4198</code></li>
 
 <p><br/>So all you need to do is create <a href="https://docs.rainmeter.net/manual/measures/registry/">Registry measures</a> to obtain each of those values you want to display in your skin.</p>
 
-<p>The values are stored in the registry in <code>HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB</code>.</p>
+<p>The values are stored in the registry in <code>HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB</code> or <code>HKEY_LOCAL_MACHINE\SOFTWARE\HWiNFO64\VSB</code>.</p>
 
 ``` ini
 [Measure0Sensor]
@@ -98,6 +104,8 @@ RegValue=ValueRaw0
 <p>That's really all there is to it! No plugin, no hideous and complicated hex numbers. Just go get the value you want.</p>
 
 <h2>Some Notes and Tips</h2>
+
+<p>This approach of writing the values to the Windows Registry is very clever and easy to use. The author of HWiNFO, Martin Malik, was very generous to add this capability to the software. He has it writing to both <code>HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB</code> and <code>HKEY_LOCAL_MACHINE\SOFTWARE\HWiNFO64\VSB</code>. The one you want to use depends on which user account is running HWiNFO. Normally this will be "CURRENT_USER".</p>
 
 <p>It might occur to you that "writing" to the Windows Registry every 2 seconds might be working your hard drive a bit. This really isn't the case. Windows is very clever about how it manages the Registry and changes are actually just stored in a memory copy of the hive, and only written to the physical disk periodically, and / or when you shut down Windows. This approach is very easy indeed on your hard drive.</p>
 
