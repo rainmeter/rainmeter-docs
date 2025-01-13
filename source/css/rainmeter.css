@@ -108,6 +108,7 @@ blockquote {
 .alert-box1 {
 	font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 	font-size: 15px;
+	color:#986500;
 	padding:.75rem 1.25rem;
 	margin-bottom:1rem;
 	border:1px solid transparent;
@@ -115,6 +116,10 @@ blockquote {
 	background-color:#fff3cd;
 }
 
+.alert-box1 h2{
+	color:#986500;
+}
+	
 .alert-box2 {
 	font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 	font-size: 15px;	
@@ -123,6 +128,10 @@ blockquote {
 	border:1px solid transparent;
 	border-radius:.25rem;
 	background-color:#d1ecf1;
+}
+
+.alert-box2 h2{
+	color:#46767e;
 }
 
 /* Navbar */
