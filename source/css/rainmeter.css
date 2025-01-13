@@ -113,15 +113,7 @@ blockquote {
 	border:1px solid transparent;
 	border-radius:.25rem;
 	background-color:#ffe884;
-	color:cb9000;
 }
-.alert-box1 h2{
-	color:cb9000;
-}	
-
-.alert-box1 p{
-	color:cb9000;
-}	
 
 .alert-box2 {
 	font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
