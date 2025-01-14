@@ -40,7 +40,7 @@ title: 'Nesting Variables'
 
 <p>One difference is that when the Nesting Variables syntax is used in <a href="!bangs/">bangs</a>, the values are always dynamically resolved when they are used, including in the [Rainmeter] section of the skin. This is different than the standard <code>#VarName#</code> syntax, which will always require <code>DynamicVariables=1</code> when the value changes, and can't be dynamic in [Rainmeter]. This difference only applies to use in bangs. When used in option values, <code>DynamicVariables=1</code> must still be set on the measure or meter if the value changes.</p>
 
-<p>Because Nested Section Variables act like regular Section Variables, it is possible to use the same parameters after the colon <code>:</code> to return the requested values. Both <a href="!variables/section-variables/">Meter and Measure parameters</a> work.<br>
+<p>Because Nested Section Variables act like regular Section Variables, it is possible to use the same parameters after the colon <code>:</code> to return the requested values. Both <a href="!variables/section-variables/">Meter and Measure parameters</a> will work.<br>
 <b>Example:</b> <code>[&MeasureName:EncodeURL]</code></p>
 
 <p>If you are <a href="!variables/#Escape">escaping a variable</a> and need to use the nested form, the syntax is:</p>
