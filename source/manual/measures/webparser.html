@@ -29,25 +29,27 @@ StringIndex=2
 ```
 <p>The values of the two <a href="#ParentChild">child</a> measures are now the information parsed into StringIndexes 1 and 2 by the <a href="#ParentChild">parent</a> measure. These can then be used with <a href="!meters/general-options/#MeasureName">MeasureName</a> and other options in <a href="!meters/">meters</a>.
 
-<p><b>Note:</b> More information and examples for WebParser can be found at <a href="/tips/webparser-tutorial/">WebParser Tutorial</a> and <a href="/tips/rss-feed-tutorial/">RSS/Atom Feed Tutorial</a>.</p>
+<p>More information and examples for WebParser can be found at <a href="/tips/webparser-tutorial/">WebParser Tutorial</a> and <a href="/tips/rss-feed-tutorial/">RSS/Atom Feed Tutorial</a>.</p>
 
-<h2 id="NotAPlugin">Note: WebParser was previously a <em>plugin</em> measure.</h2>
-<p>In many existing skins you might see the syntax:</p>
-``` ini
-[MeasureParent]
-Measure=Plugin
-Plugin=WebParser
-or
-Plugin=WebParser.dll
-or
-Plugin=Plugins\WebParser.dll
-```
-<p>WebParser still works with those forms, and changing existing skins to the new <code>Measure=WebParser</code> syntax is entirely optional. However, new skins created going forward should use the correct syntax for accuracy and clarity. WebParser is a measure, and not a plugin.</p>
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="Note">&#x1F5E8; Note: WebParser was previously a <em>plugin</em> measure.</h2>
+	<p>In many existing skins you might see the syntax:</p>
+	``` ini
+	[MeasureParent]
+	Measure=Plugin
+	Plugin=WebParser
+	or
+	Plugin=WebParser.dll
+	or
+	Plugin=Plugins\WebParser.dll
+	```
+	<p>WebParser still works with those forms, and changing existing skins to the new <code>Measure=WebParser</code> syntax is entirely optional. However, new skins created going forward should use the correct syntax for accuracy and clarity. WebParser is a measure, and not a plugin.</p>
 
-``` ini
-[MeasureParent]
-Measure=WebParser
-```
+	``` ini
+	[MeasureParent]
+	Measure=WebParser
+	```
+</div>
 
 <h2>Options</h2>
 <dl>
@@ -356,7 +358,10 @@ Flags=ForceReload | NoCookies
 		<p><b>Note:</b> When <a href="#Download">Download</a> is used on a <a href="#ParentChild">child</a> measure, the download itself is treated as a <a href="#ParentChild">parent</a> function, and any <a href="#FinishAction">FinishAction</a> on the measure will be executed if the download succeeds, and any <a href="#OnDownloadErrorAction">OnDownloadErrorAction</a> on the measure will be executed if the download fails.</p>
 	</dd>
 
-	<br/><p><b>Note:</b> If some condition causes the error actions to be executed, care should be taken not to create an endless loop or cause the skin to repeatedly try to access a resource in a short period of time. For instance, it would not be wise to have these actions automatically update the measure they are on, or refresh the skin.</p>
+<div class="alert alert-warning alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="Alert">&#x26A0; Alert:</h2>
+	<p>If some condition causes any of the error actions above to be executed, care should be taken not to create an endless loop or cause the skin to repeatedly try to access a resource in a short period of time. For instance, it would not be wise to have these actions automatically update the measure they are on, or refresh the skin.</p>
+</div>
 </dl>
 
 <h2 id="MeasureCommands">Measure Commands</h2>
