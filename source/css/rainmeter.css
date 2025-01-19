@@ -86,9 +86,7 @@ blockquote {
     margin-bottom: 0;
   }
 }
-.alert p {
-  margin-bottom: 0;
-}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1026px;
@@ -105,7 +103,25 @@ blockquote {
   }
 }
 
-.alert-box1 {
+/* Alert Box */
+.alert-tight {
+  padding: 0.75rem;
+}
+.alert h1,
+.alert h2,
+.alert h3,
+.alert h4,
+.alert h5,
+.alert h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  padding: 0;
+}
+.alert *:last-child {
+  margin-bottom: 0;
+}
+
+/* .alert-box1 {
 	font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 	font-size: 15px;
 	color:#986500;
@@ -132,7 +148,7 @@ blockquote {
 
 .alert-box2 h2{
 	color:#46767e;
-}
+} */
 
 /* Navbar */
 
