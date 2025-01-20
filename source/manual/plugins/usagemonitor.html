@@ -632,21 +632,23 @@ Y=3R
 ClipString=1
 ```
 
-<h2 id="RebuildCounters">Rebuilding Counters Database</h2>
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="RebuildingCounters"><i class="fa-solid fa-thumbtack"></i> Note: Rebuilding Counters Database</h2>
 
-<p>While rare, it is possible for the database of counters that is maintained by Performance Monitor in Windows to become damaged, which will cause the UsageMonitor plugin to stop functioning correctly.</p>
+	<p>While rare, it is possible for the database of counters that is maintained by Performance Monitor in Windows to become damaged, which will cause the UsageMonitor plugin to stop functioning correctly.</p>
 
-<p>In many cases, this can be corrected by "rebuilding" the database from the Windows command line.</p>
+	<p>In many cases, this can be corrected by "rebuilding" the database from the Windows command line.</p>
 
-<p>Run cmd.exe, being sure to run "As administrator". At the command line, enter the following commands in order:</p>
+	<p>Run cmd.exe, being sure to run "As administrator". At the command line, enter the following commands in order:</p>
 
-``` dos
-cd c:\windows\system32
-lodctr /R
-cd c:\windows\sysWOW64
-lodctr /R
-```
+	``` dos
+	cd c:\windows\system32
+	lodctr /R
+	cd c:\windows\sysWOW64
+	lodctr /R
+	```
 
-<p>You should see the following results:</p>
+	<p>You should see the following results:</p>
 
-<p><code>Info: Successfully rebuilt performance counter setting from system backup store</code></p>
+	<p><code>Info: Successfully rebuilt performance counter setting from system backup store</code></p>
+</div>

@@ -70,7 +70,7 @@ end
 
 <p>In general, anything useful that you do with this functionality is going to entail passing variables of one form or another to the Lua function, and just always using the Nested Variables syntax with any inline Lua will save a lot of frustration and confusion.</p>
 
-<h2 id="Notes">Inline Lua Notes</h2>
+<h2 id="Guidelines">Inline Lua Guidelines</h2>
 
 <p><code>DynamicVariables=1</code> MUST be set on any measures or meters where inlineLua is used.</p>
 
@@ -82,19 +82,21 @@ end
 
 <p>The Lua <code>nil</code> data type, indicating that a value doesn't exist, may be used in a parameter, but not as a return type to Rainmeter. In some cases, the <code>boolean</code> value of <code>false</code> may be used to indicate NOT, in place of <code>nil</code>.</p>
 
-<p><b>Important Final Note</b></p>
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="FinalNote"><i class="fa-solid fa-thumbtack"></i> Note: Important Final Note</h2>
 
-<p>Any inline Lua used in options in measures or meters are resolved when the skin is first read and created on load or refresh. This is the same for all [SectionVariables] in Rainmeter.</p>
+	<p>Any inline Lua used in options in measures or meters are resolved when the skin is first read and created on load or refresh. This is the same for all [SectionVariables] in Rainmeter.</p>
 
-<p>During this "initialization" phase of the skin, before the first actual "update" of the skin, the value of all measures will be set to an initial numeric value of <code>0</code>, and if applicable, a string value of "". This will normally be transparent, as before any "result" of the inline Lua is "used", before the skin is "drawn" for the first time, all measures and meters will have been updated and the correct and expected results will happen. However some care should be taken to ensure that a one-time initial value of 0 being passed to your Lua doesn't cause any logic or formula errors.</p>
+	<p>During this "initialization" phase of the skin, before the first actual "update" of the skin, the value of all measures will be set to an initial numeric value of <code>0</code>, and if applicable, a string value of "". This will normally be transparent, as before any "result" of the inline Lua is "used", before the skin is "drawn" for the first time, all measures and meters will have been updated and the correct and expected results will happen. However some care should be taken to ensure that a one-time initial value of 0 being passed to your Lua doesn't cause any logic or formula errors.</p>
 
-<p>In addition, the Initialize() function in a Lua script will only be executed during the first update cycle of the skin. This means that if you are defining and setting some default values for variables in Initialize() in your Lua, those values will not be visible before the first skin update, which will be after any inline Lua in measures or meters are first run. This may cause "nil" values to be seen and result in errors.</p>
+	<p>In addition, the Initialize() function in a Lua script will only be executed during the first update cycle of the skin. This means that if you are defining and setting some default values for variables in Initialize() in your Lua, those values will not be visible before the first skin update, which will be after any inline Lua in measures or meters are first run. This may cause "nil" values to be seen and result in errors.</p>
 
-<p>In many cases, this can be resolved by defining and setting these variables in the global scope of the Lua script, outside of any function block. This global scope will be executed during the initialization phase of the skin, and the values will be immediately available. The global scope of Lua has not been much needed before in Rainmeter, but with inline Lua it can be valuable.</p>
+	<p>In many cases, this can be resolved by defining and setting these variables in the global scope of the Lua script, outside of any function block. This global scope will be executed during the initialization phase of the skin, and the values will be immediately available. The global scope of Lua has not been much needed before in Rainmeter, but with inline Lua it can be valuable.</p>
 
-<p>Again, in both cases, this all will generally be transparent and of no consequence, since by the time the skin is first drawn, at the end of the first skin update, all will be well. This issue should be kept in mind however, if you find you are getting single initial error messages in the log.</p>
+	<p>Again, in both cases, this all will generally be transparent and of no consequence, since by the time the skin is first drawn, at the end of the first skin update, all will be well. This issue should be kept in mind however, if you find you are getting single initial error messages in the log.</p>
 
-<p>Inline Lua used in bangs in actions in the skin will only be executed when the action is executed, and so will not display this behavior. They simply can't be executed before the first update of the skin.</p>
+	<p>Inline Lua used in bangs in actions in the skin will only be executed when the action is executed, and so will not display this behavior. They simply can't be executed before the first update of the skin.</p>
+</div>
 
 <h2 id="Examples">Examples</h2>
 

@@ -11,11 +11,14 @@ title: 'Section Variables'
 
 <blockquote><p><code>[SectionName:P1,P2]</code></p></blockquote>
 
-<p><b>Note:</b> Normal or <a href="!variables/#BuiltInVariables">built-in</a> variables take priority over section variables, which means that while they can be used within section variables, for example: <code>[#Foo#:#Bar#]</code>, the reverse, such as <code>#[Foo][Bar]#</code>, is not valid.</p>
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+	<p>Normal or <a href="!variables/#BuiltInVariables">built-in</a> variables take priority over section variables, which means that while they can be used within section variables, for example: <code>[#Foo#:#Bar#]</code>, the reverse, such as <code>#[Foo][Bar]#</code>, is not valid.</p>
 
 <p>This limitation can be addressed by using the <a href="!variables/nesting-variables">Nesting Variables</a> form of the variables.</p>
 
 <p>Example: <code>[#[&Foo][&Bar]]</code></p>
+</div>
 
 <h3 id="DynamicVariables">Dynamic Variables</h3>
 
