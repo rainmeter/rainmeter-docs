@@ -31,7 +31,7 @@ title: 'MeterStyles'
 ``` ini
 [MyFirstParent]
 Meter=String
-Text=I'm a parent!
+Text=This is a parent!
 X=10
 FontColor=255,0,0
 FontFace=Segoe UI
@@ -47,7 +47,7 @@ FontColor=0,255,0
 Meter=String
 MeterStyle=MyFirstParent | MySecondParent
 FontColor=0,0,255
-Text=I'm a child!
+Text=This is a child!
 ```
 
 <p><em>MyChild</em> inherits all options from the <em>MyFirstParent</em> meter and the <em>MySecondParent</em> MeterStyle. This means it is displayed with all of the same font, color, size and other options given for those sections. The second parent's <code>StringStyle</code> option overrides the first parent's, which means the child meter displays italic text. Likewise, the child meter's <code>FontColor</code> option overrides both parents', so the text displays with a color of <code>0,0,255</code> (blue).</p>
