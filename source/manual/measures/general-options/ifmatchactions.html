@@ -11,8 +11,11 @@ title: 'IfMatchActions'
 
 <p>Reserved characters in regular expression, which are <code>.</code><code>^</code><code>$</code><code>*</code><code>+</code><code>?</code><code>(</code><code>)</code><code>[</code><code>{</code><code>\</code><code>|</code> must be escaped with the <code>\</code> character when used as a literal in the <code>IfMatch</code> option.  If using a measure value as a section variable in the IfMatch option, the <a href="!variables/section-variables/#EscapeRegExp">:EscapeRegExp</a> modifier can be used to properly escape reserved characters in the measure.</p>
 
-<p><em>Capture groups <code>()</code> should not be used in the regular expression, as nothing is being captured and no indexes are being created.  The function is simply used to test if the string measure matches some regular expression pattern, and will either be "true" (IfMatchAction) or "false" (IfNotMatchAction).</em></p>
-
+	<div class="alert alert-info alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+		<p><em>Capture groups <code>()</code> should not be used in the regular expression, as nothing is being captured and no indexes are being created.  The function is simply used to test if the string measure matches some regular expression pattern, and will either be "true" (IfMatchAction) or "false" (IfNotMatchAction).</em></p>
+	</div>
+	
 <h2>Options</h2>
 <dl>
 	<dt id="IfMatch"><code>IfMatch</code>, <code>IfMatch2</code>, ..., <code>IfMatch<em>N</em></code></dt>
@@ -42,11 +45,15 @@ title: 'IfMatchActions'
 	<dd>
 		<p>If set to <code>1</code>, the evaluation of the match will execute the appropriate actions in IfMatchAction or IfNotMatchAction on every update of the measure.</p>
 		
-		<p>This option changes the behavior from "becomes true or false" to "is true or false".</p>
+		<p>This option changes the behavior from "becomes true or false" to "is true or false".</p><br>
 
-		<p><b>Note:</b> Care should be taken not to create an infinite loop in the actions.  In particular, <code>!Refresh</code>, <code>!Update</code> and <code>!UpdateMeasure #CURRENTSECTION#</code> should generally be avoided when <code>IfMatchMode=1</code>.</p>
-	</dd>
-</dl>
+<div class="alert alert-warning alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="SomeAlert"><i class="fa-solid fa-bomb"></i> Alert:</h2>
+		<p>Care should be taken not to create an infinite loop in the actions.  In particular, <code>!Refresh</code>, <code>!Update</code> and <code>!UpdateMeasure #CURRENTSECTION#</code> should generally be avoided when <code>IfMatchMode=1</code>.</p>
+	</div>
+		</dd>
+	</dl>
+
 
 <h2>Example</h2>
 ``` ini

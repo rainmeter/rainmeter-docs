@@ -22,9 +22,12 @@ title: 'Substitute'
 	<dd>
 		<p>If set to <code>1</code>, <a href="!skins/option-types/#RegExp">Perl compatible regular expressions</a> can be used in the <code>pattern</code> part of <code>Substitute</code> pairs.</p>
 
-		<p>If captures are used in the pattern, (e.g. <code>(.+)</code>) they can be referenced in the <code>replacement</code> part using <code>\1</code>, (first capture) <code>\2</code>, (second capture) etc. The entire match can also be referenced with <code>\0</code>.</p>
+		<p>If captures are used in the pattern, (e.g. <code>(.+)</code>) they can be referenced in the <code>replacement</code> part using <code>\1</code>, (first capture) <code>\2</code>, (second capture) etc. The entire match can also be referenced with <code>\0</code>.</p><br>
 
-		<p><b>Note:</b> With RegExpSubstitute, a (capture) may not return an empty string. Care should be taken when using <code>*</code> (zero or more) quantifiers or <code>(?(?=</code> (If/Then) lookahead tests, as a capture must either cause the entire regular expression to "fail", or return a value of some kind.</p>
+	<div class="alert alert-warning alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="SomeAlert"><i class="fa-solid fa-bomb"></i> Alert:</h2>
+		<p>With RegExpSubstitute, a (capture) may not return an empty string. Care should be taken when using <code>*</code> (zero or more) quantifiers or <code>(?(?=</code> (If/Then) lookahead tests, as a capture must either cause the entire regular expression to "fail", or return a value of some kind.</p>
+	</div>
 	</dd>
 </dl>
 
