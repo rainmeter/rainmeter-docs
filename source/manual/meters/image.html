@@ -5,7 +5,7 @@ title: 'Image Meter'
 ---
 <p><code>Meter=Image</code> displays either an image defined by a measure value, or any named image. If <code>W</code> and/or <code>H</code> are included in the meter options, the image will be scaled to fit the meter size.</p>
 
-<p><b>Note:</b> Supported image formats are <b>.png</b>, <b>.jpg</b>, <b>.bmp</b>, <b>.gif</b> (no <a href="/tips/animated-gif-files">animation</a> supported), <b>.tif</b>, <b>.webP</b> and <b>.ico</b>. If no file extension is included, <b>.png</b> is assumed.</p>
+<p>Supported image formats are <b>.png</b>, <b>.jpg</b>, <b>.bmp</b>, <b>.gif</b> (no <a href="/tips/animated-gif-files">animation</a> supported), <b>.tif</b>, <b>.webP</b> and <b>.ico</b>. If no file extension is included, <b>.png</b> is assumed.</p>
 
 <h2>Options</h2>
 <dl>
@@ -28,7 +28,7 @@ title: 'Image Meter'
 	<dd>
 		<p>Name of an image file. This can be a full path and name of any supported image file, or just the name of the file if the <a href="!meters/general-options/image-options/#ImagePath">ImagePath</a> option is used or the image file is in the current skin folder.</p>
 
-		<p><b>Note:</b> If a <code>MeasureName<em>N</em></code> option is defined, it will override any named file in the <code>ImageName</code> option. Generally, <code>MeasureName<em>N</em></code> and <code>ImageName</code> will not be used together in the same meter.</p>
+		<p>If a <code>MeasureName<em>N</em></code> option is defined, it will override any named file in the <code>ImageName</code> option. Generally, <code>MeasureName<em>N</em></code> and <code>ImageName</code> will not be used together in the same meter.</p>
 		
 		The exceptions are when <code>MeasureName</code> returns a file name with no extension, and the default .png is not desired, or when <code>ImageName</code> is being used to define an image based on the combined values of the measures in <code>MeasureName<em>N</em></code> and uses the <code>%<em>N</em></code> syntax as follows:</p>
 
@@ -40,7 +40,10 @@ ImageName=%1-%2.png
 ; SomeMeasure2, respectively.
 ```
 
-		<p><b>Note:</b> When <code>ImageName</code> is hard-coded with an image file name, the image will be loaded and "cached", to avoid reloading the image from disk on every meter update. If there is an external process that is changing the image file, while leaving the name the same, use <code>DynamicVariables=1</code> on the meter to force the image to be reloaded from disk on every meter update.</p>
+	<div class="alert alert-info alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+		<p>When <code>ImageName</code> is hard-coded with an image file name, the image will be loaded and "cached", to avoid reloading the image from disk on every meter update. If there is an external process that is changing the image file, while leaving the name the same, use <code>DynamicVariables=1</code> on the meter to force the image to be reloaded from disk on every meter update.</p>
+	</div>
 
 	</dd>
 
@@ -52,7 +55,7 @@ ImageName=%1-%2.png
 		<li><code>1</code>: The image is scaled to fit within the bounds specified by <code>W</code> and/or <code>H</code> while preserving the aspect ratio.</li>
 		<li><code>2</code>: The image is scaled and cropped to fill the bounds specified by <code>W</code> and/or <code>H</code> while preserving the aspect ratio.</li>
 		</ul>
-		<p><b>Note:</b> If only one of either <code>W</code> or <code>H</code> is defined, then PreserveAspectRatio will default to <code>1</code>.</p>
+		<p>If only one of either <code>W</code> or <code>H</code> is defined, then PreserveAspectRatio will default to <code>1</code>.</p>
 	</dd>
 
 	<dt id="ScaleMargins"><code>ScaleMargins</code> <small>Format: <code>Left, Top, Right, Bottom</code></small></dt>

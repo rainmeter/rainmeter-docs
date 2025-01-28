@@ -367,10 +367,14 @@ title: 'Bangs'
 		Immediately redraws all visible elements of the entire skin, independent of the normal skin update cycle.
 		<ul>
 		<li><code>Config</code> (optional)</li>
-		</ul>
-		<b>Note:</b> This simply redraws the skin. Meters will use the values obtained when they were last updated. Since by itself !Redraw accomplishes nothing useful, this bang will always be used in conjunction
+		</ul><br>
+		
+	<div class="alert alert-info alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+		<p>This simply redraws the skin. Meters will use the values obtained when they were last updated. Since by itself !Redraw accomplishes nothing useful, this bang will always be used in conjunction
 		with bangs that update specific things before redrawing the skin. Depending on the case, this might be with <a href="!bangs/#UpdateMeasure">!UpdateMeasure</a> bangs to immediately update measure values, and certainly <a href="!bangs/#UpdateMeter">!UpdateMeter</a> bangs to update meter values and options. The idea is to update specific meters and redraw the skin before the next normal update cycle. This can allow immediate visible changes, while not having to force an update of the entire skin.<br><br>
 		<b>Example:</b> <code>LeftMouseUpAction=[!UpdateMeasure SomeMeasure][!UpdateMeter SomeMeter][!Redraw]</code>
+	</div>
 	</dd>
 
 	<dt id="Refresh"><code>!Refresh</code> <small>Parameter: <code><em>Config</em></code></small></dt>
@@ -383,8 +387,10 @@ title: 'Bangs'
 	
 	<dt id="Delay"><code>!Delay</code> <small>Parameter: <code><em>milliseconds</em></code></small></dt>
 	<dd>
-		<p>Delays execution for a defined number of milliseconds when embedded in an <a href="!skins/option-types/#Action">action option</a>. The lowest possible value is 16 milliseconds.</p>
-		<p>Note that this is a very limited form of what is offered by the <a href="!plugins/actiontimer/">ActionTimer plugin</a>. There is no way to interrupt or cancel this short of a <code>!Refresh</code> of the skin, and nothing in the action itself can be dynamically changed during the execution of the action. It is simply a brute-force way to delay part of an action that has multiple components.</p>
+		<p>Delays execution for a defined number of milliseconds when embedded in an <a href="!skins/option-types/#Action">action option</a>. The lowest possible value is 16 milliseconds.</p><br>
+		<div class="alert alert-warning alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="SomeAlert"><i class="fa-solid fa-bomb"></i> Alert:</h2><p>This is a very limited form of what is offered by the <a href="!plugins/actiontimer/">ActionTimer plugin</a>. There is no way to interrupt or cancel this short of a <code>!Refresh</code> of the skin, and nothing in the action itself can be dynamically changed during the execution of the action. It is simply a brute-force way to delay part of an action that has multiple components. This is not "threaded", and will in effect delay all processing of the entire skin while it is running.</p>
+		</div>
 		<p><b>Example:</b> <code>[!ShowMeter SomeMeter][!Delay 5000][!HideMeter SomeMeter]</code></p>
 	</dd>	
 
