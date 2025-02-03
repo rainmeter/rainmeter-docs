@@ -72,7 +72,7 @@ function toggleClass(elem, className) {
 	}
 })();
 
-// Add ¶ Heading Anchor to the same tags you can Ctrl+Click on
+// Add # Heading Anchor to the same tags you can Ctrl+Click on
 // if the HTML element has an id and is one of the tags below
 // Both window.onload and document.onload do the job but i chose the former
 (window.onload = function() {
@@ -94,11 +94,11 @@ function toggleClass(elem, className) {
 			// create an anchor element onto which we just add a href to the id the elementFound has
 			var anchor = document.createElement('a');
 			anchor.href = '#' + elementFound.id;
-			anchor.textContent = '¶';
+			anchor.textContent = '#';
 			anchor.classList.add('heading-anchor');
 			
 			// adds the ampersend at the end of elementFound
-			// e.g. <h1 id="first">Header<a href=#first>¶</a></h1>
+			// e.g. <h1 id="first">Header<a href=#first>#</a></h1>
 			elementFound.appendChild(anchor);
 		}
 	})
