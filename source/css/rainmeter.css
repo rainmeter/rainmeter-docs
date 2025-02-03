@@ -554,6 +554,32 @@ pre code {
   color: #036eb9;
 }
 
+/* Docs Ampersend Hyperlink */
+.heading-anchor {
+  visibility: hidden;
+  color: #0058cc;
+  padding: 0.5rem;
+}
+
+h1:hover > .heading-anchor,
+h2:hover > .heading-anchor,
+h3:hover > .heading-anchor,
+h4:hover > .heading-anchor,
+h5:hover > .heading-anchor,
+h6:hover > .heading-anchor,
+dt:hover > .heading-anchor,
+span:hover > .heading-anchor {
+  visibility: visible;
+}
+
+dt .heading-anchor {
+  color: #e09028;
+}
+
+dt:target .heading-anchor {
+  color: #0058cc;
+}
+
 /* Docs index cards */
 
 .docs-index .card {

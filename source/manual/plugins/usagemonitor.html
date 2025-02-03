@@ -3,7 +3,7 @@ layout: docs
 permalink: manual/plugins/usagemonitor/
 title: 'UsageMonitor plugin'
 ---
-<p><code>Plugin=UsageMonitor</code> retrieves infromation from the <a href="https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/dd744567(v=ws.10)">Windows Performance Monitor</a>.</p>
+<p><code>Plugin=UsageMonitor</code> retrieves information from the <a href="https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/dd744567(v=ws.10)">Windows Performance Monitor</a>.</p>
 
 <p>The Windows Performance Monitor exposes counters, which monitor various kinds of system metrics in different categories, and tracks their usage. All available counters can be viewed using the Performance Monitor application. To open it, run Perfmon.exe.</p>
 
@@ -19,7 +19,7 @@ title: 'UsageMonitor plugin'
 
 <ul>
 <li><b>Name</b><br/>This will be the specific (case sensitive) text name of a single given instance, and will return the current value for that specific instance of a counter.</li>
-<li><b>Index</b><br/>This will be either <code>Index=0</code>, which will always return the current total of all instances for a given counter, <code>Index=-1</code>, which will always return the current average of all instances for a given counter,or <code>Index=N</code>, which will return the instance at the defined point in a sorted list of all instances, with their values ordered from most to least. So for example, <code>Index=1</code> would return the current value and name of the instance with the highest value for that counter.</li>
+<li><b>Index</b><br/>This will be either <code>Index=0</code>, which will always return the current total of all instances for a given counter, <code>Index=-1</code>, which will always return the current average of all instances for a given counter, or <code>Index=N</code>, which will return the instance at the defined point in a sorted list of all instances, with their values ordered from most to least. So for example, <code>Index=1</code> would return the current value and name of the instance with the highest value for that counter.</li>
 </ul>
 
 <br/>
@@ -38,16 +38,18 @@ title: 'UsageMonitor plugin'
 	<dd>
 		<p>Alias or "shortcut" for a particular Category and Counter combination. This may optionally be used in place of specific Category and Counter options on the measure.</p>
 		<br/>
-		<p>The currently supported Alias names and what they reference are:</p><br/>
-		<p>Alias=<b>CPU</b><br/>Category: <em>Process</em> | Counter: <em>% Processor Time</em><br/>CPU usage of each process, across all cores, as a percentage of total CPU.</p>
-		<p>Alias=<b>RAM</b><br/>Category: <em>Process</em> | Counter: <em>Working Set - Private</em><br/>Bytes of Private Working Set RAM used by each process.</p>
-		<p>Alias=<b>RAMSHARED</b><br/>Category: <em>Process</em> | Counter: <em>Working Set</em><br/>Bytes of shared Working Set RAM used by each process.</p>		
-		<p>Alias=<b>IO</b><br/>Category: <em>Process</em> | Counter: <em>IO Data Bytes/sec</em><br/>Bytes per second of read and write usage by each process, across all disks.</p>
-		<p>Alias=<b>IOREAD</b><br/>Category: <em>Process</em> | Counter: <em>IO Read Bytes/sec</em><br/>Bytes per second of read usage by each process, across all disks.</p>
-		<p>Alias=<b>IOWRITE</b><br/>Category: <em>Process</em> | Counter: <em>IO Write Bytes/sec</em><br/>Bytes per second of write usage by each process, across all disks.</p>
-		<p>Alias=<b>GPU</b><br/>Category: <em>GPU Engine</em> | Counter: <em>Utilization Percentage</em><br/>Percentage of GPU usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p>
-		<p>Alias=<b>VRAM</b><br/>Category: <em>GPU Process Memory</em> | Counter: <em>Dedicated Usage</em><br/>Bytes of private video RAM usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p>
-		<p>Alias=<b>VRAMSHARED</b><br/>Category: <em>GPU Process Memory</em> | Counter: <em>Shared Usage</em><br/>Bytes of shared video RAM usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p>
+		<p>The currently supported Alias names and what they reference are:</p>
+		<table class="table-striped">
+			<tr><td><p>Alias=<b>CPU</b><br/>Category: <em>Process</em> | Counter: <em>% Processor Time</em><br/>CPU usage of each process, across all cores, as a percentage of total CPU.</p></td></tr>
+			<tr><td><p>Alias=<b>RAM</b><br/>Category: <em>Process</em> | Counter: <em>Working Set - Private</em><br/>Bytes of Private Working Set RAM used by each process.</p></td></tr>
+			<tr><td><p>Alias=<b>RAMSHARED</b><br/>Category: <em>Process</em> | Counter: <em>Working Set</em><br/>Bytes of shared Working Set RAM used by each process.</p></td></tr>
+			<tr><td><p>Alias=<b>IO</b><br/>Category: <em>Process</em> | Counter: <em>IO Data Bytes/sec</em><br/>Bytes per second of read and write usage by each process, across all disks.</p></td></tr>
+			<tr><td><p>Alias=<b>IOREAD</b><br/>Category: <em>Process</em> | Counter: <em>IO Read Bytes/sec</em><br/>Bytes per second of read usage by each process, across all disks.</p></td></tr>
+			<tr><td><p>Alias=<b>IOWRITE</b><br/>Category: <em>Process</em> | Counter: <em>IO Write Bytes/sec</em><br/>Bytes per second of write usage by each process, across all disks.</p></td></tr>
+			<tr><td><p>Alias=<b>GPU</b><br/>Category: <em>GPU Engine</em> | Counter: <em>Utilization Percentage</em><br/>Percentage of GPU usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p></td></tr>
+			<tr><td><p>Alias=<b>VRAM</b><br/>Category: <em>GPU Process Memory</em> | Counter: <em>Dedicated Usage</em><br/>Bytes of private video RAM usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p></td></tr>
+			<tr><td><p>Alias=<b>VRAMSHARED</b><br/>Category: <em>GPU Process Memory</em> | Counter: <em>Shared Usage</em><br/>Bytes of shared video RAM usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p></td></tr>
+		</table><br>
 	</dd>
 
 	<dt id="Category"><code>Category</code><small>Default: <em>None</em></small></dt>

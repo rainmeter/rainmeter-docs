@@ -21,7 +21,7 @@ title: 'Bangs'
 	<p>Many bangs have a <code>Config</code> parameter. Unless otherwise specified, valid values are the <a href="!skins/#Config">config name</a> of a currently loaded skin to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins. When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
 </div>
 
-<h3>Command Line Arguments</h3>
+<h3 id="CommandLineArguments">Command Line Arguments</h3>
 
 <p>Bangs can also be used from the Windows command line as a parameter to the Rainmeter.exe executable. Examples:</p>
 
@@ -29,7 +29,13 @@ title: 'Bangs'
 	<li><code>"C:\Program Files\Rainmeter\Rainmeter.exe" !RefreshApp</code></li>
 	<li><code>"C:\Program Files\Rainmeter\Rainmeter.exe" !SetVariable "textSize" "12" "illustro\Clock"</code></li>
 </ul>
-<p><b>Note:</b> Any variable of any kind, including <a href="manual/variables/built-in-variables/">Built-In Variables</a>, are not executed when calling Rainmeter from the command line. Likewise, the <code>Config</code> parameter is always required in places where it is treated as optional.</p>
+<br>
+<p><b>(For programmers)</b> External Applications can send Bangs using the Skin's HWND and the Windows <i>SendMessage</i> function (<i>winuser.h</i>), see <a href="/developers/#SendMessage">the Rainmeter Window Message API</a>.</p>
+
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+	<p>Any variable of any kind, including <a href="/manual/variables/built-in-variables/">Built-In Variables</a>, are not resolved when calling Rainmeter from the command line. Likewise, the <code>Config</code> parameter is always required in places where it is treated as optional.</p>
+</div>
 
 
 <h2 id="OS">Operating System bangs</h2>
