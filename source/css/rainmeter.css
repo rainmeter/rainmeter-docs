@@ -554,11 +554,15 @@ pre code {
   color: #036eb9;
 }
 
-/* Docs Ampersend Hyperlink */
+/* Docs Anchor Hyperlink */
 .heading-anchor {
   visibility: hidden;
-  color: #0058cc;
+  color: #00a21a;
   padding: 0.5rem;
+}
+
+dt .heading-anchor {
+  color: #8bff96;
 }
 
 h1:hover > .heading-anchor,
@@ -569,15 +573,12 @@ h5:hover > .heading-anchor,
 h6:hover > .heading-anchor,
 dt:hover > .heading-anchor,
 span:hover > .heading-anchor {
+  color: #00a21a;
   visibility: visible;
 }
 
-dt .heading-anchor {
-  color: #e09028;
-}
-
-dt:target .heading-anchor {
-  color: #0058cc;
+dt:hover > .heading-anchor {
+  color: #8bff96;
 }
 
 /* Docs index cards */
