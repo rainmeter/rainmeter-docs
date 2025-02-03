@@ -38,16 +38,18 @@ title: 'UsageMonitor plugin'
 	<dd>
 		<p>Alias or "shortcut" for a particular Category and Counter combination. This may optionally be used in place of specific Category and Counter options on the measure.</p>
 		<br/>
-		<p>The currently supported Alias names and what they reference are:</p><br/>
-		<p>Alias=<b>CPU</b><br/>Category: <em>Process</em> | Counter: <em>% Processor Time</em><br/>CPU usage of each process, across all cores, as a percentage of total CPU.</p>
-		<p>Alias=<b>RAM</b><br/>Category: <em>Process</em> | Counter: <em>Working Set - Private</em><br/>Bytes of Private Working Set RAM used by each process.</p>
-		<p>Alias=<b>RAMSHARED</b><br/>Category: <em>Process</em> | Counter: <em>Working Set</em><br/>Bytes of shared Working Set RAM used by each process.</p>		
-		<p>Alias=<b>IO</b><br/>Category: <em>Process</em> | Counter: <em>IO Data Bytes/sec</em><br/>Bytes per second of read and write usage by each process, across all disks.</p>
-		<p>Alias=<b>IOREAD</b><br/>Category: <em>Process</em> | Counter: <em>IO Read Bytes/sec</em><br/>Bytes per second of read usage by each process, across all disks.</p>
-		<p>Alias=<b>IOWRITE</b><br/>Category: <em>Process</em> | Counter: <em>IO Write Bytes/sec</em><br/>Bytes per second of write usage by each process, across all disks.</p>
-		<p>Alias=<b>GPU</b><br/>Category: <em>GPU Engine</em> | Counter: <em>Utilization Percentage</em><br/>Percentage of GPU usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p>
-		<p>Alias=<b>VRAM</b><br/>Category: <em>GPU Process Memory</em> | Counter: <em>Dedicated Usage</em><br/>Bytes of private video RAM usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p>
-		<p>Alias=<b>VRAMSHARED</b><br/>Category: <em>GPU Process Memory</em> | Counter: <em>Shared Usage</em><br/>Bytes of shared video RAM usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p>
+		<p>The currently supported Alias names and what they reference are:</p>
+		<table class="table-striped">
+			<tr><td><p>Alias=<b>CPU</b><br/>Category: <em>Process</em> | Counter: <em>% Processor Time</em><br/>CPU usage of each process, across all cores, as a percentage of total CPU.</p></td></tr>
+			<tr><td><p>Alias=<b>RAM</b><br/>Category: <em>Process</em> | Counter: <em>Working Set - Private</em><br/>Bytes of Private Working Set RAM used by each process.</p></td></tr>
+			<tr><td><p>Alias=<b>RAMSHARED</b><br/>Category: <em>Process</em> | Counter: <em>Working Set</em><br/>Bytes of shared Working Set RAM used by each process.</p></td></tr>
+			<tr><td><p>Alias=<b>IO</b><br/>Category: <em>Process</em> | Counter: <em>IO Data Bytes/sec</em><br/>Bytes per second of read and write usage by each process, across all disks.</p></td></tr>
+			<tr><td><p>Alias=<b>IOREAD</b><br/>Category: <em>Process</em> | Counter: <em>IO Read Bytes/sec</em><br/>Bytes per second of read usage by each process, across all disks.</p></td></tr>
+			<tr><td><p>Alias=<b>IOWRITE</b><br/>Category: <em>Process</em> | Counter: <em>IO Write Bytes/sec</em><br/>Bytes per second of write usage by each process, across all disks.</p></td></tr>
+			<tr><td><p>Alias=<b>GPU</b><br/>Category: <em>GPU Engine</em> | Counter: <em>Utilization Percentage</em><br/>Percentage of GPU usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p></td></tr>
+			<tr><td><p>Alias=<b>VRAM</b><br/>Category: <em>GPU Process Memory</em> | Counter: <em>Dedicated Usage</em><br/>Bytes of private video RAM usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p></td></tr>
+			<tr><td><p>Alias=<b>VRAMSHARED</b><br/>Category: <em>GPU Process Memory</em> | Counter: <em>Shared Usage</em><br/>Bytes of shared video RAM usage of each process, across all GPU engines.<br/><b>Note:</b> Requires Windows 10 Fall Creators Update or later.</p></td></tr>
+		</table><br>
 	</dd>
 
 	<dt id="Category"><code>Category</code><small>Default: <em>None</em></small></dt>
