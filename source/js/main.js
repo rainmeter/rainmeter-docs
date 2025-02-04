@@ -97,6 +97,12 @@ function toggleClass(elem, className) {
 			anchor.href = '#' + elementFound.id;
 			anchor.textContent = '#';
 			anchor.classList.add('heading-anchor');
+			anchor.title='Click to set URL with this anchor';
+
+			// Tooltip for Phone when hovering, commented out since Popper.js is not
+			// one of the included libraries (yet)
+			//anchor.setAttribute('data-toggle', 'tooltip');			
+			//anchor.setAttribute('data-placement', 'top');
 			
 			// adds the ampersend at the end of elementFound
 			// e.g. <h1 id="first">Header<a href=#first>#</a></h1>
