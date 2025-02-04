@@ -75,7 +75,7 @@ function toggleClass(elem, className) {
 // Add # Heading Anchor to the same tags you can Ctrl+Click on
 // if the HTML element has an id and is one of the tags below
 // Both window.onload and document.onload do the job but i chose the former
-(window.onload = function() {
+(window.addEventListener("load", function() {
 	// Tags are copy pasted from the function above
 	var tags = ['dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'];
 	// This returns all the elements that have the `id` tag 
@@ -102,7 +102,7 @@ function toggleClass(elem, className) {
 			elementFound.appendChild(anchor);
 		}
 	})
-});
+}));
 
 // Add 'Select all' and 'Download' buttons to <pre> blocks.
 (function() {
