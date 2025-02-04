@@ -71,7 +71,7 @@
 		if (code) {
 			var d1 = point.p1.x + "," + point.p1.y + "," + point.p2.x +
 			"," + point.p2.y + "," + rx + "," + ry + "," + angle + "," +
-			large + "," + sweep + "," +
+			sweep + "," + large + "," +
 			(fill ? "1" : "0");
 			code.textContent = 'Shape=Arc '+ d1;
 		}
