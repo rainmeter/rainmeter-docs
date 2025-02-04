@@ -78,19 +78,20 @@ function toggleClass(elem, className) {
 (window.addEventListener("load", function() {
 	// Tags are copy pasted from the function above
 	var tags = ['dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span'];
+	// Some elements that don't need to be anchored exist and have special IDs, this list will exclude them
+	var specialIDToExclude = ['SomeNote', 'Note'];
 	// This returns all the elements that have the `id` tag 
 	var elementsWithId = document.querySelectorAll("[id]");
 
 	elementsWithId.forEach(function(elementFound) {
 		// We could forEach again, but Array.prototype.includes() already
-		// dose the job, while there are no elements with upercase tags in the docs
-		// this is here just in case.
-		// We also check if the element is in .docs-content, since the Manual text
-		// on the navbar has an id (for some reason).
-		// We also exclude `SomeNote` from the alert boxes.
+		// dose the job. We also check if the element is in .docs-content,
+		// since the Manual text on the navbar has an ID (for some reason).
+		// We also exclude some special IDs (mostly from the alert boxes).
+		// Lowercase cause tagName returns it in ALLCAPS
 		if (tags.includes(elementFound.tagName.toLowerCase()) &&
-			elementFound.closest('.docs-content') &&
-			elementFound.id !== 'SomeNote') {
+			!specialIDToExclude.includes(elementFound.id) &&
+			elementFound.closest('.docs-content') ) {
 			// create an anchor element onto which we just add a href to the id the elementFound has
 			var anchor = document.createElement('a');
 			anchor.href = '#' + elementFound.id;
