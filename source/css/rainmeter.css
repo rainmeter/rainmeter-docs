@@ -559,6 +559,7 @@ pre code {
   visibility: hidden;
   color: #00a21a;
   padding: 0.5rem;
+  user-select: none;
 }
 
 dt .heading-anchor {
