@@ -564,6 +564,7 @@ pre code {
 
 dt .heading-anchor {
   color: #8bff96;
+  user-select: none;
 }
 
 h1:hover > .heading-anchor,
@@ -576,10 +577,12 @@ dt:hover > .heading-anchor,
 span:hover > .heading-anchor {
   color: #00a21a;
   visibility: visible;
+  user-select: none;
 }
 
 dt:hover > .heading-anchor {
   color: #8bff96;
+  user-select: none;
 }
 
 /* Docs index cards */
