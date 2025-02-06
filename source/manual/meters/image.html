@@ -41,7 +41,7 @@ ImageName=%1-%2.png
 ```
 
 	<div class="alert alert-info alert-tight" role="alert">
-		<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+		<h2 class="alert-heading h5" id="ImageNameNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
 		<p>When <code>ImageName</code> is hard-coded with an image file name, the image will be loaded and "cached", to avoid reloading the image from disk on every meter update. If there is an external process that is changing the image file, while leaving the name the same, use <code>DynamicVariables=1</code> on the meter to force the image to be reloaded from disk on every meter update.</p>
 	</div>
 
@@ -71,7 +71,7 @@ ImageName=%1-%2.png
 </dl>
 
 <div class="alert alert-info alert-tight" role="alert">
-	<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+	<h2 class="alert-heading h5" id="SolidColorNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
 	<p>Using the <a href="!meters/general-options/#SolidColor">SolidColor</a> option, along with <a href="!meters/general-options/#WH">W</a> and <a href="!meters/general-options/#WH">H</a> options, an image meter may be used to draw squares, rectangles or lines without needing any <code>ImageName</code> or <code>MeasureName</code>.</p>
 
 	<p>However, no manipulations can be done to the resulting square, rectangle or line with any <a href="!meters/general-options/image-options/">general image options</a>. Only actual images loaded from a file can be manipulated. (e.g. ImageRotate)</p>

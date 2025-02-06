@@ -395,7 +395,7 @@ title: 'Bangs'
 	<dd>
 		<p>Delays execution for a defined number of milliseconds when embedded in an <a href="!skins/option-types/#Action">action option</a>. The lowest possible value is 16 milliseconds.</p><br>
 		<div class="alert alert-warning alert-tight" role="alert">
-		<h2 class="alert-heading h5" id="SomeAlert"><i class="fa-solid fa-bomb"></i> Alert:</h2><p>This is a very limited form of what is offered by the <a href="!plugins/actiontimer/">ActionTimer plugin</a>. There is no way to interrupt or cancel this short of a <code>!Refresh</code> of the skin, and nothing in the action itself can be dynamically changed during the execution of the action. It is simply a brute-force way to delay part of an action that has multiple components. This is not "threaded", and will in effect delay all processing of the entire skin while it is running.</p>
+		<h2 class="alert-heading h5" id="DelayAlert"><i class="fa-solid fa-bomb"></i> Alert:</h2><p>This is a very limited form of what is offered by the <a href="!plugins/actiontimer/">ActionTimer plugin</a>. There is no way to interrupt or cancel this short of a <code>!Refresh</code> of the skin, and nothing in the action itself can be dynamically changed during the execution of the action. It is simply a brute-force way to delay part of an action that has multiple components. This is not "threaded", and will in effect delay all processing of the entire skin while it is running.</p>
 		</div>
 		<p><b>Example:</b> <code>[!ShowMeter SomeMeter][!Delay 5000][!HideMeter SomeMeter]</code></p>
 	</dd>	

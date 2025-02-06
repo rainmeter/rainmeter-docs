@@ -98,7 +98,10 @@ title: 'RunCommand plugin'
 		<li>ANSI</li>
 		</ul>
 
-		<p><b>Note:</b> Although by default cmd.exe will be executed with the /U (UTF-16 Unicode) parameter, that does not mean that any program executed in the Command Prompt window will necessarily produce output in UTF-16. While most internal Windows commands like "dir" will produce UTF-16 output, a great many command-line programs will produce UTF-8 output. If you get gibberish characters returned by the measure, setting <code>OutputType=UTF8</code> or <code>ANSI</code> will often correct the issue.</p>
+	<div class="alert alert-info alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="EncodeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+		<p>Although by default cmd.exe will be executed with the /U (UTF-16 Unicode) parameter, that does not mean that any program executed in the Command Prompt window will necessarily produce output in UTF-16. While most internal Windows commands like "dir" will produce UTF-16 output, a great many command-line programs will produce UTF-8 output. If you get gibberish characters returned by the measure, setting <code>OutputType=UTF8</code> or <code>ANSI</code> will often correct the issue.</p>
+	</div>
 	</dd>
 
 	<dt id="StartInFolder"><code>StartInFolder</code> <small>Default: <code>Skin folder</code></small></dt>
@@ -113,7 +116,7 @@ title: 'RunCommand plugin'
 </dl>
 
 <div class="alert alert-info alert-tight" role="alert">
-	<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+	<h2 class="alert-heading h5" id="QuotesNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
 	<p>Because Rainmeter strips any quotes from the start and end of an option if both exist, it is important to double double-quote the Program and Parameter options If the overall command or parameter requires both starting and ending quotes.</p>
 <p><b>Example:</b> Program=""C:\Program Files\Some Program\Something with a space.exe""</p>
 </div>
@@ -154,7 +157,7 @@ title: 'RunCommand plugin'
 </ul>
 
 <div class="alert alert-info alert-tight" role="alert">
-	<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+	<h2 class="alert-heading h5" id="ErrorCodesNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
 	<p>These error codes are produced by the plugin, and have nothing to do with any error encountered by the executed program itself. Errors from the program will generally be displayed in the STDOUT output, and can be tested for and reacted to there.</p>
 </div>
 
