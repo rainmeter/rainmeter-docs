@@ -6,7 +6,7 @@ title: 'General Image Options'
 <p>Options available for use with all images. These options are to modify the display of an image file, and do not work with square/rectangle Image meters created entirely with SolidColor / SolidColor2, or with any shape created by a Shape meter.</p>
 
 <div class="alert alert-info alert-tight" role="alert">
-	<h2 class="alert-heading h5" id="Note"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+	<h2 class="alert-heading h5" id="ImageFormatNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
 	<p>Supported image formats are <b>.png</b>, <b>.jpg</b>, <b>.bmp</b>, <b>.gif</b> (no <a href="/tips/animated-gif-files">animation</a> supported), <b>.tif</b>, <b>.webP</b> and <b>.ico</b>. If no file extension is included, <b>.png</b> is assumed.</p>
 </div>
 
@@ -37,7 +37,7 @@ title: 'General Image Options'
 		<p>Start at the Origin of <code>5</code> or "Center". Then move <code>-50</code> pixels left (negative number is left, positive number is right) and <code>-30</code> pixels up (negative number is up, positive number is down). Then capture <code>100</code> pixels of width, and <code>60</code> pixels of height, and that is the new image. This will crop and use 100 X 60 pixels of the center of the image.</p><br>
 
 	<div class="alert alert-info alert-tight" role="alert">
-		<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Notes:</h2>
+		<h2 class="alert-heading h5" id="ImageCropNote"><i class="fa-solid fa-thumbtack"></i> Notes:</h2>
 			<p>ImageCrop is done before any resizing of the image with the <code>W</code> and <code>H</code> general meter options. If <code>W</code> and <code>H</code> are set, the new "cropped" image will be resized to fit.</p>
 			<p>If <code>W</code> and <code>H</code> are not defined, ImageCrop will change the size of the entire meter container to the size of the "cropped" image.</p>
 	</div>
@@ -53,7 +53,7 @@ title: 'General Image Options'
 		<p><a href="!skins/option-types/#Color">Color</a> to tint the image with. If the alpha value is specified, the image can be made semi-transparent (0 means invisible, 255 mean fully opaque). The default value (<code>255,255,255,255</code> for opaque white) leaves the image unaltered.</p><br>
 
 	<div class="alert alert-info alert-tight" role="alert">
-		<h2 class="alert-heading h5" id="SomeNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+		<h2 class="alert-heading h5" id="GreyScaleNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
 		<p>Combining <code>Greyscale</code> and <code>ImageTint</code> recolors the image to the specified color. Without <code>Greyscale</code>, the specified color is added to the image (i.e. the original image color is tinted).</p>
 	</div>
 	</dd>
