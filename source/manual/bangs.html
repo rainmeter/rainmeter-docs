@@ -336,7 +336,8 @@ title: 'Bangs'
 		Activates a skin.
 		<ul>
 		<li><code>Config</code> (required): The config to be activated.</li>
-		<li><code>File</code> (optional): If not specified, the next .ini file variant in the config folder is activated.</li>
+		<li><code>File</code> (optional): The .ini file to be activated.<br>
+		If not specified, the next .ini file variant in the config folder is activated.</li>
 		</ul>
 		<br><b>Example:</b> <code>!ActivateConfig "illustro\Clock" "Clock.ini"</code>
 	</dd>
@@ -345,7 +346,8 @@ title: 'Bangs'
 	<dd>
 		Deactivates a skin.
 		<ul>
-		<li><code>Config</code> (optional)</li>
+		<li><code>Config</code> (optional): The config to be deactivated.<br>
+		If not defined, the current skin is deactivated.</li>
 		</ul>
 		<br><b>Example:</b> <code>!DeactivateConfig "illustro\Clock"</code>
 	</dd>
@@ -355,7 +357,8 @@ title: 'Bangs'
 		Activates or deactivates a skin.
 		<ul>
 		<li><code>Config</code> (required): The config to be activated or deactivated.</li>
-		<li><code>File</code> (optional): The .ini file to be activated or deactivated. If there is only one .ini file in the defined config folder, that is used by default.</li>
+		<li><code>File</code> (optional): The .ini file to be activated or deactivated.<br>
+		If there is only one skin .ini file in the defined config folder, that is used by default.</li>
 		</ul>
 		<br><b>Example:</b> <code>!ToggleConfig "illustro\Clock" "Clock.ini"</code>
 	</dd>
