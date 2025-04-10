@@ -256,7 +256,7 @@ std::wstring notice = L"notice";
 RmLogF(rm, LOG_NOTICE, L"I am a '%s' log message with a source", notice.c_str());
 ```
 	</dd>
-	<dt id="ReadStringFromSection"><code>RmReadStringFromSection</code> <small><span style="font-size: 0.66em;"><code>LPCWSTR RmReadStringFromSection(void* rm, LPCWSTR section, LPCWSTR option, LPCWSTR defValue, BOOL replaceMeasures = TRUE)</code></span></small></dt>
+	<dt id="ReadStringFromSection"><code>RmReadStringFromSection</code> <small><span style="font-size: 0.66em;"><code>LPCWSTR RmReadStringFromSection(void* rm, LPCWSTR section, LPCWSTR option, LPCWSTR defValue, BOOL replace = TRUE)</code></span></small></dt>
 	<dd>
 		<p>Retrieves an option from a specified meter/measure <em>section</em> and returns its value as a string.</p>
 		<p>
@@ -265,7 +265,7 @@ RmLogF(rm, LOG_NOTICE, L"I am a '%s' log message with a source", notice.c_str())
 				<li><code>section</code> : The name of the meter/measure section.</li>
 				<li><code>option</code> : The option name to look up within the section.</li>
 				<li><code>defValue</code> : Default value if the option is not found or is invalid.</li>
-				<li><code>replaceMeasures</code> : If true, replaces section variables in the returned string (optional; default is TRUE).</li>
+				<li><code>replace</code> : If true, replaces section variables in the returned string (optional; default is TRUE).</li>
 			</ul>
 		</p>
 		<h3>Example:</h3>
