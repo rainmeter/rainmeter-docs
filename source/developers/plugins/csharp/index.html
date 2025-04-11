@@ -104,10 +104,24 @@ public static void Finalize(IntPtr data)
 				<li><code>data</code> : Pointer to the data set in <a href="!plugin/csharp/#Initialize">Initialize</a>.</li>
 			</ul>
 		</p>
-		<p><b>Returns</b>: The string value for the measure. If you want the number value (returned from <a href="!plugin/csharp/#Update">Update</a>) to be used as the measures value, return null instead. The return value must be marshalled.</p><br/>
+		<p><b>Returns</b>: The string value for the measure. If you want the number value (returned from <a href="!plugin/csharp/#Update">Update</a>) to be used as the measures value, return null instead. The return value must be marshalled.</p>
+		<h3>Example:</h3>
+``` cs
+[DllExport]
+public static IntPtr GetString(IntPtr data)
+{
+	Measure measure = (Measure)data;
+	if (something)
+	{
+		// Return a string value to use for this measure (must be marshalled)
+		return Rainmeter.StringBuffer.Update("SomeValue");
+	}
 
-<p>See: <a href="https://github.com/rainmeter/rainmeter-plugin-sdk/blob/3eb9d7fc911381cd82231ccc3b65be29635d82cc/C%23/PluginEmpty/PluginEmpty.cs#L81C25-L81C31">PluginEmpty code</a> for details.</p>
-
+	// Return null when you want to use the number
+	//  value for this measure (the value returned from the Update function)
+	return IntPtr.Zero;
+}
+```
 	</dd>
 	<dt id="ExecuteBang"><code>ExecuteBang</code> <small><code>void ExecuteBang(IntPtr data, string args)</code></small></dt>
 	<dd>
@@ -140,8 +154,22 @@ public static void ExecuteBang(IntPtr data, [MarshalAs(UnmanagedType.LPWStr)] st
 				<li><code>argv</code> : Arguments passed to the function as an array of strings. <code>argv</code> is an array of strings (LPCWSTR) in C++ and must be marshalled to a C# style string.</li>
 			</ul>
 		</p>
-		<p><b>Returns</b>: A string to replace the section variable with. If a null is returned, the variable will not be replaced and remain unchanged. The return value must be marshalled.</p><br/>
+		<p><b>Returns</b>: A string to replace the section variable with. If a null is returned, the variable will not be replaced and remain unchanged. The return value must be marshalled.</p>
+		<h3>Example:</h3>
+``` cs
+[DllExport]
+public static IntPtr ToLower(IntPtr data, const int argc,
+	[MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 2)] const string[] argv)
+{
+	Measure measure = (Measure)data;
+	if (argc > 0)
+	{
+		// Do something and return a value to replace variable with (must be marshalled)
+		return Rainmeter.StringBuffer.Update(doSomething(argv));
+	}
 
-<p>See: <a href="https://github.com/rainmeter/rainmeter-plugin-sdk/blob/3eb9d7fc911381cd82231ccc3b65be29635d82cc/C%23/PluginEmpty/PluginEmpty.cs#L81C25-L81C31">PluginEmpty code</a> for details.</p>
+	return IntPtr.Zero;  // Do not replace the variable
+}
+```
 	</dd>
 </dl>
