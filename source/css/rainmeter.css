@@ -476,6 +476,8 @@ pre code {
   background-color: #4b607a;
 }
 .docs-content dt {
+  display: flex;
+  flex-direction: column;
   font-size: .82rem;
   font-weight: 600;
   line-height: 1.5rem;
@@ -487,6 +489,14 @@ pre code {
   background-color: #2a6d9b;
   background-size: 150%;
   text-shadow: 0 2px 3px rgba(0, 0, 0, .1);
+}
+@media (min-width: 991px) {
+  .docs-content dt {
+    flex-direction: row;
+  }
+  .docs-content dt small {
+    margin-left: auto;
+  }
 }
 .docs-content dt:target {
   background-color: #e09028;
