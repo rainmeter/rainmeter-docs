@@ -476,6 +476,9 @@ pre code {
   background-color: #4b607a;
 }
 .docs-content dt {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   font-size: .82rem;
   font-weight: 600;
   line-height: 1.5rem;
@@ -488,6 +491,26 @@ pre code {
   background-size: 150%;
   text-shadow: 0 2px 3px rgba(0, 0, 0, .1);
 }
+.docs-content dt > small {
+  width: 100%;
+  order: 3;
+}
+.docs-content dt > .heading-anchor {
+  line-height: 0.5;
+  order: 2;
+}
+
+@media (min-width: 991px) {
+  .docs-content dt {
+    flex-direction: row;
+    align-items: center;
+  }
+  .docs-content dt > small {
+    margin-left: auto;
+    width: auto;
+  }
+}
+
 .docs-content dt:target {
   background-color: #e09028;
 }
