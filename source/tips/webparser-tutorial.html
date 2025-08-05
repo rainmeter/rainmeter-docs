@@ -122,7 +122,7 @@ Meter=String
 
 <p>Now let's look at the first bit of information we want to retrieve.</p>
 
-<p>First we will get the local IP address returned for our PC.</p>
+<p>First we will get the external IP address returned for our PC.</p>
 
 <p>Open up WebParserDump.txt (the saved output from the website) and search for the location where the site is displaying the IP Address data:</p>
 
@@ -203,7 +203,7 @@ StringIndex=1
 
 <p>As long as the value from the parent measure that is returned in the StringIndex number is the URL to an image file, you can simply add the Download=1 option to the child measure, and the image will be downloaded. The value of the child measure will then be the full local path to the file in the Windows TEMP folder Rainmeter will create.</p>
 
-We will modify our RegExp statement to get the flag data into a second StringIndex:
+<p>We will modify our RegExp statement to get the flag data into a second StringIndex:</p>
 
 ```ini
 [MeasureSite]
@@ -227,7 +227,7 @@ StringIndex=2
 Download=1
 ```
 
-What we are doing is appending the first part of the URL, the one we used on the parent measure to the beginning of the URL option, followed by the relative path that flag images are stored in on the site, which is /img/flags/ and a reference to [MeasureSite] and the StringIndex=2 option. Then we add Download=1 and that full URL of https://browserleaks.com/img/flags/US.png will be used to retrieve the image file.
+What we are doing is appending the first part of the URL, the one we used on the parent measure to the beginning of the URL option, followed by the relative path that flag images are stored in on the site, which is /img/flags/ obtained in [MeasureSite] and the StringIndex=2 option. Then we add Download=1 and that full URL of https://browserleaks.com/img/flags/US.png will be used to retrieve the image file.
 
 The value of the child measure will in my case be:
 
@@ -250,7 +250,7 @@ URL=https://browserleaks.com/ip
 RegExp=(?siU)data-ip="(.*)".*<tr><td>Country</td>.*src="(.*)".*<span class="flag-text wball">(.*)<
 ```
 
-<h3>Creating the child measure for the the third StringIndex, the city name value</h3>
+<h3>Creating the child measure for the the third StringIndex, the Country name value</h3>
 
 ``` ini
 [MeasureCountryName]
