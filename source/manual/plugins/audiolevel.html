@@ -9,7 +9,7 @@ title: 'AudioLevel plugin'
 
 <p>This can be used to create a volume level <a href="https://en.wikipedia.org/wiki/VU_meter">VU Meter</a> for defined channels, or optionally can filter the audio stream into distinct <a href="https://en.wikipedia.org/wiki/Audio_frequency">frequency</a> bands to create a <a href="https://en.wikipedia.org/wiki/Spectrum_analyzer">Spectrum Analyzer</a>.</p>
 
-<p><em>The plugin monitors the amplitude of the post-mixer signal at a Windows audio endpoint. (i.e. sound card speaker output, USB audio interface, headphone port, microphone input) It does this by creating a <a href="https://docs.microsoft.com/windows/win32/coreaudio/wasapi">WASAPI</a> capture client in <a href="https://docs.microsoft.com/windows/win32/coreaudio/loopback-recording">loopback mode</a>. The capture client streams audio data to the plugin where it can be filtered and measured. The resulting volume level is returned by the plugin for use in Rainmeter measures and meters.</em></p>
+<p><em>The plugin monitors the amplitude of the post-mixer signal at a Windows audio endpoint. (i.e. sound card speaker output, USB audio interface, headphone port, microphone input) It does this by creating a <a href="https://learn.microsoft.com/windows/win32/coreaudio/wasapi">WASAPI</a> capture client in <a href="https://learn.microsoft.com/windows/win32/coreaudio/loopback-recording">loopback mode</a>. The capture client streams audio data to the plugin where it can be filtered and measured. The resulting volume level is returned by the plugin for use in Rainmeter measures and meters.</em></p>
 
 <div class="alert alert-info alert-tight" role="alert">
 	<h2 class="alert-heading h5" id="UpdateNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
