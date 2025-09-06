@@ -8,6 +8,25 @@ title: 'Version History'
 
 <h2 id="4.5">Rainmeter 4.5</h2><hr />
 
+<h3 id="r3836">April 12, 2025 - 4.5.23 - Revision 3836</h3>
+<ul>
+	<li><span class="badge badge-changed">Changed</span><b>Rainmeter Build:</b> Downgraded the version of NSIS, the software that is used to create the Rainmeter installer .exe from 3.11.0 to 3.10.0. This is to address some "false positive" hits with some antivirus applications that MAY have been caused by the very recent 3.11.0 version of NSIS.</li>
+</ul>
+
+<h3 id="r3835">April 11, 2025 - 4.5.22 - Revision 3835</h3>
+<ul>
+	<li><span class="badge badge-added">Added</span><b>Rainmeter Plugin API:</b> Added the ability for 3rd-party plugins, either C++ or C#, to access the string or number/formula value of any <code>[SectionName]</code> option.<br/>
+	See <a href="https://docs.rainmeter.net/developers/plugin/cpp/api/">C++ API reference</a> or <a href="https://docs.rainmeter.net/developers/plugin/csharp/api/">C# API reference</a> for details.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Rainmeter:</b> Fixed a problem with Windows 11 version 24H2 or later, that didn't allow Rainmeter skins to remain visible when the WIN-D (Show Desktop) function of Windows was used.</li>
+</ul>
+
+<h3 id="r3816">February 4, 2025 - 4.5.21 - Revision 3816</h3>
+<ul>
+	<li><span class="badge badge-fixed">Fixed</span><b>Rainmeter Installer:</b> Corrected a problem with the "install date" in the uninstaller key for Rainmeter in the Windows Registry.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Registry Measure:</b> Fixed a potential "handle leak" in the Registry Measure.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Rainmeter Installer:</b> Fixed an issue with 64-bit install checkbox not being selected automatically when installing in portable mode.</li>
+</ul>
+
 <h3 id="r3803">August 27, 2024 - 4.5.20 - Revision 3803</h3>
 <ul>
 	<li><span class="badge badge-fixed">Fixed</span><b>Rainmeter Build:</b> Change Rainmeter updater URL to use HTTPS, to prevent possible "Machine in the Middle" attack.</li>

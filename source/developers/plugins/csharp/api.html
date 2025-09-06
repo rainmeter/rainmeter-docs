@@ -30,6 +30,33 @@ internal void Reload(Rainmeter.API rm, ref double maxValue)
 }
 ```
 	</dd>
+	
+		<dt id="ReadStringFromSection"><code>ReadStringFromSection</code> <small><span style="font-size: 0.85em;"><code>string ReadStringFromSection(string section, string option, string defValue, bool replace = true)</code></span></small></dt>
+	<dd>
+		<p>Returns a string representation of an option from a section.</p>
+		<p>
+			</p><ul>
+				<li><code>section</code> : Section name to read the option from.</li>
+				<li><code>option</code> : Option name to be read from the measure/meter.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found or invalid.</li>
+				<li><code>replace</code> : If true, replaces section variables in the returned string.</li>
+			</ul>
+		<p></p>
+		<h3>Example:</h3>
+``` cs
+internal void Reload(Rainmeter.API rm, ref double maxValue)
+{
+	// The following will replace regular variables and
+	//  section variables in the 'Value' option.
+	string value = rm.ReadStringFromSection("Section","Option", "DefaultValue");
+
+	// The following will only replace regular variables,
+	//  but NOT section variables like [MeasureNames].
+	string action = rm.ReadStringFromSection("Section", "Action", "", false);
+}
+```
+	</dd>
+	
 	<dt id="ReadInt"><code>ReadInt</code> <small><code>int ReadInt(string option, int defValue)</code></small></dt>
 	<dd>
 		<p>Retrieves the option defined in the skin file and converts it to an integer.</p>
@@ -47,12 +74,32 @@ internal void Reload(Rainmeter.API rm, ref double maxValue)
 }
 ```
 	</dd>
+	
+<dt id="ReadIntFromSection"><code>ReadIntFromSection</code> <small><code>int ReadIntFromSection(string section, string option, int defValue)</code></small></dt></code></small></dt>
+	<dd>
+		<p>Retrieves the option defined in a section and converts it to an integer.</p>
+		<p>
+			</p><ul>
+				<li><code>section</code> : Section name to read the option from.</li>
+				<li><code>option</code> : Option name to be read from the measure/meter.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.</li>
+			</ul>
+		<p></p>
+		<h3>Example:</h3>
+``` cs
+internal void Reload(Rainmeter.API rm, ref double maxValue)
+{
+	int value = rm.ReadIntFromSection("Section", "Option", 20);
+}
+```
+	</dd>
+	
 	<dt id="ReadDouble"><code>ReadDouble</code> <small><code>double ReadDouble(string option, double defValue)</code></small></dt>
 	<dd>
-		<p>Retrieves the option defined in the skin file and converts it to a double type.</p>
+		<p>Retrieves the option defined in the plugin measure in the skin file and converts it to a double type.</p>
 		<p>
 			<ul>
-				<li><code>option</code> : Option name to be read from the measure.</li>
+				<li><code>option</code> : Option name to be read from the plugin measure.</li>
 				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.</li>
 			</ul>
 		</p>
@@ -63,6 +110,26 @@ internal void Reload(Rainmeter.API rm, ref double maxValue)
 	double value = rm.ReadDouble("Value", 20.0);
 }
 ```
+	</dd>
+	<dt id="ReadDoubleFromSection"><code>ReadDoubleFromSection</code> <small><code>double ReadDoubleFromSection(string section, string option, double defValue)</code></small></dt>
+	<dd>
+		<p>Retrieves the option defined in any section and converts it to a double type.</p>
+		<p>
+			</p><ul>
+				<li><code>section</code> : Section name to read the option from.</li>
+				<li><code>option</code> : Option name to be read from the measure/meter.</li>
+				<li><code>defValue</code> : Default value for the option if it is not found, invalid, or a formula could not be parsed.</li>
+			</ul>
+		<p></p>
+		<h3>Example:</h3>
+``` cs
+internal void Reload(Rainmeter.API rm, ref double maxValue)
+{
+	double value = rm.ReadDoubleFromSection("Section", "Option", 20.0);
+}
+```
+	</dd>
+
 	</dd>
 	<dt id="ReadPath"><code>ReadPath</code> <small><code>string ReadPath(string option, string defValue)</code></small></dt>
 	<dd>

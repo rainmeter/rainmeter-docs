@@ -73,36 +73,38 @@ AntiAlias=1
 Text="Uptime: %1"
 ```
 
-<h3 id="Win10Restart"><b>Note for Windows 10</b></h3>
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="Windows10Restart"><i class="fa-solid fa-thumbtack"></i> Note for Windows 10 and up:</h2>
+	<p>Starting with Windows 8, the standard "shut down" functionality now does a "hybrid shut down", in order to make the system start much faster when you start it up again. What this does is "hibernate" the <em>system / kernel</em> part of Windows, and shut down the <em>user</em> part. When Windows restarts, the underlying boot up of the system much is faster, followed by loading your profile and applications normally.</p>
 
-<p>Starting with Windows 8, the standard "shut down" functionality now does a "hybrid shut down", in order to make the system start much faster when you start it up again. What this does is "hibernate" the <em>system / kernel</em> part of Windows, and shut down the <em>user</em> part. When Windows restarts, the underlying boot up of the system much is faster, followed by loading your profile and applications normally.</p>
+	<p>Windows (and thus Uptime) does not see this as a full shutdown of your system. So the system uptime value will not be reset to zero. If you want more control over this, you can create two shortcuts, and use the one you want depending on whether you wish a "full" shut down, or the normal "hybrid" one.</p>
 
-<p>Windows (and thus Uptime) does not see this as a full shutdown of your system. So the system uptime value will not be reset to zero. If you want more control over this, you can create two shortcuts, and use the one you want depending on whether you wish a "full" shut down, or the normal "hybrid" one.</p>
+	<p>Normal / Hybrid Shut Down:<br/>
+	<code>%windir%\System32\shutdown.exe /s /hybrid /f /t 00</code></p>
 
-<p>Normal / Hybrid Shut Down:<br/>
-<code>%windir%\System32\shutdown.exe /s /hybrid /f /t 00</code></p>
+	<p>Full Shut Down:<br/>
+	<code>%windir%\System32\shutdown.exe /s /f /t 00</code></p>
 
-<p>Full Shut Down:<br/>
-<code>%windir%\System32\shutdown.exe /s /f /t 00</code></p>
+	<p>You can create these shortcuts, and put them on your desktop or pin them to your Windows 10 Start menu. <em>"Restart" always does a full system restart and is not affected.</em></p>
 
-<p>You can create these shortcuts, and put them on your desktop or pin them to your Windows 10 Start menu. <em>"Restart" always does a full system restart and is not affected.</em></p>
+	<p><b>Alternatively</b>, you can use a <a href="!measures/sysinfo/">SysInfo plugin</a> measure to get a timestamp value for when the user account logged on to Windows with the <a href="!measures/sysinfo/#SysInfoType">USER_LOGINTIME</a> SysInfoType option. When a standard hybrid shutdown is done, this will then reflect when the restart took place. Use the value of this measure with the <code>SecondsValue</code> option in an Uptime measure to format the elapsed seconds.</p>
 
-<p><b>Alternatively</b>, you can use a <a href="!measures/sysinfo/">SysInfo plugin</a> measure to get a timestamp value for when the user account logged on to Windows with the <a href="!measures/sysinfo/#SysInfoType">USER_LOGINTIME</a> SysInfoType option. When a standard hybrid shutdown is done, this will then reflect when the restart took place. Use the value of this measure with the <code>SecondsValue</code> option in an Uptime measure to format the elapsed seconds.</p>
+	<p><b>Example:</b></p>
+	``` ini
+	[MeasureCurrentTime]
+	Measure=Time
 
-<p><b>Example:</b></p>
-``` ini
-[MeasureCurrentTime]
-Measure=Time
+	[MeasureUserLoginTime]
+	Measure=Plugin
+	Plugin=SysInfo
+	SysInfoType=USER_LOGONTIME
+	UpdateDivider=-1
 
-[MeasureUserLoginTime]
-Measure=Plugin
-Plugin=SysInfo
-SysInfoType=USER_LOGONTIME
-UpdateDivider=-1
+	[MeasureFormatSeconds]
+	Measure=UpTime
+	SecondsValue=([MeasureCurrentTime:] - [MeasureUserLoginTime:])
+	Format="%4!i!d %3!i!h %2!i!m"
+	DynamicVariables=1
+	```
+</div>
 
-[MeasureFormatSeconds]
-Measure=UpTime
-SecondsValue=([MeasureCurrentTime:] - [MeasureUserLoginTime:])
-Format="%4!i!d %3!i!h %2!i!m"
-DynamicVariables=1
-```

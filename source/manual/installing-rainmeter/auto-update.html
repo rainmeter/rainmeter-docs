@@ -39,16 +39,17 @@ title: 'Auto Updating Rainmeter'
 <li>Once the new version is installed, the local copy of the downloaded installer will be removed.</li>
 </ol>
 
-<h2 id="AutoUpdateNotes">Some Notes</h2>
 
-<p>This automatic update is done by downloading from the certificate-secured Rainmeter repository on <a href="https://github.com/rainmeter/rainmeter/releases">GitHub</a>, and is further protected by comparing remote and local versions of the SHA-256 security checksum of the downloaded installer before installation.</p>
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="AutoUpdateNotes"><i class="fa-solid fa-thumbtack"></i> Notes:</h2>
+	<p>This automatic update is done by downloading from the certificate-secured Rainmeter repository on <a href="https://github.com/rainmeter/rainmeter/releases">GitHub</a>, and is further protected by comparing remote and local versions of the SHA-256 security checksum of the downloaded installer before installation.</p>
 
-<p>The installer is temporarily downloaded and stored in an <code>Updates</code> folder in the Rainmeter settings folder, either in the user's %APPDATA%\Rainmeter folder (normal installation) or the program folder (portable installation). This folder is automatically removed when the installation is complete.</p>
+	<p>The installer is temporarily downloaded and stored in an <code>Updates</code> folder in the Rainmeter settings folder, either in the user's %APPDATA%\Rainmeter folder (normal installation) or the program folder (portable installation). This folder is automatically removed when the installation is complete.</p>
 
-<p>Information about the new version to install is stored in the <code>Rainmeter.data</code> file, either in the user's %APPDATA%\Rainmeter folder (normal installation) or the program folder (portable installation). This information is automatically removed when the installation is complete.</p>
+	<p>Information about the new version to install is stored in the <code>Rainmeter.data</code> file, either in the user's %APPDATA%\Rainmeter folder (normal installation) or the program folder (portable installation). This information is automatically removed when the installation is complete.</p>
 
-<p>The installer will be executed silently, preserving all the choices made when the software was last manually installed. No installation dialog will be seen, however Windows will prompt with a UAC (User Account Control) dialog to ask for permission to write to your Program Files folder. Rainmeter will fail to install if you do not allow this.</p>
-
+	<p>The installer will be executed silently, preserving all the choices made when the software was last manually installed. No installation dialog will be seen, however Windows will prompt with a UAC (User Account Control) dialog to ask for permission to write to your Program Files folder. Rainmeter will fail to install if you do not allow this.</p>
+</div>
 
 
 

@@ -86,9 +86,7 @@ blockquote {
     margin-bottom: 0;
   }
 }
-.alert p {
-  margin-bottom: 0;
-}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1026px;
@@ -104,6 +102,53 @@ blockquote {
     height: calc(100% - 88px - 93px);
   }
 }
+
+/* Alert Box */
+.alert-tight {
+  padding: 0.75rem;
+}
+.alert h1,
+.alert h2,
+.alert h3,
+.alert h4,
+.alert h5,
+.alert h6 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  padding: 0;
+}
+.alert *:last-child {
+  margin-bottom: 0;
+}
+
+/* .alert-box1 {
+	font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	font-size: 15px;
+	color:#986500;
+	padding:.75rem 1.25rem;
+	margin-bottom:1rem;
+	border:1px solid transparent;
+	border-radius:.25rem;
+	background-color:#fff3cd;
+}
+
+.alert-box1 h2{
+	color:#986500;
+}
+	
+.alert-box2 {
+	font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	font-size: 15px;	
+	padding:.75rem 1.25rem;
+	margin-bottom:1rem;
+	border:1px solid transparent;
+	border-radius:.25rem;
+	background-color:#d1ecf1;
+}
+
+.alert-box2 h2{
+	color:#46767e;
+} */
 
 /* Navbar */
 
@@ -431,6 +476,9 @@ pre code {
   background-color: #4b607a;
 }
 .docs-content dt {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   font-size: .82rem;
   font-weight: 600;
   line-height: 1.5rem;
@@ -443,6 +491,26 @@ pre code {
   background-size: 150%;
   text-shadow: 0 2px 3px rgba(0, 0, 0, .1);
 }
+.docs-content dt > small {
+  width: 100%;
+  order: 3;
+}
+.docs-content dt > .heading-anchor {
+  line-height: 0.5;
+  order: 2;
+}
+
+@media (min-width: 991px) {
+  .docs-content dt {
+    flex-direction: row;
+    align-items: center;
+  }
+  .docs-content dt > small {
+    margin-left: auto;
+    width: auto;
+  }
+}
+
 .docs-content dt:target {
   background-color: #e09028;
 }
@@ -507,6 +575,37 @@ pre code {
   font-size: 1.2rem;
   font-weight: 600;
   color: #036eb9;
+}
+
+/* Docs Anchor Hyperlink */
+.heading-anchor {
+  visibility: hidden;
+  color: #00a21a;
+  padding: 0.5rem;
+  user-select: none;
+}
+
+dt .heading-anchor {
+  color: #8bff96;
+  user-select: none;
+}
+
+h1:hover > .heading-anchor,
+h2:hover > .heading-anchor,
+h3:hover > .heading-anchor,
+h4:hover > .heading-anchor,
+h5:hover > .heading-anchor,
+h6:hover > .heading-anchor,
+dt:hover > .heading-anchor,
+span:hover > .heading-anchor {
+  color: #00a21a;
+  visibility: visible;
+  user-select: none;
+}
+
+dt:hover > .heading-anchor {
+  color: #8bff96;
+  user-select: none;
 }
 
 /* Docs index cards */

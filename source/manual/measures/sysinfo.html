@@ -5,23 +5,25 @@ title: 'SysInfo'
 ---
 <p><code>Measure=SysInfo</code> measures various information about your system.</p>
 
-<h2 id="NotAPlugin">Note: SysInfo was previously a <em>plugin</em> measure.</h2>
-<p>In many existing skins you might see the syntax:</p>
-``` ini
-[MeasureSysInfo]
-Measure=Plugin
-Plugin=SysInfo
-or
-Plugin=SysInfo.dll
-or
-Plugin=Plugins\SysInfo.dll
-```
-<p>SysInfo still works with those forms, and changing existing skins to the new <code>Measure=SysInfo</code> syntax is entirely optional. However, new skins created going forward should use the correct syntax for accuracy and clarity. SysInfo is a measure, and not a plugin.</p>
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="PreviouslyPlugin"><i class="fa-solid fa-thumbtack"></i> Note: SysInfo was previously a <em>plugin</em> measure.</h2>
+	<p>In many existing skins you might see the syntax:</p>
+	``` ini
+	[MeasureSysInfo]
+	Measure=Plugin
+	Plugin=SysInfo
+	or
+	Plugin=SysInfo.dll
+	or
+	Plugin=Plugins\SysInfo.dll
+	```
+	<p>SysInfo still works with those forms, and changing existing skins to the new <code>Measure=SysInfo</code> syntax is entirely optional. However, new skins created going forward should use the correct syntax for accuracy and clarity. SysInfo is a measure, and not a plugin.</p>
 
-``` ini
-[MeasureSysInfo]
-Measure=SysInfo
-```
+	``` ini
+	[MeasureSysInfo]
+	Measure=SysInfo
+	```
+</div>
 
 <h2>Options</h2>
 <dl>

@@ -114,7 +114,7 @@ public static IntPtr GetString(IntPtr data)
 	if (something)
 	{
 		// Return a string value to use for this measure (must be marshalled)
-		return Marshal.StringToHGlobalUni("SomeValue");
+		return Rainmeter.StringBuffer.Update("SomeValue");
 	}
 
 	// Return null when you want to use the number
@@ -165,7 +165,7 @@ public static IntPtr ToLower(IntPtr data, const int argc,
 	if (argc > 0)
 	{
 		// Do something and return a value to replace variable with (must be marshalled)
-		return Marshal.StringToHGlobalUni(doSomething(argv));
+		return Rainmeter.StringBuffer.Update(doSomething(argv));
 	}
 
 	return IntPtr.Zero;  // Do not replace the variable

@@ -15,16 +15,19 @@ title: 'Substitute'
 
 		<p>Each of the <code>"pattern":"replacement"</code> pairs are a separate action, and act on the <em>results</em> of the previous substitute pairs. For example, with <code>"1":"One","10":"Ten"</code>, all occurrences of <em>1</em> are replaced with <em>One</em>, but occurrences of <em>10</em> will not be replaced with <em>Ten</em>, because the first substitution already changed all <em>1</em> characters to <em>One</em>. For the desired behavior, the order can be reversed as <code>"10":"Ten","1":"One"</code>.</p>
 
-		<p>Instead of <code>"pattern":"replacement"</code>, single quotes can be used <em>either</em> around the pattern or the replacement. (i.e. <code>'pattern':"replacement"</code> or <code>"pattern":'replacement'</code>, but not <code>'pattern':'replacement'</code>) This can be useful when either the pattern or the replacement contains double quotes. For example, <code>'"':"double quote"</code> replaces all occurrences of <em>"</em> with <em>double quote</em>.</p>
+		<p>Instead of <code>"pattern":"replacement"</code>, single quotes can be used <em>either</em> around the pattern or the replacement. (i.e. <code>'pattern':"replacement"</code> or <code>"pattern":'replacement'</code>, but not <code>'pattern':'replacement'</code>) This can be useful when either the pattern or the replacement contains double quotes. For example, <code>'"':"double quote"</code> replaces all occurrences of the character <em>"</em> with the string <em>double quote</em>.</p>
 	</dd>
 
 	<dt id="RegExpSubstitute"><code>RegExpSubstitute</code> <small>Default: <code>0</code></small></dt>
 	<dd>
 		<p>If set to <code>1</code>, <a href="!skins/option-types/#RegExp">Perl compatible regular expressions</a> can be used in the <code>pattern</code> part of <code>Substitute</code> pairs.</p>
 
-		<p>If captures are used in the pattern, (e.g. <code>(.+)</code>) they can be referenced in the <code>replacement</code> part using <code>\1</code>, (first capture) <code>\2</code>, (second capture) etc. The entire match can also be referenced with <code>\0</code>.</p>
+		<p>If captures are used in the pattern, (e.g. <code>(.+)</code>) they can be referenced in the <code>replacement</code> part using <code>\1</code>, (first capture) <code>\2</code>, (second capture) etc. The entire match can also be referenced with <code>\0</code>.</p><br>
 
-		<p><b>Note:</b> With RegExpSubstitute, a (capture) may not return an empty string. Care should be taken when using <code>*</code> (zero or more) quantifiers or <code>(?(?=</code> (If/Then) lookahead tests, as a capture must either cause the entire regular expression to "fail", or return a value of some kind.</p>
+	<div class="alert alert-warning alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="EmptyStringAlert"><i class="fa-solid fa-bomb"></i> Alert:</h2>
+		<p>With RegExpSubstitute, a (capture) may not return an empty string. Care should be taken when using <code>*</code> (zero or more) quantifiers or <code>(?(?=</code> (If/Then) lookahead tests, as a capture must either cause the entire regular expression to "fail", or return a value of some kind.</p>
+	</div>
 	</dd>
 </dl>
 

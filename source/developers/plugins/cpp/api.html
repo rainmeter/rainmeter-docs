@@ -256,4 +256,62 @@ std::wstring notice = L"notice";
 RmLogF(rm, LOG_NOTICE, L"I am a '%s' log message with a source", notice.c_str());
 ```
 	</dd>
+	<dt id="ReadStringFromSection"><code>RmReadStringFromSection</code> <small><span style="font-size: 0.66em;"><code>LPCWSTR RmReadStringFromSection(void* rm, LPCWSTR section, LPCWSTR option, LPCWSTR defValue, BOOL replace = TRUE)</code></span></small></dt>
+	<dd>
+		<p>Retrieves an option from a specified meter/measure <em>section</em> and returns its value as a string.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
+				<li><code>section</code> : The name of the meter/measure section.</li>
+				<li><code>option</code> : The option name to look up within the section.</li>
+				<li><code>defValue</code> : Default value if the option is not found or is invalid.</li>
+				<li><code>replace</code> : If true, replaces section variables in the returned string (optional; default is TRUE).</li>
+			</ul>
+		</p>
+		<h3>Example:</h3>
+		``` cpp
+		PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
+		{
+			LPCWSTR value = RmReadStringFromSection(rm, L"MySection", L"Value", L"DefaultValue");
+		}
+		```
+	</dd>
+	<dt id="ReadIntFromSection"><code>RmReadIntFromSection</code> <small><code>int RmReadIntFromSection(void* rm, LPCWSTR section, LPCWSTR option, int defValue)</code></small></dt>
+	<dd>
+		<p>Retrieves an option from a section and converts it to an integer. If the option is a formula, its result is returned.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
+				<li><code>section</code> : The name of the meter/measure section.</li>
+				<li><code>option</code> : The option name to read from.</li>
+				<li><code>defValue</code> : Default integer value if the option is not found or invalid.</li>
+			</ul>
+		</p>
+		<h3>Example:</h3>
+		``` cpp
+		PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
+		{
+			int value = RmReadIntFromSection(rm, L"Section", L"Option", 20);
+		}
+		```
+	</dd>
+	<dt id="ReadDoubleFromSection"><code>RmReadDoubleFromSection</code> <small><span style="font-size: 0.66em;"><code>double RmReadDoubleFromSection(void* rm, LPCWSTR section, LPCWSTR option, double defValue)</code></span></small></dt>
+	<dd>
+		<p>Retrieves an option from a section and converts it to a double. If the option is a formula, its parsed result is returned.</p>
+		<p>
+			<ul>
+				<li><code>rm</code> : Pointer to the plugin measure.</li>
+				<li><code>section</code> : The name of the meter/measure section.</li>
+				<li><code>option</code> : The option name to look up.</li>
+				<li><code>defValue</code> : Default double value if the option is not found or invalid.</li>
+			</ul>
+		</p>
+		<h3>Example:</h3>
+		``` cpp
+		PLUGIN_EXPORT void Reload(void* data, void* rm, double* maxValue)
+		{
+			double value = RmReadDoubleFromSection(rm, L"Section", L"Option", 20.0);
+		}
+		```
+	</dd>
 </dl>

@@ -11,7 +11,10 @@ title: 'AudioLevel plugin'
 
 <p><em>The plugin monitors the amplitude of the post-mixer signal at a Windows audio endpoint. (i.e. sound card speaker output, USB audio interface, headphone port, microphone input) It does this by creating a <a href="https://docs.microsoft.com/windows/win32/coreaudio/wasapi">WASAPI</a> capture client in <a href="https://docs.microsoft.com/windows/win32/coreaudio/loopback-recording">loopback mode</a>. The capture client streams audio data to the plugin where it can be filtered and measured. The resulting volume level is returned by the plugin for use in Rainmeter measures and meters.</em></p>
 
-<p><b>Note:</b> Creating meters that display sound levels in real-time will require that the skin be set with a fairly low <a href="!skins/rainmeter-section/#Update">Update</a> rate in the [Rainmeter] section of the skin. While the plugin is quite resource friendly and efficient, some care should be taken when deciding how much analysis should be done on the signal, and it is recommended that this plugin be used in a skin dedicated to it, and not as a part of a larger skin where the low update rate may cause higher CPU usage.</p>
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="UpdateNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+	<p>Creating meters that display sound levels in real-time will require that the skin be set with a fairly low <a href="!skins/rainmeter-section/#Update">Update</a> rate in the [Rainmeter] section of the skin. While the plugin is quite resource friendly and efficient, some care should be taken when deciding how much analysis should be done on the signal, and it is recommended that this plugin be used in a skin dedicated to it, and not as a part of a larger skin where the low update rate may cause higher CPU usage.</p>
+</div>
 
 <h2>Usage</h2>
 
@@ -40,7 +43,10 @@ Channel=R
 Type=RMS
 ```
 
-<p><b>Note:</b> Only the <code>Type</code>, <code>Channel</code>, <code>FFTIdx</code> and <code>BandIdx</code> child measure options can be changed dynamically with !SetVariable or !SetOption. Parent measure options may not be changed dynamically.</p>
+<div class="alert alert-warning alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="DynamicAlert"><i class="fa-solid fa-bomb"></i> Alert:</h2>
+	<p>Only the <code>Type</code>, <code>Channel</code>, <code>FFTIdx</code> and <code>BandIdx</code> child measure options can be changed dynamically with !SetVariable or !SetOption. Parent measure options may not be changed dynamically.</p>
+</div>
 
 <h2>Options</h2>
 
@@ -84,8 +90,11 @@ Type=RMS
 
 	<p>This is the most meaningful way of measuring audio volume levels in a skin.</p>
 
-	<p><b>Note:</b> To disable all RMS filtering, set both <a href="#RMSAttack">RMSAttack</a> and <a href="#RMSDecay">RMSDecay</a> to <code>0</code>, and <a href="#RMSGain">RMSGain</a> as the default <code>1.0</code>.</p>
-
+	<div class="alert alert-info alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="DisableRMSNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+		<p>To disable all RMS filtering, set both <a href="#RMSAttack">RMSAttack</a> and <a href="#RMSDecay">RMSDecay</a> to <code>0</code>, and <a href="#RMSGain">RMSGain</a> as the default <code>1.0</code>.</p>
+	</div>
+	
 	<p>The following parent options are used in combination with child measures having the <code>Type=RMS</code> option set.</p>
 
 	<dt id="RMSAttack"><code>RMSAttack</code> <small>Default: <code>300</code></small></dt>
@@ -107,8 +116,11 @@ Type=RMS
 
 	<p>Peak options are similar to <a href="#RMSOptions">RMS options</a>, but measure the peak (high) values rather than squaring to obtain an average over a period of time.</p>
 
-	<p><b>Note:</b> To disable all Peak filtering, set both <a href="#PeakAttack">PeakAttack</a> and <a href="#PeakDecay">PeakDecay</a> to <code>0</code>, and <a href="#PeakGain">PeakGain</a> as the default <code>1.0</code>.</p>
-
+	<div class="alert alert-info alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="DisablePeakNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+		<p>To disable all Peak filtering, set both <a href="#PeakAttack">PeakAttack</a> and <a href="#PeakDecay">PeakDecay</a> to <code>0</code>, and <a href="#PeakGain">PeakGain</a> as the default <code>1.0</code>.</p>
+	</div>
+	
 	<p>The following parent options are used in combination with child measures having the <code>Type=Peak</code> option set.</p>
 
 	<dt id="PeakAttack"><code>PeakAttack</code> <small>Default: <code>50</code></small></dt>

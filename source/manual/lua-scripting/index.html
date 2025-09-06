@@ -80,7 +80,10 @@ function Initialize()
 end
 ```
 
-<p><b>Note:</b> While a dofile you call can be anywhere on your system, be aware that if you do not put the dofile .lua file somewhere in the path to the current config, you won't be able to distribute it with your skin as a .rmskin package. A .rmskin package can only distribute the contents of a single root config folder.</p>
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="DoFileNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+	<p>While a dofile you call can be anywhere on your system, be aware that if you do not put the dofile .lua file somewhere in the path to the current config, you won't be able to distribute it with your skin as a .rmskin package. A .rmskin package can only distribute the contents of a single root config folder.</p>
+</div>
 
 <h2 id="Update">Update</h2>
 
@@ -372,27 +375,31 @@ roundedNum = SKIN:ParseFormula('(Round('..numToRound..'))')
 	</dd>
 </dl>
 
-<h2 id="Restrictions">Restrictions</h2>
+<br>
+<div class="alert alert-warning alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="Restrictions"><i class="fa-solid fa-bomb"></i> Alert: Restrictions</h2>
+	<p>The following Lua features are not available in Rainmeter at this time:</p>
 
-<p>The following Lua features are not available in Rainmeter at this time:</p>
+	<ul>
+		<li>External compiled libraries, such as <a href="https://github.com/Lua-cURL">Lua-cURL</a>.</li>
+		<li>The <code><a href="https://www.lua.org/manual/5.1/manual.html#pdf-require">require</a></code>, <code>os.exit</code>, <code>os.setlocale</code>, <code>io.popen</code>, and <code>collectgarbage</code> functions.</li>
+	</ul>
+</div>
 
-<ul>
-	<li>External compiled libraries, such as <a href="https://github.com/Lua-cURL">Lua-cURL</a>.</li>
-	<li>The <code><a href="https://www.lua.org/manual/5.1/manual.html#pdf-require">require</a></code>, <code>os.exit</code>, <code>os.setlocale</code>, <code>io.popen</code>, and <code>collectgarbage</code> functions.</li>
-</ul>
+<div class="alert alert-warning alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="Deprecated"><i class="fa-solid fa-bomb"></i> Alert: Deprecated Features</h2>
 
-<h3 id="Deprecated">Deprecated Features</h3>
+	<p>The following Rainmeter-specific features have been deprecated and should not be used. They are still supported, but may be removed in future versions.</p>
 
-<p>The following Rainmeter-specific features have been deprecated and should not be used. They are still supported, but may be removed in future versions.</p>
-
-<ul>
-	<li><p><code>PROPERTIES = { ... }</code><br>
-		This table was previously used to read options on the script measure. Instead, use:<br>
-		<code>SELF:GetOption('MyOption')</code> or <code>SELF:GetNumberOption('MyOption')</code></p></li>
-	<li><p><code>MyMeter:SetText('...')</code><br>
-		This function was used to change a <a href="!meters/string/">string meter's</a> text. Instead, use:<br>
-		<code>SKIN:Bang('!SetOption', 'MeterName', 'Text', '...')</code></p></li>
-	<li><p><code>function GetStringValue()</code><br>
-		This function was used to set the script measure's value. Instead, use:<br>
-		<code>function Update() ... return ... end</code></p></li>
-</ul>
+	<ul>
+		<li><p><code>PROPERTIES = { ... }</code><br>
+			This table was previously used to read options on the script measure. Instead, use:<br>
+			<code>SELF:GetOption('MyOption')</code> or <code>SELF:GetNumberOption('MyOption')</code></p></li>
+		<li><p><code>MyMeter:SetText('...')</code><br>
+			This function was used to change a <a href="!meters/string/">string meter's</a> text. Instead, use:<br>
+			<code>SKIN:Bang('!SetOption', 'MeterName', 'Text', '...')</code></p></li>
+		<li><p><code>function GetStringValue()</code><br>
+			This function was used to set the script measure's value. Instead, use:<br>
+			<code>function Update() ... return ... end</code></p></li>
+	</ul>
+</div>

@@ -35,13 +35,14 @@ title: 'ActionTimer plugin'
 
 <p>Since the actions in ActionList<em>N</em> are executed in a separate thread from the main Rainmeter process, the skin will carry on updating normally, while the ActionTimer plugin will control the actions in the list.</p>
 
-<h2 id="ImportantNote">Important Note</h2>
+<div class="alert alert-warning alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="ImportantNote"><i class="fa-solid fa-bomb"></i> Alert: Important Notes</h2>
+	<p>While ActionTimer is very CPU efficient, it is not "free". The actions are executed by the plugin in a separate thread from the rest of the Rainmeter skin, allowing the skin to continue to process normally while the plugin actions are executing, with the plugin communicating with the skin via window "messages" to the Rainmeter message queue. This allows the plugin to instruct the skin to "do this now", much as a MouseOverAction is recognized and acted upon immediately.</p>
 
-<p>While ActionTimer is very CPU efficient, it is not "free". The actions are executed by the plugin in a separate thread from the rest of the Rainmeter skin, allowing the skin to continue to process normally while the plugin actions are executing, with the plugin communicating with the skin via window "messages" to the Rainmeter message queue. This allows the plugin to instruct the skin to "do this now", much as a MouseOverAction is recognized and acted upon immediately.</p>
+	<p>Some care must be taken however, not to overwhelm the message queue. Things done with ActionTimer in general should be short targeted actions, like a meter transition or short animation. Ensure that there is at least some "wait" time between actions, so Rainmeter has time to handle other messages in the message queue. In addition, keep in mind that <code>!Redraw</code> actions can be relatively CPU expensive, particularly if a lot of image resizing is involved.</p>
 
-<p>Some care must be taken however, not to overwhelm the message queue. Things done with ActionTimer in general should be short targeted actions, like a meter transition or short animation. Ensure that there is at least some "wait" time between actions, so Rainmeter has time to handle other messages in the message queue. In addition, keep in mind that <code>!Redraw</code> actions can be relatively CPU expensive, particularly if a lot of image resizing is involved.</p>
-
-<p>ActionTimer does not support, and should not be used, to do anything "endless" or otherwise of a very long duration combined with a very rapid update. If the Rainmeter message queue becomes overwhelmed, the skin can get laggy and unresponsive to mouse actions you might take.</p>
+	<p>ActionTimer does not support, and should not be used, to do anything "endless" or otherwise of a very long duration combined with a very rapid update. If the Rainmeter message queue becomes overwhelmed, the skin can get laggy and unresponsive to mouse actions you might take.</p>
+</div>
 
 <h2>Options</h2>
 <dl>

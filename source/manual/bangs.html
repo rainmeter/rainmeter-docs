@@ -16,9 +16,12 @@ title: 'Bangs'
 <li><a href="#Deprecated"><em>Deprecated bangs</a></em></li>
 </ul>
 
-<p><b>Note:</b> Many bangs have a <code>Config</code> parameter. Unless otherwise specified, valid values are the <a href="!skins/#Config">config name</a> of a currently loaded skin to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins. When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="Config"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+	<p>Many bangs have a <code>Config</code> parameter. Unless otherwise specified, valid values are the <a href="!skins/#Config">config name</a> of a currently loaded skin to be acted upon or <code>*</code> (asterisk) to act on all currently loaded skins. When optional and not supplied, the parameter defaults to the current config. If executing a bang with a "config" parameter from the Windows command line, the parameter is always required.</p>
+</div>
 
-<h3>Command Line Arguments</h3>
+<h3 id="CommandLineArguments">Command Line Arguments</h3>
 
 <p>Bangs can also be used from the Windows command line as a parameter to the Rainmeter.exe executable. Examples:</p>
 
@@ -26,7 +29,13 @@ title: 'Bangs'
 	<li><code>"C:\Program Files\Rainmeter\Rainmeter.exe" !RefreshApp</code></li>
 	<li><code>"C:\Program Files\Rainmeter\Rainmeter.exe" !SetVariable "textSize" "12" "illustro\Clock"</code></li>
 </ul>
-<p><b>Note:</b> Any variable of any kind, including <a href="manual/variables/built-in-variables/">Built-In Variables</a>, are not executed when calling Rainmeter from the command line. Likewise, the <code>Config</code> parameter is always required in places where it is treated as optional.</p>
+<br>
+<p><b>(For programmers)</b> External Applications can send Bangs using the Skin's HWND and the Windows <i>SendMessage</i> function (<i>winuser.h</i>), see <a href="/developers/#SendMessage">the Rainmeter Window Message API</a>.</p>
+
+<div class="alert alert-info alert-tight" role="alert">
+	<h2 class="alert-heading h5" id="CommandLineNote"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+	<p>Any variable of any kind, including <a href="/manual/variables/built-in-variables/">Built-In Variables</a>, are not resolved when calling Rainmeter from the command line. Likewise, the <code>Config</code> parameter is always required in places where it is treated as optional.</p>
+</div>
 
 
 <h2 id="OS">Operating System bangs</h2>
@@ -327,7 +336,8 @@ title: 'Bangs'
 		Activates a skin.
 		<ul>
 		<li><code>Config</code> (required): The config to be activated.</li>
-		<li><code>File</code> (optional): If not specified, the next .ini file variant in the config folder is activated.</li>
+		<li><code>File</code> (optional): The .ini file to be activated.<br>
+		If not specified, the next .ini file variant in the config folder is activated.</li>
 		</ul>
 		<br><b>Example:</b> <code>!ActivateConfig "illustro\Clock" "Clock.ini"</code>
 	</dd>
@@ -336,7 +346,8 @@ title: 'Bangs'
 	<dd>
 		Deactivates a skin.
 		<ul>
-		<li><code>Config</code> (optional)</li>
+		<li><code>Config</code> (optional): The config to be deactivated.<br>
+		If not specified, the current skin is deactivated.</li>
 		</ul>
 		<br><b>Example:</b> <code>!DeactivateConfig "illustro\Clock"</code>
 	</dd>
@@ -346,7 +357,8 @@ title: 'Bangs'
 		Activates or deactivates a skin.
 		<ul>
 		<li><code>Config</code> (required): The config to be activated or deactivated.</li>
-		<li><code>File</code> (required): The .ini file to be activated or deactivated.</li>
+		<li><code>File</code> (optional): The .ini file to be activated or deactivated.<br>
+		If there is only one skin .ini file in the defined config folder, that is used by default.</li>
 		</ul>
 		<br><b>Example:</b> <code>!ToggleConfig "illustro\Clock" "Clock.ini"</code>
 	</dd>
@@ -364,10 +376,14 @@ title: 'Bangs'
 		Immediately redraws all visible elements of the entire skin, independent of the normal skin update cycle.
 		<ul>
 		<li><code>Config</code> (optional)</li>
-		</ul>
-		<b>Note:</b> This simply redraws the skin. Meters will use the values obtained when they were last updated. Since by itself !Redraw accomplishes nothing useful, this bang will always be used in conjunction
+		</ul><br>
+		
+	<div class="alert alert-info alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="Redraw"><i class="fa-solid fa-thumbtack"></i> Note:</h2>
+		<p>This simply redraws the skin. Meters will use the values obtained when they were last updated. Since by itself !Redraw accomplishes nothing useful, this bang will always be used in conjunction
 		with bangs that update specific things before redrawing the skin. Depending on the case, this might be with <a href="!bangs/#UpdateMeasure">!UpdateMeasure</a> bangs to immediately update measure values, and certainly <a href="!bangs/#UpdateMeter">!UpdateMeter</a> bangs to update meter values and options. The idea is to update specific meters and redraw the skin before the next normal update cycle. This can allow immediate visible changes, while not having to force an update of the entire skin.<br><br>
 		<b>Example:</b> <code>LeftMouseUpAction=[!UpdateMeasure SomeMeasure][!UpdateMeter SomeMeter][!Redraw]</code>
+	</div>
 	</dd>
 
 	<dt id="Refresh"><code>!Refresh</code> <small>Parameter: <code><em>Config</em></code></small></dt>
@@ -380,8 +396,10 @@ title: 'Bangs'
 	
 	<dt id="Delay"><code>!Delay</code> <small>Parameter: <code><em>milliseconds</em></code></small></dt>
 	<dd>
-		<p>Delays execution for a defined number of milliseconds when embedded in an <a href="!skins/option-types/#Action">action option</a>. The lowest possible value is 16 milliseconds.</p>
-		<p>Note that this is a very limited form of what is offered by the <a href="!plugins/actiontimer/">ActionTimer plugin</a>. There is no way to interrupt or cancel this short of a <code>!Refresh</code> of the skin, and nothing in the action itself can be dynamically changed during the execution of the action. It is simply a brute-force way to delay part of an action that has multiple components.</p>
+		<p>Delays execution for a defined number of milliseconds when embedded in an <a href="!skins/option-types/#Action">action option</a>. The lowest possible value is 16 milliseconds.</p><br>
+		<div class="alert alert-warning alert-tight" role="alert">
+		<h2 class="alert-heading h5" id="DelayAlert"><i class="fa-solid fa-bomb"></i> Alert:</h2><p>This is a very limited form of what is offered by the <a href="!plugins/actiontimer/">ActionTimer plugin</a>. There is no way to interrupt or cancel this short of a <code>!Refresh</code> of the skin, and nothing in the action itself can be dynamically changed during the execution of the action. It is simply a brute-force way to delay part of an action that has multiple components. This is not "threaded", and will in effect delay all processing of the entire skin while it is running.</p>
+		</div>
 		<p><b>Example:</b> <code>[!ShowMeter SomeMeter][!Delay 5000][!HideMeter SomeMeter]</code></p>
 	</dd>	
 
