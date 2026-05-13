@@ -8,6 +8,21 @@ title: 'Version History'
 
 <h2 id="4.5">Rainmeter 4.5</h2><hr />
 
+<h3 id="r3857">May 13, 2026 - 4.5.24 - Revision 3857</h3>
+<ul>
+	<li><span class="badge badge-fixed">Fixed</span><b>Lua Scripting:</b> Fixed issue with custom function parsing.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Linear Gradients:</b> Fixed the starting and ending points of the gradient.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Lua Scripting:</b> Update stack dump debug function, and Fixed issue with items remaining on the stack in some cases.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>String Measure:</b> Properly account for when the "work" of the measure is being done. This fixes an issue where in some cases the measure would update regardless if it was Paused and/or Disabled.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Measure:</b> Fixed issue where measure options were re-read even if disabled or paused.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>WiFiStatus:</b> Fixed typo option WiFiInfoType=TXRate.</li>
+	<li><span class="badge badge-fixed">Fixed</span><b>Registry Measure:</b> Clear previous string value properly on failure.</li>	
+	<li><span class="badge badge-changed">Changed</span><b>WebParser:</b> Prevent repeated logging of Debug2File option (when Debug=2).</li>
+	<li><span class="badge badge-Changed">Changed</span><b>String Meter:</b> Added work-around for when InlineSetting=Size is 0 or negative.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated Italian.</li>
+	<li><span class="badge badge-changed">Changed</span><b>Languages:</b> Updated Serbian (Cyrillic & Latin).</li>
+</ul>
+
 <h3 id="r3836">April 12, 2025 - 4.5.23 - Revision 3836</h3>
 <ul>
 	<li><span class="badge badge-changed">Changed</span><b>Rainmeter Build:</b> Downgraded the version of NSIS, the software that is used to create the Rainmeter installer .exe from 3.11.0 to 3.10.0. This is to address some "false positive" hits with some antivirus applications that MAY have been caused by the very recent 3.11.0 version of NSIS.</li>
