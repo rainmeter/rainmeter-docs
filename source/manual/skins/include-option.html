@@ -22,7 +22,7 @@ title: '@Include option'
 
 	<p>You may also include files within files. Once again, the ordering is determined by placement: when any file includes another file, the new contents are added within its own sections, immediately after the section where the statement is made.</p>
 
-	<p>If there is a conflict - that is, if the same [SectionName] exists in more than one file - Rainmeter will evaluate both sections. Any keys from the earlier section are added, but will be overridden by duplicate keys from later sections. All this is dependent on the order in the skin. "Later" wins conflicts.</p>
+	<p>If there is a conflict - that is, if the same [SectionName] exists in more than one file - Rainmeter will evaluate both sections. Any keys from the earlier section are added, but will be overridden by duplicate keys from later sections. All this is dependent on the order in the skin. "Later" wins conflicts. This is the only time duplicate [SectionNames] are allowed. If both are in the actual .ini file, the second one is entirely ignored.</p>
 
 </div>
 
