@@ -22,7 +22,7 @@ title: '@Include option'
 
 	<p>You may also include files within files. Once again, the ordering is determined by placement: when any file includes another file, the new contents are added within its own sections, immediately after the section where the statement is made.</p>
 
-	<p>If there is a conflict - that is, if the same section exists in more than one file - Rainmeter will treat whichever one comes first in the ordering as the "real" section. Any options on the later instances will be added to the first one, and otherwise the later instances are simply ignored. If there are different values given for the same key, the last value is taken. Unlike new sections, options on pre-existing sections are added in their original order, so the calling section may overwrite values from the included file if they are placed below the @include statement.</p>
+	<p>If there is a conflict - that is, if the same [SectionName] exists in more than one file - Rainmeter will evaluate both sections. Any keys from the earlier section are added, but will be overridden by duplicate keys from later sections. All this is dependent on the order in the skin. "Later" wins conflicts.</p>
 
 </div>
 
