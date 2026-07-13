@@ -131,14 +131,14 @@ function toggleClass(elem, className) {
 	})
 }));
 
-// Add 'Select all' and 'Download' buttons to <pre> blocks.
+// Add 'Copy' and 'Download' buttons to <pre> blocks.
 (function() {
 	var divs = document.getElementsByClassName('highlight');
 	for (var i = 0; div = divs[i]; ++i) {
 		var selectA = document.createElement('a');
-		selectA.innerHTML = 'Select all';
+		selectA.innerHTML = 'Copy';
 
-		// Force the 'Select All' button to use the same color as 'Download' button via bootstrap
+		// Force the 'Copy' button to use the same color as 'Download' button via bootstrap
 		selectA.href= 'javascript:void(0);';
 
 		var pre = div.getElementsByTagName('pre')[0];
@@ -156,18 +156,12 @@ function toggleClass(elem, className) {
 		selectA.style.top += 1 + 'px';
 
 		selectA.onclick = function() {
-			var pre = this.parentNode.firstChild;
-			if (document.body.createTextRange) {
-				var range = document.body.createTextRange();
-				range.moveToElementText(pre);
-				range.select();
-			} else if (window.getSelection) {
-				var selection = window.getSelection();
-				var range = document.createRange();
-				range.selectNodeContents(pre);
-				selection.removeAllRanges();
-				selection.addRange(range);
-			}
+			const pre = this.parentNode.firstChild;
+			const button = this;
+			navigator.clipboard.writeText(pre.innerText).then(() => {
+				button.innerHTML = '<span style="visibility: hidden;">Copy</span><span style="position: absolute; left: 0; right: 0; text-align: center;">&#10003;</span>';
+				window.setTimeout(() => button.innerHTML = 'Copy', 1500);
+			});
 		};
 
 		div.appendChild(selectA);
