@@ -191,7 +191,7 @@ blockquote {
 }
 .h2, h2 {
   font-size: 1.75rem;
-  padding-top: .4rem;
+  padding-top: 1.2rem;
   color: var(--color-heading);
 }
 .h3, h3 {
