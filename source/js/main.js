@@ -19,6 +19,26 @@ function toggleClass(elem, className) {
 		addClass(elem, className);
 	}
 }
+
+// Follow the system color theme.
+(function() {
+	var query = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+	var root = document.documentElement;
+
+	function setTheme() {
+		root.setAttribute('data-theme', query && query.matches ? 'dark' : 'light');
+	}
+
+	setTheme();
+	if (query) {
+		if (query.addEventListener) {
+			query.addEventListener('change', setTheme);
+		} else if (query.addListener) {
+			query.addListener(setTheme);
+		}
+	}
+})();
+
 // Spice up the side nav.
 (function() {
 	var nav = document.getElementById('sidenav');
