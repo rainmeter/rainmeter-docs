@@ -13,6 +13,7 @@
   --color-scheme: light;
   color-scheme: var(--color-scheme);
   --color-page: #fff;
+  --color-search-bg: var(--color-page);
   --color-surface: #fff;
   --color-surface-alt: #f7f7f9;
   --color-surface-muted: rgba(0, 0, 0, .03);
@@ -22,11 +23,13 @@
   --color-heading-subtle: #354b60;
   --color-link: #0058cc;
   --color-link-hover: #0056b3;
+  --color-navbar-bg: rgb(18, 58, 111);
   --color-anchor: #00a21a;
   --color-dt-anchor: #8bff96;
   --color-border: rgba(0, 0, 0, .15);
   --color-border-soft: rgba(0, 0, 0, .05);
   --color-code: #4155bd;
+  --color-footer-bg: rgba(0, 0, 0, .03);
   --color-footer-text: rgba(0, 0, 0, .2);
   --color-footer-link: rgba(0, 0, 0, .35);
   --color-syntax-text: #4f5c72;
@@ -53,6 +56,7 @@
 :root[data-theme="dark"] {
   --color-scheme: dark;
   --color-page: #0b111d;
+  --color-search-bg: var(--color-page);
   --color-surface: #162033;
   --color-surface-alt: #1b263a;
   --color-surface-muted: rgba(255, 255, 255, .04);
@@ -62,11 +66,13 @@
   --color-heading-subtle: #d4deec;
   --color-link: #66a6ff;
   --color-link-hover: #a8ccff;
+  --color-navbar-bg: #0b2345;
   --color-anchor: #6bd982;
   --color-dt-anchor: #b8ffc1;
   --color-border: rgba(255, 255, 255, .16);
   --color-border-soft: rgba(255, 255, 255, .09);
   --color-code: #d7defd;
+  --color-footer-bg: #080d16;
   --color-footer-text: rgba(255, 255, 255, .35);
   --color-footer-link: rgba(255, 255, 255, .55);
   --color-syntax-text: #fff;
@@ -127,7 +133,7 @@ footer {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   color: var(--color-footer-text);
-  background-color: var(--color-surface-muted);
+  background-color: var(--color-footer-bg);
 }
 footer a {
   font-weight: 600;
@@ -269,7 +275,7 @@ blockquote {
 .navbar {
   font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   padding: 1.5rem 0 !important;
-  background-color: rgb(18,58,111);
+  background-color: var(--color-navbar-bg);
   z-index: 2;
 }
 .navbar button:focus {
@@ -412,12 +418,12 @@ blockquote {
 }
 #search-form .form-control {
   color: var(--color-text);
-  background-color: var(--color-surface-alt);
+  background-color: var(--color-search-bg);
   border-color: var(--color-border);
 }
 #search-form .form-control:focus {
   color: var(--color-text);
-  background-color: var(--color-surface-alt);
+  background-color: var(--color-search-bg);
   border-color: var(--color-link);
   box-shadow: 0 0 0 .2rem rgba(139, 189, 255, .25);
 }
