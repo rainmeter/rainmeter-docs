@@ -28,6 +28,8 @@
   --color-dt-anchor: #8bff96;
   --color-border: rgba(0, 0, 0, .15);
   --color-border-soft: rgba(0, 0, 0, .05);
+  --color-code-button-bg: var(--color-page);
+  --color-code-block-bg: rgba(0, 0, 0, .03);
   --color-code: #4155bd;
   --color-footer-bg: rgba(0, 0, 0, .03);
   --color-footer-text: rgba(0, 0, 0, .2);
@@ -57,7 +59,7 @@
   --color-scheme: dark;
   --color-page: #0b111d;
   --color-search-bg: var(--color-page);
-  --color-surface: #162033;
+  --color-surface: #101a2b;
   --color-surface-alt: #1b263a;
   --color-surface-muted: rgba(255, 255, 255, .04);
   --color-text: #b8c4d6;
@@ -71,6 +73,8 @@
   --color-dt-anchor: #b8ffc1;
   --color-border: rgba(255, 255, 255, .16);
   --color-border-soft: rgba(255, 255, 255, .09);
+  --color-code-button-bg: var(--color-page);
+  --color-code-block-bg: rgba(255, 255, 255, .03);
   --color-code: #d7defd;
   --color-footer-bg: #080d16;
   --color-footer-text: rgba(255, 255, 255, .35);
@@ -238,6 +242,30 @@ blockquote {
   color: inherit;
   background-color: rgba(255, 255, 255, .45);
   border: 1px solid rgba(0, 0, 0, .08);
+}
+:root[data-theme="dark"] .alert-info {
+  color: #b8e8f0;
+  background-color: #0b202a;
+  border-color: #1b4656;
+}
+:root[data-theme="dark"] .alert-warning {
+  color: #f3d8a0;
+  background-color: #271d0b;
+  border-color: #584016;
+}
+:root[data-theme="dark"] .alert-danger {
+  color: #f5c1c7;
+  background-color: #291217;
+  border-color: #5d252d;
+}
+:root[data-theme="dark"] .alert-success {
+  color: #b7e2c2;
+  background-color: #0f2217;
+  border-color: #255333;
+}
+:root[data-theme="dark"] .alert code {
+  background-color: rgba(255, 255, 255, .08);
+  border-color: rgba(255, 255, 255, .14);
 }
 
 /* .alert-box1 {
@@ -533,6 +561,8 @@ blockquote {
 */
 
 code {
+  margin-right: .2rem;
+  margin-left: .2rem;
   color: var(--color-code);
   background-color: var(--color-surface-alt);
 }
@@ -553,7 +583,7 @@ pre {
   tab-size: 4;
   border: 1px solid var(--color-border-soft);
   border-radius: .25rem;
-  background-color: var(--color-surface-alt);
+  background-color: var(--color-code-block-bg);
   -webkit-tab-size: 4;
 }
 div.line {
@@ -583,7 +613,7 @@ div.line {
   margin-right: .095rem;
   padding: .3rem .6rem;
   color: var(--color-link);
-  background-color: var(--color-surface-alt);
+  background-color: var(--color-code-button-bg);
   border: 1px solid var(--color-border);
   overflow: visible;
 }
@@ -592,6 +622,8 @@ div.line {
   text-decoration: none;
 }
 pre code {
+  margin-right: 0;
+  margin-left: 0;
   padding: 0;
   color: inherit;
   border: 0;
