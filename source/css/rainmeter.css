@@ -10,7 +10,8 @@
 /* General styling  */
 
 :root {
-  color-scheme: light;
+  --color-scheme: light;
+  color-scheme: var(--color-scheme);
   --color-page: #fff;
   --color-surface: #fff;
   --color-surface-alt: #f7f7f9;
@@ -49,50 +50,8 @@
   --shadow-nav: 2px 0 45px 0 rgba(0, 0, 0, .05);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --color-page: #111827;
-    --color-surface: #162033;
-    --color-surface-alt: #0f1726;
-    --color-surface-muted: rgba(255, 255, 255, .04);
-    --color-text: #c7d1e0;
-    --color-text-muted: #97a6ba;
-    --color-heading: #7ab7ff;
-    --color-heading-subtle: #d4deec;
-    --color-link: #66a6ff;
-    --color-link-hover: #a8ccff;
-    --color-anchor: #6bd982;
-    --color-dt-anchor: #b8ffc1;
-    --color-border: rgba(255, 255, 255, .16);
-    --color-border-soft: rgba(255, 255, 255, .09);
-    --color-code: #a8b8ff;
-    --color-footer-text: rgba(255, 255, 255, .35);
-    --color-footer-link: rgba(255, 255, 255, .55);
-    --color-syntax-text: #fff;
-    --color-syntax-comment: #fff;
-    --color-syntax-keyword: #fff;
-    --color-syntax-number: #8fbfff;
-    --color-syntax-string: #ff8aa0;
-    --color-syntax-title: #ff8a8a;
-    --color-syntax-type: #9fc9ff;
-    --color-syntax-tag: #a8b8ff;
-    --color-syntax-variable: #4edede;
-    --color-syntax-regexp: #55dc7c;
-    --color-syntax-symbol: #ff7fd8;
-    --color-syntax-built-in: #5ecfff;
-    --color-syntax-meta: #fff;
-    --color-syntax-muted: #fff;
-    --color-syntax-deletion: rgba(242, 37, 14, .22);
-    --color-syntax-addition: rgba(56, 181, 93, .22);
-    --color-syntax-change: rgba(0, 129, 200, .28);
-    --shadow-soft: 0 2px 3px 0 rgba(0, 0, 0, .22);
-    --shadow-nav: 2px 0 45px 0 rgba(0, 0, 0, .35);
-  }
-}
-
 :root[data-theme="dark"] {
-  color-scheme: dark;
+  --color-scheme: dark;
   --color-page: #111827;
   --color-surface: #162033;
   --color-surface-alt: #0f1726;
@@ -176,6 +135,25 @@ footer a {
 }
 footer a:hover, footer a:focus {
   text-decoration: none;
+}
+#theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--color-footer-link);
+  background: transparent;
+  cursor: pointer;
+}
+#theme-toggle:hover, #theme-toggle:focus {
+  color: var(--color-link-hover);
+}
+#theme-toggle:focus {
+  outline: 1px dotted currentColor;
+  outline-offset: .2rem;
 }
 blockquote {
   color: #868e96;

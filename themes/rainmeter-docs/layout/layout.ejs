@@ -15,6 +15,23 @@
 	<!-- Page title  -->
 	<title><% if (page.title) { %><%= page.title %> - <% } %>Rainmeter Documentation</title>
 
+	<script>
+		(function() {
+			var theme = null;
+			try {
+				theme = localStorage.getItem('theme');
+			} catch (e) {
+			}
+			if (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				theme = 'dark';
+			}
+			if (theme) {
+				document.documentElement.setAttribute('data-theme', theme);
+				document.documentElement.style.colorScheme = theme;
+			}
+		})();
+	</script>
+
 	<!-- Files need to be local for offline version of documentations -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/rainmeter.css?v=<%= asset_hash('/css/rainmeter.css') %>">

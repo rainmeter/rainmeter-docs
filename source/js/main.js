@@ -20,22 +20,33 @@ function toggleClass(elem, className) {
 	}
 }
 
-// Follow the system color theme.
+// Update the color theme toggle.
 (function() {
-	var query = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
 	var root = document.documentElement;
+	var toggle = document.getElementById('theme-toggle');
 
-	function setTheme() {
-		root.setAttribute('data-theme', query && query.matches ? 'dark' : 'light');
+	function setTheme(theme) {
+		root.setAttribute('data-theme', theme);
+		root.style.colorScheme = theme;
+		if (toggle) {
+			var isDark = theme == 'dark';
+			toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+			toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+			toggle.innerHTML = '<i class="fas ' + (isDark ? 'fa-sun' : 'fa-moon') + '" aria-hidden="true"></i> <span>' + (isDark ? 'Light mode' : 'Dark mode') + '</span>';
+		}
 	}
 
-	setTheme();
-	if (query) {
-		if (query.addEventListener) {
-			query.addEventListener('change', setTheme);
-		} else if (query.addListener) {
-			query.addListener(setTheme);
-		}
+	setTheme(root.getAttribute('data-theme') || 'light');
+
+	if (toggle) {
+		toggle.onclick = function() {
+			var theme = root.getAttribute('data-theme') == 'dark' ? 'light' : 'dark';
+			try {
+				localStorage.setItem('theme', theme);
+			} catch (e) {
+			}
+			setTheme(theme);
+		};
 	}
 })();
 
