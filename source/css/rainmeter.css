@@ -154,12 +154,11 @@ footer a:hover, footer a:focus {
   background: transparent;
   cursor: pointer;
 }
-#theme-toggle:hover, #theme-toggle:focus {
+#theme-toggle:hover {
   color: var(--color-link-hover);
 }
 #theme-toggle:focus {
-  outline: 1px dotted currentColor;
-  outline-offset: .2rem;
+  outline: none;
 }
 blockquote {
   color: #868e96;
