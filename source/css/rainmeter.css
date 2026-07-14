@@ -52,9 +52,9 @@
 
 :root[data-theme="dark"] {
   --color-scheme: dark;
-  --color-page: #111827;
+  --color-page: #0b111d;
   --color-surface: #162033;
-  --color-surface-alt: #0f1726;
+  --color-surface-alt: #1b263a;
   --color-surface-muted: rgba(255, 255, 255, .04);
   --color-text: #c7d1e0;
   --color-text-muted: #97a6ba;
@@ -66,7 +66,7 @@
   --color-dt-anchor: #b8ffc1;
   --color-border: rgba(255, 255, 255, .16);
   --color-border-soft: rgba(255, 255, 255, .09);
-  --color-code: #a8b8ff;
+  --color-code: #d7defd;
   --color-footer-text: rgba(255, 255, 255, .35);
   --color-footer-link: rgba(255, 255, 255, .55);
   --color-syntax-text: #fff;
@@ -228,6 +228,11 @@ blockquote {
 }
 .alert *:last-child {
   margin-bottom: 0;
+}
+.alert code {
+  color: inherit;
+  background-color: rgba(255, 255, 255, .45);
+  border: 1px solid rgba(0, 0, 0, .08);
 }
 
 /* .alert-box1 {
