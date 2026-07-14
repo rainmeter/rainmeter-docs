@@ -30,9 +30,9 @@ function toggleClass(elem, className) {
 		root.style.colorScheme = theme;
 		if (toggle) {
 			var isDark = theme == 'dark';
-			toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+			toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
 			toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-			toggle.innerHTML = '<i class="fas ' + (isDark ? 'fa-sun' : 'fa-moon') + '" aria-hidden="true"></i> <span>' + (isDark ? 'Light mode' : 'Dark mode') + '</span>';
+			toggle.innerHTML = '<i class="fas ' + (isDark ? 'fa-moon' : 'fa-sun') + '" aria-hidden="true"></i> <span>' + (isDark ? 'Dark theme' : 'Light theme') + '</span>';
 		}
 	}
 
