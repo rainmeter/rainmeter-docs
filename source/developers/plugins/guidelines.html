@@ -55,9 +55,18 @@ title: 'Plugin Guidelines'
 </p>
 
 <h3 id="Marshalling">C# Marshalling</h3>
-<p>When making C# plugins you may notice references to IntPtr's and <a href="https://learn.microsoft.com/dotnet/framework/interop/interop-marshalling">Marshal</a> functions. Since Rainmeter is written in C++, variables are encoded differently, but don't be intimidated by them.</p>
-<p>An <a href="https://learn.microsoft.com/dotnet/api/system.intptr">IntPtr</a> is basically an integer that represents a <a href="https://en.wikipedia.org/wiki/Pointer_(computer_programming)">pointer</a> to some data, which is why you must deallocate data in finalize as well as recast it in every function. Also since strings are formatted differently in C++, you should pass your string to <a href="https://learn.microsoft.com/dotnet/api/system.runtime.interopservices.marshal.stringtohglobaluni">Marshal.StringToHGlobalUni</a> before returning it in <a href="!plugin/csharp/#GetString">GetString</a> or <a href="!plugin/csharp/#Custom">custom section variables</a>.</p>
-<p>Also the MarshalAs in ExecuteBang and SectionVariable examples just makes sure that you get a C# style string or string array out of the box.</p>
+<p>While inspecting the <a href="https://github.com/rainmeter/rainmeter-plugin-sdk/tree/master/C%23">Rainmeter Plugin SDK C# Examples</a>, as well as checking the <i>Examples</i> on the <a href="!plugin/csharp/">C# Plugin Overview</a> page, you may notice an excessive usage of <i>IntPtr</i>s and <a href="https://learn.microsoft.com/dotnet/framework/interop/interop-marshalling">Marshal</a> namespace functions.</p>
+<p>The <a href="https://github.com/rainmeter/rainmeter-plugin-sdk/blob/master/API/RainmeterAPI.cs">Rainmeter C# API</a> works by invoking methods in unmanaged dynamic-link library (DLL), more specifically in <code>Rainmeter.dll</code>. Due to Rainmeter being written in C++, it expects data styled (data types, encoded strings and variables) in said language.</p>
+<p>Do not be intimidated by any of this. An <i>IntPtr</i> in C# is simply an object which simulates a pointer to C++ style data, which is why you must dealocate data in finalize as well as recast it in every function.</p>
+<p>
+	<ul>
+		<li>When working with Rainmeter specific Data Types (e.g. <code>Measure()</code>), the specific C# object should be allocated to the Garbage Collecter in order to make it a valid object which can be turned into an IntPtr. (e.g. <code>GCHandle.ToIntPtr(GCHandle.Alloc(measure))</code>).</li>
+		<li>Since strings are formatted differently in C++, you should pass your string to <a href="https://learn.microsoft.com/dotnet/api/system.runtime.interopservices.marshal.stringtohglobaluni">Marshal.StringToHGlobalUni</a> before returning it in <a href="!plugin/csharp/#GetString">GetString</a> or <a href="!plugin/csharp/#Custom">custom section variables</a>.</li>
+		<li>Aditionally, the MarshalAs in ExecuteBang and SectionVariable examples just makes sure that you get a C# style string or string array out of the box.</li>
+	</ul>
+</p>
+
+
 
 <h3 id="DisabledPaused">What do the <code>Disabled</code> and <code>Paused</code> options do in a plugin?</h3>
 <p>If either are set to <code>1</code>, they only affects the execution of the <a href="!plugin/cpp/#Update">Update</a> function. Rainmeter will still call the Initialize, Reload and Finalize functions.</p>
