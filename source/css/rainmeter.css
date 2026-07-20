@@ -60,29 +60,29 @@
 
 :root[data-theme="dark"] {
   --color-scheme: dark;
-  --color-page: #090d14;
-  --color-search-bg: var(--color-page);
-  --color-surface: #0d141f;
-  --color-surface-alt: #151d2a;
+  --color-page: #212121;
+  --color-search-bg: #343434;
+  --color-surface: #2a2a2a;
+  --color-surface-alt: #29292b;
   --color-surface-muted: rgba(255, 255, 255, .03);
-  --color-text: #abb8cc;
-  --color-text-muted: #97a6ba;
-  --color-heading: #7ab7ff;
-  --color-heading-subtle: #d4deec;
+  --color-text: #aab5c7;
+  --color-text-muted: #959c9c;
+  --color-heading: #93d4ea;
+  --color-heading-subtle: #b3c5d3;
   --color-link: #66a6ff;
   --color-link-hover: #a8ccff;
-  --color-navbar-bg: #081d39;
+  --color-navbar-bg: #111947;
   --color-anchor: #6bd982;
   --color-dt-anchor: #b8ffc1;
-  --color-border: rgba(255, 255, 255, .12);
+  --color-border: rgba(47, 47, 47, .12);
   --color-border-soft: rgba(255, 255, 255, .07);
   --color-code-button-bg: var(--color-page);
-  --color-code-block-bg: rgba(255, 255, 255, .025);
+  --color-code-block-bg: rgba(21, 27, 35, .35);
   --color-code: #d7defd;
-  --color-dt-bg: #103957;
+  --color-dt-bg: #11274e;
   --color-dt-sub-bg: #1d2d40;
   --color-dt-target-bg: #784914;
-  --color-footer-bg: #070a10;
+  --color-footer-bg: #29292b;
   --color-footer-text: rgba(255, 255, 255, .35);
   --color-footer-link: rgba(255, 255, 255, .55);
   --color-syntax-text: #fff;
@@ -251,12 +251,12 @@ blockquote {
 }
 :root[data-theme="dark"] .alert-info {
   color: #b8e8f0;
-  background-color: #081a22;
+  background-color: #183032;
   border-color: #173947;
 }
 :root[data-theme="dark"] .alert-warning {
   color: #f3d8a0;
-  background-color: #201707;
+  background-color: #322b0f;
   border-color: #493411;
 }
 :root[data-theme="dark"] .alert-danger {
@@ -270,7 +270,7 @@ blockquote {
   border-color: #1e452b;
 }
 :root[data-theme="dark"] .alert code {
-  background-color: rgba(255, 255, 255, .08);
+  background-color: rgba(255, 255, 255, .15);
   border-color: rgba(255, 255, 255, .14);
 }
 
