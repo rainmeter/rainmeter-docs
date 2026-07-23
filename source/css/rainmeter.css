@@ -60,15 +60,15 @@
 
 :root[data-theme="dark"] {
   --color-scheme: dark;
-  --color-page: #090d14;
+  --color-page: #0c0d0f;
   --color-search-bg: var(--color-page);
-  --color-surface: #0d141f;
-  --color-surface-alt: #151d2a;
+  --color-surface: #111316;
+  --color-surface-alt: #191c20;
   --color-surface-muted: rgba(255, 255, 255, .03);
-  --color-text: #abb8cc;
-  --color-text-muted: #97a6ba;
+  --color-text: #b5b8bd;
+  --color-text-muted: #9da1a7;
   --color-heading: #7ab7ff;
-  --color-heading-subtle: #d4deec;
+  --color-heading-subtle: #d9dcdf;
   --color-link: #66a6ff;
   --color-link-hover: #a8ccff;
   --color-navbar-bg: #081d39;
@@ -80,9 +80,9 @@
   --color-code-block-bg: rgba(255, 255, 255, .025);
   --color-code: #d7defd;
   --color-dt-bg: #103957;
-  --color-dt-sub-bg: #1d2d40;
+  --color-dt-sub-bg: #272d35;
   --color-dt-target-bg: #784914;
-  --color-footer-bg: #070a10;
+  --color-footer-bg: #000;
   --color-footer-text: rgba(255, 255, 255, .35);
   --color-footer-link: rgba(255, 255, 255, .55);
   --color-syntax-text: #fff;
