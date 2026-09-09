@@ -64,12 +64,11 @@ AccurateText=1
 [MeasureCPU]
 Measure=CPU
 IfCondition=MeasureCPU < 10
-IfTrueAction=[!SetOption MeterCPU Text "CPU usage is less than 10 percent"]
+IfTrueAction=[!SetOption MeterCPU Text "CPU usage is less than 10 percent"][!UpdateMeter MeterCPU][!Redraw]
 IfCondition2=(MeasureCPU >= 10) && (MeasureCPU <= 90)
-IfTrueAction2=[!SetOption MeterCPU Text "CPU usage is between 10 and 90 percent"]
+IfTrueAction2=[!SetOption MeterCPU Text "CPU usage is between 10 and 90 percent"][!UpdateMeter MeterCPU][!Redraw]
 IfCondition3=MeasureCPU > 90
-IfTrueAction3=[!SetOption MeterCPU Text "CPU usage is more than 90 percent!"]
-OnUpdateAction=[!UpdateMeter MeterCPU][!Redraw]
+IfTrueAction3=[!SetOption MeterCPU Text "CPU usage is more than 90 percent!"][!UpdateMeter MeterCPU][!Redraw]
 
 [MeterCPU]
 Meter=String
