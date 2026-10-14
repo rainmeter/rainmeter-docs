@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "autoprefixer": "10.2.5",
-    "browserslist": "4.23.3",
+    "browserslist": "4.28.9",
     "cssnano": "5.0.2",
     "postcss": "8.5.19",
     "postcss-cli": "11.0.0"
