@@ -145,9 +145,10 @@ title: '[Rainmeter] section'
 
 	<dt id="BackgroundMargins"><code>BackgroundMargins</code> <small>Default: <code>0,0,0,0</code></small></dt>
 	<dd>
-		<p>If <code>BackgroundMode=3</code>, defines margins of the <code>Background</code> image that are not scaled. The parameters are <code>left,top,right,bottom</code>.</p>
-		<p><b>Example:</b> <code>BackgroundMargins=0,10,0,20</code>.
-		<br>10 pixels from the top and 20 pixels from the bottom of the image are not scaled.</p>
+		<p>The values are in pixels, in the order <code>left,top,right,bottom</code>.</p>
+		<p>With <code>BackgroundMode=3</code>, the values define the edges of the <code>Background</code> image that retain their original size when the image is scaled. For example, <code>BackgroundMargins=0,10,0,20</code> preserves 10 pixels at the top and 20 pixels at the bottom.</p>
+		<p>With <code>BackgroundMode=2</code>, the left and top values set the initial minimum width and height. Rainmeter expands those dimensions to fit the meters, then adds the right and bottom values to the resulting width and height. Meters keep their <code>X</code> and <code>Y</code> coordinates.</p>
+		<p>For example, when meters extend at least 12 pixels from the skin origin in both directions, <code>BackgroundMargins=12,12,12,12</code> and <code>BackgroundMargins=0,0,12,12</code> produce the same size. A meter at <code>X=0</code>, <code>Y=0</code> stays at the origin in both cases.</p>
 	</dd>
 
 	<dt id="SolidColor"><code>SolidColor</code>, <code>SolidColor2</code> <small>Default: <code>128,128,128,255</code></small></dt>
